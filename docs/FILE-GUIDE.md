@@ -42,5 +42,22 @@ Both downloads contain the same pipeline. Only the prepared inputs and selection
 | `docs/calculation/step-3.png` | Illustration for step 3 of the calculation walkthrough. |
 | `docs/calculation/step-4.png` | Illustration for step 4 of the calculation walkthrough. |
 | `docs/calculation/step-5.png` | Illustration for step 5 of the calculation walkthrough. |
+| `docs/walkthroughs/example-1-09.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-1-13.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-1-16.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-1-18.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-1-21.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-1-24.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-2-07.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-2-13.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-2-16.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-2-18.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-2-21.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-2-24.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-3-02.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-3-08.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-3-11.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-3-13.png` | Worked-example figure or table. |
+| `docs/walkthroughs/example-3-16.png` | Worked-example figure or table. |
 
 Results are written under outputs/targets/, one folder per target, including comparison_summary.csv. outputs/library_summary.csv combines all target summary rows. run.json records settings and summaries; inputs and record metadata are retained once per run.

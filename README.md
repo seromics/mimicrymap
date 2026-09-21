@@ -130,3 +130,156 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 Sequence resemblance is a descriptive result. It does not by itself establish antibody binding, cross-reactivity or disease causation.
 
 <!-- calculation-walkthrough:end -->
+
+<!-- interpretation-walkthroughs:start -->
+## How to Use Mimicry Results
+
+Combine sequence similarity with experimental evidence, compare coverage, and inspect individual matches with these worked examples.
+
+### 1 · Combine with Experimental Evidence
+
+[Download this example’s saved data and figures](https://github.com/seromics/mimicrymap/raw/refs/heads/main/examples/hepacam-huprot-viral-example.zip)
+
+Single antibodies can cause disease. Using a HuProt protein microarray, [Lanz et al.](https://doi.org/10.1038/s41586-022-04432-7) found that a monoclonal antibody isolated from a multiple sclerosis patient binds the human protein HEPACAM (GlialCAM). Molecular mimicry with Epstein-Barr virus is thought to underlie this cross-reactivity. The [calculation walkthrough](docs/SUMMARY-DOWNLOADS.md) explains how this match is mapped.
+
+Here, we compare the HEPACAM sequence from a HuProt protein microarray experiment (**JHU19101; Q14CZ8**) with whole viral proteins from **Curated Viral Proteomes (120)**. The known 5/9 match is present but does not stand out by sequence similarity alone. The authors knew to focus on EBV due to [recent work connecting it with MS](https://doi.org/10.1126/science.abj8222), and had separate PhIP-Seq experiments with this same antibody demonstrating binding to proline-rich peptides similar to this match site within HEPACAM. They distinguished this site further by showing phosphorylation of GlialCAM serine 376 (pSer376) increased binding affinity of the tested antibody about 50-fold.
+
+Download summaries comparing HuProt constructs with the 120 reference viral proteomes, in either direction.
+
+[Library-wide summary download guide](docs/SUMMARY-DOWNLOADS.md)
+
+The library-wide summaries cover **HuProt 4.0 and Curated Viral Proteomes (120)** at 7/9–9/9. [Download this example’s figures and tables (ZIP, 21.5 MB)](https://github.com/seromics/mimicrymap/raw/refs/heads/main/examples/hepacam-huprot-viral-example.zip): pan-viral results at 5/9 and 7/9, plus the EBV-only 5/9 site example.
+
+#### Find the published site: HEPACAM 376–384 ↔ EBNA1 392–400
+
+The **EBNA1 P03211** alignment shown below has a 5/9 core and context BLOSUM62 score of 12. It shares rank **15 of 27** window pairs at this HEPACAM site within the EBV B95-8 proteome. The table also places it in the broader 120-proteome comparison.
+
+![Published-site ranking by saved context BLOSUM62 at 5 of 9 identity](docs/walkthroughs/example-1-09.png)
+
+- **Combine measurements** from the same sample or antibody. The figures show sequence matches before filtering by antibody hits.
+
+- **Keep weaker candidates:** a 7/9 cutoff removes this 5/9 match; excluding all Pro/Arg-rich regions would also discard it.
+
+#### HEPACAM · ≥5/9
+
+![HuProt HEPACAM JHU19101 versus 2,090 matching whole viral proteins from 120 proteomes at minimum core identity 5/9.](docs/walkthroughs/example-1-13.png)
+
+##### Overall Mimicry Parents
+
+Top 3 of 2,090 Matching Viral Proteins
+
+![Saved example results](docs/walkthroughs/example-1-16.png)
+
+#### HEPACAM · ≥7/9
+
+![HuProt HEPACAM JHU19101 versus 37 matching whole viral proteins from 120 proteomes at minimum core identity 7/9.](docs/walkthroughs/example-1-18.png)
+
+##### Overall Mimicry Parents
+
+Top 3 of 37 Matching Viral Proteins
+
+![Saved example results](docs/walkthroughs/example-1-21.png)
+
+#### Matches at HEPACAM 376–384 · EBV B95-8 · ≥5/9
+
+Top 3 EBV proteins by context BLOSUM62 · 27 window pairs at this site
+
+![Saved example results](docs/walkthroughs/example-1-24.png)
+
+**Scatter and parent tables:** Each point pairs 416-AA HuProt HEPACAM (JHU19101) with one whole viral protein. X and Y show covered residues as percentages of the target and parent lengths. Of 2,222 viral proteins across 120 proteomes, 2,090 match at ≥5/9 and 37 at ≥7/9; all matching proteins are plotted. The parent tables show the top three by target coverage.
+
+**Peptide table:** The EBV-only table holds the target core at HEPACAM 376–384 and shows the three highest-ranked distinct viral proteins by saved context BLOSUM62, followed by the published EBNA1 alignment. Target appears above parent; coordinates refer to the full records. Matches are green, differences red; underlines mark core (green) and flanks (blue). The site-ranking table counts window pairs, with equal BLOSUM62 scores sharing rank.
+
+### 2 · Discover Mimicry Across Proteomes
+
+[Download this example’s saved data and figures](https://github.com/seromics/mimicrymap/raw/refs/heads/main/examples/il10-example.zip)
+
+Viruses can evolve molecular mimics of host proteins. Comparing coverage in both directions helps distinguish similarity spanning much of a protein from smaller, localized matches.
+
+Here, the target is human IL10, an immunoregulatory cytokine. Epstein-Barr virus encodes an evolved homolog, BCRF1, that mimics [human IL10 activity](https://doi.org/10.1126/science.2173142). Other viruses, including [human cytomegalovirus](https://doi.org/10.1073/pnas.97.4.1695), also encode functional IL10 mimics. The full extent and mechanisms of viral mimicry remain incompletely understood; these comparisons highlight candidates for investigation, including less extensive similarities whose biological significance is unknown.
+
+Download human-to-virus results for all 20,431 human UniProtKB/Swiss-Prot records, or use the reverse table to start from a viral protein.
+
+[Library-wide summary download guide](docs/SUMMARY-DOWNLOADS.md)
+
+#### Find these results in the human-to-virus CSV: IL10 (P22301), ≥7/9
+
+![IL10 summary fields at 7 of 9 identity](docs/walkthroughs/example-2-07.png)
+
+- **Read both coverage values:** a point toward the upper right indicates similarity spanning much of both proteins. High target coverage with low parent coverage means the matches cover much of the target but only a small part of its partner.
+
+- **Look for local matches too:** low overall coverage can conceal a short region of similarity. Use the peptide table to inspect individual matches alongside the whole-protein view.
+
+- **Read the prepared summary:** this CSV contains 7/9, 8/9 and 9/9 results. At 7/9, IL10 has 12 matching parents; only BCRF1 reaches the summary’s 10% coverage floor on either protein.
+
+- **Explore 5/9 for your own target:** preparing and distributing proteome-wide summaries at 5/9 is substantially larger and more computationally demanding, so the prepared downloads start at 7/9. To compute a 5/9 comparison for a target of interest, [download the local pipeline](#run).
+
+#### IL10 · ≥5/9
+
+![IL10 bidirectional residue coverage at minimum core identity 5/9.](docs/walkthroughs/example-2-13.png)
+
+##### Overall Mimicry Parents
+
+Top 3 of 1,683 Matching Records
+
+![Saved example results](docs/walkthroughs/example-2-16.png)
+
+#### IL10 · ≥7/9
+
+![IL10 bidirectional residue coverage at minimum core identity 7/9.](docs/walkthroughs/example-2-18.png)
+
+##### Overall Mimicry Parents
+
+Top 3 of 12 Matching Records
+
+![Saved example results](docs/walkthroughs/example-2-21.png)
+
+#### Core Window Matches Across the Target · IL10 · ≥5/9
+
+Top 3 of 1,683 Matching Records · One Window Pair per Parent
+
+![Saved example results](docs/walkthroughs/example-2-24.png)
+
+**Scatter and outlier table:** The left panel shows IL10 at ≥5/9 core identity and the right at ≥7/9, using the same curated viral filter. Both comparisons evaluate 2,222 parent records. Each point pairs IL10 with one matching parent record. The axes show covered residues as a percentage of full sequence length: IL10 on the X-axis and its paired parent on the Y-axis. All matching entries are plotted; tables show the top three parent proteins sorted by IL10 coverage. BCRF1 (P03180) is the viral IL10 homolog discussed above.
+
+**Peptide table:** Top three parent proteins ranked by their highest context BLOSUM62 score for IL10 across 120 reference viral proteomes, with one window pair shown per parent. The target appears above the parent; matching residues are green and differences red. Green and blue underlines distinguish core and flanks.
+
+### 3 · Find Uniqueness Within Proteomes
+
+[Download this example’s saved data and figures](https://github.com/seromics/mimicrymap/raw/refs/heads/main/examples/ighg2-example.zip)
+
+![IGHG2 Full sequence view at minimum core identity 8/9, without a selected-site highlight.](docs/walkthroughs/example-3-02.png)
+
+Avoiding unwanted cross-reactivity is important for drug design and the selection of monoclonal antibody reagents. However, distinctive regions can be difficult to find. The mapping system described here identifies regions unmatched within a chosen comparison population, such as across the entire human proteome.
+
+In this example, IGHG2, the constant region of the IgG2 heavy chain, is compared with the human proteome at ≥8/9 core identity. Only one short stretch is unmatched at this threshold; the remaining regions closely resemble other IgG subclasses such as IgG1, IgG3, and IgG4.
+
+Download the following CSV for all 20,431 human UniProtKB/Swiss-Prot records prepared this way.
+
+[Library-wide summary download guide](docs/SUMMARY-DOWNLOADS.md)
+
+#### Find these results in the CSV: IGHG2 (P01859), ≥8/9
+
+![IGHG2 summary region fields at 8 of 9 identity](docs/walkthroughs/example-3-08.png)
+
+- **Why use Uncovered Residue Regions?** Target residues outside all qualifying 9-residue windows at the stated identity threshold and comparison scope. Qualifying windows include mismatch positions; uncovered residues may participate in lower-identity matches.
+
+- **Coverage dots:** IgG1, IgG3 and IgG4 have the greatest coverage overlap with IgG2, highlighting how little of its sequence is distinctive at this threshold. The CSV’s paired target and parent coverage values provide each listed parent’s X- and Y-axis coordinates.
+
+![IGHG2 AlphaFold monomer with mimicry-density colors, without a selected-site highlight.](docs/walkthroughs/example-3-11.png)
+
+#### IGHG2 · ≥8/9
+
+![IGHG2 bidirectional residue coverage against Canonical Human at minimum core identity 8/9.](docs/walkthroughs/example-3-13.png)
+
+##### Overall Mimicry Parents
+
+Top 3 of 14 Matching Records
+
+![Saved example results](docs/walkthroughs/example-3-16.png)
+
+**Sequence map and structure:** IGHG2 is compared with Canonical Human at ≥8/9 core identity. Tan represents 'no match' at 8/9; the red shaded regions contain matches at ≥8/9 to other closely related human proteins.
+
+**Scatter and outlier table:** Each point pairs IGHG2 with one matching parent record in Canonical Human at ≥8/9 core identity; all 14 matching records are shown. The axes show covered residues as a percentage of full sequence length: IGHG2 on the X-axis and its paired parent on the Y-axis. The table shows the top three parent proteins sorted by IGHG2 coverage and each parent’s maximum context identity.
+
+<!-- interpretation-walkthroughs:end -->
