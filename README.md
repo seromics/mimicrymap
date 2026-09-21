@@ -16,11 +16,17 @@ The Python and R launchers set up Node.js locally if needed. Initial setup requi
 
 ## Change the comparison
 
-| File | What to edit |
-| --- | --- |
-| `inputs/antigen-target.fasta` | One or more target records |
-| `inputs/mimicry-parents.fasta` | The parent records to compare against |
-| `settings.json` | Identity threshold, optional selected target start, and output folder |
+<table width="100%">
+<thead><tr>
+<th align="left" width="360">File</th>
+<th align="left" width="600">What to edit</th>
+</tr></thead>
+<tbody>
+<tr><td><code>inputs/antigen-target.fasta</code></td><td>One or more target records</td></tr>
+<tr><td><code>inputs/mimicry-parents.fasta</code></td><td>The parent records to compare against</td></tr>
+<tr><td><code>settings.json</code></td><td>Identity threshold, optional selected target start, and output folder</td></tr>
+</tbody>
+</table>
 
 `min_identity` is an integer from 5 to 9. `selected_target_start` is a 1-based start, or `null` to omit the current-window table. Paths are relative to settings.json. Targets run one at a time; unlike the browser, the local pipeline processes every supplied target.
 
@@ -45,13 +51,19 @@ Rerunning refreshes the managed output folder after completion. Choose another `
 
 ## Site downloads and this package
 
-| Surface | What it provides |
-| --- | --- |
-| **Summary CSV** in the player | One target at the selected identity threshold and comparison scope, with available target annotations |
-| **Current Comparison** | This runnable package with the selected target, complete comparison population, settings, and available identity, mapping and annotation metadata |
-| **Plain pipeline ZIP** | The same code and guides with editable example inputs |
-| **Mimicry coverage summaries** on Data & Licenses | Reference-population and assay-library comparisons, with Target FASTA and Comparison FASTA beside each CSV |
-| **Selected virus / All viruses** on the atlas | Both human-to-virus and virus-to-human directions for the selected reference proteome or the pooled 120-proteome atlas |
+<table width="100%">
+<thead><tr>
+<th align="left" width="360">Surface</th>
+<th align="left" width="600">What it provides</th>
+</tr></thead>
+<tbody>
+<tr><td><strong>Summary CSV</strong> in the player</td><td>One target at the selected identity threshold and comparison scope, with available target annotations</td></tr>
+<tr><td><strong>Current Comparison</strong></td><td>This runnable package with the selected target, complete comparison population, settings, and available identity, mapping and annotation metadata</td></tr>
+<tr><td><strong>Plain pipeline ZIP</strong></td><td>The same code and guides with editable example inputs</td></tr>
+<tr><td><strong>Mimicry coverage summaries</strong> on Data &amp; Licenses</td><td>Reference-population and assay-library comparisons, with Target FASTA and Comparison FASTA beside each CSV</td></tr>
+<tr><td><strong>Selected virus / All viruses</strong> on the atlas</td><td>Both human-to-virus and virus-to-human directions for the selected reference proteome or the pooled 120-proteome atlas</td></tr>
+</tbody>
+</table>
 
 To use a download-table row here, save **Target FASTA** as `inputs/antigen-target.fasta` and **Comparison FASTA** as `inputs/mimicry-parents.fasta`. The first population supplies the output rows; each sequence's full length supplies its coverage denominator. Comparison FASTA includes records absent from the summary's parent lists. Replacing the inputs invalidates any previous selection metadata.
 
@@ -94,11 +106,21 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 
 ![Extract Window Pairs](docs/calculation/step-2.png)
 
-<p>The algorithm begins by deconstructing both the antigen target and mimicry parent sequences into all-possible overlapping 9-mer windows. Each 9-mer must be complete, so the number of total windows per sequence record is its length minus 8 residues. A protein of 9 amino acids thus has one window, a protein of 10 amino acids two, and so on. In our example, HEPACAM is 416 amino acids long and thus has 408 unique 9-mer core windows. Shown is one piece of this process occurring from positions 367 to 393.</p><div><div>Windows per record = max(0, record length − 8)</div>
-<div>HEPACAM: 416 − 8 = 408 windows</div></div><p>An identical process is done across the entire mimicry parent library. Across the 120 included viral proteomes, there are 2,222 proteins and 961,063 possible mimicry windows.</p>
+<p>The algorithm begins by deconstructing both the antigen target and mimicry parent sequences into all-possible overlapping 9-mer windows. Each 9-mer must be complete, so the number of total windows per sequence record is its length minus 8 residues. A protein of 9 amino acids thus has one window, a protein of 10 amino acids two, and so on. In our example, HEPACAM is 416 amino acids long and thus has 408 unique 9-mer core windows. Shown is one piece of this process occurring from positions 367 to 393.</p>
 
-<p>Each target window is paired with every parent window, giving the total search space for this experiment:</p><div><div>Possible Window Pairs = 408 × 961,063</div>
-<div>= 392,113,704 ≈ 3.92 × 10<sup>8</sup> possible pairs</div></div>
+```math
+\begin{aligned}\mathbf{Windows\ per\ record} &= \max(0,\ \text{record length}-8) \\[8pt] \mathbf{HEPACAM:}\quad 416-8 &= 408\ \text{windows}\end{aligned}
+```
+
+<p>An identical process is done across the entire mimicry parent library. Across the 120 included viral proteomes, there are 2,222 proteins and 961,063 possible mimicry windows.</p>
+
+<p>Each target window is paired with every parent window, giving the total search space for this experiment:</p>
+
+```math
+\begin{aligned}\mathbf{Possible\ Window\ Pairs} &= 408\times 961{,}063 \\[8pt] &= 392{,}113{,}704\approx 3.92\times 10^8\ \text{possible pairs}\end{aligned}
+```
+
+
 
 ### 3. Apply Core Threshold
 
@@ -122,10 +144,23 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 
 ![Inspect Results](docs/calculation/step-5.png)
 
-<p>The full data viewer ranks epitope-level molecular mimics by sortable properties. At a selected site, these are core identity (e.g., 8/9 outranking 5/9), context identity (e.g., 20/27 outranking 6/27), or highest BLOSUM62 score. Parent proteins are additionally given target and parent coverage percentages that allow for easy identification of matches spanning across wider regions. These are computed by the following:</p><div><div>Target Coverage = 100 × covered target residues / target length</div>
-<div>Parent Coverage = 100 × covered parent residues / parent length</div></div><p>For the case of HEPACAM and EBNA1, several additional matching sites at 5/9 identity increase the total target and parent coverage to 13.2% and 10.1%, respectively. All matching 9-mers and coverage scores are shown in the accompanying figure. Each is another qualifying molecular mimicry event, alongside XSPPRXPXX.</p>
+<p>The full data viewer ranks epitope-level molecular mimics by sortable properties. At a selected site, these are core identity (e.g., 8/9 outranking 5/9), context identity (e.g., 20/27 outranking 6/27), or highest BLOSUM62 score. Parent proteins are additionally given target and parent coverage percentages that allow for easy identification of matches spanning across wider regions. These are computed by the following:</p>
 
-<p>Across the rest of Epstein-Barr virus, there are numerous other matches to HEPACAM at 5/9 identity. Not only do many proteins mimic HEPACAM more often than EBNA1 at 5/9, at the specific HEPACAM 376–384 9-mer core alone there are 27 pairs of 5/9 identity between it and the EBV proteome. There are even more matches occurring across the full viral proteome search space, including two strong matches at 7/9 identity occurring in non-EBV proteins.</p><table><caption>Saved window pairs at HEPACAM 376–384</caption><thead><tr><th scope="col">Parent Scope</th><th scope="col">Min Identity</th><th scope="col">Pairs</th></tr></thead><tbody><tr><th scope="row">Curated EBV B95-8 proteome</th><td>5/9</td><td>27</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>5/9</td><td>293</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>7/9</td><td>2</td></tr></tbody></table><p>Potential molecular mimicry matches at the level of XSPPRXPXX are widespread. Experimental evidence drove discovery of this event. The goal of this site is to automate the discovery of more.</p>
+```math
+\begin{aligned}\mathbf{Target\ Coverage} &= 100\times\frac{\text{covered target residues}}{\text{target length}} \\[12pt] \mathbf{Parent\ Coverage} &= 100\times\frac{\text{covered parent residues}}{\text{parent length}}\end{aligned}
+```
+
+<p>For the case of HEPACAM and EBNA1, several additional matching sites at 5/9 identity increase the total target and parent coverage to 13.2% and 10.1%, respectively. All matching 9-mers and coverage scores are shown in the accompanying figure. Each is another qualifying molecular mimicry event, alongside XSPPRXPXX.</p>
+
+<p>Across the rest of Epstein-Barr virus, there are numerous other matches to HEPACAM at 5/9 identity. Not only do many proteins mimic HEPACAM more often than EBNA1 at 5/9, at the specific HEPACAM 376–384 9-mer core alone there are 27 pairs of 5/9 identity between it and the EBV proteome. There are even more matches occurring across the full viral proteome search space, including two strong matches at 7/9 identity occurring in non-EBV proteins.</p>
+
+<p><strong>Saved window pairs at HEPACAM 376–384</strong></p>
+
+<table width="100%">
+<thead><tr><th scope="col" width="320">Parent Scope</th><th scope="col" width="320">Min Identity</th><th scope="col" width="320">Pairs</th></tr></thead><tbody><tr><th scope="row">Curated EBV B95-8 proteome</th><td>5/9</td><td>27</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>5/9</td><td>293</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>7/9</td><td>2</td></tr></tbody>
+</table>
+
+<p>Potential molecular mimicry matches at the level of XSPPRXPXX are widespread. Experimental evidence drove discovery of this event. The goal of this site is to automate the discovery of more.</p>
 
 Sequence resemblance is a descriptive result. It does not by itself establish antibody binding, cross-reactivity or disease causation.
 
@@ -160,11 +195,18 @@ The library-wide summaries cover **HuProt 4.0 and Curated Viral Proteomes (120)*
 
 The **EBNA1 P03211** alignment shown below has a 5/9 core and context BLOSUM62 score of 12. It shares rank **15 of 27** window pairs at this HEPACAM site within the EBV B95-8 proteome. The table also places it in the broader 120-proteome comparison.
 
-| Candidate scope at ≥5/9 | Higher-scoring pairs | Tied rank / total pairs |
-| --- | --- | --- |
-| All HEPACAM positions · 120 viral proteomes | 9,061 | 9,062 / 41,011 |
-| HEPACAM 376–384 · 120 viral proteomes | 147 | 148 / 293 |
-| HEPACAM 376–384 · EBV B95-8 only | 14 | 15 / 27 |
+<table width="100%">
+<thead><tr>
+<th align="left" width="480">Candidate scope at ≥5/9</th>
+<th align="left" width="220">Higher-scoring pairs</th>
+<th align="left" width="260">Tied rank / total pairs</th>
+</tr></thead>
+<tbody>
+<tr><td>All HEPACAM positions · 120 viral proteomes</td><td>9,061</td><td>9,062 / 41,011</td></tr>
+<tr><td>HEPACAM 376–384 · 120 viral proteomes</td><td>147</td><td>148 / 293</td></tr>
+<tr><td>HEPACAM 376–384 · EBV B95-8 only</td><td>14</td><td>15 / 27</td></tr>
+</tbody>
+</table>
 
 - **Combine measurements** from the same sample or antibody. The figures show sequence matches before filtering by antibody hits.
 
@@ -190,11 +232,18 @@ Download human-to-virus results for all 20,431 human UniProtKB/Swiss-Prot record
 
 #### Find these results in the human-to-virus CSV: IL10 (P22301), ≥7/9
 
-| CSV column | IL10 value | Where to look |
-| --- | --- | --- |
-| Mimicry Parent at 7/9 | P03180 (BCRF1) | Viral IL10 homolog in the plot and parent table |
-| Antigen Target Coverage (%) at 7/9 | 79.8 | X-axis · Target % |
-| Mimicry Parent Coverage (%) at 7/9 | 83.5 | Y-axis · Parent % |
+<table width="100%">
+<thead><tr>
+<th align="left" width="480">CSV column</th>
+<th align="left" width="220">IL10 value</th>
+<th align="left" width="260">Where to look</th>
+</tr></thead>
+<tbody>
+<tr><td>Mimicry Parent at 7/9</td><td>P03180 (BCRF1)</td><td>Viral IL10 homolog in the plot and parent table</td></tr>
+<tr><td>Antigen Target Coverage (%) at 7/9</td><td>79.8</td><td>X-axis · Target %</td></tr>
+<tr><td>Mimicry Parent Coverage (%) at 7/9</td><td>83.5</td><td>Y-axis · Parent %</td></tr>
+</tbody>
+</table>
 
 - **Read both coverage values:** a point toward the upper right indicates similarity spanning much of both proteins. High target coverage with low parent coverage means the matches cover much of the target but only a small part of its partner.
 
@@ -224,10 +273,17 @@ Download the following CSV for all 20,431 human UniProtKB/Swiss-Prot records pre
 
 #### Find these results in the CSV: IGHG2 (P01859), ≥8/9
 
-| CSV column | IGHG2 value | Where to look |
-| --- | --- | --- |
-| Uncovered Residue Regions at 8/9 | `100..114` | Tan residues in the sequence map |
-| Shared Regions at 8/9 | `1..99; 115..395` | Red regions in the sequence map |
+<table width="100%">
+<thead><tr>
+<th align="left" width="480">CSV column</th>
+<th align="left" width="220">IGHG2 value</th>
+<th align="left" width="260">Where to look</th>
+</tr></thead>
+<tbody>
+<tr><td>Uncovered Residue Regions at 8/9</td><td><code>100..114</code></td><td>Tan residues in the sequence map</td></tr>
+<tr><td>Shared Regions at 8/9</td><td><code>1..99; 115..395</code></td><td>Red regions in the sequence map</td></tr>
+</tbody>
+</table>
 
 - **Why use Uncovered Residue Regions?** Target residues outside all qualifying 9-residue windows at the stated identity threshold and comparison scope. Qualifying windows include mismatch positions; uncovered residues may participate in lower-identity matches.
 
