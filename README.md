@@ -146,9 +146,9 @@ Here, we compare the HEPACAM sequence from a HuProt protein microarray experimen
 
 ![HEPACAM coverage plots, parent tables and EBNA1 site comparison](docs/walkthroughs/example-1-panel.png)
 
-**Scatter and parent tables:** Each point pairs 416-AA HuProt HEPACAM (JHU19101) with one whole viral protein. X and Y show covered residues as percentages of the target and parent lengths. Of 2,222 viral proteins across 120 proteomes, 2,090 match at ≥5/9 and 37 at ≥7/9; all matching proteins are plotted. The parent tables show the top three by target coverage.
-
-**Peptide table:** The EBV-only table holds the target core at HEPACAM 376–384 and shows the three highest-ranked distinct viral proteins by saved context BLOSUM62, followed by the published EBNA1 alignment. Target appears above parent; coordinates refer to the full records. Matches are green, differences red; underlines mark core (green) and flanks (blue). The site-ranking table counts window pairs, with equal BLOSUM62 scores sharing rank.
+> **Scatter and parent tables:** Each point pairs 416-AA HuProt HEPACAM (JHU19101) with one whole viral protein. X and Y show covered residues as percentages of the target and parent lengths. Of 2,222 viral proteins across 120 proteomes, 2,090 match at ≥5/9 and 37 at ≥7/9; all matching proteins are plotted. The parent tables show the top three by target coverage.
+>
+> **Peptide table:** The EBV-only table holds the target core at HEPACAM 376–384 and shows the three highest-ranked distinct viral proteins by saved context BLOSUM62, followed by the published EBNA1 alignment. Target appears above parent; coordinates refer to the full records. Matches are green, differences red; underlines mark core (green) and flanks (blue). The site-ranking table counts window pairs, with equal BLOSUM62 scores sharing rank.
 
 Download summaries comparing HuProt constructs with the 120 reference viral proteomes, in either direction.
 
@@ -180,9 +180,9 @@ Here, the target is human IL10, an immunoregulatory cytokine. Epstein-Barr virus
 
 ![IL10 coverage plots, parent tables and peptide comparisons](docs/walkthroughs/example-2-panel.png)
 
-**Scatter and outlier table:** The left panel shows IL10 at ≥5/9 core identity and the right at ≥7/9, using the same curated viral filter. Both comparisons evaluate 2,222 parent records. Each point pairs IL10 with one matching parent record. The axes show covered residues as a percentage of full sequence length: IL10 on the X-axis and its paired parent on the Y-axis. All matching entries are plotted; tables show the top three parent proteins sorted by IL10 coverage. BCRF1 (P03180) is the viral IL10 homolog discussed above.
-
-**Peptide table:** Top three parent proteins ranked by their highest context BLOSUM62 score for IL10 across 120 reference viral proteomes, with one window pair shown per parent. The target appears above the parent; matching residues are green and differences red. Green and blue underlines distinguish core and flanks.
+> **Scatter and outlier table:** The left panel shows IL10 at ≥5/9 core identity and the right at ≥7/9, using the same curated viral filter. Both comparisons evaluate 2,222 parent records. Each point pairs IL10 with one matching parent record. The axes show covered residues as a percentage of full sequence length: IL10 on the X-axis and its paired parent on the Y-axis. All matching entries are plotted; tables show the top three parent proteins sorted by IL10 coverage. BCRF1 (P03180) is the viral IL10 homolog discussed above.
+>
+> **Peptide table:** Top three parent proteins ranked by their highest context BLOSUM62 score for IL10 across 120 reference viral proteomes, with one window pair shown per parent. The target appears above the parent; matching residues are green and differences red. Green and blue underlines distinguish core and flanks.
 
 Download human-to-virus results for all 20,431 human UniProtKB/Swiss-Prot records, or use the reverse table to start from a viral protein.
 
@@ -214,9 +214,9 @@ In this example, IGHG2, the constant region of the IgG2 heavy chain, is compared
 
 ![IGHG2 sequence map, structure, coverage plot and parent table](docs/walkthroughs/example-3-panel.png)
 
-**Sequence map and structure:** IGHG2 is compared with Canonical Human at ≥8/9 core identity. Tan represents 'no match' at 8/9; the red shaded regions contain matches at ≥8/9 to other closely related human proteins.
-
-**Scatter and outlier table:** Each point pairs IGHG2 with one matching parent record in Canonical Human at ≥8/9 core identity; all 14 matching records are shown. The axes show covered residues as a percentage of full sequence length: IGHG2 on the X-axis and its paired parent on the Y-axis. The table shows the top three parent proteins sorted by IGHG2 coverage and each parent’s maximum context identity.
+> **Sequence map and structure:** IGHG2 is compared with Canonical Human at ≥8/9 core identity. Tan represents 'no match' at 8/9; the red shaded regions contain matches at ≥8/9 to other closely related human proteins.
+>
+> **Scatter and outlier table:** Each point pairs IGHG2 with one matching parent record in Canonical Human at ≥8/9 core identity; all 14 matching records are shown. The axes show covered residues as a percentage of full sequence length: IGHG2 on the X-axis and its paired parent on the Y-axis. The table shows the top three parent proteins sorted by IGHG2 coverage and each parent’s maximum context identity.
 
 Download the following CSV for all 20,431 human UniProtKB/Swiss-Prot records prepared this way.
 
