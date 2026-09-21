@@ -57,6 +57,10 @@ To use a download-table row here, save **Target FASTA** as `inputs/antigen-targe
 
 The packaged [Summary Download Guide](docs/SUMMARY-DOWNLOADS.md) explains the reference populations, CSV fields, parent-list floor, and conservative uncovered-residue regions. All summary CSVs use two decimal places for coverage percentages. App/local summaries include six additional annotation columns. FASTA inputs alone do not carry the site's mappings, grouping or residue annotations.
 
+## HuProt HEPACAM worked example
+
+[Download the HuProt HEPACAM figures and tables (21.5 MB)](https://github.com/seromics/mimicrymap/raw/refs/heads/main/examples/hepacam-huprot-viral-example.zip). This separate example compares HuProt HEPACAM (JHU19101; Q14CZ8) with 120 whole viral proteomes at 5/9 and 7/9, with an EBV-only 5/9 comparison at HEPACAM 376–384. It contains the saved results and figures; use the runnable package above for a new comparison.
+
 ## Sources and licenses
 
 Input records retain their original source attribution and licenses. See the originating data source for its terms of use.
