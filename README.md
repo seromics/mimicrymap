@@ -1,5 +1,9 @@
 # MimicryMap Pipeline
 
+**Map antigen-specific sequence resemblance within and across proteomes.**
+
+MimicryMap compares antigen target sequences with a chosen set of parent proteins to find matching amino-acid windows and map where they occur. It reports local sequence similarity and coverage across each protein, helping you explore candidate molecular mimics alongside experimental evidence. This package runs comparisons locally from FASTA files and includes illustrated walkthroughs with downloadable example results. Sequence resemblance alone does not establish antibody cross-reactivity.
+
 **Run the supplied FASTAs, or replace them to start a new comparison.** This is the same pipeline package for example inputs and a selected site comparison. Both use the site's comparison worker and CSV calculations.
 
 A download from the player already contains the selected target, complete parent population, and settings; [Current Comparison](docs/COMPARISON.md) describes that selection. The starter download contains an editable example instead; see [Example](docs/EXAMPLE.md).
