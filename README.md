@@ -6,7 +6,7 @@ MimicryMap compares antigen target sequences with a chosen set of parent protein
 
 **Run the supplied FASTAs, or replace them to start a new comparison.** This is the same pipeline package for example inputs and a selected site comparison. Both use the site's comparison worker and CSV calculations.
 
-A download from the player already contains the selected target, complete parent population, and settings; [Current Comparison](docs/COMPARISON.md) describes that selection. The starter download contains an editable example instead; see [Example](docs/EXAMPLE.md).
+The package includes an editable HEPACAM–EBNA1 example. Run it as supplied, or replace the FASTA files and settings with your own comparison; see [Example](docs/EXAMPLE.md).
 
 ## Run
 
