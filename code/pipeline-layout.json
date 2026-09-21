@@ -192,90 +192,20 @@
       "source": "/reproduce/docs/calculation/step-5.png",
       "description": "Illustration for step 5 of the calculation walkthrough."
     },
-    "docs/walkthroughs/example-1-09.png": {
-      "path": "docs/walkthroughs/example-1-09.png",
-      "source": "/reproduce/docs/walkthroughs/example-1-09.png",
-      "description": "Worked-example figure or table."
+    "docs/walkthroughs/example-1-panel.png": {
+      "path": "docs/walkthroughs/example-1-panel.png",
+      "source": "/reproduce/docs/walkthroughs/example-1-panel.png",
+      "description": "Complete worked-example figure panel."
     },
-    "docs/walkthroughs/example-1-13.png": {
-      "path": "docs/walkthroughs/example-1-13.png",
-      "source": "/reproduce/docs/walkthroughs/example-1-13.png",
-      "description": "Worked-example figure or table."
+    "docs/walkthroughs/example-2-panel.png": {
+      "path": "docs/walkthroughs/example-2-panel.png",
+      "source": "/reproduce/docs/walkthroughs/example-2-panel.png",
+      "description": "Complete worked-example figure panel."
     },
-    "docs/walkthroughs/example-1-16.png": {
-      "path": "docs/walkthroughs/example-1-16.png",
-      "source": "/reproduce/docs/walkthroughs/example-1-16.png",
-      "description": "Worked-example figure or table."
-    },
-    "docs/walkthroughs/example-1-18.png": {
-      "path": "docs/walkthroughs/example-1-18.png",
-      "source": "/reproduce/docs/walkthroughs/example-1-18.png",
-      "description": "Worked-example figure or table."
-    },
-    "docs/walkthroughs/example-1-21.png": {
-      "path": "docs/walkthroughs/example-1-21.png",
-      "source": "/reproduce/docs/walkthroughs/example-1-21.png",
-      "description": "Worked-example figure or table."
-    },
-    "docs/walkthroughs/example-1-24.png": {
-      "path": "docs/walkthroughs/example-1-24.png",
-      "source": "/reproduce/docs/walkthroughs/example-1-24.png",
-      "description": "Worked-example figure or table."
-    },
-    "docs/walkthroughs/example-2-07.png": {
-      "path": "docs/walkthroughs/example-2-07.png",
-      "source": "/reproduce/docs/walkthroughs/example-2-07.png",
-      "description": "Worked-example figure or table."
-    },
-    "docs/walkthroughs/example-2-13.png": {
-      "path": "docs/walkthroughs/example-2-13.png",
-      "source": "/reproduce/docs/walkthroughs/example-2-13.png",
-      "description": "Worked-example figure or table."
-    },
-    "docs/walkthroughs/example-2-16.png": {
-      "path": "docs/walkthroughs/example-2-16.png",
-      "source": "/reproduce/docs/walkthroughs/example-2-16.png",
-      "description": "Worked-example figure or table."
-    },
-    "docs/walkthroughs/example-2-18.png": {
-      "path": "docs/walkthroughs/example-2-18.png",
-      "source": "/reproduce/docs/walkthroughs/example-2-18.png",
-      "description": "Worked-example figure or table."
-    },
-    "docs/walkthroughs/example-2-21.png": {
-      "path": "docs/walkthroughs/example-2-21.png",
-      "source": "/reproduce/docs/walkthroughs/example-2-21.png",
-      "description": "Worked-example figure or table."
-    },
-    "docs/walkthroughs/example-2-24.png": {
-      "path": "docs/walkthroughs/example-2-24.png",
-      "source": "/reproduce/docs/walkthroughs/example-2-24.png",
-      "description": "Worked-example figure or table."
-    },
-    "docs/walkthroughs/example-3-02.png": {
-      "path": "docs/walkthroughs/example-3-02.png",
-      "source": "/reproduce/docs/walkthroughs/example-3-02.png",
-      "description": "Worked-example figure or table."
-    },
-    "docs/walkthroughs/example-3-08.png": {
-      "path": "docs/walkthroughs/example-3-08.png",
-      "source": "/reproduce/docs/walkthroughs/example-3-08.png",
-      "description": "Worked-example figure or table."
-    },
-    "docs/walkthroughs/example-3-11.png": {
-      "path": "docs/walkthroughs/example-3-11.png",
-      "source": "/reproduce/docs/walkthroughs/example-3-11.png",
-      "description": "Worked-example figure or table."
-    },
-    "docs/walkthroughs/example-3-13.png": {
-      "path": "docs/walkthroughs/example-3-13.png",
-      "source": "/reproduce/docs/walkthroughs/example-3-13.png",
-      "description": "Worked-example figure or table."
-    },
-    "docs/walkthroughs/example-3-16.png": {
-      "path": "docs/walkthroughs/example-3-16.png",
-      "source": "/reproduce/docs/walkthroughs/example-3-16.png",
-      "description": "Worked-example figure or table."
+    "docs/walkthroughs/example-3-panel.png": {
+      "path": "docs/walkthroughs/example-3-panel.png",
+      "source": "/reproduce/docs/walkthroughs/example-3-panel.png",
+      "description": "Complete worked-example figure panel."
     }
   }
 }
