@@ -1,0 +1,8 @@
+{
+  "schema": "mimicryone/pipeline-settings/1",
+  "antigen_target_fasta": "inputs/antigen-target.fasta",
+  "mimicry_parents_fasta": "inputs/mimicry-parents.fasta",
+  "min_identity": 5,
+  "selected_target_start": null,
+  "output_directory": "outputs"
+}

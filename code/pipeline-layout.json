@@ -1,0 +1,196 @@
+{
+  "schema": "mimicryone/pipeline-package/1",
+  "files": {
+    "export-core.js": {
+      "path": "code/export-core.js",
+      "description": "The same CSV and table implementation used by the site.",
+      "source": "/reproduce/export-core.js"
+    },
+    "context-score.js": {
+      "path": "code/context-score.js",
+      "description": "The shared Context BLOSUM62 implementation.",
+      "source": "/reproduce/context-score.js"
+    },
+    "ranking.js": {
+      "path": "code/ranking.js",
+      "description": "The captured ordering rules for window pairs and parents.",
+      "source": "/reproduce/ranking.js"
+    },
+    "residue-coverage.js": {
+      "path": "code/residue-coverage.js",
+      "description": "The shared union-of-core-residues coverage implementation.",
+      "source": "/reproduce/residue-coverage.js"
+    },
+    "projected-events.js": {
+      "path": "code/projected-events.js",
+      "description": "Shared calculation and coordinate handling used by the site.",
+      "source": "/reproduce/projected-events.js"
+    },
+    "custom-worker.js": {
+      "path": "code/custom-worker.js",
+      "description": "Shared calculation and coordinate handling used by the site.",
+      "source": "/custom-worker.js"
+    },
+    "fasta-input.js": {
+      "path": "code/fasta-input.js",
+      "source": "/reproduce/fasta-input.js",
+      "description": "The browser Custom FASTA parser and normalization, shared with the offline pipeline."
+    },
+    "mimicryone-identity.js": {
+      "path": "code/mimicryone-identity.js",
+      "source": "/mimicryone-identity.js",
+      "description": "The same header and public protein-label resolver used by the browser."
+    },
+    "ensure-node.py": {
+      "path": "run/ensure-node.py",
+      "source": "/reproduce/ensure-node.py",
+      "description": "Local Node.js runtime setup for Python/R launchers; reuses a compatible installation or downloads a checksum-verified private copy."
+    },
+    "ensure-node.R": {
+      "path": "run/ensure-node.R",
+      "source": "/reproduce/ensure-node.R",
+      "description": "Local Node.js runtime setup for Python/R launchers; reuses a compatible installation or downloads a checksum-verified private copy."
+    },
+    "node-runtime.tsv": {
+      "path": "run/node-runtime.tsv",
+      "source": "/reproduce/node-runtime.tsv",
+      "description": "Local Node.js runtime setup for Python/R launchers; reuses a compatible installation or downloads a checksum-verified private copy."
+    },
+    "parallel-scan.cjs": {
+      "path": "code/parallel-scan.cjs",
+      "source": "/reproduce/parallel-scan.cjs",
+      "description": "CPU scheduling for local scans; automatically selects concurrency with an optional worker-count override."
+    },
+    "TABLES.md": {
+      "path": "docs/TABLES.md",
+      "description": "CSV field meanings, counting units, coverage, ordering, and empty-table interpretation.",
+      "source": "/reproduce/docs/TABLES.md"
+    },
+    "GLOSSARY.md": {
+      "path": "docs/GLOSSARY.md",
+      "description": "Definitions generated from the site's single terminology authority.",
+      "source": "/reproduce/docs/GLOSSARY.md"
+    },
+    "readme": {
+      "path": "README.md",
+      "source": "/reproduce/README.md",
+      "description": "Run the prepared inputs or replace them for a new comparison."
+    },
+    "settings": {
+      "path": "settings.json",
+      "editable": true,
+      "description": "Input paths, identity threshold, selected start, and output folder."
+    },
+    "target": {
+      "path": "inputs/antigen-target.fasta",
+      "editable": true,
+      "description": "The target input records with readable FASTA headers."
+    },
+    "parents": {
+      "path": "inputs/mimicry-parents.fasta",
+      "editable": true,
+      "description": "The complete selected parent population, including records without matches."
+    },
+    "selection": {
+      "path": "inputs/selection.json",
+      "optional": true,
+      "description": "Optional compact record overrides, grouping, and coordinate references; sequences remain in FASTA."
+    },
+    "comparison": {
+      "path": "docs/COMPARISON.md",
+      "optional": true,
+      "description": "The selected records, scope, and settings in a preloaded comparison package.",
+      "source": "/reproduce/template/docs/COMPARISON.md"
+    },
+    "pipeline": {
+      "path": "code/pipeline.cjs",
+      "source": "/reproduce/pipeline.cjs",
+      "description": "Shared FASTA pipeline and output-folder management."
+    },
+    "runner": {
+      "path": "code/pipeline-runner.cjs",
+      "source": "/reproduce/pipeline-runner.cjs",
+      "description": "The shared entry point used by all launchers."
+    },
+    "selectionCode": {
+      "path": "code/pipeline-selection.js",
+      "source": "/reproduce/pipeline-selection.js",
+      "description": "Readable record labels and automatic selection metadata."
+    },
+    "layout": {
+      "path": "code/pipeline-layout.json",
+      "source": "/reproduce/pipeline-layout.json",
+      "description": "Shared package file paths."
+    },
+    "fileGuide": {
+      "path": "docs/FILE-GUIDE.md",
+      "source": "/reproduce/docs/FILE-GUIDE.md",
+      "description": "Package folders and output tables."
+    },
+    "run.cjs": {
+      "path": "run.cjs",
+      "source": "/reproduce/template/run.cjs",
+      "description": "Node.js launcher."
+    },
+    "run.py": {
+      "path": "run.py",
+      "source": "/reproduce/template/run.py",
+      "description": "Python launcher."
+    },
+    "run.R": {
+      "path": "run.R",
+      "source": "/reproduce/template/run.R",
+      "description": "R launcher."
+    },
+    "inputs/README.md": {
+      "path": "inputs/README.md",
+      "source": "/reproduce/template/inputs/README.md",
+      "description": "Input editing and normalization."
+    },
+    "docs/EXAMPLE.md": {
+      "path": "docs/EXAMPLE.md",
+      "source": "/reproduce/template/docs/EXAMPLE.md",
+      "description": "The editable example shipped with the starter package."
+    },
+    "mappedRecords": {
+      "path": "inputs/mapped-records.fasta",
+      "optional": true,
+      "description": "Additional full records needed for mapped coordinates, only when their sequences are absent from the two input FASTAs."
+    },
+    "summaryDownloadGuide": {
+      "path": "docs/SUMMARY-DOWNLOADS.md",
+      "source": "/reproduce/docs/SUMMARY-DOWNLOADS.md",
+      "description": "Reference populations, site summary CSVs, paired FASTA inputs, parent lists, and region definitions."
+    },
+    "residueAnnotations": {
+      "path": "inputs/residue-annotations.json",
+      "optional": true,
+      "description": "Captured target residue annotations, surface context and provenance; reused only with matching selection metadata and target sequence."
+    },
+    "calculation-step-1": {
+      "path": "docs/calculation/step-1.png",
+      "source": "/reproduce/docs/calculation/step-1.png",
+      "description": "Illustration for step 1 of the calculation walkthrough."
+    },
+    "calculation-step-2": {
+      "path": "docs/calculation/step-2.png",
+      "source": "/reproduce/docs/calculation/step-2.png",
+      "description": "Illustration for step 2 of the calculation walkthrough."
+    },
+    "calculation-step-3": {
+      "path": "docs/calculation/step-3.png",
+      "source": "/reproduce/docs/calculation/step-3.png",
+      "description": "Illustration for step 3 of the calculation walkthrough."
+    },
+    "calculation-step-4": {
+      "path": "docs/calculation/step-4.png",
+      "source": "/reproduce/docs/calculation/step-4.png",
+      "description": "Illustration for step 4 of the calculation walkthrough."
+    },
+    "calculation-step-5": {
+      "path": "docs/calculation/step-5.png",
+      "source": "/reproduce/docs/calculation/step-5.png",
+      "description": "Illustration for step 5 of the calculation walkthrough."
+    }
+  }
+}
