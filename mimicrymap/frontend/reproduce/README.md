@@ -16,7 +16,7 @@ Extract the whole ZIP. In the extracted folder:
 - **R or RStudio:** set the working directory to the package, then run `source("run.R")`.
 - **Terminal:** run `Rscript run.R` or `node run.cjs`.
 
-The Python and R launchers set up Node.js locally if needed. Initial setup requires internet access; subsequent calculations run locally. Input sequences are not uploaded. Windows R requires version 4.2 or later.
+The Python and R launchers set up Node.js locally if needed. Initial setup requires internet access; subsequent calculations run locally. Windows R requires version 4.2 or later.
 
 ## Change the comparison
 

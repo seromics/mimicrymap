@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.source-snapshot/1",
   "repository": "https://github.com/seromics/seromap_electron",
-  "commit": "41bb3edcd64d9ef6001a83e7aebde3276cf4bbb8",
+  "commit": "b2a169c6777c22be2e271202a9cbe1ce6448edb0",
   "files": [
     {
       "path": "mimicrymap/SOURCE-NOTICE.md",
@@ -654,8 +654,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/README.md",
       "source": "mimicrymap/frontend/reproduce/README.md",
-      "bytes": 25067,
-      "sha256": "19cd174d521c87a8f7ef0738b0bf5e15fd6e49436a60f81d702a22e3f90a062b"
+      "bytes": 25032,
+      "sha256": "2d8391c5bad5ffccf12f2723947567a476561b2a96761a74046b103afbe07a15"
     },
     {
       "path": "mimicrymap/frontend/reproduce/SOURCE-README.md",
