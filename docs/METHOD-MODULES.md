@@ -21,23 +21,27 @@ that set. Sets may overlap. Statistical families, eligibility, paired observatio
 rules and missingness must accompany the exported measurements. A rounded
 coverage-summary parent list alone is insufficient to reproduce these results.
 
-## Proposed reusable toolkit boundary
+## Standalone toolkit draft
 
-A separate `seromics-tools` repository could contain `mimicry-candidates/`,
-`repertoire/`, `admixture/` and shared scientific/export utilities. Organize one
-module per method, each supporting its related figure types. Each should have:
+The private [seromics-tools](https://github.com/seromics/seromics-tools) repository
+now provides a headless runner and modules for Mimicry candidates, repertoire
+and admixture, alongside the existing study-analysis methods. Its four cohort
+routes accept raw or supplied measurements and manifests, write current `.sero`
+files, and support matrix export/re-import. Individual HuProt GPR processing
+remains a separate route. No Electron interface or application server is needed.
 
-- A versioned input table/metadata contract, including missingness and design.
-- One calculation implementation consumed by both the runner and SeroMap.
-- Existing figure layouts, colors and technical legends.
-- A small worked example, runnable figure export and citation information.
+Complete candidate-index products from this CPU/GPU builder feed the toolkit's
+Mimicry candidate calculation through the same membership/alias/coverage reader
+used by Workspace. The toolkit's synthetic example demonstrates FASTA → complete
+comparison → measured reactivity → fresh statistics → the existing capstone SVG.
+See its [reference-input guide](https://github.com/seromics/seromics-tools/blob/main/docs/REFERENCES.md).
 
-This is an extraction boundary, not an implemented standalone toolkit. The
-current candidates component depends on React/application state, SQLite study
-readers, reference resolution and observation controls. Its Code export can
-replay a captured result; that is distinct from recomputing its statistics from
-new measurements. No independent toolkit repository or new scientific API is
-created by this MimicryMap staging commit.
+Fresh figure adapters and captured Code-bundle replay are documented separately.
+Not every application view has a standalone rendering adapter. Scientific source
+is currently an exact snapshot of SeroMap; the application has not yet switched
+to importing the toolkit as a dependency. That subsequent ownership change can
+happen module by module without duplicating numerical implementations. License
+and citation decisions remain pending for both private drafts.
 
 MimicryMap remains responsible for sequence comparisons and atlas products.
 SeroMap remains the integrated study/import/analysis host. Independent scientific
