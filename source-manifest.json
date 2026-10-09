@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.source-snapshot/1",
   "repository": "https://github.com/seromics/seromap_electron",
-  "commit": "b2a169c6777c22be2e271202a9cbe1ce6448edb0",
+  "commit": "4903124dfdd3f6dedf3e517a9852364fb7a79563",
   "files": [
     {
       "path": "mimicrymap/SOURCE-NOTICE.md",
@@ -18,8 +18,8 @@
     {
       "path": "mimicrymap/docs/public/INTERFACE_TEXT.md",
       "source": "mimicrymap/docs/public/INTERFACE_TEXT.md",
-      "bytes": 162885,
-      "sha256": "64fdaaf9fbc49e14cd4712bd131cdd99292011cb9364685567efdb215a42d407"
+      "bytes": 162905,
+      "sha256": "90bf8ef3a406aea3f3bb497317e87b71b567165012461b9bcc15544eb5a4ae2e"
     },
     {
       "path": "mimicrymap/docs/public/README.md",
@@ -30,8 +30,8 @@
     {
       "path": "mimicrymap/docs/public/downloads.html",
       "source": "mimicrymap/docs/public/downloads.html",
-      "bytes": 22877,
-      "sha256": "1cdccf403fc843a6ddc0cc5394bd20f7f8518893f61c5a7656fab3e4eb4fe0bb"
+      "bytes": 22911,
+      "sha256": "baa83a32fcad04c6161d783c09862c57648fa464401316275759e82556b5e601"
     },
     {
       "path": "mimicrymap/docs/public/figure-legends.json",
@@ -42,8 +42,8 @@
     {
       "path": "mimicrymap/docs/public/hepacam-assay-example-guide.md",
       "source": "mimicrymap/docs/public/hepacam-assay-example-guide.md",
-      "bytes": 2571,
-      "sha256": "b2cb68573dd610f910ebb61ae38fb95ad373d890882429aa02a8149c87a40d79"
+      "bytes": 2564,
+      "sha256": "098a75dfc27df1e5a2fbe13c963b0ad5faeb6d702be2052d5e4c2873c5856c78"
     },
     {
       "path": "mimicrymap/docs/public/hepacam.html",
@@ -66,8 +66,8 @@
     {
       "path": "mimicrymap/docs/public/method-copy.json",
       "source": "mimicrymap/docs/public/method-copy.json",
-      "bytes": 9871,
-      "sha256": "baa3b0b3132287e03e4f034537345bc76a7954c93b64abc95a35351c37158ab0"
+      "bytes": 9891,
+      "sha256": "6679823dbe831a1dd27cb405d17ea3a51aa93370d7c4947735dcf8ae3f22afa6"
     },
     {
       "path": "mimicrymap/docs/public/methods.html",
@@ -102,8 +102,8 @@
     {
       "path": "mimicrymap/docs/public/summary-download-guide.md",
       "source": "mimicrymap/docs/public/summary-download-guide.md",
-      "bytes": 17368,
-      "sha256": "96e4beb34b522d52c5566fc26a6340ac003feb3a05ab8276b4a24b33e636007f"
+      "bytes": 17397,
+      "sha256": "830981edee7d7266da92564e41a5a0a0b10ef833face3810f062ce0de6b05acf"
     },
     {
       "path": "mimicrymap/docs/public/target-summary.html",
@@ -120,8 +120,8 @@
     {
       "path": "mimicrymap/docs/public/use-results.html",
       "source": "mimicrymap/docs/public/use-results.html",
-      "bytes": 24134,
-      "sha256": "a23ebbf613e63c10e22502bcb31cc9ebbe5d43a8c112e468765182debee279f5"
+      "bytes": 24170,
+      "sha256": "ff3bd1dccc488cd308a2546dec90e552b001ab5bdf71786ebef7e535788a1c02"
     },
     {
       "path": "mimicrymap/export-assets-origin.json",
@@ -240,8 +240,8 @@
     {
       "path": "mimicrymap/frontend/calculations.html",
       "source": "mimicrymap/frontend/calculations.html",
-      "bytes": 35281,
-      "sha256": "cc87d62f042c7503afc7f997622423d484eb2d0ff66046a58f42620b7c699df1"
+      "bytes": 35301,
+      "sha256": "bfb5c6a7f8eab709722a0e7f8c6c64d4c3caa6ae8275bd2c52f9c080a27c7fd9"
     },
     {
       "path": "mimicrymap/frontend/canonical_aliases.py",
@@ -654,8 +654,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/README.md",
       "source": "mimicrymap/frontend/reproduce/README.md",
-      "bytes": 25032,
-      "sha256": "2d8391c5bad5ffccf12f2723947567a476561b2a96761a74046b103afbe07a15"
+      "bytes": 25079,
+      "sha256": "fd1e11e35bc47379c58091caf2cd9a85abd821284f8cf4d82d89e8dc4a374c52"
     },
     {
       "path": "mimicrymap/frontend/reproduce/SOURCE-README.md",
@@ -702,8 +702,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 17368,
-      "sha256": "96e4beb34b522d52c5566fc26a6340ac003feb3a05ab8276b4a24b33e636007f"
+      "bytes": 17397,
+      "sha256": "830981edee7d7266da92564e41a5a0a0b10ef833face3810f062ce0de6b05acf"
     },
     {
       "path": "mimicrymap/frontend/reproduce/docs/TABLES.md",
@@ -1002,8 +1002,8 @@
     {
       "path": "mimicrymap/frontend/sources.html",
       "source": "mimicrymap/frontend/sources.html",
-      "bytes": 37702,
-      "sha256": "05321b03d4bd7c07234abc08c17a549cc7aaaaf1307df688b6efca811cf11c35"
+      "bytes": 37736,
+      "sha256": "53f8235459ff4adcd588025ab4c56212d22fa1cfdc58fcb04f63d9979c8c067a"
     },
     {
       "path": "mimicrymap/frontend/startup-shell.css",
@@ -1038,8 +1038,8 @@
     {
       "path": "mimicrymap/frontend/use-results.html",
       "source": "mimicrymap/frontend/use-results.html",
-      "bytes": 1432972,
-      "sha256": "dc45486cdbaaffd654f86607755e19b1ce90b9a1123a59604c60000de26c3aa1"
+      "bytes": 1433008,
+      "sha256": "2559a70c54ea7f4711ae9300768a8cb6a97a2742319e9c48c9e2f8f85c28412f"
     },
     {
       "path": "mimicrymap/frontend/viewer-api.js",
@@ -1254,8 +1254,8 @@
     {
       "path": "docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 17368,
-      "sha256": "96e4beb34b522d52c5566fc26a6340ac003feb3a05ab8276b4a24b33e636007f"
+      "bytes": 17397,
+      "sha256": "830981edee7d7266da92564e41a5a0a0b10ef833face3810f062ce0de6b05acf"
     }
   ]
 }

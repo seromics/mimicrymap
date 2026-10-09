@@ -22,4 +22,4 @@ For the top three peptide rows, order the 5/9 matches by descending Context BLOS
 
 For the published-site row, select target core start 376 and CDI ID CDIV20413116, with parent core start 40. Parent coordinates in this file are tile-local; the referenced EBNA1 full-protein site is 392–400. The six corresponding tiles are CDIV20413116, CDIV20413241, CDIV20424730, CDIV20428202, CDIV20436295 and CDIV20442001; their target and parent context sequences match the representative row.
 
-The site's saved Context BLOSUM62 is 12. Count scores strictly greater than 12, then add one for its tied rank. Use all 204,544 rows; target core start 376 only (1,454 rows); or that same start with Mimicry Parent Organism containing `Epstein-Barr virus` (136 rows). The ranks are 53,085, 708 and 74, respectively.
+The saved Context BLOSUM62 is 12. Count scores strictly greater than 12, then add one for its tied rank. Use all 204,544 rows; target core start 376 only (1,454 rows); or that same start with Mimicry Parent Organism containing `Epstein-Barr virus` (136 rows). The ranks are 53,085, 708 and 74, respectively.

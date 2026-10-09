@@ -34,7 +34,7 @@ and atlas browsing need the separately installed reference assets and host servi
 The current web staging and desktop remain their running hosts. See
 [Source alignment](docs/DEVELOPMENT.md) and [Scientific method modules](docs/METHOD-MODULES.md).
 
-**Run the supplied FASTAs, or replace them to start a new comparison.** This is the same pipeline package for example inputs and a selected site comparison. Both use the site's comparison worker and CSV calculations.
+**Run the supplied FASTAs, or replace them to start a new comparison.** This is the same pipeline package for example inputs and a selected site comparison. Both use MimicryMap's comparison worker and CSV calculations.
 
 The package includes an editable HEPACAM–EBNA1 example. Run it as supplied, or replace the FASTA files and settings with your own comparison; see [Example](docs/EXAMPLE.md).
 
@@ -146,7 +146,7 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 \begin{aligned}\mathbf{Windows\ per\ record} &= \max(0,\ \text{record length}-8) \\[8pt] \mathbf{HEPACAM:}\quad 416-8 &= 408\ \text{windows}\end{aligned}
 ```
 
-<p>An identical process is done across the entire mimicry parent library. Across the 120 included viral proteomes, there are 2,222 proteins and 961,063 possible mimicry windows.</p>
+<p>An identical process is done across the entire mimicry parent library. Across the 120 included viral proteomes, there are 2,222 proteins and polyproteins, with 961,063 possible mimicry windows.</p>
 
 <p>Each target window is paired with every parent window, giving the total search space for this experiment:</p>
 
@@ -194,7 +194,7 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 <thead><tr><th scope="col" width="320">Parent Scope</th><th scope="col" width="320">Min Identity</th><th scope="col" width="320">Pairs</th></tr></thead><tbody><tr><th scope="row">Curated EBV B95-8 proteome</th><td>5/9</td><td>27</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>5/9</td><td>293</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>7/9</td><td>2</td></tr></tbody>
 </table>
 
-<p>Potential molecular mimicry matches at the level of XSPPRXPXX are widespread. Experimental evidence drove discovery of this event. The goal of this site is to automate the discovery of more.</p>
+<p>Potential molecular mimicry matches at the level of XSPPRXPXX are widespread. Experimental evidence drove discovery of this event. The goal of MimicryMap is to automate the discovery of more.</p>
 
 Sequence resemblance is a descriptive result. It does not by itself establish antibody binding, cross-reactivity or disease causation.
 
@@ -215,7 +215,7 @@ Here, we compare the HEPACAM sequence from a HuProt protein microarray experimen
 
 ![HEPACAM coverage plots, parent tables and EBNA1 site comparison](docs/walkthroughs/example-1-panel.png)
 
-> **Scatter and parent tables:** Each point pairs 416-AA HuProt HEPACAM (JHU19101) with one whole viral protein. X and Y show covered residues as percentages of the target and parent lengths. Of 2,222 viral proteins across 120 proteomes, 2,090 match at ≥5/9 and 37 at ≥7/9; all matching proteins are plotted. The parent tables show the top three by target coverage.
+> **Scatter and parent tables:** Each point pairs 416-AA HuProt HEPACAM (JHU19101) with one viral protein or polyprotein. X and Y show covered residues as percentages of the target and parent lengths. Of 2,222 viral proteins and polyproteins across 120 proteomes, 2,090 match at ≥5/9 and 37 at ≥7/9; all matching records are plotted. The parent tables show the top three by target coverage.
 >
 > **Peptide table:** The EBV-only table holds the target core at HEPACAM 376–384 and shows the three highest-ranked distinct viral proteins by saved context BLOSUM62, followed by the published EBNA1 alignment. Target appears above parent; coordinates refer to the full records. Matches are green, differences red; underlines mark core (green) and flanks (blue). The site-ranking table counts window pairs, with equal BLOSUM62 scores sharing rank.
 
