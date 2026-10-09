@@ -2,6 +2,7 @@
 (function(root){
  'use strict';
  const version='mimicryone/export/21';
+ const plotRegistry=root.SeroMapPlotPalette||(typeof require==='function'?(()=>{try{return require('./plot-palette.cjs');}catch(error){if(error.code!=='MODULE_NOT_FOUND')throw error;return require('../../../atlas/viewer/shared/plotPalette.cjs');}})():null);
  const ranking=typeof module==='object'&&module.exports?require('./ranking.js'):root.MimicryRanking;
  const contextScore=typeof module==='object'&&module.exports?require('./context-score.js'):root.MimicryContextScore;
  const lexical=(a,b)=>String(a)<String(b)?-1:String(a)>String(b)?1:0;
@@ -346,18 +347,21 @@
    return label;
   };
   const s=snapshot.figure, p=snapshot.result.protein, width=s.width||1000, left=24, span=width-48;
+  const colors=s.plotPalette?.colors||plotRegistry.colors({export:true});
+  const paletteColor=key=>esc(colors[key]);
+  const palette=s.palette||{background:colors.surface,body:colors.body,ink:colors.ink,border:colors.line};
   if(s.panel==='combined'&&s.layout==='full'){
    const render=(panel,w,header)=>figure({...snapshot,figure:{...s,panel,width:w,header,footer:false}},data);
    const target=render('target',2020,true),windowPanel=render('window',1000,false),parents=render('parents',1000,false);
    const height=svg=>Number(svg.match(/height="([\d.]+)"/)[1]);
    const top=height(target)+12,total=top+Math.max(height(windowPanel),height(parents));
    const place=(svg,x,y)=>svg.replace('<svg ',`<svg x="${x}" y="${y}" `);
-   return `<svg xmlns="http://www.w3.org/2000/svg" width="2020" height="${total}" viewBox="0 0 2020 ${total}"><title>${esc(p.identity?.primaryLine||p.gene||p.protein_id)} \u2014 Full overview</title><rect width="2020" height="${total}" fill="${esc(s.palette?.background||'#f7f4f0')}"/>${place(target,0,0)}${place(windowPanel,0,top)}${place(parents,1020,top)}</svg>`;
+   return `<svg xmlns="http://www.w3.org/2000/svg" width="2020" height="${total}" viewBox="0 0 2020 ${total}"><title>${esc(p.identity?.primaryLine||p.gene||p.protein_id)} \u2014 Full overview</title><rect width="2020" height="${total}" fill="${esc(s.palette?.background||esc(palette.background))}"/>${place(target,0,0)}${place(windowPanel,0,top)}${place(parents,1020,top)}</svg>`;
   }
   let y=28, parts=[];
-  const text=(x,y,t,size=12,fill='#44403c',extra='')=>parts.push(`<text x="${x}" y="${y}" font-size="${size}" fill="${fill}" ${extra}>${esc(t)}</text>`);
-  const centered=(x,y,t,size=11)=>text(x,y,t,size,'#44403c','text-anchor="middle"');
-  const line=(y)=>parts.push(`<path d="M24 ${y}H${width-24}" stroke="#b8ad9e"/>`);
+  const text=(x,y,t,size=12,fill=esc(palette.body),extra='')=>parts.push(`<text x="${x}" y="${y}" font-size="${size}" fill="${fill}" ${extra}>${esc(t)}</text>`);
+  const centered=(x,y,t,size=11)=>text(x,y,t,size,esc(palette.body),'text-anchor="middle"');
+  const line=(y)=>parts.push(`<path d="M24 ${y}H${width-24}" stroke="${esc(palette.border)}"/>`);
   function wrapped(t,size=12){
    const max=Math.floor(span/(size*.57)); let row='';
    for(const word of String(t).split(/\s+/)){if((row+' '+word).length>max&&row){text(left,y,row,size);y+=size+6;row=word;}else row+=(row?' ':'')+word;}
@@ -393,17 +397,17 @@
    const tracks=snapshot.tracks||[],mimicry=tracks.find(t=>t.key==='mimicry');
    const contrast=color=>{
     const hex=String(color||'').match(/^#([a-f0-9]{6})$/i),rgb=hex?[0,2,4].map(i=>parseInt(hex[1].slice(i,i+2),16)):String(color||'').match(/[\d.]+/g)?.slice(0,3).map(Number);
-    return rgb&&(.2126*rgb[0]+.7152*rgb[1]+.0722*rgb[2])>145?'#161616':'#ffffff';
+    return rgb&&(.2126*rgb[0]+.7152*rgb[1]+.0722*rgb[2])>145?paletteColor('contrastInk'):paletteColor('white');
    };
    for(let begin=from;begin<to;begin+=60){
     const end=Math.min(to,begin+60);
     text(24,y+13,(/*@copy export-core.text.edf9784*/`${begin+1}–${end}`/*@endcopy*/),11);
     for(let i=begin;i<end;i++){
-     const x=origin+(i-begin)*cell,color=mimicry?.colors[i]||'#334155';
+     const x=origin+(i-begin)*cell,color=mimicry?.colors[i]||esc(palette.border);
      parts.push(`<rect x="${x}" y="${y}" width="${cell}" height="20" fill="${esc(color)}"/>`);
      text(x+cell/2,y+14,p.sequence[i],11,contrast(color),'text-anchor="middle" font-family="JetBrains Mono,monospace"');
      const offset=i-(snapshot.viewState.selected_start-1);
-     if(s.highlight&&offset>=-9&&offset<=17)parts.push(`<rect x="${x}" y="${y}" width="${cell}" height="20" fill="none" stroke="${offset>=0&&offset<=8?'#059669':'#2563eb'}" stroke-width="1.5"/>`);
+     if(s.highlight&&offset>=-9&&offset<=17)parts.push(`<rect x="${x}" y="${y}" width="${cell}" height="20" fill="none" stroke="${offset>=0&&offset<=8?paletteColor('mimicryCore'):paletteColor('mimicryContext')}" stroke-width="1.5"/>`);
     }
     y+=24;
     for(const track of tracks.filter(t=>t.key!=='mimicry')){
@@ -416,7 +420,7 @@
     }
     y+=16;
    }
-   wrapped((/*@copy export-core.residue-colors-and-active-annotation.46f4721*/`Residue colors and active annotation tracks match the captured player. ${s.highlight?'Green: selected 9-mer core; blue: flanking context.':''}`/*@endcopy*/),11);
+   wrapped((/*@copy export-core.residue-colors-and-active-annotation.46f4721*/`Residue colors and active annotation tracks match the captured player. ${s.highlight?'Outlines mark the selected 9-mer core and flanking context.':''}`/*@endcopy*/),11);
    for(const [index,legend] of (snapshot.legends||[]).entries()){
     if(legend.gradient?.length){
      parts.push(`<defs><linearGradient id="residueLegend${index}">${legend.gradient.map((c,i)=>`<stop offset="${100*i/Math.max(1,legend.gradient.length-1)}%" stop-color="${esc(c)}"/>`).join('')}</linearGradient></defs><rect x="24" y="${y-9}" width="90" height="9" fill="url(#residueLegend${index})"/>`);
@@ -431,10 +435,10 @@
    for(const track of snapshot.tracks||[]){
     text(left,y,track.label,11);y+=8;
     track.colors.forEach((color,i)=>{if(color)parts.push(`<rect x="${left+i*span/p.sequence.length}" y="${y}" width="${span/p.sequence.length+.05}" height="${track.key==='variants'?5:12}" fill="${esc(color)}"/>`);});
-    if(s.highlight)parts.push(`<rect x="${left+(snapshot.viewState.selected_start-1)*span/p.sequence.length}" y="${y-2}" width="${9*span/p.sequence.length}" height="16" fill="none" stroke="#059669" stroke-width="1.4"/>`);
+    if(s.highlight)parts.push(`<rect x="${left+(snapshot.viewState.selected_start-1)*span/p.sequence.length}" y="${y-2}" width="${9*span/p.sequence.length}" height="16" fill="none" stroke="${paletteColor('mimicryCore')}" stroke-width="1.4"/>`);
     y+=23;
    }
-   text(left,y,'1',10);text(width-24,y,p.sequence.length,10,'#44403c','text-anchor="end"');y+=18;
+   text(left,y,'1',10);text(width-24,y,p.sequence.length,10,esc(palette.body),'text-anchor="end"');y+=18;
    }
    const scale=nativePlot?span/(nativePlot.referenceWidth||nativePlot.width):1,font=(snapshot.legendFontSize||10.4)*scale;
    const entries=[];
@@ -449,7 +453,7 @@
      if(entry.gradient&&entry.range){
       const gap=7*scale,measure=t=>String(t).length*font*.65;
       let cursor=x;
-      text(cursor,y,entry.range.label,font,'#44403c','font-weight="600"');cursor+=measure(entry.range.label)+gap;
+      text(cursor,y,entry.range.label,font,esc(palette.body),'font-weight="600"');cursor+=measure(entry.range.label)+gap;
       text(cursor,y,entry.range.low,font);cursor+=measure(entry.range.low)+gap;
       parts.push(`<defs><linearGradient id="legend${entry.id}">${entry.gradient.map((c,i)=>`<stop offset="${i/Math.max(1,entry.gradient.length-1)*100}%" stop-color="${esc(c)}"/>`).join('')}</linearGradient></defs><rect x="${cursor}" y="${y-font*.7}" width="${entry.symbol}" height="${font*.65}" rx="1" fill="url(#legend${entry.id})"/>`);
       cursor+=entry.symbol+gap;text(cursor,y,entry.range.high,font);x+=entry.width;continue;
@@ -457,7 +461,7 @@
      if(entry.gradient){parts.push(`<defs><linearGradient id="legend${entry.id}">${entry.gradient.map((c,i)=>`<stop offset="${i/Math.max(1,entry.gradient.length-1)*100}%" stop-color="${esc(c)}"/>`).join('')}</linearGradient></defs><rect x="${x}" y="${y-font*.7}" width="${entry.symbol}" height="${font*.65}" rx="1" fill="url(#legend${entry.id})"/>`);}
      else if(entry.symbolText){
       parts.push(`<rect x="${x}" y="${y-font}" width="${entry.symbol}" height="${font*1.25}" rx="1" fill="${esc(entry.color)}"/>`);
-      text(x+entry.symbol/2,y,entry.symbolText,font,'#ffffff','text-anchor="middle" font-weight="600"');
+      text(x+entry.symbol/2,y,entry.symbolText,font,paletteColor('white'),'text-anchor="middle" font-weight="600"');
      }
      else if(entry.circle!==false)parts.push(`<circle cx="${x+entry.symbol/2}" cy="${y-font*.3}" r="${entry.symbol/2}" fill="${esc(entry.color)}"/>`);
      else parts.push(`<rect x="${x}" y="${y-font*.7}" width="${entry.symbol}" height="${font*.65}" rx="1" fill="${esc(entry.color)}"/>`);
@@ -475,10 +479,10 @@
     const step=7.2,gap=7.2;
     if(s.highlight)for(let section=0;section<3;section++){
      const start=x+section*(9*step+gap);
-     parts.push(`<path d="M${start} ${baseline+4}h${9*step}" fill="none" stroke="${section===1?'#059669':'#2563eb'}" stroke-width="1.5"/>`);
+     parts.push(`<path d="M${start} ${baseline+4}h${9*step}" fill="none" stroke="${section===1?paletteColor('mimicryCore'):paletteColor('mimicryContext')}" stroke-width="1.5"/>`);
     }
     Array.from(seq).forEach((aa,i)=>text(x+i*step+Math.floor(i/9)*gap,baseline,aa,12,
-     aa==='.'?'#64748b':(!reference||aa===reference[i])?'#34d399':'#f87171','font-family="JetBrains Mono,monospace"'));
+     aa==='.'?paletteColor('nativeFaint'):(!reference||aa===reference[i])?paletteColor('sequenceMatchPrint'):paletteColor('sequenceMismatchPrint'),'font-family="JetBrains Mono,monospace"'));
    };
    const score=seq=>contextScore.aligned(ref,seq,snapshot.blosum62);
    const sort=ranking.settings(snapshot.viewState.ranking);
@@ -489,11 +493,11 @@
    text(24,y,(/*@copy export-core.antigen-target-context.4d3b42e*/`Antigen Target Context`/*@endcopy*/),11);centered(440,y,start+1);peptide(ref,495,y);centered(765,y,end);y+=17;line(y);y+=23;
    const heading=(x,top,bottom,third)=>{
     const dy=third?0:bottom?7:14;
-    text(x,y+dy,top,10,'#111111','text-anchor="middle" font-weight="600"');
-    if(bottom)text(x,y+dy+14,bottom,10,'#111111','text-anchor="middle" font-weight="600"');
-    if(third)text(x,y+28,third,10,'#111111','text-anchor="middle" font-weight="600"');
+    text(x,y+dy,top,10,paletteColor('printInk'),'text-anchor="middle" font-weight="600"');
+    if(bottom)text(x,y+dy+14,bottom,10,paletteColor('printInk'),'text-anchor="middle" font-weight="600"');
+    if(third)text(x,y+28,third,10,paletteColor('printInk'),'text-anchor="middle" font-weight="600"');
    };
-   text(24,y+14,(/*@copy export-core.mimicry-parent.0efa6b7*/`Mimicry Parent`/*@endcopy*/),11,'#111111','font-weight="600"');heading(440,(/*@copy export-core.start.e4a2fd5*/`Start`/*@endcopy*/));
+   text(24,y+14,(/*@copy export-core.mimicry-parent.0efa6b7*/`Mimicry Parent`/*@endcopy*/),11,paletteColor('printInk'),'font-weight="600"');heading(440,(/*@copy export-core.start.e4a2fd5*/`Start`/*@endcopy*/));
    heading(527.4,(/*@copy export-core.context.e8e0fa1*/`Context`/*@endcopy*/),(/*@copy export-core.n-terminal.7f32ef1*/`N-Terminal`/*@endcopy*/));heading(599.4,(/*@copy export-core.core.6e1abcd*/`Core`/*@endcopy*/),(/*@copy export-core.mer.d7b985b*/`9-mer`/*@endcopy*/));heading(671.4,(/*@copy export-core.context.adb61a2*/`Context`/*@endcopy*/),(/*@copy export-core.c-terminal.c97c523*/`C-Terminal`/*@endcopy*/));
    heading(765,(/*@copy export-core.end.a5519f7*/`End`/*@endcopy*/));heading(825,(/*@copy export-core.core.5250cd7*/`Core`/*@endcopy*/),(/*@copy export-core.identity.d92d3a9*/`Identity`/*@endcopy*/),(/*@copy export-core.mer.58d4200*/`9-mer`/*@endcopy*/));heading(888,(/*@copy export-core.context.73798b4*/`Context`/*@endcopy*/),(/*@copy export-core.identity.d704868*/`Identity`/*@endcopy*/),(/*@copy export-core.mer.03ccde0*/`27-mer`/*@endcopy*/));heading(958,(/*@copy export-core.context.261cea0*/`Context`/*@endcopy*/),(/*@copy export-core.blosum.85331be*/`BLOSUM62`/*@endcopy*/),(/*@copy export-core.mer.cf23f0f*/`27-mer`/*@endcopy*/));
    y+=39;line(y);y+=20;
@@ -532,9 +536,9 @@
    const offset=s.tableStart||0;
    const parentRows=data.parents.map(row=>({...row,best_context_identity:bestByParent.get(row.parent_id)?.identity??null})).sort((a,b)=>ranking.parent(parentSortValues(a),parentSortValues(b),snapshot.viewState.ranking));
    wrapped((/*@copy export-core.overall-mimicry-parents-of.6ce2e73*/`Overall Mimicry Parents · ${offset?'Rows '+(offset+1)+'–'+Math.min(offset+s.rows,data.parents.length):'Top '+Math.min(s.rows,data.parents.length)} of ${data.parents.length} ${/exact.*sequence.*group/i.test(snapshot.result.parameters.source_entity_label||'')?(data.parents.length===1?'Matching Exact-Sequence Group':'Matching Exact-Sequence Groups'):(data.parents.length===1?'Matching Record':'Matching Records')}`/*@endcopy*/),15);
-   text(24,y+7,(/*@copy export-core.mimicry-parent.10e00b6*/`Mimicry Parent`/*@endcopy*/),11,'#111111','font-weight="600"');
+   text(24,y+7,(/*@copy export-core.mimicry-parent.10e00b6*/`Mimicry Parent`/*@endcopy*/),11,paletteColor('printInk'),'font-weight="600"');
    for(const [x,a,b] of [[570,(/*@copy export-core.target.6628056*/`Target`/*@endcopy*/),(/*@copy export-core.residues.2ae8324*/`Residues (%)`/*@endcopy*/)],[695,(/*@copy export-core.parent.79bee53*/`Parent`/*@endcopy*/),(/*@copy export-core.residues.39ec345*/`Residues (%)`/*@endcopy*/)],[820,(/*@copy export-core.best-core.d894396*/`Best Core`/*@endcopy*/),(/*@copy export-core.mer-identity.20cc708*/`9-mer Identity`/*@endcopy*/)],[945,(/*@copy export-core.best-context.1dc6863*/`Best Context`/*@endcopy*/),(/*@copy export-core.mer-identity.449a45d*/`27-mer Identity`/*@endcopy*/)]]){
-    text(x,y,a,11,'#111111','text-anchor="middle" font-weight="600"');if(b)text(x,y+14,b,11,'#111111','text-anchor="middle" font-weight="600"');
+    text(x,y,a,11,paletteColor('printInk'),'text-anchor="middle" font-weight="600"');if(b)text(x,y+14,b,11,paletteColor('printInk'),'text-anchor="middle" font-weight="600"');
    }y+=24;line(y);y+=20;
    // Use the full label lane, stopping before the first numeric column.
    // Ellipsize descriptions, never the reproducible accession/assay identifier.
@@ -569,8 +573,7 @@
    if(!image)throw Error((/*@copy export-core.a-loaded-structure-is-required.4a89902*/`A loaded structure is required for this panel.`/*@endcopy*/));
    parts.push(`<image x="24" y="${y}" width="952" height="600" href="${image}"/>`);y+=600;
   }
-  const palette=s.palette||{background:'#f7f4f0',body:'#44403c',ink:'#1c1917',border:'#b8ad9e'};
-  const content=parts.join('').replace(/#44403c/g,esc(palette.body)).replace(/#1c1917/g,esc(palette.ink)).replace(/#b8ad9e/g,esc(palette.border)).replace(/#34d399/g,'#047857').replace(/#f87171/g,'#b91c1c');
+  const content=parts.join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${y+12}" viewBox="0 0 ${width} ${y+12}" font-family="Inter,Arial,sans-serif"><title>${esc(p.gene||p.protein_id)} \u2014 MimicryMap</title><style>${snapshot.font_css||''}</style><rect width="100%" height="100%" rx="12" fill="${esc(palette.background)}"/>${content}</svg>`;
  }
 
@@ -595,6 +598,7 @@
 
  function organismTaxonLabel(p){
   if(p.organism_taxon_label)return publicText(p.organism_taxon_label);
+  if(/\[TaxID:/.test(p.organism||''))return publicText(p.organism);
   const i=p.identity||{},header=p.raw_header||p.header||p.seqid||i.fullHeader||'';
   const tag=k=>header.match(new RegExp('(?:^|\\s)'+k+'=(.*?)(?=\\s(?:OS|OX|GN|PE|SV)=|$)'))?.[1]||'';
   let organism=i.organism||p.organism||p.species||tag('OS');
@@ -623,6 +627,17 @@
   const cents=Math.floor((20000*covered+length)/(2*length));
   return (Math.floor((cents+5)/10)/10).toFixed(1);
  }
+ function summaryIdentity(record){
+  const id=identity(record,'q_');
+  return {'Antigen Target Gene':id.q_gene,'Antigen Target Accession':id.q_accession,
+   'Antigen Target Protein Description':summaryDescription(record,id.q_protein_name),
+   'Antigen Target Organism (TaxID)':organismTaxonLabel(record)};
+ }
+ function summaryParentLabel(parent){
+  const i=identity(parent,'p_'),encode=s=>String(s).replace(/[\\;@|]/g,c=>String.fromCharCode(92)+c);
+  const display=[publicText(i.p_gene||i.p_organism),publicText(i.p_accession),publicText(summaryAssayId(parent)||parent.assay_id||parent.identity?.assayId||'')].filter(Boolean);
+  return [...new Set(display)].map(encode).join('|')||encode(publicText(parent.protein_name||parent.protein_id).replace(/#\d+$/,'')||'Unannotated record');
+ }
  function summaryTable(result,floors=[7,8,9],annotationMetadata){
   requireExportDetails(result);
   const contract=result.inputs?.analysis_scan?.completeness_contract;
@@ -648,9 +663,8 @@
     if(Math.min(qi,pi,ii)<0)throw Error('Unrecognized summary coordinates.');
     for(const h of source.hits){if(!Number.isInteger(h[ii])||h[ii]<5||h[ii]>9)throw Error('Invalid summary identity');if(h[ii]>=t){qs.add(h[qi]);ps.add(h[pi]);starts.add(h[qi]);}}
     if(!qs.size)continue;
-    const a=coverageCore.measure(qs,L),b=coverageCore.measure(ps,parent.sequence?.length??parent.length),i=identity(parent,'p_');
-    const display=[publicText(i.p_gene||i.p_organism),publicText(i.p_accession),publicText(summaryAssayId(parent)||parent.assay_id||parent.identity?.assayId||'')].filter(Boolean);
-    partners.push({a:a.coveredResidues,b:b.coveredResidues,L:parent.sequence?.length??parent.length,native:native(parent),label:[...new Set(display)].map(encode).join('|')||encode(publicText(parent.protein_name||native(parent)).replace(/#\d+$/,'')||'Unannotated record')});
+    const a=coverageCore.measure(qs,L),b=coverageCore.measure(ps,parent.sequence?.length??parent.length);
+    partners.push({a:a.coveredResidues,b:b.coveredResidues,L:parent.sequence?.length??parent.length,native:native(parent),label:summaryParentLabel(parent)});
    }
    const cover=coverageCore.measure(starts,L),uncovered=[];let next=1;
    for(const [a,b]of cover.intervals){if(a>next)uncovered.push([next,a-1]);next=b+1;}if(next<=L)uncovered.push([next,L]);
@@ -669,6 +683,6 @@
   return {schema:'mimicryone/native-summary/6',columns,row,csv:serialize([row]),serialize};
  }
 
- const api={annotationColumns,summaryTable,version,exportPercent,recordIdentityColumns,recordIdentity,csv,tables,csvChunks,figure,contextIdentity,contextIdentityAt,comparisonSummary};
+ const api={annotationColumns,summaryTable,summaryIdentity,summaryParentLabel,summaryPairPercent,version,exportPercent,recordIdentityColumns,recordIdentity,csv,tables,csvChunks,figure,contextIdentity,contextIdentityAt,comparisonSummary};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.MimicryExportCore=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

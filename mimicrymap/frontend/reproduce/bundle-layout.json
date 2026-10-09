@@ -1,0 +1,175 @@
+{
+  "schema": "mimicryone/reproducibility-layout/3",
+  "files": {
+    "readme": {
+      "path": "README.md",
+      "description": "Start here: commands, folders, and what verification establishes.",
+      "source": "/reproduce/README.md"
+    },
+    "target": {
+      "path": "inputs/antigen-target.fasta",
+      "description": "Antigen Target FASTA, retaining original supplied text for a custom upload. The snapshot records the analyzed normalized sequence.",
+      "legacy": "target.fasta"
+    },
+    "parents": {
+      "path": "inputs/mimicry-parents.fasta",
+      "description": "Complete Mimicry Parent FASTA, including records without matches; original supplied text is retained for custom uploads.",
+      "legacy": "parents.fasta"
+    },
+    "parentRecords": {
+      "path": "inputs/mimicry-parent-records.json",
+      "description": "Identifiers, original headers, normalization and metadata for all selected parents, in FASTA order. Sequences are stored once in the FASTA.",
+      "legacy": "parent-records.json"
+    },
+    "projection": {
+      "path": "inputs/coordinate-projections.json",
+      "description": "When needed, original input records, exact coordinate mappings, and exclusions for the selected comparison.",
+      "optional": true,
+      "legacy": "projection-inputs.json"
+    },
+    "snapshot": {
+      "path": "reference/comparison-snapshot.json",
+      "description": "Frozen result, identity threshold, selected window, and captured ordering used for table reproduction.",
+      "legacy": "snapshot.json"
+    },
+    "recordMappings": {
+      "path": "reference/record-mappings.json",
+      "description": "Frozen record identities and assay projections. Checksum-verified supporting reference, not a regenerated output.",
+      "legacy": "record-mappings.json",
+      "optional": true
+    },
+    "matchesCsv": {
+      "path": "expected-results/all-matches.csv",
+      "description": "All Window Pairs across the Antigen Target at the captured threshold; no display limit.",
+      "legacy": "matches.csv",
+      "table": true
+    },
+    "parentsCsv": {
+      "path": "expected-results/overall-mimicry-parents.csv",
+      "description": "Overall Mimicry Parents: every matching record in the captured order, with directional coverage and best identities.",
+      "legacy": "parents.csv",
+      "table": true
+    },
+    "reproduce.cjs": {
+      "path": "run/reproduce.cjs",
+      "description": "Offline entry point; Node.js 20+ recommended.",
+      "source": "/reproduce/reproduce.cjs",
+      "legacy": "reproduce.cjs"
+    },
+    "reproduce.py": {
+      "path": "run/reproduce.py",
+      "description": "Offline entry point (requires Node.js).",
+      "source": "/reproduce/reproduce.py",
+      "legacy": "reproduce.py"
+    },
+    "reproduce.R": {
+      "path": "run/reproduce.R",
+      "description": "Offline entry point (requires Node.js).",
+      "source": "/reproduce/reproduce.R",
+      "legacy": "reproduce.R"
+    },
+    "export-core.js": {
+      "path": "code/export-core.js",
+      "description": "The same CSV and table implementation used by the site.",
+      "source": "/reproduce/export-core.js",
+      "legacy": "export-core.js"
+    },
+    "context-score.js": {
+      "path": "code/context-score.js",
+      "description": "The shared Context BLOSUM62 implementation.",
+      "source": "/reproduce/context-score.js",
+      "legacy": "context-score.js"
+    },
+    "ranking.js": {
+      "path": "code/ranking.js",
+      "description": "The captured Window Pair and Mimicry Parent ordering rules.",
+      "source": "/reproduce/ranking.js",
+      "legacy": "ranking.js"
+    },
+    "residue-coverage.js": {
+      "path": "code/residue-coverage.js",
+      "description": "The shared union-of-core-residues coverage implementation.",
+      "source": "/reproduce/residue-coverage.js",
+      "legacy": "residue-coverage.js"
+    },
+    "projected-events.js": {
+      "path": "code/projected-events.js",
+      "description": "Coordinate projection and assay contribution handling for mapped comparisons.",
+      "source": "/reproduce/projected-events.js",
+      "legacy": "projected-events.js"
+    },
+    "custom-worker.js": {
+      "path": "code/custom-worker.js",
+      "description": "The site's CPU worker for optional independent input rescans.",
+      "source": "/custom-worker.js",
+      "legacy": "custom-worker.js"
+    },
+    "layout": {
+      "path": "code/bundle-layout.json",
+      "description": "Versioned file roles and paths shared by the browser exporter, source ZIP builder, and offline runner.",
+      "source": "/reproduce/bundle-layout.json"
+    },
+    "TABLES.md": {
+      "path": "docs/TABLES.md",
+      "description": "CSV field meanings, counting units, coverage, ordering, and empty-table interpretation.",
+      "source": "/reproduce/docs/TABLES.md"
+    },
+    "RUNNING.md": {
+      "path": "docs/RUNNING.md",
+      "description": "Verification modes, troubleshooting, language wrappers, and the public FASTA pipeline.",
+      "source": "/reproduce/docs/RUNNING.md",
+      "bundle_only": true
+    },
+    "FILE-GUIDE.md": {
+      "path": "docs/FILE-GUIDE.md",
+      "description": "Folder and file dictionary, including the former flat filenames.",
+      "source": "/reproduce/docs/FILE-GUIDE.md",
+      "bundle_only": true
+    },
+    "GLOSSARY.md": {
+      "path": "docs/GLOSSARY.md",
+      "description": "Definitions generated from the site's single terminology authority.",
+      "source": "/reproduce/docs/GLOSSARY.md"
+    },
+    "comparison": {
+      "path": "docs/COMPARISON.md",
+      "description": "This export's target, scope, threshold, counts, selected window, and pooled Antigen Target Coverage."
+    },
+    "pipeline": {
+      "path": "code/pipeline.cjs",
+      "description": "Configurable FASTA pipeline using the same CPU worker; separate from frozen-result verification.",
+      "source": "/reproduce/pipeline.cjs"
+    },
+    "fasta-input.js": {
+      "path": "code/fasta-input.js",
+      "source": "/reproduce/fasta-input.js",
+      "description": "The browser Custom FASTA parser and normalization, shared with the offline pipeline."
+    },
+    "mimicryone-identity.js": {
+      "path": "code/mimicryone-identity.js",
+      "source": "/mimicryone-identity.js",
+      "description": "The same header and public protein-label resolver used by the browser."
+    },
+    "ensure-node.py": {
+      "path": "run/ensure-node.py",
+      "source": "/reproduce/ensure-node.py",
+      "description": "Local Node.js runtime setup for Python/R launchers; reuses a compatible installation or downloads a checksum-verified private copy."
+    },
+    "ensure-node.R": {
+      "path": "run/ensure-node.R",
+      "source": "/reproduce/ensure-node.R",
+      "description": "Local Node.js runtime setup for Python/R launchers; reuses a compatible installation or downloads a checksum-verified private copy."
+    },
+    "node-runtime.tsv": {
+      "path": "run/node-runtime.tsv",
+      "source": "/reproduce/node-runtime.tsv",
+      "description": "Local Node.js runtime setup for Python/R launchers; reuses a compatible installation or downloads a checksum-verified private copy."
+    },
+    "parallel-scan.cjs": {
+      "path": "code/parallel-scan.cjs",
+      "source": "/reproduce/parallel-scan.cjs",
+      "legacy": "parallel-scan.cjs",
+      "description": "CPU scheduling for local scans; automatically selects concurrency with an optional worker-count override."
+    }
+  }
+}

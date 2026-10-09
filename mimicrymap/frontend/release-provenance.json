@@ -1,0 +1,113 @@
+{
+  "schema": "mimicryone/release-provenance/1",
+  "release_id": "mimicryone-canonical-20260907-r1",
+  "release_fingerprint": "2c969a9a9ad59f353514eb8dbaab8e39b19d1a8161c59cd85e068bae753cbccc",
+  "runtime_manifest": "bake/releases/mimicryone_runtime_20260904_r1/runtime_components.json",
+  "input_manifest": "libraries_v2/releases/canonical_20260907_r1/manifest.json",
+  "input_manifest_sha256": "08be8dc09f824f5d0be8abeb09adc932c02ff1b5c308d64f408ba8b9b98687b1",
+  "human": {
+    "records": 20988,
+    "uniprot_release": "2026_01",
+    "uniprot_release_date": "2026-01-28",
+    "reviewed_records": 20431,
+    "inherited_trembl_records": 339,
+    "hormone_parents": 218,
+    "hormone_scope_records": 228,
+    "hormone_shared_swissprot_records": 10,
+    "source_archive": "reference\\uniprot\\sprot_2026_01\\uniprot_sprot.fasta.gz",
+    "source_archive_sha256": "5ba5cb332fc7794ab1c02075a79c8b3d95b573f9b244a38bb53558172e1f9b7b"
+  },
+  "exposure": {
+    "records": 24867,
+    "unit": "exact-sequence compute parents",
+    "source_memberships": {
+      "allergome": 4016,
+      "current_sequence_overlay": 12,
+      "frozen_r3_exposure": 8826,
+      "iedb_nonhuman": 19621,
+      "viral_nonhuman": 2222
+    },
+    "curated_viral_proteomes": 120,
+    "uniprot_release": null
+  },
+  "annotation_release_note": "UniProt 2026_01 identifies the reviewed Human sequence layer, not a blanket release date for inherited records, exposure sources, or annotation tracks.",
+  "source_files": [
+    {
+      "name": "allergome",
+      "bytes": 1236290,
+      "path": "libraries/inactive/allergome.fasta",
+      "sha256": "588312d1cf630f12bed4615618b18b51715eb45514f249748b6565f8d15167a4",
+      "current_status": "matches"
+    },
+    {
+      "name": "frozen_exposure_csv",
+      "bytes": 665481,
+      "path": "bake/releases/mimicryone_panscan9_3B04D688_20260831_r3/parents/exposure_all.csv.gz",
+      "sha256": "28955bb727fc2c4ec246a86433a356a1befe7cfdffb186e00bfaff4ba2fbc81b",
+      "current_status": "matches"
+    },
+    {
+      "name": "frozen_exposure_fasta",
+      "bytes": 1891699,
+      "path": "bake/releases/mimicryone_panscan9_3B04D688_20260831_r3/parents/exposure_all.fasta.gz",
+      "sha256": "be9998cd298246b3766bae253969e7a31f7043a0d5916f3ce55ebac9d0b2a890",
+      "current_status": "matches"
+    },
+    {
+      "name": "frozen_human_csv",
+      "bytes": 1532205,
+      "path": "bake/releases/mimicryone_panscan9_3B04D688_20260831_r3/parents/human_all.csv.gz",
+      "sha256": "e335e1a556b2e9261f96772f099a839b30979cfe8e159219405288c8f25c9c56",
+      "current_status": "matches"
+    },
+    {
+      "name": "frozen_human_fasta",
+      "bytes": 7303814,
+      "path": "bake/releases/mimicryone_panscan9_3B04D688_20260831_r3/parents/human_all.fasta.gz",
+      "sha256": "ab43815590205bcc27c69382f166788a7086844c617b849338fd65b7abb80403",
+      "current_status": "matches"
+    },
+    {
+      "name": "hormone_fasta",
+      "bytes": 16966,
+      "path": "libraries/inactive/hormone.fasta",
+      "sha256": "960d29807a9ed328312548d19c368ff5f3d8a8ba31714c6749274b10364a2ffe",
+      "current_status": "matches"
+    },
+    {
+      "name": "iedb_nonhuman",
+      "bytes": 27122232,
+      "path": "libraries_v2/exposure/iedb_nonhuman/iedb_nonhuman.antigens.csv",
+      "sha256": "5e3b62454f0c879b5322ad8cc644277267462094a5aaa737f650a7b05b8b1f45",
+      "current_status": "matches"
+    },
+    {
+      "name": "iedb_removed",
+      "bytes": 178,
+      "path": "libraries_v2/exposure/iedb_nonhuman/iedb_nonhuman.removed.csv",
+      "sha256": "758769648fd455e3562e9179581a3889b24cf80f2ab67907323d68ccf9accd46",
+      "current_status": "matches"
+    },
+    {
+      "name": "staged_exposure",
+      "bytes": 32603535,
+      "path": "libraries_v2/exposure/exposome/exposome.antigens.csv",
+      "sha256": "67673cfdb21e2ab2ce7fe31897ffe488b90cf3a40e8c3af6d13a2c78cfc6bf36",
+      "current_status": "matches"
+    },
+    {
+      "name": "staged_human",
+      "bytes": 28446544,
+      "path": "libraries_v2/human/human_canonical/human_canonical.antigens.csv",
+      "sha256": "1f8de4f7562324200c43eb3a610dcfeddde704da1dfe36607ab5a744846fbdc3",
+      "current_status": "matches"
+    },
+    {
+      "name": "viral_nonhuman",
+      "bytes": 1072210,
+      "path": "libraries/active/viral_nonhuman.fasta",
+      "sha256": "49d4dff18becca50353415909e7cf9ce96893866804d233a6ea60dcb1efefb99",
+      "current_status": "matches"
+    }
+  ]
+}

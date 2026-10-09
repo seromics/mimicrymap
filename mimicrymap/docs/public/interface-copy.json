@@ -1,0 +1,5367 @@
+{
+  "schema": "mimicryone/interface-copy/1",
+  "entries": [
+    {
+      "key": "analysis-entry.live-target-prefix",
+      "file": "frontend/analysis-entry.js",
+      "use": "Completed target status prefix",
+      "text": "Live · ",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.pinned-virus-scope",
+      "file": "frontend/analysis-entry.js",
+      "use": "Explain the restricted species and organism picker",
+      "text": "Curated Viral Proteomes (120) is fixed for this comparison. Select species or organisms to narrow it."
+    },
+    {
+      "key": "analysis-entry.pinned-virus-reset",
+      "file": "frontend/analysis-entry.js",
+      "use": "Reset virus refinements while retaining the fixed collection",
+      "text": "Clear virus selections within Curated Viral Proteomes (120)."
+    },
+    {
+      "key": "analysis-entry.local-large-continuation",
+      "file": "frontend/analysis-entry.js",
+      "use": "Large stored responses continue on the current device with the same selected scope and threshold",
+      "text": "Computing the complete {{floor}}/9 result on this device. The selected scope is unchanged; Cancel is available.",
+      "placeholders": {
+        "floor": {
+          "expression": "Number(floor)"
+        }
+      }
+    },
+    {
+      "key": "analysis-entry.positional-response-limit",
+      "file": "frontend/analysis-entry.js",
+      "use": "Result-size limit message; the response limit is not a complete result count",
+      "text": "The server response limit is {{maximum}} window pairs. This {{floor}}/9 selection could not continue locally; the previous result remains displayed.",
+      "placeholders": {
+        "floor": {
+          "expression": "Number(floor)"
+        },
+        "maximum": {
+          "expression": "maximum.toLocaleString(\"en-US\")"
+        }
+      }
+    },
+    {
+      "key": "analysis-entry.positional-response-limit-unknown",
+      "file": "frontend/analysis-entry.js",
+      "use": "Result-size limit message when the server supplies no usable numeric limit",
+      "text": "This {{floor}}/9 selection exceeded the server response limit and could not continue locally; the previous result remains displayed.",
+      "placeholders": {
+        "floor": {
+          "expression": "Number(floor)"
+        }
+      }
+    },
+    {
+      "key": "analysis-entry.allergome-uniprot-tag",
+      "file": "frontend/analysis-entry.js",
+      "use": "Scope collection label",
+      "text": "Allergome (UniProt tag)",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.also-include-records-whose-taxonomy.1930524",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Also include records that are unclassified at this taxonomic level.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.assay-tile-libraries.4fc8c12",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "placeholders": {},
+      "term": "assay_libraries"
+    },
+    {
+      "key": "analysis-entry.assay-tile-libraries.a118897",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "placeholders": {},
+      "term": "assay_libraries"
+    },
+    {
+      "key": "analysis-entry.assay-tile-libraries.ac0df46",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "placeholders": {},
+      "term": "assay_libraries"
+    },
+    {
+      "key": "analysis-entry.canonical-proteome-indexed-scans-support.db20a1c",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "Canonical-proteome indexed scans support only 5/9, 6/9, or 7/9.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.choose-an-antigen-to-open.af874ee",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "text": "Choose an antigen to open a comparison.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.choose-mimicry-parent.step-heading",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display heading",
+      "text": "Choose Mimicry Parent:",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.choose-mimicry-parent-library.044f892",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "text": "Choose Mimicry Parent:",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.class.ccbad5f",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Class",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.clear-narrowing-filters-and-restore.368b6f1",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Clear narrowing filters and restore every available group, including unclassified records.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.compare-your-antigen-target-sequences.41da1ec",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "text": "Compare one antigen target with a served library or your own parent FASTA. The analysis runs in this browser.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.complete-cdiv-exposome-collection-independent.85f4d3c",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Complete CDIV3 Exposome add-on; select independently of either VirScan subset.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.custom-antigen-target.43a43c6",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Custom Antigen Target",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.exclude-provenance-rows-assigned-to.c843572",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Uncheck to exclude mammalian sources. Shared sequences remain when a non-mammalian source qualifies.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.family.569f43d",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Family",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.find-antigen-target.a79bef7",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "text": "Gene, accession, description, etc.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.find-antigen-target.ed4fc41",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "text": "Gene, accession, description, etc.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.full-proteins.5dbcec4",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "placeholders": {},
+      "term": "canonical_libraries"
+    },
+    {
+      "key": "analysis-entry.full-proteins.6389d79",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "placeholders": {},
+      "term": "canonical_libraries"
+    },
+    {
+      "key": "analysis-entry.full-proteins.97238cb",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "placeholders": {},
+      "term": "canonical_libraries"
+    },
+    {
+      "key": "analysis-entry.gene-accession-protein-name-description.7d012db",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display placeholder",
+      "text": "Gene, accession, description, etc.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.gene-accession-protein-name-description.d19214f",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display placeholder",
+      "text": "Gene, accession, description, etc.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.genus.5e99945",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Genus",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.genus.c279908",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Genus",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.human-proteins.0a9ad82",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Human proteins",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.human-virus-subset-cdiv.51af5da",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Human-virus VirScan (CDIV2)",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.invalid-scope-count.37fbe61",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "Invalid scope count",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.is-not-available-in-the.6d99ef7",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "{{accession}} is not available in the current canonical catalog.",
+      "placeholders": {
+        "accession": {
+          "expression": "accession"
+        }
+      }
+    },
+    {
+      "key": "analysis-entry.keep-at-least-one-group.1a77a06",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "text": "Keep at least one group selected. Uncheck individual groups to narrow the scope.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.keep-at-least-one-option.cc2dca9",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "text": "Keep at least one option selected in this group.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.keep-at-least-one-taxonomic.3a31b49",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "text": "Keep at least one taxonomic group selected.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.kingdom.9329af1",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Kingdom",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.mimicry-parent-index-unavailable.51b1c33",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "Mimicry parent index unavailable: {{value}}",
+      "placeholders": {
+        "value": {
+          "expression": "liveReason(parentSet.library)"
+        }
+      }
+    },
+    {
+      "key": "analysis-entry.no-mimicry-parent-sequence-was.29f0fdb",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "No mimicry parent sequence was supplied.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.non-human-exposures.c05f552",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Non-human exposures",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.order.c398950",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Order",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.organism.bab9696",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Organism",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.parent-scope-changed-apply-or.0ce0cd3",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "text": "Parent scope changed; apply or close this menu to update the result.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.phylum.a02e130",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Phylum",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.player-request-canceled.223a331",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "Player request canceled.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.precomputed-player-endpoint-unavailable.5a2f080",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "Precomputed player endpoint unavailable.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.records-without-a-resolved-domain.efec5b9",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Records without a resolved domain assignment.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.run-analysis.f1464c1",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "text": "Run analysis",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.scope-filtered.474bb16",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "text": "Scope · filtered",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.scope-filtered.5bbc69a",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "text": "Scope · filtered",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.scope-filtered.b15bb4b",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "text": "Scope · filtered",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.scope.9d7f150",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "placeholders": {},
+      "term": "scope"
+    },
+    {
+      "key": "analysis-entry.scope.f3dd6f6",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "placeholders": {},
+      "term": "scope"
+    },
+    {
+      "key": "analysis-entry.scope.f5622cb",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "placeholders": {},
+      "term": "scope"
+    },
+    {
+      "key": "analysis-entry.select-every-classified-domain-and.e2fef1f",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Select every classified domain and all unclassified records.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.server-indexed-player-scans-support.c186e2a",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "This comparison supports a minimum identity of 5/9 or 6/9. Choose one of those thresholds to continue.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.species.121ac00",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Species",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.species.c974380",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display metadata field",
+      "text": "Species",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.supply-the-mimicry-parent-fasta.92f3261",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "Supply the mimicry parent FASTA to compare against.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.the-shared-protein-identity-resolver.08d8c41",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "The shared protein identity resolver is unavailable.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.the-supplied-mimicry-parent-fasta.0c58085",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "The supplied mimicry parent FASTA has no sequence of at least 9 residues, so it has no comparable window.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.this-canonical-protein-has-no.777a6f3",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "This canonical protein has no valid immutable parent identity.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.this-canonical-protein-lacks-a.b39bb63",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "This canonical protein lacks a frozen mapped-tile count.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.this-component-protein-has-no.0c8e937",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "This component protein has no verified Explorer-to-analysis crosswalk.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.this-no-projection-canonical-protein.b10bdb8",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "This no-projection canonical protein is outside the default analysis index.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.this-parent-scope-is-active.71c1fcd",
+      "file": "frontend/analysis-entry.js",
+      "use": "Display textContent",
+      "text": "This parent scope is active in the open Player.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.this-portable-protein-has-no.a012862",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "This portable protein has no verified parent projection.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.this-protein-has-an-invalid.1349e45",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "This protein has an invalid Explorer-to-analysis crosswalk.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.this-sequence-is-aa-mer.02e1cfb",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "This sequence is {{value}} AA ({{value2}} 9-mer windows). Live 5/9–6/9 queries above the {{value3}}-window limit exceed this deployment's live compute limit.",
+      "placeholders": {
+        "value": {
+          "expression": "Number(record.length).toLocaleString()"
+        },
+        "value2": {
+          "expression": "windows.toLocaleString()"
+        },
+        "value3": {
+          "expression": "limit.toLocaleString()"
+        }
+      }
+    },
+    {
+      "key": "analysis-entry.timed-out-waiting-for-the.d9460af",
+      "file": "frontend/analysis-entry.js",
+      "use": "User message",
+      "text": "Timed out waiting for the MimicryMap player.",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.at.8cc396d",
+      "file": "frontend/atlas-figures.js",
+      "use": "data-tooltip",
+      "text": "{{gene}} · {{value}}% {{measure}} at {{label}}",
+      "placeholders": {
+        "gene": {
+          "expression": "v.gene"
+        },
+        "value": {
+          "expression": "pct(v.pct)"
+        },
+        "label": {
+          "expression": "r.label"
+        },
+        "measure": {
+          "expression": "SPREAD_METRIC === 'coverage' ? 'human residues covered' : 'human proteins reached'"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.choose-another-virus.f46fcba",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display placeholder",
+      "text": "Search Viral Proteomes…",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.current-release-verified.7916e0a",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "current release verified",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.find-a-viral-proteome.59ba495",
+      "file": "frontend/atlas-figures.js",
+      "use": "aria-label",
+      "text": "Search Viral Proteomes",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.historical-reference.baa5bb3",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "historical reference",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.historical-reference.c1b7f5e",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "historical reference",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.http.7559a77",
+      "file": "frontend/atlas-figures.js",
+      "use": "User message",
+      "text": "HTTP {{status}}",
+      "placeholders": {
+        "status": {
+          "expression": "r.status"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.human-records-and-the-single.3077515",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Human target–viral parent Pairs Ranked by target Residue Coverage · {{PROTEOME}}",
+      "placeholders": {
+        "PROTEOME": {
+          "expression": "PROTEOME"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.keep-typing-to-narrow-matches.c32c42a",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display textContent",
+      "text": "{{length}} Matching Viral Proteomes",
+      "placeholders": {
+        "length": {
+          "expression": "matches.length"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.matching-viral-proteomes.f3a64a3",
+      "file": "frontend/atlas-figures.js",
+      "use": "aria-label",
+      "text": "Viral Proteome",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.median-source-protein-at.d884adf",
+      "file": "frontend/atlas-figures.js",
+      "use": "data-tooltip",
+      "text": "Median viral parent · {{value}}% {{measure}} at {{label}}",
+      "placeholders": {
+        "value": {
+          "expression": "pct(r.median)"
+        },
+        "label": {
+          "expression": "r.label"
+        },
+        "measure": {
+          "expression": "SPREAD_METRIC === 'coverage' ? 'human residues covered' : 'human proteins reached'"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.min-identity.a7f02f5",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display textContent",
+      "placeholders": {},
+      "term": "min_identity"
+    },
+    {
+      "key": "atlas-figures.minimum-identity-for-this-figure.846b3e8",
+      "file": "frontend/atlas-figures.js",
+      "use": "aria-label",
+      "text": "Minimum Core Identity for This Figure",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.next-proteome-alphabetically.12e0030",
+      "file": "frontend/atlas-figures.js",
+      "use": "aria-label",
+      "text": "Next proteome, alphabetically",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.no-proteome-in-this-collection.49d8dda",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display textContent",
+      "text": "No proteome in this collection matches that.",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.of.6092a62",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "6 of 9",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.of.818258b",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "7 of 9",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.of.da80b9c",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "5 of 9",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.of.f246de7",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "8 of 9",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.of.f68e1a6",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "9 of 9",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.previous-proteome-alphabetically.f96afa6",
+      "file": "frontend/atlas-figures.js",
+      "use": "aria-label",
+      "text": "Previous proteome, alphabetically",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.release-unverified.264d192",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "release unverified",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.source-proteins-of-ranked-by.012f336",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Viral Parents Ranked by Human Protein Reach · {{PROTEOME}}",
+      "placeholders": {
+        "PROTEOME": {
+          "expression": "PROTEOME"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.text-tspan-font-family.9d0063b",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display textContent",
+      "text": "text,tspan{font-family:{{FONT_UI}}}",
+      "placeholders": {
+        "FONT_UI": {
+          "expression": "FONT_UI"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.text.83f747f",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display textContent",
+      "text": "{{label}} · {{value}}",
+      "placeholders": {
+        "label": {
+          "expression": "entry.label"
+        },
+        "value": {
+          "expression": "proteomeCount(entry)"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.text.cd5a6b2",
+      "file": "frontend/atlas-figures.js",
+      "use": "HTML display fragment",
+      "text": "<span class=\"af-topic\"></span>",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.aa-window.f9e6d2b",
+      "file": "frontend/index.html",
+      "use": "aria-label",
+      "text": "{{ariaLabel}}; {{len}} AA; {{N}} Window{{value}}",
+      "placeholders": {
+        "ariaLabel": {
+          "expression": "targetIdentity.ariaLabel"
+        },
+        "len": {
+          "expression": "T.len"
+        },
+        "N": {
+          "expression": "N"
+        },
+        "value": {
+          "expression": "N===1?\"\":\"s\""
+        }
+      }
+    },
+    {
+      "key": "index.html.alphafold-per-residue-model-confidence.3e36eaa",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "AlphaFold per-residue structural confidence (pLDDT), scored from 0 to 100.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.alphafold-residues-drag-to-rotate.8fe50e4",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "AlphaFold · {{value}} · {{what}} · {{value2}} Residues · Drag to Rotate",
+      "placeholders": {
+        "value": {
+          "expression": "S3SHAPE===\"ribbon\"?\"C\\u03b1 Ribbon\":\"vdW Surface\""
+        },
+        "what": {
+          "expression": "what"
+        },
+        "value2": {
+          "expression": "nf(S3.ca.length)"
+        }
+      }
+    },
+    {
+      "key": "index.html.antigen-target-direction-to-mimicry.95f3206",
+      "file": "frontend/index.html",
+      "use": "aria-label",
+      "text": "Antigen Target: {{ariaLabel}}; direction to Mimicry Parent set: {{parentLabel}}",
+      "placeholders": {
+        "ariaLabel": {
+          "expression": "identity.ariaLabel"
+        },
+        "parentLabel": {
+          "expression": "parentLabel"
+        }
+      }
+    },
+    {
+      "key": "index.html.antigen-target.500f78f",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "Antigen Target · {{primaryLine}}",
+      "placeholders": {
+        "primaryLine": {
+          "expression": "targetIdentity.primaryLine"
+        }
+      }
+    },
+    {
+      "key": "index.html.blosum-score-for-the-displayed.7f7c94b",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "Sum of BLOSUM62 substitution scores across available resolved positions in the displayed 27-residue context.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.both-are-shown-selected-window.15091f3",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "Both are shown: selected-window matches on the left and overall mimicry parents on the right.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.cleavage.e377190",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "Cleavage",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.compact.e14aaef",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "Compact",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.context.f1d2429",
+      "file": "frontend/index.html",
+      "use": "Player summary column label",
+      "text": "Context",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.core.18d0811",
+      "file": "frontend/index.html",
+      "use": "Player summary column label",
+      "text": "Core",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.figure-export-root-figure-export.a21d481",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "{{value}}\n{{embeddedFontCss}}\n.figure-export-root,.figure-export-root *{animation:none!important;transition:none!important}",
+      "placeholders": {
+        "value": {
+          "expression": "figureExportCss()"
+        },
+        "embeddedFontCss": {
+          "expression": "embeddedFontCss"
+        }
+      }
+    },
+    {
+      "key": "index.html.fit-the-protein-plot-above.46d98ff",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "Fit the protein plot above window matches, overall parents and structure.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.full.37296b3",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "Full",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.http.1f8d2fc",
+      "file": "frontend/index.html",
+      "use": "User message",
+      "text": "HTTP {{status}}",
+      "placeholders": {
+        "status": {
+          "expression": "r.status"
+        }
+      }
+    },
+    {
+      "key": "index.html.http.67cc355",
+      "file": "frontend/index.html",
+      "use": "User message",
+      "text": "HTTP {{status}}",
+      "placeholders": {
+        "status": {
+          "expression": "r.status"
+        }
+      }
+    },
+    {
+      "key": "index.html.identical-positions-in-the-nine.4ec00da",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "Identical positions in the nine-residue comparison window.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.inspect-the-wrapped-residue-level.374bb27",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "Inspect the wrapped residue-level plot with window matches, overall parents and structure.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.length-aa-windows.36312c4",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "{{tooltip}}\nLength: {{len}} AA\nWindows: {{N}}",
+      "placeholders": {
+        "tooltip": {
+          "expression": "targetIdentity.tooltip"
+        },
+        "len": {
+          "expression": "T.len"
+        },
+        "N": {
+          "expression": "N"
+        }
+      }
+    },
+    {
+      "key": "index.html.length-aa-windows.395c709",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "{{tooltip}}\nLength: {{len}} AA\nWindows: {{N}}",
+      "placeholders": {
+        "tooltip": {
+          "expression": "targetIdentity.tooltip"
+        },
+        "len": {
+          "expression": "T.len"
+        },
+        "N": {
+          "expression": "N"
+        }
+      }
+    },
+    {
+      "key": "index.html.loading-pipeline-source.e268309",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "Loading pipeline source…",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.main-track-color-direction-inverted.0795b6f",
+      "file": "frontend/index.html",
+      "use": "aria-label",
+      "text": "Main track color direction: inverted. Activate to restore the standard direction.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.main-track-color-direction-standard.e01fddf",
+      "file": "frontend/index.html",
+      "use": "aria-label",
+      "text": "Main track color direction: standard. Activate to invert.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.matched-parent-total-includes-every.6c4fead",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "{{value}} · comparison unit: {{entityLabel}} · matched-parent total includes every ranked entity with a hit at the active threshold; player shows the top {{PLAYER_NROW}} tracks{{value2}}",
+      "placeholders": {
+        "value": {
+          "expression": "text+(libraryRecords>0?\" · \"+nf(libraryRecords)+\" library entries searched\":\"\")"
+        },
+        "PLAYER_NROW": {
+          "expression": "PLAYER_NROW"
+        },
+        "value2": {
+          "expression": "residueSummary?\" · \"+residueSummary.coveredResidues+\" / \"+residueSummary.eligibleResidues+\" target residues covered by the union of qualifying 9-mer cores; mismatch positions included, context excluded\":\"\""
+        },
+        "entityLabel": {
+          "expression": "entityLabel"
+        }
+      }
+    },
+    {
+      "key": "index.html.mimicry.70199e2",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "Mimicry",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.needs-the-dev-server-on.ed4a3e1",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "Needs the dev server on 5173. ({{message}})",
+      "placeholders": {
+        "message": {
+          "expression": "e.message"
+        }
+      }
+    },
+    {
+      "key": "index.html.no-residue-annotations-for-this.fb22e33",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "No residue annotations for this protein",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.of-at.e68ad75",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "{{value}} of {{value2}} at ≥{{TH}}/9",
+      "placeholders": {
+        "value": {
+          "expression": "(rows.length<matchedTotal?\"Top \":\"\")+rows.length"
+        },
+        "value2": {
+          "expression": "nf(matchedTotal)"
+        },
+        "TH": {
+          "expression": "TH"
+        }
+      }
+    },
+    {
+      "key": "index.html.overall.d17296a",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "Overall",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.page-of.2b17489",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "Page 0 of 0",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.page-of.fc5c699",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "Page {{value}} of {{motifPageCount}}",
+      "placeholders": {
+        "value": {
+          "expression": "motifPageIndex+1"
+        },
+        "motifPageCount": {
+          "expression": "motifPageCount"
+        }
+      }
+    },
+    {
+      "key": "index.html.pause.c03a935",
+      "file": "frontend/index.html",
+      "use": "aria-label",
+      "text": "Pause",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.pause.e413f7f",
+      "file": "frontend/index.html",
+      "use": "aria-label",
+      "text": "Pause",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.pepsickle-model-prediction-of-cleavage.96de2d3",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "Proteasomal cleavage probability from the pepsickle epitope model, scored from 0 to 1.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.play-pause-in-the-selected.4ed7a3d",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "Play / pause in the selected view",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.play-pause-in-the-selected.6dca02b",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "Play / pause in the selected view",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.play.4cb4578",
+      "file": "frontend/index.html",
+      "use": "aria-label",
+      "text": "Play",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.play.7121a75",
+      "file": "frontend/index.html",
+      "use": "aria-label",
+      "text": "Play",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.plddt.980dcc0",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "pLDDT",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.png-rasterisation-failed.58cffbc",
+      "file": "frontend/index.html",
+      "use": "User message",
+      "text": "PNG rasterization failed.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.png-rasterisation-failed.7fc190d",
+      "file": "frontend/index.html",
+      "use": "User message",
+      "text": "PNG rasterization failed.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.preview-the-top-five-parents.9082824",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "Preview up to eight mimicry parents while moving along the antigen target.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.preview.b99d071",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "Preview",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.proteinstart-merendmatchblosum.be064d2",
+      "file": "frontend/index.html",
+      "use": "HTML display fragment",
+      "text": "<span class=\"enm\">Mimicry Parent</span><span class=\"ediv\"></span><span class=\"epos l\" data-tooltip=\"Context start: first available residue of the displayed parent context, 1-based and inclusive. CSV Core Start instead locates the 9-mer core.\">Start</span><span class=\"eseq\" data-tooltip=\"Context (27-mer): the retained 9-mer core plus up to nine flanking residues on each side.\">27-mer</span><span class=\"epos r\" data-tooltip=\"Context end: last available residue of the displayed parent context, 1-based and inclusive. CSV Core End instead bounds the 9-mer core.\">End</span><span class=\"ebadge\" data-tooltip=\"Context identity counts identical standard amino acids across 27 positions. Core identity determines inclusion; the Sort control determines row order.\" style=\"color:var(--mm-faint)\">Context</span><span class=\"enum w-bl\" data-tooltip=\"Sum of BLOSUM62 substitution scores across available resolved positions in the displayed 27-residue context.\">BLOSUM62</span>",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.proteinwinmatch-covindex-covblosum.1dd4100",
+      "file": "frontend/index.html",
+      "use": "HTML display fragment",
+      "text": "<span class=\"enm\">Protein</span><span class=\"ediv\"></span><span class=\"enum w-sw\">Win</span><span class=\"ediv\"></span><span style=\"width:86px;text-align:center\">Match Cov</span><span class=\"ediv\"></span><span style=\"width:86px;text-align:center\">Index Cov</span><span class=\"ediv\"></span><span class=\"enum w-bl\">BLOSUM</span>",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.relative-solvent-accessible-surface-area.0613031",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "Relative solvent-accessible surface area calculated with FreeSASA in the selected monomer or dimer model. Colors span 0–1; higher values share the maximum color.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.rsasa.16a735d",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "rSASA",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.show-matches-at-the-selected.40063a9",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "Show matches at the selected window, ordered by the Sort control.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.show-protein-wide-parents-in.bbc5ae0",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "In Preview, up to 50 mimicry parents from the final ranking race using matches up to the scanner, with eight visible at a time. Compact and Full show the final ranking.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.show-the-modeled-dimer-and.b53b44a",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "Show the modeled dimer, and read surface exposure and rSASA in that context.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.show-the-single-chain-and.ee1b8c8",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "Show the single chain, and read surface exposure and rSASA from the monomer.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.solvent-exposure-estimated-from-the.b577526",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "Exposed residues have rSASA ≥0.25 in the selected monomer or dimer model.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.surface.6a80a12",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "Surface",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.target-windows-per-second-playback.8879cf5",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "{{value}} target windows per second.",
+      "placeholders": {
+        "value": {
+          "expression": "WPS*m"
+        }
+      }
+    },
+    {
+      "key": "index.html.text.1760f1c",
+      "file": "frontend/index.html",
+      "use": "HTML display fragment",
+      "text": "<span class=\"identity-primary\"></span><span class=\"identity-secondary\"></span>",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.text.2132109",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "{{value}} / {{N}}",
+      "placeholders": {
+        "value": {
+          "expression": "Math.floor(scan)+1"
+        },
+        "N": {
+          "expression": "N"
+        }
+      }
+    },
+    {
+      "key": "index.html.text.2bd7cc6",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "{{countLabel}} · {{value}}",
+      "placeholders": {
+        "countLabel": {
+          "expression": "countLabel"
+        },
+        "value": {
+          "expression": "window.MimicryRanking.describe(window.MimicryRanking.selection).window"
+        }
+      }
+    },
+    {
+      "key": "index.html.text.361359d",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "{{value}}/9",
+      "placeholders": {
+        "value": {
+          "expression": "s[2]"
+        }
+      }
+    },
+    {
+      "key": "index.html.text.6340f16",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "{{value}}–{{value2}}",
+      "placeholders": {
+        "value": {
+          "expression": "p+1"
+        },
+        "value2": {
+          "expression": "p+K"
+        }
+      }
+    },
+    {
+      "key": "index.html.text.7c73091",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "{{value}}×",
+      "placeholders": {
+        "value": {
+          "expression": "m===0.25?\"¼\":m"
+        }
+      }
+    },
+    {
+      "key": "index.html.text.85e04c5",
+      "file": "frontend/index.html",
+      "use": "Display tooltip",
+      "text": "{{primaryLine}} → {{parentLabel}}{{value}}{{value2}}",
+      "placeholders": {
+        "primaryLine": {
+          "expression": "identity.primaryLine"
+        },
+        "parentLabel": {
+          "expression": "parentLabel"
+        },
+        "value": {
+          "expression": "histDetail?\"\\n\"+histDetail:\"\""
+        },
+        "value2": {
+          "expression": "entry.len?(\"\\nLength: \"+entry.len+\" AA\"):\"\""
+        }
+      }
+    },
+    {
+      "key": "index.html.text.921e1a8",
+      "file": "frontend/index.html",
+      "use": "HTML display fragment",
+      "text": "<span class=\"identity-primary\"></span><span class=\"identity-secondary\"></span>",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.text.bd9eea8",
+      "file": "frontend/index.html",
+      "use": "HTML display fragment",
+      "text": "<span class=\"rps\"></span><span class=\"rsq\"></span><span class=\"rpe\"></span><span class=\"rid\"></span>",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.text.bf59f83",
+      "file": "frontend/index.html",
+      "use": "HTML display fragment",
+      "text": "<b>{{value}}</b>",
+      "placeholders": {
+        "value": {
+          "expression": "tr[li].label"
+        }
+      }
+    },
+    {
+      "key": "index.html.text.f437022",
+      "file": "frontend/index.html",
+      "use": "HTML display fragment",
+      "text": "<span class=\"rps\"></span><span class=\"rsq\"></span><span class=\"rpe\"></span><span></span>",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.text.f869023",
+      "file": "frontend/index.html",
+      "use": "HTML display fragment",
+      "text": "<span class=\"nl\">{{value}}</span>",
+      "placeholders": {
+        "value": {
+          "expression": "Array((compact?K:W27)+1).join(\"\\u00b7\")"
+        }
+      }
+    },
+    {
+      "key": "index.html.text.fd518a8",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": " · {{counts}}",
+      "placeholders": {
+        "counts": {
+          "expression": "parentSummary.counts"
+        }
+      }
+    },
+    {
+      "key": "index.html.the-figure-changed-while-preparing.292550d",
+      "file": "frontend/index.html",
+      "use": "User message",
+      "text": "The figure changed while preparing the export. Please export the current selection again.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.the-figure-fonts-did-not.4820279",
+      "file": "frontend/index.html",
+      "use": "User message",
+      "text": "The figure fonts did not finish loading.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.this-browser-cannot-verify-the.aecf552",
+      "file": "frontend/index.html",
+      "use": "User message",
+      "text": "This browser cannot verify the figure fonts.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.topology.f3dfff3",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "Topology",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.unable-to-load-for-export.5e21300",
+      "file": "frontend/index.html",
+      "use": "User message",
+      "text": "Unable to load {{family}} for export (HTTP {{status}}).",
+      "placeholders": {
+        "family": {
+          "expression": "face.family"
+        },
+        "status": {
+          "expression": "response.status"
+        }
+      }
+    },
+    {
+      "key": "index.html.uniprot-extracellular-transmembrane-and-intracellular.fc814e3",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "UniProt extracellular, transmembrane, and intracellular annotations.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.uniprot-humsavar-missense-variant-classifications.1b7b311",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "UniProt HumSAVAR missense variants, colored by clinical significance: (likely) pathogenic, uncertain significance, or (likely) benign.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.unique.3e1e779",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "placeholders": {},
+      "term": "no_matches"
+    },
+    {
+      "key": "index.html.unique.a67b351",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "placeholders": {},
+      "term": "no_matches"
+    },
+    {
+      "key": "index.html.uploaded-sequence-reference-annotation-tracks.d23674c",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "text": "Uploaded sequence · reference annotation tracks do not apply",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.variants.6a0a126",
+      "file": "frontend/index.html",
+      "use": "Display metadata field",
+      "text": "Variants",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.wait-for-the-selected-result.648b1ca",
+      "file": "frontend/index.html",
+      "use": "User message",
+      "text": "Wait for the selected result to finish, or cancel before exporting.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.window.aeacab4",
+      "file": "frontend/index.html",
+      "use": "Display textContent",
+      "placeholders": {},
+      "term": "window"
+    },
+    {
+      "key": "player.alphafold-per-residue-model-confidence.b9d3bfd",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "AlphaFold per-residue structural confidence (pLDDT), scored from 0 to 100.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.an-atlas-of-human.3352a78",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "An Atlas of Human",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.antigen-target-and-mimicry-parents.dda272b",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Antigen Target and Mimicry Parents plot",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.antigen-target-fasta.5886b38",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Antigen Target FASTA",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.assembly-context.3c19bc8",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Assembly context",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.benign.6fb4f18",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Benign\n        ",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.buried.c574eff",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Buried\n          ",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.choose-an-antigen-target-and.4c43620",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Choose an antigen target and a mimicry parent library to compare.",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.choose-fasta.1000ebb",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Choose FASTA",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.choose-fasta.4abefa0",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Choose FASTA",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.choose-mimicry-parent-library.b0af3b2",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Choose Mimicry Parent:",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.clear-inputs.903b0eb",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Clear inputs",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.clear.076030b",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Clear",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.clear.a7fd141",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Clear",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.cleavage.ca89c90",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Cleavage",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.color-theme.baf0f4a",
+      "file": "docs/public/navigation.html",
+      "use": "Player aria-label",
+      "text": "Color theme",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.compare-your-antigen-target-sequences.722761a",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Compare one antigen target with a served library or your own parent FASTA. The analysis runs in this browser.",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.current-figure.15d5c03",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Current figure:",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.current-selection-data.b8106d6",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Current selection data:",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.custom-fasta.8d6eaf7",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Custom FASTA",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.custom-minimum-identity.402ef58",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Custom minimum Core Identity",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.custom-sequence.ca7ec3a",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Custom sequence",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.dark-mode.71508c2",
+      "file": "docs/public/navigation.html",
+      "use": "Player aria-label",
+      "text": "Dark mode",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.dark-mode.eacd5ae",
+      "file": "docs/public/navigation.html",
+      "use": "Player data-tooltip",
+      "text": "Dark mode",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.density.cba3682",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Density",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.displayed-panel.5ac2734",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Displayed panel",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.download-a-png-of-the.925ccb4",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Download a PNG of the current figure. Playback pauses to capture the selected frame.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.download-all-matching-window-pairs.d8fd0ff",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Matching target–parent window pairs across the target at the selected core identity threshold.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.download-all-ranked-parent-records.7eaf481",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Ranked matching parents, with coverage and match counts for the current comparison.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.download-an-svg-of-the.29a13d1",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Download an SVG of the current figure with embedded fonts. Playback pauses to capture the selected frame.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.download-browser-local-custom-runs.cbb4599",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Download custom analyses retained in this browser session.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.download-the-complete-result-and.680433b",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "A ready-to-run pipeline ZIP with the current comparison’s sequences, settings and supporting record metadata.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.exact.ea7dad9",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "9/9 exact",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.example-and-recently-opened-antigen.aea4d63",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Example and recently opened Antigen Target to Mimicry Parent comparisons",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.example-comparison-sources.6e65ebf",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Example comparison sources",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.explore-the-atlas.724d1a2",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Explore the Atlas",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.exposed.9c5abe8",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Exposed\n        ",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.extracellular.eb2113e",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Extracellular\n          ",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.find-antigen-target.7f1f4a9",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Gene, accession, description, etc.",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.gene-accession-virus-or-exposure.c7c541c",
+      "file": "frontend/index.html",
+      "use": "Player placeholder",
+      "text": "Gene, accession, description, etc.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.high.5e137e1",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "High",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.high.65c7737",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "High",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.high.d8354f1",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "High",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.history.65b8a4b",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "History",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.hormones.86704a1",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": " hormones ",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.human-proteins.936962c",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": " human proteins ",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.human.de7554d",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Human",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.humsavar-clinical-missense-classifications-shown.8a76b8d",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "UniProt HumSAVAR missense variants: (likely) pathogenic, uncertain significance, or (likely) benign.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.intracellular.a55084f",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Intracellular\n          ",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.legacy-mimicry-parent-collection.721c2a4",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Legacy Mimicry Parent collection",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.light-mode.1cd2caf",
+      "file": "docs/public/navigation.html",
+      "use": "Player aria-label",
+      "text": "Light mode",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.light-mode.2249a42",
+      "file": "docs/public/navigation.html",
+      "use": "Player data-tooltip",
+      "text": "Light mode",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.local-runs.ccd18f0",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Local runs",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.low.592a452",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Low",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.low.6cde899",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Low",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.low.f24e0fc",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Low",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.lower-thresholds-include-more-matches.dfcd35b",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Lower thresholds include more matches and take longer to compute in this browser.",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.main-track-color-direction-lit.51db27f",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Main track color direction. Lit is standard: the hot end marks what is most shared. Unlit inverts it, so the hot end marks what nothing else covers at this threshold. Affects the main track and its exports only; every other lane keeps its own scale.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.main-track-color-direction-standard.91bf8a7",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Main track color direction: standard. Activate to invert.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.map-sequence-resemblance-across-human.6c208b5",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Map antigen-specific sequence resemblance within and across proteomes.",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.matches-csv.92fd5c2",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Matches CSV",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.mer-context.28ed164",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "27-mer context",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.mer-core.c6b3628",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "9-mer core",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.mimicry-parent-fasta.511387e",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Mimicry Parent FASTA",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.mimicryone-molecular-mimicry-atlas.b16a457",
+      "file": "frontend/index.html",
+      "use": "Browser tab title. Markers must wrap the title element, never appear inside its text.",
+      "text": "<title>MimicryMap | Molecular Mimicry Atlas</title>",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.min-identity.3022298",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "placeholders": {},
+      "kind": "html",
+      "term": "min_identity",
+      "suffix": " "
+    },
+    {
+      "key": "player.min-identity.ed38ba8",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "placeholders": {},
+      "kind": "html",
+      "term": "min_identity"
+    },
+    {
+      "key": "player.minimum-window-identity.7539b9f",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Minimum Core Identity",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.molecular-mimicry.6c45066",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Molecular Mimicry",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.motif-event-pagination.6c65b9f",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Core Window Matches pagination",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.motifs-at-this-window.cbc2efe",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "placeholders": {},
+      "kind": "html",
+      "term": "core_window_matches"
+    },
+    {
+      "key": "player.move-one-residue-toward-the.97c0695",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Move one residue toward the end of the target.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.move-one-residue-toward-the.eebbea5",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Move one residue toward the start of the target.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.my-antigen-merrlvvtlqclvllylapecggtdqcdnfpqmlrdlrdafsrvktffq-my-antigen.c9a0f91",
+      "file": "frontend/index.html",
+      "use": "Player placeholder",
+      "text": ">my_parent_1\nMERRLVVTLQCLVLLYLAPECGGTDQCDNFPQMLRDLRDAFSRVKTFFQ...\n>my_parent_2\nMSDEGPGTGPGNGLGEKGDTSGPEGSGGSGPQRRGGDNHGRGRGRGRGR...",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.my-target-mhssallcclvlltgvraspgqgtqsenscthfpgnlpnmlrdlrdafsrvktffqmkdqldnlllkeslledfkgy.c180dd3",
+      "file": "frontend/index.html",
+      "use": "Player placeholder",
+      "text": ">my_target_1\nMHSSALLCCLVLLTGVRASPGQGTQSENSCTHFPGNLPNMLRDLRDAFS...",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.next-window.054b914",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Next window",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.next.375eb00",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Next",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.non-human-exposures.9f2c4d9",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": " non-human exposures ",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.non-human.20151f0",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Non-human",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.one-source.d5c626a",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "One source",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.overall-mimicry-parents.7ef973a",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Overall Mimicry Parents ",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.page-of.e935d06",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "page 0 of 0",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.parent-lane-window-identity-dark.878ec39",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Core identity in the mimicry parent lanes: dark red at 30% opacity for 5/9, increasing to full opacity for 9/9. Density uses a separate scale.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.parents-csv.f0c199a",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Parents CSV",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.paste-one-or-more-fasta.ed5664a",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "One target per run; additional records are skipped.",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.paste-or.46f01d7",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Paste or",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.paste-or.d276ad3",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Paste or",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.pathogenic.646a97d",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Pathogenic\n          ",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.pause.6b012ba",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Pause",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.pepsickle-model-prediction-of-cleavage.e8cce4d",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Proteasomal cleavage probability from the pepsickle epitope model, scored from 0 to 1.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.play-pause.4e8cd9b",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Play / pause",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.playback.68431c6",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Playback",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.plddt.18d87ef",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "pLDDT",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.png.5bc0ccb",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "PNG",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.positional-events.49b3cc3",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "0 Window Pairs",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.predicted-solvent-exposure-from-relative.c927f0b",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Exposed residues have rSASA ≥0.25 in the selected monomer or dimer model.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.previous-window.1e2135e",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Previous window",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.previous.5b4bc70",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Previous",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.relative-solvent-accessible-surface-area.5f2273e",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Relative solvent-accessible surface area calculated with FreeSASA. Colors span 0–1; higher values share the maximum color.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.required-identical-positions-in-an.893a01d",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Required identical positions in an aligned nine-residue window. Every threshold runs on this device; the lower ones match more and take longer.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.required-identical-positions-in-each.2d58179",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Minimum number of identical positions required in each aligned nine-residue window.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.result-json.e2a9217",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Current Comparison",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.rsasa.aa31234",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "rSASA",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.run-analysis.5879189",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Run analysis",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.search-the-complete-protein-catalog.d98211a",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Search the complete protein catalog",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.sequence-matches-at-the-selected.397c6ca",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "Qualifying target–parent core matches at the selected target window.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.session.1c653a5",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Session:",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.shared-by.23d955f",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": " Matches",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.sort-window-matches.b9ce74e",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Sort window matches",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.sort.67e0d95",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Sort",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.sources.1880a57",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Sources",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.speed.82da045",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Speed",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.structure.7ccdedc",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Structure ",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.supply-antigen-target-sequences.be9c736",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Supply an Antigen Target Sequence:",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.surface.fcfad82",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Surface",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.svg.1638575",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "SVG",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.swipe-within-the-plot-or.4c51ce7",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Swipe within the plot or tables to see all columns. Tap a label for details.",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.the-nine-residue-comparison-window.00e5fa4",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "The nine-residue comparison window plus up to nine flanking residues on each side. Dots indicate positions beyond the sequence boundary.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.the-nine-residue-comparison-window.5439c61",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "The nine-residue comparison window, outlined in green.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.topology.1cfebe5",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Topology",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.tracks.2046eea",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Tracks",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.tracks.28601a7",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Tracks",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.transmembrane.31aaadc",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Transmembrane\n        ",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.uncertain.3cfe018",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Uncertain\n          ",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.uniprot-residue-topology-categories-shown.51d1aba",
+      "file": "frontend/index.html",
+      "use": "Player data-tooltip",
+      "text": "UniProt residue topology categories shown on the active topology track.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.unique.9edda36",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "placeholders": {},
+      "kind": "html",
+      "term": "no_matches"
+    },
+    {
+      "key": "player.variants.61cad6c",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Variants",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.view.8be4471",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "View",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.view.fffe9c5",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "View",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.viral-proteomes.61afa8b",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": " viral proteomes ",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "player.virus.5760d60",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Virus",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.window-identity.1ac492f",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "placeholders": {},
+      "kind": "html",
+      "term": "core_identity"
+    },
+    {
+      "key": "player.window-match-sorting.b207129",
+      "file": "frontend/index.html",
+      "use": "Player aria-label",
+      "text": "Window match sorting",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.your-custom-analysis.8702e18",
+      "file": "frontend/index.html",
+      "use": "Player/controls visible text",
+      "text": "Your Custom Analysis",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "method-figure.merged-mer-frequency-logo.cf4324d",
+      "file": "frontend/method-figure.js",
+      "use": "Figure/canvas label",
+      "text": "Merged 27-mer Frequency Logo",
+      "placeholders": {}
+    },
+    {
+      "key": "method-figure.missing-diagram-copy-value.6e54067",
+      "file": "frontend/method-figure.js",
+      "use": "User message",
+      "text": "Missing diagram copy value: {{key}}",
+      "placeholders": {
+        "key": {
+          "expression": "key"
+        }
+      }
+    },
+    {
+      "key": "method-figure.missing-public-diagram-copy.6b4b0f6",
+      "file": "frontend/method-figure.js",
+      "use": "User message",
+      "text": "Missing public diagram copy: {{key}}",
+      "placeholders": {
+        "key": {
+          "expression": "key"
+        }
+      }
+    },
+    {
+      "key": "method-figure.text.d66e716",
+      "file": "frontend/method-figure.js",
+      "use": "HTML display fragment",
+      "text": "<div class=\"method-step-copy\"><h4 id=\"{{id}}-title\">{{n}} · {{title}}</h4><div class=\"method-equation\" id=\"{{id2}}-formula\">{{equations}}</div><div class=\"method-caption\" id=\"{{id3}}-caption\"></div></div><div class=\"method-diagram\"><svg viewBox=\"0 0 400 {{height}}\" role=\"img\" aria-labelledby=\"{{id4}}-title\" aria-describedby=\"{{id5}}-formula {{id6}}-caption\">{{svg}}</svg></div>",
+      "placeholders": {
+        "id": {
+          "expression": "id"
+        },
+        "n": {
+          "expression": "n+1"
+        },
+        "title": {
+          "expression": "title"
+        },
+        "id2": {
+          "expression": "id"
+        },
+        "equations": {
+          "expression": "equations"
+        },
+        "id3": {
+          "expression": "id"
+        },
+        "height": {
+          "expression": "height"
+        },
+        "id4": {
+          "expression": "id"
+        },
+        "id5": {
+          "expression": "id"
+        },
+        "id6": {
+          "expression": "id"
+        },
+        "svg": {
+          "expression": "svg"
+        }
+      }
+    },
+    {
+      "key": "mimicryone-runtime.a-local-worker-request-is.eb30b1a",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "A local worker request is already running.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.antigen-target.20a1587",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display metadata field",
+      "placeholders": {},
+      "term": "antigen_target"
+    },
+    {
+      "key": "mimicryone-runtime.bearing-a-hit-at-complete.196d2a1",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display tooltip",
+      "text": "{{value}} {{entityLabel}} bearing a hit at ≥{{TH}}/9. Complete result; pagination does not change this total.",
+      "placeholders": {
+        "value": {
+          "expression": "nf(all.length)"
+        },
+        "entityLabel": {
+          "expression": "entityLabel"
+        },
+        "TH": {
+          "expression": "TH"
+        }
+      }
+    },
+    {
+      "key": "mimicryone-runtime.best-context.2e8a23c",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Player summary column label",
+      "placeholders": {},
+      "term": "best_context"
+    },
+    {
+      "key": "mimicryone-runtime.best-core.c3950ee",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Player summary column label",
+      "placeholders": {},
+      "term": "best_core"
+    },
+    {
+      "key": "mimicryone-runtime.cancel.32abb4b",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display textContent",
+      "text": "Cancel",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.cancel.3ed2bc7",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display textContent",
+      "text": "Cancel",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.canceled.3d2e54b",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Canceled.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.canceled.496755b",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Canceled.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.canceled.cb3705c",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Canceled.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.checking.44bf9fb",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display textContent",
+      "text": "Checking…",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.clear-inputs.e3972a3",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display textContent",
+      "text": "Clear inputs",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.clear-the-fasta-inputs-the.661ae39",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display tooltip",
+      "text": "Clear the FASTA inputs; the result currently shown in the main stage is retained.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.compact-input-page-references-a.b724c77",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Compact input page references a missing annotation.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.continue-locally.afb7421",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display textContent",
+      "text": "Continue locally",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.duplicate-record-in-the-input.feafa30",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Duplicate record in the input population download.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.export-module-unavailable-reload-the.acd6483",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "aria-label",
+      "text": "Export module unavailable; reload the page.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.full-export-canvas-exceeds-browser.86fd281",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Full export canvas exceeds browser limits",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.http.9f505cb",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "HTTP {{status}}",
+      "placeholders": {
+        "status": {
+          "expression": "response.status"
+        }
+      }
+    },
+    {
+      "key": "mimicryone-runtime.human.07b646b",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display textContent",
+      "text": "Human",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-identity-must-be-between.d5300d4",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported core identity must be between 5 and 9.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-native-assets-lack-an.4f3a1bf",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported native assets lack an exact coordinate-safe crosswalk.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-native-track-alias-does.a1d0ac3",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported native track alias does not match its exact crosswalk.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-portable-annotation-identity-is.30738e5",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported portable annotation identity is inconsistent with protein_id.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-positional-hit-is-malformed.de5b96f",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported positional hit is malformed.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-positional-source-is-absent.f14278a",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported positional source is absent from source_catalog.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-query-coordinate-is-outside.b464289",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported antigen target coordinate is outside the sequence.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-query-sequence-length-does.40e35ad",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported antigen target sequence length does not match protein.length.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-ranked-source-is-absent.0c4e951",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported ranked source is absent from source_catalog.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-result-does-not-expose.6070a05",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported result does not expose its active floor.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-result-lacks-its-query.dc04635",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported result lacks its antigen target identity or sequence.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-result-lacks-native-catalog.f96ba1d",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported result lacks native catalog, ranked, or positional arrays.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-source-catalog-must-contain.c8ee51f",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported source_catalog must contain exactly referenced result sources.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-source-catalog-must-retain.4d107ac",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported source catalog must retain full SeqID and header fields.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-source-coordinate-is-outside.739142b",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported mimicry parent coordinate is outside the sequence.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-source-protein-idx-values.a77d49a",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported source protein_idx values must be unique numbers.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-source-sequence-length-does.07ed8b1",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported mimicry parent sequence length does not match its catalog length.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.imported-structure-alias-does-not.6245994",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported structure alias does not match its exact crosswalk.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.input-download-stopped-http-no.bae0e1f",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Input download stopped (HTTP {{status}}). No partial result was produced.",
+      "placeholders": {
+        "status": {
+          "expression": "response.status"
+        }
+      }
+    },
+    {
+      "key": "mimicryone-runtime.input-pagination-did-not-advance.be822be",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Input pagination did not advance.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.inspect.eb8e002",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "aria-label",
+      "text": "Inspect {{value}}. {{value2}}",
+      "placeholders": {
+        "value": {
+          "expression": "rowNode.getAttribute(\"data-display\") || rowNode.getAttribute(\"data-protein\")"
+        },
+        "value2": {
+          "expression": "rowNode.getAttribute(\"data-tooltip\") || \"\""
+        }
+      }
+    },
+    {
+      "key": "mimicryone-runtime.mimicry-parent-source.eda3a8d",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "aria-label",
+      "text": "Mimicry Parent source",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.mimicry-parent.92a7f56",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display metadata field",
+      "placeholders": {},
+      "term": "mimicry_parent"
+    },
+    {
+      "key": "mimicryone-runtime.mimicryone-openresult-requires-schema.e05eb1a",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Imported results require schema {{RESULT_SCHEMA}}.",
+      "placeholders": {
+        "RESULT_SCHEMA": {
+          "expression": "RESULT_SCHEMA"
+        }
+      }
+    },
+    {
+      "key": "mimicryone-runtime.mimicryone-shared-protein-identity-resolver.523496f",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "MimicryMap shared protein identity resolver is unavailable.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.no-completed-comparison-is-available.bd86ee7",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "No completed comparison is available for export.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.no-matching-protein.1bf2e69",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "HTML display fragment",
+      "text": "<div class=\"catalogue-no-match\">No matching protein</div>",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.non-human.54df020",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display textContent",
+      "text": "Non-human",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.one-source.aba64b9",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display textContent",
+      "text": "One source",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.parent.fe290c2",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Player summary column label",
+      "text": "Parent %",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.previous-result-remains-visible.403abac",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "aria-label",
+      "text": "Previous result remains visible. {{value}}",
+      "placeholders": {
+        "value": {
+          "expression": "String(failureMessage)"
+        }
+      }
+    },
+    {
+      "key": "mimicryone-runtime.protein.f484089",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Player summary column label",
+      "placeholders": {},
+      "term": "mimicry_parent"
+    },
+    {
+      "key": "mimicryone-runtime.records-at.8438b33",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display textContent",
+      "text": "{{value}} {{unit}} at ≥{{TH}}/9 · {{value2}}",
+      "placeholders": {
+        "value": {
+          "expression": "nf(all.length)"
+        },
+        "TH": {
+          "expression": "TH"
+        },
+        "value2": {
+          "expression": "scopeLabel(result.parameters.source_scope)"
+        },
+        "unit": {
+          "expression": "/exact.*sequence.*group/i.test(entityLabel)?'Matching Exact-Sequence Groups':'Matching Records'"
+        }
+      }
+    },
+    {
+      "key": "mimicryone-runtime.run-analysis.8778e7d",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display textContent",
+      "text": "Run analysis",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.run-analysis.cad093c",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Display textContent",
+      "text": "Run analysis",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.selection-changed-while-loading-the.eca0356",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Selection changed while loading the structure; export again.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.structure-export-could-not-be.944f75d",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Structure export could not be loaded (HTTP {{status}}).",
+      "placeholders": {
+        "status": {
+          "expression": "response.status"
+        }
+      }
+    },
+    {
+      "key": "mimicryone-runtime.target.02b6624",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Player summary column label",
+      "text": "Target %",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.the-indexed-sequence-is-unavailable.3019fde",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "The indexed sequence is unavailable.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.the-input-endpoint-returned-a.5b580ff",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "The input endpoint returned a candidate shortlist, not the complete selected population. A complete lower-threshold result requires the full population.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.the-input-endpoint-returned-a.f4aa379",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "The input endpoint returned a different record than the one selected.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.the-input-population-download-is.f50d92a",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "The input population download is incomplete; no partial result was produced.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.the-input-scope-changed-while.bf60c1b",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "The input scope changed while downloading. Restart the request.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.the-selected-mimicry-parent-set.1f43e23",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "The selected mimicry parent set contains no sequences of at least 9 residues.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.the-selected-mimicry-parent-source.816b9be",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "The selected mimicry parent source contains no sequences.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.the-selected-target-record-could.884c942",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "The selected target record could not be read from this release.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.the-selected-target-sequence-was.444b922",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "The selected target sequence was not supplied by the input endpoint.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.unable-to-allocate-full-export.445fa70",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Unable to allocate Full export canvas",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.unexpected-local-input-schema.f82fb9f",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Unexpected local-input schema.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.unsupported-threshold-for-a-browser.a633781",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "Unsupported threshold for a browser-local run.",
+      "placeholders": {}
+    },
+    {
+      "key": "modification-symbols.acetylation.31f70be",
+      "file": "frontend/modification-symbols.js",
+      "use": "Modification legend label",
+      "text": "Acetylation",
+      "placeholders": {}
+    },
+    {
+      "key": "modification-symbols.adp-ribosylation.9e5d65c",
+      "file": "frontend/modification-symbols.js",
+      "use": "Modification legend label",
+      "text": "ADP-ribosylation",
+      "placeholders": {}
+    },
+    {
+      "key": "modification-symbols.amidation.f664680",
+      "file": "frontend/modification-symbols.js",
+      "use": "Modification legend label",
+      "text": "Amidation",
+      "placeholders": {}
+    },
+    {
+      "key": "modification-symbols.citrullination.49c7820",
+      "file": "frontend/modification-symbols.js",
+      "use": "Modification legend label",
+      "text": "Citrullination",
+      "placeholders": {}
+    },
+    {
+      "key": "modification-symbols.hydroxylation.82a28e8",
+      "file": "frontend/modification-symbols.js",
+      "use": "Modification legend label",
+      "text": "Hydroxylation",
+      "placeholders": {}
+    },
+    {
+      "key": "modification-symbols.methylation.9caaf6b",
+      "file": "frontend/modification-symbols.js",
+      "use": "Modification legend label",
+      "text": "Methylation",
+      "placeholders": {}
+    },
+    {
+      "key": "modification-symbols.multiple-annotations-alternatives.dbe1b83",
+      "file": "frontend/modification-symbols.js",
+      "use": "Display metadata field",
+      "text": "Multiple annotations / alternatives",
+      "placeholders": {}
+    },
+    {
+      "key": "modification-symbols.other-acylation.b6a883e",
+      "file": "frontend/modification-symbols.js",
+      "use": "Modification legend label",
+      "text": "Other acylation",
+      "placeholders": {}
+    },
+    {
+      "key": "modification-symbols.phosphorylation.9ee29e5",
+      "file": "frontend/modification-symbols.js",
+      "use": "Modification legend label",
+      "text": "Phosphorylation",
+      "placeholders": {}
+    },
+    {
+      "key": "modification-symbols.sulfation.722aa5b",
+      "file": "frontend/modification-symbols.js",
+      "use": "Modification legend label",
+      "text": "Sulfation",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.all-matches-at-the-current.e15bf8a",
+      "file": "frontend/publication-exports.js",
+      "use": "data-tooltip",
+      "text": "Matching target–parent window pairs at the selected target window and core identity threshold.",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.all-matches-csv.272edf4",
+      "file": "frontend/publication-exports.js",
+      "use": "Display textContent",
+      "text": "All matches CSV",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.all-supported-figure-panels-as.f7071e0",
+      "file": "frontend/publication-exports.js",
+      "use": "data-tooltip",
+      "text": "All supported figure panels as SVG and PNG, with highlighted and unhighlighted target tracks and loaded structures.",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.complete-reproduction-mappings-were-not.08d225d",
+      "file": "frontend/publication-exports.js",
+      "use": "User message",
+      "text": "Complete reproduction mappings were not provided.",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.conflicting-reproduction-parent-metadata.81ec06e",
+      "file": "frontend/publication-exports.js",
+      "use": "User message",
+      "text": "Conflicting reproduction parent metadata.",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.current-window-slice-csv.82bffee",
+      "file": "frontend/publication-exports.js",
+      "use": "Display textContent",
+      "text": "Current window slice CSV",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.data-matches-csvselected-window-csvparents.be4cd00",
+      "file": "frontend/publication-exports.js",
+      "use": "HTML display fragment",
+      "text": "<span class=\"rt\">Data:</span><div class=\"seg\"><button id=\"expWin\" type=\"button\" data-tooltip=\"Matching target–parent window pairs across the target at the selected core identity threshold.\">Matches CSV</button><button id=\"expSite\" type=\"button\" data-tooltip=\"Matching target–parent window pairs at the selected target window and core identity threshold.\">Selected window CSV</button><button id=\"expRank\" type=\"button\" data-tooltip=\"Ranked matching parents, with coverage and match counts for the current comparison.\">Parents CSV</button><button id=\"expSummary\" type=\"button\" data-tooltip=\"One target row with coverage, unique-window regions and partner lists for the selected comparison and identity threshold.\">Summary CSV</button></div><span class=\"rt\">Code:</span><div class=\"seg\"><button id=\"reproBtn\" type=\"button\" data-tooltip=\"A ready-to-run pipeline ZIP with the current comparison’s sequences, settings and supporting record metadata.\">Current Comparison</button></div><span class=\"rt\">Figure:</span><select id=\"exportPanel\" aria-label=\"Figure panel\"><option value=\"combined\">Target + tables</option><option value=\"target\">Target tracks</option><option value=\"window\">Window matches</option><option value=\"parents\">Overall parents</option><option value=\"structure\">Structure</option></select><label class=\"export-highlight\"><input id=\"exportHighlight\" type=\"checkbox\" checked> Site highlight</label><label>Rows <select id=\"exportRows\" aria-label=\"Figure table rows\"><option>5</option><option selected>10</option><option>20</option><option>50</option></select></label><div class=\"seg\"><button id=\"expSvg\" type=\"button\">SVG</button><button id=\"expPng\" type=\"button\">PNG</button></div><button id=\"exportCancel\" type=\"button\" data-tooltip=\"Cancel preparation of this download.\" hidden>Cancel export</button><span id=\"exportStatus\" role=\"status\" aria-live=\"polite\" aria-atomic=\"true\" hidden><span>Preparing<span class=\"export-dots\" aria-hidden=\"true\"><span>.</span><span>.</span><span>.</span></span></span></span>",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.duplicate-input-page-record.b6fabb6",
+      "file": "frontend/publication-exports.js",
+      "use": "User message",
+      "text": "Duplicate input page record.",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.export-input-unavailable-http.2c0918c",
+      "file": "frontend/publication-exports.js",
+      "use": "User message",
+      "text": "Export input unavailable (HTTP {{status}}).",
+      "placeholders": {
+        "status": {
+          "expression": "r.status"
+        }
+      }
+    },
+    {
+      "key": "publication-exports.figure-bundle.0170c12",
+      "file": "frontend/publication-exports.js",
+      "use": "Display textContent",
+      "text": "Figure bundle",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.input-endpoint-returned-a-hit.20fe549",
+      "file": "frontend/publication-exports.js",
+      "use": "User message",
+      "text": "Input endpoint returned a hit shortlist, not the full population.",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.input-pagination-did-not-advance.4f5514e",
+      "file": "frontend/publication-exports.js",
+      "use": "User message",
+      "text": "Input pagination did not advance.",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.input-scope-changed-while-downloading.2b628df",
+      "file": "frontend/publication-exports.js",
+      "use": "User message",
+      "text": "Input scope changed while downloading.",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.png-encoding-failed.3397749",
+      "file": "frontend/publication-exports.js",
+      "use": "User message",
+      "text": "PNG encoding failed.",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.reproduction-mappings-do-not-cover.2b6cb09",
+      "file": "frontend/publication-exports.js",
+      "use": "User message",
+      "text": "Reproduction mappings do not cover the downloaded population.",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.reproduction-query-mapping-changed-during.16c2c83",
+      "file": "frontend/publication-exports.js",
+      "use": "User message",
+      "text": "Reproduction query mapping changed during download.",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.the-parent-population-download-is.eaf3f6d",
+      "file": "frontend/publication-exports.js",
+      "use": "User message",
+      "text": "The parent population download is incomplete.",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.this-bundle-exceeds-the-zip.8ac81e7",
+      "file": "frontend/publication-exports.js",
+      "use": "User message",
+      "text": "This bundle exceeds the ZIP size supported in this browser. Export smaller scopes.",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.this-comparison-does-not-retain.fc63d63",
+      "file": "frontend/publication-exports.js",
+      "use": "User message",
+      "text": "This comparison does not retain a complete portable parent population. CSV and figure exports remain available; no incomplete pipeline package was produced.",
+      "placeholders": {}
+    },
+    {
+      "key": "publication-exports.unable-to-allocate-png-canvas.4300d97",
+      "file": "frontend/publication-exports.js",
+      "use": "User message",
+      "text": "Unable to allocate PNG canvas",
+      "placeholders": {}
+    },
+    {
+      "key": "release-provenance.exposure-counts-do-not-match.5feed13",
+      "file": "frontend/release-provenance.js",
+      "use": "User message",
+      "text": "Exposure counts do not match the running release",
+      "placeholders": {}
+    },
+    {
+      "key": "release-provenance.no-source-version-is-asserted.b651bcf",
+      "file": "frontend/release-provenance.js",
+      "use": "Display textContent",
+      "text": "{{message}}. No source version is asserted for this session.",
+      "placeholders": {
+        "message": {
+          "expression": "error.message"
+        }
+      }
+    },
+    {
+      "key": "release-provenance.source-counts-do-not-match.7ea6685",
+      "file": "frontend/release-provenance.js",
+      "use": "User message",
+      "text": "Source counts do not match the running release",
+      "placeholders": {}
+    },
+    {
+      "key": "release-provenance.source-information-does-not-match.1146e90",
+      "file": "frontend/release-provenance.js",
+      "use": "User message",
+      "text": "Source information does not match the running release",
+      "placeholders": {}
+    },
+    {
+      "key": "release-provenance.source-information-unavailable.b3827f2",
+      "file": "frontend/release-provenance.js",
+      "use": "User message",
+      "text": "Source information unavailable",
+      "placeholders": {}
+    },
+    {
+      "key": "release-provenance.source-membership-counts-do-not.f60946d",
+      "file": "frontend/release-provenance.js",
+      "use": "User message",
+      "text": "Source membership counts do not match the running release",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.a-hit-bearing-parent-has.b524e4a",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "User message",
+      "text": "A hit-bearing parent has no positional export data.",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.a-loaded-structure-is-required.4a89902",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "User message",
+      "text": "A loaded structure is required for this panel.",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.a-presentation-cache-cannot-be.3ca3bd0",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "User message",
+      "text": "A presentation cache cannot be exported as complete data.",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.aa-window.e11eeef",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure heading",
+      "text": "{{length}} AA · {{windows}} Window{{value}} · ≥{{floor}}/9 · {{value2}}",
+      "placeholders": {
+        "length": {
+          "expression": "p.sequence.length"
+        },
+        "windows": {
+          "expression": "windows"
+        },
+        "value": {
+          "expression": "windows===1?'':'s'"
+        },
+        "floor": {
+          "expression": "snapshot.floor"
+        },
+        "value2": {
+          "expression": "snapshot.scope_label||snapshot.result.parameters.source_scope_label||snapshot.result.parameters.source_scope"
+        }
+      }
+    },
+    {
+      "key": "export-core.antigen-target-context-core.23d98fb",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure heading",
+      "text": "Antigen Target Context {{range_start}}–{{range_end}} · Core {{core_start}}–{{core_end}}",
+      "placeholders": {
+        "range_start": {
+          "expression": "crop.range_start"
+        },
+        "range_end": {
+          "expression": "crop.range_end"
+        },
+        "core_start": {
+          "expression": "crop.core_start"
+        },
+        "core_end": {
+          "expression": "crop.core_end"
+        }
+      }
+    },
+    {
+      "key": "export-core.antigen-target-context.4d3b42e",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure/canvas label",
+      "text": "Antigen Target Context",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.antigen-target-residues-of.0004f63",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure heading",
+      "text": "Antigen Target Residues {{value}}–{{to}} of {{length}}",
+      "placeholders": {
+        "value": {
+          "expression": "from+1"
+        },
+        "to": {
+          "expression": "to"
+        },
+        "length": {
+          "expression": "p.sequence.length"
+        }
+      }
+    },
+    {
+      "key": "export-core.best-context.1dc6863",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Export figure column label",
+      "placeholders": {},
+      "term": "best_context"
+    },
+    {
+      "key": "export-core.best-core.d894396",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Export figure column label",
+      "placeholders": {},
+      "term": "best_core"
+    },
+    {
+      "key": "export-core.blosum.85331be",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "BLOSUM62",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.c-terminal.c97c523",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "C-Terminal",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.context.261cea0",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "Context",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.context.73798b4",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "Context",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.context.adb61a2",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "Context",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.context.e8e0fa1",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "Context",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.core-window-matches-of.361dae1",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure heading",
+      "text": "Core Window Matches · {{selected_start}}–{{value}} · {{value2}} of {{length}} {{value3}}",
+      "placeholders": {
+        "selected_start": {
+          "expression": "snapshot.viewState.selected_start"
+        },
+        "value": {
+          "expression": "snapshot.viewState.selected_start+8"
+        },
+        "value2": {
+          "expression": "offset?'Rows '+(offset+1)+'–'+Math.min(offset+s.rows,site.length):'Top '+Math.min(s.rows,site.length)"
+        },
+        "length": {
+          "expression": "site.length"
+        },
+        "value3": {
+          "expression": "site.length===1?'Window Pair':'Window Pairs'"
+        }
+      }
+    },
+    {
+      "key": "export-core.core.5250cd7",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "Core",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.core.6e1abcd",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "Core",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.duplicate-coordinate-pair.8262412",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "User message",
+      "text": "Duplicate coordinate pair: {{protein_id}} {{key}}",
+      "placeholders": {
+        "protein_id": {
+          "expression": "source.protein_id"
+        },
+        "key": {
+          "expression": "key"
+        }
+      }
+    },
+    {
+      "key": "export-core.end.a5519f7",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "End",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.export-completeness-check-failed-for.b8ab989",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "User message",
+      "text": "Export completeness check failed for {{protein_id}}: positional events disagree with summary.",
+      "placeholders": {
+        "protein_id": {
+          "expression": "source.protein_id"
+        }
+      }
+    },
+    {
+      "key": "export-core.identity.d704868",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "Identity",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.identity.d92d3a9",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "Identity",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.invalid-event-coordinates.9f0cfc1",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "User message",
+      "text": "Invalid event coordinates.",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.mer-identity.20cc708",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Export figure column label",
+      "text": "9-mer Identity",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.mer-identity.449a45d",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Export figure column label",
+      "text": "27-mer Identity",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.mer.03ccde0",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "27-mer",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.mer.58d4200",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "9-mer",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.mer.cf23f0f",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "27-mer",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.mer.d7b985b",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "9-mer",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.mimicry-parent-core-disagrees-with.5869b78",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "User message",
+      "text": "Mimicry parent core disagrees with its sequence coordinates.",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.mimicry-parent.0efa6b7",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure/canvas label",
+      "placeholders": {},
+      "term": "mimicry_parent"
+    },
+    {
+      "key": "export-core.mimicry-parent.10e00b6",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure/canvas label",
+      "placeholders": {},
+      "term": "mimicry_parent"
+    },
+    {
+      "key": "export-core.missing-or-duplicate-parent-identity.b5f13e1",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "User message",
+      "text": "Missing or duplicate parent identity in export.",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.n-terminal.7f32ef1",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "N-Terminal",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.no-qualifying-events-at-this.fca5427",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure/canvas label",
+      "text": "No qualifying events at this window.",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.overall-mimicry-parents-of.6ce2e73",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure heading",
+      "text": "Overall Mimicry Parents · {{value}} of {{length}} {{value2}}",
+      "placeholders": {
+        "value": {
+          "expression": "offset?'Rows '+(offset+1)+'–'+Math.min(offset+s.rows,data.parents.length):'Top '+Math.min(s.rows,data.parents.length)"
+        },
+        "length": {
+          "expression": "data.parents.length"
+        },
+        "value2": {
+          "expression": "/exact.*sequence.*group/i.test(snapshot.result.parameters.source_entity_label||'')?(data.parents.length===1?'Matching Exact-Sequence Group':'Matching Exact-Sequence Groups'):(data.parents.length===1?'Matching Record':'Matching Records')"
+        }
+      }
+    },
+    {
+      "key": "export-core.parent-sequence-is-missing-cannot.be84beb",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "User message",
+      "text": "Parent sequence is missing; cannot export the displayed peptide context.",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.parent.79bee53",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Export figure column label",
+      "text": "Parent",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.residue-colors-and-active-annotation.46f4721",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure heading",
+      "text": "Residue colors and active annotation tracks match the captured player. {{value}}",
+      "placeholders": {
+        "value": {
+          "expression": "s.highlight?'Green: selected 9-mer core; blue: flanking context.':''"
+        }
+      }
+    },
+    {
+      "key": "export-core.residues.2ae8324",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Export figure column label",
+      "text": "Residues (%)",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.residues.39ec345",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Export figure column label",
+      "text": "Residues (%)",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.start.e4a2fd5",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure column heading",
+      "text": "Start",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.target.6628056",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Export figure column label",
+      "text": "Target",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.text.14dde21",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure/canvas label",
+      "text": "{{best_identity}}/9",
+      "placeholders": {
+        "best_identity": {
+          "expression": "row.best_identity"
+        }
+      }
+    },
+    {
+      "key": "export-core.text.5f0727e",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure/canvas label",
+      "text": "{{contextMatches}}/27",
+      "placeholders": {
+        "contextMatches": {
+          "expression": "contextMatches"
+        }
+      }
+    },
+    {
+      "key": "export-core.text.acc1f7b",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure/canvas label",
+      "text": "{{identity}}/9",
+      "placeholders": {
+        "identity": {
+          "expression": "row.identity"
+        }
+      }
+    },
+    {
+      "key": "export-core.text.bc716f4",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure/canvas label",
+      "text": "{{identity}}/27",
+      "placeholders": {
+        "identity": {
+          "expression": "best.identity"
+        }
+      }
+    },
+    {
+      "key": "export-core.text.edf9784",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "Figure/canvas label",
+      "text": "{{value}}–{{end}}",
+      "placeholders": {
+        "value": {
+          "expression": "begin+1"
+        },
+        "end": {
+          "expression": "end"
+        }
+      }
+    },
+    {
+      "key": "export-core.the-requested-threshold-is-not.3c667ac",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "User message",
+      "text": "The requested threshold is not available in this result.",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.the-server-did-not-certify.5ec10b7",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "User message",
+      "text": "The server did not certify complete positional data.",
+      "placeholders": {}
+    },
+    {
+      "key": "export-core.the-server-event-total-disagrees.0f8dcc9",
+      "file": "frontend/reproduce/export-core.js",
+      "use": "User message",
+      "text": "The server event total disagrees with the received payload.",
+      "placeholders": {}
+    },
+    {
+      "key": "ranking.best-context-identity.4d7055a",
+      "file": "frontend/reproduce/ranking.js",
+      "use": "Ranking label",
+      "text": "Best Context Identity",
+      "placeholders": {}
+    },
+    {
+      "key": "ranking.best-core-identity.7f98c94",
+      "file": "frontend/reproduce/ranking.js",
+      "use": "Ranking label",
+      "text": "Best Core Identity",
+      "placeholders": {}
+    },
+    {
+      "key": "ranking.context-blosum.809bf49",
+      "file": "frontend/reproduce/ranking.js",
+      "use": "Ranking label",
+      "placeholders": {},
+      "term": "context_blosum62"
+    },
+    {
+      "key": "ranking.context-identity.65c0e81",
+      "file": "frontend/reproduce/ranking.js",
+      "use": "Ranking label",
+      "placeholders": {},
+      "term": "context_identity"
+    },
+    {
+      "key": "ranking.core-identity.ea7473a",
+      "file": "frontend/reproduce/ranking.js",
+      "use": "Ranking label",
+      "placeholders": {},
+      "term": "core_identity"
+    },
+    {
+      "key": "ranking.parent-coverage.6a111c2",
+      "file": "frontend/reproduce/ranking.js",
+      "use": "Ranking label",
+      "placeholders": {},
+      "term": "parent_coverage"
+    },
+    {
+      "key": "ranking.protein.8b7e452",
+      "file": "frontend/reproduce/ranking.js",
+      "use": "Ranking label",
+      "placeholders": {},
+      "term": "mimicry_parent"
+    },
+    {
+      "key": "ranking.target-coverage.2dd5f17",
+      "file": "frontend/reproduce/ranking.js",
+      "use": "Ranking label",
+      "placeholders": {},
+      "term": "target_coverage"
+    },
+    {
+      "key": "result-extent.a-complete-native-result-is.d48e716",
+      "file": "frontend/result-extent.js",
+      "use": "User message",
+      "text": "A complete native result is required; a presentation subset cannot supply these figures.",
+      "placeholders": {}
+    },
+    {
+      "key": "result-extent.against.bbf1e44",
+      "file": "frontend/result-extent.js",
+      "use": "Figure column heading",
+      "text": "{{target_label}} vs {{parent_scope}} · Matching Parents",
+      "placeholders": {
+        "target_label": {
+          "expression": "s.target_label"
+        },
+        "parent_scope": {
+          "expression": "s.parent_scope"
+        }
+      }
+    },
+    {
+      "key": "result-extent.complete-positional-columns-are-required.4583aed",
+      "file": "frontend/result-extent.js",
+      "use": "User message",
+      "text": "Complete positional columns are required.",
+      "placeholders": {}
+    },
+    {
+      "key": "result-extent.conflicting-duplicate-event.fde8766",
+      "file": "frontend/result-extent.js",
+      "use": "User message",
+      "text": "Conflicting duplicate event.",
+      "placeholders": {}
+    },
+    {
+      "key": "result-extent.duplicate-source-catalog-identity.80ad5a1",
+      "file": "frontend/result-extent.js",
+      "use": "User message",
+      "text": "Duplicate source catalog identity.",
+      "placeholders": {}
+    },
+    {
+      "key": "result-extent.invalid-complete-threshold-declaration.4f53e16",
+      "file": "frontend/result-extent.js",
+      "use": "User message",
+      "text": "Invalid complete-threshold declaration.",
+      "placeholders": {}
+    },
+    {
+      "key": "result-extent.invalid-positional-event-no-summary.0d3c4a2",
+      "file": "frontend/result-extent.js",
+      "use": "User message",
+      "text": "Invalid positional event; no summary was published.",
+      "placeholders": {}
+    },
+    {
+      "key": "result-extent.matched-complete-current-target-result.f6ce301",
+      "file": "frontend/result-extent.js",
+      "use": "Display textContent",
+      "text": "{{target}} → {{scope}} · ≥{{floor}}/9",
+      "placeholders": {
+        "target": {
+          "expression": "summary.target_label"
+        },
+        "scope": {
+          "expression": "summary.parent_scope"
+        },
+        "floor": {
+          "expression": "summary.floor"
+        }
+      }
+    },
+    {
+      "key": "result-extent.mimicry-parent-residues-covered.cb5aa06",
+      "file": "frontend/result-extent.js",
+      "use": "Display textContent",
+      "text": "Mimicry Parent Coverage (%)",
+      "placeholders": {}
+    },
+    {
+      "key": "result-extent.missing-parent-identity-or-denominator.e629308",
+      "file": "frontend/result-extent.js",
+      "use": "User message",
+      "text": "Missing parent identity or denominator.",
+      "placeholders": {}
+    },
+    {
+      "key": "result-extent.target-window-coverage-is-unavailable.104fa75",
+      "file": "frontend/result-extent.js",
+      "use": "User message",
+      "text": "Target window coverage is unavailable for this record.",
+      "placeholders": {}
+    },
+    {
+      "key": "result-extent.the-selected-threshold-is-not.a65b781",
+      "file": "frontend/result-extent.js",
+      "use": "User message",
+      "text": "The selected threshold is not complete in this result.",
+      "placeholders": {}
+    },
+    {
+      "key": "result-extent.unrecognized-positional-column-schema.02c84aa",
+      "file": "frontend/result-extent.js",
+      "use": "User message",
+      "text": "Unrecognized positional column schema.",
+      "placeholders": {}
+    },
+    {
+      "key": "result-extent.updating-target-summary.630bbf4",
+      "file": "frontend/result-extent.js",
+      "use": "Display textContent",
+      "text": "Updating target summary…",
+      "placeholders": {}
+    },
+    {
+      "key": "source-licenses.reviewed-human-sequences-other-sequence.51edf1e",
+      "file": "frontend/source-licenses.js",
+      "use": "Display textContent",
+      "text": "Reviewed Human sequences: {{uniprot_release}} · {{uniprot_release_date}}.",
+      "placeholders": {
+        "uniprot_release": {
+          "expression": "provenance.human.uniprot_release"
+        },
+        "uniprot_release_date": {
+          "expression": "provenance.human.uniprot_release_date"
+        }
+      }
+    },
+    {
+      "key": "ranking.coverage-definition",
+      "file": "frontend/reproduce/ranking.js",
+      "use": "Coverage tooltip definition",
+      "text": "Target % and Parent % are covered-residue percentages in the antigen target and mimicry parent, respectively: union of qualifying core residues divided by eligible record length. Overlaps count once; context flanks are excluded.",
+      "placeholders": {}
+    },
+    {
+      "key": "player.custom-target-policy",
+      "file": "frontend/index.html",
+      "use": "Antigen Target input tooltip",
+      "text": "One target per browser run. If the pasted text or uploaded file contains multiple FASTA records, only the first record in input order is analyzed. Additional targets are skipped. An invalid first record stops the run; a later record is never substituted. Parent FASTA files may contain many records. Use a local package for multiple targets or larger runs.",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.custom-local-downloads",
+      "file": "frontend/index.html",
+      "use": "Local pipeline download links",
+      "text": "<span>Multiple targets or larger runs:</span> <a href=\"/reproduce/mimicrymap-pipeline.zip\" download data-tooltip=\"Local pipeline with HEPACAM and EBNA1 staged in two editable FASTA files. Run the example, or replace the inputs and settings.\">Pipeline ZIP</a> <span aria-hidden=\"true\">·</span> <a href=\"https://github.com/seromics/mimicrymap\" target=\"_blank\" rel=\"noopener\">GitHub</a>",
+      "placeholders": {},
+      "kind": "html"
+    },
+    {
+      "key": "mimicryone-runtime.first-target-ready",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Browser first-Target validation notice",
+      "text": "{{target}}: first target ready · {{ignored}} additional skipped",
+      "placeholders": {
+        "target": {
+          "expression": "parsed.records[0].protein_id"
+        },
+        "ignored": {
+          "expression": "parsed.ignoredRecords"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.title-collection",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure title",
+      "text": "Human Residue Coverage vs Viral Proteome Length",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.title-coverage",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure title",
+      "text": "Human Target Coverage by Genome Position",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.sequence-download-label",
+      "file": "frontend/atlas-figures.js",
+      "use": "Viral proteome sequence download",
+      "text": "Selected virus FASTA",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.sequence-download-tooltip",
+      "file": "frontend/atlas-figures.js",
+      "use": "Viral proteome sequence download",
+      "text": "The {{proteins}} {{label}} proteins these figures were computed from, {{residues}} residues, as FASTA from release {{release}}.",
+      "placeholders": {
+        "proteins": {
+          "expression": "nf(staged.proteins)"
+        },
+        "label": {
+          "expression": "staged.label"
+        },
+        "residues": {
+          "expression": "nf(staged.residues)"
+        },
+        "release": {
+          "expression": "SEQUENCES.release_id"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.coverage-source-label",
+      "file": "frontend/atlas-figures.js",
+      "use": "Chromosome figure viral-protein filter",
+      "placeholders": {},
+      "term": "viral_parent"
+    },
+    {
+      "key": "atlas-figures.coverage-source-control",
+      "file": "frontend/atlas-figures.js",
+      "use": "Chromosome figure viral-protein filter",
+      "text": "Viral Parent for This Figure",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.coverage-source-pooled",
+      "file": "frontend/atlas-figures.js",
+      "use": "Chromosome figure viral-protein filter",
+      "text": "All Viral Parents (Pooled)",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.coverage-scope-pooled-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Chromosome figure export value",
+      "text": "All Viral Parents (Pooled)",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.title-ladder",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure title",
+      "text": "Human Protein Reach and Residue Coverage",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.title-spread",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure title",
+      "text": "Human Protein Reach by Individual Viral Parents",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.title-spread-coverage",
+      "file": "frontend/atlas-figures.js",
+      "use": "Atlas figure title",
+      "text": "Human Residue Coverage by Individual Viral Parents",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.spread-metric-control",
+      "file": "frontend/atlas-figures.js",
+      "use": "Individual viral protein measure control",
+      "text": "Individual Viral Parent Measure",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.spread-reach-button",
+      "file": "frontend/atlas-figures.js",
+      "use": "Individual viral protein measure control",
+      "text": "Reach",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.spread-coverage-button",
+      "file": "frontend/atlas-figures.js",
+      "use": "Individual viral protein measure control",
+      "text": "Residue Coverage",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.title-sources",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure title",
+      "text": "Viral Parents Ranked by Human Protein Reach",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.title-targets",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure title",
+      "text": "Human Target–Viral Parent Pairs Ranked by Target Residue Coverage",
+      "placeholders": {}
+    },
+    {
+      "key": "player.history-previous",
+      "file": "frontend/index.html",
+      "use": "History navigation accessible label",
+      "text": "Previous history items",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.history-next",
+      "file": "frontend/index.html",
+      "use": "History navigation accessible label",
+      "text": "Next history items",
+      "placeholders": {},
+      "kind": "attribute"
+    },
+    {
+      "key": "player.history-exposures",
+      "file": "frontend/index.html",
+      "use": "Compact History parent label",
+      "text": "Exposures",
+      "placeholders": {}
+    },
+    {
+      "key": "player.history-human",
+      "file": "frontend/index.html",
+      "use": "Compact History parent label",
+      "text": "Human",
+      "placeholders": {}
+    },
+    {
+      "key": "source-licenses.iedb-download-date",
+      "file": "frontend/source-licenses.js",
+      "use": "Source download date",
+      "text": "Downloaded September 1, 2026",
+      "placeholders": {}
+    },
+    {
+      "key": "source-licenses.iedb-selection",
+      "file": "frontend/source-licenses.js",
+      "use": "Source selection and filtering",
+      "text": "Human-exposure positive protein antigens; Primates and non-protein entries excluded.",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.input-records-prepared",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Input preparation progress",
+      "text": "Loading records in this browser · {{count}} ready · Cancel is safe.",
+      "placeholders": {
+        "count": {
+          "expression": "nf(total)"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.title-collection-reach",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Human Protein Reach vs Viral Proteome Length",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-reach-axis",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Human Protein Reach",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-coverage-axis",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Human Residue Coverage",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-point-measures",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "At ≥{{value1}}/9: human protein reach {{value2}}%; human residue coverage {{value3}}%.",
+      "placeholders": {
+        "value1": {
+          "expression": "floor"
+        },
+        "value2": {
+          "expression": "pct(r.reach)"
+        },
+        "value3": {
+          "expression": "pct(r.coverage)"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.collection-point-denominators",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "{{value1}} eligible human proteins · {{value2}} human residues",
+      "placeholders": {
+        "value1": {
+          "expression": "nf(r.eligible)"
+        },
+        "value2": {
+          "expression": "nf(r.total)"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.chromosome-reach-count",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "{{value1}} Reached",
+      "placeholders": {
+        "value1": {
+          "expression": "nf(reached)"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.chromosome-reach-tooltip",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Human Protein Reach: {{value1}} of {{value2}} human targets ({{value3}}%) at ≥{{value4}}/9. Track height shows human target coverage.",
+      "placeholders": {
+        "value1": {
+          "expression": "nf(reached)"
+        },
+        "value2": {
+          "expression": "nf(pts.length)"
+        },
+        "value3": {
+          "expression": "pct(pts.length ? 100 * reached / pts.length : 0)"
+        },
+        "value4": {
+          "expression": "key"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.summary-svg-title",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Human Protein Reach and Residue Coverage | {{value1}}",
+      "placeholders": {
+        "value1": {
+          "expression": "PROTEOME"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.summary-universe",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "{{value1}} Eligible Human Targets",
+      "placeholders": {
+        "value1": {
+          "expression": "nf(SURFACES.eligible_records)"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.summary-threshold",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Core Identity\nThreshold",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.summary-reached",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Human Targets\nReached",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.summary-covered",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Human Residues\nCovered",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.summary-coverage-tooltip",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Human residues covered: {{value1}} / {{value2}} ({{value3}}%). Median coverage among reached human proteins: {{value4}}.",
+      "placeholders": {
+        "value1": {
+          "expression": "nf(r.covered)"
+        },
+        "value2": {
+          "expression": "nf(r.residues)"
+        },
+        "value3": {
+          "expression": "pct(r.coverage_pct)"
+        },
+        "value4": {
+          "expression": "r.median_matched_coverage == null ? \"not applicable (no proteins reached)\" : pct(r.median_matched_coverage) + \"%\""
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.summary-median-reach",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Median Reach per\nViral Parent",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.summary-median-matched",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Median Coverage\nAmong Reached",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.summary-source-proteins",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Viral Parents\nwith Matches",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-metric-control",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Collection Plot Measure",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-reach-button",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Reach",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-coverage-button",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Residue Coverage",
+      "placeholders": {}
+    },
+    {
+      "key": "mimicryone-runtime.input-package-unavailable",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "User message",
+      "text": "The prepared inputs for this selection are unavailable or incompatible. Please refresh and try again; if this continues, the site needs its input packages updated.",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.human-target-coverage-label",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure label",
+      "placeholders": {},
+      "term": "human_target_coverage"
+    },
+    {
+      "key": "atlas-figures.viral-parent-column",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure label",
+      "placeholders": {},
+      "term": "viral_parent"
+    },
+    {
+      "key": "atlas-figures.human-target-column",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure label",
+      "placeholders": {},
+      "term": "human_target"
+    },
+    {
+      "key": "atlas-figures.viral-parent-length-column",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure label",
+      "placeholders": {},
+      "term": "viral_parent",
+      "suffix": "\nLength"
+    },
+    {
+      "key": "atlas-figures.human-target-length-column",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure label",
+      "placeholders": {},
+      "term": "human_target",
+      "suffix": "\nLength"
+    },
+    {
+      "key": "atlas-figures.human-protein-reach-label",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure label",
+      "placeholders": {},
+      "term": "human_protein_reach"
+    },
+    {
+      "key": "atlas-figures.spread-coverage-unit",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure label",
+      "placeholders": {},
+      "term": "human_residue_coverage"
+    },
+    {
+      "key": "atlas-figures.spread-reach-unit",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure label",
+      "placeholders": {},
+      "term": "human_protein_reach"
+    },
+    {
+      "key": "atlas-figures.spread-identity-column",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure label",
+      "placeholders": {},
+      "text": "Core Identity\nThreshold"
+    },
+    {
+      "key": "atlas-figures.proteome-length-axis",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure label",
+      "placeholders": {},
+      "text": "Viral Proteome Length (AA)"
+    },
+    {
+      "key": "atlas-figures.viral-parents-loading",
+      "file": "frontend/atlas-figures.js",
+      "use": "Loading label",
+      "term": "viral_parent",
+      "suffix": "s",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.human-targets-loading",
+      "file": "frontend/atlas-figures.js",
+      "use": "Loading label",
+      "term": "human_target",
+      "suffix": "s",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.spread-median-reach",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure control or column label",
+      "text": "Median\nReach",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.spread-highest-reach",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure control or column label",
+      "text": "Highest\nReach",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.spread-median-coverage",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure control or column label",
+      "text": "Median\nCoverage",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.spread-highest-coverage",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure control or column label",
+      "text": "Highest\nCoverage",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.parent-search",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure control or column label",
+      "text": "Search Viral Parents…",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.parent-no-results",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure control or column label",
+      "text": "No viral parents match your search.",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.parent-option-count",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure control or column label",
+      "text": "{{count}} viral parents in this proteome",
+      "placeholders": {
+        "count": {
+          "expression": "PROTEIN_INDEX ? PROTEIN_INDEX.sources.length : 0"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.arrangement-position",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure arrangement label",
+      "text": "Genome Position",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.arrangement-length",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure arrangement label",
+      "text": "Human Target Length",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.arrangement-location",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure arrangement label",
+      "text": "Subcellular Location",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.arrangement-control",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure arrangement label",
+      "text": "Arrange Human Targets",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.title-coverage-length",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure arrangement label",
+      "text": "Human Target Coverage by Human Target Length",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.title-coverage-location",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure arrangement label",
+      "text": "Human Target Coverage by Subcellular Location",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.arrangement-length-axis",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure arrangement label",
+      "text": "Human Target Length (Log Scale)",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.arrangement-length-note",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure arrangement label",
+      "text": "Each mark represents a human target. Horizontal position shows target length on a logarithmic scale; targets longer than 5,000 residues share the >5,000 edge. Equal lengths share a horizontal position.",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.arrangement-location-note",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure arrangement label",
+      "text": "Human targets are grouped by assigned subcellular location and ordered from shortest to longest within each group. Group width reflects the number of targets. Location assignments use UniProt annotations, with GO cellular-component annotations as a fallback when UniProt provides no classifiable location. Each target occupies one display group; this does not establish a dominant biological location. Unclassified means no display group was assigned.",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.location-cell-surface",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure arrangement label",
+      "text": "Cell Surface",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.location-secreted",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure arrangement label",
+      "text": "Secreted",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.location-other-membrane",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure arrangement label",
+      "text": "Other Membrane",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.location-intracellular",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure arrangement label",
+      "text": "Intracellular",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.location-not-annotated",
+      "file": "frontend/atlas-figures.js",
+      "use": "Figure arrangement label",
+      "text": "Unclassified",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.length-overflow-tick",
+      "file": "frontend/atlas-figures.js",
+      "use": "Length axis overflow label",
+      "text": ">{{maximum}}",
+      "placeholders": {
+        "maximum": {
+          "expression": "nf(length)"
+        }
+      }
+    },
+    {
+      "key": "index.html.structure-loading",
+      "file": "frontend/index.html",
+      "use": "Retained structure frame status",
+      "text": "Loading structure…"
+    },
+    {
+      "key": "index.html.structure-missing",
+      "file": "frontend/index.html",
+      "use": "Retained structure frame status",
+      "text": "No structure is available for this Target."
+    },
+    {
+      "key": "result-extent.window-pair-count",
+      "file": "frontend/result-extent.js",
+      "use": "Approved editorial correction",
+      "placeholders": {
+        "pairs": {
+          "expression": "p.pairs"
+        },
+        "plural": {
+          "expression": "p.pairs === 1 ? \"\" : \"s\""
+        }
+      },
+      "text": "\n{{pairs}} Window Pair{{plural}}"
+    },
+    {
+      "key": "ranking.parent-order-description",
+      "file": "frontend/reproduce/ranking.js",
+      "use": "Approved editorial correction",
+      "placeholders": {
+        "measure": {
+          "expression": "parentLabels[s.parent]"
+        },
+        "direction": {
+          "expression": "s.direction==='asc'?'ascending':'descending'"
+        }
+      },
+      "text": "{{measure}} {{direction}}"
+    },
+    {
+      "key": "index.html.matching-record-total",
+      "file": "frontend/index.html",
+      "use": "Approved editorial correction",
+      "placeholders": {
+        "count": {
+          "expression": "nf(matched)"
+        },
+        "unit": {
+          "expression": "/exact.*sequence.*group/i.test(entityLabel)?'Matching Exact-Sequence Groups':'Matching Records'"
+        }
+      },
+      "text": "{{count}} {{unit}}"
+    },
+    {
+      "key": "mimicryone-runtime.no-antigen-target-input",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Approved editorial correction",
+      "placeholders": {},
+      "text": "No target sequence was supplied."
+    },
+    {
+      "key": "mimicryone-runtime.custom-comparison-progress",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Approved editorial correction",
+      "placeholders": {
+        "targets": {
+          "expression": "queryParsed.records.length"
+        },
+        "targetPlural": {
+          "expression": "queryParsed.records.length === 1 ? \"\" : \"s\""
+        },
+        "parents": {
+          "expression": "targetSet.rows.length"
+        },
+        "parentPlural": {
+          "expression": "targetSet.rows.length === 1 ? \"\" : \"s\""
+        },
+        "work": {
+          "expression": "formatWork(totalQueryWindows, totalTargetWindows)"
+        }
+      },
+      "text": "{{targets}} target{{targetPlural}} · {{parents}} parent record{{parentPlural}} · {{work}}. Running on this device."
+    },
+    {
+      "key": "mimicryone-runtime.custom-comparison-complete",
+      "file": "frontend/mimicryone-runtime.js",
+      "use": "Approved editorial correction",
+      "placeholders": {
+        "targets": {
+          "expression": "completed.length"
+        },
+        "plural": {
+          "expression": "completed.length === 1 ? \"\" : \"s\""
+        },
+        "pairs": {
+          "expression": "completed.reduce(function matches(total, result) { return total + result.positional_matches.reduce(function pairs(subtotal, source) { return subtotal + source.hits.length; }, 0); }, 0).toLocaleString()"
+        }
+      },
+      "text": "{{targets}} target{{plural}} complete · {{pairs}} window pairs retained locally."
+    },
+    {
+      "key": "analysis-entry.one-antigen-target-input",
+      "file": "frontend/analysis-entry.js",
+      "use": "Approved editorial correction",
+      "placeholders": {},
+      "text": "Analyze one Antigen Target at a time in the Player."
+    },
+    {
+      "key": "analysis-entry.custom-parent-input-label",
+      "file": "frontend/analysis-entry.js",
+      "use": "Approved editorial correction",
+      "placeholders": {},
+      "text": "Mimicry Parent input"
+    },
+    {
+      "key": "analysis-entry.custom-parent-library-label",
+      "file": "frontend/analysis-entry.js",
+      "use": "Approved editorial correction",
+      "placeholders": {},
+      "text": "Mimicry Parent library"
+    },
+    {
+      "key": "publication-exports.figure-table-guide",
+      "file": "frontend/publication-exports.js",
+      "use": "Approved editorial correction",
+      "placeholders": {},
+      "text": "Tables show up to 10 rows. Use All matches CSV and Overall Mimicry Parents CSV for the complete tables. Core identity uses nine positions; context identity uses a fixed span of 27 positions."
+    },
+    {
+      "key": "player.startup-loading",
+      "file": "frontend/index.html",
+      "use": "Initial presentation loading status",
+      "text": "Loading...",
+      "placeholders": {}
+    },
+    {
+      "key": "player.startup-retry",
+      "file": "frontend/index.html",
+      "use": "Retry initial page loading",
+      "text": "Reload",
+      "placeholders": {}
+    },
+    {
+      "key": "result-extent.target-coverage-axis",
+      "file": "frontend/result-extent.js",
+      "use": "Coverage figure axis label",
+      "text": "Antigen Target Coverage (%)"
+    },
+    {
+      "key": "publication-exports.native-figure-caption",
+      "file": "frontend/publication-exports.js",
+      "use": "Companion caption for native figure bundle panels",
+      "text": "{{target}} versus {{scope}} at ≥{{floor}}/9 core identity. {{panel}} {{grouping}} {{highlight}}\n",
+      "placeholders": {
+        "target": {
+          "expression": "target"
+        },
+        "scope": {
+          "expression": "scope"
+        },
+        "floor": {
+          "expression": "snapshot.floor"
+        },
+        "panel": {
+          "expression": "panel==='target' ? 'The sequence view uses the target’s stored coordinates. Colors and annotation marks follow the displayed keys.' : panel==='window' ? 'Rows show qualifying window pairs at the selected target start. Each alignment places the target above its parent; core and context identity use denominators of nine and 27 positions. Rows follow the captured ranking and display limit.' : panel==='parents' ? 'Each row summarizes one matching parent entry across the full target. Target and parent coverage use the respective full stored sequence lengths. Overlapping core residues count once, including mismatching positions; context flanks are excluded. Best Core and Best Context are independent maxima and may occur at different sites. Rows follow the captured ranking and display limit.' : 'The predicted structure uses the captured assembly and pose. Colors follow the displayed key.'"
+        },
+        "grouping": {
+          "expression": "grouped && (panel==='window'||panel==='parents') ? 'Parent entries are exact-sequence groups of records with identical full stored sequences.' : ''"
+        },
+        "highlight": {
+          "expression": "highlight && (panel==='target'||panel==='structure') ? 'Highlights mark the selected core and its surrounding context.' : ''"
+        }
+      }
+    },
+    {
+      "key": "source-licenses.go-release",
+      "file": "frontend/source-licenses.js",
+      "use": "Annotation snapshot description",
+      "text": "Retained GO annotations",
+      "placeholders": {}
+    },
+    {
+      "key": "source-licenses.go-role",
+      "file": "frontend/source-licenses.js",
+      "use": "Annotation source role",
+      "text": "Cellular-component annotations manually aligned by gene names and synonyms; used when UniProt provides no classifiable location.",
+      "placeholders": {}
+    },
+    {
+      "key": "index.html.density-count-label",
+      "file": "frontend/index.html",
+      "use": "Dynamic density legend maximum; number precedes Matches in both color directions",
+      "text": "<b id=\"maxlab\">{{count}}</b> Matches",
+      "placeholders": {
+        "count": {
+          "expression": "current ? current.textContent : \"\""
+        }
+      }
+    },
+    {
+      "key": "analysis-entry.public-library-policy-unavailable",
+      "file": "frontend/analysis-entry.js",
+      "use": "Invalid public library visibility policy at startup",
+      "text": "Library availability settings could not be loaded."
+    },
+    {
+      "key": "result-extent.target-residues-covered",
+      "file": "frontend/result-extent.js",
+      "use": "Selected comparison summary label",
+      "text": "Target coverage"
+    },
+    {
+      "key": "atlas-figures.collection-parent-reach-title",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "Human Protein Reach vs Viral Parent Length",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-parent-coverage-title",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "Human Residue Coverage vs Viral Parent Length",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-highlight-parent",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "Highlight {{parent}}",
+      "placeholders": {
+        "parent": {
+          "expression": "[r.label, r.accession].filter(Boolean).join(\" · \")"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.collection-click-parent",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "Click to highlight this viral parent",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-click-proteome",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "Click to open this proteome",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-parent-length-axis",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "Viral Parent Length (AA)",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-parent-highlight-legend",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "The highlighted point is {{parent}}.",
+      "placeholders": {
+        "parent": {
+          "expression": "collectionSelectedLabel()"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.collection-parent-all-legend",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "All component proteins are shown.",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-parent-reach-legend",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "The Y-axis shows human protein reach: the percentage of eligible human proteins matched at least once by that viral protein at the indicated core identity threshold.",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-parent-coverage-legend",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "The Y-axis shows the percentage of eligible human residues covered by that viral protein’s matches at the indicated core identity threshold.",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-parent-overlaps-legend",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "Overlapping cores count once, including mismatching positions; context flanks are excluded. ",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-unit-control",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "Plot Unit",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-unit-proteomes",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "Viral Proteomes",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-unit-parents",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "Individual Viral Parents",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-highlight-all",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "All Viral Parents",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.collection-highlight-control",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "Highlight Viral Parent",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.human-sequence-download-label",
+      "file": "frontend/atlas-figures.js",
+      "use": "Atlas sequence downloads",
+      "text": "Human Swiss-Prot FASTA",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.all-sequences-download-label",
+      "file": "frontend/atlas-figures.js",
+      "use": "Atlas sequence downloads",
+      "text": "All viruses FASTA",
+      "placeholders": {}
+    },
+    {
+      "key": "atlas-figures.human-sequence-download-tooltip",
+      "file": "frontend/atlas-figures.js",
+      "use": "Atlas sequence downloads",
+      "text": "All {{records}} human Swiss-Prot records, including short proteins excluded from plots; {{residues}} residues. Uses public accession, gene and protein-description headers.",
+      "placeholders": {
+        "records": {
+          "expression": "nf(publicHuman.records)"
+        },
+        "residues": {
+          "expression": "nf(publicHuman.residues)"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.all-sequences-download-tooltip",
+      "file": "frontend/atlas-figures.js",
+      "use": "Atlas sequence downloads",
+      "text": "All {{proteomes}} viral proteomes in this atlas: {{records}} protein records and {{residues}} residues in one FASTA. Preserves each proteome's records and headers, including shared sequences.",
+      "placeholders": {
+        "proteomes": {
+          "expression": "nf(bundles.all_viruses.proteomes)"
+        },
+        "records": {
+          "expression": "nf(bundles.all_viruses.records)"
+        },
+        "residues": {
+          "expression": "nf(bundles.all_viruses.residues)"
+        }
+      }
+    },
+    {
+      "key": "analysis-entry.exclude-vertebrates-help",
+      "file": "frontend/analysis-entry.js",
+      "use": "Vertebrate exclusion tooltip",
+      "text": "Uncheck to exclude vertebrates, including mammals. Shared sequences remain when a resolved non-vertebrate source qualifies."
+    },
+    {
+      "key": "analysis-entry.exclude-vertebrates-label",
+      "file": "frontend/analysis-entry.js",
+      "use": "Vertebrate exclusion control and reset notice",
+      "text": "Exclude vertebrates"
+    },
+    {
+      "key": "analysis-entry.no-vertebrates-label",
+      "file": "frontend/analysis-entry.js",
+      "use": "Active vertebrate exclusion summary",
+      "text": "No vertebrates"
+    },
+    {
+      "key": "analysis-entry.vertebrates-label",
+      "file": "frontend/analysis-entry.js",
+      "use": "Nested taxonomic inclusion checkbox",
+      "text": "Vertebrates"
+    },
+    {
+      "key": "analysis-entry.mammals-label",
+      "file": "frontend/analysis-entry.js",
+      "use": "Nested taxonomic inclusion checkbox",
+      "text": "Mammals"
+    },
+    {
+      "key": "source-licenses.cdi-name",
+      "file": "frontend/source-licenses.js",
+      "use": "CDI Labs source citation table cell",
+      "text": "CDI Labs",
+      "placeholders": {}
+    },
+    {
+      "key": "source-licenses.cdi-release",
+      "file": "frontend/source-licenses.js",
+      "use": "CDI Labs source citation table cell",
+      "text": "HuProt 4.0; retained HuScan and full VirScan + Exposome content",
+      "placeholders": {}
+    },
+    {
+      "key": "source-licenses.cdi-license",
+      "file": "frontend/source-licenses.js",
+      "use": "CDI Labs source citation table cell",
+      "text": "Not specified",
+      "placeholders": {}
+    },
+    {
+      "key": "source-licenses.cdi-citation",
+      "file": "frontend/source-licenses.js",
+      "use": "CDI Labs source citation table cell",
+      "text": "CDI Labs: Library content",
+      "placeholders": {}
+    },
+    {
+      "key": "source-licenses.cdi-role",
+      "file": "frontend/source-licenses.js",
+      "use": "CDI Labs source citation table cell",
+      "text": "Antigen sequences and identifiers for HuScan, full VirScan with the Exposome add-on, and HuProt 4.0 assays run by CDI Labs.",
+      "placeholders": {}
+    },
+    {
+      "key": "source-licenses.cdi-accessed",
+      "file": "frontend/source-licenses.js",
+      "use": "Project owner-supplied CDI Labs source access month, separate from the library release",
+      "text": "Accessed April 2026.",
+      "placeholders": {}
+    },
+    {
+      "key": "analysis-entry.virscan-human-scope-help",
+      "file": "frontend/analysis-entry.js",
+      "use": "Independent VirScan and Exposome source collection checkboxes",
+      "text": "VirScan peptides in the curated human-infecting virus subset. Check both VirScan subsets for the full CDIV2 library."
+    },
+    {
+      "key": "analysis-entry.virscan-other-scope-label",
+      "file": "frontend/analysis-entry.js",
+      "use": "Independent VirScan and Exposome source collection checkboxes",
+      "text": "Other VirScan (CDIV2)"
+    },
+    {
+      "key": "analysis-entry.virscan-other-scope-help",
+      "file": "frontend/analysis-entry.js",
+      "use": "Independent VirScan and Exposome source collection checkboxes",
+      "text": "VirScan peptides outside the curated human-virus subset, including viruses of nonhuman hosts."
+    },
+    {
+      "key": "analysis-entry.exposome-scope-label",
+      "file": "frontend/analysis-entry.js",
+      "use": "Independent VirScan and Exposome source collection checkboxes",
+      "text": "Exposome (CDIV3)"
+    },
+    {
+      "key": "analysis-entry.virscan-scope-caption",
+      "file": "frontend/analysis-entry.js",
+      "use": "Shared public VirScan scope labels for captions, scope summaries and exports",
+      "text": "VirScan (CDIV2)"
+    },
+    {
+      "key": "analysis-entry.virscan-human-subset-caption",
+      "file": "frontend/analysis-entry.js",
+      "use": "Shared public VirScan scope labels for captions, scope summaries and exports",
+      "text": "Curated human-infecting subset"
+    },
+    {
+      "key": "analysis-entry.virscan-other-subset-caption",
+      "file": "frontend/analysis-entry.js",
+      "use": "Shared public VirScan scope labels for captions, scope summaries and exports",
+      "text": "Outside curated human-infecting subset"
+    },
+    {
+      "key": "analysis-entry.curated-host-list-label",
+      "file": "frontend/analysis-entry.js",
+      "use": "Shared public VirScan scope labels for captions, scope summaries and exports",
+      "text": "Curated host list"
+    },
+    {
+      "key": "analysis-entry.organism-search-empty",
+      "file": "frontend/analysis-entry.js",
+      "use": "Empty organism-search result in a scope panel",
+      "text": "No matching organisms or taxa in this scope."
+    },
+    {
+      "key": "analysis-entry.organism-search-narrow",
+      "file": "frontend/analysis-entry.js",
+      "use": "Scope search with more than sixty matching organism choices",
+      "text": "Keep typing to narrow {{count}} matches.",
+      "placeholders": {
+        "count": {
+          "expression": "matches.length"
+        }
+      }
+    },
+    {
+      "key": "analysis-entry.selected-organism-filters",
+      "file": "frontend/analysis-entry.js",
+      "use": "Removable restored organism filters when complete search is unavailable",
+      "text": "Selected organism filters"
+    },
+    {
+      "key": "analysis-entry.saved-local-choice",
+      "file": "frontend/analysis-entry.js",
+      "use": "Explicit local-compute choice after saved delivery fails; retry saved delivery before local work",
+      "text": "This saved result is unavailable or too large to deliver. The previous result is retained. You can choose to compute on this device. "
+    },
+    {
+      "key": "analysis-entry.compute-on-device",
+      "file": "frontend/analysis-entry.js",
+      "use": "Explicit local-compute choice after saved delivery fails; retry saved delivery before local work",
+      "text": "Compute on this device"
+    },
+    {
+      "key": "analysis-entry.single-parent-mode",
+      "file": "frontend/analysis-entry.js",
+      "use": "Single-protein parent scope picker",
+      "text": "Mimicry Parent comparison mode"
+    },
+    {
+      "key": "analysis-entry.single-parent-library",
+      "file": "frontend/analysis-entry.js",
+      "use": "Single-protein parent scope picker",
+      "text": "vs library"
+    },
+    {
+      "key": "analysis-entry.single-parent-single",
+      "file": "frontend/analysis-entry.js",
+      "use": "Single-protein parent scope picker",
+      "text": "vs single"
+    },
+    {
+      "key": "analysis-entry.single-parent-placeholder",
+      "file": "frontend/analysis-entry.js",
+      "use": "Single-protein parent scope picker",
+      "text": "Gene, accession, description, etc."
+    },
+    {
+      "key": "analysis-entry.single-parent-results",
+      "file": "frontend/analysis-entry.js",
+      "use": "Single-protein parent scope picker",
+      "text": "Mimicry Parents in selected scope"
+    },
+    {
+      "key": "analysis-entry.single-parent-clear",
+      "file": "frontend/analysis-entry.js",
+      "use": "Single-protein parent scope picker",
+      "text": "Clear protein"
+    },
+    {
+      "key": "analysis-entry.single-parent-choose",
+      "file": "frontend/analysis-entry.js",
+      "use": "Single-protein parent scope picker",
+      "text": "Choose one Mimicry Parent from the selected library and scope."
+    },
+    {
+      "key": "analysis-entry.single-parent-empty",
+      "file": "frontend/analysis-entry.js",
+      "use": "Single-protein parent scope picker",
+      "text": "No matching proteins in the selected library and scope."
+    },
+    {
+      "key": "analysis-entry.single-parent-failed",
+      "file": "frontend/analysis-entry.js",
+      "use": "Single-protein parent scope picker",
+      "text": "Parent search stopped: "
+    },
+    {
+      "key": "analysis-entry.custom-selected-parent-note",
+      "file": "frontend/analysis-entry.js",
+      "use": "Describe the current custom parent scope and local execution",
+      "text": "The {{parent}} {{unit}} compared in this browser at {{floor}}/9. Your sequences stay on this device.",
+      "placeholders": {
+        "parent": {
+          "expression": "selectedParentLabel(selectedParent, false)"
+        },
+        "unit": {
+          "expression": "selection && selection.singleMode ? \"record is\" : \"records are\""
+        },
+        "floor": {
+          "expression": "floor"
+        }
+      }
+    },
+    {
+      "key": "analysis-entry.additional-trembl",
+      "file": "frontend/analysis-entry.js",
+      "use": "Scope collection label",
+      "placeholders": {},
+      "term": "additional_trembl"
+    }
+  ]
+}

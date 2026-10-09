@@ -1,0 +1,94 @@
+{
+  "schema": "mimicryone/atlas-pair-view-receipt/1",
+  "created_utc": "2026-09-19T16:27:09.756354+00:00",
+  "url": "/source-downloads/mimicry-summaries/pan_viral_pairs_94f23278bf6a.json.gz",
+  "bytes": 1137709,
+  "sha256": "23085b1f560a7a47363c2552ab18e84a0853bf62b88b6381502c85563b17fe9c",
+  "payload_sha256": "94f23278bf6a22b4d3208a2445ebebbe7d225a090dbce2de955b2da87fe9f2b4",
+  "payload_bytes": 4301477,
+  "source_sha256": "b97625bdbca8b212194349dfa84af39b0b3d7e8e5b5ec36ff87ab749e5ff6a2c",
+  "viral_metadata_sha256": "9d985e1a5d70797730f593d31d4cbb6bec5876cb8c3c7554de77fb82858d646a",
+  "atlas_index_sha256": "24016cd9d13322d83c3d80141047f678e9dcddefa1d89239bb3117b9cb45253e",
+  "summary_url": "/source-downloads/mimicry-summaries/human_swissprot_vs_atlas_120_viruses_comprehensive-v6.csv",
+  "pair_counts": {
+    "7": 32686,
+    "8": 1204,
+    "9": 76
+  },
+  "literal_pairs": 32686,
+  "target_records": 20431,
+  "parent_records": 2222,
+  "sequence_comparisons_run": false,
+  "producer_sha256": "b7ad9b6e423143d3a6ba3c717e68cf9b1532ba66628ec8da06de859c8f1a7441",
+  "collections": {
+    "viruses": {
+      "schema": "mimicryone/atlas-pair-view-receipt/1",
+      "created_utc": "2026-09-19T16:27:09.756354+00:00",
+      "url": "/source-downloads/mimicry-summaries/pan_viral_pairs_94f23278bf6a.json.gz",
+      "bytes": 1137709,
+      "sha256": "23085b1f560a7a47363c2552ab18e84a0853bf62b88b6381502c85563b17fe9c",
+      "payload_sha256": "94f23278bf6a22b4d3208a2445ebebbe7d225a090dbce2de955b2da87fe9f2b4",
+      "payload_bytes": 4301477,
+      "source_sha256": "b97625bdbca8b212194349dfa84af39b0b3d7e8e5b5ec36ff87ab749e5ff6a2c",
+      "viral_metadata_sha256": "9d985e1a5d70797730f593d31d4cbb6bec5876cb8c3c7554de77fb82858d646a",
+      "atlas_index_sha256": "24016cd9d13322d83c3d80141047f678e9dcddefa1d89239bb3117b9cb45253e",
+      "summary_url": "/source-downloads/mimicry-summaries/human_swissprot_vs_atlas_120_viruses_comprehensive-v6.csv",
+      "pair_counts": {
+        "7": 32686,
+        "8": 1204,
+        "9": 76
+      },
+      "literal_pairs": 32686,
+      "target_records": 20431,
+      "parent_records": 2222,
+      "sequence_comparisons_run": false,
+      "producer_sha256": "b7ad9b6e423143d3a6ba3c717e68cf9b1532ba66628ec8da06de859c8f1a7441"
+    },
+    "canonical": {
+      "schema": "mimicryone/atlas-pair-view-receipt/1",
+      "created_utc": "2026-09-19T14:39:50.630542+00:00",
+      "url": "/source-downloads/mimicry-summaries/canonical_pairs_46fe502f2b59.json.gz",
+      "bytes": 3635474,
+      "sha256": "15b1e5faaa880cf4531a1ecf21c9e0351929e0ffe430b81ad53cfb33630b7c9a",
+      "payload_sha256": "46fe502f2b59e5ed615035c9457da8c5c68c1c7871359f2f258e60d7bb88be7a",
+      "payload_bytes": 21346474,
+      "source_sha256": "91278e21397893826b869aaee8bbe2bb14a6efb31ad730031858c1b96797e71c",
+      "viral_metadata_sha256": "5346088372bf437f03f3cf104b27bd0437e74a50b4fc9c729b180e4f2f492a50",
+      "atlas_index_sha256": "24016cd9d13322d83c3d80141047f678e9dcddefa1d89239bb3117b9cb45253e",
+      "summary_url": "/source-downloads/mimicry-summaries/human_swissprot_vs_canonical_exposure_comprehensive-v6.csv",
+      "pair_counts": {
+        "7": 338162,
+        "8": 32344,
+        "9": 6784
+      },
+      "literal_pairs": 377290,
+      "target_records": 20431,
+      "parent_records": 24867,
+      "sequence_comparisons_run": false,
+      "producer_sha256": "ca4379c03362a66374fd2e63d209ffab41291354060849e103fd86e507affcf9"
+    },
+    "nonvertebrate": {
+      "schema": "mimicryone/atlas-pair-view-receipt/1",
+      "created_utc": "2026-09-19T14:40:00.903452+00:00",
+      "url": "/source-downloads/mimicry-summaries/nonvertebrate_pairs_c43407a256ac.json.gz",
+      "bytes": 3108825,
+      "sha256": "0b2e8466dba3e9e47df019dd149c743ae092d0e525f317b46f771f712a0e822c",
+      "payload_sha256": "c43407a256acbb74d5b6494f5034226c4c7bf30b9696216fb25fca48577c343b",
+      "payload_bytes": 18011053,
+      "source_sha256": "c40e62bafd3dc0833d80d3fc514c547750f0c8c6d6740ba9e9dd39ba35b6d2c4",
+      "viral_metadata_sha256": "9573b2bf38150c6e4cbbb39f52f4f2fa5c0c6d244da34b5973d58fb43540612d",
+      "atlas_index_sha256": "24016cd9d13322d83c3d80141047f678e9dcddefa1d89239bb3117b9cb45253e",
+      "summary_url": "/source-downloads/mimicry-summaries/human_swissprot_vs_canonical_exposure_no_vertebrates_comprehensive-v6.csv",
+      "pair_counts": {
+        "7": 281965,
+        "8": 21463,
+        "9": 2886
+      },
+      "literal_pairs": 306314,
+      "target_records": 20431,
+      "parent_records": 21689,
+      "sequence_comparisons_run": false,
+      "producer_sha256": "ca4379c03362a66374fd2e63d209ffab41291354060849e103fd86e507affcf9"
+    }
+  }
+}

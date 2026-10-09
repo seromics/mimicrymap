@@ -1,0 +1,63 @@
+/* Native select behavior, with one small flat saved-lookup marker. Desktop only. */
+@supports (appearance: base-select) {
+  select.mm-lookup-select,
+  select.mm-lookup-select::picker(select) { appearance: base-select; }
+  select.mm-lookup-select {
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 7px;
+    padding-right: 9px;
+  }
+  select.mm-lookup-select[data-lookup-kind="full"]::after {
+    content: "";
+    order: 1;
+    flex: 0 0 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #439969;
+  }
+  select.mm-lookup-select::picker-icon {
+    content: "";
+    order: 2;
+    flex: 0 0 5px;
+    width: 5px;
+    height: 5px;
+    margin-left: auto;
+    margin-top: -3px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+  }
+  select.mm-lookup-select::picker(select) {
+    color: var(--mm-ink, var(--c-ink));
+    background: var(--mm-surface, var(--c-surface));
+    border: 1px solid var(--mm-border, var(--c-line));
+    border-radius: 7px;
+    padding: 4px;
+    font: inherit;
+    max-height: min(400px, 70vh);
+    overflow-y: auto;
+  }
+  select.mm-lookup-select option {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 7px;
+    padding: 5px 8px;
+    min-height: 26px;
+    border-radius: 4px;
+    font-weight: 400;
+  }
+  select.mm-lookup-select option::checkmark { display: none; }
+  select.mm-lookup-select option:checked,
+  select.mm-lookup-select option:hover { background: color-mix(in srgb, #439969 16%, transparent); }
+  select.mm-lookup-select option[data-lookup-kind="full"]::after {
+    content: "";
+    flex: 0 0 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #439969;
+  }
+}

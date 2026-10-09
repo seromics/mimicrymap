@@ -206,6 +206,11 @@
       "path": "docs/walkthroughs/example-3-panel.png",
       "source": "/reproduce/docs/walkthroughs/example-3-panel.png",
       "description": "Complete worked-example figure panel."
+    },
+    "plot-palette.cjs": {
+      "path": "code/plot-palette.cjs",
+      "description": "Shared figure palette definitions; exported settings retain the selected colors.",
+      "source": "/plot-palette.js"
     }
   }
 }

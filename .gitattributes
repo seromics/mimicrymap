@@ -1,0 +1,2 @@
+# Source manifests bind exact bytes, including the original line endings.
+* -text

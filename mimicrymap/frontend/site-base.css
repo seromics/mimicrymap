@@ -1,0 +1,371 @@
+/* Generated from the native player base styles. */
+
+/* Chrome + selection palette: frontend/src/index.css (.dark), HIGHLIGHT_COLORS.
+   Data palette: Crameri lajolla reversed, ported from utils/colorScales.js motifMatchColor(). */
+:root{
+  --mm-bg:#020617; --mm-surface:#0f172a; --mm-header:#1e293b; --mm-border:#334155;
+  --mm-ink:#e5e7eb; --mm-body:#cbd5e1; --mm-muted:#94a3b8; --mm-faint:#64748b; --mm-dim:#475569;
+  --hl-sel:#059669; --hl-hover:#6ee7b7; --hl-ext:#2563eb; --hl-exth:#93c5fd;
+  --lj0:rgb(252,227,141); --lj33:rgb(231,131,59); --lj66:rgb(138,28,38); --lj100:rgb(100,18,27);
+  --lajolla:linear-gradient(90deg,var(--lj0) 0%,var(--lj33) 33%,var(--lj66) 66%,var(--lj100) 100%);
+  --r-axis:22px; --r-dens:30px; --r-gap:8px; --r-row:20px; --r-total:260px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--mm-bg);color:var(--mm-body);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;
+      justify-content:flex-start;padding:clamp(1rem,2.2vw,2rem) clamp(1.25rem,3vw,3rem) 3rem;
+      overflow:hidden}
+.blob{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;will-change:transform;z-index:0}
+.b1{width:56vw;height:56vw;background:#9a1f0b;opacity:calc(.20 + .58*var(--pulse,0));top:-18vw;left:-12vw}
+.b2{width:36vw;height:36vw;background:var(--hl-sel);opacity:calc(.07 + .07*var(--pulse,0));bottom:-16vw;right:-6vw}
+.b3{width:36vw;height:36vw;background:#c2410c;opacity:calc(.09 + .40*var(--pulse,0));top:34%;right:16%}
+.b4{width:30vw;height:30vw;background:#7f1d1d;opacity:calc(.08 + .34*var(--pulse,0));bottom:2%;left:14%}
+.vig{position:fixed;inset:0;pointer-events:none;z-index:0;
+     background:radial-gradient(ellipse 92% 72% at 50% 45%,transparent 0%,rgba(2,6,23,.74) 70%,rgba(2,6,23,.96) 100%)}
+/* 1600px leaves the wrapped Full residue map 1562px inside the stage's padding and
+   border, which is one whole row of ten more than 1560px allowed: 90 residues per row
+   instead of 80. width:100% keeps narrower screens exactly as they were. */
+.wrap{position:relative;z-index:2;width:100%;max-width:1600px;margin:0 auto}
+
+.eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-size:.7rem;font-weight:500;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--mm-muted);
+  border:1px solid var(--mm-border);background:rgba(15,23,42,.6);
+  padding:.36rem .8rem;border-radius:999px;backdrop-filter:blur(6px)}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--lj33);
+     box-shadow:0 0 9px var(--lj33);animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1{margin:0;font-size:clamp(2.2rem,5vw,3.8rem);line-height:.98;
+   font-weight:600;letter-spacing:-.035em;color:var(--mm-ink)}
+h1 .gl{background:linear-gradient(100deg,var(--lj0),var(--lj33) 55%,#dc2626);
+   -webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{margin:.9rem 0 0;max-width:72ch;font-size:clamp(.98rem,1.4vw,1.12rem);
+     line-height:1.5;color:var(--mm-muted);font-weight:300}
+
+.corpus{margin-top:.75rem;font-size:.78rem;color:var(--mm-faint);line-height:1.6}
+.corpus b{color:var(--mm-body);font-weight:600}
+/* ---- hero copy and the entry panes share one row, so the figure stays above the fold ---- */
+.top{display:block}
+.topL{min-width:0;max-width:76ch}
+.entry{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:14px;margin-top:1.6rem;
+  align-items:start}
+.pane{border:1px solid var(--mm-border);border-radius:14px;background:rgba(15,23,42,.55);
+  padding:.9rem 1.05rem .95rem;display:flex;flex-direction:column;min-width:0}
+.pane .grow{flex:1 1 auto;display:flex;flex-direction:column;min-height:0}
+.pane .grow textarea{flex:1 1 auto;min-height:110px}
+.pane h2{margin:0;font-size:.95rem;font-weight:600;color:var(--mm-ink)}
+.pane .ph{margin:.25rem 0 .85rem;font-size:.73rem;color:var(--mm-faint)}
+.sbox{position:relative}
+.sbox input, .entry-single-input input{width:100%;font:inherit;font-size:.86rem;color:var(--mm-ink);
+  background:rgba(2,6,23,.6);border:1px solid var(--mm-border);border-radius:10px;
+  padding:.55rem .8rem;outline:none}
+.sbox input:focus, .entry-single-input input:focus{border-color:var(--hl-sel)}
+.sbox input::placeholder, .entry-single-input input::placeholder{color:var(--mm-faint)}
+.slist{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:30;max-height:264px;
+  overflow:auto;border:1px solid var(--mm-border);background:#0b1424;border-radius:10px;
+  display:none;box-shadow:0 12px 34px rgba(0,0,0,.55)}
+.slist.show{display:block}
+.slist button{display:flex;width:100%;gap:.5rem;align-items:baseline;text-align:left;
+  background:transparent;border:0;cursor:pointer;padding:.4rem .7rem;font:inherit;
+  font-size:.76rem;color:var(--mm-body)}
+.slist button:hover{background:rgba(51,65,85,.6)}
+.slist .rg{font-weight:600;color:var(--mm-ink);min-width:76px}
+.slist .ra{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.66rem;color:var(--mm-faint)}
+.slist .rn{font-size:.64rem;color:var(--mm-faint);margin-left:auto}
+.exlist{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.55rem}
+.exhint{font-size:.68rem;color:var(--mm-faint);margin:.7rem 0 0}
+.lnk{background:none;border:0;padding:0;margin:.75rem 0 0;cursor:pointer;font:inherit;
+  font-size:.68rem;color:var(--hl-hover);text-align:left;text-decoration:underline;
+  text-underline-offset:3px}
+.lnk:hover{color:var(--mm-ink)}
+.pane textarea{width:100%;min-height:92px;resize:vertical;font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:.72rem;line-height:1.5;color:var(--mm-ink);background:rgba(2,6,23,.6);
+  border:1px solid var(--mm-border);border-radius:10px;padding:.55rem .7rem;outline:none}
+.pane textarea:focus{border-color:var(--hl-sel)}
+.prow{display:flex;gap:.5rem;align-items:center;margin-top:.7rem;flex-wrap:wrap}
+.btn{font:inherit;font-size:.76rem;font-weight:600;cursor:pointer;border-radius:8px;
+  padding:.44rem .9rem;border:1px solid var(--hl-sel);background:var(--hl-sel);color:#04121c}
+.btn:hover{background:#047857;border-color:#047857}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--mm-muted);border-color:var(--mm-border)}
+.btn.ghost:hover{color:var(--mm-ink);border-color:var(--mm-faint);background:rgba(51,65,85,.4)}
+.lbl{font-size:.68rem;color:var(--mm-faint);flex:none}
+select{font:inherit;font-size:.72rem;color:var(--mm-ink);background:rgba(2,6,23,.7);
+  border:1px solid var(--mm-border);border-radius:8px;padding:.34rem .5rem;outline:none;
+  width:100%;max-width:100%;min-width:0;text-overflow:ellipsis}
+#onewrap{min-width:0}
+#onewrap .prow{min-width:0;flex-wrap:nowrap}
+select:focus{border-color:var(--hl-sel)}
+.note{font-size:.68rem;color:var(--mm-faint);margin-top:.45rem}
+.note.err{color:#f87171}
+.repro{margin-top:1.3rem;border:1px solid var(--mm-border);border-radius:14px;
+  background:rgba(15,23,42,.45);padding:.85rem 1.1rem;display:flex;align-items:center;
+  gap:.9rem;flex-wrap:wrap;justify-content:center}
+.repro .rt{font-size:.74rem;color:var(--mm-muted)}
+#codepane{display:none;margin:.8rem 0 0;max-height:340px;overflow:auto;white-space:pre-wrap;
+  border:1px solid var(--mm-border);border-radius:12px;background:rgba(2,6,23,.7);
+  padding:.9rem 1.1rem;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.68rem;
+  line-height:1.6;color:var(--mm-body)}
+#codepane.show{display:block}
+@media (max-width:980px){ .entry{grid-template-columns:minmax(0,1fr)} }
+.controls{display:flex;justify-content:flex-start;align-items:center;
+  gap:.6rem .8rem;flex-wrap:wrap;margin-top:1.1rem}
+.picker{display:flex;gap:.5rem;flex-wrap:wrap;flex:1 1 auto}
+.chip{font:inherit;font-size:.78rem;font-weight:500;cursor:pointer;white-space:nowrap;
+  padding:.44rem .9rem;border-radius:999px;color:var(--mm-muted);
+  border:1px solid var(--mm-border);background:rgba(15,23,42,.55);
+  transition:color .15s,border-color .15s,background .15s}
+.chip:hover{color:var(--mm-body);border-color:var(--mm-faint)}
+.chip[aria-pressed="true"]{color:var(--mm-bg);background:var(--hl-sel);
+  border-color:var(--hl-sel);font-weight:600}
+.chip:focus-visible{outline:2px solid var(--hl-hover);outline-offset:2px}
+
+.pill{display:flex;align-items:center;gap:.45rem;flex:0 0 auto;
+  border:1px solid var(--mm-border);background:rgba(15,23,42,.55);
+  border-radius:999px;padding:.3rem .7rem}
+.pill .tl{font-size:.58rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--mm-faint);flex:none}
+.tbtn{font:inherit;cursor:pointer;color:var(--mm-muted);background:transparent;
+  border:1px solid transparent;border-radius:50%;width:22px;height:22px;flex:none;
+  display:grid;place-items:center;font-size:.8rem;line-height:1;padding:0;
+  transition:color .12s,background .12s}
+.tbtn:hover{color:var(--mm-ink);background:rgba(51,65,85,.6)}
+.tbtn:focus-visible{outline:2px solid var(--hl-hover);outline-offset:1px}
+.tbtn.pp{color:var(--hl-hover);font-size:.72rem;width:24px;height:24px}
+.tpos{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.63rem;
+  color:var(--mm-faint);font-variant-numeric:tabular-nums;flex:none;min-width:58px;
+  text-align:center;padding:0 .2rem}
+.seg{display:flex;gap:2px;flex:none}
+.seg.wide{flex:0 0 auto;gap:4px;margin-top:.1rem;align-items:stretch}
+.seg.wide button{flex:1 1 0;height:32px;padding:0 .4rem;font-size:.7rem;line-height:32px;
+  border:1px solid var(--mm-border);border-radius:8px;color:var(--mm-muted);
+  background:rgba(2,6,23,.5);white-space:nowrap}
+.seg.wide button[aria-pressed="true"]{color:var(--mm-bg);background:var(--hl-sel);
+  border-color:var(--hl-sel)}
+.seg button{font:inherit;font-size:.58rem;font-weight:600;cursor:pointer;
+  color:var(--mm-faint);background:transparent;border:0;border-radius:4px;
+  padding:.18rem .34rem;transition:color .12s,background .12s}
+.seg button:hover{color:var(--mm-body)}
+.seg button[aria-pressed="true"]{color:var(--mm-bg);background:var(--hl-sel)}
+.seg button:focus-visible{outline:2px solid var(--hl-hover);outline-offset:1px}
+.track-note{font-size:.58rem;color:var(--mm-faint);white-space:nowrap}
+
+.stage{position:relative;margin-top:.8rem;border:1px solid var(--mm-border);
+  border-radius:16px;background:linear-gradient(180deg,rgba(15,23,42,.88),rgba(2,6,23,.66));
+  backdrop-filter:blur(10px);padding:1rem 1.1rem .85rem}
+.figtop{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+        flex-wrap:wrap;margin-bottom:.5rem}
+.figttl{font-size:.82rem;font-weight:600;color:var(--mm-ink)}
+.figttl-meta{font-weight:400;color:var(--mm-faint);
+  font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.75rem}
+.figsub{font-size:.7rem;color:var(--mm-faint);font-variant-numeric:tabular-nums}
+
+.fig{display:grid;grid-template-columns:276px minmax(0,1fr) 336px;
+     column-gap:10px;align-items:start}
+/* The 27-mer readout lives EITHER in the right column (player) or in the Motifs
+   panel below (explorer), never in both. */
+.fig.noR{grid-template-columns:276px minmax(0,1fr)}
+.fig.noR .colR{display:none}
+/* Full view is the wrapped residue map: no per-parent lanes, so no label columns. */
+.fig.full{grid-template-columns:minmax(0,1fr)}
+.fig.full .colL,.fig.full .colR{display:none}
+.fig.full .cvwrap{max-height:62vh}
+.colL,.colR{display:grid;position:relative;overflow:hidden}
+.preview-motion-ghost{position:absolute;left:0;right:0;pointer-events:none}
+.colL > .preview-motion-ghost{left:8px}
+.colL{min-width:0;overflow:hidden;padding-left:8px;box-sizing:border-box}
+/* The canvas is never larger than the panel. #spacer carries the scrollable extent
+   and the visible slice is drawn with a scroll offset, so TTN at 16 px per residue
+   is a 1,150 px canvas rather than a 550,000 px one. */
+.cvwrap{position:relative;overflow:auto;min-width:0}
+.cvwrap::-webkit-scrollbar{height:7px;width:7px}
+.cvwrap::-webkit-scrollbar-thumb{background:var(--mm-border);border-radius:4px}
+#spacer{position:absolute;left:0;top:0;width:1px;height:1px;pointer-events:none}
+canvas{display:block;position:sticky;left:0;top:0;z-index:2;touch-action:pan-y}
+.lane{display:flex;align-items:center;justify-content:flex-end;gap:.3rem;
+  font-size:.6rem;color:var(--mm-faint);white-space:nowrap;overflow:hidden}
+.lane b{color:var(--mm-muted);font-weight:500}
+.lane .sw{width:8px;height:8px;border-radius:2px;flex:none}
+.colL > *,.colR > *{min-width:0;will-change:transform}
+.colL > *{display:grid;grid-template-columns:minmax(0,1fr);align-items:center;justify-items:end}
+/* fixed tracks: 27 monospace chars fit exactly, so nothing spills into the stop
+   position and every row's core sits at the same x */
+.colR > *{display:grid;grid-template-columns:26px 220px 30px 30px;
+  column-gap:5px;align-items:center}
+.colL > .wcell{grid-template-columns:auto auto;justify-content:end;column-gap:5px}
+.wlab{font-size:.58rem;letter-spacing:.11em;text-transform:uppercase;color:var(--mm-faint)}
+.wnum{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.78rem;
+  font-weight:600;color:var(--mm-ink);font-variant-numeric:tabular-nums}
+
+.log{font-size:.64rem;color:var(--mm-dim);text-align:right;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;min-width:0;transition:color .1s}
+.ldl{font-size:.64rem;color:var(--mm-border);text-align:center}
+.lgn{font-size:.73rem;font-weight:500;color:var(--mm-faint);text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .1s}
+.on .log{color:var(--mm-body)}
+.on .lgn{color:var(--mm-ink);font-weight:600}
+.href .lgn{color:var(--mm-ink);font-weight:600;font-size:.78rem}
+.href .log{color:var(--mm-muted)}
+
+.rps,.rpe{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.62rem;
+  color:var(--mm-faint);font-variant-numeric:tabular-nums}
+.rps{text-align:right}
+.rpe{text-align:left}
+.rsq{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:.66rem;
+  font-weight:500;letter-spacing:.05em;white-space:nowrap;text-align:center;
+  overflow:hidden;min-width:0}
+.rid{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.55rem;font-weight:600;
+  text-align:center;border-radius:3px;padding:1px 0;color:#1c1917}
+.colR .href .rsq{font-weight:600}
+/* Bounding boxes rather than underlines, so the player reads the same as the explorer:
+   emerald ring on the 9-mer core, blue ring on the 27-mer flanks. */
+/* .motif-core / .motif-flank as the live app draws them: a continuous 2px underline,
+   emerald on the 9-mer core and blue on the flanking context. */
+.motif-core{box-shadow:0 2px 0 0 var(--hl-sel);display:inline}
+.motif-flank{box-shadow:0 2px 0 0 var(--hl-ext);display:inline}
+.gap{display:inline-block;width:.5em}
+.mt{color:var(--hl-hover)}   /* agrees with the human residue  */
+.mm{color:#f87171}           /* substitution (figC.up, dark)   */
+.pad{color:#1e293b}          /* past the end of the protein    */
+.nl{color:var(--mm-dim)}
+
+/* Native sequence-heatmap geometry, verbatim from utils/colorScales.js:
+   CELL_SIZE 16, ANNOT_HEIGHT 10, POS_LABEL_WIDTH 80, ROW_GAP 6,
+   RESIDUE_FONT_SIZE 9, RESIDUE_FONT_FAMILY, HIGHLIGHT_WIDTH {selected 2.5, hover 2}. */
+.hrow{display:flex;align-items:flex-start;margin-bottom:6px}
+.hpos{width:80px;flex:none;padding-right:6px;text-align:right;
+  font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;line-height:16px;
+  color:var(--mm-muted)}
+.hcells{display:flex;flex-wrap:nowrap}
+.hc{width:16px;height:16px;line-height:16px;text-align:center;position:relative;
+  font-size:9px;font-family:'JetBrains Mono','Fira Code',monospace;overflow:visible}
+.hc.sel{box-shadow:inset 0 2.5px 0 0 var(--hl-sel),inset 0 -2.5px 0 0 var(--hl-sel);z-index:4}
+.hc.sel-l{box-shadow:inset 0 2.5px 0 0 var(--hl-sel),inset 0 -2.5px 0 0 var(--hl-sel),inset 2.5px 0 0 0 var(--hl-sel)}
+.hc.sel-r{box-shadow:inset 0 2.5px 0 0 var(--hl-sel),inset 0 -2.5px 0 0 var(--hl-sel),inset -2.5px 0 0 0 var(--hl-sel)}
+.hc.ext{box-shadow:inset 0 2px 0 0 var(--hl-ext),inset 0 -2px 0 0 var(--hl-ext);z-index:3}
+.hc.ext-l{box-shadow:inset 0 2px 0 0 var(--hl-ext),inset 0 -2px 0 0 var(--hl-ext),inset 2px 0 0 0 var(--hl-ext)}
+.hc.ext-r{box-shadow:inset 0 2px 0 0 var(--hl-ext),inset 0 -2px 0 0 var(--hl-ext),inset -2px 0 0 0 var(--hl-ext)}
+.hcap{font-size:.66rem;color:var(--mm-faint);margin:0 0 .6rem;font-variant-numeric:tabular-nums}
+/* Explorer bottom panels, following the native SimilarProteinsPanel geometry:
+   36px header, 22px column-label subheader, 30px rows, w-24 (96px) metric columns
+   separated by 1px dividers, gene in blue with a mono accession beside it. */
+/* Two panels side by side, on the player's 20px row pitch so both views line up. */
+.ebottom{display:none;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px;margin-top:16px}
+.ebottom.on{display:grid}
+/* the structure panel only takes a column when the target actually has a model */
+.sbox{display:none}
+.ebottom.has3d{grid-template-columns:316px minmax(0,1fr) minmax(0,1fr)}
+.s3bar{display:flex;align-items:center;gap:.3rem;flex-wrap:wrap;padding:.32rem .5rem;
+  border-bottom:1px solid var(--mm-border);background:rgba(30,41,59,.28)}
+.s3div{width:1px;height:11px;background:var(--mm-border);flex:none}
+.ebottom.has3d .sbox{display:flex;flex-direction:column}
+#viz3d{display:block;width:100%;height:204px;min-height:204px;flex:1 1 204px;cursor:grab;touch-action:none}
+#viz3d.drag{cursor:grabbing}
+.scap{font-size:.54rem;color:var(--mm-faint);padding:.1rem .4rem .4rem;margin-top:auto;flex:none;
+  font-family:'JetBrains Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ebox{border:1px solid var(--mm-border);border-radius:12px;background:rgba(15,23,42,.5);
+  overflow:hidden;min-width:0}
+.ehd{height:30px;padding:0 .75rem;font-size:.75rem;font-weight:500;color:var(--mm-ink);
+  border-bottom:1px solid var(--mm-border);background:rgba(30,41,59,.45);
+  display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+/* the header of the motif panel IS the human reference row, so its peptide sits in the
+   same column as every parent peptide under it */
+.ehd.erow{height:30px;justify-content:flex-start;border-bottom:1px solid var(--mm-border)}
+.ehdt{font-size:.75rem;font-weight:500;color:var(--mm-ink);white-space:nowrap}
+.ehd.erow .eseq{font-weight:600;color:var(--mm-ink)}
+.ehd em{font-style:normal;color:var(--mm-faint);font-size:.63rem;font-weight:400;
+  font-family:'JetBrains Mono',ui-monospace,monospace;white-space:nowrap}
+.esub{height:20px}.erow{height:27px}
+#sbox>.ehd,#ehdmotif,#ebottom>.ebox>.ehd{height:28px}
+#emsub,#ersub{height:18px}
+#emotifs>.erow,#ematches>.erow{height:24px}
+.esub,.erow{padding:0 .75rem;display:flex;align-items:center;gap:.3rem}
+.esub{font-size:9.5px;font-weight:500;color:var(--mm-faint);
+  border-bottom:1px solid rgba(51,65,85,.55)}
+.erow{border-bottom:1px solid rgba(51,65,85,.28)}
+.erow:last-child{border-bottom:none}
+.enm{flex:1 1 auto;min-width:0;display:flex;align-items:baseline;gap:.35rem;overflow:hidden}
+.identity-cell,.enm.identity-cell,.enm .identity-cell{
+  min-width:0;display:grid;grid-template-rows:auto auto;
+  align-content:center;align-items:center;gap:0;overflow:hidden;width:100%;line-height:1
+}
+.identity-cell.single-line{grid-template-rows:minmax(0,1fr)}
+.identity-cell.single-line .identity-secondary{display:none}
+.identity-primary,.identity-secondary{
+  display:block;min-width:0;width:100%;max-width:100%;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap
+}
+.identity-primary{font-size:.72rem;font-weight:600;color:var(--mm-ink)}
+.identity-secondary{font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:9.5px;font-weight:400;color:var(--mm-dim)}
+.colL .identity-cell{text-align:right}
+.colL .identity-primary,.colL .identity-secondary{justify-self:stretch}
+.on .identity-primary{color:var(--mm-ink)}
+.on .identity-secondary{color:var(--mm-body)}
+.href .identity-primary{font-size:.78rem}
+.href .identity-secondary{color:var(--mm-muted)}
+.colL .target-track-identity{row-gap:4px}
+.egn{font-size:.72rem;font-weight:500;color:var(--hl-exth);white-space:nowrap;flex:none}
+.eacc{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:9.5px;
+  color:var(--mm-faint);white-space:nowrap;flex:none}
+.eorg{font-size:9.5px;color:var(--mm-dim);white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;min-width:0}
+.ediv{width:1px;align-self:stretch;background:rgba(51,65,85,.75);margin:0 .18rem;flex:none}
+.ecol{width:86px;flex:none;display:flex;align-items:center;gap:.2rem}
+.ebar{flex:1;height:9px;border-radius:2px;background:rgba(51,65,85,.55);overflow:hidden}
+.ebar i{display:block;height:100%;background:var(--lj33)}
+.epct{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:9.5px;
+  color:var(--mm-muted);width:32px;text-align:right;flex:none}
+.enum{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:9.5px;
+  color:var(--mm-muted);flex:none;text-align:center}
+.w-sw{width:44px} .w-bl{width:52px} .w-q{width:56px}
+.eseq{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:.66rem;
+  font-weight:500;letter-spacing:.05em;white-space:nowrap;flex:none;width:218px;text-align:center}
+.epos{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:9.5px;
+  color:var(--mm-faint);width:30px;flex:none;font-variant-numeric:tabular-nums}
+.epos.l{text-align:right} .epos.r{text-align:left}
+.ebadge{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:9.5px;font-weight:600;
+  width:44px;flex:none;text-align:center;border-radius:3px;color:#1c1917}
+.erow.blank .egn,.erow.blank .eacc,.erow.blank .eorg{opacity:.4}
+@media (max-width:860px){ .ebottom,.ebottom.has3d{grid-template-columns:minmax(0,1fr)} }
+.legend{display:flex;align-items:center;justify-content:center;gap:1.6rem;flex-wrap:wrap;
+        row-gap:.5rem;font-size:.65rem;color:var(--mm-faint);margin-top:1.25rem}
+.lgrp{display:flex;align-items:center;gap:.38rem}
+/* The legend's end labels are swapped in the DOM rather than reordered with CSS, because the
+   figure export reads them in document order; a purely visual reversal would ship a legend
+   that contradicts the paint it sits beside. */
+.dens-scale{display:flex;align-items:center;gap:.38rem}
+/* No styling of its own: as a .seg button it already gets the toolbar's hover, its
+   color/background transition, the shared green pressed fill and the same focus ring. The
+   glyph alone is nudged up, because an arrow at the label font size reads as a speck. */
+.invert-main{font-size:.72rem}
+.lgrp[hidden]{display:none}
+.ramp{width:88px;height:9px;border-radius:2px;background:var(--lajolla);
+      border:1px solid rgba(51,65,85,.8)}
+.lgrp b{color:var(--mm-muted);font-weight:500}
+.legend-dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex:none;
+  border:1px solid rgba(255,255,255,.35)}
+.legend-block{width:12px;height:9px;border-radius:2px;display:inline-block;flex:none;
+  border:1px solid rgba(255,255,255,.35)}
+.legend-scale{width:52px;height:9px;border-radius:2px;display:inline-block;flex:none;
+  border:1px solid rgba(51,65,85,.8)}
+.legend-scale.viridis{background:linear-gradient(90deg,rgb(68,1,84),rgb(31,150,139),rgb(253,231,37))}
+.legend-scale.plddt{background:linear-gradient(90deg,rgb(255,125,69),rgb(255,219,19),rgb(101,203,243),rgb(0,83,214))}
+.legend-scale.cleavage{background:linear-gradient(90deg,rgb(245,245,245),rgb(253,186,110),rgb(230,109,44),rgb(165,42,42))}
+.swx,.swy{display:inline-block;width:14px;height:10px;border:1.5px solid;border-radius:2px;box-sizing:border-box;flex:none}
+.swx{border-color:var(--hl-sel)}
+.swy{border-color:var(--hl-ext)}
+
+@media (prefers-reduced-motion:reduce){.blob,.dot{animation:none !important}}
+@media (max-width:1280px){
+  .fig,.fig.noR{grid-template-columns:248px minmax(0,1fr) 332px;column-gap:8px}
+  .fig.noR{grid-template-columns:248px minmax(0,1fr)}
+}
+@media (max-width:980px){
+  .fig,.fig.noR{grid-template-columns:158px minmax(0,1fr) 328px}
+  .fig.noR{grid-template-columns:158px minmax(0,1fr)}
+}

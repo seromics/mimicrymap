@@ -1,0 +1,237 @@
+/* Mobile presentation only. Wide-screen geometry and density remain authored. */
+.mobile-figure-hint { display: none; }
+
+@media (max-width: 760px), (max-width: 1024px) and (pointer: coarse) {
+  .hero { padding-inline: 12px; }
+  .stage { padding: 12px; }
+  .atlas-select { padding: 12px; }
+  .atlas-select-title p, .atlas-scope, .corpus, .note,
+  .entry-method-note, .custom-helper, .custom-analysis-guidance,
+  .custom-fasta-status, .custom-side-head .ph { font-size: 13px; line-height: 1.5; }
+  .atlas-select-title p, .atlas-scope, .entry-method-note { color: var(--mm-muted); }
+  .atlas-scope { white-space: normal; }
+  .atlas-status-stack { height:auto; min-height:0; grid-template-rows:auto; align-content:start; }
+  .atlas-status-line { min-height:0; grid-template-columns:minmax(0,1fr) auto; }
+  .atlas-status-line #loadnote { display:block; min-height:0; max-height:none; line-height:1.5; -webkit-line-clamp:unset; overflow:visible; }
+  .atlas-status-stack:has(#loadnote:empty):not(:has(#catalogCancel:not([hidden]))) { display:none; }
+  .entry-explore-step h3, .custom-side-head h3 { font-size: 14px; line-height: 1.4; }
+  .entry-explore-step > label[for="pexploresearch"], .entry-single-search > label,
+  .entry-mini-field > span, .entry-filter-section legend,
+  .entry-filter-group > strong, .entry-filter-section small { font-size: 12px; color: var(--mm-muted); }
+  .entry-explore-step select, .entry-mini-field select,
+  .entry-filter-picker select, .entry-filter-picker input[type="search"], .entry-filter-flags select,
+  :is(#pexploresearch, .entry-single-input input), #customFloor, #fasta, #mimicfa { font-size: 16px; }
+  .entry-explore-step select, .entry-mini-field select,
+  .entry-filter-picker select, .entry-filter-flags select,
+  :is(#pexploresearch, .entry-single-input input), #customFloor { min-height:0; height:29px; padding-block:3px; }
+  .entry-step-select-row { grid-template-columns:minmax(0,1fr) 76px; align-items:center; gap:6px; }
+  .entry-step-select-row .entry-scope-button { white-space:normal; line-height:1.2; height:33px; padding:2px 6px; }
+  .atlas-select-head button { align-self:center; flex:none; white-space:nowrap; }
+  /* Keep authored desktop button density; only width and wrapping adapt. */
+  .entry-scope-button, .entry-compact-switch button, #entryApplyScope,
+  #catalogCancel, #customCancel, .btn, .fasta-file, .repro button,
+  .rank-controls button, .atlas-select-head button { line-height:normal; }
+  .entry-compact-switch button { white-space:normal; }
+  .entry-parent-mode button { line-height:16px; white-space:nowrap; }
+  .entry-filter-group label, .entry-filter-section > label,
+  .entry-filter-nested label { grid-template-columns:14px minmax(0,1fr) auto; gap:6px; }
+  .entry-filter-group label span { white-space: normal; overflow-wrap: anywhere; }
+  .entry-filter-actions { flex-wrap: wrap; gap: 8px; }
+  .entry-filter-actions span { font-size: 12px; line-height: 1.4; }
+  .player-history { flex-wrap: wrap; }
+  .player-history-label { font-size: 11px; }
+  .player-history .history-nav { flex-basis: 100%; }
+
+  .controls { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .controls, .player-control-row { gap: 8px; }
+  .player-control-row { display: flex; flex-wrap: wrap; }
+  .player-control-row .pill, .player-control-row:last-child .pill {
+    flex-wrap: wrap; gap: 5px; padding: 5px 8px; max-width: 100%; border-color: var(--mm-border);
+  }
+  .player-control-row .seg { flex-wrap: wrap; gap: 3px; }
+  .player-control-row .seg button, .player-control-row:last-child .seg button {
+    min-height:0; min-width:40px; padding:.18rem 2px; font-size:.58rem;
+  }
+  #trackmode button[data-mobile-label], #viewmode button[data-mobile-label] { font-size:.58rem; }
+  #trackmode button[data-mobile-label]::after, #viewmode button[data-mobile-label]::after { display: none; }
+  .player-control-row .tbtn { width:22px; height:22px; font-size:.8rem; }
+  .player-control-row .tbtn.pp { width:24px; height:24px; }
+  .player-control-row .tpos { min-width: 64px; font-size: 12px; }
+  .player-control-row .tpos, .player-control-row .seg button:not([aria-pressed="true"]) { color: var(--mm-muted); }
+  .player-control-row .tl {
+    position: static; width: auto; height: auto; clip: auto; overflow: visible;
+    white-space: normal; font-size: 11px; color: var(--mm-muted);
+  }
+
+  .mobile-figure-hint { display: block; margin: 0 0 10px; font-size: 12px; line-height: 1.5; color: var(--mm-muted); }
+  .fig:not(.full) { overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: thin; }
+  .fig:not(.noR):not(.full) { grid-template-columns:minmax(168px,38%) minmax(240px,1fr) 340px; column-gap:8px; }
+  .fig.noR:not(.full) { grid-template-columns:minmax(168px,38%) minmax(240px,1fr); column-gap:8px; }
+  .fig:not(.noR):not(.full) .colR > * { grid-template-columns: 30px 240px 30px 32px; column-gap: 2px; }
+  .fig:not(.noR):not(.full) .colR > * > :not(.rsq) { display: block; }
+  .fig:not(.full) .target-track-identity .identity-primary { font-size:0; }
+  .fig:not(.full) .target-track-identity .identity-primary::after { content:attr(data-mobile-label); font-size:13px; }
+  .fig, .fig #cvwrap, .ebottom > .ebox { scrollbar-color:var(--mm-border) transparent; }
+  .fig .colL { padding-left:0; }
+  .colL .identity-primary { font-size: 13px; }
+  .colL .identity-secondary { font-size: 11px; color: var(--mm-muted); }
+  .rsq { font-size: 12px; }
+  .rps, .rpe, .rid { font-size: 11px; }
+  .fig:focus-visible { outline: 2px solid var(--hl-hover); outline-offset: 2px; }
+  .legend { justify-content: flex-start; gap: 10px 18px; font-size: 12px; color: var(--mm-muted); }
+  .legend .lgrp { flex-wrap: wrap; max-width: 100%; }
+
+  /* Preserve aligned columns; scroll the card instead of hiding or shrinking data. */
+  .ebottom, .ebottom.has3d { grid-template-columns: minmax(0, 1fr); }
+  .ebottom > .ebox:not(.sbox) { overflow-x: auto; overscroll-behavior-x: contain; }
+  .ebottom > .ebox:not(.sbox) > .ehd,
+  #emsub, #ersub, #emotifs, #ematches { min-width: 650px; }
+  .ebottom > .ebox:not(.sbox) > .ehd { height: auto; min-height: 44px; }
+  #ersub, .complete-row { grid-template-columns: minmax(210px, 1fr) 1px 94px 1px 94px 1px 64px 1px 76px; }
+  #ersub .rank-long, .complete-row .eorg { display: inline; }
+  #ersub .rank-short { display: none; }
+  #emsub, #ersub { height: 32px; font-size: 12px; }
+  #emotifs > .erow, #ematches > .erow { height: 44px; min-height: 44px; }
+  .ebox .identity-primary, .ebox .egn { font-size: 14px; }
+  .ebox .identity-secondary, .ebox .eorg, .ebox .eacc,
+  .ebox .enum, .ebox .epct, .ebox .epos, .ebox .ebadge { font-size: 12px; }
+  .ebox .identity-secondary { color: var(--mm-muted); }
+  .ebox .eseq { width: 240px; font-size: 12px; }
+  .ebox .ehd em, .scap { font-size: 12px; color: var(--mm-muted); }
+  #motifControls, #ematches > .rank-controls {
+    left: 0; width: calc(100vw - 52px); max-width: calc(100vw - 52px);
+    flex-wrap: wrap; gap: 6px; font-size: 12px;
+  }
+  .rank-controls button { font-size:.68rem; line-height:normal; }
+  .rank-controls > span:first-child { flex: 1 0 100%; white-space: normal; }
+  .motif-controls .motif-count { white-space: normal; }
+  #sbox .s3bar { flex-wrap: wrap; gap: 8px; padding: 8px; height: auto; }
+  #sbox .s3bar .seg { flex-wrap: wrap; min-width: 0; max-width: 100%; }
+  #sbox .s3bar .seg button { padding-inline:8px; }
+  #sbox .s3div { display: none; }
+  #sbox .scap { white-space: normal; overflow: visible; line-height: 1.5; }
+  .repro { display:grid; grid-template-columns:auto minmax(0,1fr); gap:8px; padding:12px; align-items:baseline; }
+  .repro .rt { min-width:0; }
+  .repro > .seg { min-width:0; max-width:100%; flex-wrap:wrap; justify-content:flex-start; gap:6px 10px; }
+  .repro > .seg button { flex:none; white-space:nowrap; }
+  #customAnalysis { padding: 12px; }
+  #customAnalysis .custom-analysis-side { grid-template-rows:auto auto; align-content:start; }
+  #customAnalysis .custom-side-head { height:auto; min-height:0; }
+  #customAnalysis .custom-input-shell { grid-template-rows:minmax(144px,auto) auto; }
+  #customAnalysis .custom-comparison-side:not([data-source-mode="custom"]) .custom-input-shell { grid-template-rows:auto; }
+  #customAnalysis .custom-comparison-side:not([data-source-mode="custom"]) .custom-source-stage { height:auto; min-height:0; }
+  #customAnalysis #customMimicFileControls[hidden] { display:none; }
+  #customAnalysis .custom-comparison-side:not([data-source-mode="custom"]) #customMimicFileControls { display:none; }
+  #customAnalysis .custom-helper { height:auto; min-height:0; flex-wrap:wrap; }
+  #customAnalysis #entryCustomMethod {
+    display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2;
+    height:auto; min-height:0; max-height:3em; overflow:hidden; font-size:13px; line-height:1.5;
+  }
+  /* Empty example text is clipped; entered FASTA remains scrollable for editing. */
+  #customAnalysis textarea:placeholder-shown { overflow:hidden; }
+  #customAnalysis .custom-status-line { height:auto; min-height:0; }
+  #customAnalysis .custom-status-line:has(#mimicnote:empty):not(:has(#customCancel:not([hidden]))) { display:none; }
+  #fasta::placeholder, #mimicfa::placeholder, :is(#pexploresearch, .entry-single-input input)::placeholder { color: var(--mm-muted); opacity: 1; }
+  .custom-floor-option { font-size: 13px; }
+
+  :root { --section-separator-space:3rem; }
+  .worked-example { width:calc(100% - 24px); }
+  .sci-defs > div, .sci-decisions > div { grid-template-columns: minmax(0, 1fr); gap: 6px; padding-block: 14px; }
+  .sci-defs dt, .sci-decisions dt { font-size: 15px; }
+  .sci-defs dd, .sci-methods-lead, .sci-methods-note,
+  .sci-status p, .sci-decisions dd { font-size: 14px; line-height: 1.65; }
+  .sci-defs code { font-size: 13px; overflow-wrap: anywhere; }
+  .sci-status-head { flex-wrap: wrap; }
+  .sci-decisions .st { text-align: left; font-size: 12px; }
+  .mm-tooltip, .mm-tooltip.is-mono { font-size: 13px; line-height: 1.5; pointer-events: auto; }
+}
+
+
+/* Narrow toolbar: one contained panel, stable rows, unchanged controls and IDs.
+   This also covers narrow mouse windows; the wide desktop toolbar is untouched. */
+@media (max-width:1024px) {
+  /* Clip decorative overflow without allowing focus to scroll the whole hero sideways. */
+  .hero { overflow:clip; }
+  .player-history { flex-wrap:wrap; gap:6px; }
+  .player-history .player-history-label { font-size:11px; }
+  .player-history .history-nav { flex-basis:100%; max-width:100%; }
+  .player-history .chip { min-height:0; border-radius:8px; }
+  .player-history .history-target, .player-history .history-parent { min-width:0; }
+  .player-history .history-target { max-width:52%; }
+
+  .controls {
+    display:grid; grid-template-columns:minmax(0,1fr); gap:4px;
+    padding:6px; border:1px solid var(--mm-border); border-radius:10px;
+    overflow:visible; background:var(--mm-surface);
+  }
+  .controls .player-control-row { display:contents; }
+  .controls .player-control-row .pill {
+    display:grid; grid-template-columns:72px minmax(0,1fr);
+    align-items:center; gap:8px; width:100%; min-width:0; max-width:100%;
+    min-height:0; padding:0; border:0; border-radius:0; background:transparent;
+  }
+  .controls .player-control-row .tl {
+    position:static; width:auto; height:auto; clip:auto; clip-path:none;
+    overflow:visible; white-space:normal; margin:0;
+    font-size:.58rem; line-height:1.15; letter-spacing:.05em; color:var(--mm-muted);
+  }
+  .controls .player-control-row .seg {
+    display:grid; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr);
+    align-items:stretch; gap:4px; min-width:0; max-width:100%;
+  }
+  .controls .player-control-row .seg button {
+    width:100%; min-width:0; min-height:0; padding:.18rem 2px;
+    border-radius:4px; font-size:.58rem; line-height:normal;
+    white-space:nowrap; text-align:center;
+  }
+  .controls .player-control-row .tbtn, .controls .player-control-row .tbtn.pp {
+    width:100%; min-width:0; height:22px; border-radius:4px; font-size:.8rem;
+  }
+  .controls .player-control-row .tbtn.pp { height:24px; }
+  .controls #play { font-size:0; }
+  .controls .player-control-row .pill:has(#speeds) {
+    grid-template-columns:repeat(3,minmax(40px,1fr)) minmax(112px,1.8fr);
+    gap:4px; padding-bottom:4px; border-bottom:1px solid var(--mm-border);
+  }
+  .controls #stepB { grid-column:1; grid-row:1; }
+  .controls #play { grid-column:2; grid-row:1; }
+  .controls #stepF { grid-column:3; grid-row:1; }
+  .controls .tpos { grid-column:4; grid-row:1; min-width:0; padding:0; font-size:.63rem; text-align:center; }
+  .controls #speeds { grid-column:1 / 4; grid-row:2; }
+  .controls #rankmode { grid-column:4; grid-row:2; }
+  .controls .player-control-row .pill:has(#thbtns) {
+    grid-template-columns:72px minmax(0,1fr) 36px; gap:4px;
+  }
+  .controls #thbtns { gap:2px; }
+  .controls #thbtns button { padding-inline:0; font-size:.58rem; }
+  .controls #trackmode {
+    grid-auto-flow:row; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4px;
+  }
+  .controls #trackmode button { white-space:normal; overflow-wrap:normal; }
+  .controls #trackmode button[data-mobile-label],
+  .controls #viewmode button[data-mobile-label] { font-size:.58rem; }
+  .controls #trackmode button[data-mobile-label]::after,
+  .controls #viewmode button[data-mobile-label]::after { display:none; }
+  .controls #tracknote { grid-column:2; font-size:11px; white-space:normal; }
+  .controls #windowSort { grid-template-columns:.75fr 1fr 1.5fr; grid-auto-flow:row; }
+  .controls #dimerctxpill::before {
+    content:attr(aria-label); color:var(--mm-muted); font-size:.58rem;
+    line-height:1.15; letter-spacing:.05em; text-transform:uppercase;
+  }
+  .controls .pill[hidden] { display:none !important; }
+}
+@media (min-width:620px) and (max-width:1024px) {
+  .controls { grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; }
+  .controls .player-control-row .pill:has(#speeds) { grid-column:1 / -1; }
+  .controls .player-control-row .pill:has(#trackmode) { grid-row:3 / span 2; grid-column:2; }
+}
+
+@media (max-width: 380px) {
+  /* Keep the complete hint visible; entered text retains its normal input size. */
+  :is(#pexploresearch, .entry-single-input input)::placeholder { font-size: 12px; }
+}
+
+@media (max-width: 760px), (max-width: 1024px) and (pointer: coarse) {
+  #customAnalysis .custom-comparison-side[data-source-mode="indexed"] .custom-source-stage { height:144px; min-height:144px; }
+  #customAnalysis #entryCustomMethod { height:3em; min-height:3em; }
+}

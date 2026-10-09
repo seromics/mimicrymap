@@ -1,0 +1,57 @@
+{
+  "schema": "seromap.demo-structures/1",
+  "sourcePack": "reference-2026-09",
+  "crosswalkSha256": "bee6cbba9e9e17e3c2686a04a72c00ad14e554b293760abcb8e227c41196bc70",
+  "examples": {
+    "P22301": "IL10",
+    "Q14CZ8": "HEPACAM",
+    "P01859": "IGHG2"
+  },
+  "assets": {
+    "structures/P22301.pdb": {
+      "file": "P22301-structure.pdb.gz",
+      "gene": "IL10",
+      "sha256": "dc414d55e3db01cf18cc2963942565088fbfa12a6fc11d987625579ccb7d2e9a",
+      "bytes": 122670,
+      "gzipBytes": 27302,
+      "gzipSha256": "a2cfd6bbaccabd0effc21509badf7d74ab82cdc870cdff8b287e49732e072422",
+      "source": "mimicrymap/reference/alphafold/human_swissprot/AF-P22301-F1-model_v6.pdb"
+    },
+    "structures_dimer/P22301.pdb": {
+      "file": "P22301-dimer.pdb.gz",
+      "gene": "IL10",
+      "sha256": "63da21361bebb37df22f48a09bedb2df713f6b48af1dd7d0b56f0cac4f121452",
+      "bytes": 241933,
+      "gzipBytes": 51832,
+      "gzipSha256": "30a672692bd7bb24c04478c2175d542d359c2d5979db08f7e044ae22115830f3",
+      "source": "mimicrymap/bake/out_v2_complete/structures_dimer/P22301.pdb"
+    },
+    "structures/Q14CZ8.pdb": {
+      "file": "Q14CZ8-structure.pdb.gz",
+      "gene": "HEPACAM",
+      "sha256": "94b46d221a0ede5704131a1dbf1d1374e3e241ff724d41b6d9b755b29642a399",
+      "bytes": 271828,
+      "gzipBytes": 60408,
+      "gzipSha256": "e346cb388d12e786b8b216408938241a0a1a806c8677f2303beacbc73847c261",
+      "source": "mimicrymap/reference/alphafold/human_swissprot/AF-Q14CZ8-F1-model_v6.pdb"
+    },
+    "structures_dimer/Q14CZ8.pdb": {
+      "file": "Q14CZ8-dimer.pdb.gz",
+      "gene": "HEPACAM",
+      "sha256": "5e7f978a83f91cc076d24e790aadb9c104cb8ad79b4a3f0723b0db02adb42dca",
+      "bytes": 536449,
+      "gzipBytes": 110031,
+      "gzipSha256": "6f41c079ef9600c05aa5dc363f491fc6ce01a37cdd6c030e71cdc06405b8f5a6",
+      "source": "mimicrymap/bake/out_v2_complete/structures_dimer/Q14CZ8.pdb"
+    },
+    "structures/P01859.pdb": {
+      "file": "P01859-structure.pdb.gz",
+      "gene": "IGHG2",
+      "sha256": "52d60600811d053bf96388f93d8afa5a1391ecc6991170439adfb30963d829a9",
+      "bytes": 259118,
+      "gzipBytes": 57443,
+      "gzipSha256": "505ac4452fbd27f93e87a9f28fe2cc8e14771783b30b866eb6d9bd1db49ff3ac",
+      "source": "mimicrymap/reference/alphafold/human_swissprot/AF-P01859-F1-model_v6.pdb"
+    }
+  }
+}

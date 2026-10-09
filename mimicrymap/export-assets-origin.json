@@ -1,0 +1,46 @@
+{
+  "format": "seromap.mimicry-export-assets.v1",
+  "origin": "reference-2026-09/mimicrymap",
+  "files": [
+    {
+      "path": "frontend/reproduce/docs/calculation/step-1.png",
+      "sha256": "3e94c3f5c083d0a71552d713592e262cd44036e146cd414f6dc2045973b1200c",
+      "bytes": 205002
+    },
+    {
+      "path": "frontend/reproduce/docs/calculation/step-2.png",
+      "sha256": "7f6a5192576071739029b3ded8529ddc92867f28ba6a3b218e3a54e7e198ace1",
+      "bytes": 551849
+    },
+    {
+      "path": "frontend/reproduce/docs/calculation/step-3.png",
+      "sha256": "29e68c11e36baa1243ab83c535dd9bf017a262425efafcb480b74e65e10e1996",
+      "bytes": 530439
+    },
+    {
+      "path": "frontend/reproduce/docs/calculation/step-4.png",
+      "sha256": "e9e4b5dddd19dc98a1e60851e5147ed60b68387bfdc25fcafc87b2755cedebbc",
+      "bytes": 357923
+    },
+    {
+      "path": "frontend/reproduce/docs/calculation/step-5.png",
+      "sha256": "5b22449e993a7c364dbf749be72f37a975ac3fd4124ad877b0849febfb741213",
+      "bytes": 611983
+    },
+    {
+      "path": "frontend/reproduce/docs/walkthroughs/example-1-panel.png",
+      "sha256": "646d77b65df4ebd3de643fc5b7d7c7e995e61a950c59cdfb82efe3fb63275182",
+      "bytes": 2292122
+    },
+    {
+      "path": "frontend/reproduce/docs/walkthroughs/example-2-panel.png",
+      "sha256": "14f0a4f557d7c1087de8f48657130d6a61ee3c7cf995263654e3cf6e7f579a8d",
+      "bytes": 1938507
+    },
+    {
+      "path": "frontend/reproduce/docs/walkthroughs/example-3-panel.png",
+      "sha256": "fd750be800d752e48f73b05d6ded55e960d80b6c11f90769b1ba218bc39e99c1",
+      "bytes": 1788157
+    }
+  ]
+}

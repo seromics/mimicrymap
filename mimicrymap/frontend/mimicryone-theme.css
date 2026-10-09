@@ -1,0 +1,121 @@
+/* UI contrast only. Scientific ramps, residue colors and figure geometry are unchanged. */
+/* Text sitting on the accent fill: white, in both themes. It was a near-black navy, which read
+   as a dark label on a green chip rather than as a selected control, and differed from every
+   other selected state on the page. Defined once on :root and deliberately not re-stated per
+   theme - the accent fill is the same green in both, so the text on it does not change either. */
+:root { --ui-muted: #94a3b8; --ui-on-accent: #fff; }
+:root:not(.dark) { --ui-muted: #57534e; --mm-muted:#57534e; --mm-faint:#625c55; }
+/* Sits above the content it floats over, so it moves without the page moving: absolute, and the
+   only thing that changes is where this box is and how big its buttons are. The 32px buttons at
+   top:8px reached far enough down that their hover fill crossed the top edge of the panel below,
+   which read as two surfaces bleeding into each other rather than as a control over a card. */
+.page-appearance-bar { position:absolute; top:1px; right:6px; z-index:5; }
+.page-appearance-bar .as-theme { background:transparent; border-color:transparent; gap:1px; }
+.page-appearance-bar .as-theme button { display:grid; place-items:center; width:25px; height:25px; min-height:25px; padding:4px; color:var(--ui-muted); border-radius:5px; }
+.page-appearance-bar .as-theme button[aria-pressed="true"] { color:var(--mm-ink); background:color-mix(in srgb,var(--ui-muted) 15%,transparent); }
+.page-appearance-bar .as-theme button:hover { background:color-mix(in srgb,var(--ui-muted) 22%,transparent); }
+.page-appearance-bar .as-theme button:focus-visible { outline:2px solid var(--ui-muted); outline-offset:-2px; }
+.page-appearance-bar svg { width:17px; height:17px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+.repro select { border:1px solid var(--mm-border); border-radius:6px; background:var(--mm-surface); color:var(--mm-ink); font:inherit; padding:5px; max-width:100%; }
+.repro label { display:inline-flex; align-items:center; gap:5px; color:var(--ui-muted); font-size:11px; }
+/* Progress occupies the unused right edge without moving any download control. */
+.repro #exportStatus { position:absolute; display:flex; justify-content:center; align-items:center;
+ transform:translateY(-50%); color:var(--ui-muted); font-size:11px; line-height:1; white-space:nowrap; pointer-events:none; }
+.repro #exportStatus[hidden] { display:none; }
+.export-dots { display:inline-flex; }
+.export-dots > span { animation:export-dot-pulse 1.2s ease-in-out infinite; }
+.export-dots > span:nth-child(2) { animation-delay:.16s; }
+.export-dots > span:nth-child(3) { animation-delay:.32s; }
+@keyframes export-dot-pulse { 0%,70%,100% { opacity:.25; } 35% { opacity:1; } }
+@media(prefers-reduced-motion:reduce) { .export-dots > span { animation:none; } }
+.repro { position:relative; }
+.repro .rt,.repro .seg button,.af-exportbar,.extent-section .af-exportbar { font-size:.74rem; }
+.repro .seg { border:0; background:none; gap:.65rem; align-items:center; }
+.repro .seg button { color:var(--hl-hover)!important; background:none; border:0; padding:0; font-weight:500; }
+.repro .seg button:hover { color:var(--hl-hover); text-decoration:underline; }
+.repro .seg button:disabled { cursor:wait; }
+.repro #exportCancel { display:none!important; }
+@media(max-width:600px) { .repro label { font-size:13px; } }
+@media(max-width:600px) {
+  .page-appearance-bar { top:2px; right:4px; }
+  .page-appearance-bar .as-theme button { width:44px; }
+  .hero > .wrap { padding-top:24px; }
+}
+.legend-scale.window-identity { background:var(--plot-identity-gradient); }
+#rankmode button[aria-disabled="true"] { cursor:default; }
+
+.chip[aria-pressed="true"], .seg button[aria-pressed="true"],
+.seg.wide button[aria-pressed="true"], .entry-step-number,
+.entry-compact-switch button[aria-pressed="true"] { color:var(--ui-on-accent); }
+.btn:not(.ghost):hover { color:#fff; }
+#entryCustomTargetLabel > span {
+  position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%);
+}
+
+.seg button:not([aria-pressed="true"]), .pill .tl, .tpos, .track-note,
+.corpus, .atlas-scope, .atlas-select-title p, .note:not(.err),
+.player-history-label, .figttl-meta, .figsub-meta,
+.parent-divider, .parent-divider-counts, .legend,
+.custom-analysis-guidance, .custom-helper, .custom-fasta-status,
+.entry-explore-step > label[for="pexploresearch"], .entry-single-search > label, .entry-mini-field > span,
+.entry-filter-section small, .entry-filter-group > strong,
+.entry-method-note, .rank-controls, .rank-controls button,
+.custom-side-head .ph, .rps, .rpe, .ehd em, .esub,
+.slist .identity-secondary, .colL .identity-secondary,
+.ebox .identity-secondary, .ebox .eacc, .ebox .eorg { color:var(--ui-muted); }
+.colL .on .identity-secondary { color:var(--mm-body); }
+#fasta::placeholder, #mimicfa::placeholder, :is(#pexploresearch, .entry-single-input input)::placeholder {
+  color:var(--ui-muted); opacity:1;
+}
+
+/* Light text previously inherited dark-only translucent panel backgrounds. */
+:root:not(.dark) .atlas-select,
+:root:not(.dark) .pane,
+:root:not(.dark) .repro,
+:root:not(.dark) .stage,
+:root:not(.dark) .ebox,
+:root:not(.dark) .rank-controls,
+:root:not(.dark) .chip:not([aria-pressed="true"]),
+:root:not(.dark) .pill,
+:root:not(.dark) .seg.wide button:not([aria-pressed="true"]) {
+  background:var(--mm-surface);
+}
+:root:not(.dark) .custom-input-stage,
+:root:not(.dark) .custom-source-stage,
+:root:not(.dark) .pane textarea,
+:root:not(.dark) :is(#pexploresearch, .entry-single-input input),
+:root:not(.dark) #codepane { background:var(--mm-bg); color:var(--mm-ink); }
+:root:not(.dark) .slist,
+:root:not(.dark) .mm-tooltip { background:var(--mm-surface); color:var(--mm-body); box-shadow:0 8px 24px #1c191726; }
+:root:not(.dark) select { background:var(--mm-surface); color:var(--mm-ink); }
+:root:not(.dark) .ehd,
+:root:not(.dark) .s3bar { background:var(--mm-header); }
+:root:not(.dark) .chip:hover,
+:root:not(.dark) .slist button:hover,
+:root:not(.dark) .btn.ghost:hover,
+:root:not(.dark) .tbtn:hover { background:var(--mm-hover); color:var(--mm-ink); }
+:root:not(.dark) .chip[aria-pressed="true"]:hover { background:var(--hl-sel); color:var(--ui-on-accent); }
+:root:not(.dark) .btn.ghost,
+:root:not(.dark) .chip:not([aria-pressed="true"]),
+:root:not(.dark) .entry-compact-switch button:not([aria-pressed="true"]),
+:root:not(.dark) .custom-helper,
+:root:not(.dark) .href .identity-secondary { color:var(--ui-muted); }
+:root:not(.dark) .note.err,
+:root:not(.dark) .custom-fasta-status[data-state="error"] { color:#b91c1c; }
+:root:not(.dark) .custom-fasta-status[data-state="success"] { color:#047857; }
+:root:not(.dark) .custom-warning { color:#854d0e; }
+:root:not(.dark) .method-card,
+:root:not(.dark) .science-inference,
+:root:not(.dark) .science-sensitivities,
+:root:not(.dark) .science-repro { background:var(--mm-surface); }
+:root:not(.dark) .equation,
+:root:not(.dark) .decision-grid > div,
+:root:not(.dark) .sensitivity-grid article { background:var(--mm-bg); }
+:root:not(.dark) .boundary-tag { color:#854d0e; border-color:#a47732; }
+/* Preserve the warm hero gradient, with darker endpoints on the sand background. */
+:root:not(.dark) h1 .gl { background-image:linear-gradient(100deg,#92400e,#9a3412 55%,#b91c1c); }
+
+@media (prefers-reduced-motion: reduce) {
+  .chip, .seg button, .tbtn, .mm-tooltip { transition:none; }
+  html { scroll-behavior:auto; }
+}

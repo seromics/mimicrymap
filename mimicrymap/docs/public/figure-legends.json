@@ -1,0 +1,303 @@
+{
+  "schema": "mimicryone/figure-legends/1",
+  "entries": [
+    {
+      "key": "result-extent.caption-scientific-legend",
+      "file": "frontend/result-extent.js",
+      "use": "Scientific figure legend",
+      "text": "Each point pairs {{target}} with {{unit}} in {{scope}} at ≥{{floor}}/9 core identity; all {{count}} matching {{population}} are shown. The axes show covered residues as a percentage of full sequence length: {{target}} on the X-axis and its paired parent on the Y-axis.",
+      "placeholders": {
+        "target": {
+          "expression": "s.target_label"
+        },
+        "scope": {
+          "expression": "s.parent_scope"
+        },
+        "floor": {
+          "expression": "s.floor"
+        },
+        "unit": {
+          "expression": "groups?'one distinct parent sequence':'one parent record'"
+        },
+        "population": {
+          "expression": "groups?'sequences':'records'"
+        },
+        "count": {
+          "expression": "s.parents.length.toLocaleString()"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.collection-scientific-legend",
+      "file": "frontend/atlas-figures.js",
+      "use": "Scientific figure legend",
+      "text": "Each point represents one viral proteome; the highlighted point is the selected proteome. The X-axis shows the total length of its protein sequences. {{definition}} The denominator includes {{population}}. {{coreRule}}Each threshold panel has its own Y-axis range.",
+      "placeholders": {
+        "definition": {
+          "expression": "COLLECTION_METRIC === 'reach' ? 'The Y-axis shows human protein reach: the percentage of eligible human targets matched at least once by any protein in that proteome at the indicated core identity threshold.' : 'The Y-axis shows the percentage of all eligible human residues covered by matches to those proteins at the indicated core identity threshold.'"
+        },
+        "population": {
+          "expression": "total && recs ? nf(recs)+' human records of at least '+MIN_LENGTH_AA+' residues ('+nf(total)+' residues in total)' : 'the full eligible human population'"
+        },
+        "coreRule": {
+          "expression": "COLLECTION_METRIC === 'reach' ? '' : 'Overlapping cores count once, including mismatching positions; context flanks are excluded. '"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.chromosome-scientific-legend",
+      "file": "frontend/atlas-figures.js",
+      "use": "Scientific figure legend",
+      "text": "Each mark represents a human target, positioned by its {{assembly}} genomic coordinate. The {{thresholds}} tracks show human target coverage at the indicated core identity thresholds on the same 0–100% scale. {{scope}}Overlapping cores count once, including mismatching positions; context flanks are excluded. {{population}}Track counts report the number of human targets matched at least once. Coordinates come from UniProt.",
+      "placeholders": {
+        "population": {
+          "expression": "u ? 'All '+nf(u.records)+' eligible human targets remain included. ' : ''"
+        },
+        "assembly": {
+          "expression": "ASSEMBLY"
+        },
+        "thresholds": {
+          "expression": "TRACKS.length"
+        },
+        "scope": {
+          "expression": "selectedSourceLabel() ? 'Coverage is from '+selectedSourceLabel()+' alone, within '+PROTEOME+'. ' : 'Coverage pools matches across all viral parents in '+PROTEOME+'. '"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.ladder-scientific-legend",
+      "file": "frontend/atlas-figures.js",
+      "use": "Scientific figure legend",
+      "text": "Each row summarizes matches to {{proteome}} at one core identity threshold. Human targets reached counts eligible human targets matched at least once; human residues covered reports pooled coverage across the full eligible human population. Median coverage among reached is the median human target coverage among targets with a match. Median reach per viral parent is the median human protein reach across all viral parents. Viral parents with matches is shown as the contributing count followed by the total. Overlapping cores count once, including mismatching positions; context flanks are excluded.",
+      "placeholders": {
+        "proteome": {
+          "expression": "PROTEOME"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.spread-scientific-legend",
+      "file": "frontend/atlas-figures.js",
+      "use": "Scientific figure legend",
+      "text": "Each dot represents one {{proteome}} protein. {{definition}} Bars show the range; green marks the median. The right-hand columns report the median and highest {{measure}}. {{axis}}",
+      "placeholders": {
+        "definition": {
+          "expression": "SPREAD_METRIC === 'coverage' ? 'The X-axis shows the percentage of all eligible human residues covered by that protein’s qualifying cores at the indicated core identity threshold.' : 'The X-axis shows human protein reach: the percentage of eligible human targets matched at least once at the indicated core identity threshold.'"
+        },
+        "axis": {
+          "expression": "SPREAD_METRIC === 'coverage' ? 'All threshold rows share the range stated above the plot. Overlapping cores count once, including mismatching positions; context flanks are excluded.' : ''"
+        },
+        "proteome": {
+          "expression": "PROTEOME"
+        },
+        "measure": {
+          "expression": "SPREAD_METRIC === 'coverage' ? 'coverage' : 'reach'"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.sources-scientific-legend",
+      "file": "frontend/atlas-figures.js",
+      "use": "Scientific figure legend",
+      "text": "Each row is a {{proteome}} protein; each threshold column reports how many eligible human targets it matches at least once. A human target counts once if it has any qualifying match to that viral parent. Rows rank by reach at ≥{{floor}}/9; shorter proteins break ties. Ranking is not adjusted for protein length.",
+      "placeholders": {
+        "proteome": {
+          "expression": "PROTEOME"
+        },
+        "floor": {
+          "expression": "floorForKey('sources')"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.targets-scientific-legend",
+      "file": "frontend/atlas-figures.js",
+      "use": "Scientific figure legend",
+      "text": "Each row pairs a human target with the {{proteome}} protein covering the greatest fraction of that target at the retained ≥{{baked}}/9 selection threshold. That viral partner stays fixed across all threshold columns. Coverage uses the full human target length. Overlapping cores count once, including mismatching positions; context flanks are excluded. Rows are ranked by coverage at ≥{{rank}}/9, with longer human targets first when values tie. {{limit}}{{population}}",
+      "placeholders": {
+        "proteome": {
+          "expression": "PROTEOME"
+        },
+        "baked": {
+          "expression": "bakedRankFloor()"
+        },
+        "rank": {
+          "expression": "floorForKey('targets')"
+        },
+        "limit": {
+          "expression": "pairRankingExact(String(floorForKey('targets'))) ? '' : 'The stored candidate set is selected by pooled coverage; the global top pairs are not guaranteed at this threshold. '"
+        },
+        "population": {
+          "expression": "u ? 'The eligible population contains '+nf(u.records)+' human targets.' : ''"
+        }
+      }
+    },
+    {
+      "key": "result-extent.view-label",
+      "file": "frontend/result-extent.js",
+      "use": "Adaptive scientific figure legend",
+      "text": "Sequence map ({{view}}{{mode}})",
+      "placeholders": {
+        "view": {
+          "expression": "view.exported?'Compact and Full exports':({player:'Preview',explorer:'Compact',residues:'Full'}[view.view]||view.view)"
+        },
+        "mode": {
+          "expression": "!view.exported&&view.view==='player'?' – '+(view.mode==='site'?'Window':'Overall'):''"
+        }
+      }
+    },
+    {
+      "key": "result-extent.variants-method",
+      "file": "frontend/result-extent.js",
+      "use": "Adaptive scientific figure legend",
+      "text": "Variant markers show UniProt HumSAVAR missense classifications: (likely) pathogenic, uncertain significance, or (likely) benign."
+    },
+    {
+      "key": "result-extent.modifications-method",
+      "file": "frontend/result-extent.js",
+      "use": "Adaptive scientific figure legend",
+      "text": "Modification symbols show annotated modification sites."
+    },
+    {
+      "key": "result-extent.surface-method",
+      "file": "frontend/result-extent.js",
+      "use": "Adaptive scientific figure legend",
+      "text": "The surface track marks exposed residues (rSASA ≥0.25) in the {{assembly}} model.",
+      "placeholders": {
+        "assembly": {
+          "expression": "view.assembly_context"
+        }
+      }
+    },
+    {
+      "key": "result-extent.rsasa-method",
+      "file": "frontend/result-extent.js",
+      "use": "Adaptive scientific figure legend",
+      "text": "rSASA shows relative solvent-accessible surface area calculated with FreeSASA in the {{assembly}} model (color scale 0–1; higher values share the maximum color).",
+      "placeholders": {
+        "assembly": {
+          "expression": "view.assembly_context"
+        }
+      }
+    },
+    {
+      "key": "result-extent.plddt-method",
+      "file": "frontend/result-extent.js",
+      "use": "Adaptive scientific figure legend",
+      "text": "pLDDT shows AlphaFold’s per-residue structural confidence (0–100)."
+    },
+    {
+      "key": "result-extent.cleavage-method",
+      "file": "frontend/result-extent.js",
+      "use": "Adaptive scientific figure legend",
+      "text": "The cleavage track shows pepsickle epitope-model proteasomal cleavage probabilities (0–1)."
+    },
+    {
+      "key": "result-extent.topology-method",
+      "file": "frontend/result-extent.js",
+      "use": "Adaptive scientific figure legend",
+      "text": "Topology marks UniProt-annotated extracellular, transmembrane, and intracellular regions."
+    },
+    {
+      "key": "result-extent.parent-lanes-method",
+      "file": "frontend/result-extent.js",
+      "use": "Adaptive scientific figure legend",
+      "text": "Parent tracks show matching positions, with opacity indicating core identity from 5/9 to 9/9. {{reveal}}",
+      "placeholders": {
+        "reveal": {
+          "expression": "(view.mode==='site'?'The tracks refer to the selected target window.':'Blocks show sites revealed by the scanner; the coverage summary uses the complete result.')+(!view.exported&&view.view==='player'&&view.mode!=='site'?' Preview shows up to eight parents from up to 50 candidates, in fixed alphabetical order.':'')"
+        }
+      }
+    },
+    {
+      "key": "result-extent.sequence-map-method",
+      "file": "frontend/result-extent.js",
+      "use": "Adaptive scientific figure legend",
+      "text": "Shows where qualifying molecular mimicry matches occur along {{target}} ({{length}} residues). Color shows the number of window pairs at each target start; each residue takes the highest value among overlapping cores (0–{{maximum}}, {{direction}}). Green and blue highlights mark the selected core and its surrounding context. Target coverage is the percentage of the full target sequence covered across the selected parent library. {{coverage}} {{lanes}}{{tracks}}",
+      "placeholders": {
+        "target": {
+          "expression": "s.target_label"
+        },
+        "length": {
+          "expression": "length.toLocaleString()"
+        },
+        "maximum": {
+          "expression": "Number(view.density_max||0).toLocaleString()"
+        },
+        "direction": {
+          "expression": "view.density_inverted?'inverted density color scale':'displayed density color scale'"
+        },
+        "lanes": {
+          "expression": "lanes?lanes+' ':''"
+        },
+        "tracks": {
+          "expression": "annotations.join(' ')"
+        },
+        "coverage": {
+          "expression": "coverageNote"
+        }
+      }
+    },
+    {
+      "key": "atlas-figures.ordered-coverage-scientific-legend",
+      "file": "frontend/atlas-figures.js",
+      "use": "Scientific figure legend",
+      "text": "{{arrangement}} The {{thresholds}} tracks show human target coverage at the indicated core identity thresholds on the same 0–100% scale. {{scope}}Overlapping cores count once, including mismatching positions; context flanks are excluded. {{population}}Track counts report the number of human targets matched at least once.",
+      "placeholders": {
+        "population": {
+          "expression": "u ? 'All '+nf(u.records)+' eligible human targets remain included. ' : ''"
+        },
+        "thresholds": {
+          "expression": "TRACKS.length"
+        },
+        "scope": {
+          "expression": "selectedSourceLabel() ? 'Coverage is from '+selectedSourceLabel()+' alone, within '+PROTEOME+'. ' : 'Coverage pools matches across all viral parents in '+PROTEOME+'. '"
+        },
+        "arrangement": {
+          "expression": "arrangementNote()"
+        }
+      }
+    },
+    {
+      "key": "result-extent.coverage-method",
+      "file": "frontend/result-extent.js",
+      "use": "Shared covered-residue counting rule within sequence-map and standalone scatter captions",
+      "text": "Coverage counts every position in a qualifying nine-residue core, including mismatches. Overlaps count once; context flanks are excluded."
+    },
+    {
+      "key": "result-extent.scatter-heading",
+      "file": "frontend/result-extent.js",
+      "use": "Bold lead-in for the parent-versus-target scatter caption",
+      "text": "Parent versus target mimicry scatter"
+    },
+    {
+      "key": "atlas-figures.collection-parent-scientific-legend",
+      "file": "frontend/atlas-figures.js",
+      "use": "Collection scatter display unit and highlighting",
+      "text": "Each point represents one viral parent in {{proteome}}. {{highlight}} The X-axis shows protein length. {{measure}} The denominator includes {{records}} human records of at least {{minimum}} residues ({{residues}} residues in total). {{overlaps}}Each threshold panel has its own Y-axis range.",
+      "placeholders": {
+        "proteome": {
+          "expression": "PROTEOME"
+        },
+        "highlight": {
+          "expression": "highlight"
+        },
+        "measure": {
+          "expression": "measure"
+        },
+        "records": {
+          "expression": "nf(PROTEIN_INDEX && PROTEIN_INDEX.eligible_human_records)"
+        },
+        "minimum": {
+          "expression": "MIN_LENGTH_AA"
+        },
+        "residues": {
+          "expression": "nf(PROTEIN_INDEX && PROTEIN_INDEX.eligible_human_residues)"
+        },
+        "overlaps": {
+          "expression": "overlaps"
+        }
+      }
+    }
+  ]
+}

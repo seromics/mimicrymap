@@ -3,3 +3,15 @@ outputs/
 __pycache__/
 *.pyc
 .DS_Store
+node_modules/
+.venv*/
+dist/
+.mimicry-build-*/
+mimicrymap/bake/
+mimicrymap/frontend/data/
+*.sqlite
+*.sqlite-*
+*.db
+*.npz
+*.npy
+*.log

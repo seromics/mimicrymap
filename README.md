@@ -1,14 +1,44 @@
-# MimicryMap Pipeline
+# MimicryMap
 
 **Map antigen-specific sequence resemblance within and across proteomes.**
 
 MimicryMap compares antigen target sequences with a chosen set of parent proteins to find matching amino-acid windows and map where they occur. It reports local sequence similarity and coverage across each protein, helping you explore candidate molecular mimics alongside experimental evidence. This package runs comparisons locally from FASTA files and includes illustrated walkthroughs with downloadable example results. MimicryMap is a linear epitope mimicry tool; its comparisons do not account for 3D structures or post-translational modifications.
 
+**Private release staging.** This continues the existing MimicryMap repository and
+its illustrated methods. Code, atlas and application license choices are pending;
+this is not a public release. Source data retain their own terms and attribution.
+
+## Choose a route
+
+| Route | Use | Output |
+| --- | --- | --- |
+| Browser applet | Explore one target against a reference library or custom FASTA | Sequence maps, parent tables and selected-scope CSVs |
+| Detailed CPU pipeline | Reproduce a selected comparison or inspect every matching window for supplied targets | Per-target match tables and a combined coverage summary |
+| Library builder, CPU or NVIDIA GPU | Build reusable summaries and candidate indexes across two complete FASTAs | Summary CSV, unrounded pair coverage, installable candidate database; full positions optional |
+
+The library builder uses the same engine and writers as SeroMap Workspace.
+It needs Node.js 24+, without Electron or an installed study:
+
+```sh
+node build.cjs --targets inputs/antigen-target.fasta --parents inputs/mimicry-parents.fasta --out outputs/example-index
+```
+
+For NVIDIA acceleration, add `--engine gpu --python /path/to/CUDA/python`.
+CPU supports 5/9–9/9; GPU supports 7/9–9/9. The default floor is 7/9.
+Add `--retain-positions` only when complete saved sequence lookups are needed.
+See [Build libraries](docs/BUILD.md) for installation, metadata and reproduction.
+
+The atlas is distributed separately: [Atlas files and provenance](docs/ATLAS.md).
+The browser source is retained in `mimicrymap/frontend/`; curated search, structures
+and atlas browsing need the separately installed reference assets and host services.
+The current web staging and desktop remain their running hosts. See
+[Source alignment](docs/DEVELOPMENT.md) and [Scientific method modules](docs/METHOD-MODULES.md).
+
 **Run the supplied FASTAs, or replace them to start a new comparison.** This is the same pipeline package for example inputs and a selected site comparison. Both use the site's comparison worker and CSV calculations.
 
 The package includes an editable HEPACAM–EBNA1 example. Run it as supplied, or replace the FASTA files and settings with your own comparison; see [Example](docs/EXAMPLE.md).
 
-## Run
+## Run a detailed comparison (CPU)
 
 Extract the whole ZIP. In the extracted folder:
 

@@ -1,0 +1,13 @@
+{
+  "schema": "mimicryone/public-library-policy/1",
+  "internal_only_libraries": [
+    "atlas_120_viruses",
+    "panscan9_dark",
+    "panscan9_exposure",
+    "panscan9_human",
+    "panscan9_variant"
+  ],
+  "restore": "Explicit release decision; no automatic date-based reactivation.",
+  "preserve": "Retain source records, full-protein parents, metadata, staging and internal comparison wiring.",
+  "atlas_120_viruses_note": "Carrier release for the HuProt 4.0 pair only. It holds the viral_nonhuman subset of canonical_exposure under its own antigen ids, so offering it as a library of its own would imply an independent surface. Its tables are published; the selector is deferred until the pairing can be offered as canonical_exposure pinned to that scope."
+}

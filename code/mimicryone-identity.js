@@ -348,6 +348,13 @@
       provenance: identity.provenance
     };
     Object.keys(identity.export).forEach(k=>{identity.export[k]=publicText(identity.export[k]);});
+    // Workspace preferences affect visible labels only. Full identity, tooltip,
+    // scientific exports and record matching keep the original parsed fields.
+    var display = root.MimicryWorkspaceDisplayPreferences?.[record.workspace_library_id || libraryId] ||
+      root.MimicryWorkspaceDisplayPreferences?.[options.activeLibrary] || record.workspace_display;
+    var line = ({accession: identity.accession || identity.assayId, gene: identity.gene,
+      description: identity.proteinName, header: identity.fullHeader})[display?.primary] || identity.primaryLine;
+    identity.displayLine = display?.limit && line.length > display.limit ? line.slice(0,display.limit-1).trimEnd() + '…' : line;
     return identity;
   }
 

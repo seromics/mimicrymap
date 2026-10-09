@@ -1,0 +1,75 @@
+# Source alignment and release
+
+This repository continues `seromics/mimicrymap`, retaining its illustrated
+methods and worked examples. `seromics/mimicryone` is the historical atlas/build
+repository. Its retained databases and old maintenance wrappers are not copied
+into the clean research release.
+
+## Ownership
+
+| Path | Role |
+| --- | --- |
+| `mimicrymap/frontend/` | Current desktop-tracked applet, shared scientific exports and retained hosting adapters |
+| `mimicrymap/workspace/` | Electron-independent FASTA/index/CPU/GPU engine |
+| `mimicrymap/docs/public/` | Existing authored applet copy, methods, terminology and figure legends |
+| `code/` | Generated portable view of the same browser/CPU calculation files |
+| `build.cjs`, `tools/build-worker.cjs` | Standalone research host for the bulk engine |
+| `README.md`, `docs/` | Existing illustrated research instructions plus the new build/release guides |
+| `data/atlas-manifest.json` | Small manifest for separately staged data archives; no payloads or download DOI yet |
+
+`source-manifest.json` pins each promoted file to its source commit and SHA-256.
+It includes the shared plot palette dependency so the research package does not
+depend on a sibling SeroMap checkout. `npm run check:source` detects edits or
+missing files in that snapshot. New scientific changes should be made in the
+owning shared desktop source and deliberately promoted while this staging
+relationship is in use:
+
+```sh
+node tools/sync-upstream.cjs /path/to/seromap_electron --write --update
+git diff
+npm run check:source
+npm test
+```
+
+This is an explicit source snapshot, not an automatic upstream subscription.
+Promotion never edits either source checkout. Do not independently change the
+generated `code/` copy. New host code does not choose different scientific
+definitions by brand, operating system or screen width.
+
+## Website boundary
+
+The staged website currently mounts a pinned MimicryMap runtime with its own
+Seroatlas navigation/layout adapters. It is not yet a deployment of this new
+research repository. This commit neither deploys Fly nor replaces that site.
+Applet sources here preserve the current desktop implementation; the website's
+host adapters need a reviewed promotion before declaring both deployed hosts
+identical. `frontend/serve.py` is the retained reference-host server, not a
+data-free demonstration server: its curated catalog, source packs and baked
+examples are external inputs. The research builders run without those assets.
+
+The scientific contract is shared matching semantics, record identities,
+coverage, thresholds, metadata and output fields. Browser selected-scope tables,
+library summary files and installable candidate databases have deliberately
+different scope/storage. Existing published summary formatting is documented
+in SUMMARY-DOWNLOADS.md; no blanket historical-atlas equivalence is claimed.
+
+## Checks
+
+`npm test` runs bounded fresh-input checks and cleans its temporary files. It
+checks installable candidate/full outputs, annotations, browser-worker position
+agreement, input rejection and no-overwrite behavior. To include the optional
+NVIDIA coordinate/CSV/membership check, set `MIMICRY_GPU_PYTHON` to the GPU
+environment's Python executable. CPU checks run in GitHub Actions on Windows,
+Linux and macOS. Hosted CI does not claim GPU validation.
+
+## Private staging
+
+`npm run package` creates a research ZIP and SHA-256 file under ignored `dist/`
+from the tracked repository contents, excluding the bulky worked-example ZIPs
+already linked from the README. The source and figures stay in the repository.
+No atlas payloads, studies, caches, local paths, credentials or CUDA environment
+are included. Review the archive inventory before attaching a private draft.
+
+Before public release, resolve software/data license choices, author/citation
+metadata and the atlas DOI. Preserve third-party notices and input terms. Do
+not imply a DOI exists or choose an open-source license on the author's behalf.

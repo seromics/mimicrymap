@@ -1,0 +1,333 @@
+{
+  "schema": "mimicryone/terminology/1",
+  "terms": [
+    {
+      "id": "antigen_target",
+      "label": "Antigen Target",
+      "meaning": "The sequence record being inspected and plotted.",
+      "rule": "Use this role name, not query, source or mimicry target, in user explanations. Client CSVs use Antigen Target, then Antigen Target Gene, Accession and Protein Description in that order, including human-specific figures."
+    },
+    {
+      "id": "mimicry_parent",
+      "label": "Mimicry Parent",
+      "meaning": "A selected comparison record searched for resemblance to the antigen target.",
+      "rule": "Use the plural for multiple records. Source is not a synonym for this role. Client CSVs use Mimicry Parent, then Mimicry Parent Gene, Accession and Protein Description in that order, including viral-specific figures. Biological scope belongs in context fields rather than alternate record-role headings."
+    },
+    {
+      "id": "library",
+      "label": "Library",
+      "meaning": "A named collection of available sequence records.",
+      "rule": "A library is the resource selected before filters; it is not the filtered scope."
+    },
+    {
+      "id": "scope",
+      "label": "Scope",
+      "meaning": "The included population after filters are applied to a library.",
+      "rule": "Target-side scope narrows search. Parent-side scope defines the comparison population."
+    },
+    {
+      "id": "source_collection",
+      "label": "Source Collection",
+      "meaning": "A provenance membership identifying where a record came from.",
+      "rule": "Keep provenance separate from taxonomy, comparison role and sequence grouping."
+    },
+    {
+      "id": "canonical_libraries",
+      "label": "Canonical Libraries",
+      "meaning": "Reference sequence libraries providing protein and natural-form context.",
+      "rule": "Do not call the category Full proteins: it can include natural peptide forms."
+    },
+    {
+      "id": "assay_libraries",
+      "label": "Assay Libraries",
+      "meaning": "Libraries retaining the native records used by an assay platform.",
+      "rule": "Do not call the category tile libraries; an assay record is not necessarily a tile."
+    },
+    {
+      "id": "record",
+      "label": "Record",
+      "meaning": "One identified sequence entry in the selected library. Depending on the library, it may represent a protein, a fragment, a natural peptide, an assay antigen or an exact-sequence comparison group.",
+      "rule": "State the counted record unit when it changes interpretation. A record is not an extracted 9-mer core, a 27-mer context or a whole organism."
+    },
+    {
+      "id": "full_record",
+      "label": "Full Record",
+      "meaning": "The entire stored sequence of one record, rather than an extracted core or context window. Full record does not by itself guarantee a biologically full-length protein.",
+      "rule": "Use full-length protein only when source annotation supports that claim. Full-record coordinates and coverage refer to the stored sequence and its eligible positions; record completeness is a separate property."
+    },
+    {
+      "id": "exact_sequence_group",
+      "label": "Exact-Sequence Group",
+      "meaning": "One comparison entry representing source records with identical whole stored amino-acid sequences. Grouping uses the entire stored sequence, not only a matching 9-mer or 27-mer.",
+      "rule": "Identify this unit wherever grouped counts could be mistaken for native source-record counts. Retain source identities and memberships separately; neither a group nor its representative guarantees a biologically full-length protein."
+    },
+    {
+      "id": "tile",
+      "label": "Tile",
+      "meaning": "A sequence fragment represented as an actual input record.",
+      "rule": "Use only for genuine tiles, not all assay records or full proteins."
+    },
+    {
+      "id": "core",
+      "label": "Core (9-mer)",
+      "meaning": "The nine aligned sequence positions used to determine whether a comparison qualifies.",
+      "rule": "Core is the compact label when 9-mer is already stated. Context does not determine inclusion."
+    },
+    {
+      "id": "window",
+      "label": "Window",
+      "meaning": "One positioned occurrence of a core within a record, identified by its start coordinate.",
+      "rule": "Windows advance one residue and overlap. Do not use window count to mean residue coverage or non-overlapping tiles."
+    },
+    {
+      "id": "context",
+      "label": "Context (27-mer)",
+      "meaning": "The core plus up to nine available residues on either side, aligned across 27 positions.",
+      "rule": "Context is the compact label when 27-mer is stated. Missing terminal context stays absent."
+    },
+    {
+      "id": "core_identity",
+      "label": "Core Identity",
+      "meaning": "The number of identical resolved amino acids at the nine aligned core positions.",
+      "rule": "Use for the threshold and core scores. Never use Identity alone where the denominator is ambiguous."
+    },
+    {
+      "id": "context_identity",
+      "label": "Context Identity",
+      "meaning": "The number of identical resolved amino acids across the 27 aligned context positions.",
+      "rule": "The denominator remains 27 at sequence ends. Context is an allowed compact column label only with an explicit tooltip or grouped Identity/27-mer header."
+    },
+    {
+      "id": "best_core",
+      "label": "Best Core",
+      "meaning": "The maximum core identity among the qualifying window pairs for the record comparison.",
+      "rule": "Separate from Best context; their maxima may occur at different positions."
+    },
+    {
+      "id": "best_context",
+      "label": "Best Context",
+      "meaning": "The maximum context identity among the qualifying window pairs for the record comparison.",
+      "rule": "Do not label this simply Best. Do not imply its pair also has the maximum core score."
+    },
+    {
+      "id": "min_identity",
+      "label": "Min Identity",
+      "meaning": "The minimum core identity required for inclusion.",
+      "rule": "Full figure label: Core Identity Threshold. Compact control label: Min Identity. Prose: core identity threshold, or threshold after the measure is clear. Core identity is the observed score; its threshold controls inclusion. Do not call the threshold resolution."
+    },
+    {
+      "id": "context_blosum62",
+      "label": "Context BLOSUM62",
+      "meaning": "The alignment ranking score for available resolved positions in the displayed context.",
+      "rule": "Use this label for the score across displayed context positions. Core identity controls inclusion; context identity is reported separately as an identity count."
+    },
+    {
+      "id": "core_window_matches",
+      "label": "Core Window Matches",
+      "meaning": "Qualifying core coordinate pairs between the antigen target and mimicry parent records.",
+      "rule": "In the Player and its figure exports, this panel uses the selected antigen target window. A saved summary across the whole target must state that broader scope explicitly. Use the label Core Window Matches."
+    },
+    {
+      "id": "overall_mimicry_parents",
+      "label": "Overall Mimicry Parents",
+      "meaning": "The protein-wide summary of matching comparison records for the selected target and scope.",
+      "rule": "Distinguish from the selected-window panel. Pagination does not define the total population."
+    },
+    {
+      "id": "unclassified",
+      "label": "Unclassified",
+      "meaning": "No classification is assigned at the stated level.",
+      "rule": "For missing taxonomy, specify the level when useful. Do not replace unresolved sequence positions or uncertain evidence with Unclassified."
+    },
+    {
+      "id": "no_matches",
+      "label": "No Matches",
+      "meaning": "Zero matches represented at this window at the selected identity threshold.",
+      "rule": "Use No Matches at zero density for the stated window, scope and threshold."
+    },
+    {
+      "id": "target_coverage",
+      "label": "Antigen Target Coverage",
+      "meaning": "The percentage of eligible antigen target residues covered by the union of qualifying cores.",
+      "rule": "Compact table label: Target %. Include mismatches inside qualifying cores; exclude context flanks. Not the percentage of library records with hits."
+    },
+    {
+      "id": "parent_coverage",
+      "label": "Mimicry Parent Coverage",
+      "meaning": "The percentage of eligible mimicry parent residues covered by the union of qualifying cores.",
+      "rule": "Compact table label: Parent %. The direction and denominator differ from antigen target coverage."
+    },
+    {
+      "id": "window_pairs",
+      "label": "Window Pairs",
+      "meaning": "Distinct antigen target and mimicry parent coordinate pairs in their named records.",
+      "rule": "Use instead of positional events for this count. Repeated occurrences at different coordinates remain separate; duplicate mapping paths count once."
+    },
+    {
+      "id": "matched_target_windows",
+      "label": "Matched Target Windows",
+      "meaning": "Distinct antigen target window start positions with at least one qualifying match.",
+      "rule": "Not the number of window pairs, non-overlapping windows or covered residues."
+    },
+    {
+      "id": "matching_records",
+      "label": "Matching Records",
+      "meaning": "Distinct comparison records with at least one qualifying core match at the selected identity threshold. Each comparison record counts once, regardless of its number of matching sites.",
+      "rule": "Use Records for mixed libraries; use Proteins only for a verified protein population. The compact label matching records may include exact-sequence comparison groups only when the accompanying legend explicitly identifies that grouping. Preserve exact-sequence groups in unit-specific descriptions and metadata; a group count is not a count of native source records or full-length proteins."
+    },
+    {
+      "id": "wildcard",
+      "label": "Wildcard",
+      "meaning": "An unconstrained position in a motif pattern, represented by * in the Methods diagrams. It may match or differ from the comparison residue.",
+      "rule": "Do not use wildcard as a synonym for a resolved mismatch, an unresolved residue or missing context. Distinguish a pattern used to describe allowed agreement from the exported Core Match Mask, which describes the observed alignment."
+    },
+    {
+      "id": "completeness",
+      "label": "Completeness",
+      "meaning": "Whether the declared comparison population has been fully evaluated at the stated threshold.",
+      "rule": "Use Complete at ≥7/9 within the selected scope only when verified, substituting the actual threshold. Describe display caps independently, e.g. Top 10 of 753 matching records."
+    },
+    {
+      "id": "human_protein_reach",
+      "label": "Human Protein Reach",
+      "meaning": "The number or percentage of eligible human records with at least one qualifying core match at the selected identity threshold. Each record counts once.",
+      "rule": "State whether reach is measured for one viral protein or for all proteins of a virus together. Reach counts records, not covered residues."
+    },
+    {
+      "id": "human_residue_coverage",
+      "label": "Human Residue Coverage",
+      "meaning": "The percentage of residues in the eligible human population covered by the union of qualifying cores across the selected viral parents.",
+      "rule": "Include no-match records in the full residue denominator; count overlaps once and include mismatching core positions, excluding context flanks. A median coverage among reached human proteins is a separate, record-weighted summary of the matched subset."
+    },
+    {
+      "id": "human_target",
+      "label": "Human Target",
+      "contextual_form_of": "antigen_target",
+      "meaning": "The antigen target in the atlas human library.",
+      "rule": "Human Target is the contextual figure label when the human-target and viral-parent direction is known. Use human target in prose, or target after the direction is established."
+    },
+    {
+      "id": "viral_parent",
+      "label": "Viral Parent",
+      "contextual_form_of": "mimicry_parent",
+      "meaning": "A viral comparison record acting as a mimicry parent to human antigen targets in the atlas.",
+      "rule": "Viral Parent is the contextual figure label in the atlas. Use viral parent in prose, or parent after the direction is established. Source collection describes provenance."
+    },
+    {
+      "id": "human_target_coverage",
+      "label": "Human Target Coverage",
+      "contextual_form_of": "target_coverage",
+      "meaning": "Antigen target coverage for one human record, using the qualifying-core residue union on that human record.",
+      "rule": "State whether coverage is by one viral parent or pooled across all viral parents. Frontend and image headings omit (%) and percent signs stay with displayed percentage values. CSV headers use Human Target Residues Covered (%) with threshold and pooling qualifiers. Human residue coverage across the entire eligible human population remains a separate aggregate metric."
+    },
+    {
+      "id": "viral_parent_coverage",
+      "label": "Viral Parent Coverage",
+      "contextual_form_of": "parent_coverage",
+      "meaning": "Mimicry parent coverage for a viral comparison record.",
+      "rule": "Its denominator is the viral record, not the human target. Do not relabel human-population reach or coverage as viral parent coverage. CSV headers use Viral Parent Residues Covered (%) when that measurement is exported."
+    },
+    {
+      "id": "mimicry_coverage_summaries",
+      "label": "Mimicry coverage summaries",
+      "meaning": "Static per-target tables describing sequence coverage, region intervals and matching-parent counts within a declared comparison population.",
+      "rule": "Use this name for reference, assay-library and selected-virus summary downloads. These are sequence summaries, not measured antibody responses or enrichment statistics. The first population in a download direction supplies the target rows."
+    },
+    {
+      "id": "selected_virus",
+      "label": "Selected virus",
+      "meaning": "The atlas reference viral proteome currently selected, with its displayed organism/strain and matching TaxID.",
+      "rule": "This scope contains all records of that reference proteome, not one viral protein or every strain of a species. Both directional download links follow the selection."
+    },
+    {
+      "id": "all_viruses",
+      "label": "All viruses",
+      "meaning": "The pooled reference viral-proteome collection declared by the current atlas manifest.",
+      "rule": "Use this contextual label for the pooled atlas downloads, not the full canonical exposure library. Record the collection count in release-bound documentation rather than treating it as part of this definition."
+    },
+    {
+      "id": "shared_regions",
+      "label": "Shared Regions",
+      "meaning": "The union of target residue intervals covered by qualifying cores at the stated threshold and comparison scope.",
+      "rule": "Count overlapping residues once. Region coordinates are 1-based and inclusive; flanking context is excluded."
+    },
+    {
+      "id": "uncovered_residue_regions",
+      "label": "Uncovered Residue Regions",
+      "meaning": "Target residues outside all qualifying 9-residue windows at the stated identity threshold and comparison scope. Qualifying windows include mismatch positions; uncovered residues may participate in lower-identity matches.",
+      "rule": "The exact complement of Shared Regions over the target sequence, with 1-based inclusive coordinates. Compute from all qualifying windows, independently of processing order. Parent coverage uses parent coordinates; the uncovered interval columns describe the target. Records shorter than nine residues are not assessable."
+    },
+    {
+      "id": "all_matching_parent_count",
+      "label": "All Matching Parent Count",
+      "meaning": "The number of comparison records with a qualifying match before the summary parent-list coverage floor is applied.",
+      "rule": "Do not infer this count from the displayed parent list or apply a listed-parent filter to whole-target coverage."
+    },
+    {
+      "id": "additional_trembl",
+      "label": "Additional TrEMBL",
+      "meaning": "The retained additional UniProtKB/TrEMBL records included in the Human proteins scope.",
+      "rule": "Use this label in scope controls and source documentation. These records are separate from the reviewed Swiss-Prot layer; the display name does not change their membership or provenance."
+    }
+  ],
+  "review_boundaries": [
+    "Methods distinguish a Core Match Mask (the displayed alignment record) from a search mask (an internal candidate-selection representation). Neither creates new input sequences. The current two-record Frequency Logo is a frequency display, not a search-scoring PWM or evidence of enrichment.",
+    "Approved naming conventions do not change calculations, population units or completeness gates. Trace labels to their actual counts; retain specific grouping units.",
+    "Compact labels are contextual renderings of one term, not alternate definitions. Tooltips must identify the full term.",
+    "Export field names are versioned contracts, not editable synonyms of display labels.",
+    "Source-protein language in directional population figures must be reviewed in its actual orientation before replacement.",
+    "Atlas figure titles, prose and image headings may use the contextual labels Human Target, Viral Parent and Human Target Coverage. Client CSV role headings use Antigen Target and Mimicry Parent across all matching record surfaces. Frontend and image column headings omit percentage units; percentage values carry %, while CSV percentage headers explicitly include (%)."
+  ],
+  "prose_rule": "Use sentence case for defined terms in prose, legends, instructions, tooltips, and definitions. Retain established capitalization in figure titles, section headings, column labels, and explicit references to named controls. Define antigen target and mimicry parent once, then use target and parent when clear. Contextual labels do not introduce new concepts.",
+  "concepts": [
+    {
+      "id": "roles",
+      "title": "Target and parent",
+      "text": "The antigen target is the sequence record selected for inspection. A mimicry parent is a comparison record in the selected population. After these roles are established, use target and parent. In the viral atlas, human target and viral parent name the same roles in the known library direction. Client CSVs use Antigen Target and Mimicry Parent consistently, including atlas and figure-data exports. Each identity block starts with its role label, followed by Gene, Accession and Protein Description with that role prefix. Human and viral labels in figure titles and prose describe biological scope; they do not introduce different CSV record roles."
+    },
+    {
+      "id": "population",
+      "title": "Library and scope",
+      "text": "A library is an available collection of records; its scope is the population included after filtering. Target-side scope narrows selection, while parent-side scope defines the comparison population. Source collection identifies provenance. Canonical libraries retain protein and natural-form context; assay libraries retain the records used by an assay. In mimicry coverage summaries, the first population in Target → comparison supplies the rows. Selected virus means the currently selected reference proteome and its organism/strain and TaxID; All viruses means the pooled atlas collection, not all canonical exposures. Reversing direction changes the target population and coverage denominator. The download population and plot-eligible population are stated separately. Single mode intersects the active parent library and scope with one exact catalog record. It does not widen the scope or create a new library. With no record selected, single mode has no comparison population ready to run. A record’s presence in an exposure library is not evidence that a person encountered it or that the exposure is common."
+    },
+    {
+      "id": "records",
+      "title": "Records and sequence groups",
+      "text": "A record is one identified stored sequence. It may be a protein, fragment, natural peptide, or assay antigen. Full record means the entire stored sequence and does not guarantee a biologically full-length protein. An exact-sequence group combines source records with identical full stored sequences into one comparison entry; group counts and source-record counts are different. Use tile only for an actual fragment record. Unclassified means no category is assigned at the stated level. Gene is a supplied or retained gene annotation; Accession is the source record accession; Protein Description retains the descriptive protein name separately from the compact label. In assay summary CSVs, Antigen Target Protein Description begins with the original JHU or CDI assay ID so records can be joined to antibody measurements; parent lists and original FASTA headers retain the corresponding IDs. Unknown biological metadata is not inferred. Blank organism metadata and the legacy custom-FASTA label “user supplied” both leave the organism unspecified; the latter describes input provenance. Other unknown metadata stays blank. An arbitrary FASTA identifier is a record label, not an inferred gene or accession. These rules apply independently to every record in multiple-target runs."
+    },
+    {
+      "id": "positions",
+      "title": "Cores, windows, and context",
+      "text": "A core is the nine aligned positions used to determine whether a match qualifies. A window is a positioned occurrence of that core in a record. Windows advance one residue and can overlap. Context adds up to nine available residues on each side of the core, aligned across 27 positions. Missing terminal context remains absent and does not affect inclusion. In summary CSVs, Shared Regions are the union of target residues covered by qualifying windows. Uncovered Residue Regions: Target residues outside all qualifying 9-residue windows at the stated identity threshold and comparison scope. Qualifying windows include mismatch positions; uncovered residues may participate in lower-identity matches. These intervals use 1-based inclusive coordinates. Overlaps count once, and flanking context is excluded. Processing windows from left to right or right to left gives the same residue union. Both sequence ends belong to fewer complete windows than internal residues; neither end is preferred. Short records remain explicitly not assessable."
+    },
+    {
+      "id": "identity",
+      "title": "Identity and threshold",
+      "text": "Core identity counts identical resolved amino acids out of nine aligned positions; context identity counts them across a fixed 27-position span. Missing or unresolved positions contribute no identities. The core identity threshold is the minimum required for inclusion, labeled Min Identity in compact controls. Best Core and Best Context report the respective maxima for a record comparison; they may come from different sites. Context BLOSUM62 ranks available aligned context positions and is a score, not a percentage or inclusion threshold. A wildcard in the Methods illustration leaves a position unconstrained; observed match masks describe the actual alignment. Inclusion is determined by literal, ungapped core identity at the selected threshold. Display sorting is descriptive; no p-value, q-value or enrichment estimate is implied."
+    },
+    {
+      "id": "coverage",
+      "title": "Reach and coverage",
+      "text": "Reach is the number or percentage of eligible human records with a qualifying match; each record counts once. Coverage is the percentage of eligible residues within qualifying cores. Target or parent identifies the record used as the denominator. Human target coverage describes one human record; human residue coverage describes the full eligible human residue population. State whether matches are from one viral parent or pooled across a proteome. Pooling takes the union of covered residues, not the sum of parent percentages. Overlaps count once, mismatching positions within qualifying cores are included, and context flanks are excluded. A median of individual record percentages is different from pooled population coverage. Window coverage instead measures the percentage of eligible window starts with a match. Mimicry coverage summaries are static sequence tables, not antibody measurements or enrichment results. Whole-target Coverage (%) uses the union across the declared comparison population; paired Parent|Target percentages describe individual record pairs. A selected-virus human summary must use that virus’s own union and cannot be obtained by subtracting pooled percentages."
+    },
+    {
+      "id": "counts",
+      "title": "Counts of matches",
+      "text": "Matching records counts comparison entries with at least one qualifying core; identify exact-sequence grouping when used. Window pairs counts distinct target and parent coordinate pairs, so repeated sites remain separate while duplicate mapping paths count once. Matched target windows counts target starts with at least one match. No matches means zero at the stated window, scope, and threshold. Core Window Matches is the selected-window panel; saved summaries across the whole target state that scope. Overall Mimicry Parents summarizes the full target. Complete results include all qualifying window pairs across the selected population at the stated threshold. Summary CSVs retain All Matching Parent Count before the list floor. The paired list itself determines the number of listed entries; no redundant listed-count column is exported. Aligned parent lists retain pairs with at least 10% coverage on either endpoint. That listing floor does not filter whole-target coverage or the all-parent count."
+    },
+    {
+      "id": "graded_parent_lists",
+      "title": "Paired parent lists",
+      "text": "All current summary routes use paired parent coverage with the header Coverage (%) Parent|Target (>=10% either), at the relevant identity level. Entries use Gene|Accession|AssayID@Parent|Target, with missing label components omitted, one-decimal percentages and semicolons between parents. Structural pipes and @ are unescaped; backslash escapes those characters only when literal within a component. Split at the unescaped @ before interpreting label pipes versus numeric pipes. Original parent labels and assay IDs remain intact. Inclusion uses the inclusive 10% either-side rule before rounding. All Matching Parent Count includes matches below that floor; count paired entries when a list count is needed. Empty lists retain the target row. Current summaries use Shared and Uncovered Residue Regions, not expanded unmatched-window spans. Older files remain unchanged for provenance."
+    },
+    {
+      "id": "evidence",
+      "title": "Sequence results and published evidence",
+      "text": "A sequence match is a qualifying positioned comparison under the stated input, scope and threshold. Experimental cross-reactivity is a separate observation reported by an assay or study. Reproducing a sequence result means recovering its substantive matches, coordinates, identities and coverage from the same inputs and settings; it does not mean replicating the cited biological experiment. Metadata formatting can differ without changing those results, but record identity, scope and biological annotations must not be silently substituted. A saved figure retains the provenance of its original result. Additional sequence resemblance does not by itself establish cross-reactivity, exposure history or causation."
+    },
+    {
+      "title": "Additional TrEMBL",
+      "text": "Additional TrEMBL is the Human proteins scope containing the 339 retained unreviewed UniProtKB/TrEMBL records. These are accounted for separately from reviewed Swiss-Prot records. The public label does not alter source membership or retained provenance."
+    }
+  ]
+}

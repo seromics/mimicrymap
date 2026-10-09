@@ -1,0 +1,3 @@
+# Optional NVIDIA engine. Install in a separate Python 3.11+ environment.
+# Same CuPy/CUDA wheel family used by SeroMap Workspace.
+cupy-cuda12x[ctk]==14.0.1
