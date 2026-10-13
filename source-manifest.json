@@ -1014,8 +1014,8 @@
     {
       "path": "mimicrymap/frontend/site-pages.css",
       "source": "mimicrymap/frontend/site-pages.css",
-      "bytes": 19052,
-      "sha256": "2159019af8f13d9e527d9450a566d56f470b4a3f98d2e44d6a5fdae36558d3ff"
+      "bytes": 19251,
+      "sha256": "67d0785f5b5d426623e746cdef2f3556b5b1589356526bce5257a9beaef6230e"
     },
     {
       "path": "mimicrymap/frontend/site-routes.js",
