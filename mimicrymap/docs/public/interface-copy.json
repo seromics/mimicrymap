@@ -1176,7 +1176,7 @@
       "key": "index.html.proteinstart-merendmatchblosum.be064d2",
       "file": "frontend/index.html",
       "use": "HTML display fragment",
-      "text": "<span class=\"enm\">Mimicry Parent</span><span class=\"ediv\"></span><span class=\"epos l\" data-tooltip=\"Context start: first available residue of the displayed parent context, 1-based and inclusive. CSV Core Start instead locates the 9-mer core.\">Start</span><span class=\"eseq\" data-tooltip=\"Context (27-mer): the retained 9-mer core plus up to nine flanking residues on each side.\">27-mer</span><span class=\"epos r\" data-tooltip=\"Context end: last available residue of the displayed parent context, 1-based and inclusive. CSV Core End instead bounds the 9-mer core.\">End</span><span class=\"ebadge\" data-tooltip=\"Context identity counts identical standard amino acids across 27 positions. Core identity determines inclusion; the Sort control determines row order.\" style=\"color:var(--mm-faint)\">Context</span><span class=\"enum w-bl\" data-tooltip=\"Sum of BLOSUM62 substitution scores across available resolved positions in the displayed 27-residue context.\">BLOSUM62</span>",
+      "text": "<span class=\"enm\">Mimicry Parent</span><span class=\"ediv\"></span><span class=\"epos l\" data-tooltip=\"Context start: first available residue of the displayed parent context, 1-based and inclusive. CSV Core Start instead locates the 9-mer core.\">Start</span><span class=\"eseq\" data-tooltip=\"Context (27-mer): the retained 9-mer core plus up to nine flanking residues on each side.\">27-mer</span><span class=\"epos r\" data-tooltip=\"Context end: last available residue of the displayed parent context, 1-based and inclusive. CSV Core End instead bounds the 9-mer core.\">End</span><span class=\"ebadge\" data-tooltip=\"Context identity counts identical standard amino acids across 27 positions. Core identity determines inclusion; the Order control determines row order.\" style=\"color:var(--mm-faint)\">Context</span><span class=\"enum w-bl\" data-tooltip=\"Sum of BLOSUM62 substitution scores across available resolved positions in the displayed 27-residue context.\">BLOSUM62</span>",
       "placeholders": {}
     },
     {
@@ -1204,7 +1204,7 @@
       "key": "index.html.show-matches-at-the-selected.40063a9",
       "file": "frontend/index.html",
       "use": "Display tooltip",
-      "text": "Show matches at the selected window, ordered by the Sort control.",
+      "text": "Show matches at the selected window, ordered by the Order control.",
       "placeholders": {}
     },
     {
@@ -2157,7 +2157,7 @@
       "key": "player.parent-lane-window-identity-dark.878ec39",
       "file": "frontend/index.html",
       "use": "Player data-tooltip",
-      "text": "Core identity in the mimicry parent lanes: dark red at 30% opacity for 5/9, increasing to full opacity for 9/9. Density uses a separate scale.",
+      "text": "Core identity in the mimicry parent lanes: 30% opacity for 5/9, increasing to full opacity for 9/9. Density uses a separate scale.",
       "placeholders": {},
       "kind": "attribute"
     },
@@ -2365,7 +2365,7 @@
       "key": "player.sort-window-matches.b9ce74e",
       "file": "frontend/index.html",
       "use": "Player aria-label",
-      "text": "Sort window matches",
+      "text": "Order window matches",
       "placeholders": {},
       "kind": "attribute"
     },
@@ -2373,7 +2373,7 @@
       "key": "player.sort.67e0d95",
       "file": "frontend/index.html",
       "use": "Player/controls visible text",
-      "text": "Sort",
+      "text": "Order",
       "placeholders": {},
       "kind": "html"
     },
@@ -2445,7 +2445,7 @@
       "key": "player.the-nine-residue-comparison-window.5439c61",
       "file": "frontend/index.html",
       "use": "Player data-tooltip",
-      "text": "The nine-residue comparison window, outlined in green.",
+      "text": "The outlined nine-residue comparison window.",
       "placeholders": {},
       "kind": "attribute"
     },
@@ -3795,7 +3795,7 @@
       "text": "Residue colors and active annotation tracks match the captured player. {{value}}",
       "placeholders": {
         "value": {
-          "expression": "s.highlight?'Green: selected 9-mer core; blue: flanking context.':''"
+          "expression": "s.highlight?'Outlines mark the selected 9-mer core and flanking context.':''"
         }
       }
     },

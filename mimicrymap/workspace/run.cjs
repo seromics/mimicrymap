@@ -33,6 +33,7 @@ const engine = require('./code/mimicrymap/workspace/engine.cjs');
       directory: path.join(out, 'comparison'),
       id: randomUUID(),
       floor: settings.floor,
+      bidirectional:!!settings.bidirectional,
       targetId: settings.targetId || null,
       retainPositions: settings.retainPositions ?? true,
       targetAnnotations:fs.existsSync(path.join(root,'inputs/targets.annotations.sqlite'))?path.join(root,'inputs/targets.annotations.sqlite'):null,

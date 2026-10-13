@@ -1,0 +1,62 @@
+{
+  "schema": "mimicryone/native-summary/7",
+  "columns": [
+    "Antigen Target Gene",
+    "Antigen Target Accession",
+    "Antigen Target Protein Description",
+    "Antigen Target Length (AA)",
+    "Antigen Target Full Sequence",
+    "Antigen Target Organism (TaxID)",
+    "Comparison Library",
+    "Mimicry Parents at 7/9 with Coverage (%) Parent|Target (>=10% either)",
+    "Mimicry Parent Regions at 7/9 Parent|Target (>=10% either)",
+    "Mimicry Parents at 8/9 with Coverage (%) Parent|Target (>=10% either)",
+    "Mimicry Parent Regions at 8/9 Parent|Target (>=10% either)",
+    "Mimicry Parents at 9/9 with Coverage (%) Parent|Target (>=10% either)",
+    "Mimicry Parent Regions at 9/9 Parent|Target (>=10% either)"
+  ],
+  "identity_min": [
+    7,
+    8,
+    9
+  ],
+  "pair_decimal_places": 1,
+  "coverage_order": [
+    "parent",
+    "target"
+  ],
+  "list_floor": "Inclusive 10% on either endpoint before rounding",
+  "parent_entry": "escaped_component|escaped_component|escaped_component@parent_percent|target_percent",
+  "parent_separator": ";",
+  "target_sequence": "Retained unchanged",
+  "parent_sequences": "Not embedded; cross-reference original labels and native IDs",
+  "other_fields": "Record identities, sequence, metadata and every qualifying pair are retained unchanged",
+  "coordinates": "1-based inclusive start..end",
+  "removed_columns": [
+    "Coverage (%) at 7/9",
+    "Shared Regions at 7/9",
+    "Uncovered Residue Regions at 7/9",
+    "All Matching Parent Count at 7/9",
+    "Coverage (%) at 8/9",
+    "Shared Regions at 8/9",
+    "Uncovered Residue Regions at 8/9",
+    "All Matching Parent Count at 8/9",
+    "Coverage (%) at 9/9",
+    "Shared Regions at 9/9",
+    "Uncovered Residue Regions at 9/9",
+    "All Matching Parent Count at 9/9"
+  ],
+  "listed_count": "Count the entries in the paired list; completeness counts belong in build audit metadata",
+  "percentage_format": {
+    "pair_decimal_places": 1,
+    "rounding": "half-up from two-decimal percentage serialization; selection uses unrounded counts"
+  },
+  "label_components": "Existing gene (or organism fallback), accession, assay ID in that order; missing components omitted; original values retained",
+  "component_separator": "|",
+  "escaping": "Escape literal backslash, semicolon, at sign and pipe within each label component; structural pipes and @ are unescaped",
+  "public_filenames": "Single underscore joins; human_current is huscan and virscan_exposome_current is virscan_exposome",
+  "csv_encoding": "UTF-8 with BOM; ASCII-only column headings",
+  "pair_regions_entry": "escaped_label@parent_start..end,parent_start..end|target_start..end,target_start..end",
+  "pair_regions_policy": "Same qualifying records and order as the percentage list; independently merged residue unions, not alignment correspondences",
+  "short_sequences": "Records shorter than nine residues remain present with their length and empty pair lists"
+}

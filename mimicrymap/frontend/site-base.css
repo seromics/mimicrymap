@@ -5,8 +5,8 @@
 :root{
   --mm-bg:#020617; --mm-surface:#0f172a; --mm-header:#1e293b; --mm-border:#334155;
   --mm-ink:#e5e7eb; --mm-body:#cbd5e1; --mm-muted:#94a3b8; --mm-faint:#64748b; --mm-dim:#475569;
-  --hl-sel:#059669; --hl-hover:#6ee7b7; --hl-ext:#2563eb; --hl-exth:#93c5fd;
-  --lj0:rgb(252,227,141); --lj33:rgb(231,131,59); --lj66:rgb(138,28,38); --lj100:rgb(100,18,27);
+  --hl-sel:var(--c-mimicry-core); --hl-hover:var(--c-mimicry-core-hover); --hl-ext:var(--c-mimicry-context); --hl-exth:var(--c-mimicry-context-hover);
+  --lj0:var(--c-density1); --lj33:var(--c-density2); --lj66:var(--c-density3); --lj100:var(--c-density4);
   --lajolla:linear-gradient(90deg,var(--lj0) 0%,var(--lj33) 33%,var(--lj66) 66%,var(--lj100) 100%);
   --r-axis:22px; --r-dens:30px; --r-gap:8px; --r-row:20px; --r-total:260px;
 }
@@ -218,7 +218,7 @@ canvas{display:block;position:sticky;left:0;top:0;z-index:2;touch-action:pan-y}
   font-weight:500;letter-spacing:.05em;white-space:nowrap;text-align:center;
   overflow:hidden;min-width:0}
 .rid{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.55rem;font-weight:600;
-  text-align:center;border-radius:3px;padding:1px 0;color:#1c1917}
+  text-align:center;border-radius:3px;padding:1px 0;color:var(--c-identity-dark)}
 .colR .href .rsq{font-weight:600}
 /* Bounding boxes rather than underlines, so the player reads the same as the explorer:
    emerald ring on the 9-mer core, blue ring on the 27-mer flanks. */
@@ -227,8 +227,8 @@ canvas{display:block;position:sticky;left:0;top:0;z-index:2;touch-action:pan-y}
 .motif-core{box-shadow:0 2px 0 0 var(--hl-sel);display:inline}
 .motif-flank{box-shadow:0 2px 0 0 var(--hl-ext);display:inline}
 .gap{display:inline-block;width:.5em}
-.mt{color:var(--hl-hover)}   /* agrees with the human residue  */
-.mm{color:#f87171}           /* substitution (figC.up, dark)   */
+.mt{color:var(--c-sequence-match)}   /* agrees with the human residue  */
+.mm{color:var(--c-sequence-mismatch)}           /* substitution (figC.up, dark)   */
 .pad{color:#1e293b}          /* past the end of the protein    */
 .nl{color:var(--mm-dim)}
 
@@ -329,7 +329,7 @@ canvas{display:block;position:sticky;left:0;top:0;z-index:2;touch-action:pan-y}
   color:var(--mm-faint);width:30px;flex:none;font-variant-numeric:tabular-nums}
 .epos.l{text-align:right} .epos.r{text-align:left}
 .ebadge{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:9.5px;font-weight:600;
-  width:44px;flex:none;text-align:center;border-radius:3px;color:#1c1917}
+  width:44px;flex:none;text-align:center;border-radius:3px;color:var(--c-identity-dark)}
 .erow.blank .egn,.erow.blank .eacc,.erow.blank .eorg{opacity:.4}
 @media (max-width:860px){ .ebottom,.ebottom.has3d{grid-template-columns:minmax(0,1fr)} }
 .legend{display:flex;align-items:center;justify-content:center;gap:1.6rem;flex-wrap:wrap;
@@ -353,9 +353,9 @@ canvas{display:block;position:sticky;left:0;top:0;z-index:2;touch-action:pan-y}
   border:1px solid rgba(255,255,255,.35)}
 .legend-scale{width:52px;height:9px;border-radius:2px;display:inline-block;flex:none;
   border:1px solid rgba(51,65,85,.8)}
-.legend-scale.viridis{background:linear-gradient(90deg,rgb(68,1,84),rgb(31,150,139),rgb(253,231,37))}
-.legend-scale.plddt{background:linear-gradient(90deg,rgb(255,125,69),rgb(255,219,19),rgb(101,203,243),rgb(0,83,214))}
-.legend-scale.cleavage{background:linear-gradient(90deg,rgb(245,245,245),rgb(253,186,110),rgb(230,109,44),rgb(165,42,42))}
+.legend-scale.viridis{background:var(--plot-solvent-gradient)}
+.legend-scale.plddt{background:linear-gradient(90deg,var(--c-confidence1),var(--c-confidence2),var(--c-confidence3),var(--c-confidence4))}
+.legend-scale.cleavage{background:linear-gradient(90deg,var(--c-cleavage1),var(--c-cleavage2),var(--c-cleavage3),var(--c-cleavage4))}
 .swx,.swy{display:inline-block;width:14px;height:10px;border:1.5px solid;border-radius:2px;box-sizing:border-box;flex:none}
 .swx{border-color:var(--hl-sel)}
 .swy{border-color:var(--hl-ext)}

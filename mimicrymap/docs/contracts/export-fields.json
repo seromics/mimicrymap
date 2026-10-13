@@ -1,0 +1,576 @@
+{
+  "schema": "mimicryone/export-field-copy/1",
+  "policy": "Reviewed client CSV fields. Identity columns share reproduce/export-core.js across player, atlas and figure-data exports. Schema changes require explicit review; preserve placeholder expressions and frozen exports.",
+  "entries": [
+    {
+      "key": "atlas-figures.chromosome.ca24604",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Chromosome",
+      "placeholders": {},
+      "contract_sha256": "47c88a562fb0af60bb01aaba18a3b3c5d88e0fbf551d3ce467386680a7482b21"
+    },
+    {
+      "key": "atlas-figures.drawn-in-band.e96dc07",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Display Band",
+      "placeholders": {},
+      "contract_sha256": "062965136165219a8c041b85c764645960b3e905c08f3f4c51b14c15b7a8a62a"
+    },
+    {
+      "key": "atlas-figures.drawn-in-figure.d4e6194",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Drawn in Figure",
+      "placeholders": {},
+      "contract_sha256": "a807860bce40eb9c9f75ec6005eec1a4c21bfec174d53a8e277b4b4e2806ab9d"
+    },
+    {
+      "key": "atlas-figures.genome-position.ef102c2",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Genome Position (bp)",
+      "placeholders": {},
+      "contract_sha256": "3af7d8ddf45a6fb430a4b6f3c8f85877213b8075aebb7343bdf2daab5aab1e6f"
+    },
+    {
+      "key": "atlas-figures.has-genome-coordinate.d4a9bda",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Has Genome Coordinate",
+      "placeholders": {},
+      "contract_sha256": "48bd7faf5c496aa28e5a238f5c3d05b1271e7916b4392c5d5e9fe1a8c1ba1b36"
+    },
+    {
+      "key": "atlas-figures.human-records-in-proteome.2d2ab20",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Eligible Antigen Targets",
+      "placeholders": {},
+      "contract_sha256": "0874a3045c8bea8894c65f74287d5eeb429fa9d03dcc464bff618f317e16e759"
+    },
+    {
+      "key": "atlas-figures.human-records-reached.5a811eb",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Targets Reached",
+      "placeholders": {},
+      "contract_sha256": "ad2eb82c5d498742bde201654efacc7f82e78f5e1c5da668638e7297f4c17600"
+    },
+    {
+      "key": "atlas-figures.human-residues-covered-at.44ae243",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Covered Residues at ≥{{floor}}/9",
+      "placeholders": {
+        "floor": {
+          "expression": "floor"
+        }
+      },
+      "contract_sha256": "c69e83d20a6308b60213c3ba1a8d18a6bee4a6c31c71671d612d905e05e7f1e7"
+    },
+    {
+      "key": "atlas-figures.human-residues-in-analysis-universe.6bf9e5b",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Eligible Residues",
+      "placeholders": {},
+      "contract_sha256": "753b2be2a81306dcdcb3fa363f24966edeccb87c4ef8233e021a2fd97fddf2d5"
+    },
+    {
+      "key": "atlas-figures.identity-floor.3f829cf",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Minimum Core Identity",
+      "placeholders": {},
+      "contract_sha256": "237bda1fb313d8b010c602851acf8f7fac7330ca61027a2bbbc39cb998ad74a5"
+    },
+    {
+      "key": "atlas-figures.length-aa.5814df1",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Length (AA)",
+      "placeholders": {},
+      "contract_sha256": "0c88db351b19723f28764e536c874819e17db0e692f9d16a4ae1652521a12c78"
+    },
+    {
+      "key": "atlas-figures.length-aa.a7cfdb0",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Length (AA)",
+      "placeholders": {},
+      "contract_sha256": "0c88db351b19723f28764e536c874819e17db0e692f9d16a4ae1652521a12c78"
+    },
+    {
+      "key": "atlas-figures.max-source-proteins-per-matched.5eefe85",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Maximum Mimicry Parents per Reached Antigen Target",
+      "placeholders": {},
+      "contract_sha256": "b53ae3c866bdad527e8920105d16dcd4485e07c0155321b762823820f8fd0df8"
+    },
+    {
+      "key": "atlas-figures.median-percent-of-proteome-per.6afbcd9",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Median Human Protein Reach per Mimicry Parent (%)",
+      "placeholders": {},
+      "contract_sha256": "dbec753482936c7cdef3067114246ac75e7f2713e5d605d7ad9598d9d7402da5"
+    },
+    {
+      "key": "atlas-figures.median-source-proteins-per-matched.df744b3",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Median Mimicry Parents per Reached Antigen Target",
+      "placeholders": {},
+      "contract_sha256": "1126c8ee4f3626cce3bf3d710b24b0972ab623118f5cd6582599873e5e85ed4f"
+    },
+    {
+      "key": "atlas-figures.ncbi-taxon-id.cea1e3f",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "NCBI Taxon ID",
+      "placeholders": {},
+      "contract_sha256": "0f6baba991636e0adefef7f2a06e464a9af7c06297aa9cb41a653445e8498e18"
+    },
+    {
+      "key": "atlas-figures.percent-covered-all-sources-m.20b2f4b",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Residues Covered (%) Across All Mimicry Parents at ≥5/9",
+      "placeholders": {},
+      "contract_sha256": "3b2cd3324ebd9750686ece973c4085625f3a59c98cc6eba9b53578a06f9e87a4"
+    },
+    {
+      "key": "atlas-figures.percent-covered-all-sources-m.5b77c46",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Residues Covered (%) Across All Mimicry Parents at ≥8/9",
+      "placeholders": {},
+      "contract_sha256": "a92fdca90fc715a3cc8ecaf457afd7a25e22972fec6cd2feadf66614142ddc02"
+    },
+    {
+      "key": "atlas-figures.percent-covered-all-sources-m.5c0ea89",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Residues Covered (%) Across All Mimicry Parents at ≥9/9",
+      "placeholders": {},
+      "contract_sha256": "1e88389f4f99df31f6b0c2e134b53f161e5e666c9f39b59b191b6c0dd337363f"
+    },
+    {
+      "key": "atlas-figures.percent-covered-all-sources-m.66c316f",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Residues Covered (%) Across All Mimicry Parents at ≥6/9",
+      "placeholders": {},
+      "contract_sha256": "c66b3e5f6695251b7aed81f840e5ea4f1091a7482eedc1c5605acd909865ce96"
+    },
+    {
+      "key": "atlas-figures.percent-covered-all-sources-m.92aac00",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Residues Covered (%) Across All Mimicry Parents at ≥7/9",
+      "placeholders": {},
+      "contract_sha256": "f02d57fcd55d2e0593a31d6e18585be079a0d22faaecd778543448099537d36e"
+    },
+    {
+      "key": "atlas-figures.percent-of-human-proteome-covered.6bf9121",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Human Residue Coverage (%) at ≥{{floor}}/9",
+      "placeholders": {
+        "floor": {
+          "expression": "floor"
+        }
+      },
+      "contract_sha256": "13978d719516e191cee766ca2fd336ea945bb953aa44a52bf435324295581682"
+    },
+    {
+      "key": "atlas-figures.percent-of-proteome.2002732",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Human Protein Reach (%)",
+      "placeholders": {},
+      "contract_sha256": "2b9feb8009bae6e0798334041b7814fd13a245caa4634d7d2127b011673df920"
+    },
+    {
+      "key": "atlas-figures.percent-of-record-covered-by.121826f",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Residues Covered (%) at ≥8/9",
+      "placeholders": {},
+      "contract_sha256": "230700818fecccfb96dbc3d7b8f814eb8bcfae538e31b0d2d9691fc7c13165e9"
+    },
+    {
+      "key": "atlas-figures.percent-of-record-covered-by.a4368ae",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Residues Covered (%) at ≥7/9",
+      "placeholders": {},
+      "contract_sha256": "9f410ba2cbff5e116e7e1f5de39ed93ee42a939caa446197e4d38715d5a9d6c8"
+    },
+    {
+      "key": "atlas-figures.percent-of-record-covered-by.bb7eebf",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Residues Covered (%) at ≥9/9",
+      "placeholders": {},
+      "contract_sha256": "6908a5f517d770ed00342d78a79d4604413e56bef3250f8784296ae681e71f61"
+    },
+    {
+      "key": "atlas-figures.percent-of-record-covered-by.c4eb958",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Residues Covered (%) at ≥5/9",
+      "placeholders": {},
+      "contract_sha256": "c2330a9f4005adf7517025909554803dbfe52e5ad2b8a6aeeec137bc095d0fc1"
+    },
+    {
+      "key": "atlas-figures.percent-of-record-covered-by.e888e01",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Residues Covered (%) at ≥6/9",
+      "placeholders": {},
+      "contract_sha256": "8379e969ad68a361ce6372605fbb7342d98a9b2f6ff9aa8871d1645f66e3af9a"
+    },
+    {
+      "key": "atlas-figures.position-within-band-bp.0bcb67e",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Position Within Display Band (bp)",
+      "placeholders": {},
+      "contract_sha256": "e08195c3d0de03527b8ddf1057bae8585e9775ebe5d618360c0423a2ed66f093"
+    },
+    {
+      "key": "atlas-figures.proteome-length-aa.8bd38c2",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Viral Proteome Length (AA)",
+      "placeholders": {},
+      "contract_sha256": "8493de178c863b9ee02e7f251e22c266173e6a2f1659e49f8b255b960e58b28d"
+    },
+    {
+      "key": "atlas-figures.proteome.2eb24d2",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Viral Proteome",
+      "placeholders": {},
+      "contract_sha256": "5f4177a80176c675394a5a116cb031ffa15d89a28db29706453765715b42e4e3"
+    },
+    {
+      "key": "atlas-figures.source-organism.8c45e53",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Viral Parent Organism",
+      "placeholders": {},
+      "contract_sha256": "4d36e4d7c2f17ace0462eee65de5bd05cac724e6af8430f3d8f19eac2487ebac"
+    },
+    {
+      "key": "atlas-figures.source-proteins-contributing.6f871f1",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Mimicry Parents with Matches",
+      "placeholders": {},
+      "contract_sha256": "a74f3bf8714569a59736ffa91b0305860bec60979800df6ea30afa0feb7f1efd"
+    },
+    {
+      "key": "atlas-figures.source-proteins-reaching-m.20ba00b",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Mimicry Parents Reaching Antigen Target at ≥8/9",
+      "placeholders": {},
+      "contract_sha256": "82d76fd9b31044167898429c6bd1e374dd8192a9a5cde8c8ee50eaa56417ad99"
+    },
+    {
+      "key": "atlas-figures.source-proteins-reaching-m.2391245",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Mimicry Parents Reaching Antigen Target at ≥7/9",
+      "placeholders": {},
+      "contract_sha256": "2e4854a1a18697d9d4a266989aae9af133e9ce1f53996ae743fa5fe39ef62674"
+    },
+    {
+      "key": "atlas-figures.source-proteins-reaching-m.8f60874",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Mimicry Parents Reaching Antigen Target at ≥6/9",
+      "placeholders": {},
+      "contract_sha256": "b1fa9bb747fb2d7257f06070f8b644e7f451df3559675d174bf93315fe0c46e2"
+    },
+    {
+      "key": "atlas-figures.source-proteins-reaching-m.b562237",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Mimicry Parents Reaching Antigen Target at ≥5/9",
+      "placeholders": {},
+      "contract_sha256": "d40d26bdd3ed58305ebf57fc81cbba718ebe398a0d14543294586b9bb9385ca4"
+    },
+    {
+      "key": "atlas-figures.source-proteins-reaching-m.dba6b40",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Mimicry Parents Reaching Antigen Target at ≥9/9",
+      "placeholders": {},
+      "contract_sha256": "4409acabbdae183d899f948e1b5a3b648282b77b3a1da7d518a698b7dd4f6ed4"
+    },
+    {
+      "key": "atlas-figures.source-proteins.e7e0813",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Viral Parents",
+      "placeholders": {},
+      "contract_sha256": "98cf7d8f0d1ca4988c05c2aaa763b1216e80bed90e417bd0b49cfbc285515f9c"
+    },
+    {
+      "key": "atlas-figures.collection-human-proteins-denominator",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Eligible Antigen Targets",
+      "placeholders": {},
+      "contract_sha256": "0874a3045c8bea8894c65f74287d5eeb429fa9d03dcc464bff618f317e16e759"
+    },
+    {
+      "key": "atlas-figures.collection-reach-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Human Protein Reach (%) at ≥{{value1}}/9",
+      "placeholders": {
+        "value1": {
+          "expression": "floor"
+        }
+      },
+      "contract_sha256": "0a9869895ab7d67cf17eb3154c7137642fc66cc2697271cf9a5e1ecc6c6ef15b"
+    },
+    {
+      "key": "atlas-figures.summary-covered-count-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Antigen Target Covered Residues",
+      "placeholders": {},
+      "contract_sha256": "a7b01b39f5569dcd4df8771b60d8744f54b5bd21ec3c1eb4df22abb91d84a060"
+    },
+    {
+      "key": "atlas-figures.summary-residue-denominator-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Antigen Target Eligible Residues",
+      "placeholders": {},
+      "contract_sha256": "753b2be2a81306dcdcb3fa363f24966edeccb87c4ef8233e021a2fd97fddf2d5"
+    },
+    {
+      "key": "atlas-figures.summary-coverage-percent-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Human Residue Coverage (%)",
+      "placeholders": {},
+      "contract_sha256": "fb136aed90382248e90e91c95d78367eea30099dc270f064bf81c2f24996d4ff"
+    },
+    {
+      "key": "atlas-figures.summary-matched-median-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Reach and coverage figure copy",
+      "text": "Median Antigen Target Coverage Among Reached Antigen Targets (%)",
+      "placeholders": {},
+      "contract_sha256": "e159fbf34e1efc4c7f6c6de2c5e4e2619ea8c14f582fb813adb54f5e1228d29d"
+    },
+    {
+      "key": "atlas-figures.source-protein-length-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Mimicry Parent Length (AA)",
+      "placeholders": {},
+      "contract_sha256": "d10cab70b8a28fa45f499637a0c751fff1c36bf3308f87dfcd49bb26d9d94cc0"
+    },
+    {
+      "key": "atlas-figures.source-eligible-proteins-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Eligible Antigen Targets",
+      "placeholders": {},
+      "contract_sha256": "0874a3045c8bea8894c65f74287d5eeb429fa9d03dcc464bff618f317e16e759"
+    },
+    {
+      "key": "atlas-figures.source-eligible-residues-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Eligible Residues",
+      "placeholders": {},
+      "contract_sha256": "753b2be2a81306dcdcb3fa363f24966edeccb87c4ef8233e021a2fd97fddf2d5"
+    },
+    {
+      "key": "atlas-figures.source-reached-count-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Targets Reached at ≥{{floor}}/9",
+      "placeholders": {
+        "floor": {
+          "expression": "key"
+        }
+      },
+      "contract_sha256": "43da8a1373b92311c686911f557a4b99a2e035591f2d98f60cbf2f60332cd866"
+    },
+    {
+      "key": "atlas-figures.source-reached-percent-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Human Protein Reach (%) at ≥{{floor}}/9",
+      "placeholders": {
+        "floor": {
+          "expression": "key"
+        }
+      },
+      "contract_sha256": "3722c6a416d4c5b0e65746ad24394427396a49a33ecb331e7fb188fd835fb891"
+    },
+    {
+      "key": "atlas-figures.source-covered-count-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Covered Residues at ≥{{floor}}/9",
+      "placeholders": {
+        "floor": {
+          "expression": "key"
+        }
+      },
+      "contract_sha256": "89854e31a1697c86b953c75fd2909be00378675ad122a4dfe043591cb99cc8af"
+    },
+    {
+      "key": "atlas-figures.source-covered-percent-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Human Residue Coverage (%) at ≥{{floor}}/9",
+      "placeholders": {
+        "floor": {
+          "expression": "key"
+        }
+      },
+      "contract_sha256": "5f265d1b2b670d530774d136e8ccefbc526846a8999035d7978fa87e016c54f8"
+    },
+    {
+      "key": "atlas-figures.coverage-pooled-percent-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Residues Covered (%) Across All Mimicry Parents at ≥{{floor}}/9",
+      "placeholders": {
+        "floor": {
+          "expression": "t.floor"
+        }
+      },
+      "contract_sha256": "eb57377bff28d00772d203202bc12fa4f230fff3463d51ffd77f6cdcd196dfdc"
+    },
+    {
+      "key": "atlas-figures.coverage-selected-percent-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Antigen Target Residues Covered (%) by Selected Mimicry Parent at ≥{{floor}}/9",
+      "placeholders": {
+        "floor": {
+          "expression": "t.floor"
+        }
+      },
+      "contract_sha256": "17a9af39fabf7561589a68c36c240669e8e210de4684f29d656ea2451fb5bd7e"
+    },
+    {
+      "key": "atlas-figures.targets-closest-length-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Mimicry Parent Length (AA)",
+      "placeholders": {},
+      "contract_sha256": "d10cab70b8a28fa45f499637a0c751fff1c36bf3308f87dfcd49bb26d9d94cc0"
+    },
+    {
+      "key": "atlas-figures.targets-retained-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Included in Figure Candidate Set",
+      "placeholders": {},
+      "contract_sha256": "a0dc4d77ce6ec2d2cbfd86728f7c5fb2fb9a7938a0f48049bab782d3c11b330e"
+    },
+    {
+      "key": "atlas-figures.summary-viral-total-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Display metadata field",
+      "text": "Mimicry Parents in Proteome",
+      "placeholders": {},
+      "contract_sha256": "3a120756c8d5f4dec7c04d2bc90b86916d4d03a35cce653a208395a3133e83f7"
+    },
+    {
+      "key": "atlas-figures.coverage-scope-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Chromosome figure export column",
+      "text": "Mimicry Parent Scope",
+      "placeholders": {},
+      "contract_sha256": "71d93a8b93f2cd6f86b234d4e7a7aea286131aec220e0681ccadd8a80b18d604"
+    },
+    {
+      "key": "atlas-figures.arrangement-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Human Target coverage figure export column",
+      "text": "Antigen Target Arrangement",
+      "placeholders": {},
+      "contract_sha256": "bc4a3d375b5ee685c6736e06fb874b119b5018bc5018c88982051c543a6c609e"
+    },
+    {
+      "key": "atlas-figures.display-order-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Human Target coverage figure export column",
+      "text": "Display Order",
+      "placeholders": {},
+      "contract_sha256": "2fb935e6aadf9d537eb2f89a9144fb0476f1751c7361f30b75ab19fe8317ca9c"
+    },
+    {
+      "key": "atlas-figures.band-rank-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Human Target coverage figure export column",
+      "text": "Position Within Display Band (rank)",
+      "placeholders": {},
+      "contract_sha256": "1f44cec2f836d3ef2e029c854cb5ad824a906037e1443e7073e767e5c11f93f8"
+    },
+    {
+      "key": "atlas-figures.location-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Human Target coverage figure export column",
+      "text": "Subcellular Location",
+      "placeholders": {},
+      "contract_sha256": "3eb87ee56ab8884b6609026bee22fbe3c536eecae688a2e1c8de1159801178d7"
+    },
+    {
+      "key": "atlas-figures.location-source-csv",
+      "file": "frontend/atlas-figures.js",
+      "use": "Human Target coverage figure export column",
+      "text": "Subcellular Location Source",
+      "placeholders": {},
+      "contract_sha256": "6d9db762384fd3bb481e733dad00aa010314bab62ae33847cd00e8cb4f02ea49"
+    }
+  ],
+  "event_identity_schema": "mimicryone/export/18",
+  "event_identity_columns": {
+    "Antigen Target": [
+      "Antigen Target Gene",
+      "Antigen Target Accession",
+      "Antigen Target Protein Description"
+    ],
+    "Mimicry Parent": [
+      "Mimicry Parent Gene",
+      "Mimicry Parent Accession",
+      "Mimicry Parent Protein Description"
+    ]
+  },
+  "client_identity_contract": {
+    "schema": "mimicryone/client-csv-identity/1",
+    "owner": "frontend/reproduce/export-core.js",
+    "roles": [
+      "Antigen Target",
+      "Mimicry Parent"
+    ],
+    "columns": [
+      "{role}",
+      "{role} Gene",
+      "{role} Accession",
+      "{role} Protein Description"
+    ],
+    "unknown_fields": "empty",
+    "internal_routing_columns": false,
+    "review": "2026-09-14: user-approved consistency across identical client export surfaces"
+  }
+}

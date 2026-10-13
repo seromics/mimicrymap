@@ -111,9 +111,9 @@
     },
     {
       "id": "min_identity",
-      "label": "Min Identity",
+      "label": "Identity ≥",
       "meaning": "The minimum core identity required for inclusion.",
-      "rule": "Full figure label: Core Identity Threshold. Compact control label: Min Identity. Prose: core identity threshold, or threshold after the measure is clear. Core identity is the observed score; its threshold controls inclusion. Do not call the threshold resolution."
+      "rule": "Full figure label: Core Identity Threshold. Compact control label: Identity ≥. Prose: core identity threshold, or threshold after the measure is clear. Core identity is the observed score; its threshold controls inclusion. Do not call the threshold resolution."
     },
     {
       "id": "context_blosum62",
@@ -230,7 +230,7 @@
     {
       "id": "mimicry_coverage_summaries",
       "label": "Mimicry coverage summaries",
-      "meaning": "Static per-target tables describing sequence coverage, region intervals and matching-parent counts within a declared comparison population.",
+      "meaning": "Static per-target tables of identifiable record pairs, their coverage and independent residue ranges within a declared comparison population.",
       "rule": "Use this name for reference, assay-library and selected-virus summary downloads. These are sequence summaries, not measured antibody responses or enrichment statistics. The first population in a download direction supplies the target rows."
     },
     {
@@ -244,24 +244,6 @@
       "label": "All viruses",
       "meaning": "The pooled reference viral-proteome collection declared by the current atlas manifest.",
       "rule": "Use this contextual label for the pooled atlas downloads, not the full canonical exposure library. Record the collection count in release-bound documentation rather than treating it as part of this definition."
-    },
-    {
-      "id": "shared_regions",
-      "label": "Shared Regions",
-      "meaning": "The union of target residue intervals covered by qualifying cores at the stated threshold and comparison scope.",
-      "rule": "Count overlapping residues once. Region coordinates are 1-based and inclusive; flanking context is excluded."
-    },
-    {
-      "id": "uncovered_residue_regions",
-      "label": "Uncovered Residue Regions",
-      "meaning": "Target residues outside all qualifying 9-residue windows at the stated identity threshold and comparison scope. Qualifying windows include mismatch positions; uncovered residues may participate in lower-identity matches.",
-      "rule": "The exact complement of Shared Regions over the target sequence, with 1-based inclusive coordinates. Compute from all qualifying windows, independently of processing order. Parent coverage uses parent coordinates; the uncovered interval columns describe the target. Records shorter than nine residues are not assessable."
-    },
-    {
-      "id": "all_matching_parent_count",
-      "label": "All Matching Parent Count",
-      "meaning": "The number of comparison records with a qualifying match before the summary parent-list coverage floor is applied.",
-      "rule": "Do not infer this count from the displayed parent list or apply a listed-parent filter to whole-target coverage."
     },
     {
       "id": "additional_trembl",
@@ -298,27 +280,27 @@
     {
       "id": "positions",
       "title": "Cores, windows, and context",
-      "text": "A core is the nine aligned positions used to determine whether a match qualifies. A window is a positioned occurrence of that core in a record. Windows advance one residue and can overlap. Context adds up to nine available residues on each side of the core, aligned across 27 positions. Missing terminal context remains absent and does not affect inclusion. In summary CSVs, Shared Regions are the union of target residues covered by qualifying windows. Uncovered Residue Regions: Target residues outside all qualifying 9-residue windows at the stated identity threshold and comparison scope. Qualifying windows include mismatch positions; uncovered residues may participate in lower-identity matches. These intervals use 1-based inclusive coordinates. Overlaps count once, and flanking context is excluded. Processing windows from left to right or right to left gives the same residue union. Both sequence ends belong to fewer complete windows than internal residues; neither end is preferred. Short records remain explicitly not assessable."
+      "text": "A core is the nine aligned positions used to determine whether a match qualifies. A window is a positioned occurrence of that core in a record. Windows advance one residue and can overlap. Context adds up to nine available residues on each side of the core, aligned across 27 positions. Missing terminal context remains absent and does not affect inclusion. Summary CSVs retain each qualifying pair’s independently merged target and parent residue ranges. Coordinates are 1-based inclusive. Overlaps count once, flanking context is excluded, and processing direction does not change the union. Short records remain present with their lengths and empty pair lists."
     },
     {
       "id": "identity",
       "title": "Identity and threshold",
-      "text": "Core identity counts identical resolved amino acids out of nine aligned positions; context identity counts them across a fixed 27-position span. Missing or unresolved positions contribute no identities. The core identity threshold is the minimum required for inclusion, labeled Min Identity in compact controls. Best Core and Best Context report the respective maxima for a record comparison; they may come from different sites. Context BLOSUM62 ranks available aligned context positions and is a score, not a percentage or inclusion threshold. A wildcard in the Methods illustration leaves a position unconstrained; observed match masks describe the actual alignment. Inclusion is determined by literal, ungapped core identity at the selected threshold. Display sorting is descriptive; no p-value, q-value or enrichment estimate is implied."
+      "text": "Core identity counts identical resolved amino acids out of nine aligned positions; context identity counts them across a fixed 27-position span. Missing or unresolved positions contribute no identities. The core identity threshold is the minimum required for inclusion, labeled Identity ≥ in compact controls. Best Core and Best Context report the respective maxima for a record comparison; they may come from different sites. Context BLOSUM62 ranks available aligned context positions and is a score, not a percentage or inclusion threshold. A wildcard in the Methods illustration leaves a position unconstrained; observed match masks describe the actual alignment. Inclusion is determined by literal, ungapped core identity at the selected threshold. Display sorting is descriptive; no p-value, q-value or enrichment estimate is implied."
     },
     {
       "id": "coverage",
       "title": "Reach and coverage",
-      "text": "Reach is the number or percentage of eligible human records with a qualifying match; each record counts once. Coverage is the percentage of eligible residues within qualifying cores. Target or parent identifies the record used as the denominator. Human target coverage describes one human record; human residue coverage describes the full eligible human residue population. State whether matches are from one viral parent or pooled across a proteome. Pooling takes the union of covered residues, not the sum of parent percentages. Overlaps count once, mismatching positions within qualifying cores are included, and context flanks are excluded. A median of individual record percentages is different from pooled population coverage. Window coverage instead measures the percentage of eligible window starts with a match. Mimicry coverage summaries are static sequence tables, not antibody measurements or enrichment results. Whole-target Coverage (%) uses the union across the declared comparison population; paired Parent|Target percentages describe individual record pairs. A selected-virus human summary must use that virus’s own union and cannot be obtained by subtracting pooled percentages."
+      "text": "Reach is the number or percentage of eligible human records with a qualifying match; each record counts once. Coverage is the percentage of eligible residues within qualifying cores. Target or parent identifies the record used as the denominator. Human target coverage describes one human record; human residue coverage describes the full eligible human residue population. State whether matches are from one viral parent or pooled across a proteome. Pooling takes the union of covered residues, not the sum of parent percentages. Overlaps count once, mismatching positions within qualifying cores are included, and context flanks are excluded. A median of individual record percentages is different from pooled population coverage. Window coverage instead measures the percentage of eligible window starts with a match. Mimicry coverage summaries are static sequence tables, not antibody measurements or enrichment results. Paired Parent|Target percentages describe individual record pairs. Selected-virus summaries contain only pairs against the named reference proteome."
     },
     {
       "id": "counts",
       "title": "Counts of matches",
-      "text": "Matching records counts comparison entries with at least one qualifying core; identify exact-sequence grouping when used. Window pairs counts distinct target and parent coordinate pairs, so repeated sites remain separate while duplicate mapping paths count once. Matched target windows counts target starts with at least one match. No matches means zero at the stated window, scope, and threshold. Core Window Matches is the selected-window panel; saved summaries across the whole target state that scope. Overall Mimicry Parents summarizes the full target. Complete results include all qualifying window pairs across the selected population at the stated threshold. Summary CSVs retain All Matching Parent Count before the list floor. The paired list itself determines the number of listed entries; no redundant listed-count column is exported. Aligned parent lists retain pairs with at least 10% coverage on either endpoint. That listing floor does not filter whole-target coverage or the all-parent count."
+      "text": "Matching records counts comparison entries with at least one qualifying core; identify exact-sequence grouping when used. Window pairs counts distinct target and parent coordinate pairs, so repeated sites remain separate while duplicate mapping paths count once. Matched target windows counts target starts with at least one match. No matches means zero at the stated window, scope, and threshold. Core Window Matches is the selected-window panel; saved summaries across the whole target state that scope. Overall Mimicry Parents summarizes the full target. Complete results include all qualifying window pairs across the selected population at the stated threshold. Summary CSVs retain every pair reaching at least 10% coverage on either endpoint. Count entries in a paired list to obtain its number of partners."
     },
     {
       "id": "graded_parent_lists",
       "title": "Paired parent lists",
-      "text": "All current summary routes use paired parent coverage with the header Coverage (%) Parent|Target (>=10% either), at the relevant identity level. Entries use Gene|Accession|AssayID@Parent|Target, with missing label components omitted, one-decimal percentages and semicolons between parents. Structural pipes and @ are unescaped; backslash escapes those characters only when literal within a component. Split at the unescaped @ before interpreting label pipes versus numeric pipes. Original parent labels and assay IDs remain intact. Inclusion uses the inclusive 10% either-side rule before rounding. All Matching Parent Count includes matches below that floor; count paired entries when a list count is needed. Empty lists retain the target row. Current summaries use Shared and Uncovered Residue Regions, not expanded unmatched-window spans. Older files remain unchanged for provenance."
+      "text": "All current summary routes use paired parent coverage with the header Coverage (%) Parent|Target (>=10% either), at the relevant identity level. Entries use Gene|Accession|AssayID@Parent|Target, with missing label components omitted, one-decimal percentages and semicolons between parents. Structural pipes and @ are unescaped; backslash escapes those characters only when literal within a component. Split at the unescaped @ before interpreting label pipes versus numeric pipes. Original parent labels and assay IDs remain intact. Inclusion uses the inclusive 10% either-side rule before rounding. Count paired entries when a list count is needed. Empty lists retain the target row. Each pair-coverage column is immediately followed by the corresponding pair-region column."
     },
     {
       "id": "evidence",

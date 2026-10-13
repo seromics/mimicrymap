@@ -21,15 +21,7 @@
   for(let i=0;i<27;i++)if(a[i]===b[i]&&/^[ACDEFGHIKLMNPQRSTVWY]$/.test(a[i]||''))matches++;
   return matches;
  }
- function contextIdentityAt(a,b,q,p){
-  if(typeof a!=='string'||typeof b!=='string')return null;
-  let matches=0;
-  for(let offset=-9;offset<18;offset++){
-   const x=a[q-1+offset],y=b[p-1+offset];
-   if(x===y&&/^[ACDEFGHIKLMNPQRSTVWY]$/.test(x||''))matches++;
-  }
-  return matches;
- }
+ const contextIdentityAt=contextScore.identityAt;
  function identity(record,prefix){
   const i=record.identity||{};
   const fields={id:record.protein_id,record_id:record.antigen_id,seqid:record.seqid,
@@ -619,10 +611,6 @@
   const id=summaryAssayId(record),text=publicText(description||'');
   return !id||text===id||text.startsWith(id+' / ')?text:[id,text].filter(Boolean).join(' / ');
  }
- function summaryCoveragePercent(covered,length){
-  const cents=Math.floor((20000*covered+length)/(2*length));
-  return Math.floor(cents/100)+'.'+String(cents%100).padStart(2,'0');
- }
  function summaryPairPercent(covered,length){
   const cents=Math.floor((20000*covered+length)/(2*length));
   return (Math.floor((cents+5)/10)/10).toFixed(1);
@@ -646,43 +634,67 @@
   const declared=result.inputs?.analysis_scan?.execution_counts?.returned_deduplicated_hits;
   if(Number.isInteger(declared)&&declared!==result.positional_matches.reduce((n,p)=>n+p.hits.length,0))throw Error('Incomplete summary coordinate payload.');
   const p=result.protein,L=p.sequence.length,byIndex=new Map(result.source_catalog.map(p=>[Number(p.protein_idx),p]));
-  const id=identity(p,'q_'),native=r=>publicText(r.assay_id||r.identity?.assayId||r.protein_id||'');
-  const encode=s=>String(s).replace(/[\\;@|]/g,c=>String.fromCharCode(92)+c);
-  const columns=['Antigen Target Gene','Antigen Target Accession','Antigen Target Protein Description','Antigen Target Length (AA)','Antigen Target Full Sequence','Antigen Target Organism (TaxID)','Comparison Library'];
+  const native=r=>publicText(r.assay_id||r.identity?.assayId||r.protein_id||''),groups=[];
   const scope=result.parameters?.source_scope_label||result.parameters?.source_scope||'Selected comparison';
-  const scopeLabel=({human_current:'HuScan',virscan_exposome_current:'VirScan/Exposome',huprot4:'HuProt 4.0',__custom_fasta__:'Your own FASTA'})[scope]||scope;
-  const row=Object.fromEntries(columns.map((k,i)=>[k,[id.q_gene,id.q_accession,summaryDescription(p,id.q_protein_name),L,p.sequence,organismTaxonLabel(p),scopeLabel][i]]));
-  const ranges=xs=>xs.map(([a,b])=>a+'..'+b).join('; ')||'None';
   for(const t of floors){
-   const starts=new Set(),partners=[],seen=new Set();
+   const partners=[],seen=new Set();
    for(const source of result.positional_matches){
     const key=Number(source.protein_idx),parent=byIndex.get(key);
     if(!parent||seen.has(key))throw Error('Missing or duplicate summary partner.');seen.add(key);
     const qs=new Set(),ps=new Set(),cols=source.hits_columns||['target_start','source_start','identity'];
     const qi=cols.indexOf('target_start'),pi=cols.indexOf('source_start'),ii=cols.indexOf('identity');
     if(Math.min(qi,pi,ii)<0)throw Error('Unrecognized summary coordinates.');
-    for(const h of source.hits){if(!Number.isInteger(h[ii])||h[ii]<5||h[ii]>9)throw Error('Invalid summary identity');if(h[ii]>=t){qs.add(h[qi]);ps.add(h[pi]);starts.add(h[qi]);}}
+    for(const h of source.hits){if(!Number.isInteger(h[ii])||h[ii]<5||h[ii]>9)throw Error('Invalid summary identity');if(h[ii]>=t){qs.add(h[qi]);ps.add(h[pi]);}}
     if(!qs.size)continue;
     const a=coverageCore.measure(qs,L),b=coverageCore.measure(ps,parent.sequence?.length??parent.length);
-    partners.push({a:a.coveredResidues,b:b.coveredResidues,L:parent.sequence?.length??parent.length,native:native(parent),label:summaryParentLabel(parent)});
+    partners.push({a:a.coveredResidues,b:b.coveredResidues,targetRegions:a.intervals,parentRegions:b.intervals,L:parent.sequence?.length??parent.length,native:native(parent),label:summaryParentLabel(parent)});
    }
-   const cover=coverageCore.measure(starts,L),uncovered=[];let next=1;
-   for(const [a,b]of cover.intervals){if(a>next)uncovered.push([next,a-1]);next=b+1;}if(next<=L)uncovered.push([next,L]);
+   groups.push({floor:t,partners});
+  }
+  return serializeSummary(p,scope,groups,annotationMetadata);
+ }
+
+ // A complete record-pair population can be summarized from residue unions.
+ // Coverage-filtered lists alone are insufficient unless completeness is proven
+ // independently (e.g. every parent is <=90 aa at the 10%-either listing floor).
+ function summaryFromPairRegions({protein,scope,groups,completePairPopulation,annotationMetadata}){
+  if(completePairPopulation!==true||!Array.isArray(groups)||!groups.length)throw Error('Complete record-pair population required');
+  const L=protein.sequence.length,seenFloors=new Set();
+  const prepared=groups.map(({floor,pairs})=>{
+   if(!Number.isInteger(floor)||floor<5||floor>9||seenFloors.has(floor))throw Error('Invalid summary threshold');seenFloors.add(floor);
+   const seen=new Set(),partners=pairs.map(({id,record,targetRanges,parentRanges})=>{
+    if(id==null||seen.has(id))throw Error('Missing or duplicate summary partner');seen.add(id);
+    const size=record.sequence?.length??record.length,a=coverageCore.union(targetRanges,L),b=coverageCore.union(parentRanges,size);
+    if(!a.length||!b.length)throw Error('Empty matching-pair ranges');
+    return {a:coverageCore.size(a),b:coverageCore.size(b),L:size,targetRegions:a,parentRegions:b,native:publicText(record.assay_id||record.identity?.assayId||record.protein_id||''),label:summaryParentLabel(record)};
+   });
+   return {floor,partners};
+  });
+  return serializeSummary(protein,scope,prepared,annotationMetadata);
+ }
+
+ function serializeSummary(p,scope,groups,annotationMetadata){
+  const L=p.sequence.length,id=identity(p,'q_');
+  const columns=['Antigen Target Gene','Antigen Target Accession','Antigen Target Protein Description','Antigen Target Length (AA)','Antigen Target Full Sequence','Antigen Target Organism (TaxID)','Comparison Library'];
+  const scopeLabel=({human_current:'HuScan',virscan_exposome_current:'VirScan/Exposome',huprot4:'HuProt 4.0',__custom_fasta__:'Your own FASTA'})[scope]||scope;
+  const row=Object.fromEntries(columns.map((k,i)=>[k,[id.q_gene,id.q_accession,summaryDescription(p,id.q_protein_name),L,p.sequence,organismTaxonLabel(p),scopeLabel][i]]));
+  const audit={};
+  for(const {floor:t,partners} of groups){
    const listed=partners.filter(p=>100*p.a>=10*L||100*p.b>=10*p.L).sort((a,b)=>b.a-a.a||(b.b/b.L-a.b/a.L)||lexical(a.native,b.native));
-   const keys=['Coverage (%)','Shared Regions','Uncovered Residue Regions','All Matching Parent Count'];
-   const values=[L>=9?Number(summaryCoveragePercent(cover.coveredResidues,L)):'',L<9?'Not assessable (<9 AA)':ranges(cover.intervals),L<9?'Not assessable (<9 AA)':ranges(uncovered),partners.length];
-   keys.forEach((k,i)=>{const name=k+' at '+t+'/9';columns.push(name);row[name]=values[i];});
+   audit[t]={matchingPairs:partners.length,listedPairs:listed.length};
    const pairedName='Mimicry Parents at '+t+'/9 with Coverage (%) Parent|Target (>=10% either)';
    columns.push(pairedName);row[pairedName]=listed.map(p=>p.label+'@'+summaryPairPercent(p.b,p.L)+'|'+summaryPairPercent(p.a,L)).join(';');
-
+   const compactRanges=xs=>xs.map(([a,b])=>a+'..'+b).join(',');
+   const regionName='Mimicry Parent Regions at '+t+'/9 Parent|Target (>=10% either)';
+   columns.push(regionName);row[regionName]=listed.map(p=>p.label+'@'+compactRanges(p.parentRegions)+'|'+compactRanges(p.targetRegions)).join(';');
   }
   if(annotationMetadata!==undefined){const annotations=annotationColumns(p.sequence,annotationMetadata);columns.push(...Object.keys(annotations));Object.assign(row,annotations);}
   // Coverage display matches detailed CSVs; threshold decisions use integer residue counts.
   const quote=v=>'"'+publicText(v??'').replace(/"/g,'""')+'"';
   const serialize=rows=>'\ufeff'+[columns.map(quote).join(','),...rows.map(r=>columns.map(k=>quote(k.includes('(%)')?exportPercent(r[k]):r[k])).join(','))].join('\r\n')+'\r\n';
-  return {schema:'mimicryone/native-summary/6',columns,row,csv:serialize([row]),serialize};
+  return {schema:'mimicryone/native-summary/7',columns,row,csv:serialize([row]),serialize,audit};
  }
 
- const api={annotationColumns,summaryTable,summaryIdentity,summaryParentLabel,summaryPairPercent,version,exportPercent,recordIdentityColumns,recordIdentity,csv,tables,csvChunks,figure,contextIdentity,contextIdentityAt,comparisonSummary};
+ const api={annotationColumns,summaryTable,summaryFromPairRegions,summaryIdentity,summaryParentLabel,summaryPairPercent,version,exportPercent,recordIdentityColumns,recordIdentity,csv,tables,csvChunks,figure,contextIdentity,contextIdentityAt,comparisonSummary};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.MimicryExportCore=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

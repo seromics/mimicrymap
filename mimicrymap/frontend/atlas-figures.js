@@ -2437,7 +2437,7 @@ legend: function () {
       picker.setAttribute("aria-label", (/*@copy atlas-figures.minimum-identity-for-this-figure.846b3e8*/`Minimum Core Identity for This Figure`/*@endcopy*/));
       var pickLabel = document.createElement("span");
       pickLabel.className = "af-floorpick-label";
-      pickLabel.textContent = (/*@copy atlas-figures.min-identity.a7f02f5*/`Min Identity`/*@endcopy*/);
+      pickLabel.textContent = (/*@copy atlas-figures.min-identity.a7f02f5*/`Identity ≥`/*@endcopy*/);
       picker.appendChild(pickLabel);
       TRACKS.forEach(function (t) {
         var b = document.createElement("button");

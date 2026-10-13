@@ -15,9 +15,14 @@ if blocked:
 destination = root / 'dist'
 destination.mkdir(exist_ok=True)
 archive = destination / f'mimicrymap-research-{version}.zip'
-with zipfile.ZipFile(archive, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=6) as z:
+pending = archive.with_suffix('.partial.zip')
+with zipfile.ZipFile(pending, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=6) as z:
     for name in sorted(names):
         z.write(root / name, f'mimicrymap-{version}/{name}')
+with zipfile.ZipFile(pending) as z:
+    if z.testzip() is not None or len(z.namelist()) != len(names):
+        raise SystemExit('Research archive verification failed; current archive retained')
+pending.replace(archive)
 digest = hashlib.sha256(archive.read_bytes()).hexdigest()
 (destination / 'SHA256SUMS.txt').write_text(f'{digest}  {archive.name}\n', encoding='utf-8')
 print(f'{archive.name}: {archive.stat().st_size:,} bytes; {len(names)} files')

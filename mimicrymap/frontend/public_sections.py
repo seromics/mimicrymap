@@ -212,7 +212,7 @@ def render(original, assets=None):
     return result
 
 
-def build(check=False):
+def build(check=False, content_only=False):
     import summary_downloads
     summary_downloads.ROOT = ROOT
     summary_downloads.sync_guide(check=check)
@@ -233,6 +233,8 @@ def build(check=False):
         raise ValueError('Public sections are stale; run python frontend/public_sections.py')
     if not check and result != original:
         page.write_text(result, encoding='utf-8', newline='\n')
+    if content_only:
+        return result == original
     if (ROOT / 'docs/public/interface-copy.json').exists():
         public_copy.sync_source_bundle(check=check)
     import importlib.util
@@ -245,6 +247,7 @@ def build(check=False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
+    parser.add_argument('--content-only', action='store_true', help='Build authored pages only; the host builds its portable package and embedded player separately')
     args = parser.parse_args()
-    unchanged = build(check=args.check)
+    unchanged = build(check=args.check, content_only=args.content_only)
     print('Public sections current' if unchanged else 'Built public sections from docs/public')

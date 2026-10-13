@@ -18,6 +18,14 @@ identity; all higher thresholds are included. CPU uses the existing indexed
 Workspace matcher. `node run.cjs` remains the detailed browser-worker CPU route
 for Current Comparison exports, including their saved coordinate mappings.
 
+Add `--bidirectional` for the paired release format. This retains every matching
+window in compact consecutive runs, writes `library_summary.csv` and
+`reverse_summary.csv`, and supplies complete lookups in either direction from
+one database. Record identities and repeated placements are preserved. Reverse
+coverage uses the opposite sequence denominator; no second sequence scan is
+needed. This option includes positions and can require much more storage than
+the default candidate index. It uses the same CPU/GPU matching engine.
+
 ## Optional NVIDIA acceleration
 
 Use a separate Python 3.11+ environment. The requirement matches the desktop's

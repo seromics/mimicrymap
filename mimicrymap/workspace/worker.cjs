@@ -8,6 +8,7 @@ process.once('message', async ({ action, value }) => {
         'buildComparison',
         'searchRecords',
         'readResult',
+        'readInstalledResult',
         'readRecord',
         'findSaved',
         'validateComparison',

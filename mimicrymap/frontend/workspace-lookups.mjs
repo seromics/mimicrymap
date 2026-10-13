@@ -6,7 +6,8 @@ export function lookupStatus(snapshot, { target, parent, floor = 7, targetSubset
   const valid = (side, current) => current && !current.stale && current.sha256 && current.sha256 === side.sha256;
   const matches = (snapshot?.comparisons || []).filter((c) =>
     c.complete && c.floor <= Number(floor) && valid(c.target, targetLibrary) && valid(c.parent, parentLibrary));
-  const full = matches.filter((c) => c.retainsPositions !== false).sort((a, b) => b.floor - a.floor)[0];
+  const installed=(snapshot?.references?.products||[]).find(p=>p.kind==='lookup'&&p.installed&&p.target===target&&p.parent===parent&&p.floors?.includes(Number(floor))&&targetLibrary&&!targetLibrary.stale&&parentLibrary&&!parentLibrary.stale&&(!p.targetSha256||p.targetSha256===targetLibrary.sha256)&&(!p.parentSha256||p.parentSha256===parentLibrary.sha256));
+  const full = matches.filter((c) => c.retainsPositions !== false || c.bidirectional).sort((a, b) => b.floor - a.floor)[0] || (installed?{floor:Math.min(...installed.floors)}:null);
   const index = matches.find((c) => c.retainsPositions === false);
   return full
     ? { suffix: '', title: targetSubset
@@ -39,6 +40,8 @@ export function nativeParentLibrary(snapshot, library, filters = {}) {
   const keys = Object.keys(scope);
   let id = null;
   if (library?.startsWith('workspace-') && !keys.length) id = library.slice(10);
+  if(!keys.length)id=({huprot4:'builtin-huprot',human_current:'builtin-huscan',virscan_exposome_current:'builtin-virscan',atlas_120_viruses:'builtin-viral120'})[library]||id;
+  if(library==='canonical_human'&&keys.length===1&&scope.source_collections?.length===1&&scope.source_collections[0]==='human_canonical_swissprot')id='builtin-human';
   // Canonical Human includes additional overlays; it is not the Swiss-Prot FASTA.
   if (library === 'canonical_exposure' && keys.length === 1 &&
       scope.source_collections?.length === 1 && scope.source_collections[0] === 'viral_nonhuman') id = 'builtin-viral120';

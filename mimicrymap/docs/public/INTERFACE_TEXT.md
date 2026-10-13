@@ -29,7 +29,7 @@ Figure legends captured from the live DOM use the player legend entries. Native 
 **Used in:** `frontend/analysis-entry.js` · Completed target status prefix
 
 ```text
-Live · 
+Live ·
 ```
 
 
@@ -813,7 +813,7 @@ Median viral parent · {{value}}% {{measure}} at {{label}}
 **Used in:** `frontend/atlas-figures.js` · Display textContent
 
 ```text
-Min Identity
+Identity ≥
 ```
 
 Shared glossary term: `min_identity` (edit its label once in terminology.json).
@@ -1377,7 +1377,7 @@ Preview
 **Used in:** `frontend/index.html` · HTML display fragment
 
 ```text
-<span class="enm">Mimicry Parent</span><span class="ediv"></span><span class="epos l" data-tooltip="Context start: first available residue of the displayed parent context, 1-based and inclusive. CSV Core Start instead locates the 9-mer core.">Start</span><span class="eseq" data-tooltip="Context (27-mer): the retained 9-mer core plus up to nine flanking residues on each side.">27-mer</span><span class="epos r" data-tooltip="Context end: last available residue of the displayed parent context, 1-based and inclusive. CSV Core End instead bounds the 9-mer core.">End</span><span class="ebadge" data-tooltip="Context identity counts identical standard amino acids across 27 positions. Core identity determines inclusion; the Sort control determines row order." style="color:var(--mm-faint)">Context</span><span class="enum w-bl" data-tooltip="Sum of BLOSUM62 substitution scores across available resolved positions in the displayed 27-residue context.">BLOSUM62</span>
+<span class="enm">Mimicry Parent</span><span class="ediv"></span><span class="epos l" data-tooltip="Context start: first available residue of the displayed parent context, 1-based and inclusive. CSV Core Start instead locates the 9-mer core.">Start</span><span class="eseq" data-tooltip="Context (27-mer): the retained 9-mer core plus up to nine flanking residues on each side.">27-mer</span><span class="epos r" data-tooltip="Context end: last available residue of the displayed parent context, 1-based and inclusive. CSV Core End instead bounds the 9-mer core.">End</span><span class="ebadge" data-tooltip="Context identity counts identical standard amino acids across 27 positions. Core identity determines inclusion; the Order control determines row order." style="color:var(--mm-faint)">Context</span><span class="enum w-bl" data-tooltip="Sum of BLOSUM62 substitution scores across available resolved positions in the displayed 27-residue context.">BLOSUM62</span>
 ```
 
 
@@ -1413,7 +1413,7 @@ rSASA
 **Used in:** `frontend/index.html` · Display tooltip
 
 ```text
-Show matches at the selected window, ordered by the Sort control.
+Show matches at the selected window, ordered by the Order control.
 ```
 
 
@@ -1780,7 +1780,6 @@ Assembly context
 
 ```text
 Benign
-        
 ```
 
 
@@ -1790,7 +1789,6 @@ Benign
 
 ```text
 Buried
-          
 ```
 
 
@@ -2061,7 +2059,6 @@ Explore the Atlas
 
 ```text
 Exposed
-        
 ```
 
 
@@ -2071,7 +2068,6 @@ Exposed
 
 ```text
 Extracellular
-          
 ```
 
 
@@ -2134,7 +2130,7 @@ History
 **Used in:** `frontend/index.html` · Player/controls visible text
 
 ```text
- hormones 
+ hormones
 ```
 
 
@@ -2143,7 +2139,7 @@ History
 **Used in:** `frontend/index.html` · Player/controls visible text
 
 ```text
- human proteins 
+ human proteins
 ```
 
 
@@ -2171,7 +2167,6 @@ UniProt HumSAVAR missense variants: (likely) pathogenic, uncertain significance,
 
 ```text
 Intracellular
-          
 ```
 
 
@@ -2324,7 +2319,7 @@ Mimicry Parent FASTA
 **Used in:** `frontend/index.html` · Player/controls visible text
 
 ```text
-Min Identity 
+Identity ≥
 ```
 
 Shared glossary term: `min_identity` (edit its label once in terminology.json).
@@ -2335,7 +2330,7 @@ Shared glossary term: `min_identity` (edit its label once in terminology.json).
 **Used in:** `frontend/index.html` · Player/controls visible text
 
 ```text
-Min Identity
+Identity ≥
 ```
 
 Shared glossary term: `min_identity` (edit its label once in terminology.json).
@@ -2442,7 +2437,7 @@ Next
 **Used in:** `frontend/index.html` · Player/controls visible text
 
 ```text
- non-human exposures 
+ non-human exposures
 ```
 
 
@@ -2469,7 +2464,7 @@ One source
 **Used in:** `frontend/index.html` · Player/controls visible text
 
 ```text
-Overall Mimicry Parents 
+Overall Mimicry Parents
 ```
 
 
@@ -2487,7 +2482,7 @@ page 0 of 0
 **Used in:** `frontend/index.html` · Player data-tooltip
 
 ```text
-Core identity in the mimicry parent lanes: dark red at 30% opacity for 5/9, increasing to full opacity for 9/9. Density uses a separate scale.
+Core identity in the mimicry parent lanes: 30% opacity for 5/9, increasing to full opacity for 9/9. Density uses a separate scale.
 ```
 
 
@@ -2533,7 +2528,6 @@ Paste or
 
 ```text
 Pathogenic
-          
 ```
 
 
@@ -2722,7 +2716,7 @@ Session:
 **Used in:** `frontend/index.html` · Player aria-label
 
 ```text
-Sort window matches
+Order window matches
 ```
 
 
@@ -2731,7 +2725,7 @@ Sort window matches
 **Used in:** `frontend/index.html` · Player/controls visible text
 
 ```text
-Sort
+Order
 ```
 
 
@@ -2758,7 +2752,7 @@ Speed
 **Used in:** `frontend/index.html` · Player/controls visible text
 
 ```text
-Structure 
+Structure
 ```
 
 
@@ -2812,7 +2806,7 @@ The nine-residue comparison window plus up to nine flanking residues on each sid
 **Used in:** `frontend/index.html` · Player data-tooltip
 
 ```text
-The nine-residue comparison window, outlined in green.
+The outlined nine-residue comparison window.
 ```
 
 
@@ -2849,7 +2843,6 @@ Tracks
 
 ```text
 Transmembrane
-        
 ```
 
 
@@ -2859,7 +2852,6 @@ Transmembrane
 
 ```text
 Uncertain
-          
 ```
 
 
@@ -2915,7 +2907,7 @@ View
 **Used in:** `frontend/index.html` · Player/controls visible text
 
 ```text
- viral proteomes 
+ viral proteomes
 ```
 
 
@@ -4376,7 +4368,7 @@ Parent
 Residue colors and active annotation tracks match the captured player. {{value}}
 ```
 
-- `{{value}}` ← `s.highlight?'Green: selected 9-mer core; blue: flanking context.':''` (live renderer value; not authored content)
+- `{{value}}` ← `s.highlight?'Outlines mark the selected 9-mer core and flanking context.':''` (live renderer value; not authored content)
 
 ## export-core.residues.2ae8324
 
@@ -5663,7 +5655,6 @@ Antigen Target Coverage (%)
 
 ```text
 {{target}} versus {{scope}} at ≥{{floor}}/9 core identity. {{panel}} {{grouping}} {{highlight}}
-
 ```
 
 - `{{target}}` ← `target` (live renderer value; not authored content)
@@ -5816,7 +5807,7 @@ The Y-axis shows the percentage of eligible human residues covered by that viral
 **Used in:** `frontend/atlas-figures.js` · Collection scatter display unit and highlighting
 
 ```text
-Overlapping cores count once, including mismatching positions; context flanks are excluded. 
+Overlapping cores count once, including mismatching positions; context flanks are excluded.
 ```
 
 
@@ -6110,7 +6101,7 @@ Selected organism filters
 **Used in:** `frontend/analysis-entry.js` · Explicit local-compute choice after saved delivery fails; retry saved delivery before local work
 
 ```text
-This saved result is unavailable or too large to deliver. The previous result is retained. You can choose to compute on this device. 
+This saved result is unavailable or too large to deliver. The previous result is retained. You can choose to compute on this device.
 ```
 
 
@@ -6200,7 +6191,7 @@ No matching proteins in the selected library and scope.
 **Used in:** `frontend/analysis-entry.js` · Single-protein parent scope picker
 
 ```text
-Parent search stopped: 
+Parent search stopped:
 ```
 
 
@@ -6438,7 +6429,7 @@ Parent tracks show matching positions, with opacity indicating core identity fro
 **Used in:** `frontend/result-extent.js` · Adaptive scientific figure legend
 
 ```text
-Shows where qualifying molecular mimicry matches occur along {{target}} ({{length}} residues). Color shows the number of window pairs at each target start; each residue takes the highest value among overlapping cores (0–{{maximum}}, {{direction}}). Green and blue highlights mark the selected core and its surrounding context. Target coverage is the percentage of the full target sequence covered across the selected parent library. {{coverage}} {{lanes}}{{tracks}}
+Shows where qualifying molecular mimicry matches occur along {{target}} ({{length}} residues). Color shows the number of window pairs at each target start; each residue takes the highest value among overlapping cores (0–{{maximum}}, {{direction}}). Highlights mark the selected core and its surrounding context. Target coverage is the percentage of the full target sequence covered across the selected parent library. {{coverage}} {{lanes}}{{tracks}}
 ```
 
 **Edit in:** `docs/public/figure-legends.json`
@@ -6567,13 +6558,13 @@ Target Windows × Included Parent Windows
 ### choice.threshold
 
 ```text
-Min Identity: {0} identical positions out of 9
+Identity ≥: {0} identical positions out of 9
 ```
 
 ### panel1.title
 
 ```text
-Inspect Results
+Inspect and Summarize Results
 ```
 
 ### panel1.equation
@@ -6585,7 +6576,7 @@ Inspect Results
 ### panel1.caption
 
 ```text
-<p>The full data viewer ranks epitope-level molecular mimics by sortable properties. At a selected site, these are core identity (e.g., 8/9 outranking 5/9), context identity (e.g., 20/27 outranking 6/27), or highest BLOSUM62 score. Parent proteins are additionally given target and parent coverage percentages that allow for easy identification of matches spanning across wider regions. These are computed by the following:</p><div class="method-equation"><div><strong>Target Coverage</strong> = 100 × <span class="method-fraction"><span>covered target residues</span><span>target length</span></span></div><div><strong>Parent Coverage</strong> = 100 × <span class="method-fraction"><span>covered parent residues</span><span>parent length</span></span></div></div><p>For the case of HEPACAM and EBNA1, several additional matching sites at 5/9 identity increase the total target and parent coverage to 13.2% and 10.1%, respectively. All matching 9-mers and coverage scores are shown in the accompanying figure. Each is another qualifying molecular mimicry event, alongside <span class="method-inline-mask" aria-label="XSPPRXPXX"><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-match" aria-hidden="true">S</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-match" aria-hidden="true">R</span><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-mismatch" aria-hidden="true">X</span></span>.</p><p>Across the rest of Epstein-Barr virus, there are numerous other matches to HEPACAM at 5/9 identity. Not only do many proteins mimic HEPACAM more often than EBNA1 at 5/9, at the specific HEPACAM 376–384 9-mer core alone there are 27 pairs of 5/9 identity between it and the EBV proteome. There are even more matches occurring across the full viral proteome search space, including two strong matches at 7/9 identity occurring in non-EBV proteins.</p><table class="method-scope-summary"><caption>Saved window pairs at HEPACAM 376–384</caption><thead><tr><th scope="col">Parent Scope</th><th scope="col">Min Identity</th><th scope="col">Pairs</th></tr></thead><tbody><tr><th scope="row">Curated EBV B95-8 proteome</th><td>5/9</td><td>27</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>5/9</td><td>293</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>7/9</td><td>2</td></tr></tbody></table><p>Potential molecular mimicry matches at the level of <span class="method-inline-mask" aria-label="XSPPRXPXX"><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-match" aria-hidden="true">S</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-match" aria-hidden="true">R</span><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-mismatch" aria-hidden="true">X</span></span> are widespread. Experimental evidence drove discovery of this event. The goal of MimicryMap is to automate the discovery of more.</p>
+<p>MimicryMap produces individual sequence matches and summaries that compile those matches for reuse. The full data viewer locates qualifying nine-residue core pairs in the target and parent sequences. At a selected site, matches can be ranked by core identity (e.g., 8/9 outranking 5/9), context identity (e.g., 20/27 outranking 6/27), or BLOSUM62 score. Individual alignments and their coordinates can be inspected and exported.</p><p>To summarize all matching events between two records, MimicryMap calculates target and parent coverage. This combines qualifying nine-residue cores into independent residue unions on each sequence. Overlapping residues count once; the entire qualifying core contributes, including mismatched positions, while context flanks are excluded. These same coverage values appear in the viewer and exported summaries:</p><div class="method-equation"><div><strong>Target Coverage</strong> = 100 × <span class="method-fraction"><span>covered target residues</span><span>target length</span></span></div><div><strong>Parent Coverage</strong> = 100 × <span class="method-fraction"><span>covered parent residues</span><span>parent length</span></span></div></div><p>For the case of HEPACAM and EBNA1, several additional matching sites at 5/9 identity increase the total target and parent coverage to 13.2% and 10.1%, respectively. All matching 9-mers and coverage scores are shown in the accompanying figure. Each is another qualifying molecular mimicry event, alongside <span class="method-inline-mask" aria-label="XSPPRXPXX"><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-match" aria-hidden="true">S</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-match" aria-hidden="true">R</span><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-mismatch" aria-hidden="true">X</span></span>.</p><p>Across the rest of Epstein-Barr virus, there are numerous other matches to HEPACAM at 5/9 identity. Not only do many proteins mimic HEPACAM more often than EBNA1 at 5/9, at the specific HEPACAM 376–384 9-mer core alone there are 27 pairs of 5/9 identity between it and the EBV proteome. There are even more matches occurring across the full viral proteome search space, including two strong matches at 7/9 identity occurring in non-EBV proteins.</p><table class="method-scope-summary"><caption>Saved window pairs at HEPACAM 376–384</caption><thead><tr><th scope="col">Parent Scope</th><th scope="col">Identity ≥</th><th scope="col">Pairs</th></tr></thead><tbody><tr><th scope="row">Curated EBV B95-8 proteome</th><td>5/9</td><td>27</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>5/9</td><td>293</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>7/9</td><td>2</td></tr></tbody></table><p id="proteomeReactivity">These numerous matches illustrate why experimental evidence is essential for identifying biologically relevant mimicry. For broader comparisons, the same coverage calculations scale from individual record pairs to entire libraries. The <a href="sources.html" data-site-nav>Downloads page</a> provides premade summary CSVs for mappings within and between canonical human and exposure proteomes, curated viral proteomes and assay libraries. These portable files retain identifiers, sequences, coverage values and matched residue ranges at 7/9, 8/9 and 9/9.</p><p>The summaries offer a quick way to explore broader patterns of sequence mimicry, but their 7/9 minimum excludes the illustrated 5/9 HEPACAM–EBNA1 match. Focused searches at lower identity thresholds therefore remain valuable for investigating individual targets alongside experimental evidence.</p>
 ```
 
 ### input.scale

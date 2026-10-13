@@ -44,6 +44,15 @@ function blosum27(a,b,table=BT){
   const context=(sequence,start)=>Array.from({length:27},(_,i)=>sequence[start-10+i]||'.').join('');
   return blosum27(context(a,targetStart),context(b,parentStart));
  }
- const api={table:BT,aligned:blosum27,at};
+ function contextIdentityAt(a,b,q,p){
+  if(typeof a!=='string'||typeof b!=='string')return null;
+  let matches=0;
+  for(let offset=-9;offset<18;offset++){
+   const x=a[q-1+offset],y=b[p-1+offset];
+   if(x===y&&/^[ACDEFGHIKLMNPQRSTVWY]$/.test(x||''))matches++;
+  }
+  return matches;
+ }
+ const api={table:BT,aligned:blosum27,at,identityAt:contextIdentityAt};
  if(typeof module==='object'&&module.exports)module.exports=api;else root.MimicryContextScore=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

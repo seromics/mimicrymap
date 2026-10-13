@@ -9,6 +9,7 @@ const readline = require("node:readline"),
   zlib = require("node:zlib");
 const input = require("../frontend/reproduce/fasta-input.js");
 const coverage = require("../frontend/reproduce/residue-coverage.js");
+const pairRegions = require('./pair-regions.cjs');
 const exportsCore = require("../frontend/reproduce/export-core.js");
 const metadata = require('./metadata.cjs');
 const FORMAT = "seromap.mimicry-comparison/1",
@@ -18,8 +19,10 @@ const hashFile = async (file) => {
   for await (const b of fs.createReadStream(file)) h.update(b);
   return h.digest("hex");
 };
-const json = (file, value) =>
-  fs.writeFileSync(file, JSON.stringify(value, null, 2) + "\n");
+const json = (file, value) => {
+  fs.writeFileSync(file + '.partial', JSON.stringify(value, null, 2) + "\n");
+  fs.renameSync(file + '.partial', file);
+};
 const dbOpen = (file, readOnly = false) => new DatabaseSync(file, { readOnly });
 const textId = (r) => r.assay_id || r.original_id || r.protein_id;
 async function importFasta(
@@ -135,21 +138,7 @@ async function importFasta(
 }
 // A >= k/9 match has <= 9-k mismatches. Partitioning into 10-k disjoint
 // seeds guarantees at least one exact canonical seed; verify every candidate.
-function blocks(floor) {
-  const n = 10 - floor;
-  return Array.from({ length: n }, (_, i) => [
-    Math.floor((9 * i) / n),
-    Math.floor((9 * (i + 1)) / n),
-  ]);
-}
-function identityAt(a, q, b, p, floor) {
-  let n = 0;
-  for (let i = 0; i < 9; i++) {
-    if (a[q + i] === b[p + i] && /^[ACDEFGHIKLMNPQRSTVWY]$/.test(a[q + i])) n++;
-    if (n + 8 - i < floor) return 0;
-  }
-  return n;
-}
+const {blocks,identityAt}=require('../frontend/reproduce/seed-match.cjs');
 function prepareSeeds(library, floor, report = () => {}) {
   const file = path.join(library, "seeds-" + floor + ".sqlite");
   if (fs.existsSync(file)) return file;
@@ -404,6 +393,7 @@ async function buildComparison(
     floor = 7,
     targetId = null,
     retainPositions = false,
+    bidirectional = false,
     backend = "cpu",
     gpuPython = null,
     reuseDirectory = null,
@@ -421,6 +411,10 @@ async function buildComparison(
   if (!["cpu", "gpu"].includes(backend))
     throw Error("Choose CPU or NVIDIA GPU.");
   retainPositions = targetId !== null || retainPositions === true;
+  if(bidirectional && (targetId !== null || sample))throw Error("Bidirectional builds require complete libraries.");
+  // Compact runs already retain every position in both directions. Avoid a
+  // second, much larger per-target JSON copy of those same coordinates.
+  if(bidirectional)retainPositions=false;
   const target = JSON.parse(
       fs.readFileSync(path.join(targetDirectory, "library.json")),
     ),
@@ -428,6 +422,10 @@ async function buildComparison(
       fs.readFileSync(path.join(parentDirectory, "library.json")),
     );
   // A full saved lookup already contains the work needed for a compact candidate index.
+  for(const folder of [reuseDirectory,sampleReuseDirectory].filter(Boolean)){
+    const saved=JSON.parse(fs.readFileSync(path.join(folder,'comparison.json'),'utf8'));
+    if(saved.target.sha256!==target.sha256||saved.parent.sha256!==parent.sha256||saved.floor>floor||(!saved.retainsPositions&&!saved.bidirectional))throw Error('Saved matches do not cover these exact FASTAs and identity threshold.');
+  }
   const reuse = reuseDirectory
     ? dbOpen(path.join(reuseDirectory, "comparison.sqlite"), true)
     : null;
@@ -469,7 +467,9 @@ async function buildComparison(
       "Reference set",
       "Core identity ≥",
       "Target coverage (%)",
+      "Target regions (>=10% either)",
       "Parent coverage (%)",
+      "Parent regions (>=10% either)",
       "Window pairs",
     ]);
   fs.writeSync(pairs, pairHeader);
@@ -478,10 +478,14 @@ async function buildComparison(
     positionCount = 0,
     pairCount = 0,
     summaryHeader = false, summaryHeaderLength = 0, fixedBytes = Buffer.byteLength(pairHeader);
+  const summaryAudit={};
   try {
     db.exec(
       "PRAGMA journal_mode=DELETE; CREATE TABLE results (id INTEGER PRIMARY KEY,token TEXT,source TEXT,name TEXT,result BLOB,sequence_hash TEXT); CREATE TABLE pairs (target INTEGER,source TEXT,parent INTEGER,protein TEXT,organism TEXT,identity INTEGER,tc REAL,pc REAL,pairs INTEGER); CREATE TABLE aliases (alias TEXT,target INTEGER,PRIMARY KEY(alias,target));",
     );
+    const positionWriter=bidirectional?require('./pair-store.cjs').initialize(db,[[0,targetDirectory,targetAnnotations],[1,parentDirectory,parentAnnotations]]):null;
+    db.exec('CREATE TABLE pair_regions(target INTEGER,parent INTEGER,identity INTEGER,payload BLOB,PRIMARY KEY(target,parent,identity)) WITHOUT ROWID;');
+    const putRegions=db.prepare('INSERT INTO pair_regions VALUES(?,?,?,?)');
     // Empty tables plus the three secondary-index root pages are fixed costs.
     fixedBytes += fs.statSync(path.join(directory, 'comparison.sqlite')).size + 3 * Number(db.prepare('PRAGMA page_size').get().page_size);
     const putResult = db.prepare("INSERT INTO results VALUES(?,?,?,?,?,?)"),
@@ -561,6 +565,7 @@ async function buildComparison(
           ),
         ))
           alias.run(key, row.id);
+        positionWriter?.(row.id,matches);
         for (const item of matches) {
           positionCount += item.hits.length;
           for (let f = floor; f <= 9; f++) {
@@ -570,6 +575,8 @@ async function buildComparison(
               tc = residuePercent(h, 0, query.length),
               pc = residuePercent(h, 1, item.parent.length),
               protein = item.parent.protein_id;
+            const ranges=tc>=10||pc>=10?pairRegions.fromHits(h,query.length,item.parent.length,f):null;
+            if(ranges)putRegions.run(row.id,item.parent.record_id,f,pairRegions.pack(ranges.target.intervals,ranges.parent.intervals));
             putPair.run(
               row.id,
               row.source,
@@ -591,7 +598,9 @@ async function buildComparison(
                 organism,
                 f,
                 tc,
+                ranges?pairRegions.text(ranges.target.intervals):'',
                 pc,
+                ranges?pairRegions.text(ranges.parent.intervals):'',
                 h.length,
               ]));
           }
@@ -600,6 +609,10 @@ async function buildComparison(
           result,
           [7, 8, 9].filter((f) => f >= floor),
         );
+        for(const [f,counts] of Object.entries(native.audit)){
+          summaryAudit[f]??={matchingPairs:0,listedPairs:0};
+          for(const k of ['matchingPairs','listedPairs'])summaryAudit[f][k]+=counts[k];
+        }
         // The shared formatter may quote multiline headers/metadata; split only the
         // header record when appending (serialize one row after the first target).
         if (!summaryHeader) {
@@ -652,6 +665,15 @@ async function buildComparison(
     if (!done) throw Error("The selected target is not in this library.");
     const indexStart=Date.now();
     db.exec('CREATE INDEX target_sequence ON results(sequence_hash); CREATE INDEX target_source ON results(source); CREATE INDEX memberships ON pairs(identity,organism,source);');
+    if(bidirectional){
+      json(path.join(directory,'forward-complete.json'), {
+        schema:'seromap.comparison-finalization/1', directory, targetDirectory, parentDirectory, targetAnnotations, parentAnnotations,
+        manifest:{schema:FORMAT,method:METHOD,id,name:name||target.name+' → '+parent.name,floor,window:9,target,parent,targetId:null,complete:true,sample:false,retainsPositions:true,retainsPairRegions:true,pairRegionStorage:pairRegions.FORMAT,bidirectional:true,coordinateStorage:'diagonal-runs/1',output:'full-lookup',backend:reuse?'saved-lookup':backend,targets:done,positions:positionCount,pairs:pairCount,createdAt:new Date().toISOString(),files:{}},
+        summaryAudit,
+        forwardFiles:Object.fromEntries(['library_summary.csv','pair_coverage.csv'].map(f=>[f,fs.statSync(path.join(directory,f)).size])),
+      });
+      require('./pair-store.cjs').finish(db,directory,{floor,id,target,parent,resultFor,summaryTable:exportsCore.summaryTable,report});
+    }
     indexMs=Date.now()-indexStart;
   } finally {
     pairWriter.flush(); summaryWriter.flush();
@@ -676,20 +698,34 @@ async function buildComparison(
     targetId,
     complete: targetId === null && !sample,
     sample: !!sample,
-    retainsPositions: retainPositions,
+    retainsPositions: retainPositions || bidirectional,
+    retainsPairRegions:true,
+    pairRegionStorage:pairRegions.FORMAT,
+    bidirectional,
+    coordinateStorage:bidirectional?"diagonal-runs/1":undefined,
     output:
       sample ? 'sample-lookup' : targetId !== null
         ? "single-target"
-        : retainPositions
+        : retainPositions || bidirectional
           ? "full-lookup"
           : "candidate-index",
     backend: reuse ? "saved-lookup" : backend,
     targets: done,
     positions: positionCount,
     pairs: pairCount,
+    summaryAudit,
     createdAt: new Date().toISOString(),
     files: {},
   };
+  manifest.measurement = {execution:'bulk-2',machine, setupMs, matchMs, writeMs, viewerMs, packingMs, indexMs, fixedBytes,
+    finishMs:Date.now()-started-setupMs-matchMs-writeMs-indexMs,
+    totalMs:Date.now()-started, targetWindows, libraryWindows:sample?libraryWindows:targetWindows, positionBytes, reusedTargets,
+    observations:sample ? observations : undefined};
+  return writeComparisonPackage({manifest,directory,targetDirectory,parentDirectory,targetAnnotations,parentAnnotations});
+}
+async function writeComparisonPackage({manifest,directory,targetDirectory,parentDirectory,targetAnnotations,parentAnnotations}) {
+  manifest.summarySchema='mimicryone/native-summary/7'; manifest.pairFocusedSummary=true;
+  const {sample,floor,targetId,bidirectional,target,parent}=manifest;
   // Internal tests reuse the installed inputs by checksum. Only portable
   // comparison products need another complete copy of both FASTAs.
   const inputBytes = fs.statSync(path.join(targetDirectory,'source.fasta')).size +
@@ -706,13 +742,15 @@ async function buildComparison(
   json(path.join(directory, "settings.json"), {
     floor,
     targetId,
-    retainPositions,
+    retainPositions:manifest.retainsPositions,
+    bidirectional,
     targetName: target.name,
     parentName: parent.name,
   });
   for (const file of [
     "comparison.sqlite",
     "library_summary.csv",
+    ...(bidirectional?["reverse_summary.csv"]:[]),
     "pair_coverage.csv",
     ...(!sample ? ["inputs/targets.fasta", "inputs/parents.fasta"] : []),
     ...(!sample&&targetAnnotations?['inputs/targets.annotations.sqlite','inputs/targets.annotations.csv']:[]),
@@ -723,14 +761,26 @@ async function buildComparison(
       bytes: fs.statSync(path.join(directory, file)).size,
       sha256: await hashFile(path.join(directory, file)),
     };
-  manifest.measurement = {execution:'bulk-2',machine, setupMs, matchMs, writeMs, viewerMs, packingMs, indexMs, fixedBytes,
-    finishMs:Date.now()-started-setupMs-matchMs-writeMs-indexMs,
-    totalMs:Date.now()-started, targetWindows, libraryWindows:sample?libraryWindows:targetWindows, positionBytes, inputBytes, reusedTargets,
-    observations:sample ? observations : undefined};
+  if(manifest.measurement)manifest.measurement.inputBytes=inputBytes;
   json(path.join(directory, "comparison.json"), manifest);
+  fs.rmSync(path.join(directory,'forward-complete.json'),{force:true});
   return manifest;
 }
+async function resumeFinalization(directory,report=()=>{}) {
+  const checkpoint=JSON.parse(fs.readFileSync(path.join(directory,'forward-complete.json'),'utf8'));
+  if(checkpoint.summaryAudit)checkpoint.manifest.summaryAudit=checkpoint.summaryAudit;
+  if(checkpoint.schema!=='seromap.comparison-finalization/1'||path.resolve(checkpoint.directory)!==path.resolve(directory)||!checkpoint.manifest.bidirectional)throw Error('Invalid comparison finalization checkpoint');
+  for(const [file,bytes] of Object.entries(checkpoint.forwardFiles))if(fs.statSync(path.join(directory,file)).size!==bytes)throw Error('Completed forward output changed: '+file);
+  const m=checkpoint.manifest,db=dbOpen(path.join(directory,'comparison.sqlite'));
+  try {
+    if(db.prepare('SELECT count(*) n FROM results').get().n!==m.target.records||db.prepare('SELECT count(*) n FROM sequence_records WHERE side=1').get().n!==m.parent.records)throw Error('Forward comparison is incomplete');
+    require('./pair-store.cjs').finish(db,directory,{floor:m.floor,id:m.id,target:m.target,parent:m.parent,resultFor,summaryTable:exportsCore.summaryTable,report});
+  }finally{db.close();}
+  m.finalizationResumedAt=new Date().toISOString();
+  return writeComparisonPackage(checkpoint);
+}
 function matchesFromSaved(db, targetId, floor) {
+  if(db.prepare("SELECT 1 FROM sqlite_master WHERE name='positions'").get())return require('./pair-store.cjs').matches(db,targetId,floor);
   const row = db.prepare("SELECT result FROM results WHERE id=?").get(targetId);
   if (!row?.result)
     throw Error(
@@ -760,9 +810,14 @@ function searchRecords({directory,comparison=false,search='',offset=0,annotation
   }finally{overlay.close();db.close();}
 }
 
-function readResult({ directory, targetId, annotations, targetAnnotations, parentAnnotations }) {
+function readResult({ directory, targetId, reverse=false, annotations, targetAnnotations, parentAnnotations }) {
   const db = dbOpen(path.join(directory, "comparison.sqlite"), true);
   try {
+    if(db.prepare("SELECT 1 FROM sqlite_master WHERE name='positions'").get()){
+      const pair=require('./pair-store.cjs'),m=JSON.parse(fs.readFileSync(path.join(directory,'comparison.json'),'utf8'));
+      const query=pair.record(db,reverse?1:0,targetId);if(!query)throw Error('Target is not in the saved comparison');
+      return resultFor(query,pair.matches(db,targetId,m.floor,reverse),{floor:m.floor,id:m.id+(reverse?':reverse':''),targetName:(reverse?m.parent:m.target).name,parentName:(reverse?m.target:m.parent).name});
+    }
     const row = db
       .prepare("SELECT result FROM results WHERE id=?")
       .get(targetId);
@@ -798,6 +853,7 @@ function readRecord({ directory, id, annotations, annotationFile }) {
 function findSaved({ directory, sequence }) {
   const db = dbOpen(path.join(directory, "comparison.sqlite"), true);
   try {
+    if(db.prepare("SELECT 1 FROM sqlite_master WHERE name='positions'").get())return db.prepare('SELECT id FROM sequence_records WHERE side=0 AND sha256=? LIMIT 2').all(crypto.createHash('sha256').update(sequence).digest('hex'));
     // Sequence identities are indexed separately from labels, never guessed from genes.
     const digest = crypto.createHash("sha256").update(sequence).digest("hex");
     return db
@@ -827,6 +883,7 @@ async function validateComparison(directory) {
     "inputs/targets.fasta",
     "inputs/parents.fasta",
     "settings.json",
+    ...(m.bidirectional?["reverse_summary.csv"]:[]),
   ])
     if (
       !m.files?.[file] ||
@@ -864,14 +921,21 @@ async function validateComparison(directory) {
     const stored = db
       .prepare("SELECT count(*) n FROM results WHERE result IS NOT NULL")
       .get().n;
-    if (stored !== (retainsPositions ? m.targets : 0))
+    if (stored !== (retainsPositions && !m.bidirectional ? m.targets : 0) && !(m.bidirectional && stored === m.targets))
       throw Error("Comparison positional storage does not match its manifest");
+    if(m.bidirectional && (!db.prepare("SELECT 1 FROM sqlite_master WHERE name='positions'").get() || db.prepare('SELECT count(*) n FROM sequence_records WHERE side=0').get().n!==m.target.records || db.prepare('SELECT count(*) n FROM sequence_records WHERE side=1').get().n!==m.parent.records))throw Error('Bidirectional sequence records are incomplete');
+    if(m.retainsPairRegions){
+      if(m.pairRegionStorage!==pairRegions.FORMAT||!db.prepare("SELECT 1 FROM sqlite_master WHERE name='pair_regions'").get())throw Error('Saved pair-region format is missing or incompatible');
+      const expected=db.prepare('SELECT count(*) n FROM pairs WHERE tc>=10 OR pc>=10').get().n;
+      if(db.prepare('SELECT count(*) n FROM pair_regions').get().n!==expected)throw Error('Saved qualifying pair ranges are incomplete');
+    }
   } finally {
     db.close();
   }
   return m;
 }
 module.exports = {
+  readInstalledResult:({moduleRoot,...query})=>{const found=require('./reference-pairs.cjs').find(moduleRoot,query);return found?readResult(found):null;},
   prepareAnnotations:metadata.prepare,
   refreshAnnotations:require('./metadata-outputs.cjs').refresh,
   hashFile,
@@ -883,6 +947,7 @@ module.exports = {
   resultFor,
   residuePercent,
   buildComparison,
+  resumeFinalization,
   searchRecords,
   readResult,
   readRecord,

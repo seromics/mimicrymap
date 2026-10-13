@@ -16,6 +16,7 @@ def paginate(rendered,section_span,check=False):
     routes={key:'/'+slug+'.html' for slug,sid,_,_ in PAGES for key in re.findall(r'\bid="([^"]+)"',sections[sid])}
     # Retain old bookmarks while moving only the requested chapter into memory.
     routes['releaseSources']='/sources.html'
+    routes['proteomeReactivity']='/calculations.html'
     def navigation(slug):
         return re.sub(r'data-page="'+re.escape(slug)+'"',lambda m:m[0]+' aria-current="page"',nav)
     def links(text,slug):

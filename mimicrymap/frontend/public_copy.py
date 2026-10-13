@@ -109,7 +109,7 @@ def write_review(catalogue, check=False):
     lines += ['', 'Figure legends captured from the live DOM use the player legend entries. Native database descriptions and identifiers are not editable copy. Frozen published SVGs/PNGs retain their original text until explicitly regenerated from their recorded settings.', '']
     for row in catalogue['entries']:
         lines += ['## ' + row['key'], '', '**Used in:** `' + row['file'] + '` · ' + row['use'], '',
-                  '```text', row['text'], '```', '']
+                  '```text', row['text'].rstrip(), '```', '']
         if row.get('term'):lines += ['Shared glossary term: `' + row['term'] + '` (edit its label once in terminology.json).', '']
         if row.get('editorial_source'):lines += ['**Edit in:** `' + row['editorial_source'] + '`', '']
         for name, value in row.get('placeholders', {}).items():

@@ -11,6 +11,7 @@ node build.cjs --targets targets.fasta --parents parents.fasta --out results-gpu
 
 --floor 7                    Minimum identity, 5–9 on CPU; 7–9 on NVIDIA GPU
 --retain-positions           Save full sequence lookups as well as candidate indexes
+--bidirectional              Save compact complete lookups and summaries in both directions
 --target-annotations file    Optional record metadata CSV
 --parent-annotations file    Optional record metadata CSV
 --target-name name           Display name (default: FASTA filename)
@@ -24,7 +25,7 @@ Output must be a new directory. Inputs are retained; completed output is never o
 Install a completed result through SeroMap Workspace → MimicryMap Libraries → Install comparison.
 `;
 const strings = ['targets','parents','out','floor','engine','python','target-annotations','parent-annotations','target-name','parent-name','target-library','parent-library'];
-const booleans = ['help','retain-positions','probe-gpu'];
+const booleans = ['help','retain-positions','bidirectional','probe-gpu'];
 function options(argv) {
   const {values} = parseArgs({args:argv,options:Object.fromEntries([...strings.map(k=>[k,{type:'string'}]),...booleans.map(k=>[k,{type:'boolean'}])])});
   return values;

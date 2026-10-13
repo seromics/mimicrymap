@@ -2,6 +2,7 @@
 const fs=require('node:fs'),path=require('node:path');
 const {DatabaseSync}=require('node:sqlite');
 const meta=require('./metadata.cjs'),core=require('../frontend/reproduce/export-core.js');
+const regions=require('./pair-regions.cjs');
 const filePath=(directory,c,name)=>path.join(directory,c.overrides?.[name]||name);
 async function refresh({directory,output,comparison,targetDirectory,parentDirectory,targetAnnotations,parentAnnotations,labelsUnchanged=false},report=()=>{}){
   fs.mkdirSync(output,{recursive:true});
@@ -13,6 +14,8 @@ async function refresh({directory,output,comparison,targetDirectory,parentDirect
   const parentAt=id=>{if(!parentCache.has(id)){if(parentCache.size>=4096)parentCache.delete(parentCache.keys().next().value);const r=parent.get(id);if(!r)throw Error('Annotation parent is missing');parentCache.set(id,pa.apply(meta.baseRecord(r,comparison.parent.id)));}return parentCache.get(id);};
   const writer=name=>{const fd=fs.openSync(path.join(output,name),'w');let buffer='';return {append:s=>{buffer+=s;if(buffer.length>1048576){fs.writeSync(fd,buffer);buffer='';}},close:()=>{if(buffer)fs.writeSync(fd,buffer);fs.closeSync(fd);}};};
   const summary=writer('library_summary.csv'),pairs=writer('pair_coverage.csv');
+  const hasRegions=!!db.prepare("SELECT 1 FROM sqlite_master WHERE name='pair_regions'").get();
+  const getRegions=hasRegions?db.prepare('SELECT payload FROM pair_regions WHERE target=? AND parent=? AND identity=?'):null;
   try{
     const ids=db.prepare('SELECT id FROM results ORDER BY id').iterate();
     // SQLite spills the ordered stream to disk when needed; no copy of full positions.
@@ -33,14 +36,21 @@ async function refresh({directory,output,comparison,targetDirectory,parentDirect
         list.sort((a,b)=>b.tc-a.tc||b.pc-a.pc||((a.record.assay_id||a.record.protein_id)<(b.record.assay_id||b.record.protein_id)?-1:(a.record.assay_id||a.record.protein_id)>(b.record.assay_id||b.record.protein_id)?1:0));
         const label='Mimicry Parents at '+f+'/9 with Coverage (%) Parent|Target (>=10% either)';
         r[label]=list.map(p=>core.summaryParentLabel(p.record)+'@'+core.summaryPairPercent(Math.round(p.pc*p.record.length/100),p.record.length)+'|'+core.summaryPairPercent(Math.round(p.tc*q.length/100),q.length)).join(';');
+        const regionLabel='Mimicry Parent Regions at '+f+'/9 Parent|Target (>=10% either)';
+        if(headers.includes(regionLabel))r[regionLabel]=list.map(p=>{
+          const stored=getRegions?.get(source.id,p.parent,f);if(!stored)throw Error('Saved pair ranges are missing.');
+          const value=regions.unpack(stored.payload);
+          return core.summaryParentLabel(p.record)+'@'+regions.text(value.parent_ranges)+'|'+regions.text(value.target_ranges);
+        }).join(';');
       }
       summary.append(meta.csvLine(headers.map(h=>r[h])));
       if(++done%1000===0)report({phase:'Updating saved annotations',done,total:comparison.targets});
     }if(!ids.next().done)throw Error('Summary is missing saved targets.');}finally{pairRows.return?.();}
-    pairs.append(meta.csvLine(['Target record','Target ID','Parent record','Parent ID','Organism','Reference set','Core identity ≥','Target coverage (%)','Parent coverage (%)','Window pairs']));
+    pairs.append(meta.csvLine(['Target record','Target ID','Parent record','Parent ID','Organism','Reference set','Core identity ≥','Target coverage (%)',...(hasRegions?['Target regions (>=10% either)']:[]),'Parent coverage (%)',...(hasRegions?['Parent regions (>=10% either)']:[]),'Window pairs']));
     for(const r of db.prepare('SELECT * FROM pairs ORDER BY rowid').iterate()){
       const p=parentAt(r.parent),group=p.reference_set||p.organism||comparison.parent.name;
-      pairs.append(meta.csvLine([r.target,r.source,r.parent,r.protein,p.organism||'',group,r.identity,r.tc,r.pc,r.pairs]));
+      const saved=getRegions?.get(r.target,r.parent,r.identity),value=saved?regions.unpack(saved.payload):null;
+      pairs.append(meta.csvLine([r.target,r.source,r.parent,r.protein,p.organism||'',group,r.identity,r.tc,...(hasRegions?[value?regions.text(value.target_ranges):'']:[]),r.pc,...(hasRegions?[value?regions.text(value.parent_ranges):'']:[]),r.pairs]));
     }
   }finally{summary.close();pairs.close();tdb.close();pdb.close();ta.close();pa.close();db.close();}
   }

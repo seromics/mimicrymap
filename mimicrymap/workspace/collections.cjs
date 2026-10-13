@@ -37,7 +37,7 @@ function resolveReference(state, id) {
 // Published candidate indexes are already selectable in SeroMap. They are not
 // Workspace comparison packages, and should not be silently rebuilt as such.
 function installedCandidateProducts(state, {parent,targets=[],floor=7,retainPositions=false}) {
-  if (retainPositions || !['builtin-viral120','builtin-exposure'].includes(parent)) return [];
+  if (retainPositions || !['builtin-viral120','builtin-exposure','builtin-human'].includes(parent)) return [];
   const libraries=state.libraries||[];
   const canonical=id=>libraries.some(l=>l.id===id&&l.builtin&&!l.stale);
   if (!canonical(parent)) return [];

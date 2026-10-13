@@ -213,7 +213,7 @@
       "key": "result-extent.sequence-map-method",
       "file": "frontend/result-extent.js",
       "use": "Adaptive scientific figure legend",
-      "text": "Shows where qualifying molecular mimicry matches occur along {{target}} ({{length}} residues). Color shows the number of window pairs at each target start; each residue takes the highest value among overlapping cores (0–{{maximum}}, {{direction}}). Green and blue highlights mark the selected core and its surrounding context. Target coverage is the percentage of the full target sequence covered across the selected parent library. {{coverage}} {{lanes}}{{tracks}}",
+      "text": "Shows where qualifying molecular mimicry matches occur along {{target}} ({{length}} residues). Color shows the number of window pairs at each target start; each residue takes the highest value among overlapping cores (0–{{maximum}}, {{direction}}). Highlights mark the selected core and its surrounding context. Target coverage is the percentage of the full target sequence covered across the selected parent library. {{coverage}} {{lanes}}{{tracks}}",
       "placeholders": {
         "target": {
           "expression": "s.target_label"

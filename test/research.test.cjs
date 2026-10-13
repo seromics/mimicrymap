@@ -29,6 +29,10 @@ test('fresh FASTAs and annotations produce installable candidate and full-lookup
   assert.equal(manifest.complete,true);assert.equal(manifest.retainsPositions,false);assert.equal(manifest.targets,4);
   assert.equal((await engine.validateComparison(full.directory)).retainsPositions,true);
   for(const file of ['library_summary.csv','pair_coverage.csv'])assert.deepEqual(fs.readFileSync(path.join(candidate.directory,file)),fs.readFileSync(path.join(full.directory,file)));
+  const summary=fs.readFileSync(path.join(candidate.directory,'library_summary.csv'),'utf8');
+  assert(!/Shared Regions|Uncovered Residue Regions|All Matching Parent Count|"Coverage \(%\) at/.test(summary));
+  assert.equal(summary.split('\n')[0].split(',').length,13);
+  assert.equal(manifest.pairFocusedSummary,true);
   const memberships=rows(candidate.directory,'pairs');
   assert(memberships.length>0);assert(memberships.some(row=>row.organism==='Example set'));
   assert(rows(candidate.directory,'results').every(row=>row.result===null));

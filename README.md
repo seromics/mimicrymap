@@ -101,7 +101,7 @@ Rerunning refreshes the managed output folder after completion. Choose another `
 
 To use a download-table row here, save **Target FASTA** as `inputs/antigen-target.fasta` and **Comparison FASTA** as `inputs/mimicry-parents.fasta`. The first population supplies the output rows; each sequence's full length supplies its coverage denominator. Comparison FASTA includes records absent from the summary's parent lists. Replacing the inputs invalidates any previous selection metadata.
 
-The packaged [Summary Download Guide](docs/SUMMARY-DOWNLOADS.md) explains the reference populations, CSV fields, parent-list floor, and conservative uncovered-residue regions. All summary CSVs use two decimal places for coverage percentages. App/local summaries include six additional annotation columns. FASTA inputs alone do not carry the site's mappings, grouping or residue annotations.
+The packaged [Summary Download Guide](docs/SUMMARY-DOWNLOADS.md) explains the reference populations, CSV fields, parent-list floor, and per-pair residue ranges. Summary pairs use one decimal place for coverage percentages. App/local summaries include six additional annotation columns. FASTA inputs alone do not carry the site's mappings, grouping or residue annotations.
 
 ## HuProt HEPACAM worked example
 
@@ -115,7 +115,7 @@ Input records retain their original source attribution and licenses. See the ori
 
 Target coverage is the percentage of target residues covered by qualifying nine-residue windows. Parent coverage uses the parent protein's full length. Overlapping windows cover a residue only once, and every position within a qualifying window contributes to coverage, including mismatches.
 
-The summary includes each parent pair reaching at least 10% coverage on either side. Whole-target coverage and All Matching Parent Count include all qualifying matches. Records shorter than nine residues are marked `Not assessable (<9 AA)`.
+The summary includes each parent pair reaching at least 10% coverage on either side. Each pair has independently merged target and parent residue ranges. Records shorter than nine residues retain their length and sequence with empty lists.
 
 Available target annotations accompany Current Comparison downloads and appear in their summary outputs. Replacing the input sequences means the earlier annotations no longer apply.
 
@@ -174,11 +174,11 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 
 <p>Our example of HEPACAM and EBNA1 is not unusual. Matches of this quality occur within most target parent pairings. The extended context adds one additional match for a total context identity of 6/27 and produces a poor BLOSUM62 score of 12 across the aligned 27mers.</p>
 
-### 5. Inspect Results
+### 5. Inspect and Summarize Results
 
-![Inspect Results](docs/calculation/step-5.png)
+![Inspect and Summarize Results](docs/calculation/step-5.png)
 
-<p>The full data viewer ranks epitope-level molecular mimics by sortable properties. At a selected site, these are core identity (e.g., 8/9 outranking 5/9), context identity (e.g., 20/27 outranking 6/27), or highest BLOSUM62 score. Parent proteins are additionally given target and parent coverage percentages that allow for easy identification of matches spanning across wider regions. These are computed by the following:</p>
+<p>MimicryMap produces individual sequence matches and summaries that compile those matches for reuse. The full data viewer locates qualifying nine-residue core pairs in the target and parent sequences. At a selected site, matches can be ranked by core identity (e.g., 8/9 outranking 5/9), context identity (e.g., 20/27 outranking 6/27), or BLOSUM62 score. Individual alignments and their coordinates can be inspected and exported.</p><p>To summarize all matching events between two records, MimicryMap calculates target and parent coverage. This combines qualifying nine-residue cores into independent residue unions on each sequence. Overlapping residues count once; the entire qualifying core contributes, including mismatched positions, while context flanks are excluded. These same coverage values appear in the viewer and exported summaries:</p>
 
 ```math
 \begin{aligned}\mathbf{Target\ Coverage} &= 100\times\frac{\text{covered target residues}}{\text{target length}} \\[12pt] \mathbf{Parent\ Coverage} &= 100\times\frac{\text{covered parent residues}}{\text{parent length}}\end{aligned}
@@ -194,9 +194,11 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 <thead><tr><th scope="col" width="320">Parent Scope</th><th scope="col" width="320">Min Identity</th><th scope="col" width="320">Pairs</th></tr></thead><tbody><tr><th scope="row">Curated EBV B95-8 proteome</th><td>5/9</td><td>27</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>5/9</td><td>293</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>7/9</td><td>2</td></tr></tbody>
 </table>
 
-<p>Potential molecular mimicry matches at the level of XSPPRXPXX are widespread. Experimental evidence drove discovery of this event. The goal of MimicryMap is to automate the discovery of more.</p>
+<a id="proteomeReactivity"></a>
 
-Sequence resemblance is a descriptive result. It does not by itself establish antibody binding, cross-reactivity or disease causation.
+These numerous matches illustrate why experimental evidence is essential for identifying biologically relevant mimicry. For broader comparisons, the same coverage calculations scale from individual record pairs to entire libraries. The [summary download guide](docs/SUMMARY-DOWNLOADS.md) provides premade summary CSVs for mappings within and between canonical human and exposure proteomes, curated viral proteomes and assay libraries. These portable files retain identifiers, sequences, coverage values and matched residue ranges at 7/9, 8/9 and 9/9.
+
+The summaries offer a quick way to explore broader patterns of sequence mimicry, but their 7/9 minimum excludes the illustrated 5/9 HEPACAM–EBNA1 match. Focused searches at lower identity thresholds therefore remain valuable for investigating individual targets alongside experimental evidence.
 
 <!-- calculation-walkthrough:end -->
 
@@ -221,9 +223,10 @@ Here, we compare the HEPACAM sequence from a HuProt protein microarray experimen
 
 Download summaries comparing HuProt constructs with the 120 reference viral proteomes, in either direction.
 
+These summaries connect sequence matches to antibody measurements by assay identifier. They define reference sets for testing whether a sample's hits are enriched relative to its measured background; [the calculation walkthrough](#proteomeReactivity) explains the summary files and enrichment calculation.
+
 [Library-wide summary download guide](docs/SUMMARY-DOWNLOADS.md)
 
-The library-wide summaries cover **HuProt 4.0 and Curated Viral Proteomes (120)** at 7/9–9/9. [Download this example’s figures and tables (ZIP, 21.5 MB)](https://github.com/seromics/mimicrymap/raw/refs/heads/main/examples/hepacam-huprot-viral-example.zip): pan-viral results at 5/9 and 7/9, plus the EBV-only 5/9 site example.
 
 #### Find the published site: HEPACAM 376–384 ↔ EBNA1 392–400
 
@@ -307,19 +310,7 @@ Download the following CSV for all 20,431 human UniProtKB/Swiss-Prot records pre
 
 #### Find these results in the CSV: IGHG2 (P01859), ≥8/9
 
-<table width="100%">
-<thead><tr>
-<th align="left" width="480">CSV column</th>
-<th align="left" width="220">IGHG2 value</th>
-<th align="left" width="260">Where to look</th>
-</tr></thead>
-<tbody>
-<tr><td>Uncovered Residue Regions at 8/9</td><td><code>100..114</code></td><td>Tan residues in the sequence map</td></tr>
-<tr><td>Shared Regions at 8/9</td><td><code>1..99; 115..395</code></td><td>Red regions in the sequence map</td></tr>
-</tbody>
-</table>
-
-- **Why use Uncovered Residue Regions?** Target residues outside all qualifying 9-residue windows at the stated identity threshold and comparison scope. Qualifying windows include mismatch positions; uncovered residues may participate in lower-identity matches.
+The paired coverage column gives each listed parent's X- and Y-axis values. Its adjacent region column identifies the covered residues separately on IGHG2 and that parent. The whole-library sequence-map coloring combines evidence from many parents; the CSV preserves their individual footprints.
 
 - **Coverage dots:** IgG1, IgG3 and IgG4 have the greatest coverage overlap with IgG2, highlighting how little of its sequence is distinctive at this threshold. The CSV’s paired target and parent coverage values provide each listed parent’s X- and Y-axis coordinates.
 

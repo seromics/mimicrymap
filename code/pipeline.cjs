@@ -118,15 +118,15 @@ async function run({configPath,base,codeDir,layout,core,scan,digest}){
    const nativeSummary=core.summaryTable(result,[7,8,9],annotations);summaryFormat=nativeSummary;summaryRows.push(nativeSummary.row);
    put(targetDir+'/comparison_summary.csv',nativeSummary.csv);
    timings.write=elapsed(writeStarted);timings.total=elapsed(targetStarted);
-   completed.push({id:publicId(query),path:targetDir,summary,timings_seconds:timings,...(start!==null?{selected_window_pairs:data.site.length}:{})});
+   completed.push({id:publicId(query),path:targetDir,summary,pair_audit:nativeSummary.audit,timings_seconds:timings,...(start!==null?{selected_window_pairs:data.site.length}:{})});
    console.error('  Saved tables: '+path.join(pending,targetDir));
    console.error('  Target complete: '+timings.total+' s (scan '+timings.scan+' s; export '+timings.export+' s; write '+timings.write+' s).');
   }
   if(summaryFormat)put('library_summary.csv',summaryFormat.serialize(summaryRows));
-  put('README.md','# MimicryMap Results\n\nlibrary_summary.csv has one row per target at 7/9, 8/9 and 9/9, with Shared and Uncovered Residue Regions, All Matching Parent Count, and paired Parent|Target coverage lists (one decimal; at least 10% on either side before rounding). Each targets/ folder contains comparison_summary.csv, All Matches and Overall Mimicry Parents. A Current window slice appears only when selected_target_start is set. run.json captures settings and summaries; records.json contains all input record metadata. The two original FASTA inputs are captured once in inputs/.\n\nRerunning the launcher refreshes this managed output folder. Choose another output_directory in settings.json to keep a separate run. Calculation code stays in the tool package.\n');
+  put('README.md','# MimicryMap Results\n\nlibrary_summary.csv has one row per target at 7/9, 8/9 and 9/9, with paired Parent|Target coverage lists and adjacent per-pair residue ranges (one decimal; at least 10% on either side before rounding). Each targets/ folder contains comparison_summary.csv, All Matches and Overall Mimicry Parents. A Current window slice appears only when selected_target_start is set. run.json captures settings and summaries; records.json contains all input record metadata. The two original FASTA inputs are captured once in inputs/.\n\nRerunning the launcher refreshes this managed output folder. Choose another output_directory in settings.json to keep a separate run. Calculation code stays in the tool package.\n');
   const record={schema:'mimicryone/pipeline-run/3',export_schema:core.version,captured_utc:captured,settings:{...settings,selected_target_start:start},
    target_records:queries.length,parent_records:parents.length,window_comparisons:work,
-   summary:{schema:"mimicryone/native-summary/6",identity_min:[7,8,9],suggested_coverage_cutoffs:[10,20,40,60,80],scan_floor:scanFloor,self_record_exclusion:sameLibrary},
+   summary:{schema:"mimicryone/native-summary/7",pair_focused:true,columns:summaryFormat?.columns,identity_min:[7,8,9],suggested_coverage_cutoffs:[10,20,40,60,80],scan_floor:scanFloor,self_record_exclusion:sameLibrary},
    input_source:selected?selected.scope_label:'Supplied FASTA records',
    runtime:process.version,cpu_workers:require('./parallel-scan.cjs').workerCount(parents.length),files:writtenFiles,targets:completed};
   fs.writeFileSync(path.join(pending,'run.json'),json(record));

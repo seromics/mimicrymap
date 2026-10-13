@@ -48,7 +48,7 @@ CPU work grows with target windows multiplied by parent input windows. The local
 
 ## Select another comparison
 
-Choose the target, Mimicry Parent Library, Scope, and Min Identity in the site, complete the comparison, and export a new Reproducibility bundle. Keep published bundles intact. No example's library size or release is assumed: `docs/COMPARISON.md` and `manifest.json` describe each export.
+Choose the target, Mimicry Parent Library, Scope, and Identity ≥ in the site, complete the comparison, and export a new Reproducibility bundle. Keep published bundles intact. No example's library size or release is assumed: `docs/COMPARISON.md` and `manifest.json` describe each export.
 
 ## Run a new comparison from FASTA
 

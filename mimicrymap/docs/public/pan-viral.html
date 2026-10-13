@@ -3,8 +3,8 @@
  <section id="atlasPairs" class="af-panel atlas-pairs" aria-labelledby="atlasPairsTitle" data-figure="pan-viral-pairs">
   <div class="af-panel-head">
    <div class="atlas-pairs-heading"><h2 id="atlasPairsTitle">Human Target–Viral Parent Pairs Across All Viruses</h2><p id="atlasPairsScope" class="af-source">All 120 reference viral proteomes</p></div>
-   <div class="af-sourcepick atlas-pairs-rank"><span class="af-sourcepick-label" id="atlasPairsRankLabel">Rank by</span><select id="atlasPairsRank" aria-labelledby="atlasPairsRankLabel"><option value="target" selected>Target Coverage</option><option value="parent">Parent Coverage</option></select></div><label class="atlas-pairs-size af-controls">Rows <select id="atlasPairsSize" aria-label="Pairs per page"><option>10</option><option>25</option><option>50</option><option>100</option></select></label>
-   <div class="af-floorpick" role="group" aria-label="Minimum identity for all-virus pairs"><span class="af-floorpick-label">Min Identity</span><button type="button" data-pair-floor="7" aria-pressed="true">7/9</button><button type="button" data-pair-floor="8" aria-pressed="false">8/9</button><button type="button" data-pair-floor="9" aria-pressed="false">9/9</button></div>
+   <div class="af-sourcepick atlas-pairs-rank"><span class="af-sourcepick-label" id="atlasPairsRankLabel">Order</span><select id="atlasPairsRank" aria-labelledby="atlasPairsRankLabel"><option value="target" selected>Target Coverage</option><option value="parent">Parent Coverage</option></select></div><label class="atlas-pairs-size af-controls">Rows <select id="atlasPairsSize" aria-label="Pairs per page"><option>10</option><option>25</option><option>50</option><option>100</option></select></label>
+   <div class="af-floorpick" role="group" aria-label="Minimum identity for all-virus pairs"><span class="af-floorpick-label">Identity ≥</span><button type="button" data-pair-floor="7" aria-pressed="true">7/9</button><button type="button" data-pair-floor="8" aria-pressed="false">8/9</button><button type="button" data-pair-floor="9" aria-pressed="false">9/9</button></div>
    <div class="af-exportbar"><a id="atlasPairsCsv" class="af-exportbtn" download title="Download the complete human-target versus all-virus summary at 7/9, 8/9 and 9/9">CSV</a><button type="button" class="af-exportbtn" data-pair-export="png" disabled title="Export the displayed table as PNG">PNG</button><button type="button" class="af-exportbtn" data-pair-export="svg" disabled title="Export the displayed table as SVG">SVG</button></div>
   </div>
   <div class="af-card">
@@ -15,7 +15,7 @@
     </table></div>
    </div>
    <div class="atlas-pairs-pagination af-controls" hidden><span id="atlasPairsRange" role="status" aria-live="polite"></span><div><button id="atlasPairsPrevious" class="af-exportbtn" type="button">Previous</button><label>Page <input id="atlasPairsPage" type="number" min="1" value="1" aria-label="Pair table page"></label><span id="atlasPairsPageCount"></span><button id="atlasPairsNext" class="af-exportbtn" type="button">Next</button></div></div>
-   <p class="af-cap" id="atlasPairsLegend">One row per human–viral protein pair, including short human targets. Rank by defaults to target coverage, highest first. Parent coverage is also available. Percentages use each protein’s full length; pairs require at least 10% on either side. CSV downloads the complete summary at all three thresholds; PNG and SVG export this page.</p>
+   <p class="af-cap" id="atlasPairsLegend">One row per human–viral protein pair, including short human targets. Order defaults to target coverage, highest first. Parent coverage is also available. Percentages use each protein’s full length; pairs require at least 10% on either side. CSV downloads the complete summary at all three thresholds; PNG and SVG export this page.</p>
   </div>
  </section>
       <div class="atlas-content-header">

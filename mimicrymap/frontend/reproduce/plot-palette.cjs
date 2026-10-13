@@ -47,7 +47,7 @@
   ['summaryFrequency','Cohort hit-frequency','#1C5D92','#4F93D1'],
  ]);
  add('Assay and sequence tracks',[
-  ['assayHuProt','HuProt clone','#4f46e5'],['assayHuScan','HuScan','#0d9488'],['assayVirScan','VirScan / Exposome','#4f46e5'],
+  ['assayHuProt','HuProt clone','#4f46e5','#a5a0ff'],['assayHuScan','HuScan','#0d9488','#2dd4bf'],['assayVirScan','VirScan / Exposome','#4f46e5','#a5a0ff'],
   ['seqSelected','Selected assay','#f59e0b'],['seqHover','Hovered assay','#fdba74'],['seqHatch','Synthetic sequence hatch','#94a3b8'],
   ['seqSignal','Signal peptide','#a855f7'],['seqTM','Transmembrane','#f59e0b'],['seqECD','Extracellular','#0ea5e9'],['seqICD','Intracellular','#94a3b8'],
   ['seqActive','Active site','#9333ea'],['seqBinding','Binding site','#0891b2'],
@@ -65,6 +65,8 @@
  const tiles=array('HuScan parent identity','tile','Parent protein',['#0d9488','#10b981','#0891b2','#16a34a','#0e7490','#15803d','#14b8a6','#059669','#22c55e','#06b6d4','#2dd4bf','#4ade80']);
  const clusters=array('Dendrogram clusters','cluster','Cluster',['#E64B35','#4DBBD5','#00A087','#3C5488','#F39B7F','#8491B4','#91D1C2','#DC0000','#7E6148','#B09C85']);
  tiles[0]='assayHuScan';delete definitions.tile1;
+ ['#2dd4bf','#34d399','#22d3ee','#4ade80','#67c8dd','#86d89d','#5eead4','#6ee7b7','#86efac','#67e8f9','#99f6e4','#bbf7d0']
+  .forEach((color,index)=>definitions[tiles[index]].dark=color);
  const variantNames=['Missense_Mutation','Nonsense_Mutation','Frame_Shift_Del','Frame_Shift_Ins','Splice_Site','In_Frame_Del','In_Frame_Ins','Nonstop_Mutation','Translation_Start_Site','Silent'];
  const variants=array('Genomic variants','variant','Variant',['#E74C3C','#3498DB','#9B59B6','#E67E22','#F39C12','#1ABC9C','#2ECC71','#34495E','#E91E63','#95A5A6']);
  variants.forEach((key,index)=>definitions[key].label=variantNames[index].replaceAll('_',' '));
