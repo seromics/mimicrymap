@@ -42,8 +42,8 @@
     {
       "path": "mimicrymap/docs/public/downloads.html",
       "source": "mimicrymap/docs/public/downloads.html",
-      "bytes": 1644,
-      "sha256": "d38f401c929deb9ebfcd9702700142ba13d108ad318b8818d17e739901910a47"
+      "bytes": 1888,
+      "sha256": "799e5426d062708e0f1034aa17e6c2930dacbf8fe12e5adfbebe306c72d32830"
     },
     {
       "path": "mimicrymap/docs/public/figure-legends.json",
@@ -108,14 +108,14 @@
     {
       "path": "mimicrymap/docs/public/sources.html",
       "source": "mimicrymap/docs/public/sources.html",
-      "bytes": 2560,
-      "sha256": "7d3b4a573414e1cb380925a2762c73f26d81669557f38d862bb9322204e311ce"
+      "bytes": 2258,
+      "sha256": "703c721be9da5b293a2a6d5e62ca3fec4cc0523154f94ab37dcc70f61d76ffaf"
     },
     {
       "path": "mimicrymap/docs/public/summary-download-guide.md",
       "source": "mimicrymap/docs/public/summary-download-guide.md",
-      "bytes": 20624,
-      "sha256": "96a3f89094385a5ece932020a564f80432a78ceb48fed27cf41ec7bfab127083"
+      "bytes": 21490,
+      "sha256": "93d26e2e7f7021bb6b12c23da26dd5f19027588a7c663cfdd476e61757139c85"
     },
     {
       "path": "mimicrymap/docs/public/target-summary.html",
@@ -714,8 +714,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 20624,
-      "sha256": "96a3f89094385a5ece932020a564f80432a78ceb48fed27cf41ec7bfab127083"
+      "bytes": 21490,
+      "sha256": "93d26e2e7f7021bb6b12c23da26dd5f19027588a7c663cfdd476e61757139c85"
     },
     {
       "path": "mimicrymap/frontend/reproduce/docs/TABLES.md",
@@ -1020,8 +1020,8 @@
     {
       "path": "mimicrymap/frontend/sources.html",
       "source": "mimicrymap/frontend/sources.html",
-      "bytes": 43478,
-      "sha256": "bd72157c51d14bd0c8896d338d7c6c5aeaca7fa3a1ef4eb28cf10225f2d57aeb"
+      "bytes": 44000,
+      "sha256": "82b8367d24748db52dd67613d1ca45fd2a6a18e857a5b6fd7b1ed04bf8251f09"
     },
     {
       "path": "mimicrymap/frontend/startup-shell.css",
@@ -1050,14 +1050,14 @@
     {
       "path": "mimicrymap/frontend/summary_downloads.py",
       "source": "mimicrymap/frontend/summary_downloads.py",
-      "bytes": 17275,
-      "sha256": "4a6b210f630aceca4c2ef61f48b970686cc909274b601c9c7a962b744c389123"
+      "bytes": 17559,
+      "sha256": "ae9fb06412f8c2bc17850e97dd047db0fbbd9faf711366376d8d8ae6e0e7a036"
     },
     {
       "path": "mimicrymap/frontend/use-results.html",
       "source": "mimicrymap/frontend/use-results.html",
-      "bytes": 1432198,
-      "sha256": "a276fbbd55b87052e671afa9908f44762a0e3ed37f1ff78b3d500ed32a4ce563"
+      "bytes": 1432306,
+      "sha256": "e4b1e1198277183ae0fe1e1a8703cdfb1989b66d34fb15c9ee98ccee6bfad3d5"
     },
     {
       "path": "mimicrymap/frontend/viewer-api.js",
@@ -1314,8 +1314,8 @@
     {
       "path": "docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 20624,
-      "sha256": "96a3f89094385a5ece932020a564f80432a78ceb48fed27cf41ec7bfab127083"
+      "bytes": 21490,
+      "sha256": "93d26e2e7f7021bb6b12c23da26dd5f19027588a7c663cfdd476e61757139c85"
     }
   ]
 }
