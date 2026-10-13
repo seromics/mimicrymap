@@ -647,7 +647,7 @@
     for(const h of source.hits){if(!Number.isInteger(h[ii])||h[ii]<5||h[ii]>9)throw Error('Invalid summary identity');if(h[ii]>=t){qs.add(h[qi]);ps.add(h[pi]);}}
     if(!qs.size)continue;
     const a=coverageCore.measure(qs,L),b=coverageCore.measure(ps,parent.sequence?.length??parent.length);
-    partners.push({a:a.coveredResidues,b:b.coveredResidues,targetRegions:a.intervals,parentRegions:b.intervals,L:parent.sequence?.length??parent.length,native:native(parent),label:summaryParentLabel(parent)});
+    partners.push({recordId:parent.record_id??parent.summary_record_id??key,windowPairs:source.hits.filter(h=>h[ii]>=t).length,a:a.coveredResidues,b:b.coveredResidues,targetRegions:a.intervals,parentRegions:b.intervals,L:parent.sequence?.length??parent.length,native:native(parent),label:summaryParentLabel(parent)});
    }
    groups.push({floor:t,partners});
   }
@@ -666,7 +666,7 @@
     if(id==null||seen.has(id))throw Error('Missing or duplicate summary partner');seen.add(id);
     const size=record.sequence?.length??record.length,a=coverageCore.union(targetRanges,L),b=coverageCore.union(parentRanges,size);
     if(!a.length||!b.length)throw Error('Empty matching-pair ranges');
-    return {a:coverageCore.size(a),b:coverageCore.size(b),L:size,targetRegions:a,parentRegions:b,native:publicText(record.assay_id||record.identity?.assayId||record.protein_id||''),label:summaryParentLabel(record)};
+    return {recordId:id,windowPairs:null,a:coverageCore.size(a),b:coverageCore.size(b),L:size,targetRegions:a,parentRegions:b,native:publicText(record.assay_id||record.identity?.assayId||record.protein_id||''),label:summaryParentLabel(record)};
    });
    return {floor,partners};
   });
@@ -678,10 +678,13 @@
   const columns=['Antigen Target Gene','Antigen Target Accession','Antigen Target Protein Description','Antigen Target Length (AA)','Antigen Target Full Sequence','Antigen Target Organism (TaxID)','Comparison Library'];
   const scopeLabel=({human_current:'HuScan',virscan_exposome_current:'VirScan/Exposome',huprot4:'HuProt 4.0',__custom_fasta__:'Your own FASTA'})[scope]||scope;
   const row=Object.fromEntries(columns.map((k,i)=>[k,[id.q_gene,id.q_accession,summaryDescription(p,id.q_protein_name),L,p.sequence,organismTaxonLabel(p),scopeLabel][i]]));
-  const audit={};
+  const audit={},pairKeys={};
   for(const {floor:t,partners} of groups){
    const listed=partners.filter(p=>100*p.a>=10*L||100*p.b>=10*p.L).sort((a,b)=>b.a-a.a||(b.b/b.L-a.b/a.L)||lexical(a.native,b.native));
    audit[t]={matchingPairs:partners.length,listedPairs:listed.length};
+   // Separate identity metadata follows the exact CSV list order. Labels are
+   // deliberately not keys: distinct source records may share an accession.
+   pairKeys[t]=listed.map(p=>[p.recordId,p.windowPairs]);
    const pairedName='Mimicry Parents at '+t+'/9 with Coverage (%) Parent|Target (>=10% either)';
    columns.push(pairedName);row[pairedName]=listed.map(p=>p.label+'@'+summaryPairPercent(p.b,p.L)+'|'+summaryPairPercent(p.a,L)).join(';');
    const compactRanges=xs=>xs.map(([a,b])=>a+'..'+b).join(',');
@@ -692,7 +695,7 @@
   // Coverage display matches detailed CSVs; threshold decisions use integer residue counts.
   const quote=v=>'"'+publicText(v??'').replace(/"/g,'""')+'"';
   const serialize=rows=>'\ufeff'+[columns.map(quote).join(','),...rows.map(r=>columns.map(k=>quote(k.includes('(%)')?exportPercent(r[k]):r[k])).join(','))].join('\r\n')+'\r\n';
-  return {schema:'mimicryone/native-summary/7',columns,row,csv:serialize([row]),serialize,audit};
+  return {schema:'mimicryone/native-summary/7',columns,row,csv:serialize([row]),serialize,audit,pairKeys};
  }
 
  const api={annotationColumns,summaryTable,summaryFromPairRegions,summaryIdentity,summaryParentLabel,summaryPairPercent,version,exportPercent,recordIdentityColumns,recordIdentity,csv,tables,csvChunks,figure,contextIdentity,contextIdentityAt,comparisonSummary};

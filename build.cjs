@@ -7,6 +7,7 @@ const {parseArgs} = require('node:util');
 const HELP = `MimicryMap library builder — Node.js 24+
 
 node build.cjs --targets targets.fasta --parents parents.fasta --out results
+node build.cjs --summary completed-csv-package --out rebuilt-indexes
 node build.cjs --targets targets.fasta --parents parents.fasta --out results-gpu --engine gpu --python /path/to/python
 
 --floor 7                    Minimum identity, 5–9 on CPU; 7–9 on NVIDIA GPU
@@ -22,9 +23,9 @@ node build.cjs --targets targets.fasta --parents parents.fasta --out results-gpu
 
 All target records are compared. Candidate indexes and summaries are the default.
 Output must be a new directory. Inputs are retained; completed output is never overwritten.
-Install a completed result through SeroMap Workspace → MimicryMap Libraries → Install comparison.
+Import a completed result through SeroMap Workspace → MimicryMap Libraries → Import summary / comparison.
 `;
-const strings = ['targets','parents','out','floor','engine','python','target-annotations','parent-annotations','target-name','parent-name','target-library','parent-library'];
+const strings = ['summary','targets','parents','out','floor','engine','python','target-annotations','parent-annotations','target-name','parent-name','target-library','parent-library'];
 const booleans = ['help','retain-positions','bidirectional','probe-gpu'];
 function options(argv) {
   const {values} = parseArgs({args:argv,options:Object.fromEntries([...strings.map(k=>[k,{type:'string'}]),...booleans.map(k=>[k,{type:'boolean'}])])});
@@ -34,6 +35,12 @@ const presets = new Set(['builtin-human','builtin-viral120','builtin-exposure','
 function validate(input) {
   if (Number(process.versions.node.split('.')[0]) < 24) throw Error('The library builder requires Node.js 24 or later.');
   const config = {...input, floor:Number(input.floor ?? 7), engine:input.engine ?? 'cpu'};
+  if(config.summary){
+    if(!config.out||config.targets||config.parents)throw Error('Use --summary package-folder --out new-folder without FASTA matching inputs.');
+    config.summary=path.resolve(config.summary);config.out=path.resolve(config.out);
+    if(fs.existsSync(config.out))throw Error('Output already exists. Choose a new directory.');
+    return config;
+  }
   if (!['cpu','gpu'].includes(config.engine)) throw Error('--engine must be cpu or gpu.');
   if (!Number.isInteger(config.floor) || config.floor<5 || config.floor>9) throw Error('--floor must be an integer from 5 through 9.');
   if (config.engine==='gpu' && (config.floor<7 || !config.python)) throw Error('GPU builds require --floor 7, 8 or 9 and --python pointing to the optional CUDA environment.');

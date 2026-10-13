@@ -3,7 +3,11 @@
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const codeDir=__dirname,base=path.basename(codeDir)==='code'?path.dirname(codeDir):path.resolve(codeDir,'../../reproducibility');
 const args=process.argv.slice(2);
-if(args.includes('--help')){console.log('Run the FASTAs in inputs/ using settings.json:\n  python run.py\n  Rscript run.R\n  node run.cjs\n\nRun as supplied or replace the two FASTAs and edit settings.json. See README.md.');}
+if(args.includes('--help')){console.log('Run the FASTAs in inputs/ using settings.json:\n  python run.py\n  Rscript run.R\n  node run.cjs\n\nBuild both indexes from a completed CSV package without matching:\n  node run.cjs --from-summary results rebuilt-indexes\n\nRun as supplied or replace the two FASTAs and edit settings.json. See README.md.');}
+else if(args[0]==='--from-summary'){
+ if(!args[1]||!args[2])throw Error('Use --from-summary source-package new-output-folder');
+ require('./summary-index.cjs').build({source:args[1],directory:args[2]},p=>console.error(p.phase)).catch(error=>{console.error(error.message);process.exitCode=1;});
+}
 else{
  const configPath=args[0]||path.join(base,'settings.json');
  const worker=fs.existsSync(path.join(codeDir,'custom-worker.js'))?path.join(codeDir,'custom-worker.js'):path.join(codeDir,'../custom-worker.js');

@@ -112,7 +112,7 @@ def render(source):
   ('human','Assays ↔ Canonical Human Proteins',[(a,'human_swissprot') for a in ('huprot4','human_current','virscan_exposome_current')]),
   ('viral','Assays ↔ Curated Viral Proteomes (120)',[(a,'atlas_120_viruses') for a in ('huprot4','human_current','virscan_exposome_current')]),
   ('exposure','Assays ↔ Canonical Exposures',[(a,'canonical_exposure') for a in ('huprot4','human_current','virscan_exposome_current')]),
-  ('cross','Optional Research · Direct Cross-Assay Summaries',[
+  ('cross','Direct Cross-Assay Summaries',[
    ('huprot4','human_current'),('huprot4','virscan_exposome_current'),
    ('human_current','virscan_exposome_current'),('huprot4','huprot4')])]
  paired=[];seen=set()
@@ -143,11 +143,13 @@ def render(source):
    description=('One summary' if a==b else 'Summaries in both directions' if len(directions)>1 else 'Summary: '+row_label(directions[0]))
    summary_description=description+('; pair-specific residue ranges included' if products.get('summary',{}).get('pairRegions') else '')
    cells=product_cell(products.get('summary'),'summary',title,summary_description)
-   cells+=product_cell(matches,'matches',title,'Both directions; ≥10% coverage of either sequence'+('; merged residue ranges for each pair' if (built or {}).get('retainsPairRegions') else ''))
-   cells+=product_cell(candidate,'candidate',title,'Statistical memberships; '+(candidate or {}).get('identity',''))
+   if section_id!='cross':
+    cells+=product_cell(matches,'matches',title,'Both directions; ≥10% coverage of either sequence'+('; merged residue ranges for each pair' if (built or {}).get('retainsPairRegions') else ''))
+    cells+=product_cell(candidate,'candidate',title,'Statistical memberships; '+(candidate or {}).get('identity',''))
    body.append(f'<tr data-library-pair="{key}"><th scope="row"><span class="download-row-title">{escape(title)}</span><span class="download-row-description">{escape(description)}</span></th><td>{count}</td>{cells}</tr>')
-  table='<div class="download-table-scroll" tabindex="0" role="region" aria-label="'+escape(heading)+' downloads"><table class="download-table summary-download-table"><thead><tr><th scope="col">Libraries</th><th scope="col">Records</th><th scope="col" data-product="summary">Coverage summaries</th><th scope="col" data-product="matches">Protein-page index</th><th scope="col" data-product="candidate">Statistical membership index</th></tr></thead><tbody>'+''.join(body)+'</tbody></table></div>'
-  paired.append(('<details class="download-comparison-group download-advanced"><summary>'+escape(heading)+'</summary><p class="download-format-note">Direct comparisons across complete assay libraries for offline and bulk research. These downloads are optional for canonical protein-page browsing.</p>'+table+'</details>') if section_id=='cross' else '<div class="download-comparison-group"><h3>'+escape(heading)+'</h3>'+table+'</div>')
+  index_headers='' if section_id=='cross' else '<th scope="col" data-product="matches">Protein-page index</th><th scope="col" data-product="candidate">Statistical membership index</th>'
+  table='<div class="download-table-scroll" tabindex="0" role="region" aria-label="'+escape(heading)+' downloads"><table class="download-table summary-download-table"><thead><tr><th scope="col">Libraries</th><th scope="col">Records</th><th scope="col" data-product="summary">Coverage summaries</th>'+index_headers+'</tr></thead><tbody>'+''.join(body)+'</tbody></table></div>'
+  paired.append('<div class="download-comparison-group"><h3>'+escape(heading)+'</h3>'+table+'</div>')
  if seen!=set(groups):raise ValueError('Unclassified download comparisons: '+str(set(groups)-seen))
  source=source.replace('<!-- paired-downloads -->','\n'.join(paired))
  def example_archive(match):

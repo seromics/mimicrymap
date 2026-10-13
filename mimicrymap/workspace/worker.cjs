@@ -6,6 +6,7 @@ process.once('message', async ({ action, value }) => {
       ![
         'importFasta',
         'buildComparison',
+        'buildSummaryIndexes',
         'searchRecords',
         'readResult',
         'readInstalledResult',

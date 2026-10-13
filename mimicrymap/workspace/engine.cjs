@@ -26,9 +26,11 @@ const json = (file, value) => {
 const dbOpen = (file, readOnly = false) => new DatabaseSync(file, { readOnly });
 const textId = (r) => r.assay_id || r.original_id || r.protein_id;
 async function importFasta(
-  { source, directory, id, name, platforms = [] },
+  { source, directory, id, name, platforms = [], summaryRecords, summarySide },
   report = () => {},
 ) {
+  const roster=[];
+  if(summaryRecords)for await(const r of require('../frontend/reproduce/summary-package.cjs').jsonLines(summaryRecords))if(r.side===summarySide)roster.push(r);
   fs.mkdirSync(directory, { recursive: true });
   const file = path.join(directory, "library.sqlite"),
     db = dbOpen(file);
@@ -66,11 +68,17 @@ async function importFasta(
     // sequences. Retain both occurrences and the original FASTA/header; give
     // their annotation keys the same deterministic occurrence suffix as IDs.
     if (seen > 1 && ['builtin-exposure','builtin-nonvertebrate'].includes(id)) token += '__' + seen;
+    const saved=summaryRecords?roster[count]:null;
+    if(summaryRecords){
+      const digest=crypto.createHash('sha256').update(record.sequence).digest('hex');
+      if(!saved||saved.id!==count+1||saved.length!==record.length||(saved.normalizedSha256||saved.sha256)!==digest)throw Error('Summary library roster differs from FASTA');
+      Object.assign(record,saved.metadata,{sequence:record.sequence,length:record.length,library_id:id});token=saved.token;
+    }
     try {
       put.run(
         ++count,
         token,
-        textId(record),
+        saved?saved.source:textId(record),
         JSON.stringify({ ...record, sequence: undefined }),
         record.sequence,
       );
@@ -116,6 +124,7 @@ async function importFasta(
       }
     }
     commit();
+    if(summaryRecords&&count!==roster.length)throw Error('Incomplete summary library roster');
     if (!count) throw Error("The FASTA contains no records.");
     db.exec("COMMIT");
     const library = {
@@ -453,7 +462,8 @@ async function buildComparison(
       path.join(directory, "library_summary.csv"),
       "wx",
     ),
-    pairs = fs.openSync(path.join(directory, "pair_coverage.csv"), "wx");
+    pairs = fs.openSync(path.join(directory, "pair_coverage.csv"), "wx"),
+    summaryKeys = fs.openSync(path.join(directory, "summary-keys.jsonl"), "wx");
   const csv = (values) =>
     values
       .map((v) => '"' + String(v ?? "").replaceAll('"', '""') + '"')
@@ -473,7 +483,7 @@ async function buildComparison(
       "Window pairs",
     ]);
   fs.writeSync(pairs, pairHeader);
-  const pairWriter = bufferedText(pairs), summaryWriter = bufferedText(summary);
+  const pairWriter = bufferedText(pairs), summaryWriter = bufferedText(summary), keyWriter=bufferedText(summaryKeys);
   let done = 0,
     positionCount = 0,
     pairCount = 0,
@@ -607,8 +617,9 @@ async function buildComparison(
         }
         const native = exportsCore.summaryTable(
           result,
-          [7, 8, 9].filter((f) => f >= floor),
+          Array.from({length:10-floor},(_,i)=>floor+i),
         );
+        keyWriter.append(JSON.stringify({target:row.id,parents:native.pairKeys})+'\n');
         for(const [f,counts] of Object.entries(native.audit)){
           summaryAudit[f]??={matchingPairs:0,listedPairs:0};
           for(const k of ['matchingPairs','listedPairs'])summaryAudit[f][k]+=counts[k];
@@ -643,7 +654,7 @@ async function buildComparison(
         done++;
       }
       db.exec('COMMIT');
-      pairWriter.flush(); summaryWriter.flush();
+      pairWriter.flush(); summaryWriter.flush(); keyWriter.flush();
       const writing = Date.now() - writeStart;
       writeMs += writing;
       if (sample) observations.push({targets:batch.length,windows:batchWindows,matchMs:matching,writeMs:writing});
@@ -670,15 +681,16 @@ async function buildComparison(
         schema:'seromap.comparison-finalization/1', directory, targetDirectory, parentDirectory, targetAnnotations, parentAnnotations,
         manifest:{schema:FORMAT,method:METHOD,id,name:name||target.name+' → '+parent.name,floor,window:9,target,parent,targetId:null,complete:true,sample:false,retainsPositions:true,retainsPairRegions:true,pairRegionStorage:pairRegions.FORMAT,bidirectional:true,coordinateStorage:'diagonal-runs/1',output:'full-lookup',backend:reuse?'saved-lookup':backend,targets:done,positions:positionCount,pairs:pairCount,createdAt:new Date().toISOString(),files:{}},
         summaryAudit,
-        forwardFiles:Object.fromEntries(['library_summary.csv','pair_coverage.csv'].map(f=>[f,fs.statSync(path.join(directory,f)).size])),
+        forwardFiles:Object.fromEntries(['library_summary.csv','pair_coverage.csv','summary-keys.jsonl'].map(f=>[f,fs.statSync(path.join(directory,f)).size])),
       });
       require('./pair-store.cjs').finish(db,directory,{floor,id,target,parent,resultFor,summaryTable:exportsCore.summaryTable,report});
     }
     indexMs=Date.now()-indexStart;
   } finally {
-    pairWriter.flush(); summaryWriter.flush();
+    pairWriter.flush(); summaryWriter.flush(); keyWriter.flush();
     fs.closeSync(summary);
     fs.closeSync(pairs);
+    fs.closeSync(summaryKeys);
     source.close();
     targetMetadata.close();parentMetadata.close();
     await scan?.close();
@@ -721,9 +733,9 @@ async function buildComparison(
     finishMs:Date.now()-started-setupMs-matchMs-writeMs-indexMs,
     totalMs:Date.now()-started, targetWindows, libraryWindows:sample?libraryWindows:targetWindows, positionBytes, reusedTargets,
     observations:sample ? observations : undefined};
-  return writeComparisonPackage({manifest,directory,targetDirectory,parentDirectory,targetAnnotations,parentAnnotations});
+  return writeComparisonPackage({manifest,directory,targetDirectory,parentDirectory,targetAnnotations,parentAnnotations},report);
 }
-async function writeComparisonPackage({manifest,directory,targetDirectory,parentDirectory,targetAnnotations,parentAnnotations}) {
+async function writeComparisonPackage({manifest,directory,targetDirectory,parentDirectory,targetAnnotations,parentAnnotations},report=()=>{}) {
   manifest.summarySchema='mimicryone/native-summary/7'; manifest.pairFocusedSummary=true;
   const {sample,floor,targetId,bidirectional,target,parent}=manifest;
   // Internal tests reuse the installed inputs by checksum. Only portable
@@ -747,6 +759,7 @@ async function writeComparisonPackage({manifest,directory,targetDirectory,parent
     targetName: target.name,
     parentName: parent.name,
   });
+  const summaryFiles=!sample?await require('./summary-native.cjs').finalize({manifest,directory,targetDirectory,parentDirectory,targetAnnotations,parentAnnotations},report):[];
   for (const file of [
     "comparison.sqlite",
     "library_summary.csv",
@@ -756,6 +769,7 @@ async function writeComparisonPackage({manifest,directory,targetDirectory,parent
     ...(!sample&&targetAnnotations?['inputs/targets.annotations.sqlite','inputs/targets.annotations.csv']:[]),
     ...(!sample&&parentAnnotations?['inputs/parents.annotations.sqlite','inputs/parents.annotations.csv']:[]),
     "settings.json",
+    ...summaryFiles,
   ])
     manifest.files[file] = {
       bytes: fs.statSync(path.join(directory, file)).size,
@@ -894,6 +908,12 @@ async function validateComparison(directory) {
     const file='inputs/'+side+'.annotations.'+extension;
     if(m.files?.[file]&&(await hashFile(path.join(directory,file)))!==m.files[file].sha256)throw Error('Incomplete or altered comparison: '+file);
   }
+  if(m.summarySource||m.derivedFromSummary){
+    await require('../frontend/reproduce/summary-package.cjs').validate(directory);
+    for(const file of ['summary.json','summary-records.jsonl','summary-keys.jsonl','record-matches/comparison.sqlite','record-matches/comparison.json',...(m.candidateFile?[m.candidateFile]:[])]){
+      if(!m.files?.[file]||await hashFile(path.join(directory,file))!==m.files[file].sha256)throw Error('Incomplete or altered derived summary index: '+file);
+    }
+  }
   const settings = JSON.parse(
     fs.readFileSync(path.join(directory, "settings.json"), "utf8"),
   );
@@ -908,7 +928,7 @@ async function validateComparison(directory) {
   const retainsPositions = m.retainsPositions !== false; // Existing full packages remain compatible.
   if (
     (settings.retainPositions ?? true) !== retainsPositions ||
-    (!m.complete && !retainsPositions)
+    (!m.complete && !retainsPositions && !m.derivedFromSummary)
   )
     throw Error("Comparison output type does not match its settings");
   const db = dbOpen(path.join(directory, "comparison.sqlite"), true);
@@ -935,6 +955,7 @@ async function validateComparison(directory) {
   return m;
 }
 module.exports = {
+  buildSummaryIndexes:require('../frontend/reproduce/summary-index.cjs').build,
   readInstalledResult:({moduleRoot,...query})=>{const found=require('./reference-pairs.cjs').find(moduleRoot,query);return found?readResult(found):null;},
   prepareAnnotations:metadata.prepare,
   refreshAnnotations:require('./metadata-outputs.cjs').refresh,

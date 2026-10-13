@@ -8,9 +8,9 @@
     {
       "file": "source-human-swissprot.zip",
       "title": "Human proteins",
-      "bytes": 88715452,
-      "uncompressedBytes": 212959162,
-      "sha256": "e4cd7729845b598986690c36781f2e089277a03abf4a1f27bdd5591d4a0d14da",
+      "bytes": 108064120,
+      "uncompressedBytes": 277533929,
+      "sha256": "4b0a87b05245e47854a824f24337b3153875a973e5b3936b6629ab882a708918",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -26,9 +26,9 @@
     {
       "file": "source-canonical-exposure-human-swissprot.zip",
       "title": "Canonical exposures ↔ Human proteins",
-      "bytes": 48371303,
-      "uncompressedBytes": 100251281,
-      "sha256": "eb220ed26be26ef497e75f07ff6ab4284a4a437477359241478a5f78c7a581db",
+      "bytes": 75171115,
+      "uncompressedBytes": 172482302,
+      "sha256": "7f5ce093123cd5bcd4ad17267e0c3bb2c68afca0e7b4fa242756e3cba555380c",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -44,9 +44,9 @@
     {
       "file": "source-atlas-120-viruses-human-swissprot.zip",
       "title": "Curated viral proteomes (120) ↔ Human proteins",
-      "bytes": 11335673,
-      "uncompressedBytes": 21017351,
-      "sha256": "0f709c334171af4620b1b4f590b8df066d97f2064dd7349e57ee41cf77a015a9",
+      "bytes": 24319405,
+      "uncompressedBytes": 55249929,
+      "sha256": "8a0157036ab7acd55a1020215858264e4f2632960677b63860b05be6a814edca",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -62,9 +62,9 @@
     {
       "file": "source-canonical-exposure-no-vertebrates-human-swissprot.zip",
       "title": "Non-vertebrate exposures ↔ Human proteins",
-      "bytes": 39469802,
-      "uncompressedBytes": 80647840,
-      "sha256": "f1d450e518936a58c1cbc436da4f1384ee1832f953e02efbb064f9f06116ecae",
+      "bytes": 64266354,
+      "uncompressedBytes": 147743850,
+      "sha256": "94194c27c70f5c226cc22257947e08df837debe788ff9131fc9e849f334437e4",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -80,63 +80,45 @@
     {
       "file": "source-huprot4.zip",
       "title": "HuProt",
-      "bytes": 67066421,
-      "uncompressedBytes": 172089253,
-      "sha256": "428e23ff05b1235a453dc411bdf8b7c3ce7224bec38437f1fe64b62f22b0837a",
+      "bytes": 82407003,
+      "uncompressedBytes": 236586052,
+      "sha256": "60074e3a781d61424d41c370da3974d204ac1e274f356647dee372667c95f34a",
       "url": null,
       "kind": "coverage-summaries"
     },
     {
       "file": "source-huprot4-huscan.zip",
       "title": "HuProt ↔ HuScan",
-      "bytes": 2686876866,
-      "uncompressedBytes": 9386636414,
-      "sha256": "c0493b5c84bcc7307feb661611bf721f6c2d0ec6777e77f458a3fbb46335099a",
+      "bytes": 2927477989,
+      "uncompressedBytes": 10801449468,
+      "sha256": "ab396f32b2ca29fa9e318eeea5adbe5d1174ab3a295f4fc6dce5f4238478994c",
       "url": null,
       "kind": "coverage-summaries"
     },
     {
       "file": "source-huprot4-virscan-exposome.zip",
       "title": "HuProt ↔ VirScan / Exposome",
-      "bytes": 1874513899,
-      "uncompressedBytes": 6030238079,
-      "sha256": "b80ebce463cbf60c294a0d42951cef6b4d996ba395a0d34b046e98d4538ad8c4",
+      "bytes": 2095273750,
+      "uncompressedBytes": 7260600933,
+      "sha256": "820f3161af19ebdfad10536163caab089a36bfc3d3a0f599f537fa7651eb4903",
       "url": null,
       "kind": "coverage-summaries"
-    },
-    {
-      "file": "indexes-peptide-huprot4.zip",
-      "title": "HuProt ↔ VirScan/Exposome memberships",
-      "bytes": 1466097621,
-      "uncompressedBytes": 8147032675,
-      "sha256": "3e861dd6b6985798ac4b6b8ac51404f0045540e1da782c509de3918f528b1697",
-      "url": null,
-      "kind": "candidate-index"
     },
     {
       "file": "source-huscan-virscan-exposome.zip",
       "title": "HuScan ↔ VirScan / Exposome",
-      "bytes": 5223726541,
-      "uncompressedBytes": 23535647453,
-      "sha256": "24b9dd16f238294295f90862774969fab6f72f9b5470ccaddf637c704897cd7d",
+      "bytes": 5815154743,
+      "uncompressedBytes": 26570288056,
+      "sha256": "a63971c94a624a149c6592fb1e5343d456a77d1aa138ad359024bc809bb05ec9",
       "url": null,
       "kind": "coverage-summaries"
     },
     {
-      "file": "indexes-peptide-huscan.zip",
-      "title": "HuScan ↔ VirScan/Exposome memberships",
-      "bytes": 3778544621,
-      "uncompressedBytes": 28004338274,
-      "sha256": "90bc13812f632b3a0a93cfc14748094aad12e4e25cec6d722116168ff6795755",
-      "url": null,
-      "kind": "candidate-index"
-    },
-    {
       "file": "source-atlas-120-viruses-huprot4.zip",
       "title": "Curated viral proteomes (120) ↔ HuProt 4.0",
-      "bytes": 8580053,
-      "uncompressedBytes": 16538899,
-      "sha256": "c5f3058c3593fa00e219a2cb0cc90730ea7f10a7a8cbbf7bdb03f9f10638b104",
+      "bytes": 18750395,
+      "uncompressedBytes": 50608366,
+      "sha256": "c9f76e956e22102ae3789de03b65f176876774c675f2eef5b50b523196a8ff53",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -152,18 +134,18 @@
     {
       "file": "indexes-huprot-viral120.zip",
       "title": "huprot · viral memberships, 7/9–9/9",
-      "bytes": 802516,
-      "uncompressedBytes": 4503134,
-      "sha256": "27b4a11cc389e5f9abc34e2b783a572cfb7f257784694bf73d7db1d5b399333e",
+      "bytes": 861664,
+      "uncompressedBytes": 7533052,
+      "sha256": "705f35d255aaa84b48786a773ec718948dda7f5fd7c4aae2f2a9ce2064d78852",
       "url": null,
       "kind": "candidate-index"
     },
     {
       "file": "source-atlas-120-viruses-huscan.zip",
       "title": "Curated viral proteomes (120) ↔ HuScan",
-      "bytes": 131852107,
-      "uncompressedBytes": 511492543,
-      "sha256": "167e20cd0a5eb6a9826edb5ebb2ecc5ca29461caf3fada895ab5026b64a5085a",
+      "bytes": 238735087,
+      "uncompressedBytes": 1250452811,
+      "sha256": "4c251a3dd531404e97890481db15efa83c0fa6f516c3e144da2bcaf6f3dca9a7",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -188,9 +170,9 @@
     {
       "file": "source-atlas-120-viruses-virscan-exposome.zip",
       "title": "Curated viral proteomes (120) ↔ VirScan / Exposome",
-      "bytes": 265746354,
-      "uncompressedBytes": 919290940,
-      "sha256": "91608abc447598ea3c834a5e2e6f7845f458a07c77489102d7de807138ad8618",
+      "bytes": 391789555,
+      "uncompressedBytes": 1790465679,
+      "sha256": "b4319d4e3171a0ab54878d21cb67dea30556ad3c7dafd3867f5fe6b509f9259c",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -215,9 +197,9 @@
     {
       "file": "source-canonical-exposure-huprot4.zip",
       "title": "Canonical exposures ↔ HuProt 4.0",
-      "bytes": 41765070,
-      "uncompressedBytes": 90164824,
-      "sha256": "8a041a56b08cbf9701766128f4820d7e914972ab93550ced2e6c14ff822933ed",
+      "bytes": 65676372,
+      "uncompressedBytes": 162006286,
+      "sha256": "197fba7f4acf2c7c581fe30b16628bd75a3d73f5f47ce332b0a661119ce800e0",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -233,9 +215,9 @@
     {
       "file": "source-canonical-exposure-huscan.zip",
       "title": "Canonical exposures ↔ HuScan",
-      "bytes": 1917648046,
-      "uncompressedBytes": 6481816444,
-      "sha256": "0ba53e2660c44428218a9670b5a7d70dc4a14b475f2c10fde1d5ed7498609d20",
+      "bytes": 2197033976,
+      "uncompressedBytes": 7853849411,
+      "sha256": "796b12f607983c54625581441ac9e112cb1491a4e60090f8c7feea0af28e62cd",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -251,9 +233,9 @@
     {
       "file": "source-canonical-exposure-virscan-exposome.zip",
       "title": "Canonical exposures ↔ VirScan / Exposome",
-      "bytes": 2868189525,
-      "uncompressedBytes": 9184408355,
-      "sha256": "cf0e6f98e0c4740311d77a07c0bd6422ce1dd6d121751ee096bc840bdf347d47",
+      "bytes": 3198073343,
+      "uncompressedBytes": 10743006308,
+      "sha256": "4dc968c9d18e4d6ded38dc696a382bf74be434072ec2867cf0f7c0b8fd586c6d",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -269,9 +251,9 @@
     {
       "file": "human_swissprot--huprot4-summaries.zip",
       "title": "HuProt 4.0 ↔ Human proteins",
-      "bytes": 154254954,
-      "uncompressedBytes": 382748851,
-      "sha256": "94094a09e9ffbcf64166820554fe9ee09e056f0bc8d989e5433a218bfb0efab5",
+      "bytes": 178763425,
+      "uncompressedBytes": 460249199,
+      "sha256": "9795805b1e5cf8441c4a71c9e836600da32f931498d5eee0b10ba56b110bc530",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -296,9 +278,9 @@
     {
       "file": "source-huscan-human-swissprot.zip",
       "title": "HuScan ↔ Human proteins",
-      "bytes": 3201109339,
-      "uncompressedBytes": 10640536492,
-      "sha256": "d314ad830ceb5f266c154abb19ebbf053890ec3cf8b53920bb2405b2273108d4",
+      "bytes": 3476000308,
+      "uncompressedBytes": 12208919133,
+      "sha256": "98211177612caef47f7b22a9d6a6e1c933f150c88917807958984cc215a71f8e",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -323,9 +305,9 @@
     {
       "file": "source-virscan-human-swissprot.zip",
       "title": "VirScan / Exposome ↔ Human proteins",
-      "bytes": 2256381699,
-      "uncompressedBytes": 6985964351,
-      "sha256": "7a71a2f75887c8eccf23d62d126186350bcbfd7cb20b2e9e42f16451ef1eaf70",
+      "bytes": 2506079995,
+      "uncompressedBytes": 8316724514,
+      "sha256": "3fca7d8cf3b6f22d7258151730cda2ea8c9b03652578d7ab23f657db84cf7ecb",
       "url": null,
       "kind": "coverage-summaries"
     },

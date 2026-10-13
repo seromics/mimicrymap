@@ -54,6 +54,8 @@ async function run({configPath,base,codeDir,layout,core,scan,digest}){
  const selected=await selectionHelper.restore(savedSelection,queries,parents,references);
  if(selected){queries=[selected.query];parents=selected.parents;}
  else if(savedSelection)console.error('Using the supplied FASTA records without the previous library mappings.');
+ queries.forEach((r,i)=>{r.record_id=i+1;});parents.forEach((r,i)=>{r.record_id=i+1;});
+ if(selected?.projection)selected.projection.parent_entities.forEach((r,i)=>{r.record_id=i+1;});
  const annotationPath=path.join(configRoot,'inputs/residue-annotations.json');
  const annotations=selected&&fs.existsSync(annotationPath)?JSON.parse(fs.readFileSync(annotationPath,'utf8')):null;
  const identity=require(fs.existsSync(path.join(codeDir,'mimicryone-identity.js'))?path.join(codeDir,'mimicryone-identity.js'):path.join(codeDir,'../mimicryone-identity.js'));
@@ -62,7 +64,7 @@ async function run({configPath,base,codeDir,layout,core,scan,digest}){
  const work=queries.reduce((n,q)=>n+Math.max(0,q.length-8),0)*parents.reduce((n,p)=>n+Math.max(0,p.length-8),0);
  console.error('Inputs: '+queries.length+' Antigen Target record(s), '+parents.length+' Mimicry Parent record(s).');
  console.error('Min Identity: '+floor+'/9; '+work.toLocaleString()+' window comparisons. CPU only; no network.');
- const captured=new Date().toISOString(),completed=[],writtenFiles=[],summaryRows=[];let summaryFormat;
+ const captured=new Date().toISOString(),completed=[],writtenFiles=[],summaryRows=[],summaryKeys=[];let summaryFormat;
  const scanFloor=Math.min(floor,7),sameLibrary=targetBytes.equals(parentBytes);
  console.error('Summary: 7/9, 8/9, 9/9; paired coverage (%) Parent|Target, listed when either side reaches 10% before rounding.');
  const loci=require(path.join(codeDir,'residue-coverage.js')).overlapGroups;
@@ -116,6 +118,7 @@ async function run({configPath,base,codeDir,layout,core,scan,digest}){
    put(targetDir+'/all-matches.csv',data.matchesCsv);put(targetDir+'/overall-mimicry-parents.csv',data.parentsCsv);
    if(start!==null)put(targetDir+'/current-window-slice.csv',data.siteCsv);
    const nativeSummary=core.summaryTable(result,[7,8,9],annotations);summaryFormat=nativeSummary;summaryRows.push(nativeSummary.row);
+   summaryKeys.push({target:i+1,parents:nativeSummary.pairKeys});
    put(targetDir+'/comparison_summary.csv',nativeSummary.csv);
    timings.write=elapsed(writeStarted);timings.total=elapsed(targetStarted);
    completed.push({id:publicId(query),path:targetDir,summary,pair_audit:nativeSummary.audit,timings_seconds:timings,...(start!==null?{selected_window_pairs:data.site.length}:{})});
@@ -123,6 +126,27 @@ async function run({configPath,base,codeDir,layout,core,scan,digest}){
    console.error('  Target complete: '+timings.total+' s (scan '+timings.scan+' s; export '+timings.export+' s; write '+timings.write+' s).');
   }
   if(summaryFormat)put('library_summary.csv',summaryFormat.serialize(summaryRows));
+  const summaryPackage=require('./summary-package.cjs'),summaryParents=selected?.projection?.parent_entities||parents;
+  const recordRows=[];
+  for(const [side,records]of [[0,queries],[1,summaryParents]])for(const [i,r]of records.entries()){
+   const token=String(r.raw_header||r.header||r.protein_id).replace(/^>/,'').split(/\s/)[0],source=r.assay_id||r.original_id||r.protein_id;
+   const value=summaryPackage.record(side,{id:i+1,token,source},r);if(side)value.label=core.summaryParentLabel(r);recordRows.push(value);
+  }
+  put('summary-records.jsonl',recordRows.map(r=>JSON.stringify(r)+'\n').join(''));
+  put('summary-keys.jsonl',summaryKeys.map(r=>JSON.stringify(r)+'\n').join(''));
+  const summaryInputs={target:'inputs/antigen-target.fasta',parent:'inputs/mimicry-parents.fasta'};
+  if(selected?.projection){
+   // Projected exports describe displayed full records. Retain their sequences
+   // separately from the assay fragments used to reproduce the focused search.
+   const fasta=records=>records.map(r=>'>'+String(r.raw_header||r.header||r.protein_id).replace(/^>/,'')+'\n'+r.sequence+'\n').join('');
+   put('inputs/summary-targets.fasta',fasta(queries));put('inputs/summary-parents.fasta',fasta(summaryParents));
+   summaryInputs.target='inputs/summary-targets.fasta';summaryInputs.parent='inputs/summary-parents.fasta';
+  }
+  const descriptor=(records,file,name)=>({id:'summary-'+digest(fs.readFileSync(path.join(pending,file))).slice(0,16),name,records:records.length,residues:records.reduce((n,r)=>n+r.sequence.length,0),short:records.filter(r=>r.sequence.length<9).length,sha256:digest(fs.readFileSync(path.join(pending,file))),platforms:[]});
+  await summaryPackage.seal(pending,{csv:'library_summary.csv',recordsFile:'summary-records.jsonl',keysFile:'summary-keys.jsonl',inputs:summaryInputs,floors:[7,8,9],rows:queries.length,complete:!selected,targetId:selected?1:null,target:descriptor(queries,summaryInputs.target,'Antigen targets'),parent:descriptor(summaryParents,summaryInputs.parent,selected?.scope_label||'Mimicry parents')});
+  writtenFiles.push('summary.json');
+  await require('./summary-index.cjs').build({source:pending,directory:path.join(pending,'indexes'),linkInputs:true},p=>console.error(p.phase));
+  writtenFiles.push(...inventory(path.join(pending,'indexes'),'indexes/'));
   put('README.md','# MimicryMap Results\n\nlibrary_summary.csv has one row per target at 7/9, 8/9 and 9/9, with paired Parent|Target coverage lists and adjacent per-pair residue ranges (one decimal; at least 10% on either side before rounding). Each targets/ folder contains comparison_summary.csv, All Matches and Overall Mimicry Parents. A Current window slice appears only when selected_target_start is set. run.json captures settings and summaries; records.json contains all input record metadata. The two original FASTA inputs are captured once in inputs/.\n\nRerunning the launcher refreshes this managed output folder. Choose another output_directory in settings.json to keep a separate run. Calculation code stays in the tool package.\n');
   const record={schema:'mimicryone/pipeline-run/3',export_schema:core.version,captured_utc:captured,settings:{...settings,selected_target_start:start},
    target_records:queries.length,parent_records:parents.length,window_comparisons:work,

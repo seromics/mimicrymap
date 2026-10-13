@@ -4,6 +4,10 @@ const engine=require('../mimicrymap/workspace/engine.cjs');
 process.once('message',async({config,pending})=>{
   try {
     const report=progress=>process.send?.({progress});
+    if(config.summary){
+      const result=await engine.buildSummaryIndexes({source:config.summary,directory:path.join(pending,'comparison')},report);
+      process.send({complete:{output:result.output,targets:result.targets,pairs:result.pairs}},()=>process.disconnect());return;
+    }
     const directories={targets:path.join(pending,'targets'),parents:path.join(pending,'parents')};
     const annotations={};
     for(const [plural,singular] of [['targets','target'],['parents','parent']]) {

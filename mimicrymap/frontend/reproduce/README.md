@@ -47,6 +47,14 @@ Each target has a folder under `outputs/targets/` containing:
 
 `outputs/library_summary.csv` combines the summary rows for all supplied targets.
 
+The output also includes `summary.json`, complete record metadata, stable pair keys and the original FASTAs. These form a reusable summary package: both the statistical membership index and the protein-page index in `indexes/` are derived from it, without another sequence search. Import the package folder into SeroMap with **Import summary / comparison**, or rebuild the indexes locally with Node.js 24:
+
+```sh
+node run.cjs --from-summary outputs rebuilt-indexes
+```
+
+The destination must be new. The manifest records supported identity thresholds and the minimum coverage floor (10% on either sequence). Full window alignments cannot be reconstructed from independent residue unions. Keep the metadata and FASTAs with the CSV when sharing an importable package; the CSV remains readable on its own.
+
 `run.json` summarizes the settings, counts, coverage, and timings. The inputs and their record metadata are retained once per run. Figures remain available through the site's separate Figure bundle.
 
 Rerunning refreshes the managed output folder after completion. Choose another `output_directory` to keep a separate run. Files you add to an output folder are preserved by requiring a different output folder before replacement; a failed run leaves the previous completed output intact.

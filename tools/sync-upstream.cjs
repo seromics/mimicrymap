@@ -19,7 +19,7 @@ if (args[0] === '--check') {
   const tracked = execFileSync('git', ['ls-files', '-z', 'mimicrymap'], {cwd:source,encoding:'utf8'}).split('\0').filter(Boolean);
   const files = tracked.filter(f => !/(^|\/)test[^/]*\.(?:js|mjs|cjs|py)$/.test(f) && !/\.zip$/.test(f) && !f.endsWith('/source-origin.json'));
   const mappings = files.map(f => [f,f]);
-  const pipeline = ['export-core.js','context-score.js','ranking.js','residue-coverage.js','projected-events.js','fasta-input.js','parallel-scan.cjs','pipeline.cjs','pipeline-runner.cjs','pipeline-selection.js','pipeline-layout.json'];
+  const pipeline = ['export-core.js','context-score.js','ranking.js','residue-coverage.js','projected-events.js','fasta-input.js','parallel-scan.cjs','pipeline.cjs','pipeline-runner.cjs','pipeline-selection.js','pipeline-layout.json','summary-package.cjs','summary-index.cjs','pair-regions.cjs'];
   for (const f of pipeline) mappings.push(['code/'+f,'mimicrymap/frontend/reproduce/'+f]);
   for (const f of ['custom-worker.js','mimicryone-identity.js']) mappings.push(['code/'+f,'mimicrymap/frontend/'+f]);
   for (const destination of ['code/plot-palette.cjs','mimicrymap/frontend/reproduce/plot-palette.cjs']) mappings.push([destination,'atlas/viewer/shared/plotPalette.cjs']);

@@ -4,6 +4,11 @@ const fs = require('node:fs'),
   { randomUUID } = require('node:crypto');
 const engine = require('./code/mimicrymap/workspace/engine.cjs');
 (async () => {
+  if(process.argv.includes('--from-summary')){
+    const i=process.argv.indexOf('--from-summary'),source=process.argv[i+1]||__dirname,directory=process.argv[i+2];
+    if(!directory)throw Error('Use --from-summary source-package new-output-folder');
+    await engine.buildSummaryIndexes({source,directory},p=>console.log(p.phase));return;
+  }
   const root = __dirname,
     settings = JSON.parse(fs.readFileSync(path.join(root, 'settings.json'))),
     out = path.join(root, 'reproduced-' + new Date().toISOString().replace(/[:.]/g, '-'));

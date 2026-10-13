@@ -1,6 +1,9 @@
 {
   "schema": "mimicryone/pipeline-package/1",
   "files": {
+    "summary-package.cjs": {"path":"code/summary-package.cjs","source":"/reproduce/summary-package.cjs","description":"Portable CSV identities, checksums and input roster."},
+    "summary-index.cjs": {"path":"code/summary-index.cjs","source":"/reproduce/summary-index.cjs","description":"Build statistical memberships and protein-page indexes from CSV without sequence matching."},
+    "pair-regions.cjs": {"path":"code/pair-regions.cjs","source":"/reproduce/pair-regions.cjs","description":"Shared encoding of independent residue unions."},
     "export-core.js": {
       "path": "code/export-core.js",
       "description": "The same CSV and table implementation used by the site.",

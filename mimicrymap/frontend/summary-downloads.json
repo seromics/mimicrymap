@@ -3715,17 +3715,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 88715452,
-            "sha256": "e4cd7729845b598986690c36781f2e089277a03abf4a1f27bdd5591d4a0d14da",
+            "bytes": 108064120,
+            "sha256": "4b0a87b05245e47854a824f24337b3153875a973e5b3936b6629ab882a708918",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-human-swissprot.zip",
             "module": "source-human-swissprot",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 212959162,
+            "expandedBytes": 277533929,
             "installedBytes": 212955695,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": false
+            "bidirectional": false,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 107382962,
@@ -3763,17 +3768,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 48371303,
-            "sha256": "eb220ed26be26ef497e75f07ff6ab4284a4a437477359241478a5f78c7a581db",
+            "bytes": 75171115,
+            "sha256": "7f5ce093123cd5bcd4ad17267e0c3bb2c68afca0e7b4fa242756e3cba555380c",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-human-swissprot.zip",
             "module": "source-canonical-exposure-human-swissprot",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 100251281,
+            "expandedBytes": 172482302,
             "installedBytes": 100244878,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 33718653,
@@ -3811,17 +3821,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 48371303,
-            "sha256": "eb220ed26be26ef497e75f07ff6ab4284a4a437477359241478a5f78c7a581db",
+            "bytes": 75171115,
+            "sha256": "7f5ce093123cd5bcd4ad17267e0c3bb2c68afca0e7b4fa242756e3cba555380c",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-human-swissprot.zip",
             "module": "source-canonical-exposure-human-swissprot",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 100251281,
+            "expandedBytes": 172482302,
             "installedBytes": 100244878,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 33718653,
@@ -3859,17 +3874,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 11335673,
-            "sha256": "0f709c334171af4620b1b4f590b8df066d97f2064dd7349e57ee41cf77a015a9",
+            "bytes": 24319405,
+            "sha256": "8a0157036ab7acd55a1020215858264e4f2632960677b63860b05be6a814edca",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-atlas-120-viruses-human-swissprot.zip",
             "module": "source-atlas-120-viruses-human-swissprot",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 21017351,
+            "expandedBytes": 55249929,
             "installedBytes": 21010974,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 6316532,
@@ -3907,17 +3927,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 11335673,
-            "sha256": "0f709c334171af4620b1b4f590b8df066d97f2064dd7349e57ee41cf77a015a9",
+            "bytes": 24319405,
+            "sha256": "8a0157036ab7acd55a1020215858264e4f2632960677b63860b05be6a814edca",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-atlas-120-viruses-human-swissprot.zip",
             "module": "source-atlas-120-viruses-human-swissprot",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 21017351,
+            "expandedBytes": 55249929,
             "installedBytes": 21010974,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 6316532,
@@ -3955,17 +3980,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 39469802,
-            "sha256": "f1d450e518936a58c1cbc436da4f1384ee1832f953e02efbb064f9f06116ecae",
+            "bytes": 64266354,
+            "sha256": "94194c27c70f5c226cc22257947e08df837debe788ff9131fc9e849f334437e4",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-no-vertebrates-human-swissprot.zip",
             "module": "source-canonical-exposure-no-vertebrates-human-swissprot",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 80647840,
+            "expandedBytes": 147743850,
             "installedBytes": 80641057,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 27156819,
@@ -4003,17 +4033,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 39469802,
-            "sha256": "f1d450e518936a58c1cbc436da4f1384ee1832f953e02efbb064f9f06116ecae",
+            "bytes": 64266354,
+            "sha256": "94194c27c70f5c226cc22257947e08df837debe788ff9131fc9e849f334437e4",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-no-vertebrates-human-swissprot.zip",
             "module": "source-canonical-exposure-no-vertebrates-human-swissprot",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 80647840,
+            "expandedBytes": 147743850,
             "installedBytes": 80641057,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 27156819,
@@ -4051,17 +4086,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 67066421,
-            "sha256": "428e23ff05b1235a453dc411bdf8b7c3ce7224bec38437f1fe64b62f22b0837a",
+            "bytes": 82407003,
+            "sha256": "60074e3a781d61424d41c370da3974d204ac1e274f356647dee372667c95f34a",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-huprot4.zip",
             "module": "source-huprot4",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 172089253,
+            "expandedBytes": 236586052,
             "installedBytes": 172085984,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": false
+            "bidirectional": false,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           }
         },
         "summary_schema": "mimicryone/native-summary/7",
@@ -4085,17 +4125,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 2686876866,
-            "sha256": "c0493b5c84bcc7307feb661611bf721f6c2d0ec6777e77f458a3fbb46335099a",
+            "bytes": 2927477989,
+            "sha256": "ab396f32b2ca29fa9e318eeea5adbe5d1174ab3a295f4fc6dce5f4238478994c",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-huprot4-huscan.zip",
             "module": "source-huprot4-huscan",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 9386636414,
+            "expandedBytes": 10801449468,
             "installedBytes": 9386630575,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           }
         },
         "summary_schema": "mimicryone/native-summary/7",
@@ -4119,17 +4164,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 2686876866,
-            "sha256": "c0493b5c84bcc7307feb661611bf721f6c2d0ec6777e77f458a3fbb46335099a",
+            "bytes": 2927477989,
+            "sha256": "ab396f32b2ca29fa9e318eeea5adbe5d1174ab3a295f4fc6dce5f4238478994c",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-huprot4-huscan.zip",
             "module": "source-huprot4-huscan",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 9386636414,
+            "expandedBytes": 10801449468,
             "installedBytes": 9386630575,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           }
         },
         "summary_schema": "mimicryone/native-summary/7",
@@ -4153,27 +4203,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 1874513899,
-            "sha256": "b80ebce463cbf60c294a0d42951cef6b4d996ba395a0d34b046e98d4538ad8c4",
+            "bytes": 2095273750,
+            "sha256": "820f3161af19ebdfad10536163caab089a36bfc3d3a0f599f537fa7651eb4903",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-huprot4-virscan-exposome.zip",
             "module": "source-huprot4-virscan-exposome",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 6030238079,
+            "expandedBytes": 7260600933,
             "installedBytes": 6030231944,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
-          },
-          "index": {
-            "bytes": 1466097621,
-            "sha256": "3e861dd6b6985798ac4b6b8ac51404f0045540e1da782c509de3918f528b1697",
-            "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.1/indexes-peptide-huprot4.zip",
-            "module": "indexes-peptide-huprot4",
-            "identity": "7/9",
-            "layout": "seromap.flat-download/1",
-            "expandedBytes": 8147030016,
-            "installedBytes": 8147030016
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           }
         },
         "summary_schema": "mimicryone/native-summary/7",
@@ -4197,27 +4242,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 1874513899,
-            "sha256": "b80ebce463cbf60c294a0d42951cef6b4d996ba395a0d34b046e98d4538ad8c4",
+            "bytes": 2095273750,
+            "sha256": "820f3161af19ebdfad10536163caab089a36bfc3d3a0f599f537fa7651eb4903",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-huprot4-virscan-exposome.zip",
             "module": "source-huprot4-virscan-exposome",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 6030238079,
+            "expandedBytes": 7260600933,
             "installedBytes": 6030231944,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
-          },
-          "index": {
-            "bytes": 1466097621,
-            "sha256": "3e861dd6b6985798ac4b6b8ac51404f0045540e1da782c509de3918f528b1697",
-            "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.1/indexes-peptide-huprot4.zip",
-            "module": "indexes-peptide-huprot4",
-            "identity": "7/9",
-            "layout": "seromap.flat-download/1",
-            "expandedBytes": 8147030016,
-            "installedBytes": 8147030016
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           }
         },
         "summary_schema": "mimicryone/native-summary/7",
@@ -4241,27 +4281,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 5223726541,
-            "sha256": "24b9dd16f238294295f90862774969fab6f72f9b5470ccaddf637c704897cd7d",
+            "bytes": 5815154743,
+            "sha256": "a63971c94a624a149c6592fb1e5343d456a77d1aa138ad359024bc809bb05ec9",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-huscan-virscan-exposome.zip",
             "module": "source-huscan-virscan-exposome",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 23535647453,
+            "expandedBytes": 26570288056,
             "installedBytes": 23535641335,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
-          },
-          "index": {
-            "bytes": 3778544621,
-            "sha256": "90bc13812f632b3a0a93cfc14748094aad12e4e25cec6d722116168ff6795755",
-            "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.1/indexes-peptide-huscan.zip",
-            "module": "indexes-peptide-huscan",
-            "identity": "7/9",
-            "layout": "seromap.flat-download/1",
-            "expandedBytes": 28004335616,
-            "installedBytes": 28004335616
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           }
         },
         "summary_schema": "mimicryone/native-summary/7",
@@ -4285,27 +4320,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 5223726541,
-            "sha256": "24b9dd16f238294295f90862774969fab6f72f9b5470ccaddf637c704897cd7d",
+            "bytes": 5815154743,
+            "sha256": "a63971c94a624a149c6592fb1e5343d456a77d1aa138ad359024bc809bb05ec9",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-huscan-virscan-exposome.zip",
             "module": "source-huscan-virscan-exposome",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 23535647453,
+            "expandedBytes": 26570288056,
             "installedBytes": 23535641335,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
-          },
-          "index": {
-            "bytes": 3778544621,
-            "sha256": "90bc13812f632b3a0a93cfc14748094aad12e4e25cec6d722116168ff6795755",
-            "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.1/indexes-peptide-huscan.zip",
-            "module": "indexes-peptide-huscan",
-            "identity": "7/9",
-            "layout": "seromap.flat-download/1",
-            "expandedBytes": 28004335616,
-            "installedBytes": 28004335616
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           }
         },
         "summary_schema": "mimicryone/native-summary/7",
@@ -4329,17 +4359,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 8580053,
-            "sha256": "c5f3058c3593fa00e219a2cb0cc90730ea7f10a7a8cbbf7bdb03f9f10638b104",
+            "bytes": 18750395,
+            "sha256": "c9f76e956e22102ae3789de03b65f176876774c675f2eef5b50b523196a8ff53",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-atlas-120-viruses-huprot4.zip",
             "module": "source-atlas-120-viruses-huprot4",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 16538899,
+            "expandedBytes": 50608366,
             "installedBytes": 16532752,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 5052902,
@@ -4356,14 +4391,14 @@
             "featureOnly": true
           },
           "candidate": {
-            "bytes": 802516,
-            "sha256": "27b4a11cc389e5f9abc34e2b783a572cfb7f257784694bf73d7db1d5b399333e",
+            "bytes": 861664,
+            "sha256": "705f35d255aaa84b48786a773ec718948dda7f5fd7c4aae2f2a9ce2064d78852",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.1/indexes-huprot-viral120.zip",
             "module": "indexes-huprot-viral120",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 4499766,
-            "installedBytes": 4499766
+            "expandedBytes": 7533052,
+            "installedBytes": 7529683
           }
         },
         "summary_schema": "mimicryone/native-summary/7",
@@ -4387,17 +4422,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 8580053,
-            "sha256": "c5f3058c3593fa00e219a2cb0cc90730ea7f10a7a8cbbf7bdb03f9f10638b104",
+            "bytes": 18750395,
+            "sha256": "c9f76e956e22102ae3789de03b65f176876774c675f2eef5b50b523196a8ff53",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-atlas-120-viruses-huprot4.zip",
             "module": "source-atlas-120-viruses-huprot4",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 16538899,
+            "expandedBytes": 50608366,
             "installedBytes": 16532752,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 5052902,
@@ -4414,14 +4454,14 @@
             "featureOnly": true
           },
           "candidate": {
-            "bytes": 802516,
-            "sha256": "27b4a11cc389e5f9abc34e2b783a572cfb7f257784694bf73d7db1d5b399333e",
+            "bytes": 861664,
+            "sha256": "705f35d255aaa84b48786a773ec718948dda7f5fd7c4aae2f2a9ce2064d78852",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.1/indexes-huprot-viral120.zip",
             "module": "indexes-huprot-viral120",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 4499766,
-            "installedBytes": 4499766
+            "expandedBytes": 7533052,
+            "installedBytes": 7529683
           }
         },
         "summary_schema": "mimicryone/native-summary/7",
@@ -4445,17 +4485,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 131852107,
-            "sha256": "167e20cd0a5eb6a9826edb5ebb2ecc5ca29461caf3fada895ab5026b64a5085a",
+            "bytes": 238735087,
+            "sha256": "4c251a3dd531404e97890481db15efa83c0fa6f516c3e144da2bcaf6f3dca9a7",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-atlas-120-viruses-huscan.zip",
             "module": "source-atlas-120-viruses-huscan",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 511492543,
+            "expandedBytes": 1250452811,
             "installedBytes": 511486409,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 180055095,
@@ -4503,17 +4548,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 131852107,
-            "sha256": "167e20cd0a5eb6a9826edb5ebb2ecc5ca29461caf3fada895ab5026b64a5085a",
+            "bytes": 238735087,
+            "sha256": "4c251a3dd531404e97890481db15efa83c0fa6f516c3e144da2bcaf6f3dca9a7",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-atlas-120-viruses-huscan.zip",
             "module": "source-atlas-120-viruses-huscan",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 511492543,
+            "expandedBytes": 1250452811,
             "installedBytes": 511486409,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 180055095,
@@ -4561,17 +4611,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 265746354,
-            "sha256": "91608abc447598ea3c834a5e2e6f7845f458a07c77489102d7de807138ad8618",
+            "bytes": 391789555,
+            "sha256": "b4319d4e3171a0ab54878d21cb67dea30556ad3c7dafd3867f5fe6b509f9259c",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-atlas-120-viruses-virscan-exposome.zip",
             "module": "source-atlas-120-viruses-virscan-exposome",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 919290940,
+            "expandedBytes": 1790465679,
             "installedBytes": 919284511,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 258459862,
@@ -4619,17 +4674,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 265746354,
-            "sha256": "91608abc447598ea3c834a5e2e6f7845f458a07c77489102d7de807138ad8618",
+            "bytes": 391789555,
+            "sha256": "b4319d4e3171a0ab54878d21cb67dea30556ad3c7dafd3867f5fe6b509f9259c",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-atlas-120-viruses-virscan-exposome.zip",
             "module": "source-atlas-120-viruses-virscan-exposome",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 919290940,
+            "expandedBytes": 1790465679,
             "installedBytes": 919284511,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 258459862,
@@ -4677,17 +4737,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 41765070,
-            "sha256": "8a041a56b08cbf9701766128f4820d7e914972ab93550ced2e6c14ff822933ed",
+            "bytes": 65676372,
+            "sha256": "197fba7f4acf2c7c581fe30b16628bd75a3d73f5f47ce332b0a661119ce800e0",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-huprot4.zip",
             "module": "source-canonical-exposure-huprot4",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 90164824,
+            "expandedBytes": 162006286,
             "installedBytes": 90158651,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 29862687,
@@ -4735,17 +4800,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 41765070,
-            "sha256": "8a041a56b08cbf9701766128f4820d7e914972ab93550ced2e6c14ff822933ed",
+            "bytes": 65676372,
+            "sha256": "197fba7f4acf2c7c581fe30b16628bd75a3d73f5f47ce332b0a661119ce800e0",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-huprot4.zip",
             "module": "source-canonical-exposure-huprot4",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 90164824,
+            "expandedBytes": 162006286,
             "installedBytes": 90158651,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 29862687,
@@ -4793,17 +4863,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 1917648046,
-            "sha256": "0ba53e2660c44428218a9670b5a7d70dc4a14b475f2c10fde1d5ed7498609d20",
+            "bytes": 2197033976,
+            "sha256": "796b12f607983c54625581441ac9e112cb1491a4e60090f8c7feea0af28e62cd",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-huscan.zip",
             "module": "source-canonical-exposure-huscan",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 6481816444,
+            "expandedBytes": 7853849411,
             "installedBytes": 6481810282,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 1422490834,
@@ -4851,17 +4926,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 1917648046,
-            "sha256": "0ba53e2660c44428218a9670b5a7d70dc4a14b475f2c10fde1d5ed7498609d20",
+            "bytes": 2197033976,
+            "sha256": "796b12f607983c54625581441ac9e112cb1491a4e60090f8c7feea0af28e62cd",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-huscan.zip",
             "module": "source-canonical-exposure-huscan",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 6481816444,
+            "expandedBytes": 7853849411,
             "installedBytes": 6481810282,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 1422490834,
@@ -4909,17 +4989,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 2868189525,
-            "sha256": "cf0e6f98e0c4740311d77a07c0bd6422ce1dd6d121751ee096bc840bdf347d47",
+            "bytes": 3198073343,
+            "sha256": "4dc968c9d18e4d6ded38dc696a382bf74be434072ec2867cf0f7c0b8fd586c6d",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-virscan-exposome.zip",
             "module": "source-canonical-exposure-virscan-exposome",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 9184408355,
+            "expandedBytes": 10743006308,
             "installedBytes": 9184401899,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 1712034343,
@@ -4967,17 +5052,22 @@
         },
         "archives": {
           "summary": {
-            "bytes": 2868189525,
-            "sha256": "cf0e6f98e0c4740311d77a07c0bd6422ce1dd6d121751ee096bc840bdf347d47",
+            "bytes": 3198073343,
+            "sha256": "4dc968c9d18e4d6ded38dc696a382bf74be434072ec2867cf0f7c0b8fd586c6d",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-virscan-exposome.zip",
             "module": "source-canonical-exposure-virscan-exposome",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 9184408355,
+            "expandedBytes": 10743006308,
             "installedBytes": 9184401899,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 1712034343,
@@ -5021,18 +5111,23 @@
         "columns": 13,
         "archives": {
           "summary": {
-            "bytes": 154254954,
-            "sha256": "94094a09e9ffbcf64166820554fe9ee09e056f0bc8d989e5433a218bfb0efab5",
+            "bytes": 178763425,
+            "sha256": "9795805b1e5cf8441c4a71c9e836600da32f931498d5eee0b10ba56b110bc530",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/human_swissprot--huprot4-summaries.zip",
             "identity": "7/9–9/9",
             "module": "source-huprot-human-swissprot",
             "bidirectional": true,
             "positions": false,
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 382748851,
+            "expandedBytes": 460249199,
             "installedBytes": 382742981,
             "summary_schema": "mimicryone/native-summary/7",
-            "pairRegions": true
+            "pairRegions": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 91916268,
@@ -5077,17 +5172,22 @@
         "parent_release": "2026_01",
         "archives": {
           "summary": {
-            "bytes": 3201109339,
-            "sha256": "d314ad830ceb5f266c154abb19ebbf053890ec3cf8b53920bb2405b2273108d4",
+            "bytes": 3476000308,
+            "sha256": "98211177612caef47f7b22a9d6a6e1c933f150c88917807958984cc215a71f8e",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-huscan-human-swissprot.zip",
             "module": "source-huscan-human-swissprot",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 10640536492,
+            "expandedBytes": 12208919133,
             "installedBytes": 10640530488,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 2105918228,
@@ -5132,17 +5232,22 @@
         "parent_release": "2026_01",
         "archives": {
           "summary": {
-            "bytes": 2256381699,
-            "sha256": "7a71a2f75887c8eccf23d62d126186350bcbfd7cb20b2e9e42f16451ef1eaf70",
+            "bytes": 2506079995,
+            "sha256": "3fca7d8cf3b6f22d7258151730cda2ea8c9b03652578d7ab23f657db84cf7ecb",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-virscan-human-swissprot.zip",
             "module": "source-virscan-human-swissprot",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 6985964351,
+            "expandedBytes": 8316724514,
             "installedBytes": 6985958044,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 1292408241,
@@ -5185,18 +5290,23 @@
         "columns": 13,
         "archives": {
           "summary": {
-            "bytes": 154254954,
-            "sha256": "94094a09e9ffbcf64166820554fe9ee09e056f0bc8d989e5433a218bfb0efab5",
+            "bytes": 178763425,
+            "sha256": "9795805b1e5cf8441c4a71c9e836600da32f931498d5eee0b10ba56b110bc530",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/human_swissprot--huprot4-summaries.zip",
             "identity": "7/9–9/9",
             "module": "source-huprot-human-swissprot",
             "bidirectional": true,
             "positions": false,
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 382748851,
+            "expandedBytes": 460249199,
             "installedBytes": 382742981,
             "summary_schema": "mimicryone/native-summary/7",
-            "pairRegions": true
+            "pairRegions": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 91916268,
@@ -5241,17 +5351,22 @@
         "pairRegions": true,
         "archives": {
           "summary": {
-            "bytes": 3201109339,
-            "sha256": "d314ad830ceb5f266c154abb19ebbf053890ec3cf8b53920bb2405b2273108d4",
+            "bytes": 3476000308,
+            "sha256": "98211177612caef47f7b22a9d6a6e1c933f150c88917807958984cc215a71f8e",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-huscan-human-swissprot.zip",
             "module": "source-huscan-human-swissprot",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 10640536492,
+            "expandedBytes": 12208919133,
             "installedBytes": 10640530488,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 2105918228,
@@ -5294,17 +5409,22 @@
         "pairRegions": true,
         "archives": {
           "summary": {
-            "bytes": 2256381699,
-            "sha256": "7a71a2f75887c8eccf23d62d126186350bcbfd7cb20b2e9e42f16451ef1eaf70",
+            "bytes": 2506079995,
+            "sha256": "3fca7d8cf3b6f22d7258151730cda2ea8c9b03652578d7ab23f657db84cf7ecb",
             "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-virscan-human-swissprot.zip",
             "module": "source-virscan-human-swissprot",
             "identity": "7/9–9/9",
             "layout": "seromap.flat-download/1",
-            "expandedBytes": 6985964351,
+            "expandedBytes": 8316724514,
             "installedBytes": 6985958044,
             "summary_schema": "mimicryone/native-summary/7",
             "pairRegions": true,
-            "bidirectional": true
+            "bidirectional": true,
+            "summaryPackage": {
+              "schema": "mimicrymap.summary-package/1",
+              "manifest": "summary.json",
+              "indexesDerivedFromCsv": true
+            }
           },
           "index": {
             "bytes": 1292408241,
@@ -5368,18 +5488,23 @@
       "label": "Curated viral proteomes (120) ↔ HuScan",
       "archives": {
         "summary": {
-          "bytes": 131852107,
-          "sha256": "167e20cd0a5eb6a9826edb5ebb2ecc5ca29461caf3fada895ab5026b64a5085a",
+          "bytes": 238735087,
+          "sha256": "4c251a3dd531404e97890481db15efa83c0fa6f516c3e144da2bcaf6f3dca9a7",
           "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-atlas-120-viruses-huscan.zip",
           "module": "source-atlas-120-viruses-huscan",
           "identity": "7/9–9/9",
           "layout": "seromap.flat-download/1",
-          "expandedBytes": 511492543,
+          "expandedBytes": 1250452811,
           "installedBytes": 511486409,
           "summary_schema": "mimicryone/native-summary/7",
           "pairRegions": true,
           "bidirectional": true,
-          "pairFocused": true
+          "pairFocused": true,
+          "summaryPackage": {
+            "schema": "mimicrymap.summary-package/1",
+            "manifest": "summary.json",
+            "indexesDerivedFromCsv": true
+          }
         },
         "index": {
           "bytes": 180055095,
@@ -5438,18 +5563,23 @@
       "label": "Curated viral proteomes (120) ↔ Human proteins",
       "archives": {
         "summary": {
-          "bytes": 11335673,
-          "sha256": "0f709c334171af4620b1b4f590b8df066d97f2064dd7349e57ee41cf77a015a9",
+          "bytes": 24319405,
+          "sha256": "8a0157036ab7acd55a1020215858264e4f2632960677b63860b05be6a814edca",
           "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-atlas-120-viruses-human-swissprot.zip",
           "module": "source-atlas-120-viruses-human-swissprot",
           "identity": "7/9–9/9",
           "layout": "seromap.flat-download/1",
-          "expandedBytes": 21017351,
+          "expandedBytes": 55249929,
           "installedBytes": 21010974,
           "summary_schema": "mimicryone/native-summary/7",
           "pairRegions": true,
           "bidirectional": true,
-          "pairFocused": true
+          "pairFocused": true,
+          "summaryPackage": {
+            "schema": "mimicrymap.summary-package/1",
+            "manifest": "summary.json",
+            "indexesDerivedFromCsv": true
+          }
         },
         "index": {
           "bytes": 6316532,
@@ -5498,18 +5628,23 @@
       "label": "Curated viral proteomes (120) ↔ HuProt 4.0",
       "archives": {
         "summary": {
-          "bytes": 8580053,
-          "sha256": "c5f3058c3593fa00e219a2cb0cc90730ea7f10a7a8cbbf7bdb03f9f10638b104",
+          "bytes": 18750395,
+          "sha256": "c9f76e956e22102ae3789de03b65f176876774c675f2eef5b50b523196a8ff53",
           "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-atlas-120-viruses-huprot4.zip",
           "module": "source-atlas-120-viruses-huprot4",
           "identity": "7/9–9/9",
           "layout": "seromap.flat-download/1",
-          "expandedBytes": 16538899,
+          "expandedBytes": 50608366,
           "installedBytes": 16532752,
           "summary_schema": "mimicryone/native-summary/7",
           "pairRegions": true,
           "bidirectional": true,
-          "pairFocused": true
+          "pairFocused": true,
+          "summaryPackage": {
+            "schema": "mimicrymap.summary-package/1",
+            "manifest": "summary.json",
+            "indexesDerivedFromCsv": true
+          }
         },
         "index": {
           "bytes": 5052902,
@@ -5526,14 +5661,14 @@
           "featureOnly": true
         },
         "candidate": {
-          "bytes": 802516,
-          "sha256": "27b4a11cc389e5f9abc34e2b783a572cfb7f257784694bf73d7db1d5b399333e",
+          "bytes": 861664,
+          "sha256": "705f35d255aaa84b48786a773ec718948dda7f5fd7c4aae2f2a9ce2064d78852",
           "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.1/indexes-huprot-viral120.zip",
           "module": "indexes-huprot-viral120",
           "identity": "7/9–9/9",
           "layout": "seromap.flat-download/1",
-          "expandedBytes": 4499766,
-          "installedBytes": 4499766
+          "expandedBytes": 7533052,
+          "installedBytes": 7529683
         }
       }
     },
@@ -5568,18 +5703,23 @@
       "label": "Curated viral proteomes (120) ↔ VirScan / Exposome",
       "archives": {
         "summary": {
-          "bytes": 265746354,
-          "sha256": "91608abc447598ea3c834a5e2e6f7845f458a07c77489102d7de807138ad8618",
+          "bytes": 391789555,
+          "sha256": "b4319d4e3171a0ab54878d21cb67dea30556ad3c7dafd3867f5fe6b509f9259c",
           "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-atlas-120-viruses-virscan-exposome.zip",
           "module": "source-atlas-120-viruses-virscan-exposome",
           "identity": "7/9–9/9",
           "layout": "seromap.flat-download/1",
-          "expandedBytes": 919290940,
+          "expandedBytes": 1790465679,
           "installedBytes": 919284511,
           "summary_schema": "mimicryone/native-summary/7",
           "pairRegions": true,
           "bidirectional": true,
-          "pairFocused": true
+          "pairFocused": true,
+          "summaryPackage": {
+            "schema": "mimicrymap.summary-package/1",
+            "manifest": "summary.json",
+            "indexesDerivedFromCsv": true
+          }
         },
         "index": {
           "bytes": 258459862,
@@ -5638,18 +5778,23 @@
       "label": "Canonical exposures ↔ HuScan",
       "archives": {
         "summary": {
-          "bytes": 1917648046,
-          "sha256": "0ba53e2660c44428218a9670b5a7d70dc4a14b475f2c10fde1d5ed7498609d20",
+          "bytes": 2197033976,
+          "sha256": "796b12f607983c54625581441ac9e112cb1491a4e60090f8c7feea0af28e62cd",
           "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-huscan.zip",
           "module": "source-canonical-exposure-huscan",
           "identity": "7/9–9/9",
           "layout": "seromap.flat-download/1",
-          "expandedBytes": 6481816444,
+          "expandedBytes": 7853849411,
           "installedBytes": 6481810282,
           "summary_schema": "mimicryone/native-summary/7",
           "pairRegions": true,
           "bidirectional": true,
-          "pairFocused": true
+          "pairFocused": true,
+          "summaryPackage": {
+            "schema": "mimicrymap.summary-package/1",
+            "manifest": "summary.json",
+            "indexesDerivedFromCsv": true
+          }
         },
         "index": {
           "bytes": 1422490834,
@@ -5708,18 +5853,23 @@
       "label": "Canonical exposures ↔ Human proteins",
       "archives": {
         "summary": {
-          "bytes": 48371303,
-          "sha256": "eb220ed26be26ef497e75f07ff6ab4284a4a437477359241478a5f78c7a581db",
+          "bytes": 75171115,
+          "sha256": "7f5ce093123cd5bcd4ad17267e0c3bb2c68afca0e7b4fa242756e3cba555380c",
           "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-human-swissprot.zip",
           "module": "source-canonical-exposure-human-swissprot",
           "identity": "7/9–9/9",
           "layout": "seromap.flat-download/1",
-          "expandedBytes": 100251281,
+          "expandedBytes": 172482302,
           "installedBytes": 100244878,
           "summary_schema": "mimicryone/native-summary/7",
           "pairRegions": true,
           "bidirectional": true,
-          "pairFocused": true
+          "pairFocused": true,
+          "summaryPackage": {
+            "schema": "mimicrymap.summary-package/1",
+            "manifest": "summary.json",
+            "indexesDerivedFromCsv": true
+          }
         },
         "index": {
           "bytes": 33718653,
@@ -5768,18 +5918,23 @@
       "label": "Canonical exposures ↔ HuProt 4.0",
       "archives": {
         "summary": {
-          "bytes": 41765070,
-          "sha256": "8a041a56b08cbf9701766128f4820d7e914972ab93550ced2e6c14ff822933ed",
+          "bytes": 65676372,
+          "sha256": "197fba7f4acf2c7c581fe30b16628bd75a3d73f5f47ce332b0a661119ce800e0",
           "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-huprot4.zip",
           "module": "source-canonical-exposure-huprot4",
           "identity": "7/9–9/9",
           "layout": "seromap.flat-download/1",
-          "expandedBytes": 90164824,
+          "expandedBytes": 162006286,
           "installedBytes": 90158651,
           "summary_schema": "mimicryone/native-summary/7",
           "pairRegions": true,
           "bidirectional": true,
-          "pairFocused": true
+          "pairFocused": true,
+          "summaryPackage": {
+            "schema": "mimicrymap.summary-package/1",
+            "manifest": "summary.json",
+            "indexesDerivedFromCsv": true
+          }
         },
         "index": {
           "bytes": 29862687,
@@ -5838,18 +5993,23 @@
       "label": "Canonical exposures ↔ VirScan / Exposome",
       "archives": {
         "summary": {
-          "bytes": 2868189525,
-          "sha256": "cf0e6f98e0c4740311d77a07c0bd6422ce1dd6d121751ee096bc840bdf347d47",
+          "bytes": 3198073343,
+          "sha256": "4dc968c9d18e4d6ded38dc696a382bf74be434072ec2867cf0f7c0b8fd586c6d",
           "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-virscan-exposome.zip",
           "module": "source-canonical-exposure-virscan-exposome",
           "identity": "7/9–9/9",
           "layout": "seromap.flat-download/1",
-          "expandedBytes": 9184408355,
+          "expandedBytes": 10743006308,
           "installedBytes": 9184401899,
           "summary_schema": "mimicryone/native-summary/7",
           "pairRegions": true,
           "bidirectional": true,
-          "pairFocused": true
+          "pairFocused": true,
+          "summaryPackage": {
+            "schema": "mimicrymap.summary-package/1",
+            "manifest": "summary.json",
+            "indexesDerivedFromCsv": true
+          }
         },
         "index": {
           "bytes": 1712034343,
@@ -5908,18 +6068,23 @@
       "label": "Non-vertebrate exposures ↔ Human proteins",
       "archives": {
         "summary": {
-          "bytes": 39469802,
-          "sha256": "f1d450e518936a58c1cbc436da4f1384ee1832f953e02efbb064f9f06116ecae",
+          "bytes": 64266354,
+          "sha256": "94194c27c70f5c226cc22257947e08df837debe788ff9131fc9e849f334437e4",
           "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-canonical-exposure-no-vertebrates-human-swissprot.zip",
           "module": "source-canonical-exposure-no-vertebrates-human-swissprot",
           "identity": "7/9–9/9",
           "layout": "seromap.flat-download/1",
-          "expandedBytes": 80647840,
+          "expandedBytes": 147743850,
           "installedBytes": 80641057,
           "summary_schema": "mimicryone/native-summary/7",
           "pairRegions": true,
           "bidirectional": true,
-          "pairFocused": true
+          "pairFocused": true,
+          "summaryPackage": {
+            "schema": "mimicrymap.summary-package/1",
+            "manifest": "summary.json",
+            "indexesDerivedFromCsv": true
+          }
         },
         "index": {
           "bytes": 27156819,
@@ -5968,18 +6133,23 @@
       "label": "HuScan ↔ Human proteins",
       "archives": {
         "summary": {
-          "bytes": 3201109339,
-          "sha256": "d314ad830ceb5f266c154abb19ebbf053890ec3cf8b53920bb2405b2273108d4",
+          "bytes": 3476000308,
+          "sha256": "98211177612caef47f7b22a9d6a6e1c933f150c88917807958984cc215a71f8e",
           "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-huscan-human-swissprot.zip",
           "module": "source-huscan-human-swissprot",
           "identity": "7/9–9/9",
           "layout": "seromap.flat-download/1",
-          "expandedBytes": 10640536492,
+          "expandedBytes": 12208919133,
           "installedBytes": 10640530488,
           "summary_schema": "mimicryone/native-summary/7",
           "pairRegions": true,
           "bidirectional": true,
-          "pairFocused": true
+          "pairFocused": true,
+          "summaryPackage": {
+            "schema": "mimicrymap.summary-package/1",
+            "manifest": "summary.json",
+            "indexesDerivedFromCsv": true
+          }
         },
         "index": {
           "bytes": 2105918228,
@@ -6038,18 +6208,23 @@
       "label": "Human proteins · within library",
       "archives": {
         "summary": {
-          "bytes": 88715452,
-          "sha256": "e4cd7729845b598986690c36781f2e089277a03abf4a1f27bdd5591d4a0d14da",
+          "bytes": 108064120,
+          "sha256": "4b0a87b05245e47854a824f24337b3153875a973e5b3936b6629ab882a708918",
           "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-human-swissprot.zip",
           "module": "source-human-swissprot",
           "identity": "7/9–9/9",
           "layout": "seromap.flat-download/1",
-          "expandedBytes": 212959162,
+          "expandedBytes": 277533929,
           "installedBytes": 212955695,
           "summary_schema": "mimicryone/native-summary/7",
           "pairRegions": true,
           "bidirectional": false,
-          "pairFocused": true
+          "pairFocused": true,
+          "summaryPackage": {
+            "schema": "mimicrymap.summary-package/1",
+            "manifest": "summary.json",
+            "indexesDerivedFromCsv": true
+          }
         },
         "index": {
           "bytes": 107382962,
@@ -6098,19 +6273,24 @@
       "label": "HuProt 4.0 ↔ Human proteins",
       "archives": {
         "summary": {
-          "bytes": 154254954,
-          "sha256": "94094a09e9ffbcf64166820554fe9ee09e056f0bc8d989e5433a218bfb0efab5",
+          "bytes": 178763425,
+          "sha256": "9795805b1e5cf8441c4a71c9e836600da32f931498d5eee0b10ba56b110bc530",
           "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/human_swissprot--huprot4-summaries.zip",
           "identity": "7/9–9/9",
           "module": "source-huprot-human-swissprot",
           "bidirectional": true,
           "positions": false,
           "layout": "seromap.flat-download/1",
-          "expandedBytes": 382748851,
+          "expandedBytes": 460249199,
           "installedBytes": 382742981,
           "summary_schema": "mimicryone/native-summary/7",
           "pairRegions": true,
-          "pairFocused": true
+          "pairFocused": true,
+          "summaryPackage": {
+            "schema": "mimicrymap.summary-package/1",
+            "manifest": "summary.json",
+            "indexesDerivedFromCsv": true
+          }
         },
         "index": {
           "bytes": 91916268,
@@ -6169,18 +6349,23 @@
       "label": "VirScan / Exposome ↔ Human proteins",
       "archives": {
         "summary": {
-          "bytes": 2256381699,
-          "sha256": "7a71a2f75887c8eccf23d62d126186350bcbfd7cb20b2e9e42f16451ef1eaf70",
+          "bytes": 2506079995,
+          "sha256": "3fca7d8cf3b6f22d7258151730cda2ea8c9b03652578d7ab23f657db84cf7ecb",
           "url": "/source-downloads/mimicry-summaries/archives/2026.10.12.3/source-virscan-human-swissprot.zip",
           "module": "source-virscan-human-swissprot",
           "identity": "7/9–9/9",
           "layout": "seromap.flat-download/1",
-          "expandedBytes": 6985964351,
+          "expandedBytes": 8316724514,
           "installedBytes": 6985958044,
           "summary_schema": "mimicryone/native-summary/7",
           "pairRegions": true,
           "bidirectional": true,
-          "pairFocused": true
+          "pairFocused": true,
+          "summaryPackage": {
+            "schema": "mimicrymap.summary-package/1",
+            "manifest": "summary.json",
+            "indexesDerivedFromCsv": true
+          }
         },
         "index": {
           "bytes": 1292408241,
