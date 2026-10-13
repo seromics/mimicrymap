@@ -1014,8 +1014,8 @@
     {
       "path": "mimicrymap/frontend/site-pages.css",
       "source": "mimicrymap/frontend/site-pages.css",
-      "bytes": 18790,
-      "sha256": "3ba6197108288e9859157f3543d9c9689b816d71a2b808e9d2010822ead7ddc0"
+      "bytes": 19052,
+      "sha256": "2159019af8f13d9e527d9450a566d56f470b4a3f98d2e44d6a5fdae36558d3ff"
     },
     {
       "path": "mimicrymap/frontend/site-routes.js",
@@ -1044,8 +1044,8 @@
     {
       "path": "mimicrymap/frontend/sources.html",
       "source": "mimicrymap/frontend/sources.html",
-      "bytes": 41209,
-      "sha256": "2d6ce8425cfc10921dd12ccf66fcda07c5e18beda2fe3be2968c56d5e97b99e1"
+      "bytes": 42323,
+      "sha256": "8c44a17eaee7af65e9440c14198d4defb8848762b4ab7fa09faa87f6551c96d2"
     },
     {
       "path": "mimicrymap/frontend/startup-shell.css",
@@ -1074,8 +1074,8 @@
     {
       "path": "mimicrymap/frontend/summary_downloads.py",
       "source": "mimicrymap/frontend/summary_downloads.py",
-      "bytes": 17302,
-      "sha256": "c49eeba49260afbf42845211c7f0f4f18d8714d3385f03b7104ae315294d91bc"
+      "bytes": 17619,
+      "sha256": "688af85931f77c9e8e5bb65fe3e41be136116226ebb65a15934711ef0390abb9"
     },
     {
       "path": "mimicrymap/frontend/use-results.html",

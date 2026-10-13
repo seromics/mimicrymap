@@ -118,7 +118,7 @@ def render(source):
  paired=[];seen=set()
  def product_cell(item,kind,title,description):
   name={'summary':'Coverage summaries','matches':'Protein-page index','candidate':'Statistical membership index'}[kind]
-  if not item:return f'<td class="summary-file-cell" data-product="{kind}"><span class="download-mobile-label">{name}</span><span class="download-unavailable" aria-label="Not available">—</span></td>'
+  if not item:return f'<td class="summary-file-cell download-empty" data-product="{kind}"></td>'
   label='CSV ZIP' if kind=='summary' else 'Index ZIP'
   action=link(item,label,title+' · '+name+' · '+description)
   if item.get('module'):
@@ -129,7 +129,7 @@ def render(source):
   if storage:note+=' · '+storage
   return f'<td class="summary-file-cell" data-product="{kind}"><span class="download-mobile-label">{name}</span><div class="download-actions">{action}</div><span class="download-product-note">{note}</span></td>'
  for section_id,heading,pairs in sections:
-  body=[]
+  body=[];available={'summary':False,'matches':False,'candidate':False}
   for a,b in pairs:
    key='--'.join(sorted([a,b]));directions=groups.get(key,[]);built=ready.get(key)
    if not directions:raise ValueError('Missing comparison in download section: '+key)
@@ -140,15 +140,16 @@ def render(source):
    index=products.get('index')
    matches=index if built and built.get('featureOnly') else None
    candidate=products.get('candidate') or (index if not matches and index and not index.get('positions') else None)
+   for kind,item in [('summary',products.get('summary')),('matches',matches),('candidate',candidate)]:available[kind]|=bool(item)
    description=('One summary' if a==b else 'Summaries in both directions' if len(directions)>1 else 'Summary: '+row_label(directions[0]))
    summary_description=description+('; pair-specific residue ranges included' if products.get('summary',{}).get('pairRegions') else '')
    cells=product_cell(products.get('summary'),'summary',title,summary_description)
-   if section_id!='cross':
-    cells+=product_cell(matches,'matches',title,'Both directions; ≥10% coverage of either sequence'+('; merged residue ranges for each pair' if (built or {}).get('retainsPairRegions') else ''))
-    cells+=product_cell(candidate,'candidate',title,'Statistical memberships; '+(candidate or {}).get('identity',''))
+   cells+=product_cell(matches,'matches',title,'Both directions; ≥10% coverage of either sequence'+('; merged residue ranges for each pair' if (built or {}).get('retainsPairRegions') else ''))
+   cells+=product_cell(candidate,'candidate',title,'Statistical memberships; '+(candidate or {}).get('identity',''))
    body.append(f'<tr data-library-pair="{key}"><th scope="row"><span class="download-row-title">{escape(title)}</span><span class="download-row-description">{escape(description)}</span></th><td>{count}</td>{cells}</tr>')
-  index_headers='' if section_id=='cross' else '<th scope="col" data-product="matches">Protein-page index</th><th scope="col" data-product="candidate">Statistical membership index</th>'
-  table='<div class="download-table-scroll" tabindex="0" role="region" aria-label="'+escape(heading)+' downloads"><table class="download-table summary-download-table"><thead><tr><th scope="col">Libraries</th><th scope="col">Records</th><th scope="col" data-product="summary">Coverage summaries</th>'+index_headers+'</tr></thead><tbody>'+''.join(body)+'</tbody></table></div>'
+  product_headers=''.join(f'<th scope="col" data-product="{kind}">{label}</th>' if available[kind] else '<td class="download-empty" aria-hidden="true"></td>' for kind,label in [('summary','Coverage summaries'),('matches','Protein-page index'),('candidate','Statistical membership index')])
+  columns='<colgroup><col class="download-library-col"><col class="download-records-col"><col class="download-product-col"><col class="download-product-col"><col class="download-product-col"></colgroup>'
+  table='<div class="download-table-scroll" tabindex="0" role="region" aria-label="'+escape(heading)+' downloads"><table class="download-table summary-download-table">'+columns+'<thead><tr><th scope="col">Libraries</th><th scope="col">Records</th>'+product_headers+'</tr></thead><tbody>'+''.join(body)+'</tbody></table></div>'
   paired.append('<div class="download-comparison-group"><h3>'+escape(heading)+'</h3>'+table+'</div>')
  if seen!=set(groups):raise ValueError('Unclassified download comparisons: '+str(set(groups)-seen))
  source=source.replace('<!-- paired-downloads -->','\n'.join(paired))
