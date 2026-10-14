@@ -48,8 +48,8 @@
     {
       "path": "mimicrymap/docs/public/downloads.html",
       "source": "mimicrymap/docs/public/downloads.html",
-      "bytes": 1888,
-      "sha256": "799e5426d062708e0f1034aa17e6c2930dacbf8fe12e5adfbebe306c72d32830"
+      "bytes": 1871,
+      "sha256": "feafe008cbbb70335e176d578a31e2e39f06d2f83a522921b55dbf667fdf266e"
     },
     {
       "path": "mimicrymap/docs/public/figure-legends.json",
@@ -120,8 +120,8 @@
     {
       "path": "mimicrymap/docs/public/summary-download-guide.md",
       "source": "mimicrymap/docs/public/summary-download-guide.md",
-      "bytes": 21942,
-      "sha256": "534226dbe820ee031073deed7952edc97982b926f9bb671ff1f39c644ca37add"
+      "bytes": 22015,
+      "sha256": "885cab0d2286ce4dc96a376aa3e56db9c3122002d6dc330e00df18841ef6517f"
     },
     {
       "path": "mimicrymap/docs/public/target-summary.html",
@@ -720,8 +720,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 21942,
-      "sha256": "534226dbe820ee031073deed7952edc97982b926f9bb671ff1f39c644ca37add"
+      "bytes": 22015,
+      "sha256": "885cab0d2286ce4dc96a376aa3e56db9c3122002d6dc330e00df18841ef6517f"
     },
     {
       "path": "mimicrymap/frontend/reproduce/docs/TABLES.md",
@@ -888,8 +888,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/summary-index.cjs",
       "source": "mimicrymap/frontend/reproduce/summary-index.cjs",
-      "bytes": 18150,
-      "sha256": "a41283a581161d51ec5b7b1249e2793cc4657ba493925a9a14d34b9b473878cc"
+      "bytes": 18169,
+      "sha256": "02bee3fd95c81081e4a670c611106ab56f28182b2788b5fadd2d510445dd7234"
     },
     {
       "path": "mimicrymap/frontend/reproduce/summary-package.cjs",
@@ -1044,8 +1044,8 @@
     {
       "path": "mimicrymap/frontend/sources.html",
       "source": "mimicrymap/frontend/sources.html",
-      "bytes": 42323,
-      "sha256": "8c44a17eaee7af65e9440c14198d4defb8848762b4ab7fa09faa87f6551c96d2"
+      "bytes": 42306,
+      "sha256": "234926ecbc5cfdd40a0a4e58c94641cde727f439411b7e836ef2f81d54d341b5"
     },
     {
       "path": "mimicrymap/frontend/startup-shell.css",
@@ -1314,8 +1314,8 @@
     {
       "path": "code/summary-index.cjs",
       "source": "mimicrymap/frontend/reproduce/summary-index.cjs",
-      "bytes": 18150,
-      "sha256": "a41283a581161d51ec5b7b1249e2793cc4657ba493925a9a14d34b9b473878cc"
+      "bytes": 18169,
+      "sha256": "02bee3fd95c81081e4a670c611106ab56f28182b2788b5fadd2d510445dd7234"
     },
     {
       "path": "code/pair-regions.cjs",
@@ -1362,8 +1362,8 @@
     {
       "path": "docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 21942,
-      "sha256": "534226dbe820ee031073deed7952edc97982b926f9bb671ff1f39c644ca37add"
+      "bytes": 22015,
+      "sha256": "885cab0d2286ce4dc96a376aa3e56db9c3122002d6dc330e00df18841ef6517f"
     }
   ]
 }

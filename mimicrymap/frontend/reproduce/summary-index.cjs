@@ -1,5 +1,6 @@
 'use strict';
-// Both indexes are derived from verified CSV residue unions. No matcher is used.
+// Both indexes derive from the verified CSV package and its coverage policy.
+// No matcher is used.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {DatabaseSync}=require('node:sqlite'),{deflateSync}=require('node:zlib');
 const pkg=require('./summary-package.cjs'),coverage=require('./residue-coverage.js'),regions=require('./pair-regions.cjs');
