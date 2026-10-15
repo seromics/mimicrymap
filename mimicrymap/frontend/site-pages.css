@@ -115,11 +115,11 @@ body:has(>.site-header)::after{content:"";display:block;position:relative;z-inde
 .summary-download-table{table-layout:fixed;}
 .summary-download-table .download-library-col{width:32%;}
 .summary-download-table .download-records-col{width:14%;}
-.summary-download-table .download-product-col{width:18%;}
+.summary-download-table .download-product-col{width:27%;}
 .download-comparison-group{margin-top:2rem;}
 .download-comparison-group h3,.download-advanced>summary{font-size:1rem;font-weight:650;margin:0 0 .6rem;color:var(--mm-ink);}
 .download-advanced>summary{cursor:pointer;padding:.7rem 0;}
-.download-product-guide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin:1.4rem 0;}
+.download-product-guide{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin:1.4rem 0;}
 .download-product-guide dt{font-size:.85rem;font-weight:650;color:var(--mm-ink);}
 .download-product-guide dd{margin:.35rem 0 0;font-size:.8rem;line-height:1.6;color:var(--mm-muted);}
 .download-product-note{display:block;margin-top:.4rem;color:var(--mm-muted);font-size:.7rem;line-height:1.5;}

@@ -1,6 +1,6 @@
 'use strict';
-// Portable summary contract. CSV owns coverage/ranges; sidecars own stable
-// record identities and list order. No matching or database is needed to read it.
+// Internal verified compiler inputs. These files are removed after SQLite is built;
+// general-use CSV downloads contain directional tables, input FASTAs and a README.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const readline=require('node:readline');
 const SCHEMA='mimicrymap.summary-package/1';

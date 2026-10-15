@@ -2,11 +2,10 @@
  <div class="download-section-heading"><h2 id="summaryLibraryTitle">Canonical Sequence Maps and Research Downloads</h2>
  <p>Start with canonical protein maps: reference-to-reference and assay-to-reference comparisons. Direct cross-assay summaries are available below for research. MimicryMap calculates full sequence maps on demand.</p></div>
  <dl class="download-product-guide">
- <div><dt>Coverage summaries</dt><dd>Portable CSVs of record pairs, coverage and matched ranges, packaged together for both directions.</dd></div>
- <div><dt>Protein-page index</dt><dd>Built from the range-enabled CSVs for fast retrieval of a protein’s matching records and sequence ribbons in either direction.</dd></div>
- <div><dt>Statistical membership index</dt><dd>Derived from the summary CSV and its record metadata for sample and group analyses. SeroMap applies identity and coverage cutoffs, then joins set memberships to antibody measurements.</dd></div>
+ <div><dt>General-Use Summaries (.csv)</dt><dd>Directional CSVs of record pairs, coverage and matched ranges, with the original input FASTAs and a short README.</dd></div>
+ <div><dt>SeroMap Index (.sqlite)</dt><dd>One database for SeroMap protein-page ribbons and statistical memberships in both directions, built from the same completed comparison.</dd></div>
  </dl>
- <p class="download-format-note">The two indexes package sequence evidence for different queries; neither contains antibody measurements or enrichment results. For SeroMap, install libraries through <strong>Workspace → Reference libraries</strong>. For offline installation, extract each ZIP into its own folder, then choose <strong>Install from folder</strong>. Membership indexes require the standard references. Coverage CSVs can be opened directly.</p>
+ <p class="download-format-note">Mapping indexes contain sequence evidence; antibody measurements and enrichment results are calculated separately. Install through <strong>Workspace → Reference libraries</strong>, or extract a ZIP and choose <strong>Install from folder</strong>. Installation prepares local lookup indexes without repeating sequence matching. Coverage CSVs can be opened directly.</p>
  <!-- paired-downloads -->
  <p class="download-row-description">Download sizes are compressed. Extracted or installed sizes appear below each link. Statistical memberships count each assay antigen once per reference set. Supported identity thresholds are shown for each index. Updated <!-- summary-updated -->.</p>
 </section>

@@ -65,7 +65,8 @@ Linux and macOS. Hosted CI does not claim GPU validation.
 ## Private staging
 
 `npm run package` creates a research ZIP and SHA-256 file under ignored `dist/`
-from the tracked repository contents, excluding the bulky worked-example ZIPs
+from the tracked repository contents and the verified source-promotion manifest,
+including newly promoted modules before a commit, excluding the bulky worked-example ZIPs
 already linked from the README. The source and figures stay in the repository.
 No atlas payloads, studies, caches, local paths, credentials or CUDA environment
 are included. Review the archive inventory before attaching a private draft.

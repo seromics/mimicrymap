@@ -1,7 +1,9 @@
 'use strict';
 const {inflateSync}=require('node:zlib');
 const regions=require('./pair-regions.cjs');
+const unified=require('../frontend/reproduce/unified-mapping.cjs');
 function overview(db,side,id,identity){
+ if(unified.isUnified(db))return unified.overview(db,side,id,identity);
  if(!db.prepare("SELECT 1 FROM sqlite_master WHERE name='region_lists'").get())return {};
  const row=db.prepare('SELECT reference_ranges FROM region_lists WHERE side=? AND id=? AND identity=?').get(side,id,identity);
  return row?{reference_ranges:JSON.parse(row.reference_ranges)}:{};
@@ -9,6 +11,7 @@ function overview(db,side,id,identity){
 // Indexed by source record and threshold. Only the requested neighbour list is
 // decompressed; full databases and window-position data never enter the page.
 function rows(db,side,id,identity,{offset=0,limit=Infinity}={}){
+ if(unified.isUnified(db))return unified.rows(db,side,id,identity,{offset,limit});
  const item=db.prepare('SELECT count,payload FROM neighbours WHERE side=? AND id=? AND identity=?').get(side,id,identity);
  if(!item)return [];
  const data=inflateSync(item.payload);

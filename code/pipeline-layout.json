@@ -1,9 +1,21 @@
 {
   "schema": "mimicryone/pipeline-package/1",
   "files": {
-    "summary-package.cjs": {"path":"code/summary-package.cjs","source":"/reproduce/summary-package.cjs","description":"Portable CSV identities, checksums and input roster."},
-    "summary-index.cjs": {"path":"code/summary-index.cjs","source":"/reproduce/summary-index.cjs","description":"Build statistical memberships and protein-page indexes from CSV without sequence matching."},
-    "pair-regions.cjs": {"path":"code/pair-regions.cjs","source":"/reproduce/pair-regions.cjs","description":"Shared encoding of independent residue unions."},
+    "summary-package.cjs": {
+      "path": "code/summary-package.cjs",
+      "source": "/reproduce/summary-package.cjs",
+      "description": "Portable CSV identities, checksums and input roster."
+    },
+    "summary-index.cjs": {
+      "path": "code/summary-index.cjs",
+      "source": "/reproduce/summary-index.cjs",
+      "description": "Build one mapping index for protein pages and statistical memberships from CSV without sequence matching."
+    },
+    "pair-regions.cjs": {
+      "path": "code/pair-regions.cjs",
+      "source": "/reproduce/pair-regions.cjs",
+      "description": "Shared encoding of independent residue unions."
+    },
     "export-core.js": {
       "path": "code/export-core.js",
       "description": "The same CSV and table implementation used by the site.",
@@ -214,6 +226,11 @@
       "path": "code/plot-palette.cjs",
       "description": "Shared figure palette definitions; exported settings retain the selected colors.",
       "source": "/plot-palette.js"
+    },
+    "unified-mapping.cjs": {
+      "path": "code/unified-mapping.cjs",
+      "source": "/reproduce/unified-mapping.cjs",
+      "description": "Single mapping schema, bidirectional range queries and local lookup preparation."
     }
   }
 }

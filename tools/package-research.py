@@ -1,4 +1,4 @@
-"""Package tracked research source; never include local studies or build outputs."""
+"""Package tracked and explicitly promoted source, never local data or outputs."""
 from pathlib import Path
 import hashlib
 import json
@@ -8,6 +8,15 @@ import zipfile
 root = Path(__file__).resolve().parents[1]
 version = json.loads((root / 'package.json').read_text(encoding='utf-8'))['version']
 names = subprocess.check_output(['git', 'ls-files', '-z'], cwd=root).decode().split('\0')
+manifest = json.loads((root / 'source-manifest.json').read_text(encoding='utf-8'))
+for item in manifest['files']:
+    file = (root / item['path']).resolve()
+    if not file.is_relative_to(root.resolve()) or not file.is_file():
+        raise SystemExit('Invalid promoted source path: ' + item['path'])
+    if hashlib.sha256(file.read_bytes()).hexdigest() != item['sha256']:
+        raise SystemExit('Promoted source changed: ' + item['path'])
+    names.append(item['path'])
+names = sorted(set(names))
 names = [n for n in names if n and not n.startswith('.github/') and not (n.startswith('examples/') and n.endswith('.zip'))]
 blocked = [n for n in names if n.endswith(('.sqlite', '.db', '.npz', '.npy', '.sero')) or n.startswith(('outputs/', 'dist/', '.venv'))]
 if blocked:

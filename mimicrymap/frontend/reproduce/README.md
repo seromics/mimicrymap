@@ -47,13 +47,9 @@ Each target has a folder under `outputs/targets/` containing:
 
 `outputs/library_summary.csv` combines the summary rows for all supplied targets.
 
-The output also includes `summary.json`, complete record metadata, stable pair keys and the original FASTAs. These form a reusable summary package: both the statistical membership index and the protein-page index in `indexes/` are derived from it, without another sequence search. Import the package folder into SeroMap with **Import summary / comparison**, or rebuild the indexes locally with Node.js 24:
+The completed mapping database is in `indexes/`. Its SQLite file stores the complete record identities, aliases, organism metadata, matching pairs, independent ranges and statistical memberships. Import that directory into SeroMap with **Import Mapping Database**. No second sequence search or CSV reconstruction is needed.
 
-```sh
-node run.cjs --from-summary outputs rebuilt-indexes
-```
-
-The destination must be new. The manifest records supported identity thresholds and the minimum coverage floor (10% on either sequence). Full window alignments cannot be reconstructed from independent residue unions. Keep the metadata and FASTAs with the CSV when sharing an importable package; the CSV remains readable on its own.
+The CSVs are standalone tables. When sharing summary downloads, package one CSV per direction, the original input FASTAs and a short README; keep the SQLite installation package separate. Supported identity thresholds and the 10%-either-side coverage floor are declared in the database's configuration. Full window alignments cannot be reconstructed from independent residue unions.
 
 `run.json` summarizes the settings, counts, coverage, and timings. The inputs and their record metadata are retained once per run. Figures remain available through the site's separate Figure bundle.
 
@@ -72,7 +68,7 @@ Rerunning refreshes the managed output folder after completion. Choose another `
 <tr><td><strong>Summary CSV</strong> in the player</td><td>One target at the selected identity threshold and comparison scope, with available target annotations</td></tr>
 <tr><td><strong>Current Comparison</strong></td><td>This runnable package with the selected target, complete comparison population, settings, and available identity, mapping and annotation metadata</td></tr>
 <tr><td><strong>Plain pipeline ZIP</strong></td><td>The same code and guides with editable example inputs</td></tr>
-<tr><td><strong>Mimicry coverage summaries</strong> on Data &amp; Licenses</td><td>Reference-population and assay-library comparisons, with Target FASTA and Comparison FASTA beside each CSV</td></tr>
+<tr><td><strong>Mimicry coverage summaries</strong> on Data &amp; Licenses</td><td>Paired CSV summary ZIPs and separate SeroMap SQLite ZIPs; reference FASTAs are available separately</td></tr>
 <tr><td><strong>Selected virus / All viruses</strong> on the atlas</td><td>Both human-to-virus and virus-to-human directions for the selected reference proteome or the pooled 120-proteome atlas</td></tr>
 </tbody>
 </table>

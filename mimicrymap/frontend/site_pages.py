@@ -6,7 +6,7 @@ from public_downloads import public_url
 ROOT=Path(__file__).resolve().parents[1]
 PAGES=[('calculations','scienceRecord','How Mimicry Results Are Calculated',['reproduce/residue-coverage.js','method-figure.js']),
        ('use-results','hepacamWorkedExample','How to Use Mimicry Results',['deferred-illustrations.js']),
-       ('pan-viral','atlasScale','Pan-Viral Atlas of Molecular Mimicry',['reproduce/ranking.js','reproduce/context-score.js','reproduce/residue-coverage.js','mimicryone-identity.js','reproduce/export-core.js','atlas-figures.js','figure-export.js','atlas-pairs.js']),
+       ('pan-viral','atlasScale','Pan-Viral Atlas of Molecular Mimicry',['reproduce/ranking.js','reproduce/context-score.js','reproduce/residue-coverage.js','reproduce/reference-links.js','mimicryone-identity.js','reproduce/export-core.js','atlas-figures.js','figure-export.js','atlas-pairs.js']),
        ('sources','dataSources','Data Sources, Methods, and Licenses',['release-provenance.js','source-licenses.js'])]
 DOC_SCRIPTS=['method-figure.js','atlas-figures.js','deferred-illustrations.js','source-licenses.js']
 
@@ -39,7 +39,7 @@ def paginate(rendered,section_span,check=False):
 <html lang="en" class="dark"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>'''+escape(title)+''' | MimicryMap</title>
-<script src="/site-theme.js"></script><script src="/page-links.js" defer></script>
+<script src="/site-theme.js"></script><script src="/plot-palette.js"></script><script src="/plot-palette-native.js"></script><script src="/page-links.js" defer></script>
 <link rel="stylesheet" href="/mimicryone-fonts.css"><link rel="stylesheet" href="/site-base.css">
 <link rel="stylesheet" href="/mimicryone.css"><link rel="stylesheet" href="/atlas-figures.css">
 <link rel="stylesheet" href="/mimicryone-mobile.css"><link rel="stylesheet" href="/mimicryone-theme.css">
@@ -53,6 +53,8 @@ def paginate(rendered,section_span,check=False):
             pair_summary=catalog['comprehensive_summaries']['rows']['human_swissprot_vs_atlas_120_viruses']['csv']
             pair_manifest_path=ROOT/'frontend/atlas-pairs-manifest.json'
             pair_manifest=json.loads(pair_manifest_path.read_text(encoding='utf-8')) if pair_manifest_path.exists() else {}
+            if pair_manifest.get('source_sha256')!=pair_summary['sha256']:
+                raise ValueError('Pan-viral pair data is stale; rebuild tools/build_pan_viral_pairs.py from the current summary before publishing pages')
             pair_config={'url':pair_manifest.get('url'),'source_sha256':pair_summary['sha256'],'summary_url':public_url(pair_summary['url']),'source_summary_url':pair_manifest['summary_url']}
             page+='<script>window.MimicryPanViralPairs='+json.dumps(pair_config).replace('<','\\u003c')+';</script>\n'
             page+='<script>window.MimicryPublicSequences='+json.dumps(sequences).replace('<','\\u003c')+';</script>\n'
@@ -60,8 +62,12 @@ def paginate(rendered,section_span,check=False):
                 page=page.replace('/source-downloads/mimicry-summaries/'+pair_key+'.csv',public_url(catalog['comprehensive_summaries']['rows'][pair_key]['csv']['url']))
             selected=catalog.get('selected_viruses')
             if selected:
-                compact={'release_fingerprint':selected['release_fingerprint'],'proteomes':{v['slug']:{k:public_url(v[k]['url']) for k in ('human_to_virus','virus_to_human')} for v in selected['proteomes']}}
+                if selected.get('summary_schema')!='mimicryone/native-summary/7' or not all(v.get('summary',{}).get('pairRegions') for v in selected['proteomes']):
+                    raise ValueError('Build and stage the range-enabled selected-virus ZIPs before generating atlas pages')
+                compact={'release_fingerprint':selected['release_fingerprint'],'proteomes':{v['slug']:{'url':public_url(v['summary']['url']),'bytes':v['summary']['bytes'],'module':'summary-selected-'+v['slug'].replace('_','-')} for v in selected['proteomes']}}
                 page+='<script>window.MimicrySelectedVirusSummaries='+json.dumps(compact,separators=(',',':')).replace('<','\\u003c')+';</script>\n'
+                archive=catalog['comprehensive_summaries']['rows']['human_swissprot_vs_atlas_120_viruses']['archives']['summary']
+                page=page.replace('id="atlasAllSummaryZip"', 'id="atlasAllSummaryZip" href="'+escape(public_url(archive['url']))+'" data-reference-module="'+escape(archive['module'])+'" title="Both Directions · General-Use Summaries (.csv)"')
         page+='\n'.join('<script src="/'+script+'"></script>' for script in scripts)+'\n</body></html>\n'
         outputs[slug+'.html']=page
     home=rendered

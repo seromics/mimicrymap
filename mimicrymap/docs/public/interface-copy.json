@@ -606,7 +606,7 @@
       "key": "atlas-figures.human-records-and-the-single.3077515",
       "file": "frontend/atlas-figures.js",
       "use": "Display metadata field",
-      "text": "Human target–viral parent Pairs Ranked by target Residue Coverage · {{PROTEOME}}",
+      "text": "Human Target–Viral Parent Pairs Ranked by Target Residue Coverage · {{PROTEOME}}",
       "placeholders": {
         "PROTEOME": {
           "expression": "PROTEOME"
@@ -4146,14 +4146,14 @@
       "key": "atlas-figures.sequence-download-label",
       "file": "frontend/atlas-figures.js",
       "use": "Viral proteome sequence download",
-      "text": "Selected virus FASTA",
+      "text": "Selected Virus FASTA",
       "placeholders": {}
     },
     {
       "key": "atlas-figures.sequence-download-tooltip",
       "file": "frontend/atlas-figures.js",
       "use": "Viral proteome sequence download",
-      "text": "The {{proteins}} {{label}} proteins these figures were computed from, {{residues}} residues, as FASTA from release {{release}}.",
+      "text": "The {{proteins}} {{label}} proteins used in these figures, {{residues}} residues. Source: UniProtKB/Swiss-Prot.",
       "placeholders": {
         "proteins": {
           "expression": "nf(staged.proteins)"
@@ -4163,9 +4163,6 @@
         },
         "residues": {
           "expression": "nf(staged.residues)"
-        },
-        "release": {
-          "expression": "SEQUENCES.release_id"
         }
       }
     },
@@ -5089,21 +5086,21 @@
       "key": "atlas-figures.human-sequence-download-label",
       "file": "frontend/atlas-figures.js",
       "use": "Atlas sequence downloads",
-      "text": "Human Swiss-Prot FASTA",
+      "text": "Canonical Human Proteins FASTA",
       "placeholders": {}
     },
     {
       "key": "atlas-figures.all-sequences-download-label",
       "file": "frontend/atlas-figures.js",
       "use": "Atlas sequence downloads",
-      "text": "All viruses FASTA",
+      "text": "All Viruses FASTA",
       "placeholders": {}
     },
     {
       "key": "atlas-figures.human-sequence-download-tooltip",
       "file": "frontend/atlas-figures.js",
       "use": "Atlas sequence downloads",
-      "text": "All {{records}} human Swiss-Prot records, including short proteins excluded from plots; {{residues}} residues. Uses public accession, gene and protein-description headers.",
+      "text": "All {{records}} canonical human protein records, including short proteins excluded from plots; {{residues}} residues. Source: UniProtKB/Swiss-Prot. Uses public accession, gene and protein-description headers.",
       "placeholders": {
         "records": {
           "expression": "nf(publicHuman.records)"

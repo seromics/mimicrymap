@@ -95,6 +95,20 @@
   var FLEET = null, PROTEOME_SLUG = "";
   var PROTEOME = "Epstein-Barr virus";
   var DEFAULT_SLUG = "epstein_barr_virus";
+  function humanReference(accession) {
+    return {library:"human_swissprot", source:accession};
+  }
+  function viralReference(accession) {
+    var proteome = FLEET && FLEET.proteomes.find(function (v) { return v.slug === (PROTEOME_SLUG || DEFAULT_SLUG); });
+    return {library:"atlas_120_viruses", source:accession, organism:proteome && proteome.organism};
+  }
+  // Older figure payloads name the closest partner by display label. Link it
+  // only when that label resolves uniquely within the recorded proteome.
+  function closestReference(row) {
+    var label = closestLabel(row);
+    var matches = SURFACES ? SURFACES.sources.filter(function (r) { return (r.gene || r.accession || String(r.antigen_id)) === label; }) : [];
+    return matches.length === 1 ? viralReference(matches[0].accession) : null;
+  }
   var INDEX_URL = "/data/collection-coverage/index.json";
   var COVERAGE_URL = "/data/collection-coverage/" + DEFAULT_SLUG + ".json.gz";
   var SURFACES_URL = "/data/collection-coverage/" + DEFAULT_SLUG + ".surfaces.json.gz";
@@ -107,6 +121,7 @@
   var PROTEIN_INDEX = null, PROTEIN_INDEX_STATE = "loading";
   var PROTEIN_SOURCE = null, PROTEIN_SURFACE = null, PROTEIN_SURFACE_STATE = "";
   var PROTEOME_REQUEST = 0, SOURCE_REQUEST = 0;
+  var PROTEOME_ABORT = null, SOURCE_ABORT = null;
   /* Every human record's closest viral partner, pooled coverage and partner count, staged for the
      whole library rather than the few hundred the served payload retains. Loaded only when an
      export asks for it: the figure draws a ranked top slice and most readers never need the rest,
@@ -692,11 +707,10 @@ legend: function () {
     };
   }
 
-  /* ---- payload loading ----
-     Both artifacts are release-bound and are served pre-gzipped, so the browser decompresses
-     them in the network layer and this code only ever sees JSON. */
-  function loadPayload(url, onDone) {
-    return fetch(url, { cache: "no-cache" })
+  /* Collection payloads use .gz paths; the host supplies decoded JSON to fetch,
+     whether decompression occurs at the proxy or in the browser network layer. */
+  function loadPayload(url, onDone, signal) {
+    return fetch(url, { cache: "no-cache", signal: signal })
       .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error((/*@copy atlas-figures.http.7559a77*/`HTTP ${r.status}`/*@endcopy*/))); })
       .then(function (d) { onDone(d, "ready"); })
       .catch(function () { onDone(null, "missing"); });
@@ -860,7 +874,7 @@ legend: function () {
           ALL_RECORDS = ok ? d : null;
           ALL_RECORDS_PENDING = ok ? null : false;
           resolve(ALL_RECORDS);
-        });
+        }, PROTEOME_ABORT && PROTEOME_ABORT.signal);
     });
     return ALL_RECORDS_PENDING;
   }
@@ -1336,10 +1350,23 @@ legend: function () {
         stroke: C.grid, "stroke-width": 1, opacity: 0.7 }));
       var label = txFit(12, y, o.label(r), GUT - 8, { fill: C.ink, weight: 500 });
       if (o.tooltip && o.tooltip(r)) label.setAttribute("data-tooltip", o.tooltip(r));
-      s.appendChild(label);
+      var labelHref = o.href && o.href(r);
+      if (labelHref) {
+        var labelLink = el("a", {href:labelHref, tabindex:"0"});
+        labelLink.style.cursor = "pointer"; label.style.textDecoration = "underline";
+        labelLink.appendChild(label); s.appendChild(labelLink);
+      } else s.appendChild(label);
       var cx = 12 + GUT;
       o.cols.forEach(function (c) {
         var text = c.f(r);
+        function appendCell(node) {
+          var href = c.href && c.href(r);
+          if (!href) { s.appendChild(node); return; }
+          var link = el("a", {href:href, tabindex:"0"});
+          link.style.cursor = "pointer";
+          node.style.textDecoration = "underline";
+          link.appendChild(node); s.appendChild(link);
+        }
         if (typeof c.bar === "function") {
           /* Bar first, then the number over it where the bar is wide enough to hold it and
              just past its end where it is not. Small values keep a readable number instead of
@@ -1359,7 +1386,7 @@ legend: function () {
           }
           var glyphs = String(text).length;
           var inside = width >= glyphs * 5.2 + 8;
-          s.appendChild(tx(inside ? bx + width - 4 : bx + width + 3, y, text,
+          appendCell(tx(inside ? bx + width - 4 : bx + width + 3, y, text,
             { size: T.tick, anchor: inside ? "end" : "start",
               fill: C.ink, weight: 500 }));
         } else {
@@ -1374,7 +1401,7 @@ legend: function () {
             cell.setAttribute("aria-label", c.tooltip(r));
             cell.appendChild(el("title", {}, c.tooltip(r)));
           }
-          s.appendChild(cell);
+          appendCell(cell);
         }
         cx += c.w;
       });
@@ -1424,6 +1451,7 @@ Length`/*@endcopy*/), w: 96, f: function (r) { return nf(r.len); } }]
           SURFACES.eligible_records, function (r, key) { return r.byFloor[key] || 0; })),
       rows: rows,
       label: function (r) { return r.gene; },
+      href: function (r) { return window.MimicryReferenceLinks.protein(viralReference(r.accession)); },
       tooltip: function (r) { return r.name ? r.gene + " · " + r.name : null; },
     });
   }
@@ -1537,18 +1565,22 @@ Length`/*@endcopy*/), w: 96, f: function (r) { return nf(r.len); } }]
         || (b.len || 0) - (a.len || 0);
     }).slice(0, SOURCE_ROWS_DRAWN);
     return styledTable(C, {
-      title: (/*@copy atlas-figures.human-records-and-the-single.3077515*/`Human target–viral parent Pairs Ranked by target Residue Coverage · ${PROTEOME}`/*@endcopy*/),
+      title: (/*@copy atlas-figures.human-records-and-the-single.3077515*/`Human Target–Viral Parent Pairs Ranked by Target Residue Coverage · ${PROTEOME}`/*@endcopy*/),
       heading: plotTitle(),
       unit: (/*@copy atlas-figures.human-target-coverage-label*/`Human Target Coverage`/*@endcopy*/) + HEAD_DIV + "0–100",
       gutter: 88, gutterTitle: (/*@copy atlas-figures.human-target-column*/`Human Target`/*@endcopy*/),
       empty: "No Human Target of " + MIN_LENGTH_AA + " AA or more is covered at " + rankLabel + ".",
-      cols: [{ t: (/*@copy atlas-figures.viral-parent-column*/`Viral Parent`/*@endcopy*/), w: 96, f: function (r) { return closestLabel(r); } },
+      cols: [{ t: (/*@copy atlas-figures.viral-parent-column*/`Viral Parent`/*@endcopy*/), w: 96, f: function (r) { return closestLabel(r); }, href: function (r) { return window.MimicryReferenceLinks.protein(closestReference(r)); } },
         { t: (/*@copy atlas-figures.human-target-length-column*/`Human Target
 Length`/*@endcopy*/), w: 104, f: function (r) { return nf(r.len); } }]
         .concat(floorColumns(44, function (r, key) { return pct(closestCovered(r, key)) + "%"; },
-          100, function (r, key) { return closestCovered(r, key) || 0; })),
+          100, function (r, key) { return closestCovered(r, key) || 0; }).map(function (c, i) {
+            c.href = function (r) { return window.MimicryReferenceLinks.comparison(humanReference(r.accession), closestReference(r), TRACKS[i].floor); };
+            return c;
+          })),
       rows: rows,
       label: function (r) { return r.gene; },
+      href: function (r) { return window.MimicryReferenceLinks.protein(humanReference(r.accession)); },
       tooltip: function (r) {
         return (r.name ? r.gene + " · " + r.name : r.gene) + " — " + closestLabel(r)
           + " covers " + pct(closestCovered(r, rank)) + "% of it at " + rankLabel
@@ -2735,6 +2767,11 @@ legend: function () {
   function selectProteome(slug) {
     var entry = proteomeEntry(slug), request = ++PROTEOME_REQUEST;
     SOURCE_REQUEST++;
+    // Release obsolete downloads and body decoding as well as their view updates.
+    if (PROTEOME_ABORT) PROTEOME_ABORT.abort();
+    if (SOURCE_ABORT) SOURCE_ABORT.abort();
+    PROTEOME_ABORT = new AbortController();
+    SOURCE_ABORT = null;
     PROTEOME_SLUG = slug;
     PROTEOME = (entry && entry.label) || PROTEOME;
     COVERAGE_URL = "/data/collection-coverage/" + slug + ".json.gz";
@@ -2763,14 +2800,14 @@ legend: function () {
       COVERAGE = ok ? d : null;
       COVERAGE_STATE = ok ? state : "missing";
       render();
-    });
+    }, PROTEOME_ABORT.signal);
     loadPayload(SURFACES_URL, function (d, state) {
       if (request !== PROTEOME_REQUEST || wanted !== PROTEOME_SLUG) return;
       var ok = d && Array.isArray(d.sources) && Array.isArray(d.ladder);
       SURFACES = ok ? d : null;
       SURFACES_STATE = ok ? state : "missing";
       render();
-    });
+    }, PROTEOME_ABORT.signal);
     /* Load the parent roster first. Fetch a parent's residue-coverage file only when
        selected, rather than loading all per-parent files with the page. */
     loadPayload(PROTEIN_INDEX_URL, function (d, state) {
@@ -2780,7 +2817,7 @@ legend: function () {
       PROTEIN_INDEX_STATE = ok ? state : "missing";
       renderCollection();
       render();
-    });
+    }, PROTEOME_ABORT.signal);
   }
 
   /* Choose a viral protein, or null for the pooled proteome. The figure redraws immediately in
@@ -2788,6 +2825,8 @@ legend: function () {
      leaves the previous protein's heights sitting under a new protein's name. */
   function selectProteinSource(index) {
     var request = ++SOURCE_REQUEST;
+    if (SOURCE_ABORT) SOURCE_ABORT.abort();
+    SOURCE_ABORT = null;
     if (index == null || !PROTEIN_INDEX) {
       PROTEIN_SOURCE = null; PROTEIN_SURFACE = null; PROTEIN_SURFACE_STATE = "";
       render();
@@ -2795,6 +2834,7 @@ legend: function () {
     }
     var source = PROTEIN_INDEX.sources[index];
     if (!source) return;
+    SOURCE_ABORT = new AbortController();
     PROTEIN_SOURCE = index;
     PROTEIN_SURFACE = null;
     PROTEIN_SURFACE_STATE = "loading";
@@ -2809,7 +2849,7 @@ legend: function () {
            mismatch, not a slow load, and must not be drawn. */
         PROTEIN_SURFACE_STATE = covered ? "ready" : "missing";
         render();
-      });
+      }, SOURCE_ABORT.signal);
   }
 
   /* The kicker names the proteome on screen. The full organism string, strain and all, is the
@@ -2825,14 +2865,16 @@ legend: function () {
       var downloads = catalog && FLEET && catalog.release_fingerprint === FLEET.release_fingerprint
         && catalog.proteomes[selectedSlug];
       coverageHost.hidden = !downloads;
-      [["atlasHumanToSelectedVirus", "human_to_virus"], ["atlasSelectedVirusToHuman", "virus_to_human"]].forEach(function (pair) {
-        var anchor = document.getElementById(pair[0]);
-        if (!anchor) return;
-        if (!downloads) { anchor.removeAttribute("href"); anchor.removeAttribute("download"); return; }
-        anchor.href = downloads[pair[1]];
-        anchor.setAttribute("download", downloads[pair[1]].split("/").pop());
-        anchor.title = entry.organism;
-      });
+      var anchor = document.getElementById("atlasSelectedSummaryZip");
+      if (anchor) {
+        if (!downloads) { anchor.removeAttribute("href"); anchor.removeAttribute("data-reference-module"); }
+        else {
+          anchor.href = downloads.url;
+          anchor.setAttribute("download", downloads.url.split("/").pop());
+          anchor.setAttribute("data-reference-module", downloads.module);
+          anchor.title = entry.organism + " · Both Directions · General-Use Summaries (.csv) · " + (downloads.bytes / 1e6).toFixed(1) + " MB";
+        }
+      }
     }
     /* Keep selected-virus links dynamic inside the authored atlas download area. */
     var selection = document.getElementById("atlasSequenceDownloadsSlot") || document.querySelector(".atlas-live-selection");
@@ -2845,16 +2887,16 @@ legend: function () {
       var anchor = document.createElement("a");
       anchor.id = "atlasSequenceLink";
       anchor.setAttribute("download", "");
-      anchor.textContent = (/*@copy atlas-figures.sequence-download-label*/`Selected virus FASTA`/*@endcopy*/);
+      anchor.textContent = (/*@copy atlas-figures.sequence-download-label*/`Selected Virus FASTA`/*@endcopy*/);
       host.appendChild(anchor);
       var humanLink = document.createElement("a");
       humanLink.id = "atlasHumanSequenceLink";
-      humanLink.textContent = (/*@copy atlas-figures.human-sequence-download-label*/`Human Swiss-Prot FASTA`/*@endcopy*/);
+      humanLink.textContent = (/*@copy atlas-figures.human-sequence-download-label*/`Canonical Human Proteins FASTA`/*@endcopy*/);
       humanLink.hidden = true;
       host.appendChild(humanLink);
       var allLink = document.createElement("a");
       allLink.id = "atlasAllSequencesLink";
-      allLink.textContent = (/*@copy atlas-figures.all-sequences-download-label*/`All viruses FASTA`/*@endcopy*/);
+      allLink.textContent = (/*@copy atlas-figures.all-sequences-download-label*/`All Viruses FASTA`/*@endcopy*/);
       allLink.hidden = true;
       host.appendChild(allLink);
       selection.appendChild(host);
@@ -2884,14 +2926,14 @@ legend: function () {
     } else { humanLink.hidden = true; humanLink.removeAttribute("href"); humanLink.removeAttribute("download"); }
 
     setBundle(allLink, bundles && bundles.all_viruses, "all_viruses.fasta");
-    if (publicHuman) humanLink.dataset.tooltip = (/*@copy atlas-figures.human-sequence-download-tooltip*/`All ${nf(publicHuman.records)} human Swiss-Prot records, including short proteins excluded from plots; ${nf(publicHuman.residues)} residues. Uses public accession, gene and protein-description headers.`/*@endcopy*/);
+    if (publicHuman) humanLink.dataset.tooltip = (/*@copy atlas-figures.human-sequence-download-tooltip*/`All ${nf(publicHuman.records)} canonical human protein records, including short proteins excluded from plots; ${nf(publicHuman.residues)} residues. Source: UniProtKB/Swiss-Prot. Uses public accession, gene and protein-description headers.`/*@endcopy*/);
     if (bundles && bundles.all_viruses) allLink.dataset.tooltip = (/*@copy atlas-figures.all-sequences-download-tooltip*/`All ${nf(bundles.all_viruses.proteomes)} viral proteomes in this atlas: ${nf(bundles.all_viruses.records)} protein records and ${nf(bundles.all_viruses.residues)} residues in one FASTA. Preserves each proteome's records and headers, including shared sequences.`/*@endcopy*/);
     link.hidden = !staged;
     host.hidden = !staged && humanLink.hidden && allLink.hidden;
     if (!staged) { link.removeAttribute("href"); return; }
     link.href = "/data/collection-sequences/" + staged.file;
     link.setAttribute("download", slug + "_source_proteins.fasta");
-    link.dataset.tooltip = (/*@copy atlas-figures.sequence-download-tooltip*/`The ${nf(staged.proteins)} ${staged.label} proteins these figures were computed from, ${nf(staged.residues)} residues, as FASTA from release ${SEQUENCES.release_id}.`/*@endcopy*/);
+    link.dataset.tooltip = (/*@copy atlas-figures.sequence-download-tooltip*/`The ${nf(staged.proteins)} ${staged.label} proteins used in these figures, ${nf(staged.residues)} residues. Source: UniProtKB/Swiss-Prot.`/*@endcopy*/);
   }
 
   function syncProteomeHeading(entry) {

@@ -14,7 +14,7 @@ export function lookupStatus(snapshot, { target, parent, floor = 7, targetSubset
       ? `Full lookup saved at ≥${full.floor}/9 for ${Number(full.targets || targetLibrary.records || 0).toLocaleString('en-US')} Swiss-Prot targets. Exact sequence matches reopen without rescanning; additional human records calculate on demand.`
       : `Full lookup saved at ≥${full.floor}/9. Opens complete sequence maps at ${floor}/9 without rescanning.`, kind: 'full' }
     : index
-      ? { suffix: ' · index', title: `Candidate index saved at ≥${index.floor}/9. Coverage and summary tables are ready; complete sequence maps calculate on demand.`, kind: 'index' }
+      ? { suffix: ' · index', title: `SeroMap index saved at ≥${index.floor}/9. Mapping ranges, summary tables and statistical memberships are ready; complete sequence maps calculate on demand.`, kind: 'index' }
       : { suffix: '', title: 'No complete lookup saved for this selection. Sequences can be compared on demand.', kind: 'none' };
 }
 

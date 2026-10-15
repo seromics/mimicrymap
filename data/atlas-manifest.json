@@ -8,326 +8,155 @@
     {
       "file": "source-human-swissprot.zip",
       "title": "Human proteins",
-      "bytes": 108064120,
-      "uncompressedBytes": 277533929,
-      "sha256": "4b0a87b05245e47854a824f24337b3153875a973e5b3936b6629ab882a708918",
+      "bytes": 97088905,
+      "uncompressedBytes": 227041353,
+      "sha256": "8992cfe6584130674d6c9da364cbb979735e1e893a8119d804e822a00dc2c528",
       "url": null,
       "kind": "coverage-summaries"
-    },
-    {
-      "file": "human_swissprot--human_swissprot-match-index.zip",
-      "title": "Human proteins · within library · record matches",
-      "bytes": 107382962,
-      "uncompressedBytes": 152630323,
-      "sha256": "a426db5b313682bd281918e3e9e3336f63a5437ff102e2bb5a97dfe4faf3719b",
-      "url": null,
-      "kind": "record-match-index"
     },
     {
       "file": "source-canonical-exposure-human-swissprot.zip",
       "title": "Canonical exposures ↔ Human proteins",
-      "bytes": 75171115,
-      "uncompressedBytes": 172482302,
-      "sha256": "7f5ce093123cd5bcd4ad17267e0c3bb2c68afca0e7b4fa242756e3cba555380c",
+      "bytes": 66109575,
+      "uncompressedBytes": 129886972,
+      "sha256": "aeeb18708f07d3ca2641a76f6db39fc82446cd0aa64e319f8b4a04da06bbff0f",
       "url": null,
       "kind": "coverage-summaries"
-    },
-    {
-      "file": "canonical_exposure--human_swissprot-match-index.zip",
-      "title": "Canonical exposures ↔ Human proteins · record matches",
-      "bytes": 33718653,
-      "uncompressedBytes": 60175481,
-      "sha256": "e098947cefd50a091ec61c89aee311fa19f76855a65d353a855e14181337253a",
-      "url": null,
-      "kind": "record-match-index"
     },
     {
       "file": "source-atlas-120-viruses-human-swissprot.zip",
       "title": "Curated viral proteomes (120) ↔ Human proteins",
-      "bytes": 24319405,
-      "uncompressedBytes": 55249929,
-      "sha256": "8a0157036ab7acd55a1020215858264e4f2632960677b63860b05be6a814edca",
+      "bytes": 20389433,
+      "uncompressedBytes": 36244824,
+      "sha256": "a6ac60d0b79afe300eaf781681a8f65aa438d2cea7976ca39d125212d071caab",
       "url": null,
       "kind": "coverage-summaries"
-    },
-    {
-      "file": "atlas_120_viruses--human_swissprot-match-index.zip",
-      "title": "Curated viral proteomes (120) ↔ Human proteins · record matches",
-      "bytes": 6316532,
-      "uncompressedBytes": 13587610,
-      "sha256": "8b7341c2293a7d00be58233083c5bf65b6abb3eda92cf0d05ad30040416787e2",
-      "url": null,
-      "kind": "record-match-index"
     },
     {
       "file": "source-canonical-exposure-no-vertebrates-human-swissprot.zip",
       "title": "Non-vertebrate exposures ↔ Human proteins",
-      "bytes": 64266354,
-      "uncompressedBytes": 147743850,
-      "sha256": "94194c27c70f5c226cc22257947e08df837debe788ff9131fc9e849f334437e4",
+      "bytes": 56024471,
+      "uncompressedBytes": 108337559,
+      "sha256": "26de772338de5d88b852d8ce65f932e157643f578713c21124e2593ca428cf14",
       "url": null,
       "kind": "coverage-summaries"
     },
     {
-      "file": "canonical_exposure_no_vertebrates--human_swissprot-match-index.zip",
-      "title": "Non-vertebrate exposures ↔ Human proteins · record matches",
-      "bytes": 27156819,
-      "uncompressedBytes": 49476960,
-      "sha256": "b56011635669998536b18c7b2e89fc64a71f2b7a7b85d28bac3624a08da883c9",
-      "url": null,
-      "kind": "record-match-index"
-    },
-    {
       "file": "source-huprot4.zip",
       "title": "HuProt",
-      "bytes": 82407003,
-      "uncompressedBytes": 236586052,
-      "sha256": "60074e3a781d61424d41c370da3974d204ac1e274f356647dee372667c95f34a",
+      "bytes": 73141257,
+      "uncompressedBytes": 183327428,
+      "sha256": "978894b8f1f409e7f44b5237306908c06a2330b817946dc2ff53fb054489a42a",
       "url": null,
       "kind": "coverage-summaries"
     },
     {
       "file": "source-huprot4-huscan.zip",
       "title": "HuProt ↔ HuScan",
-      "bytes": 2927477989,
-      "uncompressedBytes": 10801449468,
-      "sha256": "ab396f32b2ca29fa9e318eeea5adbe5d1174ab3a295f4fc6dce5f4238478994c",
+      "bytes": 2711826863,
+      "uncompressedBytes": 9474052744,
+      "sha256": "ed4e1a1f691a94324e31f61aa323be6c84f77fcb4c4fceddb6d94337cee15de2",
       "url": null,
       "kind": "coverage-summaries"
     },
     {
       "file": "source-huprot4-virscan-exposome.zip",
       "title": "HuProt ↔ VirScan / Exposome",
-      "bytes": 2095273750,
-      "uncompressedBytes": 7260600933,
-      "sha256": "820f3161af19ebdfad10536163caab089a36bfc3d3a0f599f537fa7651eb4903",
+      "bytes": 1910534446,
+      "uncompressedBytes": 6139570870,
+      "sha256": "3575f9f35bdc128873cb9da27820ef621fc91836a8232381239cb65684f32531",
       "url": null,
       "kind": "coverage-summaries"
     },
     {
       "file": "source-huscan-virscan-exposome.zip",
       "title": "HuScan ↔ VirScan / Exposome",
-      "bytes": 5815154743,
-      "uncompressedBytes": 26570288056,
-      "sha256": "a63971c94a624a149c6592fb1e5343d456a77d1aa138ad359024bc809bb05ec9",
+      "bytes": 5272547056,
+      "uncompressedBytes": 23709920953,
+      "sha256": "9deccf79f0f78496cf64b597bbba33308bc38cebfb4ecdc80a3f853e1cad0bec",
       "url": null,
       "kind": "coverage-summaries"
     },
     {
       "file": "source-atlas-120-viruses-huprot4.zip",
       "title": "Curated viral proteomes (120) ↔ HuProt 4.0",
-      "bytes": 18750395,
-      "uncompressedBytes": 50608366,
-      "sha256": "c9f76e956e22102ae3789de03b65f176876774c675f2eef5b50b523196a8ff53",
+      "bytes": 15335210,
+      "uncompressedBytes": 28922388,
+      "sha256": "009d9c82f3a770e4ede1837f3a2dfea3e2d238a28bcbe7b4bce6e57eabc88991",
       "url": null,
       "kind": "coverage-summaries"
-    },
-    {
-      "file": "atlas_120_viruses--huprot4-match-index.zip",
-      "title": "Curated viral proteomes (120) ↔ HuProt 4.0 · record matches",
-      "bytes": 5052902,
-      "uncompressedBytes": 11400224,
-      "sha256": "6d3fcba35e25906aec481af54b8f454501f66f656190c46bf23030f54ae899c1",
-      "url": null,
-      "kind": "record-match-index"
-    },
-    {
-      "file": "indexes-huprot-viral120.zip",
-      "title": "huprot · viral memberships, 7/9–9/9",
-      "bytes": 861664,
-      "uncompressedBytes": 7533052,
-      "sha256": "705f35d255aaa84b48786a773ec718948dda7f5fd7c4aae2f2a9ce2064d78852",
-      "url": null,
-      "kind": "candidate-index"
     },
     {
       "file": "source-atlas-120-viruses-huscan.zip",
       "title": "Curated viral proteomes (120) ↔ HuScan",
-      "bytes": 238735087,
-      "uncompressedBytes": 1250452811,
-      "sha256": "4c251a3dd531404e97890481db15efa83c0fa6f516c3e144da2bcaf6f3dca9a7",
+      "bytes": 151407209,
+      "uncompressedBytes": 588816737,
+      "sha256": "ef001fe301b9a740ef423afff423693eac5c153dfe389c4d3a450119d54b1305",
       "url": null,
       "kind": "coverage-summaries"
-    },
-    {
-      "file": "atlas_120_viruses--human_current-match-index.zip",
-      "title": "Curated viral proteomes (120) ↔ HuScan · record matches",
-      "bytes": 180055095,
-      "uncompressedBytes": 439944288,
-      "sha256": "6acda2343e02255f608e7bac0426bfb699296b125594ae30e4ac28b37f2cb97a",
-      "url": null,
-      "kind": "record-match-index"
-    },
-    {
-      "file": "indexes-huscan-viral120.zip",
-      "title": "huscan · viral memberships, 7/9–9/9",
-      "bytes": 97788060,
-      "uncompressedBytes": 550956351,
-      "sha256": "278eaa87ea9c422d96d9111156966391972e09dd1a76c98c3c5a4831cff381cb",
-      "url": null,
-      "kind": "candidate-index"
     },
     {
       "file": "source-atlas-120-viruses-virscan-exposome.zip",
       "title": "Curated viral proteomes (120) ↔ VirScan / Exposome",
-      "bytes": 391789555,
-      "uncompressedBytes": 1790465679,
-      "sha256": "b4319d4e3171a0ab54878d21cb67dea30556ad3c7dafd3867f5fe6b509f9259c",
+      "bytes": 296372004,
+      "uncompressedBytes": 1018531596,
+      "sha256": "8286486837951f673e3892c2045e25ed909fa473ffae05cbd8840e4fa1c9ddf8",
       "url": null,
       "kind": "coverage-summaries"
-    },
-    {
-      "file": "atlas_120_viruses--virscan_exposome_current-match-index.zip",
-      "title": "Curated viral proteomes (120) ↔ VirScan / Exposome · record matches",
-      "bytes": 258459862,
-      "uncompressedBytes": 546366765,
-      "sha256": "14eea8803b45bbe702d0981c786d321f3b7e7b206c63edb73dcccab5f22735fd",
-      "url": null,
-      "kind": "record-match-index"
-    },
-    {
-      "file": "indexes-virscan-viral120.zip",
-      "title": "virscan · viral memberships, 7/9–9/9",
-      "bytes": 166087807,
-      "uncompressedBytes": 969702742,
-      "sha256": "bb4d05fc4bad3a49208162c0d9e67816d6b09b7ef776c5f9c2117e994ad6ff97",
-      "url": null,
-      "kind": "candidate-index"
     },
     {
       "file": "source-canonical-exposure-huprot4.zip",
       "title": "Canonical exposures ↔ HuProt 4.0",
-      "bytes": 65676372,
-      "uncompressedBytes": 162006286,
-      "sha256": "197fba7f4acf2c7c581fe30b16628bd75a3d73f5f47ce332b0a661119ce800e0",
+      "bytes": 57204745,
+      "uncompressedBytes": 116956531,
+      "sha256": "0c94a2ec6ffaf0e1cb6effa41b06fa4cc48a614a0cf5e370c7270298cf1cb5d8",
       "url": null,
       "kind": "coverage-summaries"
-    },
-    {
-      "file": "indexes-huprot-exposure.zip",
-      "title": "HuProt · canonical exposure memberships",
-      "bytes": 15779819,
-      "uncompressedBytes": 68369258,
-      "sha256": "7d7b5fa932f7dbc33ce0d7418742fdc571f34472d62cf1a690146d848f0deb3e",
-      "url": null,
-      "kind": "candidate-index"
     },
     {
       "file": "source-canonical-exposure-huscan.zip",
       "title": "Canonical exposures ↔ HuScan",
-      "bytes": 2197033976,
-      "uncompressedBytes": 7853849411,
-      "sha256": "796b12f607983c54625581441ac9e112cb1491a4e60090f8c7feea0af28e62cd",
+      "bytes": 1945887666,
+      "uncompressedBytes": 6573548854,
+      "sha256": "47aa8e6853b8e456ed26d7ba71e24605c803f29cd9b74d16d3d21c67ecc93b0e",
       "url": null,
       "kind": "coverage-summaries"
-    },
-    {
-      "file": "indexes-huscan-exposure.zip",
-      "title": "HuScan · canonical exposure memberships",
-      "bytes": 2225061255,
-      "uncompressedBytes": 10138454897,
-      "sha256": "671a1639fe235c9469a94b2e697e7a71a6a1c25e3be4a66ca97a48b9e9f6ff75",
-      "url": null,
-      "kind": "candidate-index"
     },
     {
       "file": "source-canonical-exposure-virscan-exposome.zip",
       "title": "Canonical exposures ↔ VirScan / Exposome",
-      "bytes": 3198073343,
-      "uncompressedBytes": 10743006308,
-      "sha256": "4dc968c9d18e4d6ded38dc696a382bf74be434072ec2867cf0f7c0b8fd586c6d",
+      "bytes": 2907499710,
+      "uncompressedBytes": 9298057228,
+      "sha256": "e1800b3512237d2884de8487005ece287398811876cbfe41d86174a22f91a3ec",
       "url": null,
       "kind": "coverage-summaries"
-    },
-    {
-      "file": "indexes-virscan-exposure.zip",
-      "title": "VirScan/Exposome · canonical exposure memberships",
-      "bytes": 2865483807,
-      "uncompressedBytes": 12374641558,
-      "sha256": "5feaf78c2c17ca8cde49722e72631ddc1568bea79a6ffa5561f141e580f4cc69",
-      "url": null,
-      "kind": "candidate-index"
     },
     {
       "file": "human_swissprot--huprot4-summaries.zip",
       "title": "HuProt 4.0 ↔ Human proteins",
-      "bytes": 178763425,
-      "uncompressedBytes": 460249199,
-      "sha256": "9795805b1e5cf8441c4a71c9e836600da32f931498d5eee0b10ba56b110bc530",
+      "bytes": 168703635,
+      "uncompressedBytes": 408068672,
+      "sha256": "1f305607d20f31b7697112ab4cf79b09fb8d184adc09e1b43636c5f82de420b3",
       "url": null,
       "kind": "coverage-summaries"
-    },
-    {
-      "file": "human_swissprot--huprot4-match-index.zip",
-      "title": "HuProt 4.0 ↔ Human proteins · record matches",
-      "bytes": 91916268,
-      "uncompressedBytes": 132432828,
-      "sha256": "3c294a4057efb2c52b1d9d408a2a953910361e770b945fca1b656326d1fbc938",
-      "url": null,
-      "kind": "record-match-index"
-    },
-    {
-      "file": "indexes-huprot-human-swissprot.zip",
-      "title": "HuProt 4.0 · Human Swiss-Prot memberships, 7/9–9/9",
-      "bytes": 570796685,
-      "uncompressedBytes": 1811724304,
-      "sha256": "e6851f7414966d86aecdcb3025e103203331152368786e08a805f42e69e868d9",
-      "url": null,
-      "kind": "candidate-index"
     },
     {
       "file": "source-huscan-human-swissprot.zip",
       "title": "HuScan ↔ Human proteins",
-      "bytes": 3476000308,
-      "uncompressedBytes": 12208919133,
-      "sha256": "98211177612caef47f7b22a9d6a6e1c933f150c88917807958984cc215a71f8e",
+      "bytes": 3228357982,
+      "uncompressedBytes": 10730796871,
+      "sha256": "c7ba3500d9ca8749f6e0dde81be4e9190445d68d6152690b3a7e511ff6e37839",
       "url": null,
       "kind": "coverage-summaries"
-    },
-    {
-      "file": "human_current--human_swissprot-match-index.zip",
-      "title": "HuScan ↔ Human proteins · record matches",
-      "bytes": 2105918228,
-      "uncompressedBytes": 3228414972,
-      "sha256": "1ab2c74893d4c3c207bf76959ac5399a3d885ac6d5e979774c2e4dfa316befba",
-      "url": null,
-      "kind": "record-match-index"
-    },
-    {
-      "file": "indexes-huscan-human-swissprot.zip",
-      "title": "HuScan · Human Swiss-Prot memberships, 7/9–9/9",
-      "bytes": 2213112648,
-      "uncompressedBytes": 9618081765,
-      "sha256": "a3e661b29d663a5146b495c61bd24e59971228dcbb5957bf481f4283ccd5d706",
-      "url": null,
-      "kind": "candidate-index"
     },
     {
       "file": "source-virscan-human-swissprot.zip",
       "title": "VirScan / Exposome ↔ Human proteins",
-      "bytes": 2506079995,
-      "uncompressedBytes": 8316724514,
-      "sha256": "3fca7d8cf3b6f22d7258151730cda2ea8c9b03652578d7ab23f657db84cf7ecb",
+      "bytes": 2294700902,
+      "uncompressedBytes": 7098141184,
+      "sha256": "ef3d695a7ab0353c5877ce249ca85796aa61b3f9b5f009d87bf64080c6be28eb",
       "url": null,
       "kind": "coverage-summaries"
-    },
-    {
-      "file": "human_swissprot--virscan_exposome_current-match-index.zip",
-      "title": "VirScan / Exposome ↔ Human proteins · record matches",
-      "bytes": 1292408241,
-      "uncompressedBytes": 1989637321,
-      "sha256": "8fa8695b49b8864f3246ae897d6ae8815e3818fb742a01acd5f77b8255adbee1",
-      "url": null,
-      "kind": "record-match-index"
-    },
-    {
-      "file": "indexes-virscan-human-swissprot.zip",
-      "title": "VirScan / Exposome · Human Swiss-Prot memberships, 7/9–9/9",
-      "bytes": 1452122009,
-      "uncompressedBytes": 5950974001,
-      "sha256": "eab9772107d95696bc861dae594a499f008bb1f33f2a0c63381d4be99481f823",
-      "url": null,
-      "kind": "candidate-index"
     },
     {
       "file": "reference-fastas.zip",
@@ -348,22 +177,6 @@
       "kind": "coverage-summaries"
     },
     {
-      "file": "canonical_exposure--huprot4-match-index.zip",
-      "bytes": 29862687,
-      "uncompressedBytes": 52761599,
-      "sha256": "6c7449827801ac78e10190c2d04bf437ccaf4416d234fc6c82a7165fcafb38ce",
-      "url": null,
-      "kind": "record-match-index"
-    },
-    {
-      "file": "canonical_exposure--human_current-match-index.zip",
-      "bytes": 1422490834,
-      "uncompressedBytes": 2257626177,
-      "sha256": "4d7403780c103cf7ce2eee925cb158156351770aa9d336889c2a714797780460",
-      "url": null,
-      "kind": "record-match-index"
-    },
-    {
       "file": "canonical-iedb-evidence-2026.10.12.2.zip",
       "bytes": 11960339,
       "uncompressedBytes": 74537992,
@@ -380,12 +193,1201 @@
       "kind": "protein-annotations"
     },
     {
-      "file": "canonical_exposure--virscan_exposome_current-match-index.zip",
-      "bytes": 1712034343,
-      "uncompressedBytes": 2694702350,
-      "sha256": "7e3153d94c99c23efd673eaadf1e6e71a3f9e77cd898883819776fdab721d98d",
+      "file": "atlas_120_viruses--human_current-mapping-index.zip",
+      "title": "Curated viral proteomes (120) ↔ HuScan · mapping index",
+      "bytes": 120964178,
+      "uncompressedBytes": 780228840,
+      "sha256": "f026384090bbb205cb5139d859b485274aeb1e104e2d6062434833f251ee3d94",
       "url": null,
-      "kind": "record-match-index"
+      "kind": "mapping-index"
+    },
+    {
+      "file": "atlas_120_viruses--human_swissprot-mapping-index.zip",
+      "title": "Curated viral proteomes (120) ↔ Human proteins · mapping index",
+      "bytes": 4792707,
+      "uncompressedBytes": 21408059,
+      "sha256": "63645113a26f260d32b865cbbefc85ef98a95868da7022c526dfb45dee88e0cf",
+      "url": null,
+      "kind": "mapping-index"
+    },
+    {
+      "file": "atlas_120_viruses--huprot4-mapping-index.zip",
+      "title": "Curated viral proteomes (120) ↔ HuProt 4.0 · mapping index",
+      "bytes": 4460638,
+      "uncompressedBytes": 22046895,
+      "sha256": "2024e556191c42964ab3034c6f578c89c431d767c69eef46d9fa369d4b68448b",
+      "url": null,
+      "kind": "mapping-index"
+    },
+    {
+      "file": "atlas_120_viruses--virscan_exposome_current-mapping-index.zip",
+      "title": "VirScan / Exposome ↔ Curated viral proteomes (120) · mapping index",
+      "bytes": 182437844,
+      "uncompressedBytes": 986929610,
+      "sha256": "833d14a0400723b54a7fadee1bf2bf0c9a1eaef0a94d9a31161a03c5738098ff",
+      "url": null,
+      "kind": "mapping-index"
+    },
+    {
+      "file": "canonical_exposure--human_current-mapping-index.zip",
+      "title": "Canonical exposures ↔ HuScan · mapping index",
+      "bytes": 627399367,
+      "uncompressedBytes": 3541384217,
+      "sha256": "f4ea01a5b184259f4e0aed018f3f70a514a1d84b7454a1102348bc00c78b21bc",
+      "url": null,
+      "kind": "mapping-index"
+    },
+    {
+      "file": "canonical_exposure--human_swissprot-mapping-index.zip",
+      "title": "Canonical exposures ↔ Human proteins · mapping index",
+      "bytes": 20560325,
+      "uncompressedBytes": 68574316,
+      "sha256": "57403833f7d9b2325be059f2f72f05a1924f94a8fcd41254687780f41ab3b2a6",
+      "url": null,
+      "kind": "mapping-index"
+    },
+    {
+      "file": "canonical_exposure--huprot4-mapping-index.zip",
+      "title": "Canonical exposures ↔ HuProt 4.0 · mapping index",
+      "bytes": 19394960,
+      "uncompressedBytes": 65866712,
+      "sha256": "16fa16c5fa7b55af8223e8da05db40870c28df727bed5ebc0b2d99b480707e40",
+      "url": null,
+      "kind": "mapping-index"
+    },
+    {
+      "file": "canonical_exposure--virscan_exposome_current-mapping-index.zip",
+      "title": "Canonical exposures ↔ VirScan / Exposome · mapping index",
+      "bytes": 764796036,
+      "uncompressedBytes": 4071279878,
+      "sha256": "8c3a77c750eb7b141726c14d7d5d635b0779adcab0bb67387d3d609a2a0d44ef",
+      "url": null,
+      "kind": "mapping-index"
+    },
+    {
+      "file": "canonical_exposure_no_vertebrates--human_swissprot-mapping-index.zip",
+      "title": "Non-vertebrate exposures ↔ Human proteins · mapping index",
+      "bytes": 16839221,
+      "uncompressedBytes": 59283219,
+      "sha256": "fbc8dd1d8497906908ec0442ee500d084a33707b719844a4a89dc1444ae307d5",
+      "url": null,
+      "kind": "mapping-index"
+    },
+    {
+      "file": "human_current--human_swissprot-mapping-index.zip",
+      "title": "HuScan ↔ Human proteins · mapping index",
+      "bytes": 1408680265,
+      "uncompressedBytes": 5181955365,
+      "sha256": "8fde63d84f3a5d7095880d4676c8f9f648112bb4486fdd2d374dfb685d063001",
+      "url": null,
+      "kind": "mapping-index"
+    },
+    {
+      "file": "human_swissprot--human_swissprot-mapping-index.zip",
+      "title": "Human proteins ↔ Human proteins · mapping index",
+      "bytes": 60375028,
+      "uncompressedBytes": 158431276,
+      "sha256": "4ec550b063b01f5377bf16a4bbcd662d4cc56d6f01a765a2b62c91c70f120de2",
+      "url": null,
+      "kind": "mapping-index"
+    },
+    {
+      "file": "human_swissprot--huprot4-mapping-index.zip",
+      "title": "HuProt 4.0 ↔ Human proteins · mapping index",
+      "bytes": 52173802,
+      "uncompressedBytes": 142063670,
+      "sha256": "90a28361161913866972625bc17ff345ab61ade3a12cfc500160c84c656a48ff",
+      "url": null,
+      "kind": "mapping-index"
+    },
+    {
+      "file": "human_swissprot--virscan_exposome_current-mapping-index.zip",
+      "title": "VirScan / Exposome ↔ Human proteins · mapping index",
+      "bytes": 823865846,
+      "uncompressedBytes": 3268700508,
+      "sha256": "791f8c07c257c1599c499d5e80c2d5fc2ffb546d9e00bffdb383f013ba542a5f",
+      "url": null,
+      "kind": "mapping-index"
+    },
+    {
+      "file": "selected_adeno_associated_virus_2_summary.zip",
+      "title": "Adeno-associated virus 2 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16198961,
+      "uncompressedBytes": 30258313,
+      "sha256": "fc529dcc90e5817d379fc5e6eda45f3cee388c3990ad971997494fdb92ff5e7c",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_bk_polyomavirus_summary.zip",
+      "title": "BK polyomavirus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16195758,
+      "uncompressedBytes": 30037588,
+      "sha256": "913154ba3ed51eb1303e74fd3c83c394b7f87d085e798d069dc6316cfb9cd194",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_chikungunya_virus_summary.zip",
+      "title": "Chikungunya virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16203208,
+      "uncompressedBytes": 30222926,
+      "sha256": "f64883344ae632edaccca1efaa7f006cd78c8f1b9bf080e1ed5b310242eb927d",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_coxsackievirus_a11_summary.zip",
+      "title": "Coxsackievirus A11 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16177945,
+      "uncompressedBytes": 29418996,
+      "sha256": "585e4fa9580bb124f2c9847db7d790b5e4a082d0a5e28e8f3553d6be7275c61f",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_coxsackievirus_b4_summary.zip",
+      "title": "Coxsackievirus B4 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16202116,
+      "uncompressedBytes": 30236547,
+      "sha256": "144ef625c0736a7293d4797cb840d93a90c437932d0d22acc9731f4fcebed8c7",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_dengue_virus_type_1_summary.zip",
+      "title": "Dengue virus type 1 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16201161,
+      "uncompressedBytes": 30221246,
+      "sha256": "54f09132b1053a0ad26512465d6ad4b4f56fba4045d5cf24cf04b9eb4c532209",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_echovirus_12_summary.zip",
+      "title": "Echovirus 12 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16184616,
+      "uncompressedBytes": 29643954,
+      "sha256": "f52ec9c141513eb828426fd8da7bd280c2bfca9eaea2ab3f6602adcc812b9459",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_epstein_barr_virus_summary.zip",
+      "title": "Epstein-Barr virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16439321,
+      "uncompressedBytes": 30889562,
+      "sha256": "d431ad6e39ab88f6f022cb1a1f95b100f05aaf43f6b7e3d0e833c42c3d1a0afa",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_hantaan_virus_summary.zip",
+      "title": "Hantaan virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16206705,
+      "uncompressedBytes": 30321245,
+      "sha256": "d808d205827e491b41c40a04c191e8c3a653bf78924955fe641be5a80a057a82",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_hepatitis_b_virus_genotype_c_subtype_ayr_summary.zip",
+      "title": "Hepatitis B virus genotype C subtype ayr ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16221101,
+      "uncompressedBytes": 30712520,
+      "sha256": "0ef12c54494cf9527a0aab10e40e29cdf711fbd0b236a0d36b6774c3939f12af",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_hepatitis_c_virus_genotype_1a_summary.zip",
+      "title": "Hepatitis C virus genotype 1a ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16197706,
+      "uncompressedBytes": 30058854,
+      "sha256": "d1863ee51a75bc1c0544c7cfdd3039baeb4b77ae95cc21721a3e083c096a3f27",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_hepatitis_c_virus_genotype_1b_summary.zip",
+      "title": "Hepatitis C virus genotype 1b ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16200268,
+      "uncompressedBytes": 30160415,
+      "sha256": "f92fd91c4da2395aadcc8a2ac007f9cd5046b415708bf20317938b100d4e671b",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_hepatitis_delta_virus_genotype_i_summary.zip",
+      "title": "Hepatitis delta virus genotype I ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16194129,
+      "uncompressedBytes": 30130461,
+      "sha256": "56daf6e2cdf7b013e873361a5a19d9a3c262d77451d2fef91d403b46d779d8ac",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_hepatitis_e_virus_genotype_1_summary.zip",
+      "title": "Hepatitis E virus genotype 1 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16207840,
+      "uncompressedBytes": 30444915,
+      "sha256": "75f3617da6159a6fb62fda37b2641bbae83ae7966e91d4f6a30967f7aaed9c57",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_adenovirus_21_summary.zip",
+      "title": "Human adenovirus 21 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16222924,
+      "uncompressedBytes": 29538808,
+      "sha256": "2ece0c44d5ff7113b61e7fea41b17880d017ca413828311515d4db7ba8aa7d6f",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_adenovirus_52_summary.zip",
+      "title": "human adenovirus 52 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16220055,
+      "uncompressedBytes": 29552683,
+      "sha256": "eebe7c27fe909183374581d2dabfbdbebbbc724e63d138f5c5edc7495d3d826e",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_adenovirus_a_serotype_18_summary.zip",
+      "title": "Human adenovirus A serotype 18 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16242019,
+      "uncompressedBytes": 30398406,
+      "sha256": "94c60eb3ab75b253a53d91d5184a931447598eaead004fe5254f789d88b2b860",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_adenovirus_c_serotype_2_summary.zip",
+      "title": "Human adenovirus C serotype 2 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16263323,
+      "uncompressedBytes": 30398290,
+      "sha256": "957cb85aeda23f2a8e6ab4faa0d19704e37843ba9d37e11d34ae3cad85500cb0",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_adenovirus_c_serotype_5_summary.zip",
+      "title": "Human adenovirus C serotype 5 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16205695,
+      "uncompressedBytes": 30270838,
+      "sha256": "de366d02f2d431bc74659ce8f9d7bbd9530b6e1568cfa86e05d9ee3a1d585107",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_adenovirus_d_serotype_9_summary.zip",
+      "title": "Human adenovirus D serotype 9 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16261981,
+      "uncompressedBytes": 30401646,
+      "sha256": "d0b7a8d1cd01d2c8e2765f97a262461a560a13c8c15f56905e332245e1b856ef",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_adenovirus_f_serotype_40_summary.zip",
+      "title": "Human adenovirus F serotype 40 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16252821,
+      "uncompressedBytes": 30426013,
+      "sha256": "6080c4c05f24f1bb31879062fa0e16dd3cfe4e064180d59fbeca2e3a0e6d9a42",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_astrovirus_1_summary.zip",
+      "title": "Human astrovirus-1 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16183751,
+      "uncompressedBytes": 29627764,
+      "sha256": "55a894bec1d4d908afe459f713b2a09dc7b2000140dbcd41a0527c54e880a453",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_coronavirus_229e_summary.zip",
+      "title": "Human coronavirus 229E ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16201199,
+      "uncompressedBytes": 29783903,
+      "sha256": "88e840b93d52b71bc401281734f7a7a16ab809650f957246067a0580c7d3a4e4",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_coronavirus_hku1_summary.zip",
+      "title": "Human coronavirus HKU1 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16204511,
+      "uncompressedBytes": 30071792,
+      "sha256": "826fc32a133164f115578b634b6bca18f233a1f818cd7441cf90b72fdfa4a17b",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_coronavirus_nl63_summary.zip",
+      "title": "Human coronavirus NL63 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16199389,
+      "uncompressedBytes": 29797377,
+      "sha256": "e0fc56e742bd4a3e28404f284f9754074cd82a0bf2152eb6515f20dae518f8e3",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_coronavirus_oc43_summary.zip",
+      "title": "Human coronavirus OC43 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16202591,
+      "uncompressedBytes": 29785674,
+      "sha256": "a5ba968d5a28ebd8813ce086b6b24b46428523b08a8a4c4516b25242c74d368a",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_cytomegalovirus_summary.zip",
+      "title": "Human cytomegalovirus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16454492,
+      "uncompressedBytes": 30989263,
+      "sha256": "51553364e4156291e49d634624067f23c2d71f4657a926c62034537e0672e043",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_enterovirus_71_summary.zip",
+      "title": "Human enterovirus 71 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16202631,
+      "uncompressedBytes": 30239855,
+      "sha256": "cca937e0ed01210211e862753ef9db6e7eb25cf10599509cad5541ba22dd5b1f",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_enterovirus_d68_summary.zip",
+      "title": "Human enterovirus D68 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16187922,
+      "uncompressedBytes": 29786557,
+      "sha256": "0750557511b7f650d3c1cc4296c2f95b6b8ca6dba26eedb8ad8039bea999f0d4",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_hepatitis_a_virus_genotype_ib_summary.zip",
+      "title": "Human hepatitis A virus genotype IB ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16239741,
+      "uncompressedBytes": 31523795,
+      "sha256": "863fd2d7163717f9b64f94a8f8b0b336f7578fdfb6a192d031d2b328d9678449",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_herpesvirus_1_summary.zip",
+      "title": "Human herpesvirus 1 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16320740,
+      "uncompressedBytes": 30712214,
+      "sha256": "f4bc4fbc54dc2ced63d8cc0a76cb804e957211253265e2041aea75f03afe91ab",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_herpesvirus_2_summary.zip",
+      "title": "Human herpesvirus 2 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16322932,
+      "uncompressedBytes": 30754758,
+      "sha256": "630fa8e6d7c7ea61bfa29ba097df57e3a6eb0144a4d015f1fe5b4b98d9355872",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_herpesvirus_6a_summary.zip",
+      "title": "Human herpesvirus 6A ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16344491,
+      "uncompressedBytes": 31119517,
+      "sha256": "51304bab9cd2e5ee2337c5897fd0d4e6cf165a5400a87b29209b2e7dc91cce2e",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_herpesvirus_6b_summary.zip",
+      "title": "Human herpesvirus 6B ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16348051,
+      "uncompressedBytes": 30965554,
+      "sha256": "f705fb616ca9f8b2f6b5296266ae6f27ff14c0d60d2b235f5523e027f02ef68c",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_herpesvirus_7_summary.zip",
+      "title": "Human herpesvirus 7 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16285630,
+      "uncompressedBytes": 30620953,
+      "sha256": "d11bd9ef35fdec4341020b5f264758ac4c272724014ef1dbb1e62cc493751139",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_herpesvirus_8_type_p_summary.zip",
+      "title": "Human herpesvirus 8 type P ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16311356,
+      "uncompressedBytes": 31106574,
+      "sha256": "e6e48456bff360937ac698ecb09e163a433af8d91eafe7979b8b707d50f0de39",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_immunodeficiency_virus_type_1_group_m_subtype_b_summary.zip",
+      "title": "Human immunodeficiency virus type 1 group M subtype B ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16216846,
+      "uncompressedBytes": 30626277,
+      "sha256": "50ae0b5cb9f60f1b7de7391c5ca30ec9609e71c075965e575d121c9bc4caadee",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_immunodeficiency_virus_type_2_subtype_a_summary.zip",
+      "title": "Human immunodeficiency virus type 2 subtype A ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16216564,
+      "uncompressedBytes": 30467018,
+      "sha256": "e7c81027e75a884dc2d2e92e878c6f92de370c0a007f779612ba9fa9ed44fd42",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_mastadenovirus_e_summary.zip",
+      "title": "Human mastadenovirus E ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16223274,
+      "uncompressedBytes": 29619445,
+      "sha256": "ab573f6d2aabf3e02f6a0cc036e126383aea60bc00a7fbd7529e6a6536e14a16",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_metapneumovirus_summary.zip",
+      "title": "Human metapneumovirus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16200608,
+      "uncompressedBytes": 30022373,
+      "sha256": "9d1bde835b3247eca0e9923fc6a48a8af52da957bbcfc5ed1273bc6032a93674",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_11_summary.zip",
+      "title": "Human papillomavirus 11 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16195879,
+      "uncompressedBytes": 29567894,
+      "sha256": "e267fd378e9b8544df3c7b45e9815609b1ddf7bd0286c5c32ef56ba663edd0b5",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_20_summary.zip",
+      "title": "Human papillomavirus 20 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16210033,
+      "uncompressedBytes": 29602466,
+      "sha256": "eed39574e4ee9d7f1194b0cc27d82e036f1ea8d44b1ca6bd916e69307f632ccf",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_31_summary.zip",
+      "title": "Human papillomavirus 31 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16185928,
+      "uncompressedBytes": 29535952,
+      "sha256": "3967ccec8ee9c6c6bb28bf459cd23e8196e9540259d14a9d6f42130d6cfb23fb",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_33_summary.zip",
+      "title": "Human papillomavirus 33 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16187527,
+      "uncompressedBytes": 29550585,
+      "sha256": "13f70ebdf26ff3f2e4338816cceb68ab5e005d8d4d937876b15dcba4232b03f4",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_35_summary.zip",
+      "title": "Human papillomavirus 35 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16182042,
+      "uncompressedBytes": 29524959,
+      "sha256": "951a3e4fe0301ed3ad278784385ea0fc59570582492d8144187dc69cf7945b07",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_38_summary.zip",
+      "title": "Human papillomavirus 38 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16183938,
+      "uncompressedBytes": 29529680,
+      "sha256": "1eb1f7f98952001cc2eccf8520160e39601c4475e3c5c86b63c2218e0885944c",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_39_summary.zip",
+      "title": "Human papillomavirus 39 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16185272,
+      "uncompressedBytes": 29532009,
+      "sha256": "d91a193a79e4ca455ca8321be7d661b55b87b7d4ff656abceb58f4abfe02d5ff",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_45_summary.zip",
+      "title": "Human papillomavirus 45 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16181733,
+      "uncompressedBytes": 29523991,
+      "sha256": "c800cb7804364f07b1fda6c070ab50656582abb2eb5d744aed3c796bca65d735",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_5_summary.zip",
+      "title": "Human papillomavirus 5 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16212767,
+      "uncompressedBytes": 29615044,
+      "sha256": "0000a6b4afae8c0b3dbbfb13f274f835f66808bc31eb743d17c2d8186599f2bd",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_51_summary.zip",
+      "title": "Human papillomavirus 51 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16190859,
+      "uncompressedBytes": 29552361,
+      "sha256": "204b4794dd44e187564c8763dfc2197185f114bd0d43155779491e1aa357b2f9",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_52_summary.zip",
+      "title": "Human papillomavirus 52 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16182091,
+      "uncompressedBytes": 29525206,
+      "sha256": "f22b609bbd68d86a3e2b304a691ce1feb4c63d0d0d547103c2c00e180edc0458",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_56_summary.zip",
+      "title": "Human papillomavirus 56 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16178453,
+      "uncompressedBytes": 29525746,
+      "sha256": "940ade0a150d7ad170ac55e4785f604695e197dfe07c6b90090332979bfe2d53",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_58_summary.zip",
+      "title": "Human papillomavirus 58 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16185624,
+      "uncompressedBytes": 29542930,
+      "sha256": "1cb4784c17fc0eda9ddfeff0f79f6929946e948a6093554f87009f9ea3dfa4f3",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_59_summary.zip",
+      "title": "Human papillomavirus 59 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16182913,
+      "uncompressedBytes": 29528915,
+      "sha256": "6bd0e215a1df9a71c6164d222cfd49c19d771fb4d879b8d88bd3286a45eb186f",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_7_summary.zip",
+      "title": "Human papillomavirus 7 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16180028,
+      "uncompressedBytes": 29501831,
+      "sha256": "0427e10c4f03b19f4d74914977a90186d0268b8063eff4900a1cf7536f882721",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_type_1_summary.zip",
+      "title": "Human papillomavirus type 1 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16207901,
+      "uncompressedBytes": 30253165,
+      "sha256": "5493b1881ea6c4fb2bacfc8e7afa0c542714d771c07dbe030765d802a7668a4a",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_type_10_summary.zip",
+      "title": "Human papillomavirus type 10 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16187578,
+      "uncompressedBytes": 29653115,
+      "sha256": "99060b17920e49acfda61d2e2167f312ee6069585db58dbc1fc0a2a8976ed27f",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_type_16_summary.zip",
+      "title": "Human papillomavirus type 16 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16190505,
+      "uncompressedBytes": 29661750,
+      "sha256": "55d5058654ab595fa0d562ca1b71f2aeaa832ed663afaa4f1eebc26cce8c0df7",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_type_18_summary.zip",
+      "title": "Human papillomavirus type 18 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16191274,
+      "uncompressedBytes": 29659783,
+      "sha256": "6ddee0abb375fc01dacaee4842b4d9b0e62a41f90fc8ea22f0487dabb6538676",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_type_2a_summary.zip",
+      "title": "Human papillomavirus type 2a ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16186112,
+      "uncompressedBytes": 29631104,
+      "sha256": "e5683c24447f64df64fac00593a8b2482fc0fb3e9fc93ba264f7e4e49c198112",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_type_68a_summary.zip",
+      "title": "Human papillomavirus type 68a ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16192257,
+      "uncompressedBytes": 29675848,
+      "sha256": "8de4d4e36bb992a9246c31c489ece7aec6fe16dd9063b1047dbf91c319244a00",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_type_6b_summary.zip",
+      "title": "Human papillomavirus type 6b ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16191547,
+      "uncompressedBytes": 29653772,
+      "sha256": "92e6c991e5b2ca0ff2789943ff6b8bdf335f16a4119d2ae5169e954e34762e4f",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_papillomavirus_type_8_summary.zip",
+      "title": "Human papillomavirus type 8 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16206580,
+      "uncompressedBytes": 29670305,
+      "sha256": "436cc687e427e937a947dfc5ca3e50d4e8459584fd1894ed92fe3fb2c8d66d7b",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_parainfluenza_2_virus_summary.zip",
+      "title": "Human parainfluenza 2 virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16201493,
+      "uncompressedBytes": 30144082,
+      "sha256": "9a1c092653af21cc6b5fbfb711d8d2acb128fc69a7421cc51a659b52523de0c1",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_parainfluenza_virus_1_strain_washington_1964_summary.zip",
+      "title": "Human parainfluenza virus 1 strain Washington/1964 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16202342,
+      "uncompressedBytes": 30102759,
+      "sha256": "0628ba9d4057c30b0720f4109bdf373ba380d57e63fe26c0bcbe54eded4b073d",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_parainfluenza_virus_4b_summary.zip",
+      "title": "Human parainfluenza virus 4b ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16186739,
+      "uncompressedBytes": 29631601,
+      "sha256": "3934030405c53ff9eb0333596e646ca22bf4862d11a001e8d481d615819b6508",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_parechovirus_2_summary.zip",
+      "title": "Human parechovirus 2 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16204832,
+      "uncompressedBytes": 30379236,
+      "sha256": "edcfa34148dcaa61627e23b4f37b3239c5705b2853090e33e99269a5f14a9304",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_parvovirus_b19_summary.zip",
+      "title": "Human parvovirus B19 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16198090,
+      "uncompressedBytes": 29944789,
+      "sha256": "a543b873ad5b5bb383aabbe17c92ed6c2482af079d0ee4da7bab7223ea59265c",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_pegivirus_1_summary.zip",
+      "title": "Human pegivirus 1 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16196643,
+      "uncompressedBytes": 30055461,
+      "sha256": "0c751d96a05fb1b361d37d112d12ec1a03715ef20713cec047245a61c10c8e4a",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_pegivirus_genotype_2_summary.zip",
+      "title": "Human pegivirus genotype 2 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16184583,
+      "uncompressedBytes": 29625804,
+      "sha256": "f71c7108b7bd075442a473e29b6f423f2543fb21fe7a8dc652edcf0dcaca42f5",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_polyomavirus_6_summary.zip",
+      "title": "Human polyomavirus 6 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16177915,
+      "uncompressedBytes": 29478804,
+      "sha256": "b5a8fd2539d0c912a963e821b38d4171927557d0943695f5c7d0c5fb24e35a2a",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_polyomavirus_7_summary.zip",
+      "title": "Human polyomavirus 7 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16178189,
+      "uncompressedBytes": 29479598,
+      "sha256": "6dfd28ec4b7ee8bd66fa8a9ff8c0d289addc7a39be2054a7015ee4a624dde923",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_respiratory_syncytial_virus_a_summary.zip",
+      "title": "Human respiratory syncytial virus A ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16199074,
+      "uncompressedBytes": 30023053,
+      "sha256": "cabfec9958a57137a4827e73ef3813a5820dc51b3a9ba9022331d30795c1c822",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_respiratory_syncytial_virus_b_summary.zip",
+      "title": "Human respiratory syncytial virus B ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16201145,
+      "uncompressedBytes": 30026573,
+      "sha256": "3453042e9da416d5e17f4ccb70116685d643e6cb9f44e5c20e2e824c2bd3fe29",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_respirovirus_3_summary.zip",
+      "title": "Human respirovirus 3 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16182067,
+      "uncompressedBytes": 29465975,
+      "sha256": "af9d2860c2c7aa0a80b81ab0521a9ff5bbba6b6ab16243c5e1a46fb3d03149de",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_rhinovirus_14_summary.zip",
+      "title": "Human rhinovirus 14 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16183409,
+      "uncompressedBytes": 29623357,
+      "sha256": "2dc7341fda085d775aa11e7c6a59abc3d162e9321c6e2e2a4b495e3f949eb5a4",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_rhinovirus_16_summary.zip",
+      "title": "Human rhinovirus 16 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16183850,
+      "uncompressedBytes": 29623310,
+      "sha256": "f19b77d6433809291f7e6ca4b0e8e53b06cd886babd2978e02210795afe13b48",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_rhinovirus_1a_summary.zip",
+      "title": "Human rhinovirus 1A ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16184034,
+      "uncompressedBytes": 29623402,
+      "sha256": "bbbf8e254e46e46cb1aa32343156a10635a501c4e283d7a56d4aae567470a349",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_rhinovirus_3_summary.zip",
+      "title": "Human rhinovirus 3 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16181943,
+      "uncompressedBytes": 29582344,
+      "sha256": "482f6f36ea2ee294dd7016aef960ffe0109260e8e2106d3af4b580a41d4a6e0e",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_rhinovirus_a_serotype_89_summary.zip",
+      "title": "Human rhinovirus A serotype 89 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16202977,
+      "uncompressedBytes": 30297940,
+      "sha256": "3d05e834d31dfff94f9e8c68243e48f8f939762eee59d3f2788c51b6802a6f09",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_t_cell_leukemia_virus_1_summary.zip",
+      "title": "Human T-cell leukemia virus 1 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16220423,
+      "uncompressedBytes": 30577420,
+      "sha256": "00b23941641d56fc133bf8e5e9b6b19d4ccc779b6d858d4a2d0a4734ae575889",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_human_t_cell_leukemia_virus_2_summary.zip",
+      "title": "Human T-cell leukemia virus 2 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16192352,
+      "uncompressedBytes": 29843253,
+      "sha256": "a494fa13945442f0482c390dba98d130fee15b9983098607e2922e087763da7f",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_influenza_a_virus_summary.zip",
+      "title": "Influenza A virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16203765,
+      "uncompressedBytes": 30147320,
+      "sha256": "4048b2871c6241faadaae0304133d8531a25b7d9756bcdce8985226f14d192c6",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_influenza_b_virus_summary.zip",
+      "title": "Influenza B virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16194786,
+      "uncompressedBytes": 29836515,
+      "sha256": "3947b5ec801746e9a8b7f9e233baa2d3657cd9568f076d28ab56d3ecb8bfffa7",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_influenza_c_virus_summary.zip",
+      "title": "Influenza C virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16198341,
+      "uncompressedBytes": 29976518,
+      "sha256": "190a24bc7965d5c3ecb64c0f0e73fa0d97a13c7ca404f91c1c975463a552632e",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_japanese_encephalitis_virus_summary.zip",
+      "title": "Japanese encephalitis virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16199426,
+      "uncompressedBytes": 30121341,
+      "sha256": "c9bfcef3f09cbd5086e1e240a2b0d22203589d057389da950a513c944b619361",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_jc_polyomavirus_summary.zip",
+      "title": "JC polyomavirus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16186477,
+      "uncompressedBytes": 29647710,
+      "sha256": "1d1a2268d5f803b9a2c40da53b2a3257db6282099cbcf18168e6901333f52fb1",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_ki_polyomavirus_summary.zip",
+      "title": "KI polyomavirus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16194652,
+      "uncompressedBytes": 30010146,
+      "sha256": "991707c893d508bc5f912a10d8a1645c94730bb70e05ac1ab812f18daeb56fa0",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_lake_victoria_marburgvirus_summary.zip",
+      "title": "Lake Victoria marburgvirus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16234711,
+      "uncompressedBytes": 31001194,
+      "sha256": "264c0b01e8dda71e41e5e6ff1c8ceb18b6bc344390972ea1cd72698c71b4729f",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_lassa_virus_summary.zip",
+      "title": "Lassa virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16204681,
+      "uncompressedBytes": 30243630,
+      "sha256": "20d12fef8fb11c97ced299f382075364e41787c6eef9ed82aa817a4d5264f918",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_lordsdale_virus_summary.zip",
+      "title": "Lordsdale virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16237768,
+      "uncompressedBytes": 31320518,
+      "sha256": "675bf5e0d2360350e07f0d7accbf1814f5cce3c18be63c0c4a6e8120bf53b643",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_lymphocytic_choriomeningitis_virus_summary.zip",
+      "title": "Lymphocytic choriomeningitis virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16204504,
+      "uncompressedBytes": 30289648,
+      "sha256": "147a99ab56f0da2c56c0801c0845cbb95a5e7980dcae3f981eaaa9e1f3faeb36",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_measles_virus_summary.zip",
+      "title": "Measles virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16225020,
+      "uncompressedBytes": 30796316,
+      "sha256": "d0de3e93ad05d7b4183fed94239cd05d35577cf9e67f4f22f049707cbc4dbc18",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_merkel_cell_polyomavirus_summary.zip",
+      "title": "Merkel cell polyomavirus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16180573,
+      "uncompressedBytes": 29561545,
+      "sha256": "1d39729383b11d5ca2eecb3395c8da21e48c222c54d67ee63688fad8080b846e",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_molluscum_contagiosum_virus_subtype_1_summary.zip",
+      "title": "Molluscum contagiosum virus subtype 1 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16419841,
+      "uncompressedBytes": 30584987,
+      "sha256": "8e914a5287f5fcbf6949cde67b30f9ff2bbc449d46c6bf9bf4d3153f3077adfe",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_mumps_virus_genotype_b_summary.zip",
+      "title": "Mumps virus genotype B ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16205057,
+      "uncompressedBytes": 30176313,
+      "sha256": "54c32d93c83534aff03e397d102fec2721fc025024c24f23106bfa1e4382b5ae",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_norovirus_summary.zip",
+      "title": "Norovirus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16220684,
+      "uncompressedBytes": 30646542,
+      "sha256": "968b0ef676e3165d1b5377e1ba92ec2f96011c56a986663d9bac9732fd59f18a",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_poliovirus_type_1_summary.zip",
+      "title": "Poliovirus type 1 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16186886,
+      "uncompressedBytes": 29749874,
+      "sha256": "c3d8117cb64c92cbcf0c0e51a2f5584bae12a017e02c8085f4483201fa5fcce5",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_poliovirus_type_2_summary.zip",
+      "title": "Poliovirus type 2 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16186150,
+      "uncompressedBytes": 29746315,
+      "sha256": "bd8483066829e6b4e4e4c0397ebee5c2ceb76437b6e4b166de87349f8d935167",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_poliovirus_type_3_summary.zip",
+      "title": "Poliovirus type 3 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16200453,
+      "uncompressedBytes": 30236371,
+      "sha256": "56ced209785c524019bf16ca7ecd466eb0c7e6c8fb59578441914c6420b5a9bd",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_primate_bocaparvovirus_1_summary.zip",
+      "title": "Primate bocaparvovirus 1 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16226308,
+      "uncompressedBytes": 30934177,
+      "sha256": "6511e5680e01a8109960688ec3be4ded2692b6e0c5094f29799bec335a6cc7a0",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_rabies_virus_summary.zip",
+      "title": "Rabies virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16198437,
+      "uncompressedBytes": 30076482,
+      "sha256": "2d0d0f71269b0b5b05363e0deefefa058b3bc530e3bc6887e63dc976da5af5af",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_rhinovirus_a31_summary.zip",
+      "title": "rhinovirus A31 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16176316,
+      "uncompressedBytes": 29357631,
+      "sha256": "9267c2a23262f28001202fd2b7f6f24e5f1646b1d4ed94b23c1b5b1703a0d64a",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_rhinovirus_c3_summary.zip",
+      "title": "rhinovirus C3 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16176431,
+      "uncompressedBytes": 29357908,
+      "sha256": "dcbd6eb9afafc5ea9bff4c00cf0340627cb8c0605664363928aebbb13ccf6167",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_rotavirus_a_summary.zip",
+      "title": "Rotavirus A ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16248903,
+      "uncompressedBytes": 31658106,
+      "sha256": "c5f5f3c7260e59a552cab7da6212f8fdd8a83bc61de6ca34dc40dd852ed1d0f5",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_rubella_virus_summary.zip",
+      "title": "Rubella virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16190735,
+      "uncompressedBytes": 29812137,
+      "sha256": "d75d0bdcb51e0cc5cc48a004c4732fabc7dafe9fb1caf4a22e95d66b487915f6",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_sapporo_virus_summary.zip",
+      "title": "Sapporo virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16221186,
+      "uncompressedBytes": 30666548,
+      "sha256": "96f5f27e19f11c5823f61679cd21b4dc69aa04202083357793b88c8438b57da4",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_severe_acute_respiratory_syndrome_coronavirus_2_summary.zip",
+      "title": "Severe acute respiratory syndrome coronavirus 2 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16243225,
+      "uncompressedBytes": 30655541,
+      "sha256": "14dc7345dc9afe1cad1b3064bb344ad52cd65b34a6d4a72267ee1d37f58a369b",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_simian_virus_40_summary.zip",
+      "title": "Simian virus 40 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16184361,
+      "uncompressedBytes": 29549965,
+      "sha256": "abcd46d8898f3abec61efa3797518723bcb51cd6bca27d8f730d858a742c3a29",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_torque_teno_virus_summary.zip",
+      "title": "Torque teno virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16202881,
+      "uncompressedBytes": 30239907,
+      "sha256": "c69e1fbf11705af1267930099f4506c3d8f979df9cd7a015948a8e5e032f6e9b",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_torque_teno_virus_2_summary.zip",
+      "title": "Torque teno virus 2 ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16179225,
+      "uncompressedBytes": 29460569,
+      "sha256": "dbd4845759bdee432387de3a285573b02c89278bdb3c5c88dfe0bcc67823301b",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_trichodysplasia_spinulosa_associated_polyomavirus_summary.zip",
+      "title": "Trichodysplasia spinulosa-associated polyomavirus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16194131,
+      "uncompressedBytes": 30074149,
+      "sha256": "01181eb659ef3c0151ddb8e57e9879ab018fed6e150187fd5c754a6ae22c5d6a",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_vaccinia_virus_summary.zip",
+      "title": "Vaccinia virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16410505,
+      "uncompressedBytes": 31010592,
+      "sha256": "161724e3fef79ff21b0d59424978e4d98ca7b65f24a6df335cca4389c1965d17",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_varicella_zoster_virus_summary.zip",
+      "title": "Varicella-zoster virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16269321,
+      "uncompressedBytes": 30541391,
+      "sha256": "7fde463f86c94e9ba5cf978b07427dce4249a5ca1023f0eec8a0ade218680141",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_variola_virus_summary.zip",
+      "title": "Variola virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16377506,
+      "uncompressedBytes": 30834559,
+      "sha256": "2dd119137087d8d2375127482e2b616ad3b90b7855826a369a36d8e3f6a9db3d",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_west_nile_virus_summary.zip",
+      "title": "West Nile virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16181126,
+      "uncompressedBytes": 29483788,
+      "sha256": "9361a1f17d216d87912854893eddde389ef0f94cffd7ffe01ba96073c75b552e",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_wu_polyomavirus_summary.zip",
+      "title": "WU polyomavirus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16180293,
+      "uncompressedBytes": 29540232,
+      "sha256": "6e605508bd0d096cda3305bf35a517769c847394bb125858d61d35b006259b88",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_yellow_fever_virus_summary.zip",
+      "title": "Yellow fever virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16196118,
+      "uncompressedBytes": 29974507,
+      "sha256": "75611decd2d8cec6a6fce8f0f3ea0a6895f05713f37a577c00fa9268d9b7202d",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_zaire_ebolavirus_summary.zip",
+      "title": "Zaire ebolavirus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16211886,
+      "uncompressedBytes": 30390687,
+      "sha256": "d5063346e6c28dacb4cd24e77c73220086b4eef6895aeb36e48df5f126891209",
+      "url": null,
+      "kind": "coverage-summaries"
+    },
+    {
+      "file": "selected_zika_virus_summary.zip",
+      "title": "Zika virus ↔ Canonical Human Proteins · Summary CSVs",
+      "bytes": 16179168,
+      "uncompressedBytes": 29402927,
+      "sha256": "7b5833f79fb14ec600d3c8425727125a6fd1334d14947dcd80292bc575e7f938",
+      "url": null,
+      "kind": "coverage-summaries"
     }
   ]
 }

@@ -4,6 +4,7 @@ from html import escape
 import json,re
 from public_downloads import public_url
 ROOT=Path(__file__).resolve().parents[1]
+PRODUCT_LABELS={'summary':'General-Use Summaries (.csv)','mapping':'SeroMap Index (.sqlite)'}
 LIBRARY_LABELS={'human_swissprot':'Canonical Human Proteins','atlas_120_viruses':'Curated Viral Proteomes (120)',
  'canonical_exposure':'Canonical Exposures','canonical_exposure_no_vertebrates':'Non-Vertebrate Exposures',
  'huprot4':'HuProt 4.0','human_current':'HuScan','virscan_exposome_current':'VirScan / Exposome'}
@@ -97,7 +98,7 @@ def render(source):
   for kind,label in [('summary','Summary ZIP'),('index','Membership index ZIP')]:
    archive=item.get('archives',{}).get(kind)
    if archive:
-    if kind=='index' and archive.get('module','').startswith('sequence-matches-'):label='Protein-page index ZIP'
+    if kind=='index':label='Mapping index ZIP'
     label+=(' · '+archive['identity']) if kind=='index' else ''
     result+=' '+link(archive,label,row_label(row)+' '+label+(' (measured assay → reference; cross-assay bundles include both directions)' if kind=='index' else '')).replace('<a ',f'<a data-reference-archive="{kind}" data-reference-module="{escape(archive["module"])}" ',1)
   return result
@@ -117,7 +118,7 @@ def render(source):
    ('human_current','virscan_exposome_current'),('huprot4','huprot4')])]
  paired=[];seen=set()
  def product_cell(item,kind,title,description):
-  name={'summary':'Coverage summaries','matches':'Protein-page index','candidate':'Statistical membership index'}[kind]
+  name=PRODUCT_LABELS[kind]
   if not item:return f'<td class="summary-file-cell download-empty" data-product="{kind}"></td>'
   label='CSV ZIP' if kind=='summary' else 'Index ZIP'
   action=link(item,label,title+' · '+name+' · '+description)
@@ -129,7 +130,7 @@ def render(source):
   if storage:note+=' · '+storage
   return f'<td class="summary-file-cell" data-product="{kind}"><span class="download-mobile-label">{name}</span><div class="download-actions">{action}</div><span class="download-product-note">{note}</span></td>'
  for section_id,heading,pairs in sections:
-  body=[];available={'summary':False,'matches':False,'candidate':False}
+  body=[];available={'summary':False,'mapping':False}
   for a,b in pairs:
    key='--'.join(sorted([a,b]));directions=groups.get(key,[]);built=ready.get(key)
    if not directions:raise ValueError('Missing comparison in download section: '+key)
@@ -137,18 +138,15 @@ def render(source):
    title=labels[a]+(' ↔ '+labels[b] if a!=b else ' · within library')
    count=' · '.join(f"{counts[k]:,}" for k in dict.fromkeys([a,b]))
    products=built['archives'] if built else m.get('comprehensive_summaries',{}).get('rows',{}).get(directions[0]['key'],{}).get('archives',{})
-   index=products.get('index')
-   matches=index if built and built.get('featureOnly') else None
-   candidate=products.get('candidate') or (index if not matches and index and not index.get('positions') else None)
-   for kind,item in [('summary',products.get('summary')),('matches',matches),('candidate',candidate)]:available[kind]|=bool(item)
+   index=products.get('mapping') or products.get('index')
+   for kind,item in [('summary',products.get('summary')),('mapping',index)]:available[kind]|=bool(item)
    description=('One summary' if a==b else 'Summaries in both directions' if len(directions)>1 else 'Summary: '+row_label(directions[0]))
    summary_description=description+('; pair-specific residue ranges included' if products.get('summary',{}).get('pairRegions') else '')
    cells=product_cell(products.get('summary'),'summary',title,summary_description)
-   cells+=product_cell(matches,'matches',title,'Both directions; ≥10% coverage of either sequence'+('; merged residue ranges for each pair' if (built or {}).get('retainsPairRegions') else ''))
-   cells+=product_cell(candidate,'candidate',title,'Statistical memberships; '+(candidate or {}).get('identity',''))
+   cells+=product_cell(index,'mapping',title,'Protein-page ranges and statistical memberships in both directions; ≥10% coverage of either sequence')
    body.append(f'<tr data-library-pair="{key}"><th scope="row"><span class="download-row-title">{escape(title)}</span><span class="download-row-description">{escape(description)}</span></th><td>{count}</td>{cells}</tr>')
-  product_headers=''.join(f'<th scope="col" data-product="{kind}">{label}</th>' if available[kind] else '<td class="download-empty" aria-hidden="true"></td>' for kind,label in [('summary','Coverage summaries'),('matches','Protein-page index'),('candidate','Statistical membership index')])
-  columns='<colgroup><col class="download-library-col"><col class="download-records-col"><col class="download-product-col"><col class="download-product-col"><col class="download-product-col"></colgroup>'
+  product_headers=''.join(f'<th scope="col" data-product="{kind}">{label}</th>' if available[kind] else '<td class="download-empty" aria-hidden="true"></td>' for kind,label in PRODUCT_LABELS.items())
+  columns='<colgroup><col class="download-library-col"><col class="download-records-col"><col class="download-product-col"><col class="download-product-col"></colgroup>'
   table='<div class="download-table-scroll" tabindex="0" role="region" aria-label="'+escape(heading)+' downloads"><table class="download-table summary-download-table">'+columns+'<thead><tr><th scope="col">Libraries</th><th scope="col">Records</th>'+product_headers+'</tr></thead><tbody>'+''.join(body)+'</tbody></table></div>'
   paired.append('<div class="download-comparison-group"><h3>'+escape(heading)+'</h3>'+table+'</div>')
  if seen!=set(groups):raise ValueError('Unclassified download comparisons: '+str(set(groups)-seen))
@@ -165,7 +163,7 @@ def render(source):
   description='Summaries in both directions' if a!=b else 'One summary'
   count=' · '.join(f"{counts[k]:,}" for k in dict.fromkeys([a,b]))
   cell=product_cell(archive,'summary',title,description)
-  return '<div class="download-table-scroll" tabindex="0" role="region" aria-label="'+escape(title)+' coverage summaries"><table class="download-table"><thead><tr><th scope="col">Libraries</th><th scope="col">Records</th><th scope="col">Coverage summaries</th></tr></thead><tbody><tr><th scope="row"><span class="download-row-title">'+escape(title)+'</span><span class="download-row-description">'+description+'</span></th><td>'+count+'</td>'+cell+'</tr></tbody></table></div>'
+  return '<div class="download-table-scroll" tabindex="0" role="region" aria-label="'+escape(title)+' coverage summaries"><table class="download-table"><thead><tr><th scope="col">Libraries</th><th scope="col">Records</th><th scope="col">'+PRODUCT_LABELS['summary']+'</th></tr></thead><tbody><tr><th scope="row"><span class="download-row-title">'+escape(title)+'</span><span class="download-row-description">'+description+'</span></th><td>'+count+'</td>'+cell+'</tr></tbody></table></div>'
  source=re.sub(r'<!-- summary-example-archive:([a-z0-9_]+) -->',example_archive,source)
  def inline(match):
   key=match[1]

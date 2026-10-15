@@ -26,11 +26,16 @@ const json = (file, value) => {
 const dbOpen = (file, readOnly = false) => new DatabaseSync(file, { readOnly });
 const textId = (r) => r.assay_id || r.original_id || r.protein_id;
 async function importFasta(
-  { source, directory, id, name, platforms = [], summaryRecords, summarySide },
+  { source, directory, id, name, platforms = [], mappingDatabase, mappingSide },
   report = () => {},
 ) {
   const roster=[];
-  if(summaryRecords)for await(const r of require('../frontend/reproduce/summary-package.cjs').jsonLines(summaryRecords))if(r.side===summarySide)roster.push(r);
+  if(mappingDatabase){
+    const mapping=dbOpen(mappingDatabase,true);
+    try{for(const row of mapping.prepare('SELECT * FROM sequence_records WHERE side=? ORDER BY id').iterate(mappingSide)){
+      const metadata=JSON.parse(row.metadata);roster.push({...row,metadata,normalizedSha256:metadata.normalized_sequence_sha256});
+    }}finally{mapping.close();}
+  }
   fs.mkdirSync(directory, { recursive: true });
   const file = path.join(directory, "library.sqlite"),
     db = dbOpen(file);
@@ -68,10 +73,10 @@ async function importFasta(
     // sequences. Retain both occurrences and the original FASTA/header; give
     // their annotation keys the same deterministic occurrence suffix as IDs.
     if (seen > 1 && ['builtin-exposure','builtin-nonvertebrate'].includes(id)) token += '__' + seen;
-    const saved=summaryRecords?roster[count]:null;
-    if(summaryRecords){
+    const saved=mappingDatabase?roster[count]:null;
+    if(mappingDatabase){
       const digest=crypto.createHash('sha256').update(record.sequence).digest('hex');
-      if(!saved||saved.id!==count+1||saved.length!==record.length||(saved.normalizedSha256||saved.sha256)!==digest)throw Error('Summary library roster differs from FASTA');
+      if(!saved||saved.id!==count+1||saved.length!==record.length||(saved.normalizedSha256||saved.sha256)!==digest)throw Error('Mapping database record differs from FASTA');
       Object.assign(record,saved.metadata,{sequence:record.sequence,length:record.length,library_id:id});token=saved.token;
     }
     try {
@@ -124,7 +129,7 @@ async function importFasta(
       }
     }
     commit();
-    if(summaryRecords&&count!==roster.length)throw Error('Incomplete summary library roster');
+    if(mappingDatabase&&count!==roster.length)throw Error('Incomplete mapping database record population');
     if (!count) throw Error("The FASTA contains no records.");
     db.exec("COMMIT");
     const library = {
@@ -827,11 +832,12 @@ function searchRecords({directory,comparison=false,search='',offset=0,annotation
 function readResult({ directory, targetId, reverse=false, annotations, targetAnnotations, parentAnnotations }) {
   const db = dbOpen(path.join(directory, "comparison.sqlite"), true);
   try {
+    let result;
     if(db.prepare("SELECT 1 FROM sqlite_master WHERE name='positions'").get()){
       const pair=require('./pair-store.cjs'),m=JSON.parse(fs.readFileSync(path.join(directory,'comparison.json'),'utf8'));
       const query=pair.record(db,reverse?1:0,targetId);if(!query)throw Error('Target is not in the saved comparison');
-      return resultFor(query,pair.matches(db,targetId,m.floor,reverse),{floor:m.floor,id:m.id+(reverse?':reverse':''),targetName:(reverse?m.parent:m.target).name,parentName:(reverse?m.target:m.parent).name});
-    }
+      result=resultFor(query,pair.matches(db,targetId,m.floor,reverse),{floor:m.floor,id:m.id+(reverse?':reverse':''),targetName:(reverse?m.parent:m.target).name,parentName:(reverse?m.target:m.parent).name});
+    }else{
     const row = db
       .prepare("SELECT result FROM results WHERE id=?")
       .get(targetId);
@@ -840,12 +846,13 @@ function readResult({ directory, targetId, reverse=false, annotations, targetAnn
       throw Error(
         "This candidate index contains coverage summaries. Use Compare one target to compute its sequence map.",
       );
-    const result = JSON.parse(zlib.gunzipSync(row.result));
+    result = JSON.parse(zlib.gunzipSync(row.result));
+    }
     if (annotations?.python && annotations.moduleRoot) require('./annotations.cjs').annotate([
-      {library:annotations?.target,records:[result.protein]},
-      {library:annotations?.parent,records:result.source_catalog},
+      {library:annotations?.[reverse?'parent':'target'],records:[result.protein]},
+      {library:annotations?.[reverse?'target':'parent'],records:result.source_catalog},
     ], annotations);
-    const ta=metadata.open(targetAnnotations),pa=metadata.open(parentAnnotations);
+    const ta=metadata.open(reverse?parentAnnotations:targetAnnotations),pa=metadata.open(reverse?targetAnnotations:parentAnnotations);
     try{result.protein=ta.apply(result.protein);result.source_catalog=result.source_catalog.map(r=>pa.apply(r));}finally{ta.close();pa.close();}
     return result;
   } finally {
@@ -908,12 +915,13 @@ async function validateComparison(directory) {
     const file='inputs/'+side+'.annotations.'+extension;
     if(m.files?.[file]&&(await hashFile(path.join(directory,file)))!==m.files[file].sha256)throw Error('Incomplete or altered comparison: '+file);
   }
-  if(m.summarySource||m.derivedFromSummary){
+  if((m.summarySource||m.derivedFromSummary)&&m.files?.['summary.json']){
     await require('../frontend/reproduce/summary-package.cjs').validate(directory);
-    for(const file of ['summary.json','summary-records.jsonl','summary-keys.jsonl','record-matches/comparison.sqlite','record-matches/comparison.json',...(m.candidateFile?[m.candidateFile]:[])]){
+    for(const file of ['summary.json','summary-records.jsonl','summary-keys.jsonl',...((m.storage||m.mappingStorage)==='unified-mapping/1'?[]:['record-matches/comparison.sqlite','record-matches/comparison.json']),...(m.candidateFile?[m.candidateFile]:[])]){
       if(!m.files?.[file]||await hashFile(path.join(directory,file))!==m.files[file].sha256)throw Error('Incomplete or altered derived summary index: '+file);
     }
   }
+  if(m.candidateFile&&(!m.files?.[m.candidateFile]||await hashFile(path.join(directory,m.candidateFile))!==m.files[m.candidateFile].sha256))throw Error('Incomplete or altered mapping database');
   const settings = JSON.parse(
     fs.readFileSync(path.join(directory, "settings.json"), "utf8"),
   );
@@ -928,7 +936,7 @@ async function validateComparison(directory) {
   const retainsPositions = m.retainsPositions !== false; // Existing full packages remain compatible.
   if (
     (settings.retainPositions ?? true) !== retainsPositions ||
-    (!m.complete && !retainsPositions && !m.derivedFromSummary)
+    (!m.complete && !retainsPositions && m.storage!=='unified-mapping/1' && !m.derivedFromSummary)
   )
     throw Error("Comparison output type does not match its settings");
   const db = dbOpen(path.join(directory, "comparison.sqlite"), true);
@@ -955,7 +963,7 @@ async function validateComparison(directory) {
   return m;
 }
 module.exports = {
-  buildSummaryIndexes:require('../frontend/reproduce/summary-index.cjs').build,
+  prepareMapping:async file=>{const db=new DatabaseSync(path.toNamespacedPath(path.resolve(file)));try{require('../frontend/reproduce/unified-mapping.cjs').prepare(db);}finally{db.close();}return {bytes:fs.statSync(file).size,sha256:await hashFile(file)};},
   readInstalledResult:({moduleRoot,...query})=>{const found=require('./reference-pairs.cjs').find(moduleRoot,query);return found?readResult(found):null;},
   prepareAnnotations:metadata.prepare,
   refreshAnnotations:require('./metadata-outputs.cjs').refresh,

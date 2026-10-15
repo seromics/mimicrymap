@@ -1978,11 +1978,23 @@ window.MimicryLite = true;
     return { rows: rows, fasta: fasta };
   }
 
-  // A browser-local result is built from the query row, not from a server payload, so
-  // it never passes through the player adapter. Carry the same trusted query identity
-  // the adapter applies, or the target loses its annotation tracks and structure.
-  function applyQueryContextIdentity(protein, queryContext) {
-    if (!protein || !queryContext) return;
+  // Local engines accept sequences even for catalog selections. Restore the selected
+  // record's provenance before presentation; the engine's generic "custom" origin
+  // must not turn a reference search into an upload or disable its tracks/structure.
+  function applyLocalQueryIdentity(result, plan, queryContext) {
+    if (!plan || !plan.builtIn) return;
+    var protein = result.protein;
+    if (!protein || !plan.sourceLibrary) throw new Error("Selected query record identity is unavailable.");
+    if (queryContext && (!queryContext.sequence ||
+        String(queryContext.sequence).toUpperCase() !== String(protein.sequence || "").toUpperCase())) {
+      throw new Error("Selected reference sequence differs from the comparison target.");
+    }
+    protein.library_id = plan.sourceLibrary;
+    result.origin = "local_library";
+    // Catalog sequences are already retained in protein.sequence. A FASTA used
+    // internally to submit that record is not a user-uploaded query.
+    if (result.inputs) delete result.inputs.original_query_fasta;
+    if (!queryContext) return;
     var portableId = String(queryContext.parent_key || queryContext.portable_id || "");
     if (/^(?:P9P|M1E)[0-9]{9}$/.test(portableId)) {
       protein.protein_id = portableId;
@@ -2263,7 +2275,7 @@ window.MimicryLite = true;
         var localOutcome = await runLocalFloorScan(plan, parentSet, targetFilters, floor, scanAbort.signal, requestNote);
         if (!currentRequest()) throw cancelledRequestError();
         var localResult = localOutcome.result;
-        applyQueryContextIdentity(localResult.protein, queryContext);
+        applyLocalQueryIdentity(localResult, plan, queryContext);
         if (historyUiContext.targetFilterState && historyUiContext.targetFilterState.singleMode) {
           localResult.parameters.source_scope_label = historyUiContext.targetLibraryLabel;
           localResult.parameters.source_library_records = 1;
@@ -2415,12 +2427,18 @@ window.MimicryLite = true;
       const prior=byId('entryTargetLibrary')?.value;
       setExploreTargetSet(targetSetValue(record.kind==='portable'?'protein':'library',record.library));
       const select=byId('entryTargetLibrary');
-      const pair=settings.parentRecord;
-      if(pair && (!Number.isSafeInteger(Number(pair.antigen_id)) || !allowed(pair.library)))throw new Error('This exact comparison record is unavailable.');
+      let pair=settings.parentRecord;
+      if(pair?.kind==='portable'){
+        const reference=verifiedAnalysisReference(pair);
+        if(!reference||reference.library!==pair.library)throw new Error('This exact comparison record is unavailable.');
+        pair=Object.assign({},pair,{antigen_id:reference.antigenId});
+      }
+      if(pair && (!Number.isSafeInteger(Number(pair.antigen_id)) || Number(pair.antigen_id)<1 || !allowed(pair.library)))throw new Error('This exact comparison record is unavailable.');
       const choices=pair ? ['library:'+pair.library] : [settings.parentLibrary,prior,'library:canonical_human','library:canonical_exposure','library:huprot4','library:human_current','library:virscan_exposome_current'];
       const supported=choices.find(value=>value&&allowed(value)&&Array.from(select.options).some(option=>option.value===value&&!option.disabled));
       if(!supported)throw new Error('No supported comparison is available.');
       select.value=supported;
+      if(settings.resetParentScope&&!pair)delete state.filterState.target[supported.replace(/^library:/,'')];
       if(settings.viralReferenceOnly){
         state.filterState.target.canonical_exposure=normalizeV4FilterState(filterOptions('canonical_exposure'),{source_collections:['viral_nonhuman']},'canonical_exposure');
       }

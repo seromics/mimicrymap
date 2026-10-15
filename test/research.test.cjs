@@ -16,7 +16,7 @@ function fixture(t) {
 }
 function rows(directory,table) {
   const db=new DatabaseSync(path.join(directory,'comparison.sqlite'),{readOnly:true});
-  try{return db.prepare('SELECT * FROM '+table+' ORDER BY rowid').all().map(row=>row.result?{...row,result:JSON.parse(zlib.gunzipSync(row.result))}:row);}finally{db.close();}
+  try{return db.prepare('SELECT * FROM '+table+' ORDER BY '+(table==='pairs'?'target,identity,parent':'id')).all().map(row=>row.result?{...row,result:JSON.parse(zlib.gunzipSync(row.result))}:row);}finally{db.close();}
 }
 function events(result) {
   return result.positional_matches.flatMap(row=>row.hits.map(hit=>[result.source_catalog.find(p=>p.protein_idx===row.protein_idx).raw_header,...hit.slice(0,3)]));
@@ -27,6 +27,7 @@ test('fresh FASTAs and annotations produce installable candidate and full-lookup
   const full=await build({...base,out:path.join(f.dir,'full'),'retain-positions':true});
   const manifest=await engine.validateComparison(candidate.directory);
   assert.equal(manifest.complete,true);assert.equal(manifest.retainsPositions,false);assert.equal(manifest.targets,4);
+  assert.equal(manifest.storage,'unified-mapping/1');assert(!fs.existsSync(path.join(candidate.directory,'record-matches')));
   assert.equal((await engine.validateComparison(full.directory)).retainsPositions,true);
   for(const file of ['library_summary.csv','pair_coverage.csv'])assert.deepEqual(fs.readFileSync(path.join(candidate.directory,file)),fs.readFileSync(path.join(full.directory,file)));
   const summary=fs.readFileSync(path.join(candidate.directory,'library_summary.csv'),'utf8');

@@ -4,10 +4,6 @@ const engine=require('../mimicrymap/workspace/engine.cjs');
 process.once('message',async({config,pending})=>{
   try {
     const report=progress=>process.send?.({progress});
-    if(config.summary){
-      const result=await engine.buildSummaryIndexes({source:config.summary,directory:path.join(pending,'comparison')},report);
-      process.send({complete:{output:result.output,targets:result.targets,pairs:result.pairs}},()=>process.disconnect());return;
-    }
     const directories={targets:path.join(pending,'targets'),parents:path.join(pending,'parents')};
     const annotations={};
     for(const [plural,singular] of [['targets','target'],['parents','parent']]) {
@@ -25,7 +21,7 @@ process.once('message',async({config,pending})=>{
       machine:{platform:process.platform,arch:process.arch,node:process.versions.node,cpu:os.cpus()[0]?.model,cpus:os.availableParallelism(),memoryBytes:os.totalmem(),sourceCommit:source.commit},
     },report);
     fs.writeFileSync(path.join(pending,'comparison','README.txt'),
-      'MimicryMap comparison\n\nlibrary_summary.csv: target summaries at the available 7/9–9/9 thresholds.\npair_coverage.csv: unrounded pair coverage at every computed threshold.\ncomparison.sqlite: candidate memberships, identities, and optional complete positions.\ninputs/: exact FASTAs and effective record annotations.\n\nInstall this directory in SeroMap Workspace > MimicryMap Libraries > Install comparison. Bind target libraries to assay platforms to use it in Mimicry candidates.\n\nReproduce with the private MimicryMap research repository: node build.cjs --targets inputs/targets.fasta --parents inputs/parents.fasta --target-annotations inputs/targets.annotations.csv --parent-annotations inputs/parents.annotations.csv --floor '+config.floor+' --out ../reproduced'+(config.bidirectional?' --bidirectional':config['retain-positions']?' --retain-positions':'')+'\nFor NVIDIA acceleration add --engine gpu --python /path/to/CUDA/python.\n\nSequence resemblance is descriptive and does not establish antibody binding or disease causation.\n');
+      'MimicryMap comparison\n\nlibrary_summary.csv: target summaries at the computed identity thresholds.\npair_coverage.csv: unrounded pair coverage at every computed threshold.\ncomparison.sqlite: unified residue ranges, statistical memberships and identities, or optional complete positions with a separate membership-index.sqlite.\ninputs/: exact FASTAs and effective record annotations.\n\nInstall this directory in SeroMap Workspace > MimicryMap Libraries > Import Mapping Database. Bind target libraries to assay platforms to use it in Proteome reactivity.\n\nReproduce with the MimicryMap research repository: node build.cjs --targets inputs/targets.fasta --parents inputs/parents.fasta --target-annotations inputs/targets.annotations.csv --parent-annotations inputs/parents.annotations.csv --floor '+config.floor+' --out ../reproduced'+(config.bidirectional?' --bidirectional':config['retain-positions']?' --retain-positions':'')+'\nFor NVIDIA acceleration add --engine gpu --python /path/to/CUDA/python.\n\nSequence resemblance is descriptive and does not establish antibody binding or disease causation.\n');
     process.send({complete:{output:result.output,targets:result.targets,pairs:result.pairs,positions:result.positions}},()=>process.disconnect());
   } catch(error) {
     process.exitCode=1;

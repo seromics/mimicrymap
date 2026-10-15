@@ -18,14 +18,17 @@
  root.addEventListener('seromap:code-export-ready',()=>{code.hidden=typeof root.SeroMapCodeExport!=='function';code.disabled=!state.view?.rows.length;});
  const originalTitle=find('#atlasPairsTitle').textContent;
  function element(tag,attrs,text){const n=document.createElement(tag);for(const [k,v]of Object.entries(attrs||{}))n.setAttribute(k,v);if(text!=null)n.textContent=text;return n;}
- function labelCell(record,isParent){const cell=element('td',{},null);cell.title=isParent?record[3]:record[2];cell.append(element('strong',{},record[0]||record[1]));if(record[0])cell.append(element('small',{},record[1]));return cell;}
- function coverage(value){const cell=element('td'),bar=element('span',{class:'atlas-pairs-measure'});bar.style.setProperty('--pair-percent',value+'%');bar.append(element('span',{},value.toFixed(1)+'%'));cell.append(bar);return cell;}
+ const reference=(record,isParent)=>({library:isParent?'atlas_120_viruses':'human_swissprot',source:record[1],organism:isParent?record[3]:'Homo sapiens'});
+ const recordHref=(record,isParent)=>root.MimicryReferenceLinks.protein(reference(record,isParent));
+ const pairHref=(data,pair,floor,reverse=false)=>root.MimicryReferenceLinks.comparison(reference(reverse?data.parents[pair[1]]:data.targets[pair[0]],reverse),reference(reverse?data.targets[pair[0]]:data.parents[pair[1]],!reverse),floor);
+ function labelCell(record,isParent){const cell=element('td',{},null);cell.title=isParent?record[3]:record[2];const a=element('a',{href:recordHref(record,isParent)});a.append(element('strong',{},record[0]||record[1]));if(record[0])a.append(element('small',{},record[1]));cell.append(a);return cell;}
+ function coverage(value,href){const cell=element('td'),bar=element('a',{class:'atlas-pairs-measure',href,title:'Open This Exact Pair in MimicryMap'});bar.style.setProperty('--pair-percent',value+'%');bar.append(element('span',{},value.toFixed(1)+'%'));cell.append(bar);return cell;}
  function render(){
   if(!state.data)return;
   const data=state.data,key=state.floor+':'+state.metric;if(!state.cache.has(key))state.cache.set(key,ranked(data,state.floor,state.metric));
   const rows=state.cache.get(key),view=pageSlice(rows,state.page,state.size);state.page=view.page;state.view=view;const offset=2+(state.floor-7)*2;
   const fragment=document.createDocumentFragment();
-  view.rows.forEach((pair,i)=>{const tr=element('tr',{'data-target-accession':data.targets[pair[0]][1],'data-parent-accession':data.parents[pair[1]][1],'data-target-coverage':pair[offset+1],'data-parent-coverage':pair[offset]});tr.append(element('td',{},number(view.start+i+1)),labelCell(data.targets[pair[0]],false),labelCell(data.parents[pair[1]],true),element('td',{title:data.parents[pair[1]][3]},data.parents[pair[1]][2]),coverage(pair[offset+1]),coverage(pair[offset]));fragment.append(tr);});
+  view.rows.forEach((pair,i)=>{const tr=element('tr',{'data-target-accession':data.targets[pair[0]][1],'data-parent-accession':data.parents[pair[1]][1],'data-target-coverage':pair[offset+1],'data-parent-coverage':pair[offset]});tr.append(element('td',{},number(view.start+i+1)),labelCell(data.targets[pair[0]],false),labelCell(data.parents[pair[1]],true),element('td',{title:data.parents[pair[1]][3]},data.parents[pair[1]][2]),coverage(pair[offset+1],pairHref(data,pair,state.floor)),coverage(pair[offset],pairHref(data,pair,state.floor,true)));fragment.append(tr);});
   body.replaceChildren(fragment);find('#atlasPairsPlot').replaceChildren(tableSvg(view,data,state.floor));host.dataset.ready='true';host.dataset.floor=state.floor;host.dataset.metric=state.metric;
   all('[data-pair-floor]').forEach(b=>{b.disabled=false;b.setAttribute('aria-pressed',String(Number(b.dataset.pairFloor)===state.floor));});
   const first=rows.length?view.start+1:0,last=view.start+view.rows.length,total=rows.length,pages=view.pages;
@@ -58,11 +61,11 @@
    width:1100,title:heading,heading,unit:`${floor}/9 | Coverage (%) | 0–100`,
    gutter:48,gutterTitle:headers[0],rows:view.rows,label:p=>number(view.start+view.rows.indexOf(p)+1),
    cols:[
-    {t:headers[1],w:180,f:p=>label(target(p)),tooltip:p=>label(target(p))+' | '+target(p)[2]},
-    {t:headers[2],w:180,f:p=>label(parent(p)),tooltip:p=>label(parent(p))},
+    {t:headers[1],w:180,f:p=>label(target(p)),tooltip:p=>label(target(p))+' | '+target(p)[2],href:p=>recordHref(target(p),false)},
+    {t:headers[2],w:180,f:p=>label(parent(p)),tooltip:p=>label(parent(p)),href:p=>recordHref(parent(p),true)},
     {t:headers[3],w:240,f:p=>parent(p)[2],tooltip:p=>parent(p)[3]},
-    {t:headers[4],w:150,f:p=>p[offset+1].toFixed(1)+'%',bar:p=>p[offset+1],scale:100},
-    {t:headers[5],w:150,f:p=>p[offset].toFixed(1)+'%',bar:p=>p[offset],scale:100}
+    {t:headers[4],w:150,f:p=>p[offset+1].toFixed(1)+'%',bar:p=>p[offset+1],scale:100,href:p=>pairHref(data,p,floor)},
+    {t:headers[5],w:150,f:p=>p[offset].toFixed(1)+'%',bar:p=>p[offset],scale:100,href:p=>pairHref(data,p,floor,true)}
    ]
   });
  }

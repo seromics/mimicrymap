@@ -1,10 +1,23 @@
-# Reusable summary packages
+# Summary Downloads and Internal Compilation
 
-`mimicrymap.summary-package/1` makes a range-enabled CSV the source for two
-query formats: statistical memberships and compressed protein-page neighbours.
-Neither derivation invokes a matcher. Node.js 24 supplies the SQLite runtime.
+Public downloads have two separate uses:
 
-The package contains:
+- **General-Use Summaries (.csv):** one CSV per direction (one for a
+  self-comparison), the original input FASTAs and a short README. FASTA headers
+  and sequences are retained, including records without a qualifying match.
+- **SeroMap Index (.sqlite):** the unified mapping database and its installation
+  configuration. The database contains complete record identities, aliases,
+  organism metadata, pairs, ranges and statistical cutoff values.
+
+CSV ZIPs do not contain record/key JSON sidecars or an installation catalog.
+SeroMap imports the completed mapping database. Fresh FASTA builds produce
+readable summaries and SQLite from the same comparison without repeating
+matching. Annotation updates change record metadata without rebuilding pairs.
+
+The internal `mimicrymap.summary-package/1` compiler format connects verified
+range summaries to the unified database during a build. Its temporary files
+are removed after successful verification and are not a download product.
+Node.js 24 supplies the SQLite runtime. The intermediate contains:
 
 - The ordinary summary CSV, with each paired percentage column followed by its
   independent parent and target residue unions.
@@ -33,16 +46,14 @@ cutoff arithmetic. Canonical organism and source-collection metadata determine
 reference groups. A data correction to those assignments is recorded separately
 from format conversion. Protein-page coordinates always use exact unions.
 
-Run `node summary-index.cjs package new-output` to validate and derive both
-indexes. In the downloadable pipeline use `node run.cjs --from-summary package
-new-output`; in the research builder use `node build.cjs --summary package --out
-new-output`. SeroMap's comparison import accepts a package folder without any
+`summary-index.cjs` validates these internal files and compiles the unified
 database. The source CSV is copied unchanged. Derived tables retain both query
 directions; reverse queries exchange sequence IDs, coverage denominators and
 ranges. No residue correspondence, mismatch sequence or continuous alignment
-is inferred from a union.
+is inferred from a union. The public app and command-line builders do not expose
+a CSV-only reconstruction route.
 
 Native fresh builds verify CSV-derived pair values and aliases against the
-initial computation before publishing the indexes. Catalogue conversions also
+initial computation before publishing the database. Catalogue conversions also
 check existing cutoff memberships and coordinate payloads. Study measurements,
-hit calls, Fisher tests and BH results are not stored in either index.
+hit calls, Fisher tests and BH results are not stored in the mapping database.

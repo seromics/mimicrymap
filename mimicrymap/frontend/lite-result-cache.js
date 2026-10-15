@@ -19,7 +19,15 @@
       async run(descriptor, compute, signal) {
         check(signal);
         const storage=root.seromapDesktop?.results;
-        if(storage){const retained=await storage('get',{identity:descriptor});check(signal);if(retained){const saved=JSON.parse(retained.snapshot),outcome=saved.outcome;if(Array.isArray(outcome.result.source_catalog))outcome.result.source_catalog_by_index=new Map(outcome.result.source_catalog.map(row=>[row.protein_idx,row]));if(saved.sharedParents)outcome.result.inputs.reproduction_parents=outcome.rows;outcome.cached=true;hits++;return outcome;}}
+        if(storage){
+          let retained;
+          // Retention is optional: large custom populations may exceed the host's
+          // cache identity limit while remaining valid inputs to the local scanner.
+          try { retained=await storage('get',{identity:descriptor}); }
+          catch (_) { /* Use the bounded session cache or calculate normally. */ }
+          check(signal);
+          if(retained){const saved=JSON.parse(retained.snapshot),outcome=saved.outcome;if(Array.isArray(outcome.result.source_catalog))outcome.result.source_catalog_by_index=new Map(outcome.result.source_catalog.map(row=>[row.protein_idx,row]));if(saved.sharedParents)outcome.result.inputs.reproduction_parents=outcome.rows;outcome.cached=true;hits++;return outcome;}
+        }
         const key = stable(descriptor), existing = entries.get(key);
         if (existing) {
           hits++; entries.delete(key); entries.set(key, existing);

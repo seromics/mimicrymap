@@ -144,8 +144,10 @@ async function run({configPath,base,codeDir,layout,core,scan,digest}){
   }
   const descriptor=(records,file,name)=>({id:'summary-'+digest(fs.readFileSync(path.join(pending,file))).slice(0,16),name,records:records.length,residues:records.reduce((n,r)=>n+r.sequence.length,0),short:records.filter(r=>r.sequence.length<9).length,sha256:digest(fs.readFileSync(path.join(pending,file))),platforms:[]});
   await summaryPackage.seal(pending,{csv:'library_summary.csv',recordsFile:'summary-records.jsonl',keysFile:'summary-keys.jsonl',inputs:summaryInputs,floors:[7,8,9],rows:queries.length,complete:!selected,targetId:selected?1:null,target:descriptor(queries,summaryInputs.target,'Antigen targets'),parent:descriptor(summaryParents,summaryInputs.parent,selected?.scope_label||'Mimicry parents')});
-  writtenFiles.push('summary.json');
   await require('./summary-index.cjs').build({source:pending,directory:path.join(pending,'indexes'),linkInputs:true},p=>console.error(p.phase));
+  for(const file of ['summary.json','summary-records.jsonl','summary-keys.jsonl']){
+   fs.unlinkSync(path.join(pending,file));const i=writtenFiles.indexOf(file);if(i>=0)writtenFiles.splice(i,1);
+  }
   writtenFiles.push(...inventory(path.join(pending,'indexes'),'indexes/'));
   put('README.md','# MimicryMap Results\n\nlibrary_summary.csv has one row per target at 7/9, 8/9 and 9/9, with paired Parent|Target coverage lists and adjacent per-pair residue ranges (one decimal; at least 10% on either side before rounding). Each targets/ folder contains comparison_summary.csv, All Matches and Overall Mimicry Parents. A Current window slice appears only when selected_target_start is set. run.json captures settings and summaries; records.json contains all input record metadata. The two original FASTA inputs are captured once in inputs/.\n\nRerunning the launcher refreshes this managed output folder. Choose another output_directory in settings.json to keep a separate run. Calculation code stays in the tool package.\n');
   const record={schema:'mimicryone/pipeline-run/3',export_schema:core.version,captured_utc:captured,settings:{...settings,selected_target_start:start},

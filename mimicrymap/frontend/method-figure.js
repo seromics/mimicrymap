@@ -165,7 +165,7 @@
     rect(spanX+9*proteinScale,barY,9*proteinScale,10,'method-match method-context-core')+'</g>'+
     text(barX,barY+26,'1','method-coordinate')+
     text(barX+full*proteinScale,barY+26,String(full),'method-end method-coordinate')+
-    '<path class="method-pair-line method-context-connector" d="M'+(spanX+spanW/2)+','+(barY+12)+' V'+(barY+39)+' L'+(width/2)+','+(barY+65)+'"/>';
+    '<path class="method-pair-line method-context-connector" d="M'+(spanX+spanW/2)+','+(barY+12)+' V'+(barY+32)+' L'+(width/2)+','+(barY+44)+'"/>';
    inputY+=72;
    input+=text(width/2,inputY,copy('input.context',[offset0,offset0+sequence.length-1]),'method-center method-coordinate');
    inputY+=ROW_PITCH;

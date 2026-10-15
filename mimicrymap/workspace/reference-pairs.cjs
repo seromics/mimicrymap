@@ -23,6 +23,8 @@ function catalog(moduleRoot,override=process.env.SERO_SEQUENCE_PAIRS_ROOT,purpos
   if(!fs.existsSync(file(root,p)))continue;
   const old=merged.get(p.id);
   if(!old){merged.set(p.id,p);continue;}
+  if(p.storage==='unified-mapping/1'){merged.set(p.id,p);continue;}
+  if(old.storage==='unified-mapping/1')continue;
   const light=p.relationshipsOnly?p:old.relationshipsOnly?old:null,full=p.relationshipsOnly?old:p;
   merged.set(p.id,light?{...light,...(!full.relationshipsOnly?{lookupFile:full.lookupFile||full.file,candidateFile:full.file}:{})}:p);
  }

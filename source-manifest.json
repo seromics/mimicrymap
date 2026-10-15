@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.source-snapshot/1",
   "repository": "https://github.com/seromics/seromap_electron",
-  "commit": "052c88efad31829937f3de687b49156f019022d9",
+  "commit": "540a96d41964ac2f83611d17c7d2268b6ade5db8",
   "files": [
     {
       "path": "mimicrymap/SOURCE-NOTICE.md",
@@ -24,8 +24,8 @@
     {
       "path": "mimicrymap/docs/contracts/summary-package.md",
       "source": "mimicrymap/docs/contracts/summary-package.md",
-      "bytes": 2940,
-      "sha256": "5b9ff8315c75320aebbe3d3d72f9a65fa87c2b43c892ea630b8e2a67b2435892"
+      "bytes": 3650,
+      "sha256": "c1143e066bd843a22b5fddce624f170e0a4365d00cb618670a3a62c655c668be"
     },
     {
       "path": "mimicrymap/docs/public/GLOSSARY.md",
@@ -36,8 +36,8 @@
     {
       "path": "mimicrymap/docs/public/INTERFACE_TEXT.md",
       "source": "mimicrymap/docs/public/INTERFACE_TEXT.md",
-      "bytes": 163335,
-      "sha256": "faa8e55f25b6c585c9089de245a2defb7cc1adc297b46c62beb16053e9d3f86a"
+      "bytes": 163401,
+      "sha256": "2ff167e62fd02b47ce8c4cb88933d8d105fcb740c0f577d7a7ba01f1fce5c2b6"
     },
     {
       "path": "mimicrymap/docs/public/README.md",
@@ -48,8 +48,8 @@
     {
       "path": "mimicrymap/docs/public/downloads.html",
       "source": "mimicrymap/docs/public/downloads.html",
-      "bytes": 1871,
-      "sha256": "feafe008cbbb70335e176d578a31e2e39f06d2f83a522921b55dbf667fdf266e"
+      "bytes": 1610,
+      "sha256": "5e06a15386785481d6782025a08311ebf234b9bac43329bb1de2f490ede3a9ff"
     },
     {
       "path": "mimicrymap/docs/public/figure-legends.json",
@@ -78,14 +78,14 @@
     {
       "path": "mimicrymap/docs/public/interface-copy.json",
       "source": "mimicrymap/docs/public/interface-copy.json",
-      "bytes": 178348,
-      "sha256": "0ea3a4d59311a539c0aa34cd960e968c6399e01629e45f7781086dd0fe27e9b4"
+      "bytes": 183662,
+      "sha256": "5cd5372095dfd0b91f7ffda3db091a79bd0ac58b43406758901c24114b6e5ae3"
     },
     {
       "path": "mimicrymap/docs/public/method-copy.json",
       "source": "mimicrymap/docs/public/method-copy.json",
-      "bytes": 10356,
-      "sha256": "978b3c8fd04f0c7bc1d9759adb5fdada5bde7be23f4242a806facccfccd0a700"
+      "bytes": 10527,
+      "sha256": "02152d90cf807d8ba43760f7d12c48cfcc9d316f2f636208e2d6055d205d9aaa"
     },
     {
       "path": "mimicrymap/docs/public/methods.html",
@@ -102,8 +102,8 @@
     {
       "path": "mimicrymap/docs/public/pan-viral.html",
       "source": "mimicrymap/docs/public/pan-viral.html",
-      "bytes": 6441,
-      "sha256": "52e5511d2fab5507997972e41de4f7a25952b63d1743aa5bb75c4ba83c91a5c6"
+      "bytes": 6329,
+      "sha256": "5e95be5203f67cbecf217f27e2078d09d80d53984cc424e3e49572ed2e7de8f7"
     },
     {
       "path": "mimicrymap/docs/public/release.html",
@@ -120,8 +120,8 @@
     {
       "path": "mimicrymap/docs/public/summary-download-guide.md",
       "source": "mimicrymap/docs/public/summary-download-guide.md",
-      "bytes": 22015,
-      "sha256": "885cab0d2286ce4dc96a376aa3e56db9c3122002d6dc330e00df18841ef6517f"
+      "bytes": 21402,
+      "sha256": "a7f72df3bde232f64afec6367b24392cd2c3e90728400f9be79e11e613b10b1c"
     },
     {
       "path": "mimicrymap/docs/public/target-summary.html",
@@ -168,8 +168,8 @@
     {
       "path": "mimicrymap/frontend/analysis-entry.js",
       "source": "mimicrymap/frontend/analysis-entry.js",
-      "bytes": 238135,
-      "sha256": "12a2dd53fe0f4b777ef91c75e9afb904425c382a06fd4709edb2736534f8c635"
+      "bytes": 239298,
+      "sha256": "6359d4d65a459d892ae14275dc93384d25fdc363b48b6630a986b517bfa30c94"
     },
     {
       "path": "mimicrymap/frontend/analysis-player-adapter.js",
@@ -240,26 +240,26 @@
     {
       "path": "mimicrymap/frontend/atlas-figures.js",
       "source": "mimicrymap/frontend/atlas-figures.js",
-      "bytes": 187890,
-      "sha256": "439a55e1cf1b572acd4671563addeb241ba3a75ac65bf8fee30914b6e065e9e5"
+      "bytes": 190464,
+      "sha256": "97aef93ee5724c067ea711f277b2143317be54608d4b9281fe24f5b5db4edc15"
     },
     {
       "path": "mimicrymap/frontend/atlas-pairs-manifest.json",
       "source": "mimicrymap/frontend/atlas-pairs-manifest.json",
-      "bytes": 4748,
-      "sha256": "99a07abbe8d214b0b848714e400fde2addee698d09ddd3313656677ea7a7f3b6"
+      "bytes": 4740,
+      "sha256": "9ffe1c3278bd5b33ec299823000954ca2373e0f39ca436af59d0e9905e8f7686"
     },
     {
       "path": "mimicrymap/frontend/atlas-pairs.js",
       "source": "mimicrymap/frontend/atlas-pairs.js",
-      "bytes": 13124,
-      "sha256": "6d3b08d13d8bb58bf3dda9dcb6c2ddfb4eaf0abb13115b32f3569e9a627d1cbf"
+      "bytes": 13944,
+      "sha256": "85c2bfd1372c2f9bef8c473369b759c89d280f4058d2d953c3d8d9054476686b"
     },
     {
       "path": "mimicrymap/frontend/calculations.html",
       "source": "mimicrymap/frontend/calculations.html",
-      "bytes": 35748,
-      "sha256": "6298c674aad622309a8010b64f879141fe3270c5728981ce440bb8f022e131a9"
+      "bytes": 36016,
+      "sha256": "cc5e50c971a7b74d89f263f747b1de2a71d97fdf8f892518f706de292bc1590c"
     },
     {
       "path": "mimicrymap/frontend/canonical_aliases.py",
@@ -376,6 +376,12 @@
       "sha256": "61d0492e640cf2cc96a243aa21e042e4c2bb5699122d3d098259a58aeecbbb6d"
     },
     {
+      "path": "mimicrymap/frontend/document-data/pan_viral_pairs_f7022d021622.json.gz",
+      "source": "mimicrymap/frontend/document-data/pan_viral_pairs_f7022d021622.json.gz",
+      "bytes": 1137723,
+      "sha256": "681c87d5ad3817901b76abc6a43767eaf11a8636204360a3872ba696af8d7490"
+    },
+    {
       "path": "mimicrymap/frontend/explorer_analysis_crosswalk.py",
       "source": "mimicrymap/frontend/explorer_analysis_crosswalk.py",
       "bytes": 11803,
@@ -462,8 +468,8 @@
     {
       "path": "mimicrymap/frontend/lite-result-cache.js",
       "source": "mimicrymap/frontend/lite-result-cache.js",
-      "bytes": 4123,
-      "sha256": "cedb2c62537ebead57939d764c2f94d42fd0df4c651feeb17c90328bcd5a5de6"
+      "bytes": 4442,
+      "sha256": "9dd6e27bb2c230c45c177cc2c110362691238c9f107a6b210b34960319e1e0f6"
     },
     {
       "path": "mimicrymap/frontend/local-input-records.js",
@@ -499,7 +505,7 @@
       "path": "mimicrymap/frontend/method-figure.js",
       "source": "mimicrymap/frontend/method-figure.js",
       "bytes": 25132,
-      "sha256": "f1d26b98547341030c831ff34cebe5b69f4d4422023d6298c77b7d15854c0955"
+      "sha256": "554d0125ba363a0f25527898fe0384fc0f5981f3e526e07a9c2cb2ff440e9fd1"
     },
     {
       "path": "mimicrymap/frontend/mimicryone-fonts.css",
@@ -564,8 +570,8 @@
     {
       "path": "mimicrymap/frontend/pan-viral.html",
       "source": "mimicrymap/frontend/pan-viral.html",
-      "bytes": 47433,
-      "sha256": "2e9bbd68f8e4a49d47471b85a514d0f78f8efbae5be63255dacc5f3d546ee510"
+      "bytes": 36461,
+      "sha256": "0c13cbb4b47499809dda4dfe931bdf3b111a370cbc656f52e69d99c580fb2feb"
     },
     {
       "path": "mimicrymap/frontend/pinned_subset_membership.py",
@@ -672,8 +678,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/README.md",
       "source": "mimicrymap/frontend/reproduce/README.md",
-      "bytes": 25109,
-      "sha256": "1c490db6ef899a1234438bf9965d639b455b36a4cbaad46d15fbf7cfeae78c5a"
+      "bytes": 25004,
+      "sha256": "8f422048661c1c6d2e1f25ad70ee4644cfd74ed678b555d476d60e6c7bf41f25"
     },
     {
       "path": "mimicrymap/frontend/reproduce/SOURCE-README.md",
@@ -720,8 +726,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 22015,
-      "sha256": "885cab0d2286ce4dc96a376aa3e56db9c3122002d6dc330e00df18841ef6517f"
+      "bytes": 21402,
+      "sha256": "a7f72df3bde232f64afec6367b24392cd2c3e90728400f9be79e11e613b10b1c"
     },
     {
       "path": "mimicrymap/frontend/reproduce/docs/TABLES.md",
@@ -822,14 +828,14 @@
     {
       "path": "mimicrymap/frontend/reproduce/pipeline-layout.json",
       "source": "mimicrymap/frontend/reproduce/pipeline-layout.json",
-      "bytes": 9530,
-      "sha256": "09d8f4a1b37235d3dab17f1044924ecf113c7e2774b9cf7113fdd02579f72ed8"
+      "bytes": 9881,
+      "sha256": "552bb82b75b45a023d94bd84b66e4219ff6286ba804f012086924d331f43ad93"
     },
     {
       "path": "mimicrymap/frontend/reproduce/pipeline-runner.cjs",
       "source": "mimicrymap/frontend/reproduce/pipeline-runner.cjs",
-      "bytes": 2040,
-      "sha256": "034e7eb93c8f65aedac258393a76bb8cb7e636e059437a8a9fd44c17cb762c80"
+      "bytes": 1768,
+      "sha256": "9537e7e89ac9c16191ee4247c5291b73d3fed1586df959acfa27581debba1b5c"
     },
     {
       "path": "mimicrymap/frontend/reproduce/pipeline-selection.js",
@@ -840,8 +846,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/pipeline.cjs",
       "source": "mimicrymap/frontend/reproduce/pipeline.cjs",
-      "bytes": 17100,
-      "sha256": "82b71bdddf8cb0df0521068dd48e3efd1fe525a5b5bff77eab5bb6656a9a4e59"
+      "bytes": 17264,
+      "sha256": "4255b54d2c748ae48a6ca3be8c7c2d9e861b75e6a8e16e800cb8b77eb30430be"
     },
     {
       "path": "mimicrymap/frontend/reproduce/projected-events.js",
@@ -854,6 +860,12 @@
       "source": "mimicrymap/frontend/reproduce/ranking.js",
       "bytes": 3816,
       "sha256": "63b376fd98c3e1e347f4dc4b95548efbaae1c43a7aabbb9212e632528475e1f1"
+    },
+    {
+      "path": "mimicrymap/frontend/reproduce/reference-links.js",
+      "source": "mimicrymap/frontend/reproduce/reference-links.js",
+      "bytes": 1207,
+      "sha256": "d9a4e6c33a997e7cc4af87f64babff2519491e3dc60b1065157348e221bda747"
     },
     {
       "path": "mimicrymap/frontend/reproduce/reproduce.R",
@@ -888,14 +900,14 @@
     {
       "path": "mimicrymap/frontend/reproduce/summary-index.cjs",
       "source": "mimicrymap/frontend/reproduce/summary-index.cjs",
-      "bytes": 18169,
-      "sha256": "02bee3fd95c81081e4a670c611106ab56f28182b2788b5fadd2d510445dd7234"
+      "bytes": 14306,
+      "sha256": "e668b8990bd4fcd3c37ef4c26bacf32a7fe1576e609e9b197f075ded39df71eb"
     },
     {
       "path": "mimicrymap/frontend/reproduce/summary-package.cjs",
       "source": "mimicrymap/frontend/reproduce/summary-package.cjs",
-      "bytes": 4663,
-      "sha256": "acb6d0e835819f066da871a8eec641ae4a045b43ab8702a31aceb9e1c0bc5781"
+      "bytes": 4730,
+      "sha256": "21ab1a532b082484f32034cee68608f4f7b6e7e398267a3b4b7c426e2b8edcc6"
     },
     {
       "path": "mimicrymap/frontend/reproduce/template/docs/COMPARISON.md",
@@ -908,6 +920,12 @@
       "source": "mimicrymap/frontend/reproduce/template/docs/EXAMPLE.md",
       "bytes": 887,
       "sha256": "adec8b42f3436d4e276680682a2c6957ebff0ac40d7d098919012a7517c29eb7"
+    },
+    {
+      "path": "mimicrymap/frontend/reproduce/template/example-inputs.json",
+      "source": "mimicrymap/frontend/reproduce/template/example-inputs.json",
+      "bytes": 1820,
+      "sha256": "10d16ab050973361f30c6c12b92d419d99d6ebd1d749f03491b057f4043ca74c"
     },
     {
       "path": "mimicrymap/frontend/reproduce/template/inputs/README.md",
@@ -932,6 +950,12 @@
       "source": "mimicrymap/frontend/reproduce/template/run.py",
       "bytes": 780,
       "sha256": "8d941725481396ea1012322bf034d7fc1c3107756f300af90d1917c811c3d2e3"
+    },
+    {
+      "path": "mimicrymap/frontend/reproduce/unified-mapping.cjs",
+      "source": "mimicrymap/frontend/reproduce/unified-mapping.cjs",
+      "bytes": 4873,
+      "sha256": "d7f4a871466a7c28abaaf806a4c28020c56878e55660b65a929cd3a53b098938"
     },
     {
       "path": "mimicrymap/frontend/reproduction_inputs.py",
@@ -1014,14 +1038,14 @@
     {
       "path": "mimicrymap/frontend/site-pages.css",
       "source": "mimicrymap/frontend/site-pages.css",
-      "bytes": 19251,
-      "sha256": "67d0785f5b5d426623e746cdef2f3556b5b1589356526bce5257a9beaef6230e"
+      "bytes": 19437,
+      "sha256": "fa1cb0bee0ef7db3bbcd524b376836590484ba86e009ad3d757f368018148554"
     },
     {
       "path": "mimicrymap/frontend/site-routes.js",
       "source": "mimicrymap/frontend/site-routes.js",
-      "bytes": 2962,
-      "sha256": "d2eee4b06c658ba742bc0f7bedeeaf673928f7d248acc06c1f832741c34b30fb"
+      "bytes": 2953,
+      "sha256": "cb2a11098efcc43cf3e55b7e3bf74ee35a90bc16d8507e80b2307db117f4cd06"
     },
     {
       "path": "mimicrymap/frontend/site-theme.js",
@@ -1032,8 +1056,8 @@
     {
       "path": "mimicrymap/frontend/site_pages.py",
       "source": "mimicrymap/frontend/site_pages.py",
-      "bytes": 6716,
-      "sha256": "9be33af2e3bd56af8db04aecedfc06a3a120c8bb4bbd83b828bb378cf8e7b073"
+      "bytes": 7778,
+      "sha256": "6d2202afd924e7153a376bec818583d79f5adbee6dc292e5ed5e8253e5277003"
     },
     {
       "path": "mimicrymap/frontend/source-licenses.js",
@@ -1044,8 +1068,8 @@
     {
       "path": "mimicrymap/frontend/sources.html",
       "source": "mimicrymap/frontend/sources.html",
-      "bytes": 42306,
-      "sha256": "234926ecbc5cfdd40a0a4e58c94641cde727f439411b7e836ef2f81d54d341b5"
+      "bytes": 35738,
+      "sha256": "151a7925ded440e35a4e6bb36a983379747a21ee8f4947248ac9aa91736c24e8"
     },
     {
       "path": "mimicrymap/frontend/startup-shell.css",
@@ -1068,20 +1092,20 @@
     {
       "path": "mimicrymap/frontend/summary-downloads.json",
       "source": "mimicrymap/frontend/summary-downloads.json",
-      "bytes": 289447,
-      "sha256": "7cf393dadb35ef8a9075adca1d58a95e3802b5b8ccd692a990aa9e3f5799d103"
+      "bytes": 341999,
+      "sha256": "1e9d9a3eefa84e96089ccd4aad501bc12f430950ee0c08fc654a926bd9981d0f"
     },
     {
       "path": "mimicrymap/frontend/summary_downloads.py",
       "source": "mimicrymap/frontend/summary_downloads.py",
-      "bytes": 17619,
-      "sha256": "688af85931f77c9e8e5bb65fe3e41be136116226ebb65a15934711ef0390abb9"
+      "bytes": 17081,
+      "sha256": "d7db06cb9e5b892b93be407cee0c74a63126d71b2f4bfe1263121c91c0cf96ee"
     },
     {
       "path": "mimicrymap/frontend/use-results.html",
       "source": "mimicrymap/frontend/use-results.html",
-      "bytes": 1432308,
-      "sha256": "458c36025d3dbebd8aa2adc28c55de36c49fdfe8d7280b1bc5dc606579a57f35"
+      "bytes": 1432484,
+      "sha256": "d80fa2f7787a67a111637a35d166f5de101092abea3341802546fe1c73b02327"
     },
     {
       "path": "mimicrymap/frontend/viewer-api.js",
@@ -1104,14 +1128,32 @@
     {
       "path": "mimicrymap/frontend/workspace-lookups.mjs",
       "source": "mimicrymap/frontend/workspace-lookups.mjs",
-      "bytes": 3961,
-      "sha256": "865d5b6000e3ce56f2dc566046c18af211882713f34912f18cc5dc715a4a090e"
+      "bytes": 3990,
+      "sha256": "333fa82bb262b6292fd626df2f6978d9bbcce16a1ddca9eab5d271bb7c72d98b"
+    },
+    {
+      "path": "mimicrymap/tools/build_pan_viral_pairs.py",
+      "source": "mimicrymap/tools/build_pan_viral_pairs.py",
+      "bytes": 8463,
+      "sha256": "51a3b8487cdcecf5870640faf6074fddf4910808c98859a0f8535d0462f213af"
+    },
+    {
+      "path": "mimicrymap/tools/build_selected_virus_summaries.py",
+      "source": "mimicrymap/tools/build_selected_virus_summaries.py",
+      "bytes": 15272,
+      "sha256": "497b7e0a0e37b5797ca68d589105684f9c7b7ff73ff15e17af51b097ccc79527"
     },
     {
       "path": "mimicrymap/tools/serve_lite.py",
       "source": "mimicrymap/tools/serve_lite.py",
       "bytes": 2158,
       "sha256": "6163b5441f178161470bf7b4e7ceb6cc8cdd78ba06814b73b1afbabf61db16d5"
+    },
+    {
+      "path": "mimicrymap/tools/stage_selected_virus_summaries.py",
+      "source": "mimicrymap/tools/stage_selected_virus_summaries.py",
+      "bytes": 5970,
+      "sha256": "62368d3bb5d8ea0d68b9a5c951a9b219215b9a9ec5f32f9768e02f257833ae07"
     },
     {
       "path": "mimicrymap/workspace/annotation-source.cjs",
@@ -1152,8 +1194,8 @@
     {
       "path": "mimicrymap/workspace/engine.cjs",
       "source": "mimicrymap/workspace/engine.cjs",
-      "bytes": 44279,
-      "sha256": "b269528ca43a270c66b906247b33a6a89fc0197659a587e876cdafe123369f34"
+      "bytes": 45119,
+      "sha256": "e6e26729e5e53a50c17a4679ed59fb1c994710106160490deefd96e9d0b33c28"
     },
     {
       "path": "mimicrymap/workspace/gpu-scanner.cjs",
@@ -1170,8 +1212,8 @@
     {
       "path": "mimicrymap/workspace/metadata-outputs.cjs",
       "source": "mimicrymap/workspace/metadata-outputs.cjs",
-      "bytes": 8601,
-      "sha256": "6f3197c3fa581f16b7fd7db2a747847efc5f9bbcea168b0fd98cee4c48e6becc"
+      "bytes": 8444,
+      "sha256": "942d9d2a88f9420a117266614719b57a74381620592d6ecb99145ff99a49691a"
     },
     {
       "path": "mimicrymap/workspace/metadata.cjs",
@@ -1204,10 +1246,16 @@
       "sha256": "987e8311c763a1b9121fbf5aa8cb2fd3bc20671e55a928b2275dc9f009861259"
     },
     {
+      "path": "mimicrymap/workspace/prepare-mapping.cjs",
+      "source": "mimicrymap/workspace/prepare-mapping.cjs",
+      "bytes": 613,
+      "sha256": "8404c6e2abadb7717a5a214a0a0d0b2df1826a73235979c29a22c208aceae17c"
+    },
+    {
       "path": "mimicrymap/workspace/record-matches.cjs",
       "source": "mimicrymap/workspace/record-matches.cjs",
-      "bytes": 2019,
-      "sha256": "602aa72cbb3a2fdb414512a1ea5befaa2c1c18c4447657a4868da71c726f4be3"
+      "bytes": 2242,
+      "sha256": "00f162464c6fc74eb78845e47251c37ff2b5d320708e5f0a92045fed1cb4dbb4"
     },
     {
       "path": "mimicrymap/workspace/record_match_index.py",
@@ -1218,26 +1266,26 @@
     {
       "path": "mimicrymap/workspace/reference-pairs.cjs",
       "source": "mimicrymap/workspace/reference-pairs.cjs",
-      "bytes": 3063,
-      "sha256": "b6183015b9c6fcb2524b1449b714f5676556acb3eba2408667e67118a6461838"
+      "bytes": 3182,
+      "sha256": "6d62793b921e26fd0d480ec37ddf5ff3d1918e15a0dd6b95ff7c203e5265f36f"
     },
     {
       "path": "mimicrymap/workspace/run.cjs",
       "source": "mimicrymap/workspace/run.cjs",
-      "bytes": 2219,
-      "sha256": "9a24a8df01f73dd350f720917da60949d572182ef102d69b38b3ff19ffa60cb6"
+      "bytes": 2012,
+      "sha256": "979f6d095622521bb516bdcf2809867c99be128208b15cf2f9d02dfefa5e7c60"
     },
     {
       "path": "mimicrymap/workspace/summary-native.cjs",
       "source": "mimicrymap/workspace/summary-native.cjs",
-      "bytes": 5423,
-      "sha256": "1f343ea751c8dd99348566d6aa2bbe3e4d5ad3d2fe26a491aa7e598f37829ae2"
+      "bytes": 5663,
+      "sha256": "bb35b3ec42120e736209e484f7678199aa3f033e21016a1ea0c7fade34124868"
     },
     {
       "path": "mimicrymap/workspace/worker.cjs",
       "source": "mimicrymap/workspace/worker.cjs",
-      "bytes": 1083,
-      "sha256": "f078548697a1292b964beb48f25ced2279dc8f356eb3e044ba981a8c084b35bd"
+      "bytes": 1114,
+      "sha256": "161d3f2ad50f2d938e96719ac6154c3e7438dd69b82d83d91d513fd9d9bb77ff"
     },
     {
       "path": "code/export-core.js",
@@ -1284,14 +1332,14 @@
     {
       "path": "code/pipeline.cjs",
       "source": "mimicrymap/frontend/reproduce/pipeline.cjs",
-      "bytes": 17100,
-      "sha256": "82b71bdddf8cb0df0521068dd48e3efd1fe525a5b5bff77eab5bb6656a9a4e59"
+      "bytes": 17264,
+      "sha256": "4255b54d2c748ae48a6ca3be8c7c2d9e861b75e6a8e16e800cb8b77eb30430be"
     },
     {
       "path": "code/pipeline-runner.cjs",
       "source": "mimicrymap/frontend/reproduce/pipeline-runner.cjs",
-      "bytes": 2040,
-      "sha256": "034e7eb93c8f65aedac258393a76bb8cb7e636e059437a8a9fd44c17cb762c80"
+      "bytes": 1768,
+      "sha256": "9537e7e89ac9c16191ee4247c5291b73d3fed1586df959acfa27581debba1b5c"
     },
     {
       "path": "code/pipeline-selection.js",
@@ -1302,20 +1350,26 @@
     {
       "path": "code/pipeline-layout.json",
       "source": "mimicrymap/frontend/reproduce/pipeline-layout.json",
-      "bytes": 9530,
-      "sha256": "09d8f4a1b37235d3dab17f1044924ecf113c7e2774b9cf7113fdd02579f72ed8"
+      "bytes": 9881,
+      "sha256": "552bb82b75b45a023d94bd84b66e4219ff6286ba804f012086924d331f43ad93"
     },
     {
       "path": "code/summary-package.cjs",
       "source": "mimicrymap/frontend/reproduce/summary-package.cjs",
-      "bytes": 4663,
-      "sha256": "acb6d0e835819f066da871a8eec641ae4a045b43ab8702a31aceb9e1c0bc5781"
+      "bytes": 4730,
+      "sha256": "21ab1a532b082484f32034cee68608f4f7b6e7e398267a3b4b7c426e2b8edcc6"
     },
     {
       "path": "code/summary-index.cjs",
       "source": "mimicrymap/frontend/reproduce/summary-index.cjs",
-      "bytes": 18169,
-      "sha256": "02bee3fd95c81081e4a670c611106ab56f28182b2788b5fadd2d510445dd7234"
+      "bytes": 14306,
+      "sha256": "e668b8990bd4fcd3c37ef4c26bacf32a7fe1576e609e9b197f075ded39df71eb"
+    },
+    {
+      "path": "code/unified-mapping.cjs",
+      "source": "mimicrymap/frontend/reproduce/unified-mapping.cjs",
+      "bytes": 4873,
+      "sha256": "d7f4a871466a7c28abaaf806a4c28020c56878e55660b65a929cd3a53b098938"
     },
     {
       "path": "code/pair-regions.cjs",
@@ -1362,8 +1416,8 @@
     {
       "path": "docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 22015,
-      "sha256": "885cab0d2286ce4dc96a376aa3e56db9c3122002d6dc330e00df18841ef6517f"
+      "bytes": 21402,
+      "sha256": "a7f72df3bde232f64afec6367b24392cd2c3e90728400f9be79e11e613b10b1c"
     }
   ]
 }
