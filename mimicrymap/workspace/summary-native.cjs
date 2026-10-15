@@ -31,9 +31,11 @@ async function writeSource({manifest,directory,targetDirectory,parentDirectory,t
 }
 async function finalize(options,report=()=>{}){
  const {manifest}=options,directory=path.resolve(options.directory);
+ report({phase:'Preparing mapping records',done:0,total:0});
  const [recordsFile,keysFile]=await writeSource({...options,directory});
  const pending=path.join(directory,'.summary-indexes');
  const derived=await indexer.build({source:directory,directory:pending,linkInputs:true},report);
+ report({phase:'Finalizing mapping database',done:0,total:0});
  const original=new DatabaseSync(path.join(directory,'comparison.sqlite'),{readOnly:true});
  try{
   original.prepare('ATTACH DATABASE ? AS rebuilt').run(path.join(pending,'comparison.sqlite'));

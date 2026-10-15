@@ -380,12 +380,15 @@ function residuePercent(hits, column, length) {
   }
   return (100 * count) / length;
 }
-function* targetBatches(rows) {
-  const budget = Math.max(1, Number(process.env.SERO_GPU_QUERY_WINDOWS) || 100000);
+function* targetBatches(rows, sample = false) {
+  const requested = Math.max(1, Number(process.env.SERO_GPU_QUERY_WINDOWS) || 100000);
+  // Small test batches let the time budget be checked without first completing
+  // several full production batches. Completed sampled records remain reusable.
+  const budget = sample ? Math.min(requested,10000) : requested;
   let batch = [], windows = 0;
   for (const row of rows) {
     const count = Math.max(0, row.sequence.length - 8);
-    if (batch.length && (windows + count > budget || batch.length >= 4096)) {
+    if (batch.length && (windows + count > budget || batch.length >= (sample ? 256 : 4096))) {
       yield batch; batch = []; windows = 0;
     }
     batch.push(row); windows += count;
@@ -530,7 +533,9 @@ async function buildComparison(
       if (warm) await scan.scan(record(warm), target.sha256 === parent.sha256 ? warm.id : null);
     }
     setupMs = Date.now() - started;
-    for (const batch of targetBatches(rows)) {
+    let lastWriteProgress = 0;
+    for (const batch of targetBatches(rows,sample)) {
+      report({phase:sample?'Testing sequence matching':'Comparing sequences',done,total});
       const matchStart = Date.now();
       const queries = batch.map(r=>targetMetadata.apply(record(r))), matched = new Array(batch.length), fresh = [];
       for (let i=0;i<batch.length;i++) {
@@ -541,7 +546,17 @@ async function buildComparison(
       if (fresh.length) {
         const queryBatch=fresh.map(i=>queries[i]), skips=fresh.map(i=>target.sha256===parent.sha256 ? batch[i].id : null);
         const found=scan.scanBatch ? await scan.scanBatch(queryBatch,skips) : [];
-        if (!scan.scanBatch) for(let i=0;i<fresh.length;i++) found.push(await scan.scan(queryBatch[i],skips[i]));
+        if (!scan.scanBatch) {
+          let lastProgress=0;
+          for(let i=0;i<fresh.length;i++) {
+            found.push(await scan.scan(queryBatch[i],skips[i]));
+            if(Date.now()-lastProgress>=1000){
+              lastProgress=Date.now();
+              report({phase:sample?'Testing sequence matching':'Comparing sequences',done:done+fresh[i]+1,total,
+                detail:`${(done+fresh[i]+1).toLocaleString()} / ${total.toLocaleString()} targets matched · CPU`});
+            }
+          }
+        }
         fresh.forEach((index,i)=>{matched[index]=found[i];});
       }
       const matching = Date.now() - matchStart, writeStart = Date.now();
@@ -657,6 +672,10 @@ async function buildComparison(
           summaryWriter.append(native.csv.slice(summaryHeaderLength));
         }
         done++;
+        if(Date.now()-lastWriteProgress>=1000){
+          lastWriteProgress=Date.now();
+          report({phase:'Saving matched ranges',done,total,detail:`${done.toLocaleString()} / ${total.toLocaleString()} targets`});
+        }
       }
       db.exec('COMMIT');
       pairWriter.flush(); summaryWriter.flush(); keyWriter.flush();
@@ -679,6 +698,7 @@ async function buildComparison(
       if (sample && observations.length >= 3 && Date.now() - started - setupMs >= 20000) break;
     }
     if (!done) throw Error("The selected target is not in this library.");
+    report({phase:'Preparing lookup indexes',done:0,total:0});
     const indexStart=Date.now();
     db.exec('CREATE INDEX target_sequence ON results(sequence_hash); CREATE INDEX target_source ON results(source); CREATE INDEX memberships ON pairs(identity,organism,source);');
     if(bidirectional){
@@ -748,6 +768,7 @@ async function writeComparisonPackage({manifest,directory,targetDirectory,parent
   const inputBytes = fs.statSync(path.join(targetDirectory,'source.fasta')).size +
     fs.statSync(path.join(parentDirectory,'source.fasta')).size;
   if (!sample) {
+    report({phase:'Preparing portable comparison files',done:0,total:0});
     await fsp.mkdir(path.join(directory, "inputs"), { recursive: true });
     await fsp.copyFile(path.join(targetDirectory, "source.fasta"), path.join(directory, "inputs/targets.fasta"));
     await fsp.copyFile(path.join(parentDirectory, "source.fasta"), path.join(directory, "inputs/parents.fasta"));

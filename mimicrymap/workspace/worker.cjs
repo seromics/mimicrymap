@@ -19,10 +19,12 @@ process.once('message', async ({ action, value }) => {
       ].includes(action)
     )
       throw Error('Unknown Mimicry workspace operation');
-    let last = 0;
+    let last = 0, lastPhase;
     const report = (progress) => {
-      if (Date.now() - last > 300 || progress.done === progress.total) {
+      if ((progress.phase && progress.phase !== lastPhase) || Date.now() - last > 300 ||
+          (progress.total != null && progress.done === progress.total)) {
         last = Date.now();
+        if (progress.phase) lastPhase = progress.phase;
         process.send?.({ progress });
       }
     };

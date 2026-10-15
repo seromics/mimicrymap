@@ -49,6 +49,7 @@ async function annotationDatabase(source,directory,manifest,side,records){
 async function build({source,directory,linkInputs=false,prepareIndexes=true},report=()=>{}){
  source=path.resolve(source);if(fs.statSync(source).isFile())source=path.dirname(source);
  directory=path.resolve(directory);if(fs.existsSync(directory))throw Error('Index output already exists; choose a new directory');
+ report({phase:'Reading mapping records',done:0,total:0});
  const m=await pkg.validate(source),records=[new Map(),new Map()];
  for await(const r of pkg.jsonLines(pkg.safeFile(source,m.recordsFile))){
   if(![0,1].includes(r.side)||!Number.isSafeInteger(r.id)||r.id<0||r.id>0xffffffff||!Number.isSafeInteger(r.length)||r.length<0||!r.source||!r.token||!r.metadata||!Array.isArray(r.aliases)||!/^[a-f0-9]{64}$/.test(r.sha256)||records[r.side].has(r.id))throw Error('Invalid or duplicate summary record');

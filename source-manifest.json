@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.source-snapshot/1",
   "repository": "https://github.com/seromics/seromap_electron",
-  "commit": "f76b1af07550e70f8c490dbcc5db0c275c968ab9",
+  "commit": "8646242c018d280e83ddec5c19f5f91388f61646",
   "files": [
     {
       "path": "mimicrymap/SOURCE-NOTICE.md",
@@ -900,8 +900,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/summary-index.cjs",
       "source": "mimicrymap/frontend/reproduce/summary-index.cjs",
-      "bytes": 14306,
-      "sha256": "e668b8990bd4fcd3c37ef4c26bacf32a7fe1576e609e9b197f075ded39df71eb"
+      "bytes": 14366,
+      "sha256": "f5125ec6eef7b01080a0450935f72b97b22b62ff042699a02d149eb7186af46e"
     },
     {
       "path": "mimicrymap/frontend/reproduce/summary-package.cjs",
@@ -1194,14 +1194,14 @@
     {
       "path": "mimicrymap/workspace/engine.cjs",
       "source": "mimicrymap/workspace/engine.cjs",
-      "bytes": 45119,
-      "sha256": "e6e26729e5e53a50c17a4679ed59fb1c994710106160490deefd96e9d0b33c28"
+      "bytes": 46306,
+      "sha256": "43f04ee5b17639ce42b580d41b11821e94ba5a9873cf4300f6bac8244a573a17"
     },
     {
       "path": "mimicrymap/workspace/gpu-scanner.cjs",
       "source": "mimicrymap/workspace/gpu-scanner.cjs",
-      "bytes": 3712,
-      "sha256": "cc95565223144d7a8a2bd96231336dba1b4ed247ce8bdd196dd226de457e140f"
+      "bytes": 3791,
+      "sha256": "281f04f32b90731cb1f8654bbfb44cdedc69f72bd210a9982e1598f763f61cae"
     },
     {
       "path": "mimicrymap/workspace/gpu_worker.py",
@@ -1290,14 +1290,14 @@
     {
       "path": "mimicrymap/workspace/summary-native.cjs",
       "source": "mimicrymap/workspace/summary-native.cjs",
-      "bytes": 5663,
-      "sha256": "bb35b3ec42120e736209e484f7678199aa3f033e21016a1ea0c7fade34124868"
+      "bytes": 5789,
+      "sha256": "aae6fd4dc911facec7e66867aa59bb431b041cf1db51f9105138168668f52be5"
     },
     {
       "path": "mimicrymap/workspace/worker.cjs",
       "source": "mimicrymap/workspace/worker.cjs",
-      "bytes": 1114,
-      "sha256": "161d3f2ad50f2d938e96719ac6154c3e7438dd69b82d83d91d513fd9d9bb77ff"
+      "bytes": 1273,
+      "sha256": "818ab7e5328895bac761f05deb3dc9eed257a4b3cb6a2d03ec5d799aee4378cc"
     },
     {
       "path": "code/export-core.js",
@@ -1374,8 +1374,8 @@
     {
       "path": "code/summary-index.cjs",
       "source": "mimicrymap/frontend/reproduce/summary-index.cjs",
-      "bytes": 14306,
-      "sha256": "e668b8990bd4fcd3c37ef4c26bacf32a7fe1576e609e9b197f075ded39df71eb"
+      "bytes": 14366,
+      "sha256": "f5125ec6eef7b01080a0450935f72b97b22b62ff042699a02d149eb7186af46e"
     },
     {
       "path": "code/unified-mapping.cjs",
