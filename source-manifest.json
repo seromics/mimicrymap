@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.source-snapshot/1",
   "repository": "https://github.com/seromics/seromap_electron",
-  "commit": "b4e39bcca48d69f7d1858db5e7b94186a6fd5f65",
+  "commit": "f02b10a736658576c6b6d656b6e9c048f1b2a06f",
   "files": [
     {
       "path": "mimicrymap/SOURCE-NOTICE.md",
@@ -1268,6 +1268,18 @@
       "source": "mimicrymap/workspace/reference-pairs.cjs",
       "bytes": 3182,
       "sha256": "6d62793b921e26fd0d480ec37ddf5ff3d1918e15a0dd6b95ff7c203e5265f36f"
+    },
+    {
+      "path": "mimicrymap/workspace/reference-roster-build.cjs",
+      "source": "mimicrymap/workspace/reference-roster-build.cjs",
+      "bytes": 3520,
+      "sha256": "5a5a23d5936c85fdc81b04e981fb464c769fedc8677b9c03f277712c5a0123f8"
+    },
+    {
+      "path": "mimicrymap/workspace/reference-roster.cjs",
+      "source": "mimicrymap/workspace/reference-roster.cjs",
+      "bytes": 1581,
+      "sha256": "f7993a00d282cf6adac1fda67b537b084a26624c266d9ed5b46c9d97716f7530"
     },
     {
       "path": "mimicrymap/workspace/run.cjs",
