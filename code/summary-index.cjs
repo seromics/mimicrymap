@@ -62,13 +62,11 @@ async function build({source,directory,linkInputs=false,prepareIndexes=true},rep
  const db=new DatabaseSync(path.join(directory,'comparison.sqlite'));
  let pairCount=0,rowCount=0;
  try{
-  db.exec('PRAGMA journal_mode=DELETE;PRAGMA synchronous=OFF;PRAGMA cache_size=-131072;');unified.create(db);db.exec('BEGIN;');
-  const putRecord=db.prepare('INSERT INTO sequence_records VALUES(?,?,?,?,?,?,?,?)'),alias=db.prepare('INSERT OR IGNORE INTO record_aliases VALUES(?,?,?)');
+  db.exec('PRAGMA journal_mode=DELETE;PRAGMA synchronous=OFF;PRAGMA cache_size=-131072;');
+  const writer=require('./mapping-writer.cjs').create(db);db.exec('BEGIN;');
   for(const side of [0,1])for(const r of records[side].values()){
-   putRecord.run(side,r.id,r.source,JSON.stringify({...r.metadata,...(r.normalizedSha256?{normalized_sequence_sha256:r.normalizedSha256}:{}),membership_group:m[side?'parent':'target'].name}),r.length,r.sha256,r.token,r.metadata.gene||r.metadata.name||r.metadata.protein_id||r.source);
-   for(const value of new Set(r.aliases))alias.run(side,String(value),r.id);
+   writer.record(r,m[side?'parent':'target'].name);
   }
-  const putPair=db.prepare('INSERT INTO mapping_pairs VALUES(?,?,?,?,?,?,?,?,?)');
   const keys=pkg.jsonLines(pkg.safeFile(source,m.keysFile))[Symbol.asyncIterator](),seen=new Set();let header,columns;
   const pairCsv=fs.openSync(path.join(directory,'pair_coverage.csv'),'wx');
   try{
@@ -96,7 +94,7 @@ async function build({source,directory,linkInputs=false,prepareIndexes=true},rep
       if(tc<10&&pc<10||!display.every(v=>/^\d+(\.\d+)?$/.test(v))||Math.abs(Number(display[0])-pc)>.056||Math.abs(Number(display[1])-tc)>.056)throw Error('Coverage differs from exact ranges');
       const protein=parent.metadata.protein_id||parent.source,organism=parent.metadata.reference_set||parent.metadata.organism||m.parent.name;
       const policy=typeof m.membershipCoverage==='object'?m.membershipCoverage[f]:m.membershipCoverage;
-      putPair.run(target.id,parent.id,f,tc,pc,policy==='csv-pair-percent'?Number(display[1]):tc,policy==='csv-pair-percent'?Number(display[0]):pc,count,regions.pack(tr,pr));pairCount++;
+      writer.pair({a:target.id,b:parent.id,identity:f,ac:tc,bc:pc,stats_ac:policy==='csv-pair-percent'?Number(display[1]):tc,stats_bc:policy==='csv-pair-percent'?Number(display[0]):pc,windows:count,targetRanges:tr,parentRanges:pr});pairCount++;
       buffer+=pkg.csvLine([target.id,target.source,parent.id,protein,parent.metadata.organism||'',organism,f,tc,regions.text(tr),pc,regions.text(pr),count]);
       if(buffer.length>1048576){fs.writeSync(pairCsv,buffer);buffer='';}
      }
@@ -106,16 +104,7 @@ async function build({source,directory,linkInputs=false,prepareIndexes=true},rep
    if(buffer)fs.writeSync(pairCsv,buffer);
    if(!(await keys.next()).done||rowCount!==m.rows||m.complete&&seen.size!==records[0].size)throw Error('Incomplete target population');
   }finally{fs.closeSync(pairCsv);}
-  db.exec('COMMIT;');if(prepareIndexes)unified.prepare(db);
-  const putOverview=db.prepare('INSERT INTO overviews VALUES(?,?,?,?,?)');
-  for(const side of [0,1])for(const floor of m.floors){
-   const {own,other}=unified.columns(side);let id,runs=[],count=0;
-   db.exec('BEGIN;');const flush=()=>{if(count)putOverview.run(side,id,floor,JSON.stringify(coverage.union(runs,records[side].get(id).length)),count);runs=[];count=0;};
-   for(const r of db.prepare(`SELECT ${own} id,ranges FROM mapping_pairs WHERE identity=? ORDER BY ${own},${other}`).iterate(floor)){
-    if(id!==r.id){flush();id=r.id;}runs.push(...regions.unpack(r.ranges,!!side).target_ranges);count++;
-   }
-   flush();db.exec('COMMIT;');report({phase:'Preparing mapping overview',done:side*m.floors.length+m.floors.indexOf(floor)+1,total:2*m.floors.length});
-  }
+  db.exec('COMMIT;');writer.finish({floors:m.floors,prepareIndexes},report);
  }finally{db.close();}
  const copy=(from,to)=>{if(linkInputs){try{fs.linkSync(from,to);return;}catch(error){if(error.code==='EEXIST')return;}}fs.copyFileSync(from,to);};
  for(const [side,name]of [['target','targets'],['parent','parents']]){

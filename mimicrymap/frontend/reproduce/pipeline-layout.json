@@ -4,12 +4,7 @@
     "summary-package.cjs": {
       "path": "code/summary-package.cjs",
       "source": "/reproduce/summary-package.cjs",
-      "description": "Portable CSV identities, checksums and input roster."
-    },
-    "summary-index.cjs": {
-      "path": "code/summary-index.cjs",
-      "source": "/reproduce/summary-index.cjs",
-      "description": "Build one mapping index for protein pages and statistical memberships from CSV without sequence matching."
+      "description": "Shared record normalization and package file utilities."
     },
     "pair-regions.cjs": {
       "path": "code/pair-regions.cjs",
@@ -231,6 +226,26 @@
       "path": "code/unified-mapping.cjs",
       "source": "/reproduce/unified-mapping.cjs",
       "description": "Single mapping schema, bidirectional range queries and local lookup preparation."
+    },
+    "mapping-writer.cjs": {
+      "source": "/reproduce/mapping-writer.cjs",
+      "path": "code/mapping-writer.cjs",
+      "description": "Direct SQLite writer shared by native, portable and developer builds."
+    },
+    "mapping-csv.cjs": {
+      "source": "/reproduce/mapping-csv.cjs",
+      "path": "code/mapping-csv.cjs",
+      "description": "Directional readable CSV exports from saved mapping pairs."
+    },
+    "mapping-bundles.cjs": {
+      "source": "/reproduce/mapping-bundles.cjs",
+      "path": "code/mapping-bundles.cjs",
+      "description": "Separate summary and installable mapping database bundles."
+    },
+    "zip-files.cjs": {
+      "source": "/reproduce/zip-files.cjs",
+      "path": "code/zip-files.cjs",
+      "description": "Streaming compressed ZIP64 output."
     }
   }
 }

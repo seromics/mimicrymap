@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.source-snapshot/1",
   "repository": "https://github.com/seromics/seromap_electron",
-  "commit": "8646242c018d280e83ddec5c19f5f91388f61646",
+  "commit": "821a498ef879066c06118b39d49153737380281c",
   "files": [
     {
       "path": "mimicrymap/SOURCE-NOTICE.md",
@@ -678,8 +678,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/README.md",
       "source": "mimicrymap/frontend/reproduce/README.md",
-      "bytes": 25004,
-      "sha256": "8f422048661c1c6d2e1f25ad70ee4644cfd74ed678b555d476d60e6c7bf41f25"
+      "bytes": 25352,
+      "sha256": "18f35d054b6c199a4a6f31459cedbc2bc15fb5bf6b5c9b7a43a6638379fb4885"
     },
     {
       "path": "mimicrymap/frontend/reproduce/SOURCE-README.md",
@@ -708,8 +708,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/docs/FILE-GUIDE.md",
       "source": "mimicrymap/frontend/reproduce/docs/FILE-GUIDE.md",
-      "bytes": 4537,
-      "sha256": "994cd0ed559c7f02d2121bbbe3b7acb0a60bab03cb79e6f6a788d9fa3b7cd795"
+      "bytes": 4725,
+      "sha256": "d2d584cb0c28d5a05a88325ee2ef913419027b0629936da5d894ee2514e66df3"
     },
     {
       "path": "mimicrymap/frontend/reproduce/docs/GLOSSARY.md",
@@ -798,14 +798,32 @@
     {
       "path": "mimicrymap/frontend/reproduce/export-core.js",
       "source": "mimicrymap/frontend/reproduce/export-core.js",
-      "bytes": 60197,
-      "sha256": "1ba6fc25cbbc7dfbafde4211ba9479697e142f23f6e4dcdc439f9d2071e8707c"
+      "bytes": 60392,
+      "sha256": "d0371dd87650133fb399b19f6efa2bbbd3c57854f35c39813b6bf3eb1a30a950"
     },
     {
       "path": "mimicrymap/frontend/reproduce/fasta-input.js",
       "source": "mimicrymap/frontend/reproduce/fasta-input.js",
       "bytes": 5868,
       "sha256": "af0f202267207498ef01e75798a94ade7afacebc9378858396b45806db40e110"
+    },
+    {
+      "path": "mimicrymap/frontend/reproduce/mapping-bundles.cjs",
+      "source": "mimicrymap/frontend/reproduce/mapping-bundles.cjs",
+      "bytes": 6137,
+      "sha256": "eebd3582fc36cd9f96a4da1e2e4d7c7f79cd2aabc91277e6ff87582b766dc4dc"
+    },
+    {
+      "path": "mimicrymap/frontend/reproduce/mapping-csv.cjs",
+      "source": "mimicrymap/frontend/reproduce/mapping-csv.cjs",
+      "bytes": 3743,
+      "sha256": "9a5061741e939a4cf942c269ad994779097d1da584d371d5aef40a6815e49b6c"
+    },
+    {
+      "path": "mimicrymap/frontend/reproduce/mapping-writer.cjs",
+      "source": "mimicrymap/frontend/reproduce/mapping-writer.cjs",
+      "bytes": 2482,
+      "sha256": "19e2c47d87b60c974d184b7b919f28b06a95eb2dbf5508cf55029a830fc7dd53"
     },
     {
       "path": "mimicrymap/frontend/reproduce/node-runtime.tsv",
@@ -828,8 +846,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/pipeline-layout.json",
       "source": "mimicrymap/frontend/reproduce/pipeline-layout.json",
-      "bytes": 9881,
-      "sha256": "552bb82b75b45a023d94bd84b66e4219ff6286ba804f012086924d331f43ad93"
+      "bytes": 10442,
+      "sha256": "9936e6063044dd7035607ba6f39db6459925f243319f08665bdc5abf7df96d21"
     },
     {
       "path": "mimicrymap/frontend/reproduce/pipeline-runner.cjs",
@@ -846,8 +864,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/pipeline.cjs",
       "source": "mimicrymap/frontend/reproduce/pipeline.cjs",
-      "bytes": 17264,
-      "sha256": "4255b54d2c748ae48a6ca3be8c7c2d9e861b75e6a8e16e800cb8b77eb30430be"
+      "bytes": 19189,
+      "sha256": "a88ce208d5c2e5a8a7a0069595bdb99f2bcc1ea25430f532391f244abe89cce7"
     },
     {
       "path": "mimicrymap/frontend/reproduce/projected-events.js",
@@ -900,8 +918,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/summary-index.cjs",
       "source": "mimicrymap/frontend/reproduce/summary-index.cjs",
-      "bytes": 14366,
-      "sha256": "f5125ec6eef7b01080a0450935f72b97b22b62ff042699a02d149eb7186af46e"
+      "bytes": 13155,
+      "sha256": "30d95c8f7fa086dede7924c758f55d2904575f9dc60ff69b9e700b9cc0b784b0"
     },
     {
       "path": "mimicrymap/frontend/reproduce/summary-package.cjs",
@@ -956,6 +974,12 @@
       "source": "mimicrymap/frontend/reproduce/unified-mapping.cjs",
       "bytes": 4873,
       "sha256": "d7f4a871466a7c28abaaf806a4c28020c56878e55660b65a929cd3a53b098938"
+    },
+    {
+      "path": "mimicrymap/frontend/reproduce/zip-files.cjs",
+      "source": "mimicrymap/frontend/reproduce/zip-files.cjs",
+      "bytes": 3505,
+      "sha256": "440a81609e390837a0d6409c73910dec438260f390a26632f75c87b506fc9ee3"
     },
     {
       "path": "mimicrymap/frontend/reproduction_inputs.py",
@@ -1194,8 +1218,8 @@
     {
       "path": "mimicrymap/workspace/engine.cjs",
       "source": "mimicrymap/workspace/engine.cjs",
-      "bytes": 46306,
-      "sha256": "43f04ee5b17639ce42b580d41b11821e94ba5a9873cf4300f6bac8244a573a17"
+      "bytes": 48140,
+      "sha256": "86f3ba31f0025551110721fac19204398cc16da551d74e67b17e338ce8a7812e"
     },
     {
       "path": "mimicrymap/workspace/gpu-scanner.cjs",
@@ -1212,8 +1236,8 @@
     {
       "path": "mimicrymap/workspace/metadata-outputs.cjs",
       "source": "mimicrymap/workspace/metadata-outputs.cjs",
-      "bytes": 8444,
-      "sha256": "942d9d2a88f9420a117266614719b57a74381620592d6ecb99145ff99a49691a"
+      "bytes": 8487,
+      "sha256": "d0e2da27bcb4c717fae39ceafd3b679584f54b6d6edd55d1a8c99043b42fb3a3"
     },
     {
       "path": "mimicrymap/workspace/metadata.cjs",
@@ -1284,26 +1308,26 @@
     {
       "path": "mimicrymap/workspace/run.cjs",
       "source": "mimicrymap/workspace/run.cjs",
-      "bytes": 2012,
-      "sha256": "979f6d095622521bb516bdcf2809867c99be128208b15cf2f9d02dfefa5e7c60"
+      "bytes": 2118,
+      "sha256": "101e54460d53e338cc9d258044eb968b4ab1dc218e1c02910035dfc2480fe1b2"
     },
     {
       "path": "mimicrymap/workspace/summary-native.cjs",
       "source": "mimicrymap/workspace/summary-native.cjs",
-      "bytes": 5789,
-      "sha256": "aae6fd4dc911facec7e66867aa59bb431b041cf1db51f9105138168668f52be5"
+      "bytes": 6930,
+      "sha256": "554e2027a18a965e10ff6a6ae5630aef2435ba35f47a1d7390849c55bb1c46b8"
     },
     {
       "path": "mimicrymap/workspace/worker.cjs",
       "source": "mimicrymap/workspace/worker.cjs",
-      "bytes": 1273,
-      "sha256": "818ab7e5328895bac761f05deb3dc9eed257a4b3cb6a2d03ec5d799aee4378cc"
+      "bytes": 1298,
+      "sha256": "6d9ef0b006dddaef0c4c05807ff84d8a4a005f123d7869f2a2daec5311e3627c"
     },
     {
       "path": "code/export-core.js",
       "source": "mimicrymap/frontend/reproduce/export-core.js",
-      "bytes": 60197,
-      "sha256": "1ba6fc25cbbc7dfbafde4211ba9479697e142f23f6e4dcdc439f9d2071e8707c"
+      "bytes": 60392,
+      "sha256": "d0371dd87650133fb399b19f6efa2bbbd3c57854f35c39813b6bf3eb1a30a950"
     },
     {
       "path": "code/context-score.js",
@@ -1344,8 +1368,8 @@
     {
       "path": "code/pipeline.cjs",
       "source": "mimicrymap/frontend/reproduce/pipeline.cjs",
-      "bytes": 17264,
-      "sha256": "4255b54d2c748ae48a6ca3be8c7c2d9e861b75e6a8e16e800cb8b77eb30430be"
+      "bytes": 19189,
+      "sha256": "a88ce208d5c2e5a8a7a0069595bdb99f2bcc1ea25430f532391f244abe89cce7"
     },
     {
       "path": "code/pipeline-runner.cjs",
@@ -1362,8 +1386,8 @@
     {
       "path": "code/pipeline-layout.json",
       "source": "mimicrymap/frontend/reproduce/pipeline-layout.json",
-      "bytes": 9881,
-      "sha256": "552bb82b75b45a023d94bd84b66e4219ff6286ba804f012086924d331f43ad93"
+      "bytes": 10442,
+      "sha256": "9936e6063044dd7035607ba6f39db6459925f243319f08665bdc5abf7df96d21"
     },
     {
       "path": "code/summary-package.cjs",
@@ -1374,8 +1398,8 @@
     {
       "path": "code/summary-index.cjs",
       "source": "mimicrymap/frontend/reproduce/summary-index.cjs",
-      "bytes": 14366,
-      "sha256": "f5125ec6eef7b01080a0450935f72b97b22b62ff042699a02d149eb7186af46e"
+      "bytes": 13155,
+      "sha256": "30d95c8f7fa086dede7924c758f55d2904575f9dc60ff69b9e700b9cc0b784b0"
     },
     {
       "path": "code/unified-mapping.cjs",
@@ -1388,6 +1412,30 @@
       "source": "mimicrymap/frontend/reproduce/pair-regions.cjs",
       "bytes": 1647,
       "sha256": "baac4790e10e1447e10fc9fd92a63bb25d085500a0c090249b5a302e83257780"
+    },
+    {
+      "path": "code/mapping-writer.cjs",
+      "source": "mimicrymap/frontend/reproduce/mapping-writer.cjs",
+      "bytes": 2482,
+      "sha256": "19e2c47d87b60c974d184b7b919f28b06a95eb2dbf5508cf55029a830fc7dd53"
+    },
+    {
+      "path": "code/mapping-csv.cjs",
+      "source": "mimicrymap/frontend/reproduce/mapping-csv.cjs",
+      "bytes": 3743,
+      "sha256": "9a5061741e939a4cf942c269ad994779097d1da584d371d5aef40a6815e49b6c"
+    },
+    {
+      "path": "code/mapping-bundles.cjs",
+      "source": "mimicrymap/frontend/reproduce/mapping-bundles.cjs",
+      "bytes": 6137,
+      "sha256": "eebd3582fc36cd9f96a4da1e2e4d7c7f79cd2aabc91277e6ff87582b766dc4dc"
+    },
+    {
+      "path": "code/zip-files.cjs",
+      "source": "mimicrymap/frontend/reproduce/zip-files.cjs",
+      "bytes": 3505,
+      "sha256": "440a81609e390837a0d6409c73910dec438260f390a26632f75c87b506fc9ee3"
     },
     {
       "path": "code/custom-worker.js",

@@ -2,6 +2,22 @@
 const fs=require('node:fs'),path=require('node:path'),{DatabaseSync}=require('node:sqlite');
 const pkg=require('../frontend/reproduce/summary-package.cjs'),indexer=require('../frontend/reproduce/summary-index.cjs');
 const metadata=require('./metadata.cjs'),core=require('../frontend/reproduce/export-core.js');
+function start(db,{targetDirectory,parentDirectory,targetAnnotations,parentAnnotations,target,parent}){
+ const writer=require('../frontend/reproduce/mapping-writer.cjs').create(db);
+ for(const [side,folder,annotation,library]of [[0,targetDirectory,targetAnnotations,target],[1,parentDirectory,parentAnnotations,parent]]){
+  const source=new DatabaseSync(path.join(folder,'library.sqlite'),{readOnly:true}),overlay=metadata.open(annotation);
+  try{
+   db.exec('BEGIN');let n=0;
+   for(const row of source.prepare('SELECT * FROM records ORDER BY id').iterate()){
+    const value=overlay.apply({...JSON.parse(row.metadata),record_id:row.id,sequence:row.sequence});
+    writer.record(pkg.record(side,row,value),library.name);
+    if(++n%10000===0)db.exec('COMMIT;BEGIN');
+   }
+   db.exec('COMMIT');
+  }finally{source.close();overlay.close();}
+ }
+ return writer;
+}
 async function writeSource({manifest,directory,targetDirectory,parentDirectory,targetAnnotations,parentAnnotations,previousRecords}){
  directory=path.resolve(directory);
  const recordsFile='summary-records.jsonl',keysFile='summary-keys.jsonl',fd=fs.openSync(path.join(directory,recordsFile),'w');
@@ -31,6 +47,9 @@ async function writeSource({manifest,directory,targetDirectory,parentDirectory,t
 }
 async function finalize(options,report=()=>{}){
  const {manifest}=options,directory=path.resolve(options.directory);
+ // Newly built comparisons already contain the final mapping database. The
+ // CSV compiler below only resumes older completed positional checkpoints.
+ if(manifest.mappingStorage==='unified-mapping/1')return [manifest.candidateFile||'comparison.sqlite'];
  report({phase:'Preparing mapping records',done:0,total:0});
  const [recordsFile,keysFile]=await writeSource({...options,directory});
  const pending=path.join(directory,'.summary-indexes');
@@ -63,4 +82,4 @@ async function finalize(options,report=()=>{}){
  for(const file of ['summary.json',recordsFile,keysFile])fs.unlinkSync(path.join(directory,file));
  return [candidateFile];
 }
-module.exports={finalize,writeSource};
+module.exports={start,finalize,writeSource};

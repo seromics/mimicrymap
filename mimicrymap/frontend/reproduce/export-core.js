@@ -651,26 +651,28 @@
    }
    groups.push({floor:t,partners});
   }
-  return serializeSummary(p,scope,groups,annotationMetadata);
+  return {...serializeSummary(p,scope,groups,annotationMetadata),groups};
  }
 
- // A complete record-pair population can be summarized from residue unions.
- // Coverage-filtered lists alone are insufficient unless completeness is proven
- // independently (e.g. every parent is <=90 aa at the 10%-either listing floor).
- function summaryFromPairRegions({protein,scope,groups,completePairPopulation,annotationMetadata}){
-  if(completePairPopulation!==true||!Array.isArray(groups)||!groups.length)throw Error('Complete record-pair population required');
+ // Residue unions reproduce the readable paired coverage/range columns. A saved
+ // listing may omit pairs below the reporting floor; it cannot supply the audit
+ // count of every matching pair, which is left unknown for that input.
+ function summaryFromPairRegions({protein,scope,groups,completePairPopulation,listedPairPopulation,annotationMetadata}){
+  if(completePairPopulation!==true&&listedPairPopulation!==true||!Array.isArray(groups)||!groups.length)throw Error('Complete record-pair population required');
   const L=protein.sequence.length,seenFloors=new Set();
   const prepared=groups.map(({floor,pairs})=>{
    if(!Number.isInteger(floor)||floor<5||floor>9||seenFloors.has(floor))throw Error('Invalid summary threshold');seenFloors.add(floor);
-   const seen=new Set(),partners=pairs.map(({id,record,targetRanges,parentRanges})=>{
+   const seen=new Set(),partners=pairs.map(({id,record,targetRanges,parentRanges,windowPairs=null})=>{
     if(id==null||seen.has(id))throw Error('Missing or duplicate summary partner');seen.add(id);
     const size=record.sequence?.length??record.length,a=coverageCore.union(targetRanges,L),b=coverageCore.union(parentRanges,size);
     if(!a.length||!b.length)throw Error('Empty matching-pair ranges');
-    return {recordId:id,windowPairs:null,a:coverageCore.size(a),b:coverageCore.size(b),L:size,targetRegions:a,parentRegions:b,native:publicText(record.assay_id||record.identity?.assayId||record.protein_id||''),label:summaryParentLabel(record)};
+    return {recordId:id,windowPairs,a:coverageCore.size(a),b:coverageCore.size(b),L:size,targetRegions:a,parentRegions:b,native:publicText(record.assay_id||record.identity?.assayId||record.protein_id||''),label:summaryParentLabel(record)};
    });
    return {floor,partners};
   });
-  return serializeSummary(protein,scope,prepared,annotationMetadata);
+  const output=serializeSummary(protein,scope,prepared,annotationMetadata);
+  if(!completePairPopulation)for(const value of Object.values(output.audit))value.matchingPairs=null;
+  return output;
  }
 
  function serializeSummary(p,scope,groups,annotationMetadata){

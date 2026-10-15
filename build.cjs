@@ -20,9 +20,11 @@ node build.cjs --targets targets.fasta --parents parents.fasta --out results-gpu
 --parent-library id          Canonical identity preset; see docs/BUILD.md
 --probe-gpu --python path    Check the optional CUDA environment, without a build
 
-All target records are compared. Unified mapping indexes and summaries are the default.
+All target records are compared once and written directly to one mapping database.
+summaries.zip contains directional CSVs, original FASTAs and a README.
+mapping-database.zip contains the installable SQLite and its library inputs/settings.
 Output must be a new directory. Inputs are retained; completed output is never overwritten.
-Import a completed result through SeroMap Workspace → MimicryMap Libraries → Import Mapping Database.
+Extract mapping-database.zip and import its folder through SeroMap Workspace → MimicryMap Libraries → Import Mapping Database.
 `;
 const strings = ['targets','parents','out','floor','engine','python','target-annotations','parent-annotations','target-name','parent-name','target-library','parent-library'];
 const booleans = ['help','retain-positions','bidirectional','probe-gpu'];

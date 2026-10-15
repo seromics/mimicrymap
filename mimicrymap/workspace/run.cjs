@@ -42,6 +42,7 @@ const engine = require('./code/mimicrymap/workspace/engine.cjs');
     },
     report,
   );
+  await engine.exportBundle({source:path.join(out,'comparison'),destination:out,product:'both'},report);
   console.log('Complete: ' + path.join(out, 'comparison'));
 })().catch((e) => {
   console.error(e.message);

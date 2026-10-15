@@ -6,7 +6,7 @@ const regions=require('./pair-regions.cjs');
 const filePath=(directory,c,name)=>path.join(directory,c.overrides?.[name]||name);
 async function refresh({directory,output,comparison,targetDirectory,parentDirectory,targetAnnotations,parentAnnotations,labelsUnchanged=false},report=()=>{}){
   fs.mkdirSync(output,{recursive:true});
-  if(!labelsUnchanged){
+  if(!labelsUnchanged&&comparison.files?.['library_summary.csv']){
   const tdb=new DatabaseSync(path.join(targetDirectory,'library.sqlite'),{readOnly:true}),pdb=new DatabaseSync(path.join(parentDirectory,'library.sqlite'),{readOnly:true});
   const ta=meta.open(targetAnnotations),pa=meta.open(parentAnnotations),db=new DatabaseSync(filePath(directory,comparison,'comparison.sqlite'),{readOnly:true});
   const target=tdb.prepare('SELECT * FROM records WHERE id=?'),parent=pdb.prepare('SELECT * FROM records WHERE id=?');

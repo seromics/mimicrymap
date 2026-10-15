@@ -46,4 +46,4 @@ Both downloads contain the same pipeline. Only the prepared inputs and selection
 | `docs/walkthroughs/example-2-panel.png` | Complete worked-example figure panel. |
 | `docs/walkthroughs/example-3-panel.png` | Complete worked-example figure panel. |
 
-Results are written under outputs/targets/, one folder per target, including comparison_summary.csv. outputs/library_summary.csv combines all target summary rows. run.json records settings and summaries; inputs and record metadata are retained once per run.
+Results are written under outputs/targets/, one folder per target, including comparison_summary.csv. outputs/library_summary.csv combines all target summary rows. summaries.zip contains directional CSVs, original FASTAs and a README. mapping-database.zip contains the installable SQLite and its inputs/settings; it has no CSV dependency. run.json records settings and summaries; inputs and record metadata remain available in the working output.

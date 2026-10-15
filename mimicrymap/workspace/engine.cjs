@@ -466,12 +466,15 @@ async function buildComparison(
   const observations = [];
   fs.mkdirSync(directory, { recursive: true });
   const db = dbOpen(path.join(directory, "comparison.sqlite"));
+  const compact=!sample&&!retainPositions&&!bidirectional;
+  const mappingDb=sample?null:compact?db:dbOpen(path.join(directory,'membership-index.sqlite'));
+  let mappingWriter;const floors=Array.from({length:10-floor},(_,i)=>floor+i);
+  let mappingManifest={};
   const summary = fs.openSync(
       path.join(directory, "library_summary.csv"),
       "wx",
     ),
-    pairs = fs.openSync(path.join(directory, "pair_coverage.csv"), "wx"),
-    summaryKeys = fs.openSync(path.join(directory, "summary-keys.jsonl"), "wx");
+    pairs = fs.openSync(path.join(directory, "pair_coverage.csv"), "wx");
   const csv = (values) =>
     values
       .map((v) => '"' + String(v ?? "").replaceAll('"', '""') + '"')
@@ -491,24 +494,29 @@ async function buildComparison(
       "Window pairs",
     ]);
   fs.writeSync(pairs, pairHeader);
-  const pairWriter = bufferedText(pairs), summaryWriter = bufferedText(summary), keyWriter=bufferedText(summaryKeys);
+  const pairWriter = bufferedText(pairs), summaryWriter = bufferedText(summary);
   let done = 0,
     positionCount = 0,
     pairCount = 0,
     summaryHeader = false, summaryHeaderLength = 0, fixedBytes = Buffer.byteLength(pairHeader);
   const summaryAudit={};
   try {
-    db.exec(
+    if(mappingDb){
+      mappingDb.exec('PRAGMA journal_mode=DELETE; PRAGMA synchronous=OFF; PRAGMA cache_size=-131072');
+      report({phase:'Preparing mapping records',done:0,total:target.records+parent.records});
+      mappingWriter=require('./summary-native.cjs').start(mappingDb,{targetDirectory,parentDirectory,targetAnnotations,parentAnnotations,target,parent});
+    }
+    if(!compact)db.exec(
       "PRAGMA journal_mode=DELETE; CREATE TABLE results (id INTEGER PRIMARY KEY,token TEXT,source TEXT,name TEXT,result BLOB,sequence_hash TEXT); CREATE TABLE pairs (target INTEGER,source TEXT,parent INTEGER,protein TEXT,organism TEXT,identity INTEGER,tc REAL,pc REAL,pairs INTEGER); CREATE TABLE aliases (alias TEXT,target INTEGER,PRIMARY KEY(alias,target));",
     );
     const positionWriter=bidirectional?require('./pair-store.cjs').initialize(db,[[0,targetDirectory,targetAnnotations],[1,parentDirectory,parentAnnotations]]):null;
-    db.exec('CREATE TABLE pair_regions(target INTEGER,parent INTEGER,identity INTEGER,payload BLOB,PRIMARY KEY(target,parent,identity)) WITHOUT ROWID;');
-    const putRegions=db.prepare('INSERT INTO pair_regions VALUES(?,?,?,?)');
+    if(!compact)db.exec('CREATE TABLE pair_regions(target INTEGER,parent INTEGER,identity INTEGER,payload BLOB,PRIMARY KEY(target,parent,identity)) WITHOUT ROWID;');
+    const putRegions=compact?null:db.prepare('INSERT INTO pair_regions VALUES(?,?,?,?)');
     // Empty tables plus the three secondary-index root pages are fixed costs.
     fixedBytes += fs.statSync(path.join(directory, 'comparison.sqlite')).size + 3 * Number(db.prepare('PRAGMA page_size').get().page_size);
-    const putResult = db.prepare("INSERT INTO results VALUES(?,?,?,?,?,?)"),
-      putPair = db.prepare("INSERT INTO pairs VALUES(?,?,?,?,?,?,?,?,?)"),
-      alias = db.prepare("INSERT OR IGNORE INTO aliases VALUES(?,?)");
+    const putResult = compact?null:db.prepare("INSERT INTO results VALUES(?,?,?,?,?,?)"),
+      putPair = compact?null:db.prepare("INSERT INTO pairs VALUES(?,?,?,?,?,?,?,?,?)"),
+      alias = compact?null:db.prepare("INSERT OR IGNORE INTO aliases VALUES(?,?)");
     // Deterministic length-stratified sampling, including records throughout the
     // input. A test retains complete matches so the subsequent build can reuse it.
     let sampleIds;
@@ -563,17 +571,18 @@ async function buildComparison(
       matchMs += matching;
       let batchWindows=0;
       db.exec('BEGIN');
+      if(mappingDb&&mappingDb!==db)mappingDb.exec('BEGIN');
       for (let i=0;i<batch.length;i++) {
         const row=batch[i], query=queries[i], matches=matched[i];
         for(const item of matches)item.parent=parentMetadata.apply(item.parent);
         const viewerStart=Date.now();
-        const result = resultFor(query, matches, {
+        const result = retainPositions?resultFor(query, matches, {
           floor,
           id,
           parentName: parent.name,
           targetName: target.name,
           summaryOnly: !retainPositions,
-        });
+        }):null;
         if (retainPositions) viewerMs += Date.now()-viewerStart;
         const windows = Math.max(0, query.length - 8);
         targetWindows += windows; batchWindows += windows;
@@ -581,7 +590,7 @@ async function buildComparison(
         const packed = retainPositions ? zlib.gzipSync(JSON.stringify(result)) : null;
         packingMs += Date.now()-packStart;
         positionBytes += packed?.length || 0;
-        putResult.run(
+        putResult?.run(
           row.id,
           row.token,
           row.source,
@@ -594,20 +603,27 @@ async function buildComparison(
             Boolean,
           ),
         ))
-          alias.run(key, row.id);
+          alias?.run(key, row.id);
         positionWriter?.(row.id,matches);
+        const groups=floors.map(floor=>({floor,pairs:[]}));
         for (const item of matches) {
           positionCount += item.hits.length;
           for (let f = floor; f <= 9; f++) {
             const h = item.hits.filter((h) => h[2] >= f);
             if (!h.length) continue;
             const organism = item.parent.reference_set || item.parent.organism || parent.name,
-              tc = residuePercent(h, 0, query.length),
-              pc = residuePercent(h, 1, item.parent.length),
+              ranges=pairRegions.fromHits(h,query.length,item.parent.length,f),
+              tc = ranges.target.percent,
+              pc = ranges.parent.percent,
               protein = item.parent.protein_id;
-            const ranges=tc>=10||pc>=10?pairRegions.fromHits(h,query.length,item.parent.length,f):null;
-            if(ranges)putRegions.run(row.id,item.parent.record_id,f,pairRegions.pack(ranges.target.intervals,ranges.parent.intervals));
-            putPair.run(
+            const listed=tc>=10||pc>=10;
+            groups[f-floor].pairs.push({id:item.parent.record_id,record:item.parent,targetRanges:ranges.target.intervals,parentRanges:ranges.parent.intervals,windowPairs:h.length});
+            if(listed){
+              const payload=pairRegions.pack(ranges.target.intervals,ranges.parent.intervals);
+              putRegions?.run(row.id,item.parent.record_id,f,payload);
+              mappingWriter?.pair({a:row.id,b:item.parent.record_id,identity:f,ac:tc,bc:pc,windows:h.length,ranges:payload});
+            }
+            putPair?.run(
               row.id,
               row.source,
               item.parent.record_id,
@@ -628,18 +644,14 @@ async function buildComparison(
                 organism,
                 f,
                 tc,
-                ranges?pairRegions.text(ranges.target.intervals):'',
+                listed?pairRegions.text(ranges.target.intervals):'',
                 pc,
-                ranges?pairRegions.text(ranges.parent.intervals):'',
+                listed?pairRegions.text(ranges.parent.intervals):'',
                 h.length,
               ]));
           }
         }
-        const native = exportsCore.summaryTable(
-          result,
-          Array.from({length:10-floor},(_,i)=>floor+i),
-        );
-        keyWriter.append(JSON.stringify({target:row.id,parents:native.pairKeys})+'\n');
+        const native = exportsCore.summaryFromPairRegions({protein:query,scope:parent.name,groups,completePairPopulation:true});
         for(const [f,counts] of Object.entries(native.audit)){
           summaryAudit[f]??={matchingPairs:0,listedPairs:0};
           for(const k of ['matchingPairs','listedPairs'])summaryAudit[f][k]+=counts[k];
@@ -678,7 +690,8 @@ async function buildComparison(
         }
       }
       db.exec('COMMIT');
-      pairWriter.flush(); summaryWriter.flush(); keyWriter.flush();
+      if(mappingDb&&mappingDb!==db)mappingDb.exec('COMMIT');
+      pairWriter.flush(); summaryWriter.flush();
       const writing = Date.now() - writeStart;
       writeMs += writing;
       if (sample) observations.push({targets:batch.length,windows:batchWindows,matchMs:matching,writeMs:writing});
@@ -700,22 +713,27 @@ async function buildComparison(
     if (!done) throw Error("The selected target is not in this library.");
     report({phase:'Preparing lookup indexes',done:0,total:0});
     const indexStart=Date.now();
-    db.exec('CREATE INDEX target_sequence ON results(sequence_hash); CREATE INDEX target_source ON results(source); CREATE INDEX memberships ON pairs(identity,organism,source);');
+    if(!compact)db.exec('CREATE INDEX target_sequence ON results(sequence_hash); CREATE INDEX target_source ON results(source); CREATE INDEX memberships ON pairs(identity,organism,source);');
+    if(mappingWriter){
+      mappingWriter.finish({floors},report);
+      mappingManifest={mappingStorage:'unified-mapping/1',candidateCoverageFloor:10,floors,derivedMembershipPairs:mappingWriter.pairs,
+        ...(compact?{storage:'unified-mapping/1',coverageFloor:10,relationshipsOnly:true,featureOnly:false,pairs:mappingWriter.pairs}:{candidateFile:'membership-index.sqlite'})};
+    }
     if(bidirectional){
       json(path.join(directory,'forward-complete.json'), {
         schema:'seromap.comparison-finalization/1', directory, targetDirectory, parentDirectory, targetAnnotations, parentAnnotations,
-        manifest:{schema:FORMAT,method:METHOD,id,name:name||target.name+' → '+parent.name,floor,window:9,target,parent,targetId:null,complete:true,sample:false,retainsPositions:true,retainsPairRegions:true,pairRegionStorage:pairRegions.FORMAT,bidirectional:true,coordinateStorage:'diagonal-runs/1',output:'full-lookup',backend:reuse?'saved-lookup':backend,targets:done,positions:positionCount,pairs:pairCount,createdAt:new Date().toISOString(),files:{}},
+        manifest:{schema:FORMAT,method:METHOD,id,name:name||target.name+' → '+parent.name,floor,window:9,target,parent,targetId:null,complete:true,sample:false,retainsPositions:true,retainsPairRegions:true,pairRegionStorage:pairRegions.FORMAT,bidirectional:true,coordinateStorage:'diagonal-runs/1',output:'full-lookup',backend:reuse?'saved-lookup':backend,targets:done,positions:positionCount,pairs:pairCount,createdAt:new Date().toISOString(),files:{},...mappingManifest},
         summaryAudit,
-        forwardFiles:Object.fromEntries(['library_summary.csv','pair_coverage.csv','summary-keys.jsonl'].map(f=>[f,fs.statSync(path.join(directory,f)).size])),
+        forwardFiles:Object.fromEntries(['library_summary.csv','pair_coverage.csv'].map(f=>[f,fs.statSync(path.join(directory,f)).size])),
       });
       require('./pair-store.cjs').finish(db,directory,{floor,id,target,parent,resultFor,summaryTable:exportsCore.summaryTable,report});
     }
     indexMs=Date.now()-indexStart;
   } finally {
-    pairWriter.flush(); summaryWriter.flush(); keyWriter.flush();
+    pairWriter.flush(); summaryWriter.flush();
     fs.closeSync(summary);
     fs.closeSync(pairs);
-    fs.closeSync(summaryKeys);
+    if(mappingDb&&mappingDb!==db)mappingDb.close();
     source.close();
     targetMetadata.close();parentMetadata.close();
     await scan?.close();
@@ -750,6 +768,7 @@ async function buildComparison(
     targets: done,
     positions: positionCount,
     pairs: pairCount,
+    ...mappingManifest,
     summaryAudit,
     createdAt: new Date().toISOString(),
     files: {},
@@ -920,8 +939,7 @@ async function validateComparison(directory) {
     throw Error("Unsupported comparison format");
   for (const file of [
     "comparison.sqlite",
-    "library_summary.csv",
-    "pair_coverage.csv",
+    ...((m.storage||m.mappingStorage)==='unified-mapping/1'?['library_summary.csv','pair_coverage.csv'].filter(f=>m.files?.[f]):['library_summary.csv','pair_coverage.csv']),
     "inputs/targets.fasta",
     "inputs/parents.fasta",
     "settings.json",
@@ -964,7 +982,7 @@ async function validateComparison(directory) {
   try {
     if (
       db.prepare("PRAGMA quick_check").get().quick_check !== "ok" ||
-      db.prepare("SELECT count(*) n FROM results").get().n !== m.targets
+      db.prepare("SELECT count(*) n FROM results").get().n !== (m.storage==='unified-mapping/1'?m.target.records:m.targets)
     )
       throw Error("Comparison database is incomplete");
     const stored = db
@@ -984,6 +1002,7 @@ async function validateComparison(directory) {
   return m;
 }
 module.exports = {
+  exportBundle:({source,manifest,destination,product},report)=>require('../frontend/reproduce/mapping-bundles.cjs').build({source,manifest,destination,product},report),
   prepareMapping:async file=>{const db=new DatabaseSync(path.toNamespacedPath(path.resolve(file)));try{require('../frontend/reproduce/unified-mapping.cjs').prepare(db);}finally{db.close();}return {bytes:fs.statSync(file).size,sha256:await hashFile(file)};},
   readInstalledResult:({moduleRoot,...query})=>{const found=require('./reference-pairs.cjs').find(moduleRoot,query);return found?readResult(found):null;},
   prepareAnnotations:metadata.prepare,

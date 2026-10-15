@@ -14,7 +14,7 @@ this is not a public release. Source data retain their own terms and attribution
 | --- | --- | --- |
 | Browser applet | Explore one target against a reference library or custom FASTA | Sequence maps, parent tables and selected-scope CSVs |
 | Detailed CPU pipeline | Reproduce a selected comparison or inspect every matching window for supplied targets | Per-target match tables and a combined coverage summary |
-| Library builder, CPU or NVIDIA GPU | Build reusable summaries and candidate indexes across two complete FASTAs | Summary CSV, unrounded pair coverage, installable candidate database; full positions optional |
+| Library builder, CPU or NVIDIA GPU | Build reusable mappings across two complete FASTAs | Separate CSV + FASTA and mapping database ZIPs; full positions optional |
 
 The library builder uses the same engine and writers as SeroMap Workspace.
 It needs Node.js 24+, without Electron or an installed study:

@@ -64,7 +64,7 @@ async function run({configPath,base,codeDir,layout,core,scan,digest}){
  const work=queries.reduce((n,q)=>n+Math.max(0,q.length-8),0)*parents.reduce((n,p)=>n+Math.max(0,p.length-8),0);
  console.error('Inputs: '+queries.length+' Antigen Target record(s), '+parents.length+' Mimicry Parent record(s).');
  console.error('Min Identity: '+floor+'/9; '+work.toLocaleString()+' window comparisons. CPU only; no network.');
- const captured=new Date().toISOString(),completed=[],writtenFiles=[],summaryRows=[],summaryKeys=[];let summaryFormat;
+ const captured=new Date().toISOString(),completed=[],writtenFiles=[];let summaryFormat,mappingDb,mappingWriter,summaryFd;
  const scanFloor=Math.min(floor,7),sameLibrary=targetBytes.equals(parentBytes);
  console.error('Summary: 7/9, 8/9, 9/9; paired coverage (%) Parent|Target, listed when either side reaches 10% before rounding.');
  const loci=require(path.join(codeDir,'residue-coverage.js')).overlapGroups;
@@ -79,6 +79,24 @@ async function run({configPath,base,codeDir,layout,core,scan,digest}){
   put('inputs/antigen-target.fasta',targetBytes);put('inputs/mimicry-parents.fasta',parentBytes);
   const metadata=records=>records.map(({sequence,...record})=>record);
   put('records.json',json({antigen_targets:metadata(queries),mimicry_parents:metadata(parents)}));
+  const summaryPackage=require('./summary-package.cjs'),summaryParents=selected?.projection?.parent_entities||parents;
+  const summaryInputs={target:'inputs/antigen-target.fasta',parent:'inputs/mimicry-parents.fasta'};
+  if(selected?.projection){
+   const fasta=records=>records.map(r=>'>'+String(r.raw_header||r.header||r.protein_id).replace(/^>/,'')+'\n'+r.sequence+'\n').join('');
+   put('inputs/summary-targets.fasta',fasta(queries));put('inputs/summary-parents.fasta',fasta(summaryParents));
+   summaryInputs.target='inputs/summary-targets.fasta';summaryInputs.parent='inputs/summary-parents.fasta';
+  }
+  const descriptor=(records,file,name)=>({id:'summary-'+digest(fs.readFileSync(path.join(pending,file))).slice(0,16),name,records:records.length,residues:records.reduce((n,r)=>n+r.sequence.length,0),short:records.filter(r=>r.sequence.length<9).length,sha256:digest(fs.readFileSync(path.join(pending,file))),platforms:[]});
+  const targetDescriptor=descriptor(queries,summaryInputs.target,'Antigen targets'),parentDescriptor=descriptor(summaryParents,summaryInputs.parent,selected?.scope_label||'Mimicry parents');
+  const indexes=path.join(pending,'indexes');fs.mkdirSync(indexes);
+  mappingDb=new(require('node:sqlite').DatabaseSync)(path.join(indexes,'comparison.sqlite'));
+  mappingDb.exec('PRAGMA journal_mode=DELETE;PRAGMA synchronous=OFF;PRAGMA cache_size=-131072');
+  mappingWriter=require('./mapping-writer.cjs').create(mappingDb);mappingDb.exec('BEGIN');
+  for(const [side,records,library]of [[0,queries,targetDescriptor],[1,summaryParents,parentDescriptor]])for(const [i,r]of records.entries()){
+   const token=String(r.raw_header||r.header||r.protein_id).replace(/^>/,'').split(/\s/)[0],source=r.assay_id||r.original_id||r.protein_id;
+   mappingWriter.record(summaryPackage.record(side,{id:i+1,token,source},r),library.name);
+  }
+  mappingDb.exec('COMMIT');summaryFd=fs.openSync(path.join(pending,'library_summary.csv'),'wx');writtenFiles.push('library_summary.csv');
   for(const [i,query]of queries.entries()){
    console.error('Target '+(i+1)+'/'+queries.length+': '+publicId(query));
    const targetStarted=performance.now();
@@ -117,39 +135,29 @@ async function run({configPath,base,codeDir,layout,core,scan,digest}){
    const targetDir='targets/'+String(i+1).padStart(3,'0')+'-'+publicId(query).replace(/[^A-Za-z0-9._-]/g,'_').replace(/_+/g,'_').slice(0,60);
    put(targetDir+'/all-matches.csv',data.matchesCsv);put(targetDir+'/overall-mimicry-parents.csv',data.parentsCsv);
    if(start!==null)put(targetDir+'/current-window-slice.csv',data.siteCsv);
-   const nativeSummary=core.summaryTable(result,[7,8,9],annotations);summaryFormat=nativeSummary;summaryRows.push(nativeSummary.row);
-   summaryKeys.push({target:i+1,parents:nativeSummary.pairKeys});
+   const nativeSummary=core.summaryTable(result,[7,8,9],annotations);
+   fs.writeSync(summaryFd,summaryFormat?nativeSummary.csv.slice(nativeSummary.serialize([]).length):nativeSummary.csv);summaryFormat=nativeSummary;
+   mappingDb.exec('BEGIN');
+   for(const group of nativeSummary.groups)for(const pair of group.partners)mappingWriter.pair({a:i+1,b:pair.recordId,identity:group.floor,ac:100*pair.a/query.sequence.length,bc:100*pair.b/pair.L,windows:pair.windowPairs,targetRanges:pair.targetRegions,parentRanges:pair.parentRegions});
+   mappingDb.exec('COMMIT');
    put(targetDir+'/comparison_summary.csv',nativeSummary.csv);
    timings.write=elapsed(writeStarted);timings.total=elapsed(targetStarted);
    completed.push({id:publicId(query),path:targetDir,summary,pair_audit:nativeSummary.audit,timings_seconds:timings,...(start!==null?{selected_window_pairs:data.site.length}:{})});
    console.error('  Saved tables: '+path.join(pending,targetDir));
    console.error('  Target complete: '+timings.total+' s (scan '+timings.scan+' s; export '+timings.export+' s; write '+timings.write+' s).');
   }
-  if(summaryFormat)put('library_summary.csv',summaryFormat.serialize(summaryRows));
-  const summaryPackage=require('./summary-package.cjs'),summaryParents=selected?.projection?.parent_entities||parents;
-  const recordRows=[];
-  for(const [side,records]of [[0,queries],[1,summaryParents]])for(const [i,r]of records.entries()){
-   const token=String(r.raw_header||r.header||r.protein_id).replace(/^>/,'').split(/\s/)[0],source=r.assay_id||r.original_id||r.protein_id;
-   const value=summaryPackage.record(side,{id:i+1,token,source},r);if(side)value.label=core.summaryParentLabel(r);recordRows.push(value);
-  }
-  put('summary-records.jsonl',recordRows.map(r=>JSON.stringify(r)+'\n').join(''));
-  put('summary-keys.jsonl',summaryKeys.map(r=>JSON.stringify(r)+'\n').join(''));
-  const summaryInputs={target:'inputs/antigen-target.fasta',parent:'inputs/mimicry-parents.fasta'};
-  if(selected?.projection){
-   // Projected exports describe displayed full records. Retain their sequences
-   // separately from the assay fragments used to reproduce the focused search.
-   const fasta=records=>records.map(r=>'>'+String(r.raw_header||r.header||r.protein_id).replace(/^>/,'')+'\n'+r.sequence+'\n').join('');
-   put('inputs/summary-targets.fasta',fasta(queries));put('inputs/summary-parents.fasta',fasta(summaryParents));
-   summaryInputs.target='inputs/summary-targets.fasta';summaryInputs.parent='inputs/summary-parents.fasta';
-  }
-  const descriptor=(records,file,name)=>({id:'summary-'+digest(fs.readFileSync(path.join(pending,file))).slice(0,16),name,records:records.length,residues:records.reduce((n,r)=>n+r.sequence.length,0),short:records.filter(r=>r.sequence.length<9).length,sha256:digest(fs.readFileSync(path.join(pending,file))),platforms:[]});
-  await summaryPackage.seal(pending,{csv:'library_summary.csv',recordsFile:'summary-records.jsonl',keysFile:'summary-keys.jsonl',inputs:summaryInputs,floors:[7,8,9],rows:queries.length,complete:!selected,targetId:selected?1:null,target:descriptor(queries,summaryInputs.target,'Antigen targets'),parent:descriptor(summaryParents,summaryInputs.parent,selected?.scope_label||'Mimicry parents')});
-  await require('./summary-index.cjs').build({source:pending,directory:path.join(pending,'indexes'),linkInputs:true},p=>console.error(p.phase));
-  for(const file of ['summary.json','summary-records.jsonl','summary-keys.jsonl']){
-   fs.unlinkSync(path.join(pending,file));const i=writtenFiles.indexOf(file);if(i>=0)writtenFiles.splice(i,1);
-  }
+  fs.closeSync(summaryFd);summaryFd=null;
+  mappingWriter.finish({floors:[7,8,9]},p=>console.error(p.phase));mappingDb.close();mappingDb=null;
+  const manifest={schema:'seromap.mimicry-comparison/1',id:require('node:crypto').randomUUID(),name:targetDescriptor.name+' → '+parentDescriptor.name,method:'complete-nine-residue-identity/1',window:9,floor:7,floors:[7,8,9],coverageFloor:10,coverageSide:'either',membershipCoverage:'exact-residue-union',target:targetDescriptor,parent:parentDescriptor,targetId:selected?1:null,complete:!selected,targets:queries.length,pairs:mappingWriter.pairs,retainsPositions:false,retainsPairRegions:true,pairRegionStorage:'merged-residue-ranges/1',output:'unified-mapping',storage:'unified-mapping/1',mappingBidirectional:true,relationshipsOnly:true,featureOnly:false,createdAt:new Date().toISOString(),files:{}};
+  fs.mkdirSync(path.join(indexes,'inputs'));
+  for(const [side,name]of [['target','targets'],['parent','parents']])fs.copyFileSync(path.join(pending,summaryInputs[side]),path.join(indexes,'inputs',name+'.fasta'));
+  fs.writeFileSync(path.join(indexes,'settings.json'),json({floor:7,targetId:manifest.targetId,retainPositions:false,bidirectional:false,targetName:targetDescriptor.name,parentName:parentDescriptor.name}));
+  for(const name of ['comparison.sqlite','inputs/targets.fasta','inputs/parents.fasta','settings.json'])manifest.files[name]={bytes:fs.statSync(path.join(indexes,name)).size,sha256:await summaryPackage.hash(path.join(indexes,name))};
+  fs.writeFileSync(path.join(indexes,'comparison.json'),json(manifest));
   writtenFiles.push(...inventory(path.join(pending,'indexes'),'indexes/'));
-  put('README.md','# MimicryMap Results\n\nlibrary_summary.csv has one row per target at 7/9, 8/9 and 9/9, with paired Parent|Target coverage lists and adjacent per-pair residue ranges (one decimal; at least 10% on either side before rounding). Each targets/ folder contains comparison_summary.csv, All Matches and Overall Mimicry Parents. A Current window slice appears only when selected_target_start is set. run.json captures settings and summaries; records.json contains all input record metadata. The two original FASTA inputs are captured once in inputs/.\n\nRerunning the launcher refreshes this managed output folder. Choose another output_directory in settings.json to keep a separate run. Calculation code stays in the tool package.\n');
+  await require('./mapping-bundles.cjs').build({source:indexes,destination:pending},p=>console.error(p.phase));
+  writtenFiles.push('summaries.zip','mapping-database.zip');
+  put('README.md','# MimicryMap Results\n\nsummaries.zip contains one readable CSV per direction, the original FASTAs and a README. mapping-database.zip contains the installable SeroMap SQLite database and its library inputs. Extract that ZIP and choose its folder under Import Mapping Database. The prepared database remains in indexes/.\n\nlibrary_summary.csv has one row per target at 7/9, 8/9 and 9/9, with paired Parent|Target coverage lists and adjacent per-pair residue ranges (one decimal; at least 10% on either side before rounding). Each targets/ folder contains comparison_summary.csv, All Matches and Overall Mimicry Parents. A Current window slice appears only when selected_target_start is set. run.json captures settings and summaries; records.json contains input record metadata.\n\nRerunning the launcher refreshes this managed output folder. Choose another output_directory in settings.json to keep a separate run. Calculation code stays in the tool package.\n');
   const record={schema:'mimicryone/pipeline-run/3',export_schema:core.version,captured_utc:captured,settings:{...settings,selected_target_start:start},
    target_records:queries.length,parent_records:parents.length,window_comparisons:work,
    summary:{schema:"mimicryone/native-summary/7",pair_focused:true,columns:summaryFormat?.columns,identity_min:[7,8,9],suggested_coverage_cutoffs:[10,20,40,60,80],scan_floor:scanFloor,self_record_exclusion:sameLibrary},
@@ -161,7 +169,7 @@ async function run({configPath,base,codeDir,layout,core,scan,digest}){
   if(previousRun){previous=fs.mkdtempSync(path.join(parent,'.mimicry-previous-'));fs.rmdirSync(previous);fs.renameSync(output,previous);}
   try{fs.renameSync(pending,output);}catch(error){if(previous)fs.renameSync(previous,output);throw error;}
   if(previous)removeManagedTemp(previous);
- }catch(error){if(fs.existsSync(pending))removeManagedTemp(pending);throw error;}
+ }catch(error){if(summaryFd!=null)fs.closeSync(summaryFd);mappingDb?.close();if(fs.existsSync(pending))removeManagedTemp(pending);throw error;}
  console.error('Completed in '+elapsed(runStarted)+' s. Output: '+output);
  console.log(JSON.stringify({completed:true,output,target_records:queries.length,parent_records:parents.length,targets:completed},null,2));
 }
