@@ -48,7 +48,8 @@ class AssetPack:
                 if row is None:return None
                 digest,size,name=row
                 if expected_sha256 is not None and digest!=expected_sha256:raise AssetPackError('Asset identity differs from pinned release')
-                if not re.fullmatch(r'[0-9a-f]{2}-[0-9a-f]{64}\.sqlite',name) or type(size) is not int or not 0<=size<=MAX_ENTRY:raise AssetPackError('Invalid asset record')
+                short_name=re.fullmatch(re.escape(self.namespace)+r'-[0-9a-f]{2}\.sqlite',name)
+                if not (short_name or re.fullmatch(r'[0-9a-f]{2}-[0-9a-f]{64}\.sqlite',name)) or type(size) is not int or not 0<=size<=MAX_ENTRY:raise AssetPackError('Invalid asset record')
                 if name not in self.shards:
                     file=self.directory/name
                     if file.resolve().parent!=self.directory.resolve():raise AssetPackError('Asset shard escapes pack')

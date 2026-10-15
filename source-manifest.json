@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.source-snapshot/1",
   "repository": "https://github.com/seromics/seromap_electron",
-  "commit": "f02b10a736658576c6b6d656b6e9c048f1b2a06f",
+  "commit": "f76b1af07550e70f8c490dbcc5db0c275c968ab9",
   "files": [
     {
       "path": "mimicrymap/SOURCE-NOTICE.md",
@@ -228,8 +228,8 @@
     {
       "path": "mimicrymap/frontend/asset_packs.py",
       "source": "mimicrymap/frontend/asset_packs.py",
-      "bytes": 5923,
-      "sha256": "acf027006914596e5d5bd4c824cfb3243d01172526fac7adc17ea9b33a2b8b08"
+      "bytes": 6035,
+      "sha256": "6e93262461222689764f963b65461d998aae5385d17ce215d4cd70299052ec79"
     },
     {
       "path": "mimicrymap/frontend/atlas-figures.css",
