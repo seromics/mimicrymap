@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.source-snapshot/1",
   "repository": "https://github.com/seromics/seromap_electron",
-  "commit": "d1eb5d87c12e855fd67d25bad00aae519b8374f0",
+  "commit": "408522d8105f1c966837683611dc8e3b272724e1",
   "files": [
     {
       "path": "mimicrymap/SOURCE-NOTICE.md",
@@ -48,8 +48,8 @@
     {
       "path": "mimicrymap/docs/public/downloads.html",
       "source": "mimicrymap/docs/public/downloads.html",
-      "bytes": 1610,
-      "sha256": "5e06a15386785481d6782025a08311ebf234b9bac43329bb1de2f490ede3a9ff"
+      "bytes": 1625,
+      "sha256": "02c97429f27ea240632f66bd8fe6ee69bd55b8b22ded9de4e22d1638242b954d"
     },
     {
       "path": "mimicrymap/docs/public/figure-legends.json",
@@ -114,8 +114,8 @@
     {
       "path": "mimicrymap/docs/public/sources.html",
       "source": "mimicrymap/docs/public/sources.html",
-      "bytes": 2258,
-      "sha256": "703c721be9da5b293a2a6d5e62ca3fec4cc0523154f94ab37dcc70f61d76ffaf"
+      "bytes": 2393,
+      "sha256": "41a16ad5c5b8cbcf350c8d8c71962b1e13a759dfcf67b6ad1493dd74dd4964d0"
     },
     {
       "path": "mimicrymap/docs/public/summary-download-guide.md",
@@ -1116,8 +1116,8 @@
     {
       "path": "mimicrymap/frontend/sources.html",
       "source": "mimicrymap/frontend/sources.html",
-      "bytes": 35739,
-      "sha256": "47de0b47afb4fe8f50b378fca3b68f05b397777e475c98871ea490f9b8e6ee82"
+      "bytes": 35920,
+      "sha256": "17951267237aab87d241fa0749124a7c324b96d4e7b68e15372fd1f813c627dc"
     },
     {
       "path": "mimicrymap/frontend/startup-shell.css",

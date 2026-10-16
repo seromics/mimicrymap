@@ -26,13 +26,13 @@
  <header class="site-page-hero">
  <h1 id="dataSourcesTitle">Data Sources, Methods,<br><span>and Licenses</span></h1>
  <p>Download sequence maps for canonical human proteins, exposure proteins and assay libraries. Compare your own FASTAs on the <a href="/" data-site-nav>MimicryMap homepage</a>, or <a href="/reproduce/mimicrymap-pipeline.zip" download>download the local pipeline</a>.</p>
- <p>Each coverage-summary ZIP contains one CSV per direction, or one CSV for a self-comparison. Tables retain target identifiers and sequences, with pair-specific coverage and matched residue ranges at 7/9, 8/9 and 9/9. Coverage uses each sequence’s full length; qualifying pairs cover at least 10% of either sequence. <a href="/source-downloads/mimicry-summaries/summary-guide.md" download>Download the field and methods guide</a>.</p>
+ <p>Each coverage-summary ZIP contains one CSV per direction, or one CSV for a self-comparison. Tables retain target identifiers and sequences, with pair-specific coverage and matched residue ranges at 7/9, 8/9 and 9/9. Coverage uses each sequence’s full length; listed pairs cover at least 10% of either sequence. Unmatched Target Regions describe residues without a qualifying match anywhere in the stated comparison library, including matches below the pair-list cutoff. <a href="/source-downloads/mimicry-summaries/summary-guide.md" download>Download the field and methods guide</a>.</p>
  </header>
  <section class="summary-library" id="summaryLibrary" aria-labelledby="summaryLibraryTitle" data-paired-downloads="true">
  <div class="download-section-heading"><h2 id="summaryLibraryTitle">Canonical Sequence Maps and Research Downloads</h2>
  <p>Start with canonical protein maps: reference-to-reference and assay-to-reference comparisons. Direct cross-assay summaries are available below for research. MimicryMap calculates full sequence maps on demand.</p></div>
  <dl class="download-product-guide">
- <div><dt>General-Use Summaries (.csv)</dt><dd>Directional CSVs of record pairs, coverage and matched ranges, with the original input FASTAs and a short README.</dd></div>
+ <div><dt>General-Use Summaries (.csv)</dt><dd>Directional CSVs of record pairs, coverage, matched ranges and unmatched target regions, with the original input FASTAs and a short README.</dd></div>
  <div><dt>SeroMap Index (.sqlite)</dt><dd>One database for SeroMap protein-page ribbons and statistical memberships in both directions, built from the same completed comparison.</dd></div>
  </dl>
  <p class="download-format-note">Mapping indexes contain sequence evidence; antibody measurements and enrichment results are calculated separately. Install through <strong>Workspace → Reference libraries</strong>, or extract a ZIP and choose <strong>Install from folder</strong>. Installation prepares local lookup indexes without repeating sequence matching. Coverage CSVs can be opened directly.</p>
