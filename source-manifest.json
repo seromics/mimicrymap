@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.source-snapshot/1",
   "repository": "https://github.com/seromics/seromap_electron",
-  "commit": "275b0c173e05f16828bec1f941e84d9800913def",
+  "commit": "5dd48c9463f36a3bbe1abdf9ed376e7f700f4af4",
   "files": [
     {
       "path": "mimicrymap/SOURCE-NOTICE.md",
