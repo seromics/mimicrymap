@@ -3,7 +3,7 @@ const fs=require('node:fs'),path=require('node:path'),{DatabaseSync}=require('no
 const pkg=require('../frontend/reproduce/summary-package.cjs'),indexer=require('../frontend/reproduce/summary-index.cjs');
 const metadata=require('./metadata.cjs'),core=require('../frontend/reproduce/export-core.js');
 function start(db,{targetDirectory,parentDirectory,targetAnnotations,parentAnnotations,target,parent}){
- const writer=require('../frontend/reproduce/mapping-writer.cjs').create(db);
+ const writer=require('../frontend/reproduce/mapping-writer.cjs').create(db,{collectLibraryUnions:true});
  for(const [side,folder,annotation,library]of [[0,targetDirectory,targetAnnotations,target],[1,parentDirectory,parentAnnotations,parent]]){
   const source=new DatabaseSync(path.join(folder,'library.sqlite'),{readOnly:true}),overlay=metadata.open(annotation);
   try{

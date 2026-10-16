@@ -8,10 +8,13 @@
     "Antigen Target Full Sequence",
     "Antigen Target Organism (TaxID)",
     "Comparison Library",
+    "Unmatched Target Regions at 7/9 (Whole Comparison Library)",
     "Mimicry Parents at 7/9 with Coverage (%) Parent|Target (>=10% either)",
     "Mimicry Parent Regions at 7/9 Parent|Target (>=10% either)",
+    "Unmatched Target Regions at 8/9 (Whole Comparison Library)",
     "Mimicry Parents at 8/9 with Coverage (%) Parent|Target (>=10% either)",
     "Mimicry Parent Regions at 8/9 Parent|Target (>=10% either)",
+    "Unmatched Target Regions at 9/9 (Whole Comparison Library)",
     "Mimicry Parents at 9/9 with Coverage (%) Parent|Target (>=10% either)",
     "Mimicry Parent Regions at 9/9 Parent|Target (>=10% either)"
   ],
@@ -58,5 +61,6 @@
   "csv_encoding": "UTF-8 with BOM; ASCII-only column headings",
   "pair_regions_entry": "escaped_label@parent_start..end,parent_start..end|target_start..end,target_start..end",
   "pair_regions_policy": "Same qualifying records and order as the percentage list; independently merged residue unions, not alignment correspondences",
-  "short_sequences": "Records shorter than nine residues remain present with their length and empty pair lists"
+  "short_sequences": "Records shorter than nine residues remain present with their length and empty pair lists",
+  "unmatched_regions": "Complement of the complete qualifying core union in the Comparison Library, before the pair-list coverage filter; 1-based inclusive. None = no unmatched residues; Not available = complete union was not retained; Not evaluated = sequence shorter than 9 residues."
 }

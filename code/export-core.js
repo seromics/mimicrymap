@@ -584,7 +584,7 @@
   if(valid(surface))row.Surface=metadata.surface_context+': exposed '+intervals(Array.from(surface,v=>v==='1'||v===1));
   const topology=['extracellular','transmembrane','intracellular'].filter(k=>valid(a[k]));
   if(topology.length)row.Topology=topology.map(k=>k+': '+intervals(Array.from(a[k],v=>v==='1'||v===1))).join('; ');
-  row.rSASA=numeric(dimer?a.rsasa_dimer:a.rsasa);row.pLDDT=numeric(a.plddt);row.Cleavage=numeric(a.cleavage_epitope);
+  row.rSASA=numeric(dimer?a.rsasa_dimer:a.rsasa);row.pLDDT=numeric(dimer&&a.plddt_dimer||a.plddt);row.Cleavage=numeric(a.cleavage_epitope);
   return row;
  }
 
@@ -649,7 +649,8 @@
     const a=coverageCore.measure(qs,L),b=coverageCore.measure(ps,parent.sequence?.length??parent.length);
     partners.push({recordId:parent.record_id??parent.summary_record_id??key,windowPairs:source.hits.filter(h=>h[ii]>=t).length,a:a.coveredResidues,b:b.coveredResidues,targetRegions:a.intervals,parentRegions:b.intervals,L:parent.sequence?.length??parent.length,native:native(parent),label:summaryParentLabel(parent)});
    }
-   groups.push({floor:t,partners});
+   const wholeQuery=result.parameters?.summary_query_windows_complete!==false&&result.inputs?.analysis_scan?.query_window_coverage?.coverage_complete!==false;
+   groups.push({floor:t,partners,libraryRanges:wholeQuery?coverageCore.union(partners.flatMap(p=>p.targetRegions),L):null});
   }
   return {...serializeSummary(p,scope,groups,annotationMetadata),groups};
  }
@@ -660,7 +661,7 @@
  function summaryFromPairRegions({protein,scope,groups,completePairPopulation,listedPairPopulation,annotationMetadata}){
   if(completePairPopulation!==true&&listedPairPopulation!==true||!Array.isArray(groups)||!groups.length)throw Error('Complete record-pair population required');
   const L=protein.sequence.length,seenFloors=new Set();
-  const prepared=groups.map(({floor,pairs})=>{
+  const prepared=groups.map(({floor,pairs,libraryRanges=null})=>{
    if(!Number.isInteger(floor)||floor<5||floor>9||seenFloors.has(floor))throw Error('Invalid summary threshold');seenFloors.add(floor);
    const seen=new Set(),partners=pairs.map(({id,record,targetRanges,parentRanges,windowPairs=null})=>{
     if(id==null||seen.has(id))throw Error('Missing or duplicate summary partner');seen.add(id);
@@ -668,7 +669,7 @@
     if(!a.length||!b.length)throw Error('Empty matching-pair ranges');
     return {recordId:id,windowPairs,a:coverageCore.size(a),b:coverageCore.size(b),L:size,targetRegions:a,parentRegions:b,native:publicText(record.assay_id||record.identity?.assayId||record.protein_id||''),label:summaryParentLabel(record)};
    });
-   return {floor,partners};
+   return {floor,partners,libraryRanges:completePairPopulation===true?coverageCore.union(partners.flatMap(p=>p.targetRegions),L):libraryRanges===null?null:coverageCore.union(libraryRanges,L)};
   });
   const output=serializeSummary(protein,scope,prepared,annotationMetadata);
   if(!completePairPopulation)for(const value of Object.values(output.audit))value.matchingPairs=null;
@@ -681,7 +682,9 @@
   const scopeLabel=({human_current:'HuScan',virscan_exposome_current:'VirScan/Exposome',huprot4:'HuProt 4.0',__custom_fasta__:'Your own FASTA'})[scope]||scope;
   const row=Object.fromEntries(columns.map((k,i)=>[k,[id.q_gene,id.q_accession,summaryDescription(p,id.q_protein_name),L,p.sequence,organismTaxonLabel(p),scopeLabel][i]]));
   const audit={},pairKeys={};
-  for(const {floor:t,partners} of groups){
+  for(const {floor:t,partners,libraryRanges=null} of groups){
+   const unmatchedName='Unmatched Target Regions at '+t+'/9 (Whole Comparison Library)';
+   columns.push(unmatchedName);row[unmatchedName]=L<9?'Not evaluated':libraryRanges===null?'Not available':coverageCore.complement(libraryRanges,L).map(([a,b])=>a+'..'+b).join('; ')||'None';
    const listed=partners.filter(p=>100*p.a>=10*L||100*p.b>=10*p.L).sort((a,b)=>b.a-a.a||(b.b/b.L-a.b/a.L)||lexical(a.native,b.native));
    audit[t]={matchingPairs:partners.length,listedPairs:listed.length};
    // Separate identity metadata follows the exact CSV list order. Labels are

@@ -2510,10 +2510,11 @@
             blosum62: Array.from(BT),
           }),exportOptions);
           const structureAccession=targetHasReferenceStructure(T)?T.structureAccession:null,captureTarget=T;
-          let exportStructure=structureAccession?S3:null;
-          if(figureOptions.capturePlots&&!exportStructure&&structureAccession){
-            const response=await fetch(API+'/data/structures/'+encodeURIComponent(structureAccession)+'.pdb');
-            if(response.ok)exportStructure=parsePDB(await response.text());
+          const referenceModel=targetHasReferenceStructure(T)&&T.exposureAssets ? exposureModel(T,DIMERCTX&&exposureModel(T,'dimer')?'dimer':'monomer') : null;
+          let exportStructure=targetHasReferenceStructure(T)?S3:null;
+          if(figureOptions.capturePlots&&!exportStructure&&(structureAccession||referenceModel)){
+            const response=await fetch(referenceModel?API+referenceModel.url:API+'/data/structures/'+encodeURIComponent(structureAccession)+'.pdb');
+            if(response.ok)exportStructure=parsePDB(await response.text(),referenceModel);
             else if(response.status!==404)throw new Error((/*@copy mimicryone-runtime.structure-export-could-not-be.944f75d*/`Structure export could not be loaded (HTTP ${response.status}).`/*@endcopy*/));
             if(T!==captureTarget)throw new Error((/*@copy mimicryone-runtime.selection-changed-while-loading-the.eca0356*/`Selection changed while loading the structure; export again.`/*@endcopy*/));
           }
@@ -2918,8 +2919,82 @@
   const originalLoadStructure = loadStructure;
   const originalProbeDimer = probeDimer;
   const originalSetAssembly = setAssembly;
+  const exposureAssetRequests = new Map();
+  function exposureTarget(target) {
+    return !!(target && !target.custom && target.result &&
+      ['canonical_exposure','canonical_exposure_no_vertebrates','atlas_120_viruses'].includes(target.result.protein.library_id));
+  }
+  function exposureAssets(target) {
+    if (!exposureTarget(target)) return Promise.resolve(null);
+    if (target.exposureAssetChecked) return Promise.resolve(target.exposureAssets || null);
+    const protein = target.result.protein;
+    const headerToken=String(protein.source_header||protein.raw_header||protein.header||'').replace(/^>/,'').split(/\s/)[0];
+    const source = protein.source_token || (headerToken&&!headerToken.includes('|')?headerToken:null) || protein.source_accession || protein.display_accession || target.displayAccession;
+    const key = protein.library_id + ':' + source + ':' + protein.sequence;
+    if (!exposureAssetRequests.has(key)) {
+      const pending = fetch(API+'/api/explorer/reference-assets?'+new URLSearchParams({library:protein.library_id,source:source}))
+        .then(response => response.ok ? response.json() : Promise.reject(new Error('Reference annotations could not be loaded.')))
+        .then(payload => {
+          const record = payload.record;
+          if (record && (record.record_id !== source || record.sequence !== protein.sequence))
+            throw new Error('Reference annotation sequence differs from this record.');
+          return record || null;
+        }).catch(error => { exposureAssetRequests.delete(key); throw error; });
+      exposureAssetRequests.set(key,pending);
+      while (exposureAssetRequests.size > 24) exposureAssetRequests.delete(exposureAssetRequests.keys().next().value);
+    }
+    return exposureAssetRequests.get(key).then(record => {
+      target.exposureAssetChecked = true; target.exposureAssets = record; return record;
+    });
+  }
+  function exposureModel(target, assembly) {
+    return target.exposureAssets?.models.find(model => model.kind === (assembly==='dimer'?'homodimer':'monomer')) || null;
+  }
+  function loadExposureAssembly(target, assembly) {
+    const owner = target.acc, model = exposureModel(target,assembly);
+    if (T !== target) return;
+    beginStructureOwner(owner);
+    const cached = S3cache[owner]?.exposureAssets === target.exposureAssets ? S3cache[owner] :
+      (S3cache[owner]={exposureAssets:target.exposureAssets,hasD:!!exposureModel(target,'dimer'),m:null,d:null});
+    const slot=assembly==='dimer'?'d':'m';
+    if (!model) { S3=null; S3ASM=assembly; applyStructure(owner); return; }
+    const apply=()=>{
+      applyStructure(owner);
+      window.MimicryMapViewer.node('s3meta').textContent=target.displayAccession+
+        (model.full_length?'':' · Partial Model · '+(model.residue_positions?.length || model.end-model.start+1)+' / '+target.len+' AA');
+    };
+    if (cached[slot]) { S3=cached[slot]; S3ASM=assembly; apply(); return; }
+    structurePending(owner);
+    const release = window.MimicryStartup ? window.MimicryStartup.hold('assets') : function() {};
+    cached.pending ||= {};
+    cached.pending[slot] ||= fetch(API+model.url).then(response => {
+      if (!response.ok) throw new Error('Reference model could not be loaded.');
+      return response.text();
+    }).then(text => parsePDB(text,model));
+    cached.pending[slot].then(structure => {
+      cached[slot]=structure;
+      delete cached.status;
+      if(T===target && (DIMERCTX && cached.hasD ? 'dimer':'monomer')===assembly){
+        S3=structure; S3ASM=assembly; apply();
+      }
+    }).catch(() => {
+      delete cached.pending[slot];
+      cached.status={code:'structure_load_failed',message:'Structure could not be loaded.'};
+      if(T===target && (DIMERCTX && cached.hasD ? 'dimer':'monomer')===assembly){S3=null;applyStructure(owner);}
+    }).finally(release);
+  }
   loadStructure = function coordinateSafeStructure(owner) {
     if (!T || T.acc !== owner) return;
+    if (exposureTarget(T)) {
+      const target=T;
+      if(S3OWNER!==owner){beginStructureOwner(owner);S3=null;showStructure(false);}
+      exposureAssets(target).then(record => {
+        if(T!==target)return;
+        if(!record || !record.models.length){S3=null;showStructure(false);return;}
+        loadExposureAssembly(target,DIMERCTX && exposureModel(target,'dimer') ? 'dimer':'monomer');
+      }).catch(() => {if(T===target){S3=null;showStructure(false);}});
+      return;
+    }
     if (!targetHasReferenceStructure(T)) {
       beginStructureOwner(owner);
       S3 = null; showStructure(false); return;
@@ -2969,6 +3044,7 @@
   };
   probeDimer = function coordinateSafeDimerProbe(owner) {
     const cached = S3cache[owner];
+    if(cached?.exposureAssets){buildAsmToggle(owner);return;}
     if (!cached || !cached.assetAccession) { originalProbeDimer(owner); return; }
     if (!cached.m) { buildAsmToggle(owner); return; }
     if (cached.hasD !== undefined) { if (!defaultDimerIfAvailable(owner)) buildAsmToggle(owner); return; }
@@ -2979,6 +3055,7 @@
       .then(function finishProbe() { if (T && T.acc === owner && !defaultDimerIfAvailable(owner)) buildAsmToggle(owner); }).finally(releaseStartup);
   };
   setAssembly = function coordinateSafeAssembly(owner, assembly) {
+    if(T?.acc===owner && exposureTarget(T)){loadExposureAssembly(T,assembly);return;}
     const cached = S3cache[owner];
     if (!cached || !cached.assetAccession) { originalSetAssembly(owner, assembly); return; }
     if (assembly === "monomer") { S3ASM = "monomer"; S3 = cached.m; applyStructure(owner); return; }
@@ -3000,6 +3077,15 @@
 
   const originalLoadAnnots = loadAnnots;
   loadAnnots = function staticAnnotations(accession, done) {
+    if(T?.acc===accession && exposureTarget(T)){
+      const target=T;
+      ANN=null;indexAnnotationVariants();
+      exposureAssets(target).then(record => {
+        if(T!==target)return;
+        ANN=record; annCache[accession]=record; indexAnnotationVariants(); if(done)done();
+      }).catch(() => {if(T===target){ANN=null;indexAnnotationVariants();if(done)done();}});
+      return;
+    }
     if (annCache[accession] !== undefined) {
       ANN = annCache[accession];
       indexAnnotationVariants();

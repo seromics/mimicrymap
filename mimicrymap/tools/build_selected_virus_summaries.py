@@ -3,7 +3,7 @@
 Build into an external staging directory. --publish binds verified completed
 packages to the public manifest; it never changes installed modules or studies.
 """
-import argparse, collections, concurrent.futures, csv, hashlib, io, json, os, re, time, zipfile
+import argparse, collections, concurrent.futures, csv, hashlib, io, json, os, re, sqlite3, time, zipfile
 from pathlib import Path
 from build_pan_viral_pairs import split_escaped, unescape
 
@@ -44,7 +44,7 @@ def accession(entry, allowed):
     return found.pop()
 
 
-def build(front, out, atlas_index, workers=4):
+def build(front, out, atlas_index, workers=4, coverage_database=None):
     csv.field_size_limit(2**31 - 1)
     web = json.loads((front / 'summary-downloads.json').read_text('utf-8'))
     rows = web['comprehensive_summaries']['rows']
@@ -59,7 +59,13 @@ def build(front, out, atlas_index, workers=4):
     taxa = {str(v['taxon_id']): v for v in proteomes}
     assert len(taxa) == len(proteomes)
     columns = web['comprehensive_summaries']['columns']
-    assert len(columns) == 13
+    paired = [(f'Mimicry Parents at {floor}/9 with Coverage (%) Parent|Target (>=10% either)',
+               f'Mimicry Parent Regions at {floor}/9 Parent|Target (>=10% either)') for floor in (7,8,9)]
+    unmatched = [f'Unmatched Target Regions at {floor}/9 (Whole Comparison Library)' for floor in (7,8,9)]
+    assert all(c in columns for group in paired for c in group)
+    has_unmatched = any(c in columns for c in unmatched)
+    if has_unmatched and (not all(c in columns for c in unmatched) or not coverage_database):
+        raise ValueError('Selected-virus unmatched regions require complete virus-scoped SQLite unions')
     binding = {'master_sha256': source['sha256'], 'atlas_sha256': digest(atlas_index.read_bytes()),
                'producer_sha256': digest(Path(__file__).read_bytes())}
     out.mkdir(parents=True, exist_ok=True)
@@ -78,6 +84,20 @@ def build(front, out, atlas_index, workers=4):
     def read_csv(key):
         return list(csv.DictReader(io.StringIO(content[Path(rows[key]['csv']['url']).name].decode('utf-8-sig'))))
     human, viral = read_csv(HUMAN), read_csv(VIRAL)
+    human_ids, human_side = {}, None
+    if has_unmatched:
+        with sqlite3.connect(coverage_database.resolve().as_uri()+'?mode=ro', uri=True) as db:
+            for side in (0,1):
+                metadata = json.loads(db.execute('SELECT metadata FROM sequence_records WHERE side=? LIMIT 1', (side,)).fetchone()[0])
+                if metadata['library_id']=='human_swissprot': human_side=side
+            if human_side is None: raise ValueError('No canonical human population in coverage database')
+            records = {r[1]:r for r in db.execute('SELECT id,source,sha256,length FROM sequence_records WHERE side=?', (human_side,))}
+            if len(records)!=len(human): raise ValueError('Different human population in coverage database')
+            for row in human:
+                rid, _, key, length = records[row[columns[1]]]
+                if length!=len(row[columns[4]]) or digest(row[columns[4]].encode())!=key:
+                    raise ValueError('Different human sequence in coverage database')
+                human_ids[row[columns[1]]]=rid
     # Retain original source headers and sequences, while selecting the same
     # complete viral record population as the directional table.
     viral_fasta = {}
@@ -105,7 +125,7 @@ def build(front, out, atlas_index, workers=4):
     for row in human:
         per_virus = {}
         for j, floor in enumerate((7, 8, 9)):
-            cov, ranges = parts(row[columns[7+2*j]]), parts(row[columns[8+2*j]])
+            cov, ranges = parts(row[paired[j][0]]), parts(row[paired[j][1]])
             assert len(cov) == len(ranges)
             for c, r in zip(cov, ranges):
                 assert split_escaped(c, '@')[0] == split_escaped(r, '@')[0]
@@ -129,20 +149,37 @@ def build(front, out, atlas_index, workers=4):
         indices = selected[slug]
         hname = f'selected_{slug}_human_to_virus_comprehensive.csv'
         vname = f'selected_{slug}_virus_to_human_comprehensive.csv'
+        scoped = {}
+        if has_unmatched:
+            scope = 'taxon:'+str(v['taxon_id'])
+            with sqlite3.connect(coverage_database.resolve().as_uri()+'?mode=ro', uri=True) as db:
+                complete = {r[0] for r in db.execute('SELECT identity FROM library_union_scopes WHERE side=? AND scope=?', (human_side,scope))}
+                if not {7,8,9}.issubset(complete): raise ValueError('Incomplete selected-virus coverage: '+slug)
+                scoped = {(rid,floor):json.loads(ranges) for rid,floor,ranges in db.execute('SELECT id,identity,ranges FROM library_unions WHERE side=? AND scope=?', (human_side,scope))}
         hr = []
         for row, partition in zip(human, partitions):
             values = dict(row); values[columns[6]] = v['organism'] + ' [TaxID: ' + str(v['taxon_id']) + ']'
-            values.update(zip(columns[7:], partition.get(slug, [''] * 6))); hr.append(values)
+            values.update(zip([c for group in paired for c in group], partition.get(slug, [''] * 6)))
+            if has_unmatched:
+                length = int(row[columns[3]])
+                for floor, name in zip((7,8,9),unmatched):
+                    start, gaps = 1, []
+                    for a,b in scoped.get((human_ids[row[columns[1]]],floor),[]):
+                        if start<a: gaps.append(f'{start}..{a-1}')
+                        start=b+1
+                    if start<=length: gaps.append(f'{start}..{length}')
+                    values[name] = 'Not evaluated' if length<9 else '; '.join(gaps) or 'None'
+            hr.append(values)
         vr = [viral[i] for i in indices]
-        counts = {str(f): sum(len(parts(r[columns[7+2*j]])) for r in hr) for j, f in enumerate((7, 8, 9))}
+        counts = {str(f): sum(len(parts(r[paired[j][0]])) for r in hr) for j, f in enumerate((7, 8, 9))}
         # Compare every pair, percentage and coordinate in both directions.
         forward, reverse = {}, {}
         for j, floor in enumerate((7, 8, 9)):
             for row in hr:
-                for c, r in zip(parts(row[columns[7+2*j]]), parts(row[columns[8+2*j]])):
+                for c, r in zip(parts(row[paired[j][0]]), parts(row[paired[j][1]])):
                     forward[(row[columns[1]], accession(c, owners.keys()), floor)] = (split_escaped(c, '@')[1].split('|'), split_escaped(r, '@')[1].split('|'))
             for row in vr:
-                for c, r in zip(parts(row[columns[7+2*j]]), parts(row[columns[8+2*j]])):
+                for c, r in zip(parts(row[paired[j][0]]), parts(row[paired[j][1]])):
                     labels = {unescape(x) for x in split_escaped(split_escaped(c, '@')[0], '|')}
                     matches = labels & human_accessions
                     assert len(matches) == 1
@@ -162,14 +199,14 @@ def build(front, out, atlas_index, workers=4):
                 assert all(a[k] == b[k] for k in a if k != columns[6]), 'Selected CSV changed existing values: ' + slug
         # Keep the complete population, but make the useful pair/range cells
         # visible immediately when a reader opens either directional CSV.
-        has_pairs = lambda row: any(row[columns[7+2*j]] for j in range(3))
+        has_pairs = lambda row: any(row[c] for c,_ in paired)
         hr.sort(key=lambda row: not has_pairs(row))
         vr.sort(key=lambda row: not has_pairs(row))
         files = {hname: csv_bytes(hr, columns), vname: csv_bytes(vr, columns)}
         descriptors = {name: {'bytes':len(data), 'sha256':digest(data)} for name,data in files.items()}
         files['human_swissprot.fasta']=content['human_swissprot.fasta']
         files[f'selected_{slug}.fasta']=b''.join(viral_fasta[row[columns[1]]] for row in [viral[i] for i in indices])
-        files['README.txt'] = (v['label'] + ' ↔ Canonical Human Proteins\n\nBoth directional CSVs retain every target record, including short sequences and records without qualifying pairs. Rows with matches come first; unmatched records follow. Each 7/9, 8/9 and 9/9 coverage column is followed by its independent residue ranges. Pairs require at least 10% coverage of either sequence. Ranges are one-based inclusive, independent residue unions, not alignment correspondence.\n\nThe FASTAs contain all canonical human proteins and all proteins from the selected viral proteome, respectively. Original source identifiers, annotated headers and sequences are retained. They include records without a listed match.\n\nThese standalone CSVs are sliced from the complete human/120-virus summaries without sequence matching. The separate SeroMap SQLite ZIP provides the mapping database for protein-page tracks and proteome-reactivity memberships. The separate atlas figure exports include 5/9–9/9 and use their stated plotted population.\n').encode()
+        files['README.txt'] = (v['label'] + ' ↔ Canonical Human Proteins\n\nBoth directional CSVs retain every target record, including short sequences and records without qualifying pairs. Rows with matches come first; unmatched records follow. At 7/9, 8/9 and 9/9, Unmatched Target Regions precedes pair coverage and its independent residue ranges. Human-to-virus unmatched regions use only this selected virus, including all matches below the pair-list cutoff. Virus-to-human unmatched regions use the complete human comparison library. None means no unmatched residues; Not evaluated applies below nine residues. Pairs require at least 10% coverage of either sequence. Ranges are one-based inclusive, independent residue unions, not alignment correspondence.\n\nThe FASTAs contain all canonical human proteins and all proteins from the selected viral proteome, respectively. Original source identifiers, annotated headers and sequences are retained. They include records without a listed match.\n\nThese standalone CSVs are sliced from the complete human/120-virus summaries without sequence matching. The separate SeroMap SQLite ZIP provides the mapping database for protein-page tracks and proteome-reactivity memberships. The separate atlas figure exports include 5/9–9/9 and use their stated plotted population.\n').encode()
         archive_name = f'selected_{slug}_summary.zip'; temporary = directory / (archive_name + '.pending')
         with zipfile.ZipFile(temporary, 'w', zipfile.ZIP_DEFLATED, compresslevel=6) as z:
             for name, data in files.items():
@@ -182,7 +219,7 @@ def build(front, out, atlas_index, workers=4):
         receipt = {k:v[k] for k in ('slug','label','organism','taxon_id')}
         for direction, name, data_rows in [('human_to_virus',hname,hr), ('virus_to_human',vname,vr)]:
             (directory / name).write_bytes(files[name])
-            receipt[direction] = {'url':PREFIX+name, 'rows':len(data_rows), **descriptors[name], 'columns':13, 'pairFocused':True, 'pairRegions':True, 'listed_pairs':counts}
+            receipt[direction] = {'url':PREFIX+name, 'rows':len(data_rows), **descriptors[name], 'columns':len(columns), 'pairFocused':True, 'pairRegions':True, 'listed_pairs':counts}
         receipt['summary'] = {'url':PREFIX+archive_name, 'bytes':(directory/archive_name).stat().st_size,
             'sha256':digest((directory/archive_name).read_bytes()), 'expandedBytes':sum(map(len,files.values())),
             'summary_schema':'mimicryone/native-summary/7', 'bundle':'csv',
@@ -227,12 +264,13 @@ if __name__ == '__main__':
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--out',type=Path,required=True)
     p.add_argument('--atlas-index',type=Path,required=True);p.add_argument('--workers',type=int,default=4)
+    p.add_argument('--coverage-database',type=Path,help='Mapping SQLite with complete per-virus library unions')
     p.add_argument('--publish',action='store_true');p.add_argument('--website',type=Path)
     a=p.parse_args();assert 1 <= a.workers <= 4
     a.out=a.out.resolve();a.out.mkdir(parents=True,exist_ok=True);lock=a.out/'build.lock'
     fd=os.open(lock,os.O_CREAT|os.O_EXCL|os.O_WRONLY);os.write(fd,str(os.getpid()).encode());os.close(fd)
     try:
-        result=build(a.root.resolve()/'frontend',a.out,a.atlas_index,a.workers)
+        result=build(a.root.resolve()/'frontend',a.out,a.atlas_index,a.workers,a.coverage_database)
         if a.publish:
             publish(a.root.resolve()/'frontend',a.out,result)
             if a.website:publish(a.website.resolve()/'atlas/mimicrymap/frontend',a.out,result)

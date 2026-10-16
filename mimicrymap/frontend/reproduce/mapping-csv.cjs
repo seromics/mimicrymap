@@ -18,6 +18,7 @@ async function write({database,directory,manifest,inputs,forwardFile='library_su
  const floors=manifest.floors||Array.from({length:10-manifest.floor},(_,i)=>manifest.floor+i);
  try{
   if(!unified.isUnified(db))throw Error('Summary export requires the saved mapping database');
+  const fullUnion=unified.libraryUnionReader(db);
   for(const side of [0,1]){
    if(side&&manifest.target.sha256===manifest.parent.sha256)continue;
    const name=side?reverseFile:forwardFile,fd=fs.openSync(path.join(directory,name),'wx');let buffer='',first=true,done=0;
@@ -28,7 +29,7 @@ async function write({database,directory,manifest,inputs,forwardFile='library_su
     for(const r of records){
      const next=await seq.next();if(next.done||next.value.length!==r.length)throw Error('Mapping records do not match their FASTA');
      if(!side&&manifest.targetId!=null&&r.id!==manifest.targetId)continue;
-     const groups=floors.map(floor=>({floor,pairs:[]})),byFloor=new Map(groups.map(g=>[g.floor,g]));
+     const groups=floors.map(floor=>({floor,pairs:[],libraryRanges:fullUnion(side,r.id,floor)})),byFloor=new Map(groups.map(g=>[g.floor,g]));
      for(const pair of pairQuery.iterate(r.id)){
       if(!parents.has(pair.id)){if(parents.size>=4096)parents.delete(parents.keys().next().value);const p=parentQuery.get(1-side,pair.id);parents.set(pair.id,{...JSON.parse(p.metadata),length:p.length});}
       const ranges=regions.unpack(pair.ranges,!!side);

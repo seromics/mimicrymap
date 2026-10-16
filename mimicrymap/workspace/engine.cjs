@@ -621,8 +621,8 @@ async function buildComparison(
             if(listed){
               const payload=pairRegions.pack(ranges.target.intervals,ranges.parent.intervals);
               putRegions?.run(row.id,item.parent.record_id,f,payload);
-              mappingWriter?.pair({a:row.id,b:item.parent.record_id,identity:f,ac:tc,bc:pc,windows:h.length,ranges:payload});
             }
+            mappingWriter?.pair({a:row.id,b:item.parent.record_id,identity:f,ac:tc,bc:pc,windows:h.length,targetRanges:ranges.target.intervals,parentRanges:ranges.parent.intervals});
             putPair?.run(
               row.id,
               row.source,
@@ -651,6 +651,7 @@ async function buildComparison(
               ]));
           }
         }
+        mappingWriter?.completeTarget(row.id);
         const native = exportsCore.summaryFromPairRegions({protein:query,scope:parent.name,groups,completePairPopulation:true});
         for(const [f,counts] of Object.entries(native.audit)){
           summaryAudit[f]??={matchingPairs:0,listedPairs:0};

@@ -47,7 +47,7 @@ function values(record) {
 }
 function apply(record,fields) {
   if(!fields)return record;
-  const r={...record,gene:fields.gene,primary_gene:fields.gene,gene_symbol:fields.gene,
+  const r={...record,...(fields.token?{source_token:fields.token}:{}),gene:fields.gene,primary_gene:fields.gene,gene_symbol:fields.gene,
     source_accession:fields.accession,display_accession:fields.accession,accession:fields.accession,
     protein_name:fields.description,name:fields.description,description:fields.description,
     organism:fields.organism,species:fields.organism,taxid:fields.taxid,organism_taxid:fields.taxid,

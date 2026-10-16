@@ -17,11 +17,17 @@ Public filenames use `huprot4`, `huscan` and `virscan_exposome`, with single und
 
 ## What the tables contain
 
-Whole-library summaries carry all three thresholds in one file. Each row has seven target/comparison fields and a coverage/range pair of columns at 7/9, 8/9 and 9/9: 13 base columns in total. Target fields retain gene, accession, description, length, full sequence, organism/taxon label and comparison library. Parent sequences are not embedded; cross-reference their identifiers with the comparison FASTA or database. Optional target annotations follow the base columns.
+Whole-library summaries carry all three thresholds in one file. Each row has seven target/comparison fields, then unmatched target regions, pair coverage and pair ranges at 7/9, 8/9 and 9/9: 16 base columns in total. Target fields retain gene, accession, description, length, full sequence, organism/taxon label and comparison library. Parent sequences are not embedded; cross-reference their identifiers with the comparison FASTA or database. Optional target annotations follow the base columns.
 
 Coverage counts the union of residues in qualifying nine-residue cores for each individual record pair, including mismatches. Overlaps count once, context flanks are excluded, and each denominator is that record's full sequence length. Coordinates are 1-based inclusive `start..end`.
 
 Every target row remains present, including records with no listed matches. Records shorter than nine residues cannot form a complete core and have empty pair lists; their length and sequence remain explicit. Self-comparisons exclude the same physical record while retaining distinct records with identical sequences.
+
+### Unmatched Target Regions
+
+At each identity threshold, **Unmatched Target Regions** lists residues outside every qualifying core match across the stated comparison population, including partners below the 10%-either-side pair-list cutoff. These are independent of the filtered partner lists: joining only the listed pair ranges cannot establish uniqueness. Coordinates are 1-based inclusive, separated by semicolons. **None** means every target residue is covered; **Not available** means complete coverage evidence was not saved; **Not evaluated** applies to sequences shorter than nine residues.
+
+The SQLite stores these complete unions and their population scope separately from filtered pairs and statistical memberships. An unmatched region is specific to that identity threshold and comparison population, not proof of biological specificity.
 
 ## Read Mimicry Parent lists and choose cutoffs
 
@@ -51,7 +57,7 @@ The database declares supported identity thresholds and omits pairs below 10% on
 
 Full positional lookup databases are not part of the standard download catalogue. MimicryMap calculates detailed sequence maps on demand. Advanced Workspace builds can explicitly retain complete positions. The reference FASTAs remain separately available.
 
-The catalogue identifies each product’s actual columns, thresholds and files. The 240 selected-virus CSVs use the same 13 columns, including per-pair coverage and ranges, and are distributed in 120 paired ZIPs. Browser/custom exports use the selected threshold; whole-library summaries include all three thresholds. Reproducing curated labels and source relationships requires the corresponding record metadata as well as the exact FASTAs.
+The catalogue identifies each product’s actual columns, thresholds and files. The 240 selected-virus CSVs use the same 16 columns and are distributed in 120 paired ZIPs. Human-to-selected-virus unmatched regions use only that virus's complete union, never the all-120 union. Browser/custom exports use the selected threshold; whole-library summaries include all three thresholds. Reproducing curated labels and source relationships requires the corresponding record metadata as well as the exact FASTAs.
 
 ## Assays mapped to canonical human proteins
 
@@ -96,7 +102,7 @@ Short sequences retain their sequence and length with empty pair lists.
 
 ## One Selected Virus
 
-The Pan-Viral Atlas offers one **Selected Virus · Summary ZIP** for each of the 120 reference proteomes. Each contains both directional CSVs, with the current 13-column format: each 7/9, 8/9 and 9/9 pair-coverage column is immediately followed by its independent target and parent residue ranges. The files are sliced from the complete human/120-virus master summaries without repeating sequence matching.
+The Pan-Viral Atlas offers one **Selected Virus · Summary ZIP** for each of the 120 reference proteomes. Each contains both directional CSVs, with the current 16-column format: unmatched target regions precede each 7/9, 8/9 and 9/9 pair-coverage column, followed immediately by the independent pair ranges. Pair lists are sliced from the complete human/120-virus master summaries, while unmatched regions use saved complete coverage for the stated comparison population. No sequence matching is repeated.
 
 Both directional CSVs put records with qualifying matches first, followed by unmatched records. Partner identities, coverage values and residue ranges are readable directly in each CSV. Human → virus retains all 20,431 canonical human records, including short sequences and records without qualifying pairs; its pair lists contain only proteins from the selected proteome. Virus → human retains every protein from that proteome against the complete human population. The source organism/strain and TaxID define the selected proteome. The ZIP contains these two CSVs, the complete human FASTA, a FASTA for the selected viral proteome, and a short README explaining their contents.
 

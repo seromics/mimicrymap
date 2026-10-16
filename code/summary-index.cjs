@@ -73,7 +73,7 @@ async function build({source,directory,linkInputs=false,prepareIndexes=true},rep
    fs.writeSync(pairCsv,pkg.csvLine(['Target record','Target ID','Parent record','Parent ID','Organism','Reference set','Core identity ≥','Target coverage (%)','Target regions (>=10% either)','Parent coverage (%)','Parent regions (>=10% either)','Window pairs']));let buffer='';
    for await(const row of pkg.csvRows(pkg.safeFile(source,m.csv))){
     if(!header){
-     header=row;columns=m.floors.map(f=>({f,p:header.indexOf('Mimicry Parents at '+f+'/9 with Coverage (%) Parent|Target (>=10% either)'),r:header.indexOf('Mimicry Parent Regions at '+f+'/9 Parent|Target (>=10% either)')}));
+     header=row;columns=m.floors.map(f=>({f,u:header.indexOf('Unmatched Target Regions at '+f+'/9 (Whole Comparison Library)'),p:header.indexOf('Mimicry Parents at '+f+'/9 with Coverage (%) Parent|Target (>=10% either)'),r:header.indexOf('Mimicry Parent Regions at '+f+'/9 Parent|Target (>=10% either)')}));
      if(new Set(header).size!==header.length||columns.some(c=>c.p<0||c.r!==c.p+1))throw Error('Missing or reordered paired summary fields');continue;
     }
     if(row.length!==header.length)throw Error('Wrong CSV field count');
@@ -81,7 +81,12 @@ async function build({source,directory,linkInputs=false,prepareIndexes=true},rep
     if(key.done||!target||seen.has(target.id))throw Error('Missing or duplicate target row key');seen.add(target.id);
     const seq=row[header.indexOf('Antigen Target Full Sequence')],length=Number(row[header.indexOf('Antigen Target Length (AA)')]);
     if(typeof seq!=='string'||length!==target.length||seq.length!==length||digest(seq)!==target.sha256)throw Error('Target CSV sequence differs from metadata');
-    for(const {f,p,r}of columns){
+    for(const {f,p,r,u}of columns){
+     if(u>=0&&!['Not available','Not evaluated'].includes(row[u])){
+      const value=row[u],unmatched=value==='None'?[]:value.split(';').map(s=>s.trim().split('..').map(Number));
+      if(value!=='None'&&!/^\d+\.\.\d+(;\s*\d+\.\.\d+)*$/.test(value)||JSON.stringify(coverage.union(unmatched,length))!==JSON.stringify(unmatched))throw Error('Invalid unmatched target regions');
+      writer.libraryUnion(0,target.id,f,coverage.complement(unmatched,length));
+     }
      const pairs=entries(row[p]),rangePairs=entries(row[r]),pairKeys=key.value.parents?.[f];
      if(!Array.isArray(pairKeys)||pairKeys.length!==pairs.length||rangePairs.length!==pairs.length)throw Error('CSV pairs and stable record keys disagree');
      const parents=new Set();

@@ -13,6 +13,7 @@ import threading
 import time
 import io
 from asset_packs import AssetLibrary, AssetPackError
+from exposure_assets import ExposureAssets
 from contextlib import closing
 from http.server import SimpleHTTPRequestHandler
 from http_transport import BrowserHTTPServer
@@ -92,6 +93,7 @@ def _verified_asset_path(
 
 class MimicryHandler(StaticAssetCacheMixin, SimpleHTTPRequestHandler):
     asset_library = None
+    exposure_assets = None
     data_root = DEFAULT_DATA
     structure_assets: dict[str, tuple[Path, str]] = {}
     dimer_assets: dict[str, tuple[Path, str]] = {}
@@ -132,6 +134,8 @@ class MimicryHandler(StaticAssetCacheMixin, SimpleHTTPRequestHandler):
         self._input_raw = False
         self._request_started = time.perf_counter()
         self._player_timings = {}
+        if self.exposure_assets is not None and self.exposure_assets.dispatch(self):
+            return
         if self.explorer_api is not None and self.explorer_api.dispatch(self):
             return
         if self.analysis_api is not None and self.analysis_api.dispatch(self):
@@ -144,6 +148,8 @@ class MimicryHandler(StaticAssetCacheMixin, SimpleHTTPRequestHandler):
         self._input_raw = False
         self._request_started = time.perf_counter()
         self._player_timings = {}
+        if self.exposure_assets is not None and self.exposure_assets.dispatch(self, head_only=True):
+            return
         if self.explorer_api is not None and self.explorer_api.dispatch(self, head_only=True):
             return
         if self.analysis_api is not None and self.analysis_api.dispatch(self, head_only=True):
@@ -167,6 +173,22 @@ class MimicryHandler(StaticAssetCacheMixin, SimpleHTTPRequestHandler):
 
     def send_head(self):
         request_path = unquote(urlparse(self.path).path)
+        model = re.fullmatch(r'/data/exposure-models/(AF-[A-Za-z0-9_-]{1,100})\.pdb', request_path)
+        if model:
+            try:
+                asset = self.exposure_assets.model(model.group(1)) if self.exposure_assets else None
+            except (OSError, ValueError, sqlite3.Error) as error:
+                self.send_error(503, str(error)); return None
+            if asset is None:
+                self.send_error(404, 'Reference model is unavailable'); return None
+            self._static_etag = '"'+asset['sha256']+'"'
+            if any(v.strip().removeprefix('W/') in (self._static_etag, '*') for v in self.headers.get('If-None-Match', '').split(',')):
+                self.send_response(304); self.end_headers(); return None
+            self.send_response(200)
+            self.send_header('Content-Type', 'chemical/x-pdb')
+            self.send_header('Content-Length', str(len(asset['data'])))
+            self.end_headers()
+            return io.BytesIO(asset['data'])
         candidate = expected = None
         for regex, bindings in ((STRUCTURE_ROUTE_RE,self.structure_assets),
                                 (PACKAGED_DIMER_ROUTE_RE,self.dimer_assets),
@@ -669,6 +691,7 @@ def main():
             "--component-manifest is mutually exclusive with legacy database/sidecar flags"
         )
     MimicryHandler.asset_library = AssetLibrary(os.environ.get('SERO_DESKTOP_MODULE_ROOT', PACK_FRONTEND.parent.parent))
+    MimicryHandler.exposure_assets = ExposureAssets(MimicryHandler.asset_library.root)
     if arguments.component_manifest is not None:
         analysis_api, explorer_api = _component_apis(
             arguments.component_manifest

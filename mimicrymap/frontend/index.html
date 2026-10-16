@@ -1040,6 +1040,7 @@ function dimerContextOn(){ return DIMERCTX && dimerDataAvailable(); }
 /* Per-residue exposure mask and rSASA values, read through the active context. */
 function surfaceMask(a){ return (dimerContextOn() && a && a.surface_dimer) || (a && a.surface) || null; }
 function rsasaValues(a){ return (dimerContextOn() && a && a.rsasa_dimer) || (a && a.rsasa) || null; }
+function confidenceValues(a){ return (dimerContextOn() && a && a.plddt_dimer) || (a && a.plddt) || null; }
 var VARIANT_COLORS=PLOT.object({'LP/P':'mimicryPathogenic',US:'seqUncertain','LB/B':'seqBenign'});
 function variantRank(cat){ return cat==="LP/P" ? 0 : (cat==="US" ? 1 : (cat==="LB/B" ? 2 : 3)); }
 function indexAnnotationVariants(){
@@ -1071,6 +1072,8 @@ function trackHasData(key){
   if (key==="surface") return !!surfaceMask(ANN) || numericTrackHasData("rsasa");
   if (key==="rsasa") return Array.isArray(rsasaValues(ANN)) &&
     rsasaValues(ANN).some(function(v){ return Number.isFinite(v) && v>=0; });
+  if (key==="plddt") return Array.isArray(confidenceValues(ANN)) &&
+    confidenceValues(ANN).some(function(v){ return Number.isFinite(v) && v>=0; });
   if (key==="topology") return ["extracellular","transmembrane","intracellular"].some(function(k){
     return typeof ANN[k]==="string" && ANN[k].indexOf("1")>=0;
   });
@@ -1095,14 +1098,14 @@ function annColor(key,i){
   if (!ANN) return ANNC.nodata;
   var a=ANN;
   switch(key){
-    case "surface":  var sm=surfaceMask(a); return (sm && sm.charAt(i)==="1") ? ANNC.surface : ANNC.buried;
+    case "surface":  var sm=surfaceMask(a); return !sm || !/[01]/.test(sm.charAt(i)) ? ANNC.nodata : sm.charAt(i)==="1" ? ANNC.surface : ANNC.buried;
     case "topology":
       if (a.extracellular && a.extracellular.charAt(i)==="1") return ANNC.extracellular;
       if (a.transmembrane && a.transmembrane.charAt(i)==="1") return ANNC.transmembrane;
       if (a.intracellular && a.intracellular.charAt(i)==="1") return ANNC.intracellular;
       return ANNC.unknown;
-    case "rsasa":         var rv=rsasaValues(a); return rv ? viridis(rv[i]) : ANNC.nodata;
-    case "plddt":         return a.plddt ? plddtColor(a.plddt[i]) : ANNC.nodata;
+    case "rsasa":         var rv=rsasaValues(a); return rv && Number.isFinite(rv[i]) && rv[i]>=0 ? viridis(rv[i]) : ANNC.nodata;
+    case "plddt":         var cv=confidenceValues(a); return cv && Number.isFinite(cv[i]) && cv[i]>=0 ? plddtColor(cv[i]) : ANNC.nodata;
     case "variants":      return "rgba(0,0,0,0)";
     case "cleavage_epitope": return a.cleavage_epitope ? cleavageColor(a.cleavage_epitope[i]) : ANNC.nodata;
   }
@@ -2710,7 +2713,7 @@ var S3MODES=[["motif","Mimicry"],["plddt","pLDDT"],["rsasa","rSASA"]];
 function rsasaTrack(){ return rsasaValues(ANN); }
 function s3Ready(m){
   if (m==="motif") return true;
-  if (m==="plddt") return !!(ANN && ANN.plddt);
+  if (m==="plddt") return trackHasData("plddt");
   if (m==="rsasa") return !!rsasaTrack();
   return false;
 }
@@ -2723,13 +2726,13 @@ function s3ColAt(idx){
 }
 function s3Color(idx){
   if (idx<0) return PLOT.raw('nativeDim');
-  if (S3COL==="plddt" && ANN && ANN.plddt) return plddtColor(ANN.plddt[idx]);
+  if (S3COL==="plddt" && confidenceValues(ANN)) return plddtColor(confidenceValues(ANN)[idx]);
   if (S3COL==="rsasa"){
     var r=rsasaTrack();
     if (r){
       /* An interface only exists in the dimer context; with it off there is nothing to mark. */
       if (dimerContextOn() && ANN.is_interface && ANN.is_interface.charAt(idx)==="1") return PLOT.raw('seqPathogenic');
-      return viridis(r[idx]);
+      return Number.isFinite(r[idx]) && r[idx]>=0 ? viridis(r[idx]) : ANNC.nodata;
     }
   }
   /* The structure's mimicry paint is the same quantity as the main track, so it follows the
@@ -2740,10 +2743,21 @@ function s3Color(idx){
 
 /* Bondi van der Waals radii, angstroms. AlphaFold PDBs carry no hydrogens. */
 var VDW={C:1.70, N:1.55, O:1.52, S:1.80, P:1.80, SE:1.90};
-function parsePDB(txt){
+function parsePDB(txt, model){
   var ca=[], at=[], lines=txt.split("\n"), i;
+  var coordinates=null;
+  if(model){
+    coordinates={};
+    Object.keys(model.chains||{}).forEach(function(chain){
+      coordinates[chain]={};
+      model.chains[chain].forEach(function(number,index){
+        coordinates[chain][number]=model.residue_positions ? model.residue_positions[index] : model.start+index;
+      });
+    });
+  }
   for (i=0;i<lines.length;i++){
     var L=lines[i];
+    if(L.indexOf("ENDMDL")===0)break;
     if (L.length<60 || L.substr(0,4)!=="ATOM") continue;
     var alt=L.charAt(16);
     if (alt!==" " && alt!=="A") continue;
@@ -2752,6 +2766,10 @@ function parsePDB(txt){
     el=el.toUpperCase();
     if (el==="H" || el==="D") continue;
     var rn=parseInt(L.substr(22,4),10);
+    if(coordinates){
+      rn=coordinates[L.charAt(21)] && coordinates[L.charAt(21)][L.substr(22,5).trim()];
+      if(!Number.isInteger(rn))continue;
+    }
     var px=parseFloat(L.substr(30,8)), py=parseFloat(L.substr(38,8)), pz=parseFloat(L.substr(46,8));
     var chn=L.charAt(21);
     at.push({ x:px, y:py, z:pz, r:(VDW[el]||1.70), i:rn-1 });
@@ -2814,7 +2832,7 @@ function buildRibbon(S){
   }
   var pts=[];
   for (i=0;i<n-1;i++){
-    if (ca[i].ch!==ca[i+1].ch){ if (pts.length) pts[pts.length-1].brk=true; continue; }
+    if (ca[i].ch!==ca[i+1].ch || ca[i+1].n!==ca[i].n+1){ if (pts.length) pts[pts.length-1].brk=true; continue; }
     var q0=ca[i>0?i-1:0], q1=ca[i], q2=ca[i+1], q3=ca[i<n-2?i+2:n-1];
     var s1=side[i], s2=side[i+1];
     for (var k=0;k<sub;k++){
@@ -2834,12 +2852,13 @@ function buildRibbon(S){
 var STRUCTURE_LOADING=(/*@copy index.html.structure-loading*/`Loading structure…`/*@endcopy*/);
 var STRUCTURE_MISSING=(/*@copy index.html.structure-missing*/`No structure is available for this Target.`/*@endcopy*/);
 var S3SPACE=false;
-// Structure coordinates are supported only for an exact canonical human target.
-// An assay peptide may share an accession without sharing the full record coordinates.
+// An assay peptide may share an accession without sharing reference coordinates.
+// Optional exposure models carry explicit chain-to-reference residue mappings.
 function targetHasReferenceStructure(target){
-  return !!(target && !target.custom && target.result &&
-    target.result.protein && target.result.protein.library_id==="canonical_human" &&
-    target.structureAccession);
+  if(!target || target.custom || !target.result || !target.result.protein)return false;
+  return !!((target.result.protein.library_id==="canonical_human" && target.structureAccession) ||
+    (["canonical_exposure","canonical_exposure_no_vertebrates","atlas_120_viruses"].indexOf(target.result.protein.library_id)>=0 &&
+      target.exposureAssets && target.exposureAssets.sequence===target.result.protein.sequence && target.exposureAssets.models.length));
 }
 function structurePending(acc){
   if (!targetHasReferenceStructure(T)){ showStructure(false); return; }

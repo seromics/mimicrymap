@@ -19,6 +19,11 @@
   return merged;
  }
  const size=intervals=>intervals.reduce((sum,[a,b])=>sum+b-a+1,0);
+ function complement(intervals,length){
+  const out=[];let next=1;
+  for(const [a,b]of union(intervals,length)){if(a>next)out.push([next,a-1]);next=b+1;}
+  if(next<=length)out.push([next,length]);return out;
+ }
  // Legacy summary field: overlap-connected cores, matching server _loci_count.
  // Touching intervals have the same residue union but remain separate groups.
  function overlapGroups(starts){
@@ -71,5 +76,5 @@
    parentLibrary:{coveredResidues:parents.reduce((n,p)=>n+p.parent.coveredResidues,0),eligibleResidues:null,percent:null,state:'requires_complete_population'},
    policy:'Union of qualifying 9-mer cores, including mismatch positions; overlapping residues count once. All evaluated sliding-window positions are eligible. Not statistical significance.'};
  }
- return {union,size,measure,summarize,overlapGroups};
+ return {union,complement,size,measure,summarize,overlapGroups};
 });

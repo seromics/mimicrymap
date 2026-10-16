@@ -5860,7 +5860,7 @@ Highlight Viral Parent
 **Used in:** `frontend/atlas-figures.js` · Atlas sequence downloads
 
 ```text
-Human Swiss-Prot FASTA
+Canonical Human Proteins FASTA
 ```
 
 
@@ -5878,7 +5878,7 @@ All Viruses FASTA
 **Used in:** `frontend/atlas-figures.js` · Atlas sequence downloads
 
 ```text
-All {{records}} human Swiss-Prot records, including short proteins excluded from plots; {{residues}} residues. Uses public accession, gene and protein-description headers.
+All {{records}} canonical human protein records, including short proteins excluded from plots; {{residues}} residues. Source: UniProtKB/Swiss-Prot. Uses public accession, gene and protein-description headers.
 ```
 
 - `{{records}}` ← `nf(publicHuman.records)` (live renderer value; not authored content)

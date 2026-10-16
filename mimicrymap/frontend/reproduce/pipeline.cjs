@@ -91,7 +91,7 @@ async function run({configPath,base,codeDir,layout,core,scan,digest}){
   const indexes=path.join(pending,'indexes');fs.mkdirSync(indexes);
   mappingDb=new(require('node:sqlite').DatabaseSync)(path.join(indexes,'comparison.sqlite'));
   mappingDb.exec('PRAGMA journal_mode=DELETE;PRAGMA synchronous=OFF;PRAGMA cache_size=-131072');
-  mappingWriter=require('./mapping-writer.cjs').create(mappingDb);mappingDb.exec('BEGIN');
+  mappingWriter=require('./mapping-writer.cjs').create(mappingDb,{collectLibraryUnions:true});mappingDb.exec('BEGIN');
   for(const [side,records,library]of [[0,queries,targetDescriptor],[1,summaryParents,parentDescriptor]])for(const [i,r]of records.entries()){
    const token=String(r.raw_header||r.header||r.protein_id).replace(/^>/,'').split(/\s/)[0],source=r.assay_id||r.original_id||r.protein_id;
    mappingWriter.record(summaryPackage.record(side,{id:i+1,token,source},r),library.name);
@@ -139,6 +139,7 @@ async function run({configPath,base,codeDir,layout,core,scan,digest}){
    fs.writeSync(summaryFd,summaryFormat?nativeSummary.csv.slice(nativeSummary.serialize([]).length):nativeSummary.csv);summaryFormat=nativeSummary;
    mappingDb.exec('BEGIN');
    for(const group of nativeSummary.groups)for(const pair of group.partners)mappingWriter.pair({a:i+1,b:pair.recordId,identity:group.floor,ac:100*pair.a/query.sequence.length,bc:100*pair.b/pair.L,windows:pair.windowPairs,targetRanges:pair.targetRegions,parentRanges:pair.parentRegions});
+   if(result.parameters.summary_query_windows_complete)mappingWriter.completeTarget(i+1);
    mappingDb.exec('COMMIT');
    put(targetDir+'/comparison_summary.csv',nativeSummary.csv);
    timings.write=elapsed(writeStarted);timings.total=elapsed(targetStarted);

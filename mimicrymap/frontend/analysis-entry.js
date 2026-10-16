@@ -2012,6 +2012,7 @@ window.MimicryLite = true;
     if (queryContext.organism) protein.organism = String(queryContext.organism);
     if (queryContext.parent_class || queryContext.class) protein.parent_class = String(queryContext.parent_class || queryContext.class);
     if (queryContext.source_header) protein.source_header = String(queryContext.source_header);
+    if (queryContext.source_token) protein.source_token = String(queryContext.source_token);
     if (queryContext.projection_library) protein.projection_library = String(queryContext.projection_library);
     if (queryContext.native_track_accession) protein.native_track_accession = String(queryContext.native_track_accession);
     if (queryContext.structure_accession) protein.structure_accession = String(queryContext.structure_accession);
