@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.source-snapshot/1",
   "repository": "https://github.com/seromics/seromap_electron",
-  "commit": "408522d8105f1c966837683611dc8e3b272724e1",
+  "commit": "43ac152b9452ac014213c6f3146420ed390ae7fb",
   "files": [
     {
       "path": "mimicrymap/SOURCE-NOTICE.md",
@@ -168,8 +168,8 @@
     {
       "path": "mimicrymap/frontend/analysis-entry.js",
       "source": "mimicrymap/frontend/analysis-entry.js",
-      "bytes": 239392,
-      "sha256": "f3faf3ebd7ca9bd86fc6c8ff632abdb69027faa33f92a1e27a5b8acb03553864"
+      "bytes": 239438,
+      "sha256": "bfc5e3f0495dfb8bbe30de6d5d6bc5db0beed7b35d51b46030e7ba0dbfaa5b0e"
     },
     {
       "path": "mimicrymap/frontend/analysis-player-adapter.js",
@@ -552,8 +552,8 @@
     {
       "path": "mimicrymap/frontend/mimicryone-runtime.js",
       "source": "mimicrymap/frontend/mimicryone-runtime.js",
-      "bytes": 184223,
-      "sha256": "5a8ee0b83b892d0ff5a20dcbf02a9b742e671818e4e85d873fa6b15d2c22baca"
+      "bytes": 184549,
+      "sha256": "664080154f1630c3cd0366e8e51d3825d0b6ccd204e0422fd56c3d9125aa5cd6"
     },
     {
       "path": "mimicrymap/frontend/mimicryone-theme.css",

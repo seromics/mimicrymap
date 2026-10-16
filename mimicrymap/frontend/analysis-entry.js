@@ -2495,6 +2495,7 @@ window.MimicryLite = true;
           display_name: record.display_name,
           protein_name: record.protein_name,
           source_accession: record.source_accession,
+          source_token: record.source_token,
           source_description: record.source_description,
           organism: record.organism,
           class: record.class,

@@ -2929,7 +2929,11 @@
     if (target.exposureAssetChecked) return Promise.resolve(target.exposureAssets || null);
     const protein = target.result.protein;
     const headerToken=String(protein.source_header||protein.raw_header||protein.header||'').replace(/^>/,'').split(/\s/)[0];
-    const source = protein.source_token || (headerToken&&!headerToken.includes('|')?headerToken:null) || protein.source_accession || protein.display_accession || target.displayAccession;
+    // Older catalogues used a sequence-storage key as the FASTA header. Their
+    // source accession still identifies the reference record, checked below
+    // against its full sequence; a storage key is not an annotation record.
+    const literalHeader = headerToken && !headerToken.includes('|') && !/^EXP_[a-f0-9]{64}$/i.test(headerToken) ? headerToken : null;
+    const source = protein.source_token || literalHeader || protein.source_accession || protein.display_accession || target.displayAccession;
     const key = protein.library_id + ':' + source + ':' + protein.sequence;
     if (!exposureAssetRequests.has(key)) {
       const pending = fetch(API+'/api/explorer/reference-assets?'+new URLSearchParams({library:protein.library_id,source:source}))
