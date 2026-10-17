@@ -39,7 +39,7 @@ definitions by brand, operating system or screen width.
 ## Website boundary
 
 The staged website currently mounts a pinned MimicryMap runtime with its own
-Seroatlas navigation/layout adapters. It is not yet a deployment of this new
+SeroMap navigation/layout adapters. It is not yet a deployment of this new
 research repository. This commit neither deploys Fly nor replaces that site.
 Applet sources here preserve the current desktop implementation; the website's
 host adapters need a reviewed promotion before declaring both deployed hosts

@@ -1,4 +1,4 @@
-/* Four-column source ledger follows CAAtlas/SeroAtlas SourcesLicense.jsx. */
+/* Four-column source ledger follows CAAtlas/SeroMap SourcesLicense.jsx. */
 (function(){
  'use strict';
  const rows=[
