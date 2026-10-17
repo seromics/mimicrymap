@@ -14,10 +14,16 @@ SeroMap imports the completed mapping database. Fresh FASTA builds produce
 readable summaries and SQLite from the same comparison without repeating
 matching. Annotation updates change record metadata without rebuilding pairs.
 
-The internal `mimicrymap.summary-package/1` compiler format connects verified
-range summaries to the unified database during a build. Its temporary files
-are removed after successful verification and are not a download product.
-Node.js 24 supplies the SQLite runtime. The intermediate contains:
+Native CPU/GPU and portable FASTA builds write pairs and complete library unions
+directly into the unified database through `mapping-writer.cjs`. They format the
+CSV from the same calculated ranges; CSV reconstruction is not part of those
+routes. The database keeps complete library unions and their scope separately
+from pairs retained by the 10%-either-side list filter.
+
+The internal `mimicrymap.summary-package/1` compiler format is an adapter for
+historical range-summary intermediates. It is not a download product or a normal
+build/install dependency. Node.js 24 supplies the SQLite runtime. The
+intermediate contains:
 
 - The ordinary summary CSV, with each paired percentage column followed by its
   independent parent and target residue unions.
@@ -53,7 +59,8 @@ ranges. No residue correspondence, mismatch sequence or continuous alignment
 is inferred from a union. The public app and command-line builders do not expose
 a CSV-only reconstruction route.
 
-Native fresh builds verify CSV-derived pair values and aliases against the
-initial computation before publishing the database. Catalogue conversions also
-check existing cutoff memberships and coordinate payloads. Study measurements,
-hit calls, Fisher tests and BH results are not stored in the mapping database.
+Historical catalogue conversions check existing cutoff memberships and
+coordinate payloads. Complete unmatched-region evidence must be supplied
+separately when it cannot be recovered from the original unfiltered results;
+filtered pair lists cannot establish uniqueness. Study measurements, hit calls,
+Fisher tests and BH results are not stored in the mapping database.

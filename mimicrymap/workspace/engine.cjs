@@ -438,7 +438,7 @@ async function buildComparison(
     parent = JSON.parse(
       fs.readFileSync(path.join(parentDirectory, "library.json")),
     );
-  // A full saved lookup already contains the work needed for a compact candidate index.
+  // A full saved lookup already contains the work needed for a compact mapping index.
   for(const folder of [reuseDirectory,sampleReuseDirectory].filter(Boolean)){
     const saved=JSON.parse(fs.readFileSync(path.join(folder,'comparison.json'),'utf8'));
     if(saved.target.sha256!==target.sha256||saved.parent.sha256!==parent.sha256||saved.floor>floor||(!saved.retainsPositions&&!saved.bidirectional))throw Error('Saved matches do not cover these exact FASTAs and identity threshold.');
@@ -885,7 +885,7 @@ function readResult({ directory, targetId, reverse=false, annotations, targetAnn
     if (!row) throw Error("Target is not in the saved comparison");
     if (!row.result)
       throw Error(
-        "This candidate index contains coverage summaries. Use Compare one target to compute its sequence map.",
+        "This mapping index contains coverage summaries. Use Compare One Target to compute its sequence map.",
       );
     result = JSON.parse(zlib.gunzipSync(row.result));
     }

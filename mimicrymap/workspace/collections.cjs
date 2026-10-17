@@ -34,7 +34,7 @@ function resolveReference(state, id) {
   const c = state.comparisons.find(c => c.id === id && c.complete && c.enabled && c.platforms?.length);
   return c ? {...c, revision:comparisonRevision(c)} : null;
 }
-// Published candidate indexes are already selectable in SeroMap. They are not
+// Published mapping indexes are already selectable in SeroMap. They are not
 // Workspace comparison packages, and should not be silently rebuilt as such.
 function installedCandidateProducts(state, {parent,targets=[],floor=7,retainPositions=false}) {
   if (retainPositions || !['builtin-viral120','builtin-exposure','builtin-human'].includes(parent)) return [];

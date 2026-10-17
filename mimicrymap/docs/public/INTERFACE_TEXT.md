@@ -1,6 +1,6 @@
 # Interface Text Catalogue
 
-Generated review view. Edit **interface-copy.json**; shared term labels and definitions belong to **terminology.json**. Then run `python frontend/public_sections.py`.
+Generated review view. Edit **interface-copy.json**; shared term labels and definitions belong to **terminology.json**. From the checkout root, run `python mimicrymap/frontend/public_sections.py`.
 
 See [Glossary](GLOSSARY.md). Machine-facing export fields are separate in [the export contract](../contracts/export-fields.json) and are not editorial wording.
 
@@ -2202,7 +2202,7 @@ Light mode
 **Used in:** `frontend/index.html` · Player/controls visible text
 
 ```text
-Local runs
+Local Runs
 ```
 
 
@@ -2626,7 +2626,7 @@ Previous
 **Used in:** `frontend/index.html` · Player data-tooltip
 
 ```text
-Relative solvent-accessible surface area calculated with FreeSASA. Colors span 0–1; higher values share the maximum color.
+Relative solvent-accessible surface area calculated with FreeSASA in the selected monomer or dimer model. Colors span 0–1; higher values share the maximum color.
 ```
 
 
@@ -3801,7 +3801,7 @@ Current window slice CSV
 **Used in:** `frontend/publication-exports.js` · HTML display fragment
 
 ```text
-<span class="rt">Data:</span><div class="seg"><button id="expWin" type="button" data-tooltip="Matching target–parent window pairs across the target at the selected core identity threshold.">Matches CSV</button><button id="expSite" type="button" data-tooltip="Matching target–parent window pairs at the selected target window and core identity threshold.">Selected window CSV</button><button id="expRank" type="button" data-tooltip="Ranked matching parents, with coverage and match counts for the current comparison.">Parents CSV</button><button id="expSummary" type="button" data-tooltip="One target row with coverage, unique-window regions and partner lists for the selected comparison and identity threshold.">Summary CSV</button></div><span class="rt">Code:</span><div class="seg"><button id="reproBtn" type="button" data-tooltip="A ready-to-run pipeline ZIP with the current comparison’s sequences, settings and supporting record metadata.">Current Comparison</button></div><span class="rt">Figure:</span><select id="exportPanel" aria-label="Figure panel"><option value="combined">Target + tables</option><option value="target">Target tracks</option><option value="window">Window matches</option><option value="parents">Overall parents</option><option value="structure">Structure</option></select><label class="export-highlight"><input id="exportHighlight" type="checkbox" checked> Site highlight</label><label>Rows <select id="exportRows" aria-label="Figure table rows"><option>5</option><option selected>10</option><option>20</option><option>50</option></select></label><div class="seg"><button id="expSvg" type="button">SVG</button><button id="expPng" type="button">PNG</button></div><button id="exportCancel" type="button" data-tooltip="Cancel preparation of this download." hidden>Cancel export</button><span id="exportStatus" role="status" aria-live="polite" aria-atomic="true" hidden><span>Preparing<span class="export-dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></span></span>
+<span class="rt">Data:</span><div class="seg"><button id="expWin" type="button" data-tooltip="Matching target–parent window pairs across the target at the selected core identity threshold.">Matches CSV</button><button id="expSite" type="button" data-tooltip="Matching target–parent window pairs at the selected target window and core identity threshold.">Selected window CSV</button><button id="expRank" type="button" data-tooltip="Ranked matching parents, with coverage and match counts for the current comparison.">Parents CSV</button><button id="expSummary" type="button" data-tooltip="One target row with Unmatched Target Regions for the complete comparison population, then pair coverage and matched residue ranges at the selected core identity threshold.">Summary CSV</button></div><span class="rt">Code:</span><div class="seg"><button id="reproBtn" type="button" data-tooltip="A ready-to-run pipeline ZIP with the current comparison’s sequences, settings and supporting record metadata.">Current Comparison</button></div><span class="rt">Figure:</span><select id="exportPanel" aria-label="Figure panel"><option value="combined">Target + tables</option><option value="target">Target tracks</option><option value="window">Window matches</option><option value="parents">Overall parents</option><option value="structure">Structure</option></select><label class="export-highlight"><input id="exportHighlight" type="checkbox" checked> Site highlight</label><label>Rows <select id="exportRows" aria-label="Figure table rows"><option>5</option><option selected>10</option><option>20</option><option>50</option></select></label><div class="seg"><button id="expSvg" type="button">SVG</button><button id="expPng" type="button">PNG</button></div><button id="exportCancel" type="button" data-tooltip="Cancel preparation of this download." hidden>Cancel export</button><span id="exportStatus" role="status" aria-live="polite" aria-atomic="true" hidden><span>Preparing<span class="export-dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></span></span>
 ```
 
 

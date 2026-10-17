@@ -1,9 +1,7 @@
 """Compile authored UI text into existing renderers; no runtime lookup dependency."""
 import json
 import re
-import importlib.util
 import hashlib
-import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -99,7 +97,7 @@ def compile_files(check=False):
 def write_review(catalogue, check=False):
     catalogue={'entries':[row for row in catalogue['entries'] if not row.get('export_contract')]}
     lines = ['# Interface Text Catalogue', '',
-             'Generated review view. Edit **interface-copy.json**; shared term labels and definitions belong to **terminology.json**. Then run `python frontend/public_sections.py`.', '',
+             'Generated review view. Edit **interface-copy.json**; shared term labels and definitions belong to **terminology.json**. From the checkout root, run `python mimicrymap/frontend/public_sections.py`.', '',
              'See [Glossary](GLOSSARY.md). Machine-facing export fields are separate in [the export contract](../contracts/export-fields.json) and are not editorial wording.', '',
              'Public wording is draft. Locations and placeholder expressions are internal notes and are not shipped as UI text.', '']
     lines += ['## Surface index', '']
@@ -145,30 +143,3 @@ def write_glossary(check=False):
         if not path.exists() or path.read_text(encoding='utf-8')!=rendered:raise ValueError('Glossary review is stale')
     elif not path.exists() or path.read_text(encoding='utf-8')!=rendered:
         path.write_text(rendered,encoding='utf-8',newline='\n')
-
-
-def sync_source_bundle(check=False):
-    """Keep the public pipeline download in sync with generated CPU/export source files."""
-    script=ROOT/'tools/build_public_repro.py'
-    spec=importlib.util.spec_from_file_location('public_repro_builder',script)
-    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
-    module.sync_docs(check=check)
-    destination=ROOT/'reproducibility/mimicrymap-pipeline.zip'
-    current=False
-    contents=module.package_contents()
-    manifest=module.package_manifest(contents)
-    try:
-        with zipfile.ZipFile(destination) as archive:
-            current=set(archive.namelist())==set(contents) and all(archive.read(name)==content for name,content in contents.items())
-        record=ROOT/'docs/records/pipeline-package-build.json'
-        current=current and json.loads(record.read_text(encoding='utf-8'))==manifest
-        for entry in module.LAYOUT['files'].values():
-            if entry.get('source'):
-                staged=ROOT/'frontend'/entry['source'].lstrip('/')
-                current=current and staged.exists() and staged.read_bytes()==contents[entry['path']]
-    except (OSError,KeyError,zipfile.BadZipFile,ValueError):pass
-    served=ROOT/'frontend/reproduce/mimicrymap-pipeline.zip'
-    current=current and served.exists() and served.read_bytes()==destination.read_bytes()
-    if not current:
-        if check:raise ValueError('Public pipeline package is stale')
-        module.build(destination)
