@@ -1,5 +1,20 @@
 // Parents must be an exact population. A broader target menu can advertise its
 // saved subset: opening an individual record still requires its exact sequence.
+export async function workspaceReferenceRecord(native,referenceId,recordId){
+  const id=Number(recordId)
+  if(typeof native!=='function'||!Number.isSafeInteger(id)||id<1)throw Error('The selected workspace reference record is unavailable.')
+  const snapshot=await native('snapshot')
+  const reference=(snapshot.collections||[]).find(c=>c.id===referenceId&&c.enabled)
+    ||(snapshot.comparisons||[]).find(c=>c.id===referenceId&&c.enabled&&c.complete)
+  if(!reference?.parent)throw Error('The selected workspace reference collection is unavailable.')
+  const parent=reference.parent,libraries=(snapshot.libraries||[]).filter(l=>!l.stale&&l.sha256&&l.sha256===parent.sha256)
+  const library=libraries.find(l=>l.id===parent.id)||(libraries.length===1?libraries[0]:null)
+  if(!library)throw Error('The original reference FASTA is not installed. Install it to open this comparison.')
+  const record=await native('record',{library:library.id,id})
+  if(record?.record_id!==id||!record.sequence)throw Error('The selected workspace reference sequence is unavailable.')
+  return {library,record}
+}
+
 export function lookupStatus(snapshot, { target, parent, floor = 7, targetSubset = false } = {}) {
   const libraries = snapshot?.libraries || [];
   const targetLibrary = libraries.find(l => l.id === target), parentLibrary = libraries.find(l => l.id === parent);

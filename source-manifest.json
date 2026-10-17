@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.source-snapshot/1",
   "repository": "https://github.com/seromics/seromap_electron",
-  "commit": "bcc6609be684e921e0e36a5b458d09014cebf7c8",
+  "commit": "c7325e44c7718eff739d4abb75699588b0471cf5",
   "files": [
     {
       "path": "mimicrymap/SOURCE-NOTICE.md",
@@ -1176,8 +1176,14 @@
     {
       "path": "mimicrymap/frontend/workspace-lookups.mjs",
       "source": "mimicrymap/frontend/workspace-lookups.mjs",
-      "bytes": 3990,
-      "sha256": "333fa82bb262b6292fd626df2f6978d9bbcce16a1ddca9eab5d271bb7c72d98b"
+      "bytes": 5079,
+      "sha256": "206759cdb51ddde7166a35437c98b6887fb27f1d91cc4b0fcdd153483e0232c3"
+    },
+    {
+      "path": "mimicrymap/frontend/workspace-reference.test.mjs",
+      "source": "mimicrymap/frontend/workspace-reference.test.mjs",
+      "bytes": 1782,
+      "sha256": "746156702071f5022be678ab77101bb8e76a2516d9fda9bc8e5b652972debf93"
     },
     {
       "path": "mimicrymap/tools/build_pan_viral_pairs.py",
