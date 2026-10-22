@@ -1,6 +1,6 @@
 {
   "schema": "mimicrymap.atlas-staging/1",
-  "version": "2026.10.12.3",
+  "version": "2026.10.20.1",
   "status": "local-staging",
   "doi": null,
   "note": "Download URLs and final licenses will be assigned before publication. Payloads remain outside Git.",
@@ -62,18 +62,18 @@
     {
       "file": "source-huprot4-virscan-exposome.zip",
       "title": "HuProt ↔ VirScan / Exposome",
-      "bytes": 1590611347,
-      "uncompressedBytes": 6145050898,
-      "sha256": "08954be5d69eb3ace20ca770f91cf9da5ee0758607da2bb1e64fe73950bbd02f",
+      "bytes": 1730027187,
+      "uncompressedBytes": 6146823146,
+      "sha256": "143454b6c0edbb3f0331e61e4b62f4f639734e1f3670d8657a55f9a89cb76de6",
       "url": null,
       "kind": "coverage-summaries"
     },
     {
       "file": "source-huscan-virscan-exposome.zip",
       "title": "HuScan ↔ VirScan / Exposome",
-      "bytes": 3979264545,
-      "uncompressedBytes": 23712012979,
-      "sha256": "40c80c93f86ddc0fdb2d6a6fb65348bd68aebba175270896a926e9e2d2d56fd6",
+      "bytes": 4553418320,
+      "uncompressedBytes": 23713785227,
+      "sha256": "1ec013db4bfcc0ded1aa884a60e092753c23f2dc8fba1dd5d0845fcb70aad505",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -98,9 +98,9 @@
     {
       "file": "source-atlas-120-viruses-virscan-exposome.zip",
       "title": "Curated viral proteomes (120) ↔ VirScan / Exposome",
-      "bytes": 252227654,
-      "uncompressedBytes": 1022075748,
-      "sha256": "0c00c2f8a0eb0b3e23d43727091e7c0f9592ec919a2a5e6bab33867bb9faa393",
+      "bytes": 272126583,
+      "uncompressedBytes": 1025495732,
+      "sha256": "d72c3e05c0e51d68c33277414400c6fd5ddc6681e5370f5ff00f9773a6eed649",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -125,9 +125,9 @@
     {
       "file": "source-canonical-exposure-virscan-exposome.zip",
       "title": "Canonical exposures ↔ VirScan / Exposome",
-      "bytes": 2415632506,
-      "uncompressedBytes": 9300569724,
-      "sha256": "a7dae55eced8884ca7c205c106a94957ae9b107c67247e231ab1c7aae7fafee3",
+      "bytes": 2586623267,
+      "uncompressedBytes": 9304255366,
+      "sha256": "e5bb66e0a3fd246647ed15fe614b1f49aa56f52a127a18fadaf55e5afb7c8d82",
       "url": null,
       "kind": "coverage-summaries"
     },
@@ -152,18 +152,18 @@
     {
       "file": "source-virscan-human-swissprot.zip",
       "title": "VirScan / Exposome ↔ Human proteins",
-      "bytes": 1919899384,
-      "uncompressedBytes": 7103529813,
-      "sha256": "25dd220b023915dc7b82cf97f899d53dd0a88c41911db01c0aa1638ae678c4c2",
+      "bytes": 2061864421,
+      "uncompressedBytes": 7106950213,
+      "sha256": "c9778a33d5bfa3f767f413d01c5321746ce557f21193b8227712c5b8e9c10d5a",
       "url": null,
       "kind": "coverage-summaries"
     },
     {
       "file": "reference-fastas.zip",
       "title": "Exact reference FASTAs",
-      "bytes": 106063070,
-      "uncompressedBytes": 469322267,
-      "sha256": "e6026aa33b84dff1897bed9f39a37e002d66e0c8de62d2508c734737346215b5",
+      "bytes": 105726884,
+      "uncompressedBytes": 489647309,
+      "sha256": "7ec5b5c5603fc258f1baee5ce88ac5770615d1871da8eeb4842bd78a91c46f2e",
       "url": null,
       "kind": "sequences-and-annotations"
     },
@@ -222,9 +222,9 @@
     {
       "file": "atlas_120_viruses--virscan_exposome_current-mapping-index.zip",
       "title": "VirScan / Exposome ↔ Curated viral proteomes (120) · mapping index",
-      "bytes": 191187080,
-      "uncompressedBytes": 986929610,
-      "sha256": "d86807be50d81f819862e37aa1ddf45793120f1137aed8729b88f8169bea93aa",
+      "bytes": 248463365,
+      "uncompressedBytes": 1573423860,
+      "sha256": "2372c1a04af98557679e58e6ef7b1270d96fc33781274aec74344220e7c04c1c",
       "url": null,
       "kind": "mapping-index"
     },
@@ -258,9 +258,9 @@
     {
       "file": "canonical_exposure--virscan_exposome_current-mapping-index.zip",
       "title": "Canonical exposures ↔ VirScan / Exposome · mapping index",
-      "bytes": 776170483,
-      "uncompressedBytes": 4071279878,
-      "sha256": "06214aae16ccdc2d14ab1d8b606fd88ecc51efe0c578642cbe315824d5e260e1",
+      "bytes": 910456127,
+      "uncompressedBytes": 4672790336,
+      "sha256": "1262672b77053df53abe48aa4b1443b825a9d5ade9b4ee35deb751d667044d24",
       "url": null,
       "kind": "mapping-index"
     },
@@ -303,9 +303,9 @@
     {
       "file": "human_swissprot--virscan_exposome_current-mapping-index.zip",
       "title": "VirScan / Exposome ↔ Human proteins · mapping index",
-      "bytes": 834864161,
-      "uncompressedBytes": 3268700508,
-      "sha256": "4fc63c6cc27407c5fe080cbd1e15929bf328eefc5b2b5938248b4c68a5ffb7e9",
+      "bytes": 975547728,
+      "uncompressedBytes": 3862092420,
+      "sha256": "3fefc8055f8740d19f1b9a78c72c6a7df0691eab2a22b7d6fd55833e1fa32a9f",
       "url": null,
       "kind": "mapping-index"
     },

@@ -11,6 +11,40 @@ and URLs are deliberately unset: the files have not been published by this task.
 | Candidate indexes | Assay-mapped membership databases consumed by SeroMap statistics |
 | Reference FASTAs and record annotations | Exact sequences and identity/grouping metadata needed for new local builds |
 
+## Pan-Viral Atlas and static figures
+
+The curated atlas is one application of the general method. Users can compare
+their own protein sequences or FASTA libraries with any chosen sequence library;
+the code and summary workflow are not restricted to human proteins, viruses,
+the supplied assays or the installed reference collections.
+
+The full Pan-Viral Atlas at 5/9 through 9/9 is a separate publication product
+from the general-use 7/9–9/9 coverage summaries and mapping indexes. The current
+archive manifest inventories the latter downloads; it does not yet inventory
+the complete atlas figure tree or its underlying 5/9–9/9 data.
+
+The atlas landscape uses 20,333 canonical human proteins of at least 50 amino
+acids from UniProtKB/Swiss-Prot 2026_01. Its coverage and reach figures retain
+all five identity thresholds without the summary tables' 10%-either-sequence
+pair reporting floor. The general-use human summaries retain all 20,431
+canonical human records, including shorter proteins. These populations and
+denominators must remain explicit in methods, legends and downloadable data.
+
+Retained MimicryOne sources include pooled coverage, per-parent results,
+reference sequences and the figure export workflow. A large earlier static
+capture is also retained, but its recorded run ended during capture; it is not
+yet the completed publication figure archive. Reuse these saved data and
+usable figures when assembling the paper deposit rather than rebuilding the
+sequence comparisons.
+
+The intended static companion follows the atlas hierarchy: collection-wide
+overview, one folder per viral proteome, then individual viral proteins. It
+contains reach and coverage figures, threshold summaries, human-coordinate
+maps and ranked protein/pair views, with CSV data and figure-specific legends.
+The manuscript uses a selected set of SVG panels from that larger collection.
+The full figure companion, atlas data and practical mapping summaries should
+be independently identifiable downloads.
+
 The staging manifest records the currently completed packages and their measured
 sizes; it is not a decision that every archive belongs in the first MimicryMap
 paper deposit. Range-enabled bidirectional summary bundles contain one comprehensive
