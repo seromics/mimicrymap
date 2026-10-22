@@ -1,5 +1,8 @@
 # Atlas files and provenance
 
+For a tour of the current atlas interface and its relationship to individual
+sequence comparisons, see [Using MimicryMap](USAGE.md).
+
 The current dataset archives are staged locally for a future Zenodo deposit.
 `data/atlas-manifest.json` records filenames, sizes and SHA-256 values. Its DOI
 and URLs are deliberately unset: the files have not been published by this task.
@@ -41,13 +44,22 @@ The recovered atlas, saved data and reference FASTAs are staged independently
 of the legacy checkout. See [Publication staging](PUBLICATION.md). Reuse these
 results rather than rebuilding the sequence comparisons.
 
-The intended static companion follows the atlas hierarchy: collection-wide
+The staged static companion follows the atlas hierarchy: collection-wide
 overview, one folder per viral proteome, then individual viral proteins. It
 contains reach and coverage figures, threshold summaries, human-coordinate
 maps and ranked protein/pair views, with CSV data and figure-specific legends.
 The manuscript uses a selected set of SVG panels from that larger collection.
 The full figure companion, atlas data and practical mapping summaries should
 be independently identifiable downloads.
+
+The current companion also includes an extended EBV/EBNA1 figure bank with
+current interface variants and the five-step methods walkthrough as separate
+SVG masters. Additional genome-position and human-protein-length arrangements
+are being exported from saved atlas data for all 2,222 viral proteins: 4,444
+states beyond the historical capture. Six current global pair-ranking states
+are already saved. The local catalogue records completed images and remaining
+work; it does not count a planned export as completed. See
+[Publication staging](PUBLICATION.md) for the package layout and progress location.
 
 The staging manifest records the currently completed packages and their measured
 sizes; it is not a decision that every archive belongs in the first MimicryMap
@@ -65,8 +77,8 @@ but does not invent taxonomy, assay aliases, grouped record membership,
 structures or the curated source provenance. The existing source attribution
 is retained in the applet's Sources documents and `source-licenses.js`.
 
-The new builder writes portable `comparison.sqlite` packages. Historical
-published candidate databases have their own assay-specific schemas and
+The standalone builder writes portable `comparison.sqlite` packages. Historical
+candidate databases have their own assay-specific schemas and
 packaging. Both are consumed by SeroMap through the appropriate adapters;
 byte identity between these formats is not claimed. A publication reproduction
 must compare the same sequence populations, record units, identity thresholds,

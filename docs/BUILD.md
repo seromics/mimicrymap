@@ -4,6 +4,9 @@ The standalone builder calls the same engine as SeroMap Workspace. Inputs are
 amino-acid FASTAs, optionally accompanied by record annotation CSVs. There is no
 dependency on a study, Electron, old release catalogs or a fixed comparison list.
 
+For the interactive route and Desktop Workspace button names, see
+[Using MimicryMap](USAGE.md). The instructions below are for the standalone CLI.
+
 ## CPU
 
 Install Node.js 24 or later. No npm dependencies are required.

@@ -2,17 +2,36 @@
 
 **Map antigen-specific sequence resemblance within and across proteomes.**
 
-MimicryMap compares antigen target sequences with a chosen set of parent proteins to find matching amino-acid windows and map where they occur. It reports local sequence similarity and coverage across each protein, helping you explore candidate molecular mimics alongside experimental evidence. This package runs comparisons locally from FASTA files and includes illustrated walkthroughs with downloadable example results. MimicryMap is a linear epitope mimicry tool; its comparisons do not account for 3D structures or post-translational modifications.
+MimicryMap maps shared amino-acid sequence regions between proteins, peptides and whole libraries. Choose a target and a comparison library, inspect matching nine-residue cores, and measure how much of each sequence those matches cover. The same method supports an interactive sequence explorer, whole-library coverage summaries, reusable mapping databases and local FASTA analyses.
+
+The method is library agnostic. Human proteins and 120 viral proteomes form the worked atlas; microbiome, food, allergen, assay and other custom sequences can be compared in the same way. Sequence-defined sets can also be combined with recorded antibody hits for **Reactivity Enrichment**. Sequence resemblance identifies candidates for investigation; it does not by itself demonstrate shared antibody binding. Matching uses linear sequences; available structure and residue annotations provide context without changing the matching rule.
 
 **Private release staging.** This continues the existing MimicryMap repository and
 its illustrated methods. Code, atlas and application license choices are pending;
 this is not a public release. Source data retain their own terms and attribution.
 
+[Interface guide](docs/USAGE.md) · [How it works](#how-mimicry-results-are-calculated) · [Worked examples](#how-to-use-mimicry-results) · [Build libraries](docs/BUILD.md) · [Atlas and data](docs/ATLAS.md)
+
+## Explore, inspect, reuse
+
+The current interface has five pages:
+
+| Page | What to do there |
+| --- | --- |
+| **MimicryMap** | Choose a target and parent library, step through core matches, inspect sequence maps and available structures, compare target/parent coverage, or run a custom FASTA comparison |
+| **Pan-Viral Atlas** | Move from the 120-proteome overview to one virus and individual viral proteins; inspect human reach, residue coverage and ranked target–parent pairs |
+| **How It Works** | Follow five illustrated steps from overlapping nine-residue windows to independent coverage unions on each sequence |
+| **How to Use** | Work through HEPACAM–EBNA1 epitope matching, Reactivity Enrichment, IL10 homology and unmatched IGHG2 regions |
+| **Data & Licenses** | Choose coverage CSVs and exact reference FASTAs, or installable mapping indexes; review source attribution |
+
+Use **Your Custom Analysis** for one target in the browser. Desktop Workspace adds sequence-library installation, annotation management and saved library comparisons. Neither a FASTA import nor a sequence comparison requires an antibody study. The [interface guide](docs/USAGE.md) connects these routes to their outputs.
+
 ## Choose a route
 
 | Route | Use | Output |
 | --- | --- | --- |
-| Browser applet | Explore one target against a reference library or custom FASTA | Sequence maps, parent tables and selected-scope CSVs |
+| Interactive explorer | Explore one target against a reference library or custom FASTA | Sequence maps, aligned cores/context, coverage plots, CSVs and figure exports |
+| Saved summaries and atlas | Inspect completed comparisons without a new sequence scan | Coverage/range tables, reference inputs, atlas figures and reusable mappings |
 | Detailed CPU pipeline | Reproduce a selected comparison or inspect every matching window for supplied targets | Per-target match tables and a combined coverage summary |
 | Library builder, CPU or NVIDIA GPU | Build reusable mappings across two complete FASTAs | Separate CSV + FASTA and mapping database ZIPs; full positions optional |
 
@@ -33,6 +52,8 @@ The browser source is retained in `mimicrymap/frontend/`; curated search, struct
 and atlas browsing need the separately installed reference assets and host services.
 The current web staging and desktop remain their running hosts. See
 [Source alignment](docs/DEVELOPMENT.md) and [Scientific method modules](docs/METHOD-MODULES.md).
+This source checkout is not a complete offline atlas installation: the large
+reference data and saved atlas payloads are distributed separately.
 
 **Run the supplied FASTAs, or replace them to start a new comparison.** This is the same pipeline package for example inputs and a selected site comparison. Both use MimicryMap's comparison worker and CSV calculations.
 
@@ -91,10 +112,12 @@ Rerunning refreshes the managed output folder after completion. Choose another `
 <th align="left" width="600">What it provides</th>
 </tr></thead>
 <tbody>
-<tr><td><strong>Summary CSV</strong> in the player</td><td>One target at the selected identity threshold and comparison scope, with available target annotations</td></tr>
+<tr><td><strong>Matches CSV / Parents CSV</strong> in the player</td><td>Matching window pairs or parent summaries for the selected target, identity threshold and comparison scope</td></tr>
+<tr><td><strong>PNG / SVG</strong></td><td>The selected figure or table presentation</td></tr>
 <tr><td><strong>Current Comparison</strong></td><td>This runnable package with the selected target, complete comparison population, settings, and available identity, mapping and annotation metadata</td></tr>
 <tr><td><strong>Plain pipeline ZIP</strong></td><td>The same code and guides with editable example inputs</td></tr>
 <tr><td><strong>Mimicry coverage summaries</strong> on Data &amp; Licenses</td><td>Reference-population and assay-library comparisons, with Target FASTA and Comparison FASTA beside each CSV</td></tr>
+<tr><td><strong>SeroMap Index (.sqlite)</strong> on Data &amp; Licenses</td><td>Installable saved record mappings, coverage and ranges for reference membership and reuse</td></tr>
 <tr><td><strong>Selected virus / All viruses</strong> on the atlas</td><td>Both human-to-virus and virus-to-human directions for the selected reference proteome or the pooled 120-proteome atlas</td></tr>
 </tbody>
 </table>
@@ -140,7 +163,7 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 
 ![Extract Window Pairs](docs/calculation/step-2.png)
 
-<p>The algorithm begins by deconstructing both the antigen target and mimicry parent sequences into all-possible overlapping 9-mer windows. Each 9-mer must be complete, so the number of total windows per sequence record is its length minus 8 residues. A protein of 9 amino acids thus has one window, a protein of 10 amino acids two, and so on. In our example, HEPACAM is 416 amino acids long and thus has 408 unique 9-mer core windows. Shown is one piece of this process occurring from positions 367 to 393.</p>
+<p>The algorithm begins by deconstructing both the antigen target and mimicry parent sequences into all-possible overlapping 9-mer windows. Each 9-mer must be complete, so a sequence of at least 9 residues has its length minus 8 windows. A protein of 9 amino acids thus has one window, a protein of 10 amino acids two, and so on. In our example, HEPACAM is 416 amino acids long and thus has 408 positional 9-mer core windows. Shown is one piece of this process occurring from positions 367 to 393.</p>
 
 ```math
 \begin{aligned}\mathbf{Windows\ per\ record} &= \max(0,\ \text{record length}-8) \\[8pt] \mathbf{HEPACAM:}\quad 416-8 &= 408\ \text{windows}\end{aligned}
@@ -205,9 +228,9 @@ The summaries offer a quick way to explore broader patterns of sequence mimicry,
 <!-- interpretation-walkthroughs:start -->
 ## How to Use Mimicry Results
 
-Combine sequence similarity with experimental evidence, compare coverage, and inspect individual matches with these worked examples.
+Investigate epitopes, calculate reactivity enrichment, compare coverage, and find unmatched regions with these worked examples.
 
-### 1 · Combine with Experimental Evidence
+### 1 · Investigate Critical Epitopes
 
 [Download this example’s saved data and figures](https://github.com/seromics/mimicrymap/raw/refs/heads/main/examples/hepacam-huprot-viral-example.zip)
 
@@ -223,7 +246,7 @@ Here, we compare the HEPACAM sequence from a HuProt protein microarray experimen
 
 Download summaries comparing HuProt array features with the 120 reference viral proteomes, in either direction.
 
-These summaries connect sequence matches to antibody measurements by assay identifier. They define reference sets for testing whether a sample's hits are enriched relative to its measured background; [the calculation walkthrough](#proteomeReactivity) explains the summary files and enrichment calculation.
+These summaries connect sequence matches to antibody measurements by assay identifier. They define reference sets for testing whether a sample's hits are enriched relative to its measured background; the [Reactivity Enrichment example](#2--calculate-reactivity-enrichment) below shows the calculation.
 
 [Library-wide summary download guide](docs/SUMMARY-DOWNLOADS.md)
 
@@ -249,7 +272,35 @@ The **EBNA1 P03211** alignment shown below has a 5/9 core and context BLOSUM62 s
 
 - **Keep weaker candidates:** a 7/9 cutoff removes this 5/9 match; excluding all Pro/Arg-rich regions would also discard it.
 
-### 2 · Discover Mimicry Across Proteomes
+### 2 · Calculate Reactivity Enrichment
+
+MimicryMap applies sequence-identity and coverage thresholds to define antigen sets independently of a sample's reactions. **Reactivity Enrichment**, implemented in SeroMap, then tests whether recorded antibody hits concentrate in each set relative to the sample's overall assay hit rate. The same sequence mappings can be applied to different samples without changing their original measurements or hit calls.
+
+In this VirScan example, a sample has **954 recorded hits among 481,962 measured peptides**. Requiring ≥7/9 core identity and ≥60% coverage of the assay peptide assigns **1,798 measured peptides** to respiratory syncytial virus A (strain A2); **156** are hits.
+
+| Calculation | Working | Result |
+| --- | --- | ---: |
+| Sample hit rate | 954 ÷ 481,962 | ≈0.20% |
+| Expected set hits | 1,798 × (954 ÷ 481,962) | ≈3.6 |
+| Observed set hit rate | 156 ÷ 1,798 | ≈8.7% |
+| Reactivity Enrichment | 156 ÷ (1,798 × 954 ÷ 481,962) | ≈43.8× |
+| Fisher p / Sample BH | One-sided Fisher; BH across 120 viral sets within this sample and assay | 1.35e-200 / 1.62e-198 |
+
+Repeating this calculation separately for each sample produces cohort summaries. **Sample BH** identifies reactive sets within a sample and assay. A one-sided exact sign test assesses consistency above 1× across eligible samples, excluding ties; **Group BH** adjusts eligible set–group tests separately within each assay, before display filtering.
+
+![VirScan Reactivity Enrichment across 35 samples](mimicrymap/frontend/examples/use-results/20261018/reactivity-enrichment-platforms.svg)
+
+> **VirScan → 120 canonical viral proteomes:** Enrichment across 35 samples for ten viral sets at ≥7/9 core identity and ≥60% assay-peptide coverage. Points represent samples; boxes show medians and interquartile ranges, with minimum–maximum whiskers. The dashed line marks 1×. Axes use log(1 + fold), labelled in folds. Reactive counts samples passing Sample BH <0.01 / eligible samples. Group BH uses 120 viral-set tests within VirScan.
+
+HuProt applies the same calculation to human array features matching the reference viral proteomes. Across this cohort, recorded autoantibody hits are enriched among human HuProt proteins containing EBV-matching sequence segments above the selected identity and coverage thresholds.
+
+![HuProt Reactivity Enrichment for the EBV-matching human protein set](mimicrymap/frontend/examples/use-results/20261018/reactivity-enrichment-huprot-ebv.svg)
+
+> **HuProt (IgG) → 120 canonical viral proteomes:** The EBV set contains 441 human array features matching at ≥7/9 core identity and ≥10% assay-sequence coverage. One of 35 samples passes Sample BH <0.01; cohort consistency gives sign p ≈2.5e-4 and Group BH ≈0.030, across 120 viral sets within this assay. Plot conventions match the VirScan figure.
+
+See the [summary download guide](docs/SUMMARY-DOWNLOADS.md) for record identities, coverage and pair-specific ranges. The sequence builder produces mappings; antibody measurements and enrichment statistics are a separate analysis.
+
+### 3 · Discover Mimicry Across Proteomes
 
 [Download this example’s saved data and figures](https://github.com/seromics/mimicrymap/raw/refs/heads/main/examples/il10-example.zip)
 
@@ -288,9 +339,9 @@ Download human-to-virus results for all 20,431 human UniProtKB/Swiss-Prot record
 
 - **Read the prepared summary:** this CSV contains 7/9, 8/9 and 9/9 results. At 7/9, IL10 has 12 matching parents; only BCRF1 reaches the summary’s 10% coverage floor on either protein.
 
-- **Explore 5/9 for your own target:** preparing and distributing proteome-wide summaries at 5/9 is substantially larger and more computationally demanding, so the prepared downloads start at 7/9. To compute a 5/9 comparison for a target of interest, [download the local pipeline](#run).
+- **Explore 5/9 for your own target:** preparing and distributing proteome-wide summaries at 5/9 is substantially larger and more computationally demanding, so the general-use downloads start at 7/9. The separate Pan-Viral Atlas retains 5/9–9/9. For your own target, use the browser's Custom Analysis or [run the local pipeline](#run-a-detailed-comparison-cpu).
 
-### 3 · Find Uniqueness Within Proteomes
+### 4 · Find Uniqueness Within Proteomes
 
 [Download this example’s saved data and figures](https://github.com/seromics/mimicrymap/raw/refs/heads/main/examples/ighg2-example.zip)
 
