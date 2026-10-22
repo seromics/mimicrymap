@@ -24,6 +24,12 @@ legends, references and author-completion notes. SVG masters and original
 components accompany it. No new experimental results are inferred from figure
 labels, and full-precision data are not invented when only an SVG was retained.
 
+The main Word draft now has 26 pages. Its five dedicated How It Works pages
+reuse the original diagrams for record selection, overlapping windows, core
+identity, sequence context and independent coverage unions. Each has a brief
+summary and a technical legend. Their SVG masters and source manifest are in
+`Paper-Figures/How-It-Works/`; Word uses matching high-resolution browser previews.
+
 ## Products kept separate
 
 1. Tagged method and software source.
@@ -61,10 +67,13 @@ variants and eight summaries derived from saved data. No sequence matches
 or antibody calls were recalculated.
 
 The historical per-parent exports used only subcellular-location arrangement.
-Genome-position and protein-length arrangements would add 4,444 states across
-2,222 parents; EBNA1's two are included here, leaving 4,442 unexported. The
-coverage ledger records this boundary. Pagination, themes and arbitrary
-highlights are not separate scientific variants.
+Genome-position and protein-length arrangements add a defined set of 4,444
+states across 2,222 parents. A resumable image export uses the retained coverage
+payloads and native figure renderer. Its live progress and completed images are
+recorded under `Pan-Viral-Atlas/figures/additional-parent-arrangements/` in the
+local package. The catalogue is updated as images arrive, and completion adds
+these views plus the six existing global pair-ranking states to the main index.
+Pagination, themes and arbitrary highlights are not separate scientific variants.
 
 The native human-target atlas table retains the viral partner selected at
 7/9 when another ranking floor is displayed. The literal-pair table instead
