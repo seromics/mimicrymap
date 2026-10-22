@@ -1,0 +1,120 @@
+{
+  "source_date": "2026-10-18",
+  "study": "EDGE",
+  "individual_source": "reactivity-enrichment-sample-details-all-organisms-4.csv",
+  "cohort_source": "reactivity-enrichment-platforms-4.csv",
+  "figure_source": "reactivity-enrichment-platforms-3.svg",
+  "sample": "S_187932M0615",
+  "platform": "VirScan",
+  "identity": "7",
+  "coverage_min": "60",
+  "coverage_side": "target",
+  "platform_hits": "954",
+  "measured_antigens": "481962",
+  "sample_tests": "120",
+  "group_tests": 120,
+  "rows": [
+    {
+      "taxid": "11259",
+      "reference": "Human respiratory syncytial virus A (strain A2) [TaxID: 11259]",
+      "sample": {
+        "Sample BH < 0.01": "1",
+        "observed_hits": "156",
+        "measured_members": "1798",
+        "expected_hits": "3.5589776787381577",
+        "fold_enrichment": "43.832812",
+        "fisher_p": "1.34777e-200",
+        "sample_bh": "1.61733e-198"
+      },
+      "cohort": {
+        "n": "35",
+        "above": "35",
+        "below": "0",
+        "ties": "0",
+        "median_fold": "35.403425",
+        "sign_p": "2.91038e-11",
+        "group_bh": "2.18279e-10",
+        "reactive_count": "35",
+        "reactive_total": "35"
+      }
+    },
+    {
+      "taxid": "79692",
+      "reference": "Human respiratory syncytial virus B (strain B1) [TaxID: 79692]",
+      "sample": {
+        "Sample BH < 0.01": "1",
+        "observed_hits": "144",
+        "measured_members": "1536",
+        "expected_hits": "3.040372477498226",
+        "fold_enrichment": "47.362618",
+        "fisher_p": "7.03146e-190",
+        "sample_bh": "4.21887e-188"
+      },
+      "cohort": {
+        "n": "35",
+        "above": "35",
+        "below": "0",
+        "ties": "0",
+        "median_fold": "32.323031",
+        "sign_p": "2.91038e-11",
+        "group_bh": "2.18279e-10",
+        "reactive_count": "35",
+        "reactive_total": "35"
+      }
+    },
+    {
+      "taxid": "31708",
+      "reference": "Human rhinovirus 16 (HRV-16) [TaxID: 31708]",
+      "sample": {
+        "Sample BH < 0.01": "1",
+        "observed_hits": "32",
+        "measured_members": "515",
+        "expected_hits": "1.0193957199945225",
+        "fold_enrichment": "31.391146",
+        "fisher_p": "6.34331e-37",
+        "sample_bh": "1.52239e-35"
+      },
+      "cohort": {
+        "n": "35",
+        "above": "35",
+        "below": "0",
+        "ties": "0",
+        "median_fold": "18.246406",
+        "sign_p": "2.91038e-11",
+        "group_bh": "2.18279e-10",
+        "reactive_count": "35",
+        "reactive_total": "35"
+      }
+    }
+  ],
+  "bh_scope": "platform/1",
+  "figure_order": "Group BH, then raw p, then descending mean fold enrichment",
+  "huprot_ebv_figure": {
+    "source": "reactivity-enrichment-platforms-5.svg",
+    "display": "reactivity-enrichment-huprot-ebv.svg",
+    "crop_viewbox": [
+      0,
+      0,
+      661.4166870117188,
+      134
+    ],
+    "preserved": "Header, first row, row axis and all 35 sample coordinates; no recalculation",
+    "platform": "HuProt (IgG)",
+    "reference": "Epstein-Barr virus (strain B95-8) (HHV-4) (Human herpesvirus 4)",
+    "taxid": "10377",
+    "identity": 7,
+    "coverage_min": 10,
+    "coverage_side": "target",
+    "sample_bh_gate": 0.01,
+    "group_tests": 120,
+    "bh_scope": "platform/1",
+    "displayed_svg_values": {
+      "proteome_aa": "42,329",
+      "antigens": "441",
+      "reactive": "1/35",
+      "sign_p": "2.5e-4",
+      "group_bh": "0.030"
+    },
+    "precision": "Rounded labels retained from the supplied SVG; no exact cohort CSV supplied for this panel"
+  }
+}

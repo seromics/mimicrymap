@@ -37,27 +37,29 @@ function baseRecord(row,library) {
     }
     if(['canonical_human','huprot4','human_current'].includes(canonical)){r.organism='Homo sapiens';r.taxid='9606';}
   }
-  r.identity=identity.resolve(r);
-  return r;
+  const resolved=identity.recordedSource(r);resolved.identity=identity.resolve(resolved);
+  return resolved;
 }
 function values(record) {
+  record=identity.recordedSource(record);
   const i=identity.resolve(record),header=record.raw_header||record.header||'';
   return {gene:i.gene,accession:i.accession,description:i.proteinName,organism:i.organism,
     taxid:String(record.taxid||record.organism_taxid||header.match(/(?:^|\s)OX=(\d+)/)?.[1]||''),reference_set:record.reference_set||''};
 }
-function apply(record,fields) {
+function apply(record,fields,{strict=false}={}) {
   if(!fields)return record;
   const r={...record,...(fields.token?{source_token:fields.token}:{}),gene:fields.gene,primary_gene:fields.gene,gene_symbol:fields.gene,
     source_accession:fields.accession,display_accession:fields.accession,accession:fields.accession,
     protein_name:fields.description,name:fields.description,description:fields.description,
     organism:fields.organism,species:fields.organism,taxid:fields.taxid,organism_taxid:fields.taxid,
     organism_taxon_label:'',reference_set:fields.reference_set};
-  r.identity=identity.resolve(r);return r;
+  if(strict)identity.validateRecord(r,{source:record.assay_id||record.source_id});
+  const resolved=identity.recordedSource(r);resolved.identity=identity.resolve(resolved);return resolved;
 }
-function open(file) {
-  if(!file)return {apply:r=>r,close(){}};
+function open(file,options={}) {
+  if(!file)return {apply:r=>{if(options.strict)identity.validateRecord(r);return identity.recordedSource(r);},close(){}};
   const db=new DatabaseSync(file,{readOnly:true}),get=db.prepare('SELECT * FROM records WHERE id=?');
-  return {apply:r=>apply(r,get.get(r.record_id)),get:id=>get.get(id),close:()=>db.close()};
+  return {apply:r=>apply(r,get.get(r.record_id),options),get:id=>get.get(id),close:()=>db.close()};
 }
 async function hash(file){const h=crypto.createHash('sha256');for await(const b of fs.createReadStream(file))h.update(b);return h.digest('hex');}
 function canonicalFile(root,library) {
@@ -102,7 +104,9 @@ async function prepare({directory,output,library,source,previous,canonical},repo
         let headers;db.exec('BEGIN');
         for await(const row of csvRows(bundled.file)){
           if(!headers){headers=row;if(headers.join(',')!==FIELDS.join(','))throw Error('Invalid packaged annotation columns');continue;}
-          if(row.length!==FIELDS.length||update.run(...row.slice(1),row[0]).changes!==1)throw Error('Invalid packaged annotation record: '+row[0]);
+          if(row.length!==FIELDS.length)throw Error('Invalid packaged annotation record: '+row[0]);
+          identity.validateRecord({raw_header:row[0],...Object.fromEntries(FIELDS.map((key,i)=>[key,row[i]]))});
+          if(update.run(...row.slice(1),row[0]).changes!==1)throw Error('Invalid packaged annotation record: '+row[0]);
           canonicalRows++;
           if(canonicalRows%10000===0)report({phase:'Loading record annotations',done:canonicalRows,total:matched});
         }
@@ -110,7 +114,7 @@ async function prepare({directory,output,library,source,previous,canonical},repo
         db.exec('COMMIT');
       }
       if(curated){
-        const lookup=input.prepare('SELECT id,sequence FROM records WHERE source=? OR token=?');
+        const lookup=input.prepare('SELECT id,sequence,metadata FROM records WHERE source=? OR token=?');
         const update=db.prepare('UPDATE base SET gene=?,accession=?,description=?,organism=?,taxid=? WHERE id=?');
         let headers;db.exec('BEGIN');
         for await(const row of csvRows(curated)){
@@ -121,12 +125,15 @@ async function prepare({directory,output,library,source,previous,canonical},repo
           if(hits.length!==1)continue;
           const taxon=r['Antigen Target Organism (TaxID)']||'',tax=taxon.match(/\[TaxID:\s*(\d+)\]/)?.[1]||'';
           const organism=taxon.includes(';')?taxon:taxon.replace(/\s*\[TaxID:[^\]]+\]/,'');
+          identity.validateRecord({...JSON.parse(hits[0].metadata),accession:acc,organism,species:organism},{source:key});
           update.run(r['Antigen Target Gene']||'',acc,description.replace(/^(JHU\S+|CDI\S+)(?:\s+\/\s*|$)/,''),organism,taxon.includes(';')?'':tax,hits[0].id);canonicalRows++;
           if(canonicalRows%10000===0)report({phase:'Joining curated annotations',done:canonicalRows,total:matched});
         }
         db.exec('COMMIT');
       }
     }
+    // Stable tokens above join annotations to their own library records. New
+    // imports reject conflicts rather than silently repairing an unrelated row.
     db.exec('INSERT INTO records SELECT * FROM base;');
     if(source){
       const seen=new Set(),unknown=[],duplicates=[];let headers,rowNum=0;
@@ -143,6 +150,8 @@ async function prepare({directory,output,library,source,previous,canonical},repo
         const current=find.get(id);if(!current){unknown.push(id);continue;}
         if(fields.taxid&&!/^[1-9]\d*$/.test(fields.taxid))throw Error('Invalid taxid for '+id+'. Use a positive NCBI TaxID or leave it blank.');
         for(const k of FIELDS.slice(1)){if(fields[k]?.length>4000||/[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(fields[k]||''))throw Error('Invalid '+k+' for '+id);if(fields[k])current[k]=fields[k];}
+        const original=input.prepare('SELECT source,metadata FROM records WHERE id=?').get(current.id);
+        identity.validateRecord({...JSON.parse(original.metadata),...current},{source:original.source});
         update.run(...FIELDS.slice(1).map(k=>current[k]),current.id);customRows++;
       }
       if(duplicates.length||unknown.length)throw Error([duplicates.length?duplicates.length+' duplicate record IDs: '+duplicates.slice(0,5).join(', '):'',unknown.length?unknown.length+' unmatched record IDs: '+unknown.slice(0,5).join(', '):''].filter(Boolean).join('. ')+'. Nothing was imported.');

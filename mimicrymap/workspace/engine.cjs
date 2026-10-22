@@ -77,6 +77,7 @@ async function importFasta(
     if(mappingDatabase){
       const digest=crypto.createHash('sha256').update(record.sequence).digest('hex');
       if(!saved||saved.id!==count+1||saved.length!==record.length||(saved.normalizedSha256||saved.sha256)!==digest)throw Error('Mapping database record differs from FASTA');
+      require('../frontend/mimicryone-identity.js').validateRecord(saved.metadata,{source:saved.source,header});
       Object.assign(record,saved.metadata,{sequence:record.sequence,length:record.length,library_id:id});token=saved.token;
     }
     try {
@@ -460,7 +461,7 @@ async function buildComparison(
         })
       : scanner(parentDirectory, floor, report);
   const source = dbOpen(path.join(targetDirectory, "library.sqlite"), true);
-  const targetMetadata=metadata.open(targetAnnotations),parentMetadata=metadata.open(parentAnnotations);
+  const targetMetadata=metadata.open(targetAnnotations,{strict:true}),parentMetadata=metadata.open(parentAnnotations,{strict:true});
   let setupMs = Date.now() - started;
   let matchMs = 0, writeMs = 0, viewerMs = 0, packingMs = 0, indexMs = 0, targetWindows = 0, positionBytes = 0, reusedTargets = 0, libraryWindows = 0;
   const observations = [];
@@ -492,6 +493,8 @@ async function buildComparison(
       "Parent coverage (%)",
       "Parent regions (>=10% either)",
       "Window pairs",
+      "Target FASTA Header",
+      "Parent FASTA Header",
     ]);
   fs.writeSync(pairs, pairHeader);
   const pairWriter = bufferedText(pairs), summaryWriter = bufferedText(summary);
@@ -648,6 +651,8 @@ async function buildComparison(
                 pc,
                 listed?pairRegions.text(ranges.parent.intervals):'',
                 h.length,
+                query.raw_header || query.header || query.identity?.fullHeader || '',
+                item.parent.raw_header || item.parent.header || item.parent.identity?.fullHeader || '',
               ]));
           }
         }

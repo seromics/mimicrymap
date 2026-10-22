@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.source-snapshot/1",
   "repository": "https://github.com/seromics/seromap_electron",
-  "commit": "4f58d791800e7e43e9d3e568e28b52c52e76d4c7",
+  "commit": "80a7ecb8f33509707ce325564b59a457d62b7a03",
   "files": [
     {
       "path": "mimicrymap/SOURCE-NOTICE.md",
@@ -18,8 +18,8 @@
     {
       "path": "mimicrymap/docs/contracts/native-summary.json",
       "source": "mimicrymap/docs/contracts/native-summary.json",
-      "bytes": 3485,
-      "sha256": "4ce560c43650b83712174312d5afde938bb13ff7156e49a7b7a303a7822a7a8d"
+      "bytes": 3521,
+      "sha256": "54737507d9adc957772dfdc9514a880c4de4a79b78755c3884230234b5b138fb"
     },
     {
       "path": "mimicrymap/docs/contracts/summary-package.md",
@@ -36,14 +36,14 @@
     {
       "path": "mimicrymap/docs/public/INTERFACE_TEXT.md",
       "source": "mimicrymap/docs/public/INTERFACE_TEXT.md",
-      "bytes": 163565,
-      "sha256": "4552fdbc79b6da5d02a252aa83739b6b3ef2d740e461a23d4a61f73ec6c5ebe2"
+      "bytes": 164170,
+      "sha256": "243595a489347085849152ed7083fd8e2bb8b4080aa679e23e428c4cc91278fb"
     },
     {
       "path": "mimicrymap/docs/public/README.md",
       "source": "mimicrymap/docs/public/README.md",
-      "bytes": 16939,
-      "sha256": "92b2f3a495ca6a42dcbe488e7f1e0f44f72cc6cd1b0dd671aeb3f09fee6b3beb"
+      "bytes": 18991,
+      "sha256": "01579cb247496aa985d1388f7a7edba77a3d9fc5bc8681bfb2114b140c12df16"
     },
     {
       "path": "mimicrymap/docs/public/downloads.html",
@@ -84,8 +84,8 @@
     {
       "path": "mimicrymap/docs/public/method-copy.json",
       "source": "mimicrymap/docs/public/method-copy.json",
-      "bytes": 10527,
-      "sha256": "02152d90cf807d8ba43760f7d12c48cfcc9d316f2f636208e2d6055d205d9aaa"
+      "bytes": 11184,
+      "sha256": "2163ddfb0456195b625fba64573834fbf685b9003cf4d47a2f7c84bcb0baf9f2"
     },
     {
       "path": "mimicrymap/docs/public/methods.html",
@@ -120,8 +120,8 @@
     {
       "path": "mimicrymap/docs/public/summary-download-guide.md",
       "source": "mimicrymap/docs/public/summary-download-guide.md",
-      "bytes": 22347,
-      "sha256": "4105bb3d11db6d614cd1a29aca1ea244d554675bdfe6a9cff370733bdc793afc"
+      "bytes": 22581,
+      "sha256": "9e3c51f16bc352751832c2cc508ff215850eac4f1b6ff87099aaf3a60289c82c"
     },
     {
       "path": "mimicrymap/docs/public/target-summary.html",
@@ -138,8 +138,8 @@
     {
       "path": "mimicrymap/docs/public/use-results.html",
       "source": "mimicrymap/docs/public/use-results.html",
-      "bytes": 21119,
-      "sha256": "9511a33c1812777fdb83a9fb43db832ad637930107578157946314336178696a"
+      "bytes": 28353,
+      "sha256": "244fd54d30157ef4c8c501b0370a64cd4ac4870a4fd1e86171b38e8aa64ec2cc"
     },
     {
       "path": "mimicrymap/export-assets-origin.json",
@@ -162,8 +162,8 @@
     {
       "path": "mimicrymap/frontend/analysis-entry.css",
       "source": "mimicrymap/frontend/analysis-entry.css",
-      "bytes": 27521,
-      "sha256": "124105629438228291f1768ad6318c13c886928a6c18132fafe86d3f7c2dbc53"
+      "bytes": 27083,
+      "sha256": "f2b518b03f4c3e4f48206470d65231aacfab4a6e5bf06a80d4570a28840aeba2"
     },
     {
       "path": "mimicrymap/frontend/analysis-entry.js",
@@ -222,8 +222,8 @@
     {
       "path": "mimicrymap/frontend/annotation_hydration.py",
       "source": "mimicrymap/frontend/annotation_hydration.py",
-      "bytes": 22268,
-      "sha256": "6cf729d72483a1c7cfe6184e8cbc34661975c0ff72831c42ac13e280bc805e95"
+      "bytes": 22379,
+      "sha256": "cdc21f6144dd908a10689feb1f9b4a5464fd116bbb6d78e71eb4169db71afb6c"
     },
     {
       "path": "mimicrymap/frontend/asset_packs.py",
@@ -234,14 +234,14 @@
     {
       "path": "mimicrymap/frontend/atlas-figures.css",
       "source": "mimicrymap/frontend/atlas-figures.css",
-      "bytes": 54473,
-      "sha256": "2c2d65513b355b5b734b8ed20bd261201b4d57e6631b840a21e554836e5e5575"
+      "bytes": 54714,
+      "sha256": "310f720f8f1b1d6754b3946869cbfeea0b6a0b2ec8982c28f793e45acfa08521"
     },
     {
       "path": "mimicrymap/frontend/atlas-figures.js",
       "source": "mimicrymap/frontend/atlas-figures.js",
-      "bytes": 190464,
-      "sha256": "97aef93ee5724c067ea711f277b2143317be54608d4b9281fe24f5b5db4edc15"
+      "bytes": 190443,
+      "sha256": "d99f972900803f6d5488daad98afed58214b6489f010aaa57e20ca0d7eb314b7"
     },
     {
       "path": "mimicrymap/frontend/atlas-pairs-manifest.json",
@@ -252,14 +252,14 @@
     {
       "path": "mimicrymap/frontend/atlas-pairs.js",
       "source": "mimicrymap/frontend/atlas-pairs.js",
-      "bytes": 13944,
-      "sha256": "85c2bfd1372c2f9bef8c473369b759c89d280f4058d2d953c3d8d9054476686b"
+      "bytes": 13951,
+      "sha256": "dfa7f63f837db6a747f72eb1c3461677524398d695f3d72b5bf273fafcc39072"
     },
     {
       "path": "mimicrymap/frontend/calculations.html",
       "source": "mimicrymap/frontend/calculations.html",
-      "bytes": 36016,
-      "sha256": "cc5e50c971a7b74d89f263f747b1de2a71d97fdf8f892518f706de292bc1590c"
+      "bytes": 36655,
+      "sha256": "8874c994a2d4718f26615eaa0ed6d53cfee790930ea73221cce9d49d70a8cbf1"
     },
     {
       "path": "mimicrymap/frontend/canonical_aliases.py",
@@ -400,6 +400,24 @@
       "sha256": "681c87d5ad3817901b76abc6a43767eaf11a8636204360a3872ba696af8d7490"
     },
     {
+      "path": "mimicrymap/frontend/examples/use-results/20261018/reactivity-enrichment-huprot-ebv.svg",
+      "source": "mimicrymap/frontend/examples/use-results/20261018/reactivity-enrichment-huprot-ebv.svg",
+      "bytes": 633385,
+      "sha256": "b5b5c6ff673a5b7bb5e592309b74f1da90b11646ea18775ce2f62ee63bc48cf1"
+    },
+    {
+      "path": "mimicrymap/frontend/examples/use-results/20261018/reactivity-enrichment-platforms.svg",
+      "source": "mimicrymap/frontend/examples/use-results/20261018/reactivity-enrichment-platforms.svg",
+      "bytes": 669369,
+      "sha256": "71f82700af0f484d8f00aa9237960db7ea3e068f0751ae29beb63a2d87070df5"
+    },
+    {
+      "path": "mimicrymap/frontend/examples/use-results/20261018/source-excerpt.json",
+      "source": "mimicrymap/frontend/examples/use-results/20261018/source-excerpt.json",
+      "bytes": 3662,
+      "sha256": "b633620539675ec683b044a3edfbdbfc3f1b53122268b622ed327c937af1e508"
+    },
+    {
       "path": "mimicrymap/frontend/explorer_analysis_crosswalk.py",
       "source": "mimicrymap/frontend/explorer_analysis_crosswalk.py",
       "bytes": 11803,
@@ -474,8 +492,8 @@
     {
       "path": "mimicrymap/frontend/index.html",
       "source": "mimicrymap/frontend/index.html",
-      "bytes": 1099458,
-      "sha256": "af0bd0575923c59eac0f69cc2574e8a72f04fb8f71a2ccec755c0852491add7a"
+      "bytes": 1099545,
+      "sha256": "92a150f2e894a137f0e76d6e734d08799f422c9a114a957e292e0a9e01c917f2"
     },
     {
       "path": "mimicrymap/frontend/input-package-transport.js",
@@ -540,8 +558,8 @@
     {
       "path": "mimicrymap/frontend/mimicryone-identity.js",
       "source": "mimicrymap/frontend/mimicryone-identity.js",
-      "bytes": 18281,
-      "sha256": "aab5c1df789a818c645aba949257a28aa719cc53d1067dc72ba8761942e94911"
+      "bytes": 22272,
+      "sha256": "4689692c5d670923da3d0b9dd4505293e1334783688618fa8921cccbe09e9cad"
     },
     {
       "path": "mimicrymap/frontend/mimicryone-mobile.css",
@@ -570,8 +588,8 @@
     {
       "path": "mimicrymap/frontend/mimicryone.css",
       "source": "mimicrymap/frontend/mimicryone.css",
-      "bytes": 36365,
-      "sha256": "b4c61d858cf4b51c574f46a51cfb41fcd076735b302fede3bd16c3488b4d221d"
+      "bytes": 36796,
+      "sha256": "93fdcd274c09b01ad25cf7f0a211d03af5b12bf1139b334dd94b151d6cc3601a"
     },
     {
       "path": "mimicrymap/frontend/modification-symbols.js",
@@ -594,8 +612,8 @@
     {
       "path": "mimicrymap/frontend/pan-viral.html",
       "source": "mimicrymap/frontend/pan-viral.html",
-      "bytes": 36461,
-      "sha256": "dc2db8b059d9c1cc4c4f981ea5927a22cfddda23ab1b68f2cd1549396bcf3a63"
+      "bytes": 36457,
+      "sha256": "5ed261bfc0411f87089507ce05ae86b3cad1c576aef7d99adcac581f6a14eabb"
     },
     {
       "path": "mimicrymap/frontend/pinned_subset_membership.py",
@@ -688,6 +706,12 @@
       "sha256": "7116dd5f2d19b7f32b75daf1859d480ae8ceb992d7d3eae60fb3a7354c187f55"
     },
     {
+      "path": "mimicrymap/frontend/recorded_source.py",
+      "source": "mimicrymap/frontend/recorded_source.py",
+      "bytes": 4345,
+      "sha256": "d6848547959eb0c0c7ba8a6ff394fc4696a7e8f7e2ece0dd9e33fd6f2c184548"
+    },
+    {
       "path": "mimicrymap/frontend/release-provenance.js",
       "source": "mimicrymap/frontend/release-provenance.js",
       "bytes": 2984,
@@ -702,8 +726,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/README.md",
       "source": "mimicrymap/frontend/reproduce/README.md",
-      "bytes": 25352,
-      "sha256": "18f35d054b6c199a4a6f31459cedbc2bc15fb5bf6b5c9b7a43a6638379fb4885"
+      "bytes": 25064,
+      "sha256": "46178d81388bf3628fe477b2c024a58f25e05e20dfdab9bdb6e8a51bd1bfbf07"
     },
     {
       "path": "mimicrymap/frontend/reproduce/SOURCE-README.md",
@@ -750,8 +774,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 22347,
-      "sha256": "4105bb3d11db6d614cd1a29aca1ea244d554675bdfe6a9cff370733bdc793afc"
+      "bytes": 22579,
+      "sha256": "4ff369210088d28a619b1058612fd0f68bc7bc5b935b48c6994d7f3570d7f6fa"
     },
     {
       "path": "mimicrymap/frontend/reproduce/docs/TABLES.md",
@@ -822,8 +846,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/export-core.js",
       "source": "mimicrymap/frontend/reproduce/export-core.js",
-      "bytes": 61148,
-      "sha256": "cee058c0b1a9d63c6bac6f570c0cbf7239c0c5829073e385d39d7ca31e4ff6bc"
+      "bytes": 61921,
+      "sha256": "e41af89409245fcea9a37d26c548211a1ac99daef5645dac64af8ce82153945a"
     },
     {
       "path": "mimicrymap/frontend/reproduce/fasta-input.js",
@@ -846,8 +870,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/mapping-writer.cjs",
       "source": "mimicrymap/frontend/reproduce/mapping-writer.cjs",
-      "bytes": 6253,
-      "sha256": "333294b13a961d1dba4880cec062fe17ac17274324b67efe42b2e664521861fe"
+      "bytes": 6364,
+      "sha256": "53e9d677b43aa88f32719afe867c84a1eae0e385a2ffc2d1f67bbf9ede8bf224"
     },
     {
       "path": "mimicrymap/frontend/reproduce/node-runtime.tsv",
@@ -942,8 +966,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/summary-index.cjs",
       "source": "mimicrymap/frontend/reproduce/summary-index.cjs",
-      "bytes": 13709,
-      "sha256": "2c26a7d3ee678d0649fbd782edd18d73232f78615685ab1d8f1b645ab0210d6a"
+      "bytes": 14595,
+      "sha256": "18297a086865fa5abfe8329e104c40378235e25d64087a5cf86f09767d364381"
     },
     {
       "path": "mimicrymap/frontend/reproduce/summary-package.cjs",
@@ -1038,8 +1062,8 @@
     {
       "path": "mimicrymap/frontend/saved_figure_theme.py",
       "source": "mimicrymap/frontend/saved_figure_theme.py",
-      "bytes": 6066,
-      "sha256": "3b81152fafe6f2b0e83ca957c8d927ef699d8b45dfb1a977d939fc0ef54e3975"
+      "bytes": 7034,
+      "sha256": "28538aab83e68706eba299ef902a3368af72899b3ea44fa33c86bb18f7bdff82"
     },
     {
       "path": "mimicrymap/frontend/scope-dependencies.js",
@@ -1086,14 +1110,14 @@
     {
       "path": "mimicrymap/frontend/site-pages.css",
       "source": "mimicrymap/frontend/site-pages.css",
-      "bytes": 19437,
-      "sha256": "fa1cb0bee0ef7db3bbcd524b376836590484ba86e009ad3d757f368018148554"
+      "bytes": 21724,
+      "sha256": "0efd6c8200715c6aabd09da4ea65c970d757a60c408fa930a1acea145f2b5ff9"
     },
     {
       "path": "mimicrymap/frontend/site-routes.js",
       "source": "mimicrymap/frontend/site-routes.js",
-      "bytes": 2953,
-      "sha256": "cb2a11098efcc43cf3e55b7e3bf74ee35a90bc16d8507e80b2307db117f4cd06"
+      "bytes": 3427,
+      "sha256": "1af5b707bf0f92421c73c1caa3e10588ac72ffaa9557e7eeb52f5b4d23197127"
     },
     {
       "path": "mimicrymap/frontend/site-theme.js",
@@ -1140,20 +1164,20 @@
     {
       "path": "mimicrymap/frontend/summary-downloads.json",
       "source": "mimicrymap/frontend/summary-downloads.json",
-      "bytes": 336233,
-      "sha256": "1409cdfe29e5aad551faebf93ff153c6c706671234ae16bc24297ba3256207d4"
+      "bytes": 345265,
+      "sha256": "20b25649cc1ee0d3d00af54ce2768c7aabce6308bdd95ac050cc3cf0f13f67ce"
     },
     {
       "path": "mimicrymap/frontend/summary_downloads.py",
       "source": "mimicrymap/frontend/summary_downloads.py",
-      "bytes": 17081,
-      "sha256": "d7db06cb9e5b892b93be407cee0c74a63126d71b2f4bfe1263121c91c0cf96ee"
+      "bytes": 17410,
+      "sha256": "e05af0e299b7d0becb8c5fdf6a2f5e6889c15d436cfacb051c1fc09ea55a719b"
     },
     {
       "path": "mimicrymap/frontend/use-results.html",
       "source": "mimicrymap/frontend/use-results.html",
-      "bytes": 1432484,
-      "sha256": "ea71a1a7423c1772d464f9f1928ecd5bda6d6d8c0d805cd5f2362a799c25b4b3"
+      "bytes": 1489779,
+      "sha256": "18e950eae729b5aff2bf6d1a6a4439c31fb190d694ec1319eb295cabe4fd33a3"
     },
     {
       "path": "mimicrymap/frontend/viewer-api.js",
@@ -1194,8 +1218,8 @@
     {
       "path": "mimicrymap/tools/build_selected_virus_summaries.py",
       "source": "mimicrymap/tools/build_selected_virus_summaries.py",
-      "bytes": 18349,
-      "sha256": "b138cd43840add83c83d1cb74256f5ed8619fd67c7e110bf8ff18bac42ec6fdc"
+      "bytes": 18351,
+      "sha256": "b53bf0f8f7965fe8a66a6fb942a63bd661928224d19a75ee813ce252d3431f2b"
     },
     {
       "path": "mimicrymap/tools/serve_lite.py",
@@ -1236,8 +1260,8 @@
     {
       "path": "mimicrymap/workspace/collections.cjs",
       "source": "mimicrymap/workspace/collections.cjs",
-      "bytes": 2838,
-      "sha256": "7abd515153b2285966f4652fc1b09bcc519f67e317675271202ab6bff49c6877"
+      "bytes": 3032,
+      "sha256": "09153d3139f75cc8b193c23d40fe5f1a7b03a42aa3d54f1431fc6bbee645da14"
     },
     {
       "path": "mimicrymap/workspace/compact_reference.py",
@@ -1248,8 +1272,8 @@
     {
       "path": "mimicrymap/workspace/engine.cjs",
       "source": "mimicrymap/workspace/engine.cjs",
-      "bytes": 47214,
-      "sha256": "b8f242842b5852dc8966ac1bbf7f034ea1566ff021030b8649543f617466166e"
+      "bytes": 47603,
+      "sha256": "c52322055b4f1532ddc18274b654f071c91c14eb524d4ba496dd386fc7c1cec2"
     },
     {
       "path": "mimicrymap/workspace/gpu-scanner.cjs",
@@ -1266,14 +1290,14 @@
     {
       "path": "mimicrymap/workspace/metadata-outputs.cjs",
       "source": "mimicrymap/workspace/metadata-outputs.cjs",
-      "bytes": 8487,
-      "sha256": "d0e2da27bcb4c717fae39ceafd3b679584f54b6d6edd55d1a8c99043b42fb3a3"
+      "bytes": 8723,
+      "sha256": "6e6aca6a1739324a9098b6388cc92c777f2cd8113c13080a989764eaca50208b"
     },
     {
       "path": "mimicrymap/workspace/metadata.cjs",
       "source": "mimicrymap/workspace/metadata.cjs",
-      "bytes": 12473,
-      "sha256": "05d127ef570f96a75417eba1d41d7fdec2068bd2a3e2942d6206d29f4a6b388e"
+      "bytes": 13550,
+      "sha256": "88e9d33bbb25051e8a52e8ef55f8a26d49d6b6fca91e091803c47f0bb000d044"
     },
     {
       "path": "mimicrymap/workspace/pair-regions.cjs",
@@ -1302,8 +1326,8 @@
     {
       "path": "mimicrymap/workspace/prepare-mapping.cjs",
       "source": "mimicrymap/workspace/prepare-mapping.cjs",
-      "bytes": 613,
-      "sha256": "8404c6e2abadb7717a5a214a0a0d0b2df1826a73235979c29a22c208aceae17c"
+      "bytes": 833,
+      "sha256": "e71f301c2c8e6dcf7cd408bd43a0107beaabf5b9956ff7610cc1f19bd63ce63f"
     },
     {
       "path": "mimicrymap/workspace/record-matches.cjs",
@@ -1342,22 +1366,28 @@
       "sha256": "101e54460d53e338cc9d258044eb968b4ab1dc218e1c02910035dfc2480fe1b2"
     },
     {
+      "path": "mimicrymap/workspace/study-library.cjs",
+      "source": "mimicrymap/workspace/study-library.cjs",
+      "bytes": 3998,
+      "sha256": "ec4f54e39707983a319bd051413e206c5f5c6e4237395ec829d71da0f6cd02e2"
+    },
+    {
       "path": "mimicrymap/workspace/summary-native.cjs",
       "source": "mimicrymap/workspace/summary-native.cjs",
-      "bytes": 6958,
-      "sha256": "6bdc10534518fea44aaede879eaa7583308d9faabbb4fa83231235a858e25aec"
+      "bytes": 6986,
+      "sha256": "1fdd9397a0a7d363d353adc3517849a247d5981d56c6d1233703d6cade9f92dd"
     },
     {
       "path": "mimicrymap/workspace/worker.cjs",
       "source": "mimicrymap/workspace/worker.cjs",
-      "bytes": 1298,
-      "sha256": "6d9ef0b006dddaef0c4c05807ff84d8a4a005f123d7869f2a2daec5311e3627c"
+      "bytes": 1479,
+      "sha256": "f4b27bbbd0f9294c26788c8e5edb6ae5b664b1c19d9c58248070008e0fd3a858"
     },
     {
       "path": "code/export-core.js",
       "source": "mimicrymap/frontend/reproduce/export-core.js",
-      "bytes": 61148,
-      "sha256": "cee058c0b1a9d63c6bac6f570c0cbf7239c0c5829073e385d39d7ca31e4ff6bc"
+      "bytes": 61921,
+      "sha256": "e41af89409245fcea9a37d26c548211a1ac99daef5645dac64af8ce82153945a"
     },
     {
       "path": "code/context-score.js",
@@ -1428,8 +1458,8 @@
     {
       "path": "code/summary-index.cjs",
       "source": "mimicrymap/frontend/reproduce/summary-index.cjs",
-      "bytes": 13709,
-      "sha256": "2c26a7d3ee678d0649fbd782edd18d73232f78615685ab1d8f1b645ab0210d6a"
+      "bytes": 14595,
+      "sha256": "18297a086865fa5abfe8329e104c40378235e25d64087a5cf86f09767d364381"
     },
     {
       "path": "code/unified-mapping.cjs",
@@ -1446,8 +1476,8 @@
     {
       "path": "code/mapping-writer.cjs",
       "source": "mimicrymap/frontend/reproduce/mapping-writer.cjs",
-      "bytes": 6253,
-      "sha256": "333294b13a961d1dba4880cec062fe17ac17274324b67efe42b2e664521861fe"
+      "bytes": 6364,
+      "sha256": "53e9d677b43aa88f32719afe867c84a1eae0e385a2ffc2d1f67bbf9ede8bf224"
     },
     {
       "path": "code/mapping-csv.cjs",
@@ -1476,8 +1506,8 @@
     {
       "path": "code/mimicryone-identity.js",
       "source": "mimicrymap/frontend/mimicryone-identity.js",
-      "bytes": 18281,
-      "sha256": "aab5c1df789a818c645aba949257a28aa719cc53d1067dc72ba8761942e94911"
+      "bytes": 22272,
+      "sha256": "4689692c5d670923da3d0b9dd4505293e1334783688618fa8921cccbe09e9cad"
     },
     {
       "path": "code/plot-palette.cjs",
@@ -1506,8 +1536,8 @@
     {
       "path": "docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 22347,
-      "sha256": "4105bb3d11db6d614cd1a29aca1ea244d554675bdfe6a9cff370733bdc793afc"
+      "bytes": 22579,
+      "sha256": "4ff369210088d28a619b1058612fd0f68bc7bc5b935b48c6994d7f3570d7f6fa"
     }
   ]
 }

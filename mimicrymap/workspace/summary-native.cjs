@@ -5,7 +5,7 @@ const metadata=require('./metadata.cjs'),core=require('../frontend/reproduce/exp
 function start(db,{targetDirectory,parentDirectory,targetAnnotations,parentAnnotations,target,parent}){
  const writer=require('../frontend/reproduce/mapping-writer.cjs').create(db,{collectLibraryUnions:true});
  for(const [side,folder,annotation,library]of [[0,targetDirectory,targetAnnotations,target],[1,parentDirectory,parentAnnotations,parent]]){
-  const source=new DatabaseSync(path.join(folder,'library.sqlite'),{readOnly:true}),overlay=metadata.open(annotation);
+  const source=new DatabaseSync(path.join(folder,'library.sqlite'),{readOnly:true}),overlay=metadata.open(annotation,{strict:true});
   try{
    db.exec('BEGIN');let n=0;
    for(const row of source.prepare('SELECT * FROM records ORDER BY id').iterate()){
@@ -24,7 +24,7 @@ async function writeSource({manifest,directory,targetDirectory,parentDirectory,t
  const previous=previousRecords?pkg.jsonLines(previousRecords)[Symbol.asyncIterator]():null;
  try{
   for(const [side,folder,annotation]of [[0,targetDirectory,targetAnnotations],[1,parentDirectory,parentAnnotations]]){
-   const db=new DatabaseSync(path.join(folder,'library.sqlite'),{readOnly:true}),overlay=metadata.open(annotation);let buffer='';
+   const db=new DatabaseSync(path.join(folder,'library.sqlite'),{readOnly:true}),overlay=metadata.open(annotation,{strict:true});let buffer='';
    try{for(const row of db.prepare('SELECT * FROM records ORDER BY id').iterate()){
     const prior=previous?(await previous.next()).value:null;
     if(previous&&(!prior||prior.side!==side||prior.id!==row.id))throw Error('Previous summary roster differs from the library');

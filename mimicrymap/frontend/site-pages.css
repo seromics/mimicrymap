@@ -163,13 +163,38 @@ body:has(>.site-header)::after{content:"";display:block;position:relative;z-inde
 .site-document .use-results .use-plot-grid{gap:1rem;}
 .site-document .use-results .use-parent-table{margin-top:.85rem;padding-top:.85rem;}
 .site-document .use-results .use-table-heading{gap:.4rem .8rem;margin-bottom:.7rem;}
-.site-document .use-results .use-peptide-table{margin-top:1.25rem;padding:1rem;}
-@media(max-width:900px){.site-document .use-results .use-peptide-table{padding:.65rem;}}
+.site-document .use-results :is(.use-peptide-table,.use-result-table){margin-top:1.25rem;padding:1rem;}
+@media(max-width:900px){.site-document .use-results :is(.use-peptide-table,.use-result-table){padding:.65rem;}}
 
 /* Captions travel with their figures, separate from download guidance. */
 .use-results .use-figure > .use-legend{margin:.85rem 0 0;font-size:.8rem;line-height:1.65;color:var(--mm-body);text-align:left;}
 .use-results .use-figure > .use-legend p{font-size:inherit;margin:.6rem 0 0;}
 @media(min-width:1101px){.use-results .use-figure > .use-legend{font-size:calc(.75rem / var(--use-figure-scale));}}
+
+/* Saved enrichment results and arithmetic share the surrounding page type. */
+.site-document .use-results .use-download-guide:has(+.use-example-divider)>.download-table-scroll{margin-bottom:.75rem;}
+.site-document .use-results .use-example-divider{margin-bottom:.75rem;}
+#useEnrichmentSampleTitle{margin-top:0;}
+.site-document .use-results .use-case>.use-enrichment-examples{zoom:1;}
+.use-enrichment-examples>h4{margin:0 0 .75rem;font-size:var(--explainer-body-size);}
+.use-enrichment-examples>#useEnrichmentHuProtTitle{margin-top:1.5rem;}
+.use-enrichment-example{border:1px solid var(--mm-border);border-radius:8px;overflow-x:auto;margin:0 0 1rem;font-size:var(--explainer-body-size,.8rem);line-height:1.35;}
+.use-enrichment-calculation{width:100%;min-width:650px;table-layout:auto;border-collapse:collapse;margin:0;font:inherit;color:var(--mm-body);}
+.use-enrichment-calculation :is(caption,th,td,strong){font-family:inherit;font-size:inherit;line-height:inherit;}
+.use-enrichment-calculation :is(caption,th,td){padding:.25rem .55rem;text-align:left;vertical-align:middle;}
+.use-enrichment-calculation :is(caption,tfoot){background:var(--mm-surface);}
+.use-enrichment-calculation caption{font-weight:650;color:var(--mm-ink);}
+.use-enrichment-calculation :is(th,strong){font-weight:600;color:var(--mm-ink);}
+.use-enrichment-calculation :is(th,td){border-top:1px solid var(--mm-border);white-space:nowrap;}
+.use-enrichment-calculation td{font-variant-numeric:tabular-nums;}
+.use-enrichment-calculation tbody th{font-weight:400;}
+.use-enrichment-calculation .use-calculation-result{text-align:right;white-space:nowrap;color:var(--mm-ink);}
+.use-enrichment-calculation .use-calculation-result span{white-space:nowrap;}
+@media(max-width:600px){.use-enrichment-calculation :is(caption,th,td){padding:.25rem .5rem;}}
+.use-results .use-enrichment-examples>.use-legend{font-size:.8rem;}
+.use-enrichment-plot{display:block;width:100%;height:auto;}
+.use-enrichment-examples .use-legend h4{margin:1.25rem 0 .65rem;font-size:.85rem;}
+.use-enrichment-examples>h4,.use-enrichment-examples .use-legend h4,#useEnrichmentSampleTitle,#useEnrichmentCohortTitle,#useEnrichmentHuProtContextTitle{font-family:inherit;font-weight:650;}
 
 /* Keep the IGHG2 sequence and lower panels in one compact figure stack. */
 .site-document .use-results .use-case-wide{row-gap:0;}

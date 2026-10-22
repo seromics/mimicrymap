@@ -221,7 +221,7 @@ Here, we compare the HEPACAM sequence from a HuProt protein microarray experimen
 >
 > **Peptide table:** The EBV-only table holds the target core at HEPACAM 376–384 and shows the three highest-ranked distinct viral proteins by saved context BLOSUM62, followed by the published EBNA1 alignment. Target appears above parent; coordinates refer to the full records. Matches are green, differences red; underlines mark core (green) and flanks (blue). The site-ranking table counts window pairs, with equal BLOSUM62 scores sharing rank.
 
-Download summaries comparing HuProt constructs with the 120 reference viral proteomes, in either direction.
+Download summaries comparing HuProt array features with the 120 reference viral proteomes, in either direction.
 
 These summaries connect sequence matches to antibody measurements by assay identifier. They define reference sets for testing whether a sample's hits are enriched relative to its measured background; [the calculation walkthrough](#proteomeReactivity) explains the summary files and enrichment calculation.
 

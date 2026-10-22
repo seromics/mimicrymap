@@ -32,7 +32,10 @@ test('fresh FASTAs and annotations produce installable candidate and full-lookup
   for(const file of ['library_summary.csv','pair_coverage.csv'])assert.deepEqual(fs.readFileSync(path.join(candidate.directory,file)),fs.readFileSync(path.join(full.directory,file)));
   const summary=fs.readFileSync(path.join(candidate.directory,'library_summary.csv'),'utf8');
   assert(!/Shared Regions|Uncovered Residue Regions|All Matching Parent Count|"Coverage \(%\) at/.test(summary));
-  assert.equal(summary.split('\n')[0].split(',').length,13);
+  const header=summary.split('\n')[0];
+  assert.equal(header.split(',').length,17);
+  assert.match(header,/"Antigen Target FASTA Header"/);
+  for(const floor of [7,8,9])assert(header.includes(`"Unmatched Target Regions at ${floor}/9 (Whole Comparison Library)"`));
   assert.equal(manifest.pairFocusedSummary,true);
   const memberships=rows(candidate.directory,'pairs');
   assert(memberships.length>0);assert(memberships.some(row=>row.organism==='Example set'));

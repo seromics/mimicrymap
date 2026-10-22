@@ -16,7 +16,8 @@
     "Mimicry Parent Regions at 8/9 Parent|Target (>=10% either)",
     "Unmatched Target Regions at 9/9 (Whole Comparison Library)",
     "Mimicry Parents at 9/9 with Coverage (%) Parent|Target (>=10% either)",
-    "Mimicry Parent Regions at 9/9 Parent|Target (>=10% either)"
+    "Mimicry Parent Regions at 9/9 Parent|Target (>=10% either)",
+    "Antigen Target FASTA Header"
   ],
   "identity_min": [
     7,

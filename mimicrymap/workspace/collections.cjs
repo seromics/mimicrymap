@@ -2,7 +2,7 @@
 
 // A reference collection routes each assay to one directed comparison. It never
 // merges antigen identities or treats a reverse comparison as interchangeable.
-const comparisonRevision = c => c.files[c.candidateFile||"comparison.sqlite"].sha256 + ":" + c.platforms.slice().sort().join(",") + ':' + (c.annotationRevision||['targets','parents'].map(s=>c.files['inputs/'+s+'.annotations.csv']?.sha256||'').join(':'));
+const comparisonRevision = c => c.files[c.candidateFile||"comparison.sqlite"].sha256 + ":" + c.platforms.slice().sort().join(",") + ':' + (c.annotationRevision||['targets','parents'].map(s=>c.files['inputs/'+s+'.annotations.csv']?.sha256||'').join(':')) + (c.sourceIdentity?':'+c.sourceIdentity+':'+JSON.stringify(c.studyBindings||[]):'') + (c.verifiedStudyBindings?.length?':verified-source-sequences:'+JSON.stringify(c.verifiedStudyBindings):'');
 function collectionReference(state, collection) {
   const bindings = collection.bindings || [];
   if (!collection.enabled || !bindings.length) return null;

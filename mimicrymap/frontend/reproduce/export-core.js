@@ -1,10 +1,11 @@
 /* Shared browser/Node export contract. No sequence search or statistical inference. */
 (function(root){
  'use strict';
- const version='mimicryone/export/21';
+ const version='mimicryone/export/22';
  const plotRegistry=root.SeroMapPlotPalette||(typeof require==='function'?(()=>{try{return require('./plot-palette.cjs');}catch(error){if(error.code!=='MODULE_NOT_FOUND')throw error;return require('../../../atlas/viewer/shared/plotPalette.cjs');}})():null);
  const ranking=typeof module==='object'&&module.exports?require('./ranking.js'):root.MimicryRanking;
  const contextScore=typeof module==='object'&&module.exports?require('./context-score.js'):root.MimicryContextScore;
+ const sourceIdentity=typeof module==='object'&&module.exports?require(require('node:fs').existsSync(require('node:path').join(__dirname,'mimicryone-identity.js'))?'./mimicryone-identity.js':'../mimicryone-identity.js'):root.MimicryOneIdentity;
  const lexical=(a,b)=>String(a)<String(b)?-1:String(a)>String(b)?1:0;
  const ordered=value=>Array.isArray(value)?value.map(ordered):value&&typeof value==='object'
   ?Object.fromEntries(Object.keys(value).sort().map(k=>[k,ordered(value[k])])):value;
@@ -23,7 +24,8 @@
  }
  const contextIdentityAt=contextScore.identityAt;
  function identity(record,prefix){
-  const i=record.identity||{};
+  record=sourceIdentity?.recordedSource(record)||record;
+  const i=sourceIdentity?.resolve(record)||record.identity||{};
   const fields={id:record.protein_id,record_id:record.antigen_id,seqid:record.seqid,
    full_header:record.raw_header||record.header||i.fullHeader||'',gene:i.gene||record.primary_gene||record.gene_symbol||record.gene||String(record.raw_header||record.header||record.source_header||'').match(/(?:^|\s)GN=([^\s]+)/)?.[1]||'',
    protein_name:i.proteinName||record.protein_name||record.name,accession:i.accession||record.source_accession||record.display_accession||record.accession,
@@ -589,6 +591,7 @@
  }
 
  function organismTaxonLabel(p){
+  p=sourceIdentity?.recordedSource(p)||p;
   if(p.organism_taxon_label)return publicText(p.organism_taxon_label);
   if(/\[TaxID:/.test(p.organism||''))return publicText(p.organism);
   const i=p.identity||{},header=p.raw_header||p.header||p.seqid||i.fullHeader||'';
@@ -619,7 +622,8 @@
   const id=identity(record,'q_');
   return {'Antigen Target Gene':id.q_gene,'Antigen Target Accession':id.q_accession,
    'Antigen Target Protein Description':summaryDescription(record,id.q_protein_name),
-   'Antigen Target Organism (TaxID)':organismTaxonLabel(record)};
+   'Antigen Target Organism (TaxID)':organismTaxonLabel(record),
+   'Antigen Target FASTA Header':id.q_full_header};
  }
  function summaryParentLabel(parent){
   const i=identity(parent,'p_'),encode=s=>String(s).replace(/[\\;@|]/g,c=>String.fromCharCode(92)+c);
@@ -696,10 +700,13 @@
    const regionName='Mimicry Parent Regions at '+t+'/9 Parent|Target (>=10% either)';
    columns.push(regionName);row[regionName]=listed.map(p=>p.label+'@'+compactRanges(p.parentRegions)+'|'+compactRanges(p.targetRegions)).join(';');
   }
+  // Keep arbitrary supplied labels without guessing a gene, accession or taxonomy.
+  // Append the field so all existing scientific columns retain their order.
+  columns.push('Antigen Target FASTA Header');row['Antigen Target FASTA Header']=id.q_full_header;
   if(annotationMetadata!==undefined){const annotations=annotationColumns(p.sequence,annotationMetadata);columns.push(...Object.keys(annotations));Object.assign(row,annotations);}
   // Coverage display matches detailed CSVs; threshold decisions use integer residue counts.
   const quote=v=>'"'+publicText(v??'').replace(/"/g,'""')+'"';
-  const serialize=rows=>'\ufeff'+[columns.map(quote).join(','),...rows.map(r=>columns.map(k=>quote(k.includes('(%)')?exportPercent(r[k]):r[k])).join(','))].join('\r\n')+'\r\n';
+  const serialize=rows=>'\ufeff'+[columns.map(quote).join(','),...rows.map(r=>columns.map(k=>k==='Antigen Target FASTA Header'?'"'+String(r[k]??'').replace(/"/g,'""')+'"':quote(k.includes('(%)')?exportPercent(r[k]):r[k])).join(','))].join('\r\n')+'\r\n';
   return {schema:'mimicryone/native-summary/7',columns,row,csv:serialize([row]),serialize,audit,pairKeys};
  }
 

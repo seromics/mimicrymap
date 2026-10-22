@@ -17,6 +17,8 @@ process.once('message', async ({ action, value }) => {
         'hashFile',
         'prepareAnnotations',
         'refreshAnnotations',
+        'exportStudyLibrary',
+        'verifyStudyComparison',
       ].includes(action)
     )
       throw Error('Unknown Mimicry workspace operation');
@@ -29,7 +31,8 @@ process.once('message', async ({ action, value }) => {
         process.send?.({ progress });
       }
     };
-    const result = await engine[action](value, report);
+    const result = await (['exportStudyLibrary','verifyStudyComparison'].includes(action)
+      ? require('./study-library.cjs')[action] : engine[action])(value, report);
     process.send?.({ result }, () => process.disconnect());
   } catch (error) {
     process.send?.({ error: error.message }, () => process.disconnect());

@@ -86,7 +86,7 @@
      [headers[4],pair[offset+1]],[headers[5],pair[offset]]
     ]));
     await root.SeroMapCodeExport({filename,csv:{rows,columns:headers},svg:root.MimicryAtlasTable.exportNode(svg),
-     reproduction:{id:'mimicry-atlas-pairs',title:originalTitle,methods:find('#atlasPairsLegend').textContent+' This package replays the captured page of published coverage results; it does not compute sequence matches.',
+     reproduction:{id:'mimicry-atlas-pairs',title:originalTitle,legend:find('#atlasPairsLegend').textContent,methods:'This package replays the captured page of published coverage results; it does not compute sequence matches.',
       settings:{identity:floor,sort:metric,page:view.page,pageSize:state.size,source_sha256:data.source_sha256,summary_url:config.summary_url},
       columnDefinitions:headers.map((label,i)=>({key:label,label,
        meaning:[

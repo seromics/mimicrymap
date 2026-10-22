@@ -1,14 +1,13 @@
 <section class="worked-example use-results" id="hepacamWorkedExample" aria-labelledby="useResultsTitle">
- <header class="site-page-hero" id="useMimicryResults"><h1 id="useResultsTitle">How to Use<br><span>Mimicry Results</span></h1><p>Combine sequence similarity with experimental evidence, compare coverage, and inspect individual matches with these worked examples.</p></header>
+ <header class="site-page-hero" id="useMimicryResults"><h1 id="useResultsTitle">How to Use<br><span>Mimicry Results</span></h1><p>Investigate epitopes, calculate reactivity enrichment, compare coverage, and find unmatched regions with these worked examples.</p></header>
   <article class="use-case" aria-labelledby="useHepacamTitle">
     <div class="use-copy">
-    <h3 id="useHepacamTitle">1 · Combine with Experimental Evidence</h3>
+    <h3 id="useHepacamTitle">1 · Investigate Critical Epitopes</h3>
     <p>Single antibodies can cause disease. Using a HuProt protein microarray, <a href="https://doi.org/10.1038/s41586-022-04432-7" target="_blank" rel="noopener noreferrer">Lanz et al.</a> found that a monoclonal antibody isolated from a multiple sclerosis patient binds the human protein HEPACAM (GlialCAM). Molecular mimicry with Epstein-Barr virus is thought to underlie this cross-reactivity. The <a href="#scienceRecord">calculation walkthrough</a> explains how this match is mapped.</p>
     <p>Here, we compare the HEPACAM sequence from a HuProt protein microarray experiment (<strong>JHU19101; Q14CZ8</strong>) with viral proteins and polyproteins from <strong>Curated Viral Proteomes (120)</strong>. The known 5/9 match is present but does not stand out by sequence similarity alone. The authors knew to focus on EBV due to <a href="https://doi.org/10.1126/science.abj8222" target="_blank" rel="noopener noreferrer">recent work connecting it with MS</a>, and had separate PhIP-Seq experiments with this same antibody demonstrating binding to proline-rich peptides similar to this match site within HEPACAM. They distinguished this site further by showing phosphorylation of GlialCAM serine 376 (pSer376) increased binding affinity of the tested antibody about 50-fold.</p>
     <div class="use-download-guide">
       <hr class="use-download-divider" />
-      <p>Download one ZIP containing coverage summaries in both directions between HuProt constructs and the 120 reference viral proteomes.</p>
-      <p>The <a href="#proteomeReactivity">calculation walkthrough</a> explains how individual matches are compiled into these portable summary files.</p>
+      <p>Download one ZIP containing coverage summaries in both directions between HuProt constructs and the 120 reference viral proteomes. The <a href="#proteomeReactivity">calculation walkthrough</a> explains how individual matches are compiled into these portable summary files.</p>
       <!-- summary-example-archive:huprot4_vs_atlas_120_viruses -->
       <h4>Find the published site: HEPACAM 376–384 ↔ EBNA1 392–400</h4>
       <p>The <strong>EBNA1 P03211</strong> alignment shown below has a 5/9 core and context BLOSUM62 score of 12. It shares rank <strong>15 of 27</strong> window pairs at this HEPACAM site within the EBV B95-8 proteome. The table also places it in the broader 120-proteome comparison.</p>
@@ -80,9 +79,50 @@
       </figcaption>
     </figure>
   </article>
+  <article class="use-case" aria-labelledby="useEnrichmentTitle">
+    <div class="use-copy">
+      <h3 id="useEnrichmentTitle">2 · Calculate Reactivity Enrichment</h3>
+      <p>Multiplex serology platforms such as HuProt and VirScan PhIP-Seq can generate thousands of antibody reactivity calls per sample. Each antigen has a source and metadata label, but cross-reactivity to similar sequences within and across species complicates interpretation.</p>
+      <p>MimicryMap applies sequence-identity and coverage thresholds to compare assay antigens and proteomes. Here it maps HuProt and VirScan assay antigens to <strong>120 canonical viral proteomes</strong>, defining antigen sets independently of the sample’s reactions. <strong>Reactivity Enrichment</strong> in <a href="https://seromap.com/?tab=downloads" data-seromap-entry>SeroMap</a> then tests whether recorded antibody hits concentrate in each set relative to the sample’s overall assay hit rate.</p>
+      <div class="use-download-guide">
+        <!-- summary-example-archives:huprot4_vs_atlas_120_viruses,virscan_exposome_current_vs_atlas_120_viruses -->
+      </div>
+      <hr class="use-download-divider use-example-divider" />
+      <h4 id="useEnrichmentSampleTitle">Worked Example: Calls Within a Single Sample</h4>
+      <p>This sample was measured with <strong>VirScan</strong>. Its assay peptides represent proteins from human and non-human viruses. The assay processing recorded <strong>954 above-background reactions across 481,962 measured peptides</strong>.</p>
+      <div class="use-enrichment-example" tabindex="0" role="region" aria-labelledby="useEnrichmentSampleTitle">
+        <table class="use-enrichment-calculation">
+          <caption>Respiratory syncytial virus A · A2</caption>
+          <colgroup><col style="width:42%"><col style="width:33%"><col style="width:25%"></colgroup>
+          <tbody>
+            <tr><th scope="row"><strong>Sample Hit Rate</strong> (Measured VirScan Peptides)</th><td>954 ÷ 481,962</td><td class="use-calculation-result"><strong>≈ 0.20%</strong></td></tr>
+            <tr><th scope="row"><strong>Expected Virus Hits by Chance</strong></th><td>1,798 × (954 ÷ 481,962)</td><td class="use-calculation-result"><strong>≈ 3.6</strong></td></tr>
+            <tr><th scope="row"><strong>Observed Hit Rate</strong> (Virus-Matched Peptides)</th><td>156 ÷ 1,798</td><td class="use-calculation-result"><strong>≈ 8.7%</strong></td></tr>
+            <tr><th scope="row"><strong>Reactivity Enrichment</strong> (Observed / Expected)</th><td>156 ÷ (1,798 × 954 ÷ 481,962)</td><td class="use-calculation-result"><strong>≈ 43.8×</strong></td></tr>
+          </tbody>
+          <tfoot><tr><th scope="row">Fisher p / Sample BH</th><td>Fisher test; BH across 120 viral sets</td><td class="use-calculation-result"><strong><span>1.35e-200</span> / <span>1.62e-198</span></strong></td></tr></tfoot>
+        </table>
+      </div>
+      <p>To summarize these reactions against canonical virus strains, the measured peptides are linked to the MimicryMap summaries for <strong>Curated Viral Proteomes (120)</strong>. Here, assignment requires <strong>at least 7 of 9 amino acids to match within short sequence cores</strong>, with qualifying cores covering <strong>at least 60% of the full assay peptide</strong>. This assigns <strong>1,798 measured peptides</strong> to respiratory syncytial virus A (strain A2), including homologous assay peptides. The sample reacted to <strong>156 of those 1,798 peptides</strong>. We compare this set’s hit rate with the sample’s overall assay hit rate, which supplies the expected-by-chance baseline for Reactivity Enrichment. A one-sided Fisher test assesses excess hits relative to the sample’s overall assay hit rate; the same per-sample enrichment values feed cohort summaries.</p>
+      <h4 id="useEnrichmentCohortTitle">Calls Across a Cohort of Samples: VirScan</h4>
+      <p>The calculation is repeated separately for each sample in a study. The figure summarizes VirScan enrichment across <strong>35 human samples</strong>, showing which viral sets consistently have more hits than expected by chance. <strong>Sample BH</strong> identifies reactive sets within each sample; a one-sided sign test and <strong>Group BH</strong> assess consistency above 1× across the cohort.</p>
+      <h4 id="useEnrichmentHuProtContextTitle">Calls Across a Cohort of Samples: HuProt</h4>
+      <p>HuProt applies this analysis to autoantibodies against human proteins. Matching these antigens to the same 120 viral proteomes asks whether reactivity concentrates among human proteins resembling particular viruses. Across this cohort, recorded autoantibody hits are enriched among human HuProt proteins containing EBV-matching sequence segments above the selected identity and coverage thresholds.</p>
+    </div>
+    <figure class="use-figure use-enrichment-examples" aria-labelledby="useEnrichmentExamplesTitle useEnrichmentHuProtTitle" aria-describedby="useEnrichmentLegend">
+      <h4 id="useEnrichmentExamplesTitle">Calls Across a Cohort of Samples: VirScan Reactivity Enrichment → 120 Canonical Human Viruses</h4>
+      <img data-native-theme="true" src="/examples/use-results/20261018/reactivity-enrichment-platforms.svg" width="661" height="564" loading="lazy" alt="VirScan fold-enrichment distributions for the ten reference viruses ranked by significance, with mean fold enrichment breaking ties, across 35 human samples." />
+      <h4 id="useEnrichmentHuProtTitle">Calls Across a Cohort of Samples: HuProt Reactivity Enrichment → 120 Canonical Human Viruses</h4>
+      <img data-native-theme="true" src="/examples/use-results/20261018/reactivity-enrichment-huprot-ebv.svg" width="661" height="134" loading="lazy" alt="HuProt IgG enrichment among human antigens matching Epstein-Barr virus B95-8 across 35 samples: 441 antigens, 1 of 35 samples reactive, cohort sign p 2.5e-4 and Group BH 0.030." />
+      <figcaption class="use-legend" id="useEnrichmentLegend">
+        <p><strong>Calls Across a Cohort of Samples: VirScan → 120 Canonical Human Viruses.</strong> Enrichment across 35 samples for ten viral sets. Points represent samples; boxes show medians and interquartile ranges, with minimum–maximum whiskers. The dashed line marks 1×. <strong>Reactive</strong> counts samples passing Sample BH &lt; 0.01 / eligible samples. One-sided sign tests assess consistency above 1×; <strong>Group BH</strong> corrects across 120 viral sets.</p>
+        <p><strong>Calls Across a Cohort of Samples: HuProt → 120 Canonical Human Viruses.</strong> Reactivity to 441 human HuProt constructs matching EBV at ≥7/9 core identity and ≥10% construct coverage. Only <strong>1/35 samples</strong> passes Sample BH &lt; 0.01, but enrichment is consistent across the cohort (<strong>sign p ≈ 2.5e-4; Group BH ≈ 0.030</strong>, across 120 viral sets). Plot conventions match the VirScan figure.</p>
+      </figcaption>
+    </figure>
+  </article>
   <article class="use-case" aria-labelledby="useIl10Title">
     <div class="use-copy">
-    <h3 id="useIl10Title">2 · Discover Mimicry Across Proteomes</h3>
+    <h3 id="useIl10Title">3 · Discover Mimicry Across Proteomes</h3>
     <p>Viruses can evolve molecular mimics of host proteins. Comparing coverage in both directions helps distinguish similarity spanning much of a protein from smaller, localized matches.</p>
     <p>Here, the target is human IL10, an immunoregulatory cytokine. Epstein-Barr virus encodes an evolved homolog, BCRF1, that mimics <a href="https://doi.org/10.1126/science.2173142" target="_blank" rel="noopener noreferrer">human IL10 activity</a>. Other viruses, including <a href="https://doi.org/10.1073/pnas.97.4.1695" target="_blank" rel="noopener noreferrer">human cytomegalovirus</a>, also encode functional IL10 mimics. The full extent and mechanisms of viral mimicry remain incompletely understood; these comparisons highlight candidates for investigation, including less extensive similarities whose biological significance is unknown.</p>
     <div class="use-download-guide">
@@ -162,7 +202,7 @@
     </figure>
     <div class="use-ighg2-summary">
       <div class="use-copy">
-        <h3 id="useIghg2Title">3 · Find Uniqueness Within Proteomes</h3>
+        <h3 id="useIghg2Title">4 · Find Uniqueness Within Proteomes</h3>
         <p>Avoiding unwanted cross-reactivity is important for drug design and the selection of monoclonal antibody reagents. However, distinctive regions can be difficult to find. The mapping system described here identifies regions unmatched within a chosen comparison population, such as across the entire human proteome.</p>
         <p>In this example, IGHG2, the constant region of the IgG2 heavy chain, is compared with the human proteome at ≥8/9 core identity. Only one short stretch is unmatched at this threshold; the remaining regions closely resemble other IgG subclasses such as IgG1, IgG3, and IgG4.</p>
 

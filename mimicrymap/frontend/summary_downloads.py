@@ -151,8 +151,7 @@ def render(source):
   paired.append('<div class="download-comparison-group"><h3>'+escape(heading)+'</h3>'+table+'</div>')
  if seen!=set(groups):raise ValueError('Unclassified download comparisons: '+str(set(groups)-seen))
  source=source.replace('<!-- paired-downloads -->','\n'.join(paired))
- def example_archive(match):
-  key=match[1]
+ def example_archive_row(key):
   if key not in rows:raise ValueError('Unpublished summary requested: '+key)
   row=rows[key];a,b=row['target'],row['comparison']
   item=m.get('comprehensive_summaries',{}).get('rows',{}).get(key)
@@ -163,8 +162,13 @@ def render(source):
   description='Summaries in both directions' if a!=b else 'One summary'
   count=' · '.join(f"{counts[k]:,}" for k in dict.fromkeys([a,b]))
   cell=product_cell(archive,'summary',title,description)
-  return '<div class="download-table-scroll" tabindex="0" role="region" aria-label="'+escape(title)+' coverage summaries"><table class="download-table"><thead><tr><th scope="col">Libraries</th><th scope="col">Records</th><th scope="col">'+PRODUCT_LABELS['summary']+'</th></tr></thead><tbody><tr><th scope="row"><span class="download-row-title">'+escape(title)+'</span><span class="download-row-description">'+description+'</span></th><td>'+count+'</td>'+cell+'</tr></tbody></table></div>'
+  return title,'<tr><th scope="row"><span class="download-row-title">'+escape(title)+'</span><span class="download-row-description">'+description+'</span></th><td>'+count+'</td>'+cell+'</tr>'
+ def example_archive(match):
+  items=[example_archive_row(key) for key in match[1].split(',')]
+  label=items[0][0] if len(items)==1 else 'Assay libraries versus Curated Viral Proteomes (120)'
+  return '<div class="download-table-scroll" tabindex="0" role="region" aria-label="'+escape(label)+' coverage summaries"><table class="download-table"><thead><tr><th scope="col">Libraries</th><th scope="col">Records</th><th scope="col">'+PRODUCT_LABELS['summary']+'</th></tr></thead><tbody>'+''.join(item[1] for item in items)+'</tbody></table></div>'
  source=re.sub(r'<!-- summary-example-archive:([a-z0-9_]+) -->',example_archive,source)
+ source=re.sub(r'<!-- summary-example-archives:([a-z0-9_,]+) -->',example_archive,source)
  def inline(match):
   key=match[1]
   if key not in rows:raise ValueError('Unpublished summary requested: '+key)

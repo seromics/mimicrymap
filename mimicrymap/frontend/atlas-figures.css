@@ -95,7 +95,7 @@
 .use-results .use-plot-grid h4 { margin:0 0 .4rem; font-size:.82rem; font-weight:600; }
 .use-results .use-plot-grid .use-coverage { display:block; width:100%; height:auto; max-width:460px; margin:auto; }
 .use-results .use-parent-table { margin-top:.65rem; padding-top:.6rem; border-top:1px solid var(--mm-border); text-align:left; }
-.use-results .use-parent-table h5,.use-results .use-peptide-table h4 { margin:0; font-size:.8rem; font-weight:650; }
+.use-results .use-parent-table h5,.use-results :is(.use-peptide-table,.use-result-table) h4 { margin:0; font-size:.8rem; font-weight:650; }
 .use-results .use-table-heading { display:flex; align-items:baseline; flex-wrap:wrap; gap:.15rem .65rem; margin:0 0 .45rem; text-align:left; }
 .use-results .use-table-meta { margin:0; font-size:.68rem; line-height:1.4; }
 .use-results .use-data-scroll { min-width:0; overflow-x:auto; }
@@ -112,9 +112,9 @@
 .use-results .use-parent-name-text { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .use-results .use-accession { flex:none; white-space:nowrap; font-weight:500; }
 .use-results .use-parent-organism { display:block; margin-top:.16rem; font-size:.65rem; font-weight:400; opacity:.83; overflow-wrap:anywhere; }
-.use-results .use-peptide-table { margin-top:.8rem; padding:.7rem; background:transparent; border:1px solid var(--mm-border); border-radius:8px; color:var(--mm-body); }
+.use-results :is(.use-peptide-table,.use-result-table) { margin-top:.8rem; padding:.7rem; background:transparent; border:1px solid var(--mm-border); border-radius:8px; color:var(--mm-body); }
 .use-results .use-peptide-table table { min-width:820px; }
-.use-results .use-peptide-table .use-data-table th,.use-results .use-peptide-table .use-data-table td { color:var(--mm-body); }
+.use-results :is(.use-peptide-table,.use-result-table) .use-data-table :is(th,td) { color:var(--mm-body); }
 .use-results .use-peptide-table th:first-child { width:auto; }
 .use-results .use-peptide-table th:nth-child(2) { width:88px; text-align:right; }
 .use-results .use-peptide-table th:nth-child(4) { width:40px; }
@@ -581,7 +581,8 @@
   border-radius:7px; color:var(--mm-ink); background:var(--mm-surface); font:inherit; font-size:11px;
   text-align:left; cursor:pointer; }
 .af-picker-value { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.af-picker-arrow { flex:none; font-size:15px; color:var(--mm-muted); line-height:1; }
+.af-picker-arrow { flex:none; display:grid; place-items:center; width:14px; height:14px; color:var(--mm-muted); }
+.af-picker-arrow::after { content:""; width:6px; height:6px; border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor; transform:translateY(-1.5px) rotate(45deg); }
 .af-picker-trigger[aria-expanded="true"] { border-color:var(--hl-sel); }
 .af-picker-trigger:disabled { opacity:.5; cursor:default; }
 .af-picker-trigger:focus-visible, .af-picker-search:focus-visible { outline:2px solid var(--hl-hover,var(--hl-sel)); outline-offset:2px; }

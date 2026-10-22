@@ -17,7 +17,8 @@ if (args[0] === '--check') {
   if (!source || !args.includes('--write')) throw Error('Use node tools/sync-upstream.cjs --check, or <desktop-checkout> --write for an explicit promotion.');
   if (fs.existsSync(manifestPath) && !args.includes('--update')) throw Error('An existing snapshot needs --update. Review git diff after promotion.');
   const tracked = execFileSync('git', ['ls-files', '-z', 'mimicrymap'], {cwd:source,encoding:'utf8'}).split('\0').filter(Boolean);
-  for(const extra of ['mimicrymap/frontend/reproduce/unified-mapping.cjs','mimicrymap/workspace/prepare-mapping.cjs','mimicrymap/tools/build_pan_viral_pairs.py','mimicrymap/tools/build_selected_virus_summaries.py','mimicrymap/tools/stage_selected_virus_summaries.py','mimicrymap/frontend/reproduce/reference-links.js'])if(!tracked.includes(extra))tracked.push(extra);
+  if(!tracked.includes('mimicrymap/frontend/recorded_source.py'))tracked.push('mimicrymap/frontend/recorded_source.py');
+  for(const extra of ['mimicrymap/workspace/study-library.cjs','mimicrymap/frontend/reproduce/unified-mapping.cjs','mimicrymap/workspace/prepare-mapping.cjs','mimicrymap/tools/build_pan_viral_pairs.py','mimicrymap/tools/build_selected_virus_summaries.py','mimicrymap/tools/stage_selected_virus_summaries.py','mimicrymap/frontend/reproduce/reference-links.js'])if(!tracked.includes(extra))tracked.push(extra);
   const pairView=JSON.parse(fs.readFileSync(path.join(source,'mimicrymap/frontend/atlas-pairs-manifest.json')));
   if(!/^\/document-data\/pan_viral_pairs_[a-f0-9]+\.json\.gz$/.test(pairView.url))throw Error('Unexpected pan-viral page data path');
   const pairPayload='mimicrymap/frontend'+pairView.url;if(!tracked.includes(pairPayload))tracked.push(pairPayload);

@@ -10,9 +10,9 @@ The viral atlas uses 2,222 protein and polyprotein records across 120 curated vi
 
 ## Assay library summaries and antibody-data identifiers
 
-The assay libraries contain **21,197 HuProt 4.0 protein constructs**, **731,724 HuScan peptides**, and **680,704 VirScan/Exposome peptides**. VirScan/Exposome combines the full VirScan library, including viruses of nonhuman hosts, with the Exposome add-on. Downloads retain all 680,704 records, including 31 controls; the default mapping Scope excludes controls and shows 680,673 records across its three selectable subsets. The paired catalogue covers these assay libraries against each other, human Swiss-Prot, the 120-proteome viral atlas and canonical exposures, plus HuProt self-comparison. Each ready paired bundle includes both directions at 7/9, 8/9 and 9/9.
+The assay libraries contain **21,197 HuProt 4.0 array features**, **731,724 HuScan peptides**, and **680,704 VirScan/Exposome peptides**. VirScan/Exposome combines the full VirScan library, including viruses of nonhuman hosts, with the Exposome add-on. Downloads retain all 680,704 records, including 31 controls; the default mapping Scope excludes controls and shows 680,673 records across its three selectable subsets. The paired catalogue covers these assay libraries against each other, human Swiss-Prot, the 120-proteome viral atlas and canonical exposures, plus HuProt self-comparison. Each ready paired bundle includes both directions at 7/9, 8/9 and 9/9.
 Use the original assay ID to join a row to multiplex antibody measurements. **Antigen Target Protein Description** starts with its **JHU ID** for HuProt or **CDI ID** for HuScan and VirScan/Exposome, followed by the retained description when present. Mimicry Parent lists retain the corresponding partner IDs. For example, `JHU00001`, `CDIH20000001` and `CDIV20000001` identify individual assay records; gene names and accessions may recur across different records.
-Assay FASTAs preserve the original catalog headers, with the assay ID before the first `|`, and the exact stored sequences. Coverage uses each assayed construct or peptide's own length. Distinct records remain separate even when they share a sequence or accession. These CSVs contain sequence comparisons to align with antibody data, not antibody measurements. See [CDI Labs assay resources](https://www.cdilabs.com/resources/literature?page=1&category=content) for assay background.
+Assay FASTAs preserve the original catalog headers, with the assay ID before the first `|`, and the exact stored sequences. Coverage uses each assayed feature or peptide's own length. Distinct records remain separate even when they share a sequence or accession. These CSVs contain sequence comparisons to align with antibody data, not antibody measurements. See [CDI Labs assay resources](https://www.cdilabs.com/resources/literature?page=1&category=content) for assay background.
 Public filenames use `huprot4`, `huscan` and `virscan_exposome`, with single underscores between filename components. Displayed comparison names are HuProt 4.0, HuScan and VirScan/Exposome. Original record identifiers remain unchanged.
 
 ## What the tables contain
@@ -51,7 +51,7 @@ The **SeroMap Index (.sqlite)** ZIP contains the unified mapping database and it
 
 Downloads omit the secondary SQLite lookup indexes. SeroMap verifies the downloaded payload and builds those indexes locally before publishing the installed module. This preparation performs no sequence matching and changes no memberships. Both directional record identities, aliases, canonical groups, scope metadata and any saved window-pair counts are retained.
 
-The SQLite database contains the complete record populations, identities, aliases, organism metadata, matching pairs, exact residue ranges and statistical cutoff values. No JSON record/key sidecars or CSV reconstruction package are needed to use it. Download CSVs for readable tables; download the SeroMap index for protein-page browsing and proteome-reactivity analysis. Both products come from the same completed comparison, without a second sequence search.
+The SQLite database contains the complete record populations, identities, aliases, organism metadata, matching pairs, exact residue ranges and statistical cutoff values. No JSON record/key sidecars or CSV reconstruction package are needed to use it. Download CSVs for readable tables; download the SeroMap index for protein-page browsing and Reactivity Enrichment analysis. Both products come from the same completed comparison, without a second sequence search.
 
 The database declares supported identity thresholds and omits pairs below 10% on both sequences. New builds use exact residue coverage for memberships. Retained products that historically used one-decimal percentages preserve that statistical cutoff policy explicitly. Protein-page ribbons always use exact ranges.
 
@@ -63,13 +63,13 @@ The catalogue identifies each product’s actual columns, thresholds and files. 
 
 The HuProt, HuScan and VirScan/Exposome → Canonical Human Proteins products use the full
 20,431-record 2026_01 parent library and retain 7/9, 8/9 and 9/9 coverage.
-Their installable membership databases support protein-level analysis in Proteome Reactivity
+Their installable membership databases support protein-level analysis in Reactivity Enrichment
 in SeroMap; the CSVs retain the target-library summary format. CPU and the optional
 NVIDIA accelerator feed the same coverage calculations and file writers.
 
 An assay antigen contributes once to each qualifying protein set. Own-protein
 matches and evidence shared with other sets remain included. HuProt replicate
-spots count once per construct in study statistics; distinct peptides remain
+spots count once per array feature in study statistics; distinct peptides remain
 distinct, including overlapping or homologous peptides. The viral analysis uses
 the same counting rules. These memberships do not assign an exclusive infection
 origin or establish that an antibody binds the matched protein. Protein sets are
@@ -80,11 +80,11 @@ optional build product.
 
 Each CSV preserves complete fields in their original columns, including long sequences and parent lists. Import identifiers as text.
 
-## From sequence summaries to proteome reactivity
+## From Sequence Summaries to Reactivity Enrichment
 
-MimicryMap's summaries describe which assay antigens match each reference protein and how much of each sequence is covered. Complete membership indexes use the selected identity and coverage thresholds to form reference sets before antibody hits are considered. An antigen counts once within a set, even if it matches several proteins from that proteome; it can belong to several sets. Join these memberships to assay measurements and hit calls by the original assay identifiers, retaining measured non-hits and missingness.
+MimicryMap first defines antigen sets using sequence-identity and coverage thresholds, before sample hit calls are considered. Core identity counts identical residues within nine-residue cores; coverage is the fraction of the chosen full sequence spanned by qualifying cores. The summaries describe these matches, and the complete membership indexes supply the antigen lists at the selected thresholds. An antigen counts once within a set, even if it matches several proteins from that proteome; it can belong to several sets. Join these memberships to assay measurements and hit calls by the original assay identifiers, retaining measured non-hits and missingness.
 
-SeroMap's **Proteome Reactivity** analysis and the [Seromics Tools reference workflow](https://github.com/seromics/seromics-tools/blob/main/docs/REFERENCES.md) use these inputs for **repertoire enrichment**. Within each sample and platform, fold enrichment is the fraction of all hits belonging to a set divided by the fraction of measured antigens belonging to that set. A one-sided Fisher test assesses excess set hits; Sample BH corrects across eligible reference sets and platforms within that sample. Separate group tests and Group BH support cohort comparisons.
+SeroMap's **Reactivity Enrichment** analysis and the [Seromics Tools reference workflow](https://github.com/seromics/seromics-tools/blob/main/docs/REFERENCES.md) then compare each sample's recorded set hits with the number expected from its overall hit rate and measured set size, separately per platform. Fold enrichment is observed / expected hits. A one-sided Fisher test assesses excess set hits; Sample BH corrects across eligible reference sets within that sample and platform. BH or fold-enrichment gates define reactive set calls without changing antigen membership. Separate group tests and platform-specific Group BH support cohort comparisons.
 
 The CSVs supply sequence evidence; antibody measurements and enrichment statistics are separate. The separate SQLite database supplies memberships at its supported identity and coverage cutoffs without repeating sequence matching. CSVs are standalone summaries, not database installation inputs. A cutoff below the saved coverage floor requires a new comparison. Reproducing study statistics additionally requires the measured antigens, hit calls and selected statistical settings. Shared sequences remain shared evidence: enrichment does not establish a unique infection source or shared antibody binding.
 

@@ -3024,7 +3024,8 @@ function buildS3Toggles(){
 function applyStructure(acc){
   showStructure(!!S3);
   if (!S3) return;
-  window.MimicryMapViewer.node("s3meta").textContent=acc;
+  window.MimicryMapViewer.node("s3meta").textContent=
+    (T && T.acc===acc && T.displayAccession) || window.MimicryOneIdentity.publicText(acc);
   buildS3Toggles(); buildAsmToggle(acc); s3Cap();
   draw3d();
 }

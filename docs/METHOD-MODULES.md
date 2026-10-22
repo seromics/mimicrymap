@@ -1,7 +1,7 @@
 # Scientific methods and reusable figures
 
 MimicryMap's sequence comparison defines reusable reference sets. Applying
-those sets to measured antibody reactivity produces the Proteome reactivity
+those sets to measured antibody reactivity produces the Reactivity Enrichment
 figure: sequence comparison → reference sets → sample measurements → statistics
 and figures. That figure can be a capstone of the MimicryMap paper even though
 SeroMap currently supplies its application interface.
@@ -10,7 +10,7 @@ SeroMap currently supplies its application interface.
 
 | Method | Inputs | Current implementation in `seromap_electron` |
 | --- | --- | --- |
-| Proteome reactivity | Assay identities and sequence memberships, measured/hit masks, sample metadata, observation scope and coverage settings | `atlas/viewer/src/components/MimicryReactivity.jsx`, `src/lib/mimicryCounts.js`, `src/lib/mimicryPresentation.js`, `src/lib/sequenceLegend.js`, `server/mimicryReactivity.js`, `server/workspaceMimicryReferences.js` (paths relative to `atlas/viewer/` after the first) |
+| Reactivity Enrichment | Assay identities and sequence memberships, measured/hit masks, sample metadata, observation scope and coverage settings | `atlas/viewer/src/components/MimicryReactivity.jsx`, `src/lib/mimicryCounts.js`, `src/lib/mimicryPresentation.js`, `src/lib/sequenceLegend.js`, `server/mimicryReactivity.js`, `server/workspaceMimicryReferences.js` (paths relative to `atlas/viewer/` after the first) |
 | Repertoire | Sample/antigen hit calls with measuredness, metadata and explicit linked-sample design | `atlas/viewer/src/components/RepertoireAtlas.jsx`, `atlas/viewer/shared/repertoireStatistics.js` |
 | Admixture | Hit calls, measuredness, linked-set/person/visit/member metadata and selected anchors | `atlas/viewer/shared/familyAdmixture.js`, `atlas/viewer/shared/admixtureAnchorRoutes.js` and the existing summary renderer |
 
@@ -24,14 +24,14 @@ coverage-summary parent list alone is insufficient to reproduce these results.
 ## Standalone toolkit draft
 
 The private [seromics-tools](https://github.com/seromics/seromics-tools) repository
-now provides a headless runner and modules for Proteome reactivity, repertoire
+now provides a headless runner and modules for Reactivity Enrichment, repertoire
 and admixture, alongside the existing study-analysis methods. Its four cohort
 routes accept raw or supplied measurements and manifests, write current `.sero`
 files, and support matrix export/re-import. Individual HuProt GPR processing
 remains a separate route. No Electron interface or application server is needed.
 
 Complete candidate-index products from this CPU/GPU builder feed the toolkit's
-Proteome reactivity calculation through the same membership/alias/coverage reader
+Reactivity Enrichment calculation through the same membership/alias/coverage reader
 used by Workspace. The toolkit's synthetic example demonstrates FASTA → complete
 comparison → measured reactivity → fresh statistics → the existing capstone SVG.
 See its [reference-input guide](https://github.com/seromics/seromics-tools/blob/main/docs/REFERENCES.md).

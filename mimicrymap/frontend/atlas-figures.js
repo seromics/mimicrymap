@@ -2296,7 +2296,7 @@ legend: function () {
     trigger.setAttribute("aria-controls", config.id + "Popup");
     var value = document.createElement("span"); value.className = "af-picker-value";
     var arrow = document.createElement("span"); arrow.className = "af-picker-arrow";
-    arrow.textContent = "⌄"; arrow.setAttribute("aria-hidden", "true");
+    arrow.setAttribute("aria-hidden", "true");
     trigger.append(value, arrow);
     var popup = document.createElement("div"); popup.className = "af-picker-popup";
     popup.id = config.id + "Popup"; popup.hidden = true;
@@ -2588,8 +2588,8 @@ legend: function () {
               filename: val(f.file), csv: { rows: csvRows, columns: columns },
               svg: window.MimicryAtlasTable.exportNode(titledExport(svg, val(f.topic), C)),
               reproduction: {
-                id: "mimicry-atlas-" + f.key, title: val(f.topic),
-                methods: val(f.legend) + " This package replays published numeric results and the captured figure. Sequence matching and library-wide calculation are not performed.",
+                id: "mimicry-atlas-" + f.key, title: val(f.topic), legend: val(f.legend),
+                methods: "This package replays published numeric results and the captured figure. Sequence matching and library-wide calculation are not performed.",
                 settings: { proteome: PROTEOME, selection: JSON.parse(codeRevision), release: ACTIVE_RELEASE_META },
                 data: { rows: rows },
                 columnDefinitions: exportColumnDefinitions(columns),

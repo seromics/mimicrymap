@@ -377,10 +377,12 @@ class AnnotationHydrator:
             payload["source_accession"] = parsed["source_accession"]
         payload["assay_header"] = parsed
         payload["platform_record_id"] = parsed["platform_record_id"]
-        return self._finish(payload, gene=gene, accession=accession, protein=protein,
+        result = self._finish(payload, gene=gene, accession=accession, protein=protein,
                             description=description, organism=organism, platform=parsed["platform_id"],
                             full_header=full, canonical_header=_first(payload, "canonical_header") or full,
                             provenance=provenance, conflicts=conflicts)
+        from recorded_source import recorded_source_metadata
+        return recorded_source_metadata(result)
 
     def hydrate_canonical(self, value: Mapping[str, Any] | sqlite3.Row) -> dict[str, Any]:
         payload = _dict(value)

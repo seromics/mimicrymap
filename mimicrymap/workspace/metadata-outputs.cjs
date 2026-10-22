@@ -27,7 +27,7 @@ async function refresh({directory,output,comparison,targetDirectory,parentDirect
     let pair=pairRows.next();
     let headers,done=0;
     try{for await(const row of meta.csvRows(filePath(directory,comparison,name))){
-      if(!headers){headers=row;summary.append('\uFEFF'+meta.csvLine(headers));continue;}
+      if(!headers){headers=row;if(!headers.includes('Antigen Target FASTA Header'))headers=[...headers,'Antigen Target FASTA Header'];summary.append('\uFEFF'+meta.csvLine(headers));continue;}
       const next=ids.next();if(next.done)throw Error('Summary records do not match saved targets.');
       const q=queryAt(next.value.id),r=Object.fromEntries(headers.map((h,i)=>[h,row[i]]));
       Object.assign(r,core.summaryIdentity(q));
@@ -53,11 +53,12 @@ async function refresh({directory,output,comparison,targetDirectory,parentDirect
     }
     await refreshSummary(false);
     if(comparison.bidirectional)await refreshSummary(true);
-    pairs.append(meta.csvLine(['Target record','Target ID','Parent record','Parent ID','Organism','Reference set','Core identity ≥','Target coverage (%)',...(hasRegions?['Target regions (>=10% either)']:[]),'Parent coverage (%)',...(hasRegions?['Parent regions (>=10% either)']:[]),'Window pairs']));
+    pairs.append(meta.csvLine(['Target record','Target ID','Parent record','Parent ID','Organism','Reference set','Core identity ≥','Target coverage (%)',...(hasRegions?['Target regions (>=10% either)']:[]),'Parent coverage (%)',...(hasRegions?['Parent regions (>=10% either)']:[]),'Window pairs','Target FASTA Header','Parent FASTA Header']));
     for(const r of db.prepare('SELECT * FROM pairs ORDER BY target,identity,parent').iterate()){
       const p=parentAt(r.parent),group=p.reference_set||p.organism||comparison.parent.name;
       const saved=getRegions?.get(r.target,r.parent,r.identity),value=saved?regions.unpack(saved.payload):null;
-      pairs.append(meta.csvLine([r.target,r.source,r.parent,r.protein,p.organism||'',group,r.identity,r.tc,...(hasRegions?[value?regions.text(value.target_ranges):'']:[]),r.pc,...(hasRegions?[value?regions.text(value.parent_ranges):'']:[]),r.pairs]));
+      const q=targetAt(r.target);
+      pairs.append(meta.csvLine([r.target,r.source,r.parent,r.protein,p.organism||'',group,r.identity,r.tc,...(hasRegions?[value?regions.text(value.target_ranges):'']:[]),r.pc,...(hasRegions?[value?regions.text(value.parent_ranges):'']:[]),r.pairs,q.raw_header||q.header||'',p.raw_header||p.header||'']));
     }
   }finally{pairs.close();tdb.close();pdb.close();ta.close();pa.close();db.close();}
   }

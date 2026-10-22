@@ -5,10 +5,11 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const {DatabaseSync}=require('node:sqlite');
 const unified=require('./unified-mapping.cjs');
 const pkg=require('./summary-package.cjs'),coverage=require('./residue-coverage.js'),regions=require('./pair-regions.cjs');
+const identity=require('../mimicryone-identity.js');
 const digest=s=>crypto.createHash('sha256').update(s).digest('hex');
 async function checkFasta(file,records){
  const parser=require('./fasta-input.js'),lines=require('node:readline').createInterface({input:fs.createReadStream(file),crlfDelay:Infinity}),ordered=records.values();let header='',sequence='',count=0;
- const check=()=>{if(!header)return;const r=ordered.next();const parsed=parser.parse('>'+header+'\n'+sequence,'query',1);if(parsed.errors.length||r.done||parsed.records[0]?.sequence.length!==r.value.length||digest(parsed.records[0].sequence)!==(r.value.normalizedSha256||r.value.sha256))throw Error('Summary record metadata differs from its FASTA sequence');count++;};
+ const check=()=>{if(!header)return;const r=ordered.next();const parsed=parser.parse('>'+header+'\n'+sequence,'query',1);if(parsed.errors.length||r.done||parsed.records[0]?.sequence.length!==r.value.length||digest(parsed.records[0].sequence)!==(r.value.normalizedSha256||r.value.sha256))throw Error('Summary record metadata differs from its FASTA sequence');identity.validateRecord(r.value.metadata,{source:r.value.source,header});count++;};
  for await(const raw of lines){const line=raw.replace(/^\uFEFF/,'').trim();if(line.startsWith('>')){check();header=line.slice(1);sequence='';}else sequence+=line;}
  check();if(!ordered.next().done||count!==records.size)throw Error('FASTA and metadata record rosters differ');
 }
@@ -32,19 +33,23 @@ async function annotationDatabase(source,directory,manifest,side,records){
   const put=db.prepare('INSERT INTO records VALUES(?,?,?,?,?,?,?,?)');let header,count=0;
   if(key)for await(const row of pkg.csvRows(pkg.safeFile(source,key))){
    if(!header){header=row;if(header.join(',')!=='record_id,gene,accession,description,organism,taxid,reference_set')throw Error('Unsupported annotation CSV');continue;}
-   const r=byToken.get(row[0]);if(!r||row.length!==7)throw Error('Annotation identity mismatch');put.run(r.id,r.token,...row.slice(1));count++;
+   const r=byToken.get(row[0]);if(!r||row.length!==7)throw Error('Annotation identity mismatch');
+   const m=identity.validateRecord({...r.metadata,...Object.fromEntries(header.slice(1).map((key,i)=>[key,row[i+1]]))},{source:r.source});
+   put.run(r.id,r.token,m.gene||'',m.accession||'',m.description||'',m.organism||'',String(m.taxid||''),m.reference_set||'');count++;
   }
   if(!key){
    const file=fs.openSync(path.join(directory,filename+'.csv'),'wx');let buffer=pkg.csvLine(['record_id','gene','accession','description','organism','taxid','reference_set']);
    try{for(const r of records.values()){
-    const m=r.metadata,values=[r.token,m.gene||'',m.accession||m.source_accession||'',m.protein_name||m.name||'',m.organism||'',String(m.taxid||''),m.reference_set||''];
+    const m=identity.recordedSource(r.metadata),values=[r.token,m.gene||'',m.accession||m.source_accession||'',m.protein_name||m.name||'',m.organism||'',String(m.taxid||''),m.reference_set||''];
     put.run(r.id,...values);buffer+=pkg.csvLine(values);count++;
     if(buffer.length>1048576){fs.writeSync(file,buffer);buffer='';}
    }if(buffer)fs.writeSync(file,buffer);}finally{fs.closeSync(file);}
   }
   if(count!==records.size)throw Error('Incomplete annotation roster');db.exec('INSERT INTO base SELECT * FROM records;COMMIT;');
+  if(key){const file=fs.openSync(path.join(directory,filename+'.csv'),'wx');try{
+   fs.writeSync(file,pkg.csvLine(header));for(const row of db.prepare('SELECT token,gene,accession,description,organism,taxid,reference_set FROM records ORDER BY id').iterate())fs.writeSync(file,pkg.csvLine(Object.values(row)));
+  }finally{fs.closeSync(file);}}
  }finally{db.close();}
- if(key)fs.copyFileSync(pkg.safeFile(source,key),path.join(directory,filename+'.csv'));
 }
 async function build({source,directory,linkInputs=false,prepareIndexes=true},report=()=>{}){
  source=path.resolve(source);if(fs.statSync(source).isFile())source=path.dirname(source);
@@ -54,7 +59,7 @@ async function build({source,directory,linkInputs=false,prepareIndexes=true},rep
  for await(const r of pkg.jsonLines(pkg.safeFile(source,m.recordsFile))){
   if(![0,1].includes(r.side)||!Number.isSafeInteger(r.id)||r.id<0||r.id>0xffffffff||!Number.isSafeInteger(r.length)||r.length<0||!r.source||!r.token||!r.metadata||!Array.isArray(r.aliases)||!/^[a-f0-9]{64}$/.test(r.sha256)||records[r.side].has(r.id))throw Error('Invalid or duplicate summary record');
   if(r.id!==records[r.side].size+1)throw Error('Summary IDs must follow the complete FASTA record order, starting at 1');
-  records[r.side].set(r.id,r);
+  identity.validateRecord(r.metadata,{source:r.source,library:m[r.side?'parent':'target'].key});records[r.side].set(r.id,r);
  }
  for(const [side,name]of [[0,'target'],[1,'parent']])if(records[side].size!==m[name]?.records)throw Error('Incomplete '+name+' library roster');
  for(const [side,name]of [[0,'target'],[1,'parent']])await checkFasta(pkg.safeFile(source,m.inputs[name]),records[side]);
@@ -70,7 +75,7 @@ async function build({source,directory,linkInputs=false,prepareIndexes=true},rep
   const keys=pkg.jsonLines(pkg.safeFile(source,m.keysFile))[Symbol.asyncIterator](),seen=new Set();let header,columns;
   const pairCsv=fs.openSync(path.join(directory,'pair_coverage.csv'),'wx');
   try{
-   fs.writeSync(pairCsv,pkg.csvLine(['Target record','Target ID','Parent record','Parent ID','Organism','Reference set','Core identity ≥','Target coverage (%)','Target regions (>=10% either)','Parent coverage (%)','Parent regions (>=10% either)','Window pairs']));let buffer='';
+   fs.writeSync(pairCsv,pkg.csvLine(['Target record','Target ID','Parent record','Parent ID','Organism','Reference set','Core identity ≥','Target coverage (%)','Target regions (>=10% either)','Parent coverage (%)','Parent regions (>=10% either)','Window pairs','Target FASTA Header','Parent FASTA Header']));let buffer='';
    for await(const row of pkg.csvRows(pkg.safeFile(source,m.csv))){
     if(!header){
      header=row;columns=m.floors.map(f=>({f,u:header.indexOf('Unmatched Target Regions at '+f+'/9 (Whole Comparison Library)'),p:header.indexOf('Mimicry Parents at '+f+'/9 with Coverage (%) Parent|Target (>=10% either)'),r:header.indexOf('Mimicry Parent Regions at '+f+'/9 Parent|Target (>=10% either)')}));
@@ -100,7 +105,7 @@ async function build({source,directory,linkInputs=false,prepareIndexes=true},rep
       const protein=parent.metadata.protein_id||parent.source,organism=parent.metadata.reference_set||parent.metadata.organism||m.parent.name;
       const policy=typeof m.membershipCoverage==='object'?m.membershipCoverage[f]:m.membershipCoverage;
       writer.pair({a:target.id,b:parent.id,identity:f,ac:tc,bc:pc,stats_ac:policy==='csv-pair-percent'?Number(display[1]):tc,stats_bc:policy==='csv-pair-percent'?Number(display[0]):pc,windows:count,targetRanges:tr,parentRanges:pr});pairCount++;
-      buffer+=pkg.csvLine([target.id,target.source,parent.id,protein,parent.metadata.organism||'',organism,f,tc,regions.text(tr),pc,regions.text(pr),count]);
+      buffer+=pkg.csvLine([target.id,target.source,parent.id,protein,parent.metadata.organism||'',organism,f,tc,regions.text(tr),pc,regions.text(pr),count,target.metadata.raw_header||target.metadata.header||'',parent.metadata.raw_header||parent.metadata.header||'']);
       if(buffer.length>1048576){fs.writeSync(pairCsv,buffer);buffer='';}
      }
     }

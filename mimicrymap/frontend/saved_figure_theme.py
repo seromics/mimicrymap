@@ -74,12 +74,14 @@ def _native_track(root, prefix):
 
 def themed_svg(name, label):
     """Inline a display copy so the app's manual theme toggle updates it instantly."""
-    if not re.fullmatch(r"(?:hepacam|il10|ighg2)-coverage-[578]|hepacam-huprot-coverage-[57]|hepacam-huprot-viral-coverage-[57]|ighg2-full-unhighlighted", name):
+    if not re.fullmatch(r"(?:hepacam|il10|ighg2)-coverage-[578]|hepacam-huprot-coverage-[57]|hepacam-huprot-viral-coverage-[57]|ighg2-full-unhighlighted|reactivity-enrichment-(?:platforms|huprot-ebv)", name):
         raise ValueError(f"Unknown saved figure: {name}")
     assets = ASSETS.parent / "20260921" if name.startswith("hepacam-huprot-viral-") else ASSAY_ASSETS if name.startswith("hepacam-huprot-") else ASSETS
+    if name.startswith("reactivity-enrichment-"):
+        assets = ASSETS.parent / "20261018"
     root = ET.parse(assets / f"{name}.svg").getroot()
     prefix = "use-" + name
-    root.set("class", "use-native-figure " + ("use-coverage" if "-coverage-" in name else "use-full-sequence"))
+    root.set("class", "use-native-figure " + ("use-coverage" if "-coverage-" in name else "use-enrichment-plot" if name.startswith("reactivity-enrichment-") else "use-full-sequence"))
     root.set("role", "img")
     root.set("aria-label", label)
     root.set("data-saved-figure", name)
@@ -98,6 +100,19 @@ def themed_svg(name, label):
                     element.set(attribute, COVERAGE_COLORS[value])
                 elif value and value not in ("none", "transparent") and not value.startswith("var("):
                     raise ValueError(f"Unmapped coverage color: {value}")
+    elif name.startswith("reactivity-enrichment-"):
+        # Keep saved coordinates and statistics; inherit only the page's fonts and neutral ink.
+        for style in list(root.findall(_tag("style"))):
+            root.remove(style)
+        for element in root.iter():
+            if element.tag == _tag("text"):
+                element.set("fill", "var(--mm-ink)")
+                if name == "reactivity-enrichment-platforms" and element.text:
+                    element.text = element.text.replace("VirScan (IgG)", "VirScan")
+            if element.get("stroke") == "#1A2230":
+                element.set("stroke", "var(--mm-ink)")
+            if element.get("style") == "cursor: pointer;":
+                element.attrib.pop("style")
     else:
         # Site fonts are already loaded; avoid installing the export's embedded fonts.
         for style in list(root.findall(_tag("style"))):

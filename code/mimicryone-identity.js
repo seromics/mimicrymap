@@ -202,8 +202,57 @@
     return unique.join("\n");
   }
 
-  function resolve(record, options) {
+  function recordedSource(record) {
     record = record || {};
+    var fields = headerValue(record).replace(/^>/, '').split('|');
+    if (fields.length !== 5 || !/^CDI[HVE]\w+$/i.test(fields[0]) || !/^Seq[_ -]?\d+$/i.test(fields[4])) return record;
+    var id = first(record, ['assay_id', 'source_id']);
+    if (id && /^CDI/i.test(id) && id !== fields[0]) return record;
+    var human = /^CDIH/i.test(fields[0]);
+    var organism = humanize(fields[human ? 3 : 1]);
+    var previous = humanize(first(record, ['organism', 'species']));
+    var agrees = !previous || previous === organism;
+    var tax = human ? '9606' : agrees ? first(record, ['taxid', 'organism_taxid', 'taxonomy_id']) : '';
+    var taxonomy = human ? '' : fields[3], split = taxonomy.indexOf('_');
+    return Object.assign({}, record, {
+      accession:fields[2], source_accession:fields[2], organism:organism, species:organism,
+      taxid:tax, organism_taxid:tax, taxonomy_id:tax,
+      family_genus:taxonomy, family:split < 0 ? taxonomy : taxonomy.slice(0, split), genus:split < 0 ? '' : taxonomy.slice(split + 1),
+      organism_taxon_label:organism+' [TaxID: '+(tax || 'not supplied')+']',
+      reference_set:organism+' [TaxID: '+(tax || 'not supplied')+']'
+    });
+  }
+
+  function validateRecord(record, options) {
+    options = options || {};
+    var header = String(record.raw_header || record.header || record.seqid || record.source_header || record.short_id || '').replace(/^>+/, '').trim();
+    var id = options.source || record.assay_id || record.protein_id || '';
+    function fail(field) { throw Error('Sequence record identity conflict ('+field+'): '+id); }
+    if (options.header !== undefined && header !== String(options.header).replace(/^>+/, '').trim()) fail('FASTA header');
+    var aliases = {'builtin-human':'human_swissprot',canonical_human:'human_swissprot','builtin-viral120':'atlas_120_viruses','builtin-virscan':'virscan_exposome_current','builtin-huscan':'human_current','builtin-huprot':'huprot4','builtin-exposure':'canonical_exposure','builtin-nonvertebrate':'canonical_exposure_no_vertebrates'};
+    var library = record.library_id || record.library_key;
+    if (options.library && library && (aliases[library] || library) !== (aliases[options.library] || options.library)) fail('library');
+    var fields = header.split('|');
+    var accessionPattern = /^(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})(?:-\d+)?$/;
+    var statedAccession = header.match(/^(?:sp|tr)\|([^|]+)\|/)?.[1] || header.match(/(?:^|\|)UniProt=([^|]+)/)?.[1] || '';
+    if (!statedAccession && accessionPattern.test(fields[0].trim().split(/\s/)[0])) statedAccession = fields[0].trim().split(/\s/)[0];
+    if (/^JHU[A-Za-z0-9._-]+$/.test(fields[0])) {
+      for (var source of [options.source, record.assay_id, record.source_id].filter(Boolean)) if (String(source).split('|')[0] !== fields[0]) fail('source ID');
+      if (!statedAccession && accessionPattern.test(fields[2] || '')) statedAccession = fields[2];
+    }
+    if (accessionPattern.test(statedAccession)) for (var field of ['source_accession','accession']) if (record[field] && record[field] !== statedAccession) fail(field);
+    if (fields.length !== 5 || !/^CDI[HVE]\w+$/i.test(fields[0]) || !/^Seq[_ -]?\d+$/i.test(fields[4])) return record;
+    for (var source of [options.source, record.assay_id, record.source_id].filter(Boolean)) {
+      if (String(source).split('|')[0] !== fields[0]) fail('source ID');
+    }
+    var human = /^CDIH/i.test(fields[0]), organism = humanize(fields[human ? 3 : 1]);
+    for (var field of ['source_accession','accession']) if (record[field] && record[field] !== fields[2]) fail(field);
+    for (var field of ['organism','species']) if (record[field] && humanize(record[field]) !== organism) fail(field);
+    return record;
+  }
+
+  function resolve(record, options) {
+    record = recordedSource(record);
     options = options || {};
     var parsed = parseHeader(record);
     var fields = parsed.fields;
@@ -287,7 +336,7 @@
     } else if (family === "exposure" || family === "virscan") {
       primary = proteinName || gene || organism || accession || assayId || recordId || visibleAssayFallback(record);
       topParts = [primary, accession];
-      secondaryParts = [organism, first(record, ["strain", "source_strain"])];
+      secondaryParts = [organism, humanize(record.family_genus), first(record, ["strain", "source_strain"])];
     } else if (family === "human" || family === "huscan" || family === "huprot") {
       primary = gene || proteinName || accession || organism || assayId || recordId || visibleAssayFallback(record);
       topParts = [gene || proteinName, accession];
@@ -368,7 +417,9 @@
   }
 
   var api = {
-    version: "mimicryone/identity-resolver/2",
+    version: "mimicryone/identity-resolver/4",
+    validateRecord: validateRecord,
+    recordedSource: recordedSource,
     resolve: resolve,
     parseHeader: parseHeader,
     publicText: publicText,
