@@ -31,11 +31,15 @@ canonical human records, including shorter proteins. These populations and
 denominators must remain explicit in methods, legends and downloadable data.
 
 Retained MimicryOne sources include pooled coverage, per-parent results,
-reference sequences and the figure export workflow. A large earlier static
-capture is also retained, but its recorded run ended during capture; it is not
-yet the completed publication figure archive. Reuse these saved data and
-usable figures when assembling the paper deposit rather than rebuilding the
-sequence comparisons.
+reference sequences and the figure export workflow. The 15 September 2026
+static capture contains all 9,066 planned figure states for all 120 proteomes:
+9,066 SVGs, 9,066 PNGs, 9,066 captured legends and 3,183 shared CSVs. Its job
+failed the final source-change guard after completing capture, not during
+figure collection. Preserve that receipt and distinguish complete figure
+coverage from a claim of one frozen renderer throughout the historical run.
+The recovered atlas, saved data and reference FASTAs are staged independently
+of the legacy checkout. See [Publication staging](PUBLICATION.md). Reuse these
+results rather than rebuilding the sequence comparisons.
 
 The intended static companion follows the atlas hierarchy: collection-wide
 overview, one folder per viral proteome, then individual viral proteins. It
