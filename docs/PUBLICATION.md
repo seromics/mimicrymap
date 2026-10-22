@@ -39,11 +39,40 @@ reference/annotation packages. This is an inventory, not a decision to include
 every app annotation archive in the paper. The full 5/9 atlas is an additional
 product; it is not contained in that reference-download manifest.
 
-The complete atlas figure profile has 20 proteome-level states per virus,
+The historical atlas figure profile has 20 proteome-level states per virus,
 one coverage view per viral protein, and two individual-parent scatter
 highlights per viral protein: 2,400 + 2,222 + 4,444 = 9,066 states. Scatter
 figures show 5/9 and 7/9; their data retain all five thresholds. Figure states
 are alternate presentations, not independent experiments.
+
+## Extended atlas and EBV supplement
+
+`Supplementary-EBV-EBNA1/` in the local paper package contains an editable
+40-page Word figure bank, 36 supplementary plates and 66 SVG assets. The
+walkthrough covers collection comparisons, all standard EBV views, EBNA1
+coverage and target rankings, and retained HEPACAM site/sequence exports.
+Full target and literal-pair tables accompany the figure examples.
+
+The historical 9,066 states are not every current view. The supplement adds
+31 current native examples: 20 standard EBV states, three EBNA1 arrangements,
+two EBNA1 highlights, and six global literal-pair rankings at 7/9–9/9 by
+human or viral coverage. It also includes 27 retained sequence export
+variants and eight summaries derived from saved data. No sequence matches
+or antibody calls were recalculated.
+
+The historical per-parent exports used only subcellular-location arrangement.
+Genome-position and protein-length arrangements would add 4,444 states across
+2,222 parents; EBNA1's two are included here, leaving 4,442 unexported. The
+coverage ledger records this boundary. Pagination, themes and arbitrary
+highlights are not separate scientific variants.
+
+The native human-target atlas table retains the viral partner selected at
+7/9 when another ranking floor is displayed. The literal-pair table instead
+lists eligible pairs at each threshold, with a 10% either-endpoint coverage
+floor and a 20,431-record human reference including short proteins. These
+are distinct from the 20,333-protein atlas population and must remain
+explicit in legends. The new EBNA1 rankings use complete saved covered-
+residue arrays without a 10% pair-list floor.
 
 ## Local package
 
