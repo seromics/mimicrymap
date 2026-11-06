@@ -18,17 +18,32 @@ if (args[0] === '--check') {
   if (fs.existsSync(manifestPath) && !args.includes('--update')) throw Error('An existing snapshot needs --update. Review git diff after promotion.');
   const tracked = execFileSync('git', ['ls-files', '-z', 'mimicrymap'], {cwd:source,encoding:'utf8'}).split('\0').filter(Boolean);
   if(!tracked.includes('mimicrymap/frontend/recorded_source.py'))tracked.push('mimicrymap/frontend/recorded_source.py');
+  const methodDocs=['HOW-IT-WORKS.md','calculation/method-overview-wide.svg'];
+  for(const extra of ['mimicrymap/frontend/plot-navigation.js','mimicrymap/tools/build_method_walkthrough.py',...methodDocs.map(file=>'mimicrymap/frontend/reproduce/docs/'+file)])if(!tracked.includes(extra))tracked.push(extra);
   for(const extra of ['mimicrymap/workspace/study-library.cjs','mimicrymap/frontend/reproduce/unified-mapping.cjs','mimicrymap/workspace/prepare-mapping.cjs','mimicrymap/tools/build_pan_viral_pairs.py','mimicrymap/tools/build_selected_virus_summaries.py','mimicrymap/tools/stage_selected_virus_summaries.py','mimicrymap/frontend/reproduce/reference-links.js'])if(!tracked.includes(extra))tracked.push(extra);
   const pairView=JSON.parse(fs.readFileSync(path.join(source,'mimicrymap/frontend/atlas-pairs-manifest.json')));
   if(!/^\/document-data\/pan_viral_pairs_[a-f0-9]+\.json\.gz$/.test(pairView.url))throw Error('Unexpected pan-viral page data path');
   const pairPayload='mimicrymap/frontend'+pairView.url;if(!tracked.includes(pairPayload))tracked.push(pairPayload);
   const files = tracked.filter(f => !/(^|\/)test[^/]*\.(?:js|mjs|cjs|py)$/.test(f) && !/\.zip$/.test(f) && !f.endsWith('/source-origin.json'));
+  // Include newly imported shared helpers before the next source commit.
+  const included = new Set(files);
+  for (const file of files) {
+    if (!/\.(?:js|mjs|cjs)$/.test(file)) continue;
+    const text = fs.readFileSync(path.join(source, file), 'utf8');
+    for (const match of text.matchAll(/(?:\bfrom\s*|\bimport\s*\(?\s*|\brequire\s*\(\s*)["'](\.[^"']+)["']/g)) {
+      const dependency = path.posix.normalize(path.posix.join(path.posix.dirname(file), match[1]));
+      if (included.has(dependency) || !dependency.startsWith('mimicrymap/') || !/\.(?:js|mjs|cjs|css|json)$/.test(dependency)) continue;
+      if (!fs.existsSync(path.join(source, dependency))) continue;
+      included.add(dependency); files.push(dependency);
+    }
+  }
   const mappings = files.map(f => [f,f]);
   const pipeline = ['export-core.js','context-score.js','ranking.js','residue-coverage.js','projected-events.js','fasta-input.js','parallel-scan.cjs','pipeline.cjs','pipeline-runner.cjs','pipeline-selection.js','pipeline-layout.json','summary-package.cjs','summary-index.cjs','unified-mapping.cjs','pair-regions.cjs','mapping-writer.cjs','mapping-csv.cjs','mapping-bundles.cjs','zip-files.cjs'];
   for (const f of pipeline) mappings.push(['code/'+f,'mimicrymap/frontend/reproduce/'+f]);
   for (const f of ['custom-worker.js','mimicryone-identity.js']) mappings.push(['code/'+f,'mimicrymap/frontend/'+f]);
   for (const destination of ['code/plot-palette.cjs','mimicrymap/frontend/reproduce/plot-palette.cjs']) mappings.push([destination,'atlas/viewer/shared/plotPalette.cjs']);
   for (const f of ['TABLES.md','GLOSSARY.md','SUMMARY-DOWNLOADS.md']) mappings.push(['docs/'+f,'mimicrymap/frontend/reproduce/docs/'+f]);
+  for (const f of methodDocs) mappings.push(['docs/'+f,'mimicrymap/frontend/reproduce/docs/'+f]);
   const manifest = {schema:'mimicrymap.source-snapshot/1',repository:'https://github.com/seromics/seromap_electron',commit:execFileSync('git',['rev-parse','HEAD'],{cwd:source,encoding:'utf8'}).trim(),files:[]};
   for (const [destination, origin] of mappings) {
     const bytes=fs.readFileSync(path.join(source,origin)), target=path.join(root,destination);

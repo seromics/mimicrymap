@@ -8,14 +8,14 @@
     if (value != null) n.textContent = value;
     return n;
   }
-  async function exportFigure({title, subtitle, panels, footer, metadata, filename, kind}) {
+  async function buildFigure({title, subtitle, panels, footer, metadata, filename, kind, variant}) {
     if (!["svg", "png"].includes(kind)) throw new Error("Unsupported figure format.");
     await document.fonts.ready;
-    const paper=window.MimicryPlotPalette.variables();
+    const paper=window.MimicryPlotPalette.variables(variant);
     const width = 720, margin = 20, contentWidth = width - 2 * margin;
     const out = node("svg", {xmlns:ns, width, "font-family":"Inter, Arial, sans-serif", role:"img"});
     out.append(node("title", {}, title));
-    const background = node("rect", {width, fill:paper["--mm-surface"]});
+    const background = node("rect", {width, fill:paper["--c-bg"],"data-figure-background":""});
     out.append(background);
     const context = document.createElement("canvas").getContext("2d");
     let y = 24;
@@ -51,29 +51,15 @@
       copy.setAttribute("x", (width - plotWidth) / 2); copy.setAttribute("y", y);
       copy.setAttribute("width", plotWidth); copy.setAttribute("height", plotHeight);
       copy.removeAttribute("class"); copy.removeAttribute("style");
-      window.MimicryPlotPalette.freezeSVG(copy);
+      window.MimicryPlotPalette.freezeSVG(copy,{...variant,background:'transparent'});
       out.append(copy); y += plotHeight + 18;
     }
     paragraph(footer, 10.5, 400, paper["--mm-body"]);
-    out.append(node("metadata", {}, JSON.stringify({...metadata,plotPalette:window.MimicryPlotPalette.snapshot()})));
+    out.append(node("metadata", {}, JSON.stringify({...metadata,plotPalette:window.MimicryPlotPalette.snapshot(variant)})));
     out.setAttribute("height", y + 12); out.setAttribute("viewBox", `0 0 ${width} ${y + 12}`);
     background.setAttribute("height", y + 12);
-    const svgBlob = new Blob([new XMLSerializer().serializeToString(out)], {type:"image/svg+xml;charset=utf-8"});
-    let blob = svgBlob;
-    if (kind === "png") {
-      const imageURL = URL.createObjectURL(svgBlob);
-      try {
-        const image = new Image(); image.src = imageURL; await image.decode();
-        const canvas = document.createElement("canvas"), scale = 3;
-        canvas.width = width * scale; canvas.height = Math.ceil(y + 12) * scale;
-        canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
-        blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
-        if (!blob) throw new Error("The figure image could not be created.");
-      } finally { URL.revokeObjectURL(imageURL); }
-    }
-    const url = URL.createObjectURL(blob), link = document.createElement("a");
-    link.href = url; link.download = `${filename}.${kind}`; link.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    return out;
   }
+  function exportFigure(options){return window.MimicryPlotPalette.downloadFigure(variant=>buildFigure({...options,variant}),options.filename,options.kind);}
   window.MimicryFigureExport = exportFigure;
 })();

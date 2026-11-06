@@ -14,7 +14,7 @@ This source stage includes:
 - Portable detailed CPU comparisons with captured inputs and settings.
 - Whole-library builds producing coverage CSVs, pair-specific residue ranges
   and reusable mapping databases; complete matching positions are optional.
-- Optional NVIDIA/CUDA matching at 7/9–9/9. CPU supports 5/9–9/9.
+- CPU and optional NVIDIA/CUDA research builds at 5/9–9/9, defaulting to 7/9. SeroMap's bulk-build interface offers 7/9–9/9 through the same engine.
 - Stable record identities, original FASTA headers and optional annotations.
 - Documentation separating the full 5/9–9/9 atlas from general-use 7/9–9/9
   summaries, mapping indexes and selected manuscript figures.

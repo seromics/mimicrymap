@@ -9,7 +9,7 @@ function sourceKey(id,peptide){
 
 // Read only the installed antigen catalogue. Calls, normalization, and sample
 // matrices are not inputs to sequence-library construction.
-async function exportStudyLibrary({file,platform,directory},report=()=>{}){
+async function exportStudyLibrary({file,platform,directory,allowIncomplete=false},report=()=>{}){
   const fs=require('node:fs'),fsp=require('node:fs/promises'),path=require('node:path');
   const {DatabaseSync}=require('node:sqlite');
   const db=new DatabaseSync(file,{readOnly:true});
@@ -34,9 +34,10 @@ async function exportStudyLibrary({file,platform,directory},report=()=>{}){
       buffer+='>'+sourceKey(row.source_id,aa)+' '+String(row.source_id).replace(/[\r\n\x00-\x1f]/g,' ')+'\n'+aa+'\n';rows++;
       if(buffer.length>1024*1024){await flush();report({phase:'Preparing assay sequences',done:rows+missing+invalid,total});}
     }
-    if(missing||invalid)throw Error(`Cross-mapping needs amino-acid sequences for every assay record: ${missing} missing, ${invalid} invalid. The installed study is unchanged.`);
+    if((missing||invalid)&&!allowIncomplete)throw Error(`Cross-mapping needs amino-acid sequences for every assay record: ${missing} missing, ${invalid} invalid. The installed study is unchanged.`);
+    if(!rows)throw Error('No usable amino-acid sequences are recorded for this assay.');
     await flush();await handle.close();await fsp.rename(pending,destination);
-    return {source:destination,sha256:hash.digest('hex'),records:rows,sourceIdentity:IDENTITY};
+    return {source:destination,sha256:hash.digest('hex'),records:rows,missing,invalid,sourceIdentity:IDENTITY};
   }finally{await handle.close().catch(()=>{});db.close();}
 }
 // Reuse a manually installed comparison only when every source ID resolves

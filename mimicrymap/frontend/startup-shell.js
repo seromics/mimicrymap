@@ -86,6 +86,8 @@
     ready: ready
   });
   document.addEventListener("DOMContentLoaded", function () {
+    var startupShell = document.getElementById("startupShell");
+    if (startupShell && pending) startupShell.hidden = false;
     var hero = document.querySelector(".hero");
     if (hero) { hero.inert = true; hero.setAttribute("aria-busy", "true"); }
     var retry = document.getElementById("startupRetry");

@@ -23,6 +23,10 @@
   var suppressUntilMove = false;
   var lastX = null, lastY = null;
 
+  function sharedTooltipLayer() {
+    return document.documentElement.getAttribute('data-seromap-tooltip-layer') === 'true';
+  }
+
   function pointerMoved(event) {
     if (!event || typeof event.clientX !== "number") return false;
     return event.clientX !== lastX || event.clientY !== lastY;
@@ -80,6 +84,7 @@
   }
 
   function tooltipTarget(start) {
+    if (sharedTooltipLayer()) { hide(); return null; }
     if (!start || start.nodeType !== 1) return null;
     var node = start.closest(SELECTOR);
     if (!node) return null;
@@ -138,6 +143,7 @@
   }
 
   function show(node, event, owner) {
+    if (sharedTooltipLayer()) { hide(); return; }
     normalizeNativeTitle(node);
     var text = (node.getAttribute(ATTRIBUTE) || "").trim();
     if (window.MimicryOneIdentity) text=window.MimicryOneIdentity.publicText(text);

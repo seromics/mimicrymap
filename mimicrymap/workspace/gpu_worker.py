@@ -1,6 +1,6 @@
 """MimicryOne bulk CUDA matching adapted to Workspace FASTAs and record IDs.
 
-Uses the original 14 weight-6 covering seeds and window-budgeted multi-record
+Uses threshold-specific complete covering seeds and window-budgeted multi-record
 batches. Coverage and scientific CSVs remain in the shared JavaScript writers.
 """
 import argparse
@@ -15,7 +15,7 @@ import threading
 
 # The worker is started with -I; only its own trusted code directory is added.
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from bulk_seeds import M7_SEEDS, first_eligible_seed_table
+from bulk_seeds import seeds_for_floor, first_eligible_seed_table
 
 
 def emit(value):
@@ -62,8 +62,8 @@ def main():
               "memory": int(cp.cuda.runtime.getDeviceProperties(0)["totalGlobalMem"]),
               "cupy": cp.__version__})
         return
-    if args.floor not in (7, 8, 9):
-        raise RuntimeError("GPU matching supports 7/9–9/9. Use CPU for 5/9–6/9.")
+    if args.floor not in (5, 6, 7, 8, 9):
+        raise RuntimeError("GPU matching supports 5/9–9/9.")
 
     # EOF also arrives when the Node worker is killed. The reader remains active
     # during kernels so cancellation never leaves an orphaned GPU calculation.
@@ -81,10 +81,11 @@ def main():
     chunk_size = max(1, int(os.environ.get("SERO_GPU_CHUNK_WINDOWS", "250000")))
     batch_size = max(1, int(os.environ.get("SERO_GPU_CANDIDATES", "250000")))
     query_budget = max(1, int(os.environ.get("SERO_GPU_QUERY_WINDOWS", "100000")))
-    first_seed = cp.asarray(first_eligible_seed_table(), dtype=cp.uint8)
-    # One selective index serves 7/9, 8/9 and 9/9. Old caches remain removable
-    # through Workspace but cannot be mistaken for this different seed layout.
-    cache_prefix = "gpu-v2-m7-"
+    seeds = seeds_for_floor(args.floor)
+    first_seed = cp.asarray(first_eligible_seed_table(args.floor), dtype=cp.uint8)
+    # Preserve the existing 7/9+ cache; lower floors need their own complete
+    # indexes and must never reuse a higher-floor candidate population.
+    cache_prefix = "gpu-v2-m7-" if args.floor >= 7 else f"gpu-v3-m{args.floor}-"
     index_file = os.path.join(args.library, cache_prefix + "manifest.npz")
     chunks = []
     if os.path.exists(index_file):
@@ -110,7 +111,7 @@ def main():
             host = {"windows": np.concatenate(windows), "owners": np.concatenate(owners),
                     "positions": np.concatenate(positions)}
             gpu = cp.asarray(host["windows"])
-            for b, seed in enumerate(M7_SEEDS):
+            for b, seed in enumerate(seeds):
                 code, valid = keys(gpu, seed, cp)
                 inds = cp.flatnonzero(valid)
                 order = inds[cp.argsort(code[inds])]
@@ -192,7 +193,7 @@ def main():
         for qwin, qowners, qpositions, qskips in query_chunks():
             for filename in chunks:
                 p = load_chunk(filename)
-                for b, seed in enumerate(M7_SEEDS):
+                for b, seed in enumerate(seeds):
                     qkeys, valid = keys(qwin, seed, cp)
                     sorted_keys, order = p["keys" + str(b)], p["order" + str(b)]
                     left = cp.searchsorted(sorted_keys, qkeys, side="left")

@@ -350,7 +350,7 @@
    const height=svg=>Number(svg.match(/height="([\d.]+)"/)[1]);
    const top=height(target)+12,total=top+Math.max(height(windowPanel),height(parents));
    const place=(svg,x,y)=>svg.replace('<svg ',`<svg x="${x}" y="${y}" `);
-   return `<svg xmlns="http://www.w3.org/2000/svg" width="2020" height="${total}" viewBox="0 0 2020 ${total}"><title>${esc(p.identity?.primaryLine||p.gene||p.protein_id)} \u2014 Full overview</title><rect width="2020" height="${total}" fill="${esc(s.palette?.background||esc(palette.background))}"/>${place(target,0,0)}${place(windowPanel,0,top)}${place(parents,1020,top)}</svg>`;
+   return `<svg xmlns="http://www.w3.org/2000/svg" width="2020" height="${total}" viewBox="0 0 2020 ${total}"><title>${esc(p.identity?.primaryLine||p.gene||p.protein_id)} · Full Overview</title><rect width="2020" height="${total}" fill="${esc(s.palette?.background||esc(palette.background))}"/>${place(target,0,0)}${place(windowPanel,0,top)}${place(parents,1020,top)}</svg>`;
   }
   let y=28, parts=[];
   const text=(x,y,t,size=12,fill=esc(palette.body),extra='')=>parts.push(`<text x="${x}" y="${y}" font-size="${size}" fill="${fill}" ${extra}>${esc(t)}</text>`);
@@ -554,8 +554,8 @@
     const organism=ellipsize(compactOrganism(row.parent_organism),10,labelWidth);
     const cy=y+(organism?7.5:0);
     const best=bestByParent.get(row.parent_id);
-    centered(570,cy,row.target_residue_coverage.percent?.toFixed(1)??'\u2014');
-    centered(695,cy,row.parent_residue_coverage.percent?.toFixed(1)??'\u2014');centered(820,cy,(/*@copy export-core.text.14dde21*/`${row.best_identity}/9`/*@endcopy*/));
+    centered(570,cy,row.target_residue_coverage.percent?.toFixed(1)??'-');
+    centered(695,cy,row.parent_residue_coverage.percent?.toFixed(1)??'-');centered(820,cy,(/*@copy export-core.text.14dde21*/`${row.best_identity}/9`/*@endcopy*/));
     centered(945,cy,best?(/*@copy export-core.text.bc716f4*/`${best.identity}/27`/*@endcopy*/):'');
     y+=15;
     if(organism){text(24,y,organism,10);y+=13;}
@@ -568,7 +568,7 @@
    parts.push(`<image x="24" y="${y}" width="952" height="600" href="${image}"/>`);y+=600;
   }
   const content=parts.join('');
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${y+12}" viewBox="0 0 ${width} ${y+12}" font-family="Inter,Arial,sans-serif"><title>${esc(p.gene||p.protein_id)} \u2014 MimicryMap</title><style>${snapshot.font_css||''}</style><rect width="100%" height="100%" rx="12" fill="${esc(palette.background)}"/>${content}</svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${y+12}" viewBox="0 0 ${width} ${y+12}" font-family="Inter,Arial,sans-serif"><title>${esc(p.gene||p.protein_id)} · MimicryMap</title><style>${snapshot.font_css||''}</style><rect width="100%" height="100%" rx="12" fill="${esc(palette.background)}"/>${content}</svg>`;
  }
 
  function annotationColumns(sequence,metadata){

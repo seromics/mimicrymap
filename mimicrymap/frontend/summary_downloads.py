@@ -88,7 +88,7 @@ def render(source):
   human_rows.append(f'<tr><th scope="row"><span class="download-row-title"><!-- summary-label:{key} --></span><span class="download-row-description">{description} Summaries describe sequence coverage at 7/9–9/9.</span></th><td><span class="download-mobile-label" aria-hidden="true">Target rows: </span><!-- summary-count:{key} --></td><td class="summary-file-cell"><span class="download-mobile-label" aria-hidden="true">Downloads</span><div class="download-actions"><!-- summary-links:{key} --></div></td><td class="summary-file-cell"><span class="download-mobile-label" aria-hidden="true">Target FASTA</span><!-- summary-target-fasta:{key} --></td><td class="summary-file-cell"><span class="download-mobile-label" aria-hidden="true">Comparison FASTA</span><!-- summary-comparison-fasta:{key} --></td></tr>')
  source=source.replace('<!-- assay-human-downloads -->','\n'.join(human_rows))
  def link(item,label,title):
-  if item.get('ready') is False:return f'<span class="download-link" aria-disabled="true" title="Preparing download" aria-label="{escape(title)} — preparing">{label}<span>Preparing</span></span>'
+  if item.get('ready') is False:return f'<span class="download-link" aria-disabled="true" title="Preparing download" aria-label="{escape(title)}, preparing">{label}<span>Preparing</span></span>'
   url=public_url(item["url"])
   return f'<a class="download-link" href="{escape(url)}" download="{escape(Path(url).name)}" aria-label="{escape(title)}">{label}<span>{size(item["bytes"])}</span></a>'
  def links(row):

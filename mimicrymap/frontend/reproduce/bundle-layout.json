@@ -70,13 +70,13 @@
     },
     "export-core.js": {
       "path": "code/export-core.js",
-      "description": "The same CSV and table implementation used by the site.",
+      "description": "Writes CSV exports and result tables.",
       "source": "/reproduce/export-core.js",
       "legacy": "export-core.js"
     },
     "context-score.js": {
       "path": "code/context-score.js",
-      "description": "The shared Context BLOSUM62 implementation.",
+      "description": "Calculates Context BLOSUM62 scores.",
       "source": "/reproduce/context-score.js",
       "legacy": "context-score.js"
     },
@@ -88,7 +88,7 @@
     },
     "residue-coverage.js": {
       "path": "code/residue-coverage.js",
-      "description": "The shared union-of-core-residues coverage implementation.",
+      "description": "Calculates coverage from merged qualifying core residues.",
       "source": "/reproduce/residue-coverage.js",
       "legacy": "residue-coverage.js"
     },
@@ -106,7 +106,7 @@
     },
     "layout": {
       "path": "code/bundle-layout.json",
-      "description": "Versioned file roles and paths shared by the browser exporter, source ZIP builder, and offline runner.",
+      "description": "Lists package files, their roles and locations.",
       "source": "/reproduce/bundle-layout.json"
     },
     "TABLES.md": {
@@ -128,7 +128,7 @@
     },
     "GLOSSARY.md": {
       "path": "docs/GLOSSARY.md",
-      "description": "Definitions generated from the site's single terminology authority.",
+      "description": "Definitions of comparison inputs, sequence matches and result fields.",
       "source": "/reproduce/docs/GLOSSARY.md"
     },
     "comparison": {
@@ -137,18 +137,18 @@
     },
     "pipeline": {
       "path": "code/pipeline.cjs",
-      "description": "Configurable FASTA pipeline using the same CPU worker; separate from frozen-result verification.",
+      "description": "Runs a new FASTA comparison with configurable settings.",
       "source": "/reproduce/pipeline.cjs"
     },
     "fasta-input.js": {
       "path": "code/fasta-input.js",
       "source": "/reproduce/fasta-input.js",
-      "description": "The browser Custom FASTA parser and normalization, shared with the offline pipeline."
+      "description": "Reads and normalizes Custom FASTA inputs."
     },
     "mimicryone-identity.js": {
       "path": "code/mimicryone-identity.js",
       "source": "/mimicryone-identity.js",
-      "description": "The same header and public protein-label resolver used by the browser."
+      "description": "Reads record identifiers and protein labels from FASTA headers."
     },
     "ensure-node.py": {
       "path": "run/ensure-node.py",

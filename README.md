@@ -1,5 +1,9 @@
 # MimicryMap
 
+![MimicryMap in five steps](docs/calculation/method-overview-wide.svg)
+
+[Method overview and worked example](docs/HOW-IT-WORKS.md)
+
 **Map antigen-specific sequence resemblance within and across proteomes.**
 
 MimicryMap maps shared amino-acid sequence regions between proteins, peptides and whole libraries. Choose a target and a comparison library, inspect matching nine-residue cores, and measure how much of each sequence those matches cover. The same method supports an interactive sequence explorer, whole-library coverage summaries, reusable mapping databases and local FASTA analyses.
@@ -43,7 +47,9 @@ node build.cjs --targets inputs/antigen-target.fasta --parents inputs/mimicry-pa
 ```
 
 For NVIDIA acceleration, add `--engine gpu --python /path/to/CUDA/python`.
-CPU supports 5/9–9/9; GPU supports 7/9–9/9. The default floor is 7/9.
+CPU and GPU support 5/9–9/9. The default floor is 7/9; add `--floor 5`
+or `--floor 6` for lower-threshold research builds. SeroMap's library-build
+interface offers 7/9–9/9 using the same engine.
 Add `--retain-positions` only when complete saved sequence lookups are needed.
 See [Build libraries](docs/BUILD.md) for installation, metadata and reproduction.
 

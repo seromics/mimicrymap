@@ -7,7 +7,7 @@ html[data-startup="loading"] .hero > .vig { visibility:visible !important; }
 html[data-startup="loading"] .startup-shell {
   display:grid;
   position:fixed;
-  inset:0;
+  inset:var(--app-loading-top,0px) 0 var(--app-loading-bottom,0px);
   z-index:10000;
   place-items:center;
   padding:24px;
@@ -18,7 +18,7 @@ html[data-startup="loading"] .startup-shell {
 .startup-frame > p {
   margin:0;
   font-family:inherit;
-  font-size:clamp(1.25rem, 2.5vw, 1.75rem);
+  font-size:14px;
   font-weight:600;
   line-height:1.15;
   letter-spacing:-.035em;
@@ -31,3 +31,6 @@ html[data-startup="loading"] .startup-shell {
   font:inherit; cursor:pointer;
 }
 #startupRetry[hidden] { display:none; }
+
+.stage>.native-player-loading{display:none}
+.stage[data-player-state="loading"]>.native-player-loading{display:grid}

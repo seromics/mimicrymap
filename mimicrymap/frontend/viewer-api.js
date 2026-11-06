@@ -17,7 +17,7 @@
    hooks.resizeCore?.(next,previous);hooks.resizeOverall?.(next,previous);
   },
   register(value){controller=value;},
-  cancelSelection(){request++;controller?.cancel();},
+  cancelSelection(){request++;controller?.cancel();root.MimicryOne?.cancelLocalRun();},
   async select(record,settings={}){
    const version=++request;controller?.cancel();
    await root.MimicryOneAnalysisBootstrap;
@@ -40,4 +40,5 @@
    return ()=>{observer.disconnect();cancelAnimationFrame(frame);if(structure.parentNode===target)home.insertBefore(structure,next);};
   }
  };
+ root.addEventListener('pagehide',()=>root.MimicryMapViewer.cancelSelection());
 })(window);

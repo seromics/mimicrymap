@@ -1388,6 +1388,15 @@
       "sha256": "eba7d8ddd10b89f4e7fefdeefb0885cf0a295af4a398c89bb6c6c65c5d63204d",
       "url": null,
       "kind": "coverage-summaries"
+    },
+    {
+      "file": "UniProt-Taxonomy.zip",
+      "title": "UniProt Taxonomy",
+      "bytes": 117506706,
+      "uncompressedBytes": 359214093,
+      "sha256": "6a2629bb708777d22384678dbc3e7f50cb56af6e83a1a77e213ee4f5ec5674f4",
+      "url": null,
+      "kind": "taxonomy"
     }
   ]
 }

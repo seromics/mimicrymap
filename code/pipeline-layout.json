@@ -4,52 +4,52 @@
     "summary-package.cjs": {
       "path": "code/summary-package.cjs",
       "source": "/reproduce/summary-package.cjs",
-      "description": "Shared record normalization and package file utilities."
+      "description": "Normalizes records and manages package files."
     },
     "pair-regions.cjs": {
       "path": "code/pair-regions.cjs",
       "source": "/reproduce/pair-regions.cjs",
-      "description": "Shared encoding of independent residue unions."
+      "description": "Encodes independent residue unions."
     },
     "export-core.js": {
       "path": "code/export-core.js",
-      "description": "The same CSV and table implementation used by the site.",
+      "description": "Writes CSV exports and result tables.",
       "source": "/reproduce/export-core.js"
     },
     "context-score.js": {
       "path": "code/context-score.js",
-      "description": "The shared Context BLOSUM62 implementation.",
+      "description": "Calculates Context BLOSUM62 scores.",
       "source": "/reproduce/context-score.js"
     },
     "ranking.js": {
       "path": "code/ranking.js",
-      "description": "The captured ordering rules for window pairs and parents.",
+      "description": "Orders window pairs and parent records.",
       "source": "/reproduce/ranking.js"
     },
     "residue-coverage.js": {
       "path": "code/residue-coverage.js",
-      "description": "The shared union-of-core-residues coverage implementation.",
+      "description": "Calculates coverage from merged qualifying core residues.",
       "source": "/reproduce/residue-coverage.js"
     },
     "projected-events.js": {
       "path": "code/projected-events.js",
-      "description": "Shared calculation and coordinate handling used by the site.",
+      "description": "Maps child-record matches to their original record coordinates.",
       "source": "/reproduce/projected-events.js"
     },
     "custom-worker.js": {
       "path": "code/custom-worker.js",
-      "description": "Shared calculation and coordinate handling used by the site.",
+      "description": "Finds qualifying core window matches.",
       "source": "/custom-worker.js"
     },
     "fasta-input.js": {
       "path": "code/fasta-input.js",
       "source": "/reproduce/fasta-input.js",
-      "description": "The browser Custom FASTA parser and normalization, shared with the offline pipeline."
+      "description": "Reads and normalizes Custom FASTA inputs."
     },
     "mimicryone-identity.js": {
       "path": "code/mimicryone-identity.js",
       "source": "/mimicryone-identity.js",
-      "description": "The same header and public protein-label resolver used by the browser."
+      "description": "Reads record identifiers and protein labels from FASTA headers."
     },
     "ensure-node.py": {
       "path": "run/ensure-node.py",
@@ -78,7 +78,7 @@
     },
     "GLOSSARY.md": {
       "path": "docs/GLOSSARY.md",
-      "description": "Definitions generated from the site's single terminology authority.",
+      "description": "Definitions of comparison inputs, sequence matches and result fields.",
       "source": "/reproduce/docs/GLOSSARY.md"
     },
     "readme": {
@@ -115,12 +115,12 @@
     "pipeline": {
       "path": "code/pipeline.cjs",
       "source": "/reproduce/pipeline.cjs",
-      "description": "Shared FASTA pipeline and output-folder management."
+      "description": "Runs FASTA comparisons and manages output folders."
     },
     "runner": {
       "path": "code/pipeline-runner.cjs",
       "source": "/reproduce/pipeline-runner.cjs",
-      "description": "The shared entry point used by all launchers."
+      "description": "Starts the comparison from the Node.js, Python and R launchers."
     },
     "selectionCode": {
       "path": "code/pipeline-selection.js",
@@ -130,7 +130,7 @@
     "layout": {
       "path": "code/pipeline-layout.json",
       "source": "/reproduce/pipeline-layout.json",
-      "description": "Shared package file paths."
+      "description": "Lists package files and their locations."
     },
     "fileGuide": {
       "path": "docs/FILE-GUIDE.md",
@@ -177,6 +177,16 @@
       "optional": true,
       "description": "Captured target residue annotations, surface context and provenance; reused only with matching selection metadata and target sequence."
     },
+    "method-overview": {
+      "path": "docs/calculation/method-overview-wide.svg",
+      "source": "/reproduce/docs/calculation/method-overview-wide.svg",
+      "description": "The complete five-step method overview as one wide vector graphic."
+    },
+    "method-walkthrough-guide": {
+      "path": "docs/HOW-IT-WORKS.md",
+      "source": "/reproduce/docs/HOW-IT-WORKS.md",
+      "description": "Illustrated overview of the workflow and the saved HEPACAM–EBNA1 example."
+    },
     "calculation-step-1": {
       "path": "docs/calculation/step-1.png",
       "source": "/reproduce/docs/calculation/step-1.png",
@@ -219,18 +229,18 @@
     },
     "plot-palette.cjs": {
       "path": "code/plot-palette.cjs",
-      "description": "Shared figure palette definitions; exported settings retain the selected colors.",
+      "description": "Figure color palettes and exported color settings.",
       "source": "/plot-palette.js"
     },
     "unified-mapping.cjs": {
       "path": "code/unified-mapping.cjs",
       "source": "/reproduce/unified-mapping.cjs",
-      "description": "Single mapping schema, bidirectional range queries and local lookup preparation."
+      "description": "Mapping database structure, queries in both directions and local lookup preparation."
     },
     "mapping-writer.cjs": {
       "source": "/reproduce/mapping-writer.cjs",
       "path": "code/mapping-writer.cjs",
-      "description": "Direct SQLite writer shared by native, portable and developer builds."
+      "description": "Writes comparison results to SQLite."
     },
     "mapping-csv.cjs": {
       "source": "/reproduce/mapping-csv.cjs",

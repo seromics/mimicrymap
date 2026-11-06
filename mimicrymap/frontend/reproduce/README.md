@@ -1,10 +1,14 @@
 # MimicryMap Pipeline
 
+![MimicryMap in five steps](docs/calculation/method-overview-wide.svg)
+
+[Method overview and worked example](docs/HOW-IT-WORKS.md)
+
 **Map antigen-specific sequence resemblance within and across proteomes.**
 
 MimicryMap compares antigen target sequences with a chosen set of parent proteins to find matching amino-acid windows and map where they occur. It reports local sequence similarity and coverage across each protein, helping you explore candidate molecular mimics alongside experimental evidence. This package runs comparisons locally from FASTA files and includes illustrated walkthroughs with downloadable example results. MimicryMap is a linear epitope mimicry tool; its comparisons do not account for 3D structures or post-translational modifications.
 
-**Run the supplied FASTAs, or replace them to start a new comparison.** This is the same pipeline package for example inputs and a selected site comparison. Both use MimicryMap's comparison worker and CSV calculations.
+**Run the supplied FASTAs, or replace them to start a new comparison.** The package can contain example inputs or a selected site comparison.
 
 The package includes an editable HEPACAM–EBNA1 example. Run it as supplied, or replace the FASTA files and settings with your own comparison; see [Example](docs/EXAMPLE.md).
 
@@ -52,7 +56,7 @@ Each run also produces two separate downloads:
 - `summaries.zip`: one summary CSV per direction (one for self-comparisons), original FASTAs and a short README.
 - `mapping-database.zip`: the SQLite mapping database, original FASTAs for installing its libraries, and installation settings. Extract it and choose its folder in SeroMap with **Import Mapping Database**.
 
-The database stores record identities, aliases, organism metadata, matching pairs, independent ranges and statistical memberships. Matching writes directly to this database once; CSV exports read the saved pairs. Installation prepares local query indexes without sequence matching. The prepared database also remains available in `indexes/`.
+The database stores record identities, aliases, organism metadata, matching pairs, independent ranges and statistical memberships. CSV exports contain the saved pair results. Installation prepares local query indexes without sequence matching. The prepared database also remains available in `indexes/`.
 
 The CSVs are standalone tables. When sharing summary downloads, package one CSV per direction, the original input FASTAs and a short README; keep the SQLite installation package separate. Supported identity thresholds and the 10%-either-side coverage floor are declared in the database's configuration. Full window alignments cannot be reconstructed from independent residue unions.
 
@@ -66,7 +70,7 @@ Rerunning refreshes the managed output folder after completion. Choose another `
 
 <table width="100%">
 <thead><tr>
-<th align="left" width="360">Surface</th>
+<th align="left" width="360">Download</th>
 <th align="left" width="600">What it provides</th>
 </tr></thead>
 <tbody>

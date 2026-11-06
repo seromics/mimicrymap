@@ -85,7 +85,7 @@
   function identityFor(record, options) {
     const resolver = window.MimicryOneIdentity;
     if (!resolver || typeof resolver.resolve !== "function") {
-      throw new Error((/*@copy mimicryone-runtime.mimicryone-shared-protein-identity-resolver.523496f*/`MimicryMap shared protein identity resolver is unavailable.`/*@endcopy*/));
+      throw new Error((/*@copy mimicryone-runtime.mimicryone-shared-protein-identity-resolver.523496f*/`MimicryMap protein identity information is unavailable.`/*@endcopy*/));
     }
     return resolver.resolve(record || {}, options || {});
   }
@@ -637,7 +637,7 @@
     syncFloorControls(result);
     state.rankPage = 0;
     state.sciencePairId = null;
-    select(index);
+    select(index, window.MimicryMapViewer?.options.trackOnly === true);
     const playerTitle = document.getElementById("ftitle");
     if (playerTitle && targetIdentity.tooltip) {
       playerTitle.dataset.tooltip = targetIdentity.tooltip;
@@ -1975,10 +1975,10 @@
       });
       return '<div class="erow complete-row" data-protein="' + html(row.protein_id) + '" data-display="' + html(identity.primaryLine) + '" data-tooltip="' + html(identity.tooltip) + '" data-tooltip-mono="true">' +
         '<span class="enm identity-cell">' + identityCellHtml(identity) + "</span> " +
-        '<span class="ediv" aria-hidden="true"></span> <span class="ecol"><span class="ebar" aria-hidden="true"><i style="width:' + (coverage==null?0:coverage).toFixed(1) + '%"></i></span><span class="epct">' + (coverage==null?'—':coverage.toFixed(1)) + '</span></span> ' +
-        '<span class="ediv" aria-hidden="true"></span> <span class="ecol"><span class="ebar" aria-hidden="true"><i style="width:' + (parentCoverage==null?0:parentCoverage).toFixed(1) + '%"></i></span><span class="epct">' + (parentCoverage==null?'—':parentCoverage.toFixed(1)) + '</span></span> ' +
-        '<span class="ediv" aria-hidden="true"></span> <span class="enum w-q" style="color:var(--lj33)">' + (residues?.bestCoreIdentity==null?'—':residues.bestCoreIdentity+'/9') + '</span>' +
-        '<span class="ediv" aria-hidden="true"></span> <span class="enum w-q" style="color:var(--lj33)">' + (residues?.bestContextIdentity==null?'—':residues.bestContextIdentity+'/27') + '</span></div>';
+        '<span class="ediv" aria-hidden="true"></span> <span class="ecol"><span class="ebar" aria-hidden="true"><i style="width:' + (coverage==null?0:coverage).toFixed(1) + '%"></i></span><span class="epct">' + (coverage==null?'-':coverage.toFixed(1)) + '</span></span> ' +
+        '<span class="ediv" aria-hidden="true"></span> <span class="ecol"><span class="ebar" aria-hidden="true"><i style="width:' + (parentCoverage==null?0:parentCoverage).toFixed(1) + '%"></i></span><span class="epct">' + (parentCoverage==null?'-':parentCoverage.toFixed(1)) + '</span></span> ' +
+        '<span class="ediv" aria-hidden="true"></span> <span class="enum w-q" style="color:var(--lj33)">' + (residues?.bestCoreIdentity==null?'-':residues.bestCoreIdentity+'/9') + '</span>' +
+        '<span class="ediv" aria-hidden="true"></span> <span class="enum w-q" style="color:var(--lj33)">' + (residues?.bestContextIdentity==null?'-':residues.bestContextIdentity+'/27') + '</span></div>';
     }).join("");
     host.innerHTML = body + controls;
     window.MimicryMapViewer?.hooks.decorateTable?.("overall",shown);
@@ -2388,6 +2388,7 @@
     if (window.MimicryPublicationExports) {
       window.MimicryPublicationExports.install({
         captureCsv: captureExportSnapshot,
+        workspaceInputs: window.seromapDesktop?.mimicry ? value => window.seromapDesktop.mimicry('comparison-inputs',value) : null,
         annotationMetadata: captureAnnotationMetadata,
         completeCsv: async function(snapshot, signal) {
           const result = await completeResultFor(snapshot.result, snapshot.floor, snapshot.scope, signal);
@@ -2399,10 +2400,12 @@
         },
         capture: async function capturePublication(options = {}) {
           // Cancellation belongs to the running export, not its cloned figure settings.
-          const { signal, ...figureOptions } = options;
-          const paletteSnapshot=window.MimicryPlotPalette.snapshot();
+          window.dispatchEvent(new Event('seromap:before-figure-export'));
+          const { signal, exportVariant, ...figureOptions } = options;
+          const paletteSnapshot=window.MimicryPlotPalette.snapshot(exportVariant);
           figureOptions.plotPalette=paletteSnapshot;
-          const exportOptions={mode:paletteSnapshot.mode,export:true};
+          const exportOptions={mode:paletteSnapshot.mode,background:paletteSnapshot.background,export:true};
+          figureOptions.palette={background:paletteSnapshot.background==='transparent'?'none':paletteSnapshot.colors.bg,body:paletteSnapshot.colors.body,ink:paletteSnapshot.colors.ink,border:paletteSnapshot.colors.line};
           const snap = captureExportSnapshot();
           if (!snap) throw new Error((/*@copy mimicryone-runtime.no-completed-comparison-is-available.bd86ee7*/`No completed comparison is available for export.`/*@endcopy*/));
           // Capture the existing plot renderer; do not substitute export-only tracks.
@@ -2478,7 +2481,7 @@
             userPaused=true;
             const restorePalette=PLOT.beginExport(exportOptions);
             try{
-              document.documentElement.classList.remove('dark');window.dispatchEvent(new Event('mimicryone:theme'));
+              document.documentElement.classList.toggle('dark',paletteSnapshot.mode==='dark');window.dispatchEvent(new Event('mimicryone:theme'));
               setView('explorer');
               playerPlots={compact:{highlighted:capturePlayer(),plain:capturePlayer(false)}};
               setView('residues');
@@ -2534,7 +2537,7 @@
             ? await completeResultFor(snapshot.result,snapshot.floor,snap.scope,signal)
             : snapshot.result));
           snapshot.font_css=await figureEmbeddedFontCss();
-          if(figureOptions.capturePlots)snapshot.coverageFigure=window.MimicryExtentFigures.capture(snapshot.result,snapshot.floor,snapshot.scope_label,snapshot.viewState);
+          if(figureOptions.capturePlots&&!window.MimicryMapViewer?.options.trackOnly)snapshot.coverageFigure=PLOT.capture(()=>window.MimicryExtentFigures.capture(snapshot.result,snapshot.floor,snapshot.scope_label,snapshot.viewState),exportOptions);
           return snapshot;
         },
         legacyInputs: async function(result) {
@@ -2838,6 +2841,7 @@
 
   async function initialize() {
     wireExports();
+    if (window.MimicryMapViewer?.options.trackOnly) return;
     wireCustomUi();
     /* Wire search before index loading; failures must not substitute bundled results. */
     wireAtlasSearch();
@@ -3289,7 +3293,7 @@
     openLocalResult: function openLocalResult(result, sequenceRows, preferredView) {
       openRuntimeResult(result, sequenceRows, preferredView || "explorer");
     },
-    cancelLocalRun: function cancelLocalRun(message) { terminateRun(message || "Canceled."); },
+    cancelLocalRun: function cancelLocalRun(message) { if(!cancelCustomRun(message))terminateRun(message || "Canceled."); },
     // Stored-input controls required alongside persistent browser storage.
     listCachedInputs: async function listCachedInputs() {
       const compressed = await window.MimicryInputTransport.list();

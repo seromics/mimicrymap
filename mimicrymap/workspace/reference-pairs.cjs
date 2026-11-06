@@ -46,7 +46,7 @@ function find(moduleRoot,{sequence,parentHash,targetHash,floor,source}){
    const rows=db.prepare('SELECT id,source,metadata FROM sequence_records WHERE side=? AND sha256=?').all(reverse?1:0,sha);
    const exact=rows.find(r=>r.source===source||JSON.parse(r.metadata).protein_id===source);
    const match=exact||(rows.length===1?rows[0]:null);if(!match)continue;
-   return {directory:path.dirname(lookup),targetId:match.id,reverse};
+   return {directory:path.dirname(lookup),targetId:match.id,reverse,referenceId:p.id};
   }finally{db.close()}
  }
  return null;

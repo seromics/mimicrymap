@@ -39,8 +39,8 @@ summary and a technical legend. Their SVG masters and source manifest are in
 4. Reusable SQLite mapping indexes, separate from full positional outputs.
 5. Selected paper figures and permitted experimental source data.
 
-The current reference staging manifest inventories 154 existing archives:
-137 summary/reference packages, 13 mapping indexes and four auxiliary
+The current reference staging manifest inventories 155 existing archives:
+137 summary/reference packages, 13 mapping indexes and five auxiliary
 reference/annotation packages. This is an inventory, not a decision to include
 every app annotation archive in the paper. The full 5/9 atlas is an additional
 product; it is not contained in that reference-download manifest.
@@ -68,11 +68,11 @@ or antibody calls were recalculated.
 
 The historical per-parent exports used only subcellular-location arrangement.
 Genome-position and protein-length arrangements add a defined set of 4,444
-states across 2,222 parents. A resumable image export uses the retained coverage
-payloads and native figure renderer. Its live progress and completed images are
-recorded under `Pan-Viral-Atlas/figures/additional-parent-arrangements/` in the
-local package. The catalogue is updated as images arrive, and completion adds
-these views plus the six existing global pair-ranking states to the main index.
+states across 2,222 parents. All 4,444 were completed on 22 October 2026 using
+the retained coverage payloads and native figure renderer. The completion receipt
+is under `Pan-Viral-Atlas/figures/additional-parent-arrangements/` in the local
+package. The main index includes these views and six global pair-ranking states:
+13,516 figure states in total.
 Pagination, themes and arbitrary highlights are not separate scientific variants.
 
 The native human-target atlas table retains the viral partner selected at
@@ -90,6 +90,12 @@ Git. `index.html` links the Word document, SVG bundle, full atlas and archive
 catalogue. The atlas is copied there independently of the legacy MimicryOne
 directory. Existing standard reference ZIPs remain in the established
 publication-staging directory; the local catalogue records their exact paths.
+
+The current handoff is `outputs/publication-handoff-2026-11-03/`. Its index
+separates the manuscript and figures, the complete offline atlas, current CPU/GPU
+source, reusable mapping data, and application-only reference packages. The source
+snapshot records its base commit and uncommitted changes; it is not a published
+tag. Existing data archives are referenced in place rather than duplicated.
 
 Before public release, supply cohort provenance and actual upstream assay
 methods, complete the experimental source-data exports, authorize the

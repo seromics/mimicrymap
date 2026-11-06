@@ -678,10 +678,9 @@
 
 /* Structure delivery must not remove a column and then insert it again. */
 .sbox { position:relative; }
-.sbox[data-structure-state="loading"] > :not(.ehd) { opacity:.34; filter:grayscale(1); pointer-events:none; }
+.sbox[data-structure-state="loading"] > :not(.ehd):not(.app-loading) { opacity:.34; filter:grayscale(1); pointer-events:none; }
 .sbox[data-structure-state="missing"] .s3bar,
 .sbox[data-structure-state="missing"] .scap { visibility:hidden; }
-.sbox[data-structure-state="loading"]::after,
 .sbox[data-structure-state="missing"]::after { content:attr(data-structure-message);
   position:absolute; inset:40% .75rem auto; text-align:center; padding:.45rem;
   background:var(--mm-surface); color:var(--mm-ink); font-size:.72rem; pointer-events:none; }

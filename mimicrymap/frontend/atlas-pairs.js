@@ -21,7 +21,7 @@
  const reference=(record,isParent)=>({library:isParent?'atlas_120_viruses':'human_swissprot',source:record[1],organism:isParent?record[3]:'Homo sapiens'});
  const recordHref=(record,isParent)=>root.MimicryReferenceLinks.protein(reference(record,isParent));
  const pairHref=(data,pair,floor,reverse=false)=>root.MimicryReferenceLinks.comparison(reference(reverse?data.parents[pair[1]]:data.targets[pair[0]],reverse),reference(reverse?data.targets[pair[0]]:data.parents[pair[1]],!reverse),floor);
- function labelCell(record,isParent){const cell=element('td',{},null);cell.title=isParent?record[3]:record[2];const a=element('a',{href:recordHref(record,isParent)});a.append(element('strong',{},record[0]||record[1]));if(record[0])a.append(element('small',{},record[1]));cell.append(a);return cell;}
+ function labelCell(record,isParent){const cell=element('td',{},null);cell.dataset.tooltip=isParent?record[3]:record[2];const a=element('a',{href:recordHref(record,isParent)});a.append(element('strong',{},record[0]||record[1]));if(record[0])a.append(element('small',{},record[1]));cell.append(a);return cell;}
  function coverage(value,href){const cell=element('td'),bar=element('a',{class:'atlas-pairs-measure',href,title:'Open This Exact Pair in MimicryMap'});bar.style.setProperty('--pair-percent',value+'%');bar.append(element('span',{},value.toFixed(1)+'%'));cell.append(bar);return cell;}
  function render(){
   if(!state.data)return;
@@ -75,7 +75,7 @@
    const metricLabel=rankItems.find(item=>item.value===metric).label;
    const subtitle=(/*@copy atlas-pairs.export-subtitle*/`Minimum identity ${floor}/9 · ${metricLabel} · Rows ${number(view.start+1)}–${number(view.start+view.rows.length)} of ${number(state.cache.get(floor+':'+metric).length)}`/*@endcopy*/);
    const svg=tableSvg(view,data,floor);
-   svg.append(svgNode('desc',{},subtitle+' — '+find('#atlasPairsLegend').textContent));
+   svg.append(svgNode('desc',{},subtitle+'. '+find('#atlasPairsLegend').textContent));
    svg.append(svgNode('metadata',{},JSON.stringify({schema:'mimicryone/atlas-pair-figure/1',source_sha256:data.source_sha256,summary_url:config.summary_url,collection:'viruses',identity_min:floor,sort:metric,page:view.page,rows:view.rows})));
    const filename=`pan_viral_pairs_m${floor}_${metric}_page_${view.page}`;
    if(kind==='code'){

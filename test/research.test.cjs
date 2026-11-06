@@ -1,7 +1,7 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),os=require('node:os'),path=require('node:path'),zlib=require('node:zlib'),vm=require('node:vm');
 const {DatabaseSync}=require('node:sqlite');
-const {build}=require('../build.cjs');
+const {build,validate}=require('../build.cjs');
 const engine=require('../mimicrymap/workspace/engine.cjs');
 const input=require('../mimicrymap/frontend/reproduce/fasta-input.js');
 function fixture(t) {
@@ -16,7 +16,9 @@ function fixture(t) {
 }
 function rows(directory,table) {
   const db=new DatabaseSync(path.join(directory,'comparison.sqlite'),{readOnly:true});
-  try{return db.prepare('SELECT * FROM '+table+' ORDER BY '+(table==='pairs'?'target,identity,parent':'id')).all().map(row=>row.result?{...row,result:JSON.parse(zlib.gunzipSync(row.result))}:row);}finally{db.close();}
+  const order={pairs:'target,identity,parent',aliases:'alias,target',results:'id'}[table];
+  assert(order,'Unknown comparison table');
+  try{return db.prepare('SELECT * FROM '+table+' ORDER BY '+order).all().map(row=>row.result?{...row,result:JSON.parse(zlib.gunzipSync(row.result))}:row);}finally{db.close();}
 }
 function events(result) {
   return result.positional_matches.flatMap(row=>row.hits.map(hit=>[result.source_catalog.find(p=>p.protein_idx===row.protein_idx).raw_header,...hit.slice(0,3)]));
@@ -63,17 +65,29 @@ test('invalid metadata and unsupported GPU settings leave no completed or tempor
   fs.writeFileSync(f.annotation,'record_id,gene\nunknown,NOPE\n');
   await assert.rejects(build({targets:f.targets,parents:f.parents,out,'parent-annotations':f.annotation}),/unmatched record IDs/);
   assert(!fs.existsSync(out));assert(!fs.readdirSync(f.dir).some(name=>name.startsWith('.mimicry-build-')));
-  await assert.rejects(build({targets:f.targets,parents:f.parents,out,engine:'gpu',floor:'6',python:'python'}),/GPU builds require/);
+  await assert.rejects(build({targets:f.targets,parents:f.parents,out,engine:'gpu',floor:'6'}),/GPU builds require --python/);
+  for(const floor of [5,6,7,8,9])assert.equal(validate({targets:f.targets,parents:f.parents,out,engine:'gpu',floor,python:'python'}).floor,floor);
+  await assert.rejects(build({targets:f.targets,parents:f.parents,out,engine:'gpu',floor:4,python:'python'}),/5 through 9/);
 });
 test('NVIDIA and CPU retain equivalent scientific CSVs, memberships and all coordinates, including self exclusion',{skip:!process.env.MIMICRY_GPU_PYTHON},async t=>{
-  const f=fixture(t),base={targets:f.targets,parents:f.targets,'retain-positions':true};
-  const cpu=await build({...base,out:path.join(f.dir,'cpu')});
-  const gpu=await build({...base,out:path.join(f.dir,'gpu'),engine:'gpu',python:process.env.MIMICRY_GPU_PYTHON});
+  const f=fixture(t);
+  fs.appendFileSync(f.targets,'>five\nACDEWWWWK\n>six\nACDEFWWWK\n');
+  const base={targets:f.targets,parents:f.targets};
+  for(const floor of [5,6,7,8,9]) {
+  const mode=floor===5?{bidirectional:true}:{'retain-positions':true};
+  const cpu=await build({...base,...mode,floor,out:path.join(f.dir,'cpu-'+floor)});
+  const gpu=await build({...base,...mode,floor,out:path.join(f.dir,'gpu-'+floor),engine:'gpu',python:process.env.MIMICRY_GPU_PYTHON});
   for(const file of ['library_summary.csv','pair_coverage.csv'])assert.deepEqual(fs.readFileSync(path.join(cpu.directory,file)),fs.readFileSync(path.join(gpu.directory,file)));
   assert.deepEqual(rows(cpu.directory,'pairs'),rows(gpu.directory,'pairs'));
   assert.deepEqual(rows(cpu.directory,'aliases'),rows(gpu.directory,'aliases'));
+  if(floor===5) {
+    assert.deepEqual(fs.readFileSync(path.join(cpu.directory,'reverse_summary.csv')),fs.readFileSync(path.join(gpu.directory,'reverse_summary.csv')));
+    for(const targetId of [1,2,5,6])assert.deepEqual(events(engine.readResult({directory:cpu.directory,targetId})),events(engine.readResult({directory:gpu.directory,targetId})));
+  } else {
   const a=rows(cpu.directory,'results'),b=rows(gpu.directory,'results');
   assert.equal(a.length,b.length);
   for(let i=0;i<a.length;i++)assert.deepEqual(events(a[i].result),events(b[i].result));
+  }
   await engine.validateComparison(gpu.directory);
+  }
 });

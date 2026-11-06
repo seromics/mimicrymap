@@ -10,12 +10,16 @@ process.once('message', async ({ action, value }) => {
         'prepareMapping',
         'searchRecords',
         'readResult',
+        'readComparisonInputs',
+        'readInstalledComparisonInputs',
         'readInstalledResult',
         'readRecord',
         'findSaved',
         'validateComparison',
         'hashFile',
         'prepareAnnotations',
+        'prepareReferenceTaxonomy',
+        'customTracks',
         'refreshAnnotations',
         'exportStudyLibrary',
         'verifyStudyComparison',
@@ -31,7 +35,7 @@ process.once('message', async ({ action, value }) => {
         process.send?.({ progress });
       }
     };
-    const result = await (['exportStudyLibrary','verifyStudyComparison'].includes(action)
+    const result = await (action==='customTracks'?require('./custom-track-worker.cjs')[action]:action==='prepareReferenceTaxonomy'?require('./reference-taxonomy.cjs')[action]:['exportStudyLibrary','verifyStudyComparison'].includes(action)
       ? require('./study-library.cjs')[action] : engine[action])(value, report);
     process.send?.({ result }, () => process.disconnect());
   } catch (error) {

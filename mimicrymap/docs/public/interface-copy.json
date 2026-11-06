@@ -137,7 +137,7 @@
       "key": "analysis-entry.compare-your-antigen-target-sequences.41da1ec",
       "file": "frontend/analysis-entry.js",
       "use": "Display textContent",
-      "text": "Compare one antigen target with a served library or your own parent FASTA. The analysis runs in this browser.",
+      "text": "Compare one antigen target with a reference library or your own parent FASTA. The analysis runs in this browser.",
       "placeholders": {}
     },
     {
@@ -453,7 +453,7 @@
       "key": "analysis-entry.the-shared-protein-identity-resolver.08d8c41",
       "file": "frontend/analysis-entry.js",
       "use": "User message",
-      "text": "The shared protein identity resolver is unavailable.",
+      "text": "Protein identity information is unavailable.",
       "placeholders": {}
     },
     {
@@ -474,7 +474,7 @@
       "key": "analysis-entry.this-canonical-protein-lacks-a.b39bb63",
       "file": "frontend/analysis-entry.js",
       "use": "User message",
-      "text": "This canonical protein lacks a frozen mapped-tile count.",
+      "text": "The mapped assay-tile count is unavailable for this canonical protein.",
       "placeholders": {}
     },
     {
@@ -1628,7 +1628,7 @@
       "key": "player.compare-your-antigen-target-sequences.722761a",
       "file": "frontend/index.html",
       "use": "Player/controls visible text",
-      "text": "Compare one antigen target with a served library or your own parent FASTA. The analysis runs in this browser.",
+      "text": "Compare one antigen target with a reference library or your own parent FASTA. The analysis runs in this browser.",
       "placeholders": {},
       "kind": "html"
     },
@@ -2980,7 +2980,7 @@
       "key": "mimicryone-runtime.mimicryone-shared-protein-identity-resolver.523496f",
       "file": "frontend/mimicryone-runtime.js",
       "use": "User message",
-      "text": "MimicryMap shared protein identity resolver is unavailable.",
+      "text": "MimicryMap protein identity information is unavailable.",
       "placeholders": {}
     },
     {

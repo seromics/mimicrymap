@@ -23,8 +23,8 @@ the supplied assays or the installed reference collections.
 
 The full Pan-Viral Atlas at 5/9 through 9/9 is a separate publication product
 from the general-use 7/9–9/9 coverage summaries and mapping indexes. The current
-archive manifest inventories the latter downloads; it does not yet inventory
-the complete atlas figure tree or its underlying 5/9–9/9 data.
+archive manifest inventories the latter downloads. The separate publication
+handoff inventories the complete atlas figure tree and its underlying 5/9–9/9 data.
 
 The atlas landscape uses 20,333 canonical human proteins of at least 50 amino
 acids from UniProtKB/Swiss-Prot 2026_01. Its coverage and reach figures retain
@@ -55,10 +55,10 @@ be independently identifiable downloads.
 The current companion also includes an extended EBV/EBNA1 figure bank with
 current interface variants and the five-step methods walkthrough as separate
 SVG masters. Additional genome-position and human-protein-length arrangements
-are being exported from saved atlas data for all 2,222 viral proteins: 4,444
-states beyond the historical capture. Six current global pair-ranking states
-are already saved. The local catalogue records completed images and remaining
-work; it does not count a planned export as completed. See
+were exported from saved atlas data for all 2,222 viral proteins: 4,444
+states beyond the historical capture. Together with six global pair-ranking
+states, the complete catalogue contains 13,516 states. The retained completion
+receipt records 4,444 of 4,444 additional arrangements completed. See
 [Publication staging](PUBLICATION.md) for the package layout and progress location.
 
 The staging manifest records the currently completed packages and their measured

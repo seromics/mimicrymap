@@ -452,9 +452,10 @@
 .method-overview .summary-context { fill:none; stroke:var(--c-method-context); stroke-width:2; }
 .method-overview .summary-context-box { fill:color-mix(in srgb,var(--c-method-context) 30%,transparent); stroke:var(--c-method-context); stroke-width:1; }
 .method-overview .summary-core-box { fill:color-mix(in srgb,currentColor 30%,transparent); stroke:currentColor; stroke-width:1; }
-.method-overview .summary-core { fill:none; stroke:currentColor; stroke-width:1; }
+.method-overview .summary-core { fill:none; stroke:var(--c-method-context); stroke-width:1; }
 .method-overview .summary-difference { fill:none; stroke:var(--c-method-difference); stroke-width:2; }
 .method-overview svg text { font:14px 'JetBrains Mono',monospace; fill:var(--mm-ink); }
+.method-overview svg .summary-residues { font-size:10px; font-weight:650; text-anchor:middle; }
 .method-diagram .method-cell { text-anchor:middle; fill:var(--mm-ink); font-size:calc(13px * var(--method-type-scale,1)); }
 .method-diagram .method-center { text-anchor:middle; }
 .method-diagram .method-end { text-anchor:end; }
@@ -468,8 +469,8 @@
 .method-map-selected { fill:none; stroke:var(--hl-sel); stroke-width:1.3; }
 .method-full-connection { stroke:var(--hl-sel); opacity:.5; }
 .method-full-connection.method-map-selected { opacity:1; stroke-width:1.6; }
-.method-diagram .method-aa-match,.method-inline-mask .method-aa-match { fill:var(--c-method-match); color:var(--c-method-match); }
-.method-diagram .method-aa-mismatch,.method-inline-mask .method-aa-mismatch { fill:var(--c-method-difference); color:var(--c-method-difference); }
+.method-diagram .method-aa-match,.method-inline-mask .method-aa-match,.summary-residues .method-aa-match { fill:var(--c-method-match); color:var(--c-method-match); }
+.method-diagram .method-aa-mismatch,.method-inline-mask .method-aa-mismatch,.summary-residues .method-aa-mismatch { fill:var(--c-method-difference); color:var(--c-method-difference); }
 .method-diagram .method-aa-absent { fill:var(--mm-muted); }
 /* Frequency-logo letters retain fixed columns, visible-ink heights and shared baselines. */
 .method-diagram .method-cover-box { fill:none; stroke:var(--hl-sel); stroke-width:1.2; rx:3; }

@@ -395,6 +395,7 @@ canvas{display:block;position:sticky;left:0;top:0;z-index:2;touch-action:pan-y}
 <link rel="stylesheet" href="/mimicryone-mobile.css">
 <link rel="stylesheet" href="/mimicryone-theme.css">
 <link rel="stylesheet" href="/site-pages.css">
+<link rel="stylesheet" href="/loading.css"><script type="module">import {watchNativeLoading} from "./loadingLayout.js";watchNativeLoading();</script>
 </head>
 <body data-site-page="home">
 <!-- site-navigation:start --><header class="site-header">
@@ -412,9 +413,9 @@ canvas{display:block;position:sticky;left:0;top:0;z-index:2;touch-action:pan-y}
       </div>
     </div>
 </header><!-- site-navigation:end -->
-<div id="startupShell" class="startup-shell" hidden>
-  <div class="startup-frame">
-    <p role="status" aria-live="polite"><!--@copy player.startup-loading-->Loading...<!--@endcopy--></p>
+<div id="startupShell" class="startup-shell app-loading app-loading--page" role="status" aria-label="Loading" aria-busy="true" hidden>
+  <div class="startup-frame app-loading-content">
+    <p class="app-loading-label" aria-hidden="true">Loading<span class="app-loading-dots"><span>.</span><span>.</span><span>.</span></span></p>
     <button id="startupRetry" type="button" hidden><!--@copy player.startup-retry-->Reload<!--@endcopy--></button>
   </div>
 </div>
@@ -433,9 +434,9 @@ canvas{display:block;position:sticky;left:0;top:0;z-index:2;touch-action:pan-y}
              20,876 human proteins and 119 viral proteomes long after the corpus was rebuilt to
              20,988 and the collection to 120, and nothing made them wrong on screen. A number
              about the release belongs to the release. -->
-        <span><b id="corpusHuman">—</b><!--@copy player.human-proteins.936962c--> human proteins <!--@endcopy-->&amp;<!--@copy player.hormones.86704a1--> hormones <!--@endcopy-->&nbsp;&middot;&nbsp;
-        <b id="corpusProteomes">—</b><!--@copy player.viral-proteomes.61afa8b--> viral proteomes <!--@endcopy-->&nbsp;&middot;&nbsp;
-        <b id="corpusExposures">—</b><!--@copy player.non-human-exposures.9f2c4d9--> non-human exposures <!--@endcopy-->&nbsp;&middot;&nbsp; <a href="/sources.html#dataSources" data-site-nav><!--@copy player.sources.1880a57-->Sources<!--@endcopy--></a></span>
+        <span><b id="corpusHuman">-</b><!--@copy player.human-proteins.936962c--> human proteins <!--@endcopy-->&amp;<!--@copy player.hormones.86704a1--> hormones <!--@endcopy-->&nbsp;&middot;&nbsp;
+        <b id="corpusProteomes">-</b><!--@copy player.viral-proteomes.61afa8b--> viral proteomes <!--@endcopy-->&nbsp;&middot;&nbsp;
+        <b id="corpusExposures">-</b><!--@copy player.non-human-exposures.9f2c4d9--> non-human exposures <!--@endcopy-->&nbsp;&middot;&nbsp; <a href="/sources.html#dataSources" data-site-nav><!--@copy player.sources.1880a57-->Sources<!--@endcopy--></a></span>
        </div>
       </div>
       <aside class="atlas-select" aria-labelledby="atlasExploreTitle">
@@ -477,7 +478,7 @@ canvas{display:block;position:sticky;left:0;top:0;z-index:2;touch-action:pan-y}
         <button class="tbtn" id="stepB" type="button" data-tooltip="Move one residue toward the start of the target." aria-label="Previous window" data-copy-data-tooltip="player.move-one-residue-toward-the.eebbea5" data-copy-aria-label="player.previous-window.1e2135e">&#8249;</button>
         <button class="tbtn pp" id="play" type="button" data-tooltip="Play / pause" aria-label="Pause" data-copy-data-tooltip="player.play-pause.4e8cd9b" data-copy-aria-label="player.pause.6b012ba">&#10074;&#10074;</button>
         <button class="tbtn" id="stepF" type="button" data-tooltip="Move one residue toward the end of the target." aria-label="Next window" data-copy-data-tooltip="player.move-one-residue-toward-the.97c0695" data-copy-aria-label="player.next-window.054b914">&#8250;</button>
-        <span class="tpos" id="tpos">&mdash;</span>
+        <span class="tpos" id="tpos">-</span>
         <div class="seg" id="speeds" role="group" aria-label="Speed" data-copy-aria-label="player.speed.82da045"></div>
         <div class="seg" id="rankmode" hidden role="group" aria-label="Displayed panel" data-copy-aria-label="player.displayed-panel.5ac2734"></div>
        </div>
@@ -517,7 +518,7 @@ canvas{display:block;position:sticky;left:0;top:0;z-index:2;touch-action:pan-y}
 
     </div>
 
-    <div class="stage">
+    <div class="stage" data-loading-main><div class="app-loading app-loading--overlay native-player-loading" role="status" aria-label="Loading" aria-busy="true"><div class="app-loading-content"><p class="app-loading-label" aria-hidden="true">Loading<span class="app-loading-dots"><span>.</span><span>.</span><span>.</span></span></p></div></div>
       <div class="figtop" hidden>
         <span class="figttl" id="ftitle">
           <span class="figline-id figttl-id" id="ftitleIdentity"></span>
@@ -656,7 +657,7 @@ canvas{display:block;position:sticky;left:0;top:0;z-index:2;touch-action:pan-y}
     <div class="entry">
       <div class="pane" id="customAnalysis">
         <h2><!--@copy player.your-custom-analysis.8702e18-->Your Custom Analysis<!--@endcopy--></h2>
-        <p class="ph custom-analysis-guidance" id="customAnalysisGuidance"><!--@copy player.compare-your-antigen-target-sequences.722761a-->Compare one antigen target with a served library or your own parent FASTA. The analysis runs in this browser.<!--@endcopy--></p>
+        <p class="ph custom-analysis-guidance" id="customAnalysisGuidance"><!--@copy player.compare-your-antigen-target-sequences.722761a-->Compare one antigen target with a reference library or your own parent FASTA. The analysis runs in this browser.<!--@endcopy--></p>
         <p class="custom-local-downloads" id="customLocalDownloads"><!--@copy player.custom-local-downloads--><span>Multiple targets or larger runs:</span> <a href="/reproduce/mimicrymap-pipeline.zip" download data-tooltip="Local pipeline with HEPACAM and EBNA1 staged in two editable FASTA files. Run the example, or replace the inputs and settings.">Pipeline ZIP</a> <span aria-hidden="true">·</span> <a href="https://github.com/seromics/mimicrymap" target="_blank" rel="noopener">GitHub</a><!--@endcopy--></p>
         <div class="custom-analysis-grid">
           <section class="custom-analysis-side custom-query-side entry-explore-step" aria-labelledby="customQueryTitle">
@@ -960,7 +961,7 @@ function drawWrapped(range){
     for (var i=i0;i<i1;i++){
       var x=POSW+(i-i0)*CELL, d=resDens[i]||0;
       var f=resMax>0 ? Math.min(1, Math.log1p(d)/Math.log1p(resMax)) : 0;
-      ctx.fillStyle=mainDensColor(d,resMax);
+      ctx.fillStyle=window.MimicryMapViewer?.hooks.mainResidueColor?.(i) || mainDensColor(d,resMax);
       ctx.fillRect(x,y0,CELL,CELL);
       ctx.fillStyle = f>0.45 ? PLOT.raw('white') : PLOT.raw('residueInk');
       ctx.font=(CELL>16?"13px":"9px")+" 'JetBrains Mono','Fira Code',ui-monospace,monospace";
@@ -1804,8 +1805,8 @@ function buildBuckets(){
       var k=tr[t].key;
       if (k==="mimicry"){
         var mx=0;
-        for (var q=i0;q<i1 && q<L;q++) if (resDens[q]>mx) mx=resDens[q];
-        e.col[k]=mainDensColor(mx,resMax);
+        for (var q=i0;q<i1 && q<L;q++) if (Math.abs(resDens[q])>Math.abs(mx)) mx=resDens[q];
+        e.col[k]=window.MimicryMapViewer?.hooks.mainResidueColor?.(i0) || mainDensColor(mx,resMax);
       } else e.col[k]=annColor(k,i0);
     }
     BK.push(e);
@@ -2234,7 +2235,7 @@ function buildMotifBox(p){
          '<span class="ebadge" style="background:'+IDC[s[2]]+';color:'+
          (s[2]>=7?PLOT.raw('identityLight'):PLOT.raw('identityDark'))+'">'+
          (window.MimicryExportCore.contextIdentity(ref,s[3])+"/27")+"</span>"+
-         '<span class="enum w-bl">'+(e.bl==null?'—':e.bl)+'</span>';
+         '<span class="enum w-bl">'+(e.bl==null?'-':e.bl)+'</span>';
     } else {
       h+='<span class="epos"></span><span class="eseq"><span class="nl">'+
          Array(W27+1).join("\u00b7")+'</span></span><span class="epos"></span>'+

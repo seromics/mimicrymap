@@ -26,9 +26,12 @@ const json = (file, value) => {
 const dbOpen = (file, readOnly = false) => new DatabaseSync(file, { readOnly });
 const textId = (r) => r.assay_id || r.original_id || r.protein_id;
 async function importFasta(
-  { source, directory, id, name, platforms = [], mappingDatabase, mappingSide },
+  { source, directory, id, name, platforms = [], mappingDatabase, mappingSide, grouping='taxid' },
   report = () => {},
 ) {
+  const sources=Array.isArray(source)?source:[source];
+  if(!sources.length||!['taxid','file'].includes(grouping))throw Error('Choose FASTA files and group by TaxID or file.');
+  if(grouping==='file'&&new Set(sources.map(f=>path.parse(f).name)).size!==sources.length)throw Error('Use different FASTA filenames for separate reference sets.');
   const roster=[];
   if(mappingDatabase){
     const mapping=dbOpen(mappingDatabase,true);
@@ -43,22 +46,29 @@ async function importFasta(
     "PRAGMA journal_mode=DELETE; CREATE TABLE records (id INTEGER PRIMARY KEY, token TEXT UNIQUE, source TEXT, metadata TEXT, sequence TEXT); CREATE INDEX sources ON records(source);",
   );
   const put = db.prepare("INSERT INTO records VALUES(?,?,?,?,?)"),
-    identifiers = new Map();
+    identifiers = new Map(),tokens = new Set();
   let header = "",
     sequence = "",
     count = 0,
     residues = 0,
     bytes = 0,
     short = 0;
-  const total = fs.statSync(source).size,
+  const total = sources.reduce((n,file)=>n+fs.statSync(file).size,0),
     sha = crypto.createHash("sha256");
   // Retain the exact original input bytes. Parsing normalizes residues only in
   // the library database; the downloadable source never rewrites the FASTA.
-  await fsp.copyFile(
-    source,
-    path.join(directory, "source.fasta"),
-    fs.constants.COPYFILE_EXCL,
-  );
+  const combined=path.join(directory,'source.fasta');
+  if(sources.length===1)await fsp.copyFile(sources[0],combined,fs.constants.COPYFILE_EXCL);
+  else{
+    fs.mkdirSync(path.join(directory,'Originals'),{recursive:true});
+    const output=fs.openSync(combined,'wx');
+    try{for(const [i,file] of sources.entries()){
+      await fsp.copyFile(file,path.join(directory,'Originals',`${i+1}-${path.basename(file)}`));
+      for await(const chunk of fs.createReadStream(file))fs.writeSync(output,chunk);
+      fs.writeSync(output,'\n');
+    }}finally{fs.closeSync(output);}
+  }
+  let fileIndex=0;
   const commit = () => {
     if (!header) return;
     const parsed = input.parse(">" + header + "\n" + sequence, "query", 1);
@@ -66,13 +76,18 @@ async function importFasta(
     const record = parsed.records[0];
     let token = header.split(/\s/)[0];
     record.library_id = id;
+    record.source_file=path.basename(sources[fileIndex]);
+    if(grouping==='file')record.reference_set=path.parse(sources[fileIndex]).name;
+    // Record tokens are local to a source FASTA; a stack may repeat an accession.
+    if(sources.length>1)token=`${fileIndex+1}:${token}`;
     const seen = (identifiers.get(record.protein_id) || 0) + 1;
     identifiers.set(record.protein_id, seen);
     if (seen > 1) record.protein_id += "__" + seen;
-    // A few pinned exposure records share an accession but have different
-    // sequences. Retain both occurrences and the original FASTA/header; give
-    // their annotation keys the same deterministic occurrence suffix as IDs.
-    if (seen > 1 && ['builtin-exposure','builtin-nonvertebrate'].includes(id)) token += '__' + seen;
+    // Accessions and names need not be unique across source sets. Only the
+    // internal occurrence key is unique; the original header remains intact.
+    const baseToken=token;let occurrence=1;
+    while(tokens.has(token))token=baseToken+'__'+(++occurrence);
+    tokens.add(token);
     const saved=mappingDatabase?roster[count]:null;
     if(mappingDatabase){
       const digest=crypto.createHash('sha256').update(record.sequence).digest('hex');
@@ -90,9 +105,7 @@ async function importFasta(
       );
     } catch (error) {
       throw Error(
-        "Duplicate FASTA identifier " +
-          token +
-          ". Give every record a unique identifier. " +
+        "Could not retain FASTA record " + token + ". " +
           error.message,
       );
     }
@@ -101,7 +114,8 @@ async function importFasta(
   };
   try {
     db.exec("BEGIN");
-    const stream = fs.createReadStream(path.join(directory, "source.fasta"));
+    for(fileIndex=0;fileIndex<sources.length;fileIndex++){
+    const stream = fs.createReadStream(sources[fileIndex]);
     stream.on("data", (b) => {
       sha.update(b);
       bytes += b.length;
@@ -130,6 +144,9 @@ async function importFasta(
       }
     }
     commit();
+    header='';sequence='';
+    if(sources.length>1)sha.update('\n');
+    }
     if(mappingDatabase&&count!==roster.length)throw Error('Incomplete mapping database record population');
     if (!count) throw Error("The FASTA contains no records.");
     db.exec("COMMIT");
@@ -137,6 +154,8 @@ async function importFasta(
       id,
       name,
       platforms,
+      grouping,
+      sourceFiles:sources.map(f=>path.basename(f)),
       records: count,
       residues,
       short,
@@ -195,13 +214,7 @@ function prepareSeeds(library, floor, report = () => {}) {
   fs.renameSync(pending, file);
   return file;
 }
-function record(row) {
-  return {
-    ...JSON.parse(row.metadata),
-    sequence: row.sequence,
-    record_id: row.id,
-  };
-}
+const {record,scanOneTarget}=require('./single-target.cjs');
 function scanner(parentDirectory, floor, report) {
   const seed = dbOpen(prepareSeeds(parentDirectory, floor, report), true),
     parents = dbOpen(path.join(parentDirectory, "library.sqlite"), true);
@@ -452,6 +465,8 @@ async function buildComparison(
   const reusableTarget = sampleReuse?.prepare('SELECT 1 FROM results WHERE id=? AND result IS NOT NULL');
   const scan = reuse
     ? null
+    : targetId !== null && backend === 'cpu'
+      ? {scan:query=>scanOneTarget(parentDirectory,query,floor,report),close(){}}
     : backend === "gpu"
       ? await require("./gpu-scanner.cjs").createScanner({
           parentDirectory,
@@ -876,6 +891,7 @@ function searchRecords({directory,comparison=false,search='',offset=0,annotation
 }
 
 function readResult({ directory, targetId, reverse=false, annotations, targetAnnotations, parentAnnotations }) {
+  const manifest = JSON.parse(fs.readFileSync(path.join(directory, 'comparison.json'), 'utf8'));
   const db = dbOpen(path.join(directory, "comparison.sqlite"), true);
   try {
     let result;
@@ -900,10 +916,56 @@ function readResult({ directory, targetId, reverse=false, annotations, targetAnn
     ], annotations);
     const ta=metadata.open(reverse?parentAnnotations:targetAnnotations),pa=metadata.open(reverse?targetAnnotations:parentAnnotations);
     try{result.protein=ta.apply(result.protein);result.source_catalog=result.source_catalog.map(r=>pa.apply(r));}finally{ta.close();pa.close();}
+    result.inputs = {...result.inputs, workspace_comparison: {
+      id: manifest.id, target_id: Number(targetId), reverse,
+      parent_sha256: (reverse ? manifest.target : manifest.parent).sha256,
+    }};
     return result;
   } finally {
     db.close();
   }
+}
+async function readComparisonInputs({ directory, target_id, reverse=false, parent_sha256 }) {
+  const manifest = JSON.parse(fs.readFileSync(path.join(directory, 'comparison.json'), 'utf8'));
+  const parent = reverse ? manifest.target : manifest.parent;
+  const target = reverse ? manifest.parent : manifest.target;
+  if (!parent_sha256 || parent.sha256 !== parent_sha256) throw Error('The saved comparison inputs have changed. Reopen the comparison before exporting.');
+  const self = parent.sha256 === target.sha256;
+  const records = [], db = dbOpen(path.join(directory, 'comparison.sqlite'), true);
+  const annotationFile = path.join(directory, 'inputs', reverse ? 'targets.annotations.sqlite' : 'parents.annotations.sqlite');
+  const overlay = metadata.open(fs.existsSync(annotationFile) ? annotationFile : null);
+  try {
+    if (db.prepare("SELECT 1 FROM sqlite_master WHERE name='sequence_records'").get()) {
+      for (const row of db.prepare('SELECT id, metadata, sequence FROM sequence_records WHERE side=? ORDER BY id').iterate(reverse ? 0 : 1)) {
+        if (self && row.id === Number(target_id)) continue;
+        records.push(overlay.apply({...JSON.parse(row.metadata), record_id:row.id, sequence:row.sequence}));
+      }
+    } else {
+      // Older positional comparisons retain their complete FASTA inputs, not just hits.
+      const identifiers = new Map();
+      let header = '', sequence = '', index = 0;
+      const commit = () => {
+        if (!header) return;
+        const parsed = input.parse('>' + header + '\n' + sequence, 'query', 1);
+        if (parsed.errors.length) throw Error(parsed.errors.join(' '));
+        const row = parsed.records[0], occurrence = (identifiers.get(row.protein_id) || 0) + 1;
+        identifiers.set(row.protein_id, occurrence);
+        if (occurrence > 1) row.protein_id += '__' + occurrence;
+        row.record_id = ++index;
+        if (!self || index !== Number(target_id)) records.push(overlay.apply({...row, library_id:parent.id}));
+      };
+      for await (const line of readline.createInterface({input:fs.createReadStream(path.join(directory, 'inputs', reverse ? 'targets.fasta' : 'parents.fasta')), crlfDelay:Infinity})) {
+        const value = line.trim();
+        if (value.startsWith('>')) { commit(); header = value.slice(1); sequence = ''; }
+        else sequence += value.replace(/\s/g, '');
+      }
+      commit();
+      if (index !== parent.records) throw Error('The saved parent FASTA is incomplete.');
+    }
+    const expected = parent.records - (self ? 1 : 0);
+    if (records.length !== expected) throw Error('The saved parent population is incomplete.');
+    return {records, manifest:{mode:'full_selected_library', download_records:expected, population_records:expected, source:'saved_workspace_comparison', self_record_excluded:self}};
+  } finally { overlay.close(); db.close(); }
 }
 function readRecord({ directory, id, annotations, annotationFile }) {
   const db = dbOpen(path.join(directory, "library.sqlite"), true);
@@ -960,6 +1022,10 @@ async function validateComparison(directory) {
     const file='inputs/'+side+'.annotations.'+extension;
     if(m.files?.[file]&&(await hashFile(path.join(directory,file)))!==m.files[file].sha256)throw Error('Incomplete or altered comparison: '+file);
   }
+  for(const side of ['targets','parents'])for(const suffix of ['references.json','reference-manifest.csv']){
+    const file='inputs/'+side+'.'+suffix;
+    if(m.files?.[file]&&(await hashFile(path.join(directory,file)))!==m.files[file].sha256)throw Error('Incomplete or altered reference manifest: '+file);
+  }
   if((m.summarySource||m.derivedFromSummary)&&m.files?.['summary.json']){
     await require('../frontend/reproduce/summary-package.cjs').validate(directory);
     for(const file of ['summary.json','summary-records.jsonl','summary-keys.jsonl',...((m.storage||m.mappingStorage)==='unified-mapping/1'?[]:['record-matches/comparison.sqlite','record-matches/comparison.json']),...(m.candidateFile?[m.candidateFile]:[])]){
@@ -1010,7 +1076,15 @@ async function validateComparison(directory) {
 module.exports = {
   exportBundle:({source,manifest,destination,product},report)=>require('../frontend/reproduce/mapping-bundles.cjs').build({source,manifest,destination,product},report),
   prepareMapping:async file=>{const db=new DatabaseSync(path.toNamespacedPath(path.resolve(file)));try{require('../frontend/reproduce/unified-mapping.cjs').prepare(db);}finally{db.close();}return {bytes:fs.statSync(file).size,sha256:await hashFile(file)};},
-  readInstalledResult:({moduleRoot,...query})=>{const found=require('./reference-pairs.cjs').find(moduleRoot,query);return found?readResult(found):null;},
+  readInstalledResult:({moduleRoot,...query})=>{const found=require('./reference-pairs.cjs').find(moduleRoot,query);if(!found)return null;const result=readResult(found);result.inputs.workspace_comparison={...result.inputs.workspace_comparison,id:found.referenceId,installed:true};return result;},
+  readComparisonInputs,
+  readInstalledComparisonInputs: ({moduleRoot,id,...query}) => {
+    const references = require('./reference-pairs.cjs'), catalog = references.catalog(moduleRoot);
+    const pair = catalog.pairs.find(p => p.id === id);
+    if (!pair) throw Error('The reference comparison is no longer installed.');
+    const directory = path.dirname(references.file(catalog.root, {...pair, file:pair.lookupFile || pair.file}));
+    return readComparisonInputs({directory,...query});
+  },
   prepareAnnotations:metadata.prepare,
   refreshAnnotations:require('./metadata-outputs.cjs').refresh,
   hashFile,
@@ -1019,6 +1093,7 @@ module.exports = {
   importFasta,
   prepareSeeds,
   scanner,
+  scanOneTarget,
   resultFor,
   residuePercent,
   buildComparison,

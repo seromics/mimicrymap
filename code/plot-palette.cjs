@@ -24,6 +24,7 @@
   ['good','Positive annotation','#4E8A5F','#6FB98A'],
  ]);
  add('Heatmaps and figure accents',[
+  ['singleSeries','Series Single Color','#1C5D92','#4F93D1'],
   ['rampLo','Signal heatmap · low','#EFEBE0','#101A2A'],
   ['rampHi','Signal heatmap · high','#173F6B','#4F93D1'],
   ['binaryHit','Heatmap called hit','#1C5D92','#4F93D1'],
@@ -37,9 +38,20 @@
   ['pairedShared','Both timepoints','#770c19'],['pairedStart','Earlier only','#5dade2'],['pairedEnd','Later only','#f39c12'],
   ['publicHigh','Very public','#334155'],['privateSingle','Private, one sample','#99f6e4'],
  ]);
+ add('Serome contrasts',[
+  ['contrastAShared','First / later · shared','#1C5D92','#4F93D1'],
+  ['contrastASpecific','First / later · specific','#0d9488','#2dd4bf'],
+  ['contrastBShared','Second / earlier · shared','#9655A2','#CA8DD4'],
+  ['contrastBSpecific','Second / earlier · specific','#C27529','#EBA553'],
+ ]);
+ add('Reactivity Enrichment',[
+  ['reactivitySpecific','Taxon / Category-Specific','#0d9488','#2dd4bf'],
+  ['reactivityShared','Shared / Pooled','#1C5D92','#4F93D1'],
+  ['pooledSupport','Supported Node Connectors / Heatmap Outlines','#c56358'],
+ ]);
  add('Repertoire and summary',[
-  ['repertoireSecreted','Secreted / Plasma','#16A085'],['repertoireMembrane','Membrane','#E67E22'],
-  ['repertoireIntracellular','Intracellular','#5DADE2'],['repertoireOther','Other','#566573'],
+  ['repertoireSecreted','Secreted / Extracellular','#16A085'],['repertoireMembrane','Surface','#E67E22'],
+  ['repertoireOtherMembrane','Other Membrane','#AF7AC5'],['repertoireIntracellular','Intracellular','#5DADE2'],['repertoireOther','Other','#566573'],
   ['sharingPublic','Public','#A2AEB7','#5C6875'],
   ['sharingGroup','Group-shared','#1C5D92','#4F93D1'],
   ['sharingShared','Shared (≥2)','#0d9488','#2dd4bf'],
@@ -55,6 +67,20 @@
   ['seqMissing','Unavailable sequence annotation','#9ca3af'],
  ]);
  const array=(group,prefix,label,values)=>{const keys=values.map((value,index)=>prefix+(index+1));add(group,values.map((value,index)=>[keys[index],label+' '+(index+1),value]));return keys;};
+ add('Technical Replicates',[
+  ['technicalCommon','All Technical Replicates','#0072b2'],
+  ['technicalPlasma','Pooled Plasma','#0072b2'],['technicalGfapPlasma','GFAP Pooled Plasma','#009988'],
+  ['technicalGfap','GFAP','#cc79a7'],['technicalBeads','Beads Only','#b8860b'],
+ ]);
+ const technicalSets=array('Technical Replicates','technicalSet','Other Repeat Set',['#5AA0D8','#4E8A5F','#80558A','#C75D50','#674832','#7841cc']);
+ const technicalKeys=['technicalPlasma','technicalGfapPlasma','technicalGfap','technicalBeads',...technicalSets];
+ const technicalModes={sets:'By Set',single:'One Color'};
+ function technicalColorRef(name){
+  const clean=String(name||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+  const fixed={alltechnicalreplicates:'technicalCommon',pooledplasma:'technicalPlasma',gfappooledplasma:'technicalGfapPlasma',gfapplasma:'technicalGfapPlasma',gfap:'technicalGfap',beadsonly:'technicalBeads'};
+  let hash=0;for(const ch of clean)hash=(Math.imul(hash,31)+ch.charCodeAt(0))>>>0;
+  return ref(fixed[clean]||technicalSets[hash%technicalSets.length]);
+ }
  const categorical=array('Categorical metadata','category','Category',['#0891b2','#d97706','#0f766e','#b45309','#0e7490','#a16207','#155e75','#854d0e','#164e63','#78716c']);
  const subgroup=['up','down',...array('Subgroup comparisons','subgroup','Additional subgroup',['#7c3aed','#0891b2','#b45309','#15803d','#be185d','#4338ca','#a16207','#0f766e'])];
  // The desktop shares one ten-color category/group sequence. Old category and
@@ -90,6 +116,7 @@
  // Legacy snapshot tokens only; new reports resolve the shared study-group roles.
  const portable=array('Legacy portable cohort groups','portableGroup','Fallback group',['#3C5488','#E64B35','#00A087','#4DBBD5','#F39B7F','#8491B4']);
  add('Figure text and neutral marks',[
+  ['distributionInk','Monochrome Distribution Ink','#000000','#ffffff'],['distributionPaper','Monochrome Distribution Fill','#ffffff','#000000'],
   ['ink','Text / axes','#1A2230','#E8EDF2'],['body','Secondary text','#45413B','#C2CCD6'],
   ['muted','Muted text','#6F7B86','#8A97A4'],['faint','Faint marks','#A2AEB7','#5C6875'],
   ['line','Figure border','#CBD2D7','#2A3848'],['surface','Figure surface','#F8F6F1','#141E2E'],
@@ -97,7 +124,8 @@
   ['bg','Figure background','#EFEBE3','#0C1320'],['headerBg','Figure header','#182536','#111C2B'],
   ['goodSoft','Positive annotation background','#E7F0EA','#16301F'],['warnSoft','Warning annotation background','#F6EFE2','#3A2E16'],
   ['imgPlate','Illustration plate','#f4f1ec','#cbd5e1'],['white','Light contrast text','#ffffff'],['black','Dark contrast text','#000000'],
-  ['outline','Track outlines','#cbd5e1'],['cellInactive','Inactive cell compartment','#e2e8f0'],
+  ['outline','Track outlines','#cbd5e1'],['cellInactive','Inactive cell compartment','#b8b8b8','#e6e6e6'],
+  ['cellOutline','Cell compartment outline','#888888','#bcbcbc'],
   ['printInk','MimicryMap export text','#111111'],['printBody','MimicryMap export secondary text','#444444'],['printMuted','MimicryMap export muted text','#666666'],['printLine','MimicryMap export lines','#888888'],
  ]);
  add('Residue labels and presentation',[
@@ -136,16 +164,27 @@
   blosum:{kind:'discrete',quantity:'BLOSUM62 substitution-score band',surfaces:'Protein alignment viewer'},
  };
  const palettes={groups:mainGroups,clusters,categorical,subgroup,tiles,variants,blosum,modifications,portable};
- // User controls are a deliberate statistical subset of the internal registry.
- // Reference annotations and sequence/structure scales retain authored defaults.
+ // Keep established theme adaptation independent of which roles are editable.
+ // Exposing a reference scale must not change its authored light/dark stops.
+ const adaptiveKeys=new Set([...mainGroups,'singleSeries','ns',...signalKeys,'technicalCommon',...technicalKeys,
+  'contrastAShared','contrastASpecific','contrastBShared','contrastBSpecific',
+  'pairedShared','pairedStart','pairedEnd',...clusters,
+  'repertoireSecreted','repertoireMembrane','repertoireOtherMembrane','repertoireIntracellular','repertoireOther',
+  'publicHigh','sharingPublic','sharingGroup','sharingShared','privateSingle','sharingTransient','summaryFrequency']);
+ const evidenceFallbacks={reactivitySpecific:'private',reactivityShared:'sharingGroup'};
  const settingsGroups=[
-  {label:'Groups and categories',note:'Sample plots, timecourses and category labels. Case/Comparison colors also mark direction in volcanoes, panels and correlation plots; named study colors take priority for groups.',keys:[...mainGroups,'ns'],compact:true},
-  {label:'Signal heatmaps',note:'Clustering, protein scanning and Jaccard matrices: low to high. Hit-call plots and panels use the high color for hits; non-hits stay neutral.',keys:signalKeys,compact:true},
-  {label:'Paired samples',note:'Individual → Paired scatter and paired Admixture: persistent, lost and acquired hits.',keys:['pairedShared','pairedStart','pairedEnd']},
-  {label:'Dendrogram clusters',note:'Clustering: membership ribbon and numbered legend. Each palette supplies coordinated cluster colors; individual edits override them.',keys:clusters,compact:true},
-  {label:'Repertoire map',note:'Individual → Repertoire map: human protein classes and the Other category.',keys:['repertoireSecreted','repertoireMembrane','repertoireIntracellular','repertoireOther'],compact:true},
-  {label:'Admixture',note:'Individual → Admixture: sharing categories. Timepoint colors use Paired samples above.',keys:['publicHigh','sharingPublic','sharingGroup','sharingShared','privateSingle','sharingTransient'],compact:true},
-  {label:'Study summary',note:'Summary: cohort hit-frequency histogram, across all platforms.',keys:['summaryFrequency'],compact:true},
+  {label:'Reactivity Enrichment',note:'Serome strands, support bars, P/S labels and group evidence marks. Below-threshold strands use dimmed versions of these colors. Node fills retain study-group colors.',keys:['reactivitySpecific','reactivityShared','pooledSupport'],compact:true},
+  {label:'Serome Contrasts',note:'First/later and second/earlier reactions, each split into shared and taxon-specific membership. Persistent or similar reactions use the neutral color.',keys:['contrastAShared','contrastASpecific','contrastBShared','contrastBSpecific'],compact:true},
+  {label:'Technical Replicates',note:'Technical-set labels, correlation ribbons and CV histograms. One Color uses Series Single Color.',keys:technicalKeys,compact:true},
+  {label:'Groups and Categories',note:'Sample plots, timecourses and category labels. Case/Comparison colors also mark direction in volcanoes, panels and correlation plots; named study colors take priority for groups.',keys:[...mainGroups,'ns'],compact:true},
+  {label:'Signal Heatmaps',note:'Clustering, protein scanning and Jaccard matrices: low to high. Hit-call plots and panels use the high color for hits; non-hits stay neutral.',keys:signalKeys,compact:true},
+  {label:'Paired Samples',note:'Individual → Paired scatter and paired Admixture: persistent, lost and acquired hits.',keys:['pairedShared','pairedStart','pairedEnd']},
+  {label:'Dendrogram Clusters',note:'Clustering: membership ribbon and numbered legend. Each palette supplies coordinated cluster colors; individual edits override them.',keys:clusters,compact:true},
+  {label:'Repertoire Map',note:'Individual → Repertoire map: canonical UniProt/GO locations and the Other category.',keys:['repertoireSecreted','repertoireMembrane','repertoireOtherMembrane','repertoireIntracellular','repertoireOther'],compact:true},
+  {label:'Admixture',note:'Sharing categories and private reactions. Timepoint colors use Paired samples above.',keys:['publicHigh','sharingPublic','sharingGroup','sharingShared','private','privateSingle','sharingTransient'],compact:true},
+  {label:'Single-Series Plots',note:'Ungrouped metadata scatters, Study Summary hit-frequency histograms and technical replicates in One Color mode.',keys:['singleSeries'],compact:true},
+  {label:'Metadata and Plot Accents',note:'Numeric metadata ribbons, neutral heatmap cells, assay-control overlays and plot markers.',keys:['trackHigh','trackLow','cellNull','ctrl','accent','good'],compact:true,collapsed:true},
+
  ];
  const settingsKeys=new Set(settingsGroups.flatMap(group=>group.keys));
  const settingsDefinitions=settingsGroups.flatMap(group=>group.keys.map(key=>({...definitions[key],group:group.label,compact:!!group.compact})));
@@ -242,17 +281,20 @@
  function validate(value){
   if(value==null)return {schema,colors:{},studies:{}};
   if(typeof value!=='object'||Array.isArray(value)||![1,2,schema].includes(value.schema))throw Error('Unsupported plot palette');
-  const result={schema,...selection(value,'preset',presets),...selection(value,'signal',signalSchemes),colors:value.schema===1?{...colorEntries(value.dark),...colorEntries(value.export),...colorEntries(value.light)}:colorEntries(value.colors),studies:{}};
+  const result={schema,...selection(value,'preset',presets),...selection(value,'signal',signalSchemes),...selection(value,'technicalMode',technicalModes),colors:value.schema===1?{...colorEntries(value.dark),...colorEntries(value.export),...colorEntries(value.light)}:colorEntries(value.colors),studies:{}};
   for(const [study,entry] of Object.entries(record(value.studies??{},'Invalid study palettes'))){
    if(!/^[A-Za-z0-9_.-]{1,120}$/.test(study)||['__proto__','constructor','prototype'].includes(study))throw Error('Invalid study palette');
    record(entry,'Invalid study palette');const groups=colorEntries(entry.groups,true);if(Object.keys(groups).length>128)throw Error('At most 128 study group colors');
-   result.studies[study]={...selection(entry,'preset',presets),...selection(entry,'signal',signalSchemes),colors:colorEntries(entry.colors),groups};
+   result.studies[study]={...selection(entry,'preset',presets),...selection(entry,'signal',signalSchemes),...selection(entry,'technicalMode',technicalModes),colors:colorEntries(entry.colors),groups};
   }
   if(Object.keys(result.studies).length>500)throw Error('Too many study palettes');return result;
  }
  function userOverrides(value){
   const result=validate(value);result.preset??='seromap';
   for(const scope of [result,...Object.values(result.studies)]){
+   // Preserve an existing single-series choice when merging its former controls.
+   scope.colors.singleSeries??=scope.colors.summaryFrequency||scope.colors.technicalCommon;
+   if(!scope.colors.singleSeries)delete scope.colors.singleSeries;
    // Explicit main colors win over category edits when the two are merged.
    // Retired subgroup edits were unused by the neutral comparison-label renderer.
    for(const old of categorical){const key=labelAliases[old];if(scope.colors[old]&&!scope.colors[key])scope.colors[key]=scope.colors[old];}
@@ -260,8 +302,20 @@
   }
   return result;
  }
- let configuration={brand:'seromap',overrides:validate(null),study:'',studyGroups:[]},cache=new Map();
- function configure(value={}){configuration={...configuration,brand:'seromap',overrides:value.overrides===undefined?configuration.overrides:validate(value.overrides),study:value.study===undefined?configuration.study:String(value.study||''),studyGroups:value.studyGroups===undefined?configuration.studyGroups:[...new Set((value.studyGroups||[]).map(String))]};cache.clear();return snapshot();}
+ const distributionDefaults=Object.freeze({distributionStyle:'box',distributionFill:false,distributionOpacity:.18,distributionHidePoints:false,distributionPointLayout:'beeswarm',distributionFrame:'axes',distributionGridY:true,distributionGridX:false,distributionSignificance:'values',distributionSignificanceValues:'both',distributionBrackets:true,distributionShowNonsignificant:true,distributionShowLegend:true,distributionTechnicalSeparator:true,distributionGridOpacityY:.18,distributionGridOpacityX:.18,distributionComparison:'overall',distributionTickDensity:1,distributionAxisLabelSize:9,distributionWidth:1,distributionHeight:1,distributionShowCounts:true,distributionCategoryLabels:'auto',distributionColorMode:'groups',distributionSecondaryOnly:true});
+ function distributionPreferences(value={},current=distributionDefaults){
+  const source=Object.fromEntries(Object.keys(distributionDefaults).map(key=>[key,value[key]===undefined?current[key]:value[key]]));
+  const choice=(key,allowed)=>allowed.includes(source[key])?source[key]:distributionDefaults[key];
+  return {distributionStyle:choice('distributionStyle',['box','violin','points']),distributionFill:source.distributionFill===true,distributionOpacity:Number.isFinite(source.distributionOpacity)?Math.max(0,Math.min(1,source.distributionOpacity)):.18,distributionHidePoints:source.distributionHidePoints===true,distributionPointLayout:choice('distributionPointLayout',['beeswarm','jitter','aligned']),distributionFrame:choice('distributionFrame',['axes','full','none']),distributionGridY:source.distributionGridY!==false,distributionGridX:source.distributionGridX===true,distributionSignificance:choice('distributionSignificance',['values','stars','hidden']),distributionSignificanceValues:choice('distributionSignificanceValues',['both','p','bh']),distributionBrackets:source.distributionBrackets!==false,distributionShowNonsignificant:source.distributionShowNonsignificant!==false,distributionShowLegend:source.distributionShowLegend!==false,distributionTechnicalSeparator:source.distributionTechnicalSeparator!==false,distributionGridOpacityY:Number.isFinite(source.distributionGridOpacityY)?Math.max(0,Math.min(1,source.distributionGridOpacityY)):.18,distributionGridOpacityX:Number.isFinite(source.distributionGridOpacityX)?Math.max(0,Math.min(1,source.distributionGridOpacityX)):.18,distributionComparison:choice('distributionComparison',['overall','allPairs','reference']),distributionTickDensity:Number.isFinite(source.distributionTickDensity)?Math.max(.5,Math.min(2,source.distributionTickDensity)):1,distributionAxisLabelSize:Number.isFinite(source.distributionAxisLabelSize)?Math.max(8,Math.min(24,source.distributionAxisLabelSize)):9,distributionWidth:Number.isFinite(source.distributionWidth)?Math.max(.8,Math.min(1.6,source.distributionWidth)):1,distributionHeight:Number.isFinite(source.distributionHeight)?Math.max(.75,Math.min(3,source.distributionHeight)):1,distributionShowCounts:source.distributionShowCounts!==false,distributionCategoryLabels:choice('distributionCategoryLabels',['auto','horizontal','diagonal']),distributionColorMode:choice('distributionColorMode',['groups','single','monochrome']),distributionSecondaryOnly:source.distributionSecondaryOnly!==false};
+ }
+ let configuration={brand:'seromap',exportMode:'light',exportBackground:'solid',plotZoom:true,...distributionDefaults,overrides:validate(null),study:'',studyGroups:[]},cache=new Map();
+ function configure(value={}){configuration={...configuration,brand:'seromap',exportMode:value.exportMode===undefined?configuration.exportMode:['dark','both'].includes(value.exportMode)?value.exportMode:'light',exportBackground:value.exportBackground===undefined?configuration.exportBackground:['transparent','both'].includes(value.exportBackground)?value.exportBackground:'solid',plotZoom:value.plotZoom===undefined?configuration.plotZoom:value.plotZoom!==false,...distributionPreferences(value,configuration),overrides:value.overrides===undefined?configuration.overrides:validate(value.overrides),study:value.study===undefined?configuration.study:String(value.study||''),studyGroups:value.studyGroups===undefined?configuration.studyGroups:[...new Set((value.studyGroups||[]).map(String))]};cache.clear();return snapshot();}
+ function exportVariants(config=configuration){
+  const modes=config.exportMode==='both'?['light','dark']:[config.exportMode==='dark'?'dark':'light'];
+  const backgrounds=config.exportBackground==='both'?['solid','transparent']:[config.exportBackground==='transparent'?'transparent':'solid'];
+  return modes.flatMap(mode=>backgrounds.map(background=>({mode,background,key:mode+'-'+background})));
+ }
+ const distributionAppearance=()=>Object.keys(distributionDefaults).map(key=>configuration[key]).join(':');
  function snapshot(){return JSON.parse(JSON.stringify(configuration));}
  const mode=()=>typeof document==='object'&&document.documentElement.classList.contains('dark')?'dark':'light';
  function effective(overrides,study){
@@ -272,18 +326,25 @@
   // edit still wins. A study without either continues to inherit workspace edits.
   const rampOverrides={...(!local.preset&&!local.signal?overrides.colors:{}),...local.colors};
   if(signal)signalKeys.forEach((key,i)=>colors[key]=rampOverrides[key]||signalSchemes[signal].stops[i]);
-  return {colors,signal,rampOverrides,groups:local.groups||{}};
+  return {colors,signal,rampOverrides,groups:local.groups||{},technicalMode:local.technicalMode||overrides.technicalMode||'sets'};
  }
  function colors(options={}){
-  const selected=options.export?'light':options.mode||mode(),overrides=options.overrides===undefined?configuration.overrides:validate(options.overrides),study=options.study===undefined?configuration.study:options.study,names=options.studyGroups||configuration.studyGroups,output={};
+  const selected=options.mode||(options.export?(configuration.exportMode==='dark'?'dark':'light'):mode()),overrides=options.overrides===undefined?configuration.overrides:validate(options.overrides),study=options.study===undefined?configuration.study:options.study,names=options.studyGroups||configuration.studyGroups,output={};
   const cacheKey=options.overrides===undefined&&options.study===undefined&&options.studyGroups===undefined?selected+':'+!!options.export:null;
   if(cacheKey&&cache.has(cacheKey))return cache.get(cacheKey);
   const active=effective(overrides,study);
   for(const [key,item] of Object.entries(definitions)){
    const field=selected;
    output[key]=active.colors[key]||item[field];
-   if(selected==='dark'&&settingsKeys.has(key)&&!signalKeys.includes(key))output[key]=darkColor(key,active.colors[key]||item.light);
+   if(selected==='dark'&&adaptiveKeys.has(key)&&!signalKeys.includes(key))output[key]=darkColor(key,active.colors[key]||item.light);
   }
+  for(const [key,fallback] of Object.entries(evidenceFallbacks)){
+   if(!active.colors[key])output[key]=output[fallback];
+   else if(selected==='dark')output[key]=darkColor(key,active.colors[key]);
+  }
+  // Captured export palettes can retain their original per-surface colors.
+  for(const key of ['summaryFrequency','technicalCommon'])if(!active.colors[key])output[key]=output.singleSeries;
+  if(active.technicalMode==='single')for(const key of technicalKeys)output[key]=output.technicalCommon;
   // Theme-adaptive sequential ramps keep low signal near the dark surface and
   // make the high endpoint visible. Multi-hue stops retain their source hue.
   // Viridis/Plasma retain their authored ordering and stops in both themes.
@@ -363,6 +424,6 @@
   }return text;
  }
  // Expose actual derived defaults, not obsolete hand-authored dark variants.
- for(const key of settingsKeys)definitions[key].dark=darkColor(key,definitions[key].light);
- return {schema,presets,signalSchemes,studyDefaults,studyGroupRoles,studyGroupRef,groupName,groupKey,isControlGroup,definitions,groups,palettes,ramps,bands,scaleContracts,aliases,settingsGroups,settingsDefinitions,userOverrides,variantKeys,structural,darkRules,darkColor,contrast,cssName,ref,references,raw,colors,css,declarations,configure,snapshot,validate,mode,mix,ramp,gradient,alpha,resolveColor};
+ for(const key of adaptiveKeys)definitions[key].dark=darkColor(key,definitions[key].light);
+ return {schema,presets,signalSchemes,technicalModes,technicalColorRef,studyDefaults,studyGroupRoles,studyGroupRef,groupName,groupKey,isControlGroup,definitions,groups,palettes,ramps,bands,scaleContracts,aliases,settingsGroups,settingsDefinitions,userOverrides,variantKeys,structural,themeAdaptiveKeys:[...adaptiveKeys],darkRules,darkColor,contrast,cssName,ref,references,raw,colors,css,declarations,configure,snapshot,distributionDefaults,distributionPreferences,distributionAppearance,exportVariants,validate,mode,mix,ramp,gradient,alpha,resolveColor};
 });

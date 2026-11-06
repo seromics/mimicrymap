@@ -4,30 +4,30 @@ Both downloads contain the same pipeline. Only the prepared inputs and selection
 
 | File | Purpose |
 | --- | --- |
-| `code/export-core.js` | The same CSV and table implementation used by the site. |
-| `code/context-score.js` | The shared Context BLOSUM62 implementation. |
-| `code/ranking.js` | The captured ordering rules for window pairs and parents. |
-| `code/residue-coverage.js` | The shared union-of-core-residues coverage implementation. |
-| `code/projected-events.js` | Shared calculation and coordinate handling used by the site. |
-| `code/custom-worker.js` | Shared calculation and coordinate handling used by the site. |
-| `code/fasta-input.js` | The browser Custom FASTA parser and normalization, shared with the offline pipeline. |
-| `code/mimicryone-identity.js` | The same header and public protein-label resolver used by the browser. |
+| `code/export-core.js` | Writes CSV exports and result tables. |
+| `code/context-score.js` | Calculates Context BLOSUM62 scores. |
+| `code/ranking.js` | Orders window pairs and parent records. |
+| `code/residue-coverage.js` | Calculates coverage from merged qualifying core residues. |
+| `code/projected-events.js` | Maps child-record matches to their original record coordinates. |
+| `code/custom-worker.js` | Finds qualifying core window matches. |
+| `code/fasta-input.js` | Reads and normalizes Custom FASTA inputs. |
+| `code/mimicryone-identity.js` | Reads record identifiers and protein labels from FASTA headers. |
 | `run/ensure-node.py` | Local Node.js runtime setup for Python/R launchers; reuses a compatible installation or downloads a checksum-verified private copy. |
 | `run/ensure-node.R` | Local Node.js runtime setup for Python/R launchers; reuses a compatible installation or downloads a checksum-verified private copy. |
 | `run/node-runtime.tsv` | Local Node.js runtime setup for Python/R launchers; reuses a compatible installation or downloads a checksum-verified private copy. |
 | `code/parallel-scan.cjs` | CPU scheduling for local scans; automatically selects concurrency with an optional worker-count override. |
 | `docs/TABLES.md` | CSV field meanings, counting units, coverage, ordering, and empty-table interpretation. |
-| `docs/GLOSSARY.md` | Definitions generated from the site's single terminology authority. |
+| `docs/GLOSSARY.md` | Definitions of comparison inputs, sequence matches and result fields. |
 | `README.md` | Run the prepared inputs or replace them for a new comparison. |
 | `settings.json` | Input paths, identity threshold, selected start, and output folder. |
 | `inputs/antigen-target.fasta` | The target input records with readable FASTA headers. |
 | `inputs/mimicry-parents.fasta` | The complete selected parent population, including records without matches. |
 | `inputs/selection.json` | Optional compact record overrides, grouping, and coordinate references; sequences remain in FASTA. Included for a selected comparison when needed. |
 | `docs/COMPARISON.md` | The selected records, scope, and settings in a preloaded comparison package. Included for a selected comparison when needed. |
-| `code/pipeline.cjs` | Shared FASTA pipeline and output-folder management. |
-| `code/pipeline-runner.cjs` | The shared entry point used by all launchers. |
+| `code/pipeline.cjs` | Runs FASTA comparisons and manages output folders. |
+| `code/pipeline-runner.cjs` | Starts the comparison from the Node.js, Python and R launchers. |
 | `code/pipeline-selection.js` | Readable record labels and automatic selection metadata. |
-| `code/pipeline-layout.json` | Shared package file paths. |
+| `code/pipeline-layout.json` | Lists package files and their locations. |
 | `docs/FILE-GUIDE.md` | Package folders and output tables. |
 | `run.cjs` | Node.js launcher. |
 | `run.py` | Python launcher. |

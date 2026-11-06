@@ -85,8 +85,7 @@
 :root:not(.dark) .pane textarea,
 :root:not(.dark) :is(#pexploresearch, .entry-single-input input),
 :root:not(.dark) #codepane { background:var(--mm-bg); color:var(--mm-ink); }
-:root:not(.dark) .slist,
-:root:not(.dark) .mm-tooltip { background:var(--mm-surface); color:var(--mm-body); box-shadow:0 8px 24px #1c191726; }
+:root:not(.dark) .slist { background:var(--mm-surface); color:var(--mm-body); box-shadow:0 8px 24px #1c191726; }
 :root:not(.dark) select { background:var(--mm-surface); color:var(--mm-ink); }
 :root:not(.dark) .ehd,
 :root:not(.dark) .s3bar { background:var(--mm-header); }

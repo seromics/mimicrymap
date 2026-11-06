@@ -1486,7 +1486,7 @@ Length`/*@endcopy*/), w: 96, f: function (r) { return nf(r.len); } }]
   }
   function closestLabel(r) {
     var hit = closestAtFloor(r);
-    return hit.source || "—";
+    return hit.source || "-";
   }
   function closestCovered(r, floor) {
     var hit = closestAtFloor(r);
@@ -1582,7 +1582,7 @@ Length`/*@endcopy*/), w: 104, f: function (r) { return nf(r.len); } }]
       label: function (r) { return r.gene; },
       href: function (r) { return window.MimicryReferenceLinks.protein(humanReference(r.accession)); },
       tooltip: function (r) {
-        return (r.name ? r.gene + " · " + r.name : r.gene) + " — " + closestLabel(r)
+        return (r.name ? r.gene + " · " + r.name : r.gene) + " · " + closestLabel(r)
           + " covers " + pct(closestCovered(r, rank)) + "% of it at " + rankLabel
           + "; all " + (r.sources[rank] || 0) + " Viral Parents that reach it cover "
           + pct(r.covered[rank]) + "% between them";
@@ -1637,35 +1637,20 @@ Length`/*@endcopy*/), w: 104, f: function (r) { return nf(r.len); } }]
 
   function exportSvg(svg, name, C, caption) {
     if (typeof window.SeroMapFigureExport === "function") {
-      var node = new DOMParser().parseFromString(svgString(svg, C).str, "image/svg+xml").documentElement;
+      var node = svg.cloneNode(true);
       return window.SeroMapFigureExport("svg", node, safeName(name)).then(function () {
         if (caption) save(safeName(name) + "-legend.txt", caption, "text/plain;charset=utf-8");
       });
     }
-    save(safeName(name) + ".svg", svgString(svg, C).str, "image/svg+xml;charset=utf-8");
-    if (caption) save(safeName(name) + "-legend.txt", caption, "text/plain;charset=utf-8");
+    return window.MimicryPlotPalette.downloadFigure(svg,safeName(name),'svg',caption);
   }
   function exportPng(svg, name, C, caption) {
     if (typeof window.SeroMapFigureExport === "function") {
-      var node = new DOMParser().parseFromString(svgString(svg, C).str, "image/svg+xml").documentElement;
-      return window.SeroMapFigureExport("png", node, safeName(name)).then(function () {
-        if (caption) save(safeName(name) + "-legend.txt", caption, "text/plain;charset=utf-8");
+      return window.SeroMapFigureExport("png", svg.cloneNode(true), safeName(name)).then(function () {
+        if(caption)save(safeName(name)+"-legend.txt",caption,"text/plain;charset=utf-8");
       });
     }
-    var o = svgString(svg, C), img = new Image();
-    img.onload = function () {
-      var cv = document.createElement("canvas");
-      cv.width = o.w * 2; cv.height = o.h * 2;
-      cv.getContext("2d").drawImage(img, 0, 0, cv.width, cv.height);
-      cv.toBlob(function (b) {
-        var url = URL.createObjectURL(b), a = document.createElement("a");
-        a.href = url; a.download = safeName(name) + ".png";
-        document.body.appendChild(a); a.click(); a.remove();
-        if (caption) save(safeName(name) + "-legend.txt", caption, "text/plain;charset=utf-8");
-        setTimeout(function () { URL.revokeObjectURL(url); }, 0);
-      }, "image/png");
-    };
-    img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(o.str);
+    return window.MimicryPlotPalette.downloadFigure(svg,safeName(name),'png',caption);
   }
 
   /* Shared presentation API: all atlas tables use the same geometry and exporters. */
@@ -1835,7 +1820,7 @@ Covered`/*@endcopy*/), w: 130,
           tooltip: function (r) { return (/*@copy atlas-figures.summary-coverage-tooltip*/`Human residues covered: ${nf(r.covered)} / ${nf(r.residues)} (${pct(r.coverage_pct)}%). Median coverage among reached human proteins: ${r.median_matched_coverage == null ? "not applicable (no proteins reached)" : pct(r.median_matched_coverage) + "%"}.`/*@endcopy*/); } },
         { t: (/*@copy atlas-figures.summary-median-matched*/`Median Coverage
 Among Reached`/*@endcopy*/), w: 130,
-          f: function (r) { return r.median_matched_coverage == null ? "—" : pct(r.median_matched_coverage) + "%"; } },
+          f: function (r) { return r.median_matched_coverage == null ? "-" : pct(r.median_matched_coverage) + "%"; } },
         { t: (/*@copy atlas-figures.summary-median-reach*/`Median Reach per
 Viral Parent`/*@endcopy*/), w: 130,
           f: function (r) { return pct(r.median_pct) + "%"; } },
@@ -2385,7 +2370,7 @@ legend: function () {
     function update() {
       var items = config.items(), selected = items.find(function (item) { return item.value === config.value(); });
       value.textContent = selected ? selected.label : config.label;
-      trigger.title = selected ? [selected.label, selected.detail].filter(Boolean).join(" · ") : config.label;
+      trigger.dataset.tooltip = selected ? [selected.label, selected.detail].filter(Boolean).join(" · ") : config.label;
       trigger.setAttribute("aria-label", config.label + ": " + value.textContent);
       trigger.disabled = config.disabled ? config.disabled() : !items.length;
       if (!popup.hidden) {
@@ -2872,7 +2857,7 @@ legend: function () {
           anchor.href = downloads.url;
           anchor.setAttribute("download", downloads.url.split("/").pop());
           anchor.setAttribute("data-reference-module", downloads.module);
-          anchor.title = entry.organism + " · Both Directions · General-Use Summaries (.csv) · " + (downloads.bytes / 1e6).toFixed(1) + " MB";
+          anchor.dataset.tooltip = entry.organism + " · Both Directions · General-Use Summaries (.csv) · " + (downloads.bytes / 1e6).toFixed(1) + " MB";
         }
       }
     }

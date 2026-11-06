@@ -91,6 +91,8 @@
   #ersub .rank-long, .complete-row .eorg { display: inline; }
   #ersub .rank-short { display: none; }
   #emsub, #ersub { height: 32px; font-size: 12px; }
+  #ebottom { --mm-table-heading-size:12px; }
+  #ehdmotif, #emsub, #emotifs > .erow { grid-template-columns:minmax(0,1fr) 1px 30px 240px 30px 56px 64px; }
   #emotifs > .erow, #ematches > .erow { height: 44px; min-height: 44px; }
   .ebox .identity-primary, .ebox .egn { font-size: 14px; }
   .ebox .identity-secondary, .ebox .eorg, .ebox .eacc,
@@ -234,4 +236,43 @@
 @media (max-width: 760px), (max-width: 1024px) and (pointer: coarse) {
   #customAnalysis .custom-comparison-side[data-source-mode="indexed"] .custom-source-stage { height:144px; min-height:144px; }
   #customAnalysis #entryCustomMethod { height:3em; min-height:3em; }
+}
+
+/* Narrow website controls stay readable; native desktop geometry is unchanged. */
+@media(max-width:1024px) {
+  html:not([data-host=desktop]) .controls .player-control-row .seg button,
+  html:not([data-host=desktop]) .controls #thbtns button,
+  html:not([data-host=desktop]) .controls #trackmode button[data-mobile-label],
+  html:not([data-host=desktop]) .controls #viewmode button[data-mobile-label] {
+    font-size:12px; line-height:18px; min-height:28px; padding:4px 3px;
+  }
+  html:not([data-host=desktop]) .controls .player-control-row .tl,
+  html:not([data-host=desktop]) .controls #dimerctxpill::before { font-size:11px; letter-spacing:0; }
+  html:not([data-host=desktop]) .controls .tpos { font-size:12px; }
+  html:not([data-host=desktop]) .controls .player-control-row .tbtn,
+  html:not([data-host=desktop]) .controls .player-control-row .tbtn.pp { min-height:30px; }
+  html:not([data-host=desktop]) .controls #play { font-size:0; }
+  html:not([data-host=desktop]) .controls { gap:6px; }
+  html:not([data-host=desktop]) .controls .player-control-row .pill { grid-template-columns:64px minmax(0,1fr); }
+  html:not([data-host=desktop]) .controls .player-control-row .pill:has(#speeds) { grid-template-columns:repeat(3,minmax(30px,1fr)) minmax(80px,1.5fr); }
+  html:not([data-host=desktop]) .controls .player-control-row .pill:has(#thbtns) { grid-template-columns:64px minmax(0,1fr) 30px; }
+  html:not([data-host=desktop]) .repro { font-size:12px; }
+  html:not([data-host=desktop]) .repro .seg button { font-size:12px; padding:5px 2px; }
+  html:not([data-host=desktop]) #sbox .s3bar { height:auto; flex-wrap:wrap; }
+  html:not([data-host=desktop]) #sbox .s3bar .seg { flex-wrap:wrap; }
+  html:not([data-host=desktop]) #sbox .s3bar .seg button { font-size:12px; min-height:28px; padding:4px 6px; }
+  html:not([data-host=desktop]) #entryExploreControls #entrySingleParentSearch[hidden],
+  html:not([data-host=desktop]) #customAnalysis #entryCustomSingleParentSearch[hidden] { display:none; }
+  html:not([data-host=desktop]) #entryExploreControls>.entry-target-status,
+  html:not([data-host=desktop]) #entryExploreControls>.entry-live-parent-scope {
+    height:auto; min-height:0; max-height:none; font-size:12px; padding-block:3px;
+  }
+  html:not([data-host=desktop]) #entryExploreControls .entry-target-status #loadnote { display:block; max-height:none; }
+  html:not([data-host=desktop]) #entryExploreControls .entry-live-parent-scope>span { display:block; }
+  html:not([data-host=desktop]) #customAnalysis .custom-local-downloads { font-size:12px; }
+  html:not([data-host=desktop]) #customAnalysis .custom-side-head { height:auto; min-height:0; }
+  html:not([data-host=desktop]) #customAnalysis .custom-analysis-side { grid-template-rows:auto auto; }
+  html:not([data-host=desktop]) #customAnalysis .custom-side-head h3 { font-size:14px; }
+  html:not([data-host=desktop]) .atlas-pairs-scroll { overflow-x:auto; overscroll-behavior-x:contain; }
+  html:not([data-host=desktop]) #atlasPairsPlot { min-width:1100px; }
 }

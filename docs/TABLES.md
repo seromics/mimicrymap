@@ -53,13 +53,13 @@ Assay-ID columns appear when source assay identifiers are available. Assay Contr
 
 ## Explicit record identity
 
-Export schema `mimicryone/export/21` retains separate **Gene**, **Accession**, and **Protein Description** columns for both Antigen Target and Mimicry Parent in complete events, the selected window, and parent summaries. These columns sit beside each record's compact label. Gene values are retained source metadata; a missing annotation stays empty. Native assay IDs and mapping contributions keep their existing columns. The same serializer produces browser and reproduced tables.
+Export schema `mimicryone/export/21` retains separate **Gene**, **Accession**, and **Protein Description** columns for both Antigen Target and Mimicry Parent in complete events, the selected window, and parent summaries. These columns sit beside each record's compact label. Gene values are retained source metadata; a missing annotation stays empty. Native assay IDs and mapping contributions keep their existing columns.
 
 For new FASTA inputs, these fields describe only supplied or recognized header metadata. Unknown fields stay blank; a generic FASTA identifier remains the compact record label rather than an inferred gene or accession. Metadata is per record, including in multiple-target runs. See the [Input Guide](../inputs/README.md) for supported headers and sidecar invalidation.
 
-## Consistent client headers
+## CSV Column Headings
 
-The player, figure-data CSVs and atlas CSVs use the same record identity block: **Antigen Target**, **Antigen Target Gene**, **Antigen Target Accession**, **Antigen Target Protein Description**; the corresponding block uses **Mimicry Parent**. Human and viral scope does not change these role names. Lengths use `(AA)`, percentages use `(%)`, and threshold-specific columns state their threshold. Pooled coverage, individual-parent coverage, library-wide reach and figure coordinates remain separately labeled because they describe different quantities. Internal proteome routing slugs are not client CSV columns.
+The player, figure-data CSVs and atlas CSVs use the same record identity block: **Antigen Target**, **Antigen Target Gene**, **Antigen Target Accession**, **Antigen Target Protein Description**; the corresponding block uses **Mimicry Parent**. Human and viral scope does not change these role names. Lengths use `(AA)`, percentages use `(%)`, and threshold-specific columns state their threshold. Pooled coverage, individual-parent coverage, library-wide reach and figure coordinates remain separately labeled because they describe different quantities.
 
 ## Pair coverage summary
 

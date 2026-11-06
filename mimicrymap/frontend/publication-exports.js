@@ -27,6 +27,14 @@
  async function get(url,signal){const r=await fetch(url,{signal});if(!r.ok)throw Error((/*@copy publication-exports.export-input-unavailable-http.2c0918c*/`Export input unavailable (HTTP ${r.status}).`/*@endcopy*/));return r;}
  async function inputs(snapshot,api,signal,progress){
   const result=snapshot.result, analysis=result.inputs?.analysis_scan;
+  if(result.inputs?.workspace_comparison){
+   progress('Packaging saved comparison inputs…');
+   if(!api.workspaceInputs)throw Error('Open this saved comparison in SeroMap to export its inputs.');
+   const population=await api.workspaceInputs(result.inputs.workspace_comparison);
+   if(signal.aborted)throw new DOMException('Canceled','AbortError');
+   if(population?.manifest?.mode!=='full_selected_library'||population.records?.length!==population.manifest.download_records)throw Error('The saved parent population is incomplete.');
+   return population;
+  }
   if(!analysis){
    const rows=result.inputs?.reproduction_parents||result.inputs?.comparison_fasta||await api.legacyInputs(result);
    return {records:rows,manifest:{mode:'captured_selected_population',population_records:rows.length,source:result.inputs}};
@@ -148,15 +156,16 @@
   files['csv/target-parent-coverage.csv']=coverage.csv;
   files['legends/target-parent-coverage.txt']=coverage.legend+'\n';
   items.push({name:'target-parent-coverage',panel:'coverage',complete:true,points:data.parents.length,legend:coverage.legend,png:{width:raster.width,height:raster.height,scale:raster.scale}});
-  files['README.txt']='MimicryMap figure bundle\n\nSeparate native Compact and Full player plots, structure images when available, and tables. Full plots include every residue row and every active track, not just the selected-site viewport. Highlighted and unhighlighted versions have identical dimensions.\n\nSVG retains the full logical dimensions. PNG is normally 2x, reduced uniformly when necessary to stay within 32,760 pixels per dimension and 64 million pixels total; no rows are cropped. Actual PNG dimensions and scale are recorded in figure-settings.json. Native canvas tracks and structure images are raster content inside SVG; table text is vector. Animation glow and fading are suppressed.\n\n'+(/*@copy publication-exports.figure-table-guide*/`Tables show up to 10 rows. Use All matches CSV and Overall Mimicry Parents CSV for the complete tables. Core identity uses nine positions; context identity uses a fixed span of 27 positions.`/*@endcopy*/)+' Context BLOSUM62 is summed over available aligned residues in that same 27-position span; it is not percent identity. Missing terminal positions do not count as identical.\n\nFigures use transparent backgrounds and the light palette. Tracks and highlights are retained.\n';
+  files['README.txt']='MimicryMap figure bundle\n\nSeparate native Compact and Full player plots, structure images when available, and tables. Full plots include every residue row and every active track, not just the selected-site viewport. Highlighted and unhighlighted versions have identical dimensions.\n\nSVG retains the full logical dimensions. PNG is normally 2x, reduced uniformly when necessary to stay within 32,760 pixels per dimension and 64 million pixels total; no rows are cropped. Actual PNG dimensions and scale are recorded in figure-settings.json. Native canvas tracks and structure images are raster content inside SVG; table text is vector. Animation glow and fading are suppressed.\n\n'+(/*@copy publication-exports.figure-table-guide*/`Tables show up to 10 rows. Use All matches CSV and Overall Mimicry Parents CSV for the complete tables. Core identity uses nine positions; context identity uses a fixed span of 27 positions.`/*@endcopy*/)+' Context BLOSUM62 is summed over available aligned residues in that same 27-position span; it is not percent identity. Missing terminal positions do not count as identical.\n\nFigure theme and background follow the captured export settings in figure-settings.json. Tracks and highlights are retained.\n';
   files['README.txt']+='\nFull-window plots show only the selected core and its available flanking context (up to 27 residues), using the native Full renderer and original protein coordinates. All active annotation tracks are retained. Range and core bounds are recorded in figure-settings.json. Missing terminal context is not padded or invented.\n';
   files['figure-settings.json']=json({captured_utc:snapshot.captured_utc,target:snapshot.result.protein.display_accession||snapshot.result.protein.protein_id,
-   floor:snapshot.floor,selected_start:snapshot.viewState.selected_start,view:snapshot.viewState,scope:snapshot.scope_label,summary:core.comparisonSummary(snapshot.result,snapshot.floor,data),ranking:window.MimicryRanking.describe(snapshot.viewState.ranking),panels:items});
+   floor:snapshot.floor,selected_start:snapshot.viewState.selected_start,view:snapshot.viewState,scope:snapshot.scope_label,summary:core.comparisonSummary(snapshot.result,snapshot.floor,data),ranking:window.MimicryRanking.describe(snapshot.viewState.ranking),panels:items,plotPalette:snapshot.figure.plotPalette});
   files['README.txt']+='\n'+window.MimicryRanking.describe(snapshot.viewState.ranking).window_rules+'\n'+window.MimicryRanking.describe(snapshot.viewState.ranking).parent_rules+'\nAll eligible rows are sorted before the top-ten cutoff. Changing order does not change inclusion or coverage.\n';
   files['README.txt']+='\nSelected comparison coverage: target-parent-coverage.svg/.png and csv/target-parent-coverage.csv contain all matching parents, with no top-ten limit. The numeric summary and denominators are recorded in figure-settings.json.\n'+coverage.legend+'\n';
-  return zip(files);
+  return files;
  }
  function install(api){
+  if(window.MimicryMapViewer)window.MimicryMapViewer.hooks.captureNative=api.capture;
   const host=document.querySelector('.repro');
   host.innerHTML=(/*@copy publication-exports.data-matches-csvselected-window-csvparents.be4cd00*/`<span class="rt">Data:</span><div class="seg"><button id="expWin" type="button" data-tooltip="Matching target–parent window pairs across the target at the selected core identity threshold.">Matches CSV</button><button id="expSite" type="button" data-tooltip="Matching target–parent window pairs at the selected target window and core identity threshold.">Selected window CSV</button><button id="expRank" type="button" data-tooltip="Ranked matching parents, with coverage and match counts for the current comparison.">Parents CSV</button><button id="expSummary" type="button" data-tooltip="One target row with Unmatched Target Regions for the complete comparison population, then pair coverage and matched residue ranges at the selected core identity threshold.">Summary CSV</button></div><span class="rt">Code:</span><div class="seg"><button id="reproBtn" type="button" data-tooltip="A ready-to-run pipeline ZIP with the current comparison’s sequences, settings and supporting record metadata.">Current Comparison</button></div><span class="rt">Figure:</span><select id="exportPanel" aria-label="Figure panel"><option value="combined">Target + tables</option><option value="target">Target tracks</option><option value="window">Window matches</option><option value="parents">Overall parents</option><option value="structure">Structure</option></select><label class="export-highlight"><input id="exportHighlight" type="checkbox" checked> Site highlight</label><label>Rows <select id="exportRows" aria-label="Figure table rows"><option>5</option><option selected>10</option><option>20</option><option>50</option></select></label><div class="seg"><button id="expSvg" type="button">SVG</button><button id="expPng" type="button">PNG</button></div><button id="exportCancel" type="button" data-tooltip="Cancel preparation of this download." hidden>Cancel export</button><span id="exportStatus" role="status" aria-live="polite" aria-atomic="true" hidden><span>Preparing<span class="export-dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></span></span>`/*@endcopy*/);
   // One figure action: supported panels and variants travel together.
@@ -235,14 +244,23 @@
      const archive=await bundle(snapshot,null,api,current.signal,status);if(current.signal.aborted)return;
      save(stem+'.pipeline.zip',archive);return;
     }
-    const snapshot=await api.capture({...options(),capturePlots:id==='figureBundle',signal:current.signal});if(current.signal.aborted)return;
-    const data=id==='figureBundle'?core.tables(snapshot.result,snapshot.floor,snapshot.viewState.selected_start,snapshot.viewState.ranking):null,stem=(snapshot.result.protein.display_accession||snapshot.result.protein.protein_id).replace(/[^a-z0-9._-]/gi,'_')+'.m'+snapshot.floor;
-    if(id==='figureBundle'){const archive=await figureBundle(snapshot,data,current.signal,status);if(current.signal.aborted)return;save(stem+'.figures.zip',archive);}
+    const variants=window.SeroMapPlotPalette.exportVariants(),files={};let stem;
+    for(const variant of variants){
+     const snapshot=await api.capture({...options(),exportVariant:variant,capturePlots:true,signal:current.signal});if(current.signal.aborted)return;
+     const data=core.tables(snapshot.result,snapshot.floor,snapshot.viewState.selected_start,snapshot.viewState.ranking);
+     stem=(snapshot.result.protein.display_accession||snapshot.result.protein.protein_id).replace(/[^a-z0-9._-]/gi,'_')+'.m'+snapshot.floor;
+     const parts=await figureBundle(snapshot,data,current.signal,status);
+     for(const [name,content] of Object.entries(parts))files[(variants.length>1?variant.key+'/':'')+name]=content;
+    }
+    if(current.signal.aborted)return;
+    const archive=await zip(files);
+    if(current.signal.aborted)return;
+    save(stem+'.figures.zip',archive);
     status('');
    }catch(error){if(!current.signal.aborted&&error.name!=='AbortError'){console.error('Export stopped:',error);window.alert(`Export stopped: ${error.message}`);}}
    finally{status(false);clicked.removeAttribute('aria-busy');controller=null;controls.forEach(e=>e.disabled=false);document.getElementById('exportCancel').hidden=true;}
   });
   document.getElementById('exportCancel').addEventListener('click',()=>{controller?.abort();});
  }
- window.MimicryPublicationExports={install};
+ window.MimicryPublicationExports={install,zip};
 })();

@@ -1,0 +1,41 @@
+/* The live sequence renderer and its two native tables share one study frame. */
+html,body{margin:0!important;padding:0!important;background:var(--c-bg)!important;overflow:hidden!important}
+body{visibility:hidden}body.study-track-ready{visibility:visible}
+body>*:not(#studyEvidenceWindow):not(.mm-tooltip){display:none!important}
+#studyEvidenceWindow{padding:0 8px 8px;color:var(--c-ink);box-sizing:border-box}
+#studyEvidenceWindow .controls{display:flex;align-items:center;gap:8px;margin:0 0 6px;padding:0;min-height:28px}
+#studyEvidenceWindow .player-control-row{display:contents}
+#studyEvidenceWindow .pill{border:0;background:none;padding:0;box-shadow:none}
+#studyEvidenceWindow .pill:not([aria-label="Playback"]):not([aria-label="Window match sorting"]):not([aria-label="Tracks"]):not([aria-label="Assembly context"]){display:none!important}
+#studyEvidenceWindow .controls{flex-wrap:wrap}
+#studyEvidenceWindow .pill[hidden]{display:none!important}
+#studyEvidenceWindow .study-main-track{display:inline-flex;align-items:center;flex:none;white-space:nowrap;gap:6px;font-size:11px}
+#studyEvidenceWindow .study-main-track[hidden]{display:none}
+#studyEvidenceWindow .study-main-track select{font:inherit;color:var(--c-ink);background:var(--c-bg);border:1px solid var(--c-line);border-radius:5px;padding:3px 5px}
+#studyEvidenceWindow .study-annotation-legend{margin:8px 0;gap:12px}
+#studyEvidenceWindow .study-annotation-legend>:not([data-track-legend]){display:none!important}
+#studyEvidenceWindow #play,#studyEvidenceWindow #speeds,#studyEvidenceWindow #rankmode{display:none!important}
+#fig{display:grid!important;width:100%;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#fig{position:relative;grid-template-columns:210px minmax(0,1fr) 8px}
+.study-histogram-axes{position:absolute;left:0;top:0;pointer-events:none;font-family:Inter,system-ui,sans-serif}
+#fig .cvwrap{max-height:620px}#fig .parent-divider{pointer-events:none}
+#studyEvidenceWindow #ebottom{display:grid!important;grid-template-columns:minmax(720px,1.15fr) minmax(580px,1fr)!important;gap:12px;margin-top:12px}
+#studyEvidenceWindow #sbox{display:none!important}
+#studyEvidenceWindow .ebox{min-width:0}
+#studyEvidenceWindow #emsub,#studyEvidenceWindow #emotifs>.erow,#studyEvidenceWindow #ehdmotif{display:grid;grid-template-columns:minmax(110px,1fr) 1px 30px 202px 30px 48px 58px var(--study-columns);gap:3px}
+#studyEvidenceWindow #ersub,#studyEvidenceWindow #ematches>.complete-row{display:grid;grid-template-columns:minmax(110px,1fr) 1px 64px 1px 64px 1px 62px 1px 76px var(--study-columns);gap:3px}
+#studyEvidenceWindow{--study-columns:76px 64px}
+#studyEvidenceWindow.study-contrast{--study-columns:148px 78px}
+#studyEvidenceWindow .enm,#studyEvidenceWindow .epos,#studyEvidenceWindow .eseq,#studyEvidenceWindow .ebadge,#studyEvidenceWindow .enum{width:auto;min-width:0;margin:0;flex:none}
+#studyEvidenceWindow .eseq{font-size:11px;white-space:nowrap}
+#studyEvidenceWindow .study-value{text-align:center;font-size:11px;font-variant-numeric:tabular-nums;white-space:nowrap}
+#studyEvidenceWindow .study-heading{font:inherit;color:inherit;padding:0;border:0;border-radius:0;background:none;text-align:center;white-space:nowrap;cursor:pointer}
+#studyEvidenceWindow .study-heading[aria-pressed="true"]{color:var(--c-ink)}
+#studyEvidenceWindow .ehd{white-space:nowrap;overflow:hidden}
+#studyEvidenceWindow .ehd em{overflow:hidden;text-overflow:ellipsis;min-width:0}
+@media(max-width:1330px){#studyEvidenceWindow #ebottom{grid-template-columns:minmax(0,1fr)!important}}
+
+#fig.full{grid-template-columns:minmax(0,1fr)}
+
+#studyEvidenceWindow #emsub,#studyEvidenceWindow #ersub{white-space:nowrap}
+#studyEvidenceWindow #ersub .enm{min-width:0;width:auto}

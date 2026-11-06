@@ -9,7 +9,7 @@ const HELP = `MimicryMap library builder — Node.js 24+
 node build.cjs --targets targets.fasta --parents parents.fasta --out results
 node build.cjs --targets targets.fasta --parents parents.fasta --out results-gpu --engine gpu --python /path/to/python
 
---floor 7                    Minimum identity, 5–9 on CPU; 7–9 on NVIDIA GPU
+--floor 7                    Minimum identity, 5–9 on CPU or NVIDIA GPU
 --retain-positions           Save full sequence lookups as well as unified mappings
 --bidirectional              Save compact complete lookups and summaries in both directions
 --target-annotations file    Optional record metadata CSV
@@ -38,7 +38,7 @@ function validate(input) {
   const config = {...input, floor:Number(input.floor ?? 7), engine:input.engine ?? 'cpu'};
   if (!['cpu','gpu'].includes(config.engine)) throw Error('--engine must be cpu or gpu.');
   if (!Number.isInteger(config.floor) || config.floor<5 || config.floor>9) throw Error('--floor must be an integer from 5 through 9.');
-  if (config.engine==='gpu' && (config.floor<7 || !config.python)) throw Error('GPU builds require --floor 7, 8 or 9 and --python pointing to the optional CUDA environment.');
+  if (config.engine==='gpu' && !config.python) throw Error('GPU builds require --python pointing to the optional CUDA environment.');
   for (const side of ['target','parent']) {
     const kind=config[side+'-library'];
     if (kind && !presets.has(kind)) throw Error('Unknown '+side+' library preset. Omit it for a custom FASTA.');

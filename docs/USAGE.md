@@ -69,8 +69,10 @@ The workspace separates sequence libraries from saved comparisons:
 membership and exports. **Full Lookup** additionally retains matching positions
 for saved detailed exploration. Both compare the sequences; the output choice
 changes what is retained. A lower floor such as 5/9 can produce substantially
-more matches and much larger full lookups than 7/9. CPU supports 5/9–9/9; the
-optional NVIDIA route supports 7/9–9/9. On-demand exploration of a target does
+more matches and much larger full lookups than 7/9. The research CLI supports
+5/9–9/9 on CPU and NVIDIA GPU. SeroMap's bulk-build interface offers 7/9–9/9
+using the same engine. Saved lower-threshold results remain viewable.
+On-demand exploration of a target does
 not require building a full lookup first.
 
 The command-line [builder](BUILD.md) uses the same comparison engine without

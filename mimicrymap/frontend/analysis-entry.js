@@ -94,9 +94,9 @@ window.MimicryLite = true;
         option.dataset.libraryLabel=workspaceOptionLabel(option);
         option.textContent=option.dataset.libraryLabel+status.suffix;
         option.dataset.lookupKind=status.kind;
-        option.title=status.title;
+        option.dataset.tooltip=status.title;
       }
-      select.title=select.selectedOptions[0]?.title || '';
+      select.dataset.tooltip=select.selectedOptions[0]?.dataset.tooltip || '';
       select.dataset.lookupKind=select.selectedOptions[0]?.dataset.lookupKind || 'none';
     }
   }
@@ -1334,7 +1334,7 @@ window.MimicryLite = true;
   function displayIdentity(record, options) {
     var resolver = window.MimicryOneIdentity;
     if (!resolver || typeof resolver.resolve !== "function") {
-      throw new Error((/*@copy analysis-entry.the-shared-protein-identity-resolver.08d8c41*/`The shared protein identity resolver is unavailable.`/*@endcopy*/));
+      throw new Error((/*@copy analysis-entry.the-shared-protein-identity-resolver.08d8c41*/`Protein identity information is unavailable.`/*@endcopy*/));
     }
     return resolver.resolve(record || {}, options || {});
   }
@@ -1617,7 +1617,7 @@ window.MimicryLite = true;
     var parentKey = canonicalParentKey(record);
     var mapped = mappedTileCount(record);
     if (mapped == null) {
-      throw new Error((/*@copy analysis-entry.this-canonical-protein-lacks-a.b39bb63*/`This canonical protein lacks a frozen mapped-tile count.`/*@endcopy*/));
+      throw new Error((/*@copy analysis-entry.this-canonical-protein-lacks-a.b39bb63*/`The mapped assay-tile count is unavailable for this canonical protein.`/*@endcopy*/));
     }
     if (mapped === 0) {
       if (record.include_default !== 1) {
@@ -2700,7 +2700,7 @@ window.MimicryLite = true;
             [record.protein_name || record.description, record.organism].filter(Boolean).join(" · "),
             Number(record.length || 0).toLocaleString() + " AA");
           button.setAttribute("role", "option");
-          button.title = [label, record.protein_name || record.description, record.organism].filter(Boolean).join(" — ");
+          button.dataset.tooltip = [label, record.protein_name || record.description, record.organism].filter(Boolean).join(" · ");
           button.addEventListener("click", function() {
             if (context !== singleSearchContext) return;
             cancelPendingSelection();
@@ -4119,7 +4119,7 @@ window.MimicryLite = true;
     var paragraph = byId("customAnalysisGuidance");
     if (paragraph) paragraph.textContent = window.seromapDesktop?.mimicry
       ? 'Compare one antigen target with an installed library or your own parent FASTA, on demand on this computer.'
-      : (/*@copy analysis-entry.compare-your-antigen-target-sequences.41da1ec*/`Compare one antigen target with a served library or your own parent FASTA. The analysis runs in this browser.`/*@endcopy*/);
+      : (/*@copy analysis-entry.compare-your-antigen-target-sequences.41da1ec*/`Compare one antigen target with a reference library or your own parent FASTA. The analysis runs in this browser.`/*@endcopy*/);
     var note = byId("entryCustomMethod");
     if (!targetAvailable(plan, selectedParent, floor)) {
       setNote(note, targetUnavailableReason(plan, selectedParent, floor), true);

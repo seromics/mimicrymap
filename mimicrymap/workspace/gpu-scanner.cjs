@@ -5,8 +5,8 @@ const path = require("node:path");
 const { DatabaseSync } = require("node:sqlite");
 
 async function createScanner({ parentDirectory, floor, python, report }) {
-  if (!python || ![7, 8, 9].includes(floor))
-    throw Error("GPU builds require installed NVIDIA support and 7/9–9/9.");
+  if (!python || ![5, 6, 7, 8, 9].includes(floor))
+    throw Error("GPU builds require installed NVIDIA support and 5/9–9/9.");
   report?.({phase:'Starting GPU and preparing parent search',done:0,total:0});
   const child = spawn(
     python,

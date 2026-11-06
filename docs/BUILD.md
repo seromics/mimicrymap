@@ -55,11 +55,31 @@ node build.cjs --probe-gpu --python .venv-gpu/bin/python
 node build.cjs --targets inputs/antigen-target.fasta --parents inputs/mimicry-parents.fasta --out outputs/example-gpu --engine gpu --python .venv-gpu/bin/python
 ```
 
-GPU currently supports **7/9–9/9**. macOS uses CPU. The probe compiles and executes
+CPU and GPU support **5/9–9/9**, with 7/9 as the default. For example:
+
+```sh
+node build.cjs --targets targets.fasta --parents parents.fasta --floor 5 --engine gpu --python /path/to/CUDA/python --out outputs/research-5of9
+```
+
+SeroMap's bulk-build interface offers **7/9–9/9**. It uses this same matching
+engine; the research CLI exposes the additional floors. Saved lower-threshold
+results and single-target exploration remain available in SeroMap.
+
+macOS uses CPU. The probe compiles and executes
 a CUDA calculation; device enumeration alone is not treated as success. A GPU
 error is reported rather than silently switching engines. GPU batches span
-multiple target records, using the retained MimicryOne covering-seed strategy.
+multiple target records. Complete covering-seed indexes generate candidates;
+all nine positions are then checked for identity. The original 7/9 index also
+serves 8/9 and 9/9. Separate 5/9 and 6/9 indexes cover every qualifying mismatch
+pattern and cannot reuse a 7/9-only candidate population. Repeated sequence
+occurrences remain distinct; each coordinate pair is emitted once. Ambiguous
+residues do not establish identity.
 Coverage, metadata, summaries and database writers are shared with CPU.
+
+Lower thresholds can produce many more matches. GPU acceleration does not
+reduce the number of results or the space needed to retain them. Use the
+default mapping index unless complete positions are required; batches are
+bounded and qualifying matches are not silently truncated.
 
 The pinned CuPy requirement is the supported dependency entry point, not a claim
 that every transitive wheel or hardware combination is identical. Record the
