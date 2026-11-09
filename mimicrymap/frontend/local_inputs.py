@@ -17,7 +17,7 @@ COMPACT_ROW_COLUMNS=("antigen_id","seqid","short_id","raw_header","sequence","le
                      "sequence_status","annotation")
 COMPACT_ANNOTATION_FIELDS=("display_accession","accession","source_accession","display_gene",
                            "primary_gene","gene","display_name","protein_name","description",
-                           "organism","library","entity_level")
+                           "organism","library","entity_level","source_fasta_header")
 
 
 def _compact_records(records):
@@ -110,7 +110,10 @@ def _package_scope(db, owner, library, fp, filters, floor, join, where, paramete
                 "download_records": records, "self_policy": "exclude identical native record; retain distinct identities",
                 "identity_policy": "canonical residues match exactly; noncanonical positions are forced mismatches"}
     scope_hash = hashlib.sha256(json.dumps(manifest, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    sidecar = getattr(getattr(owner, "annotation_hydrator", None), "annotation_sidecar", None)
+    headers = sidecar.source_headers(library) if sidecar is not None else {}
     return {"schema": "mimicryone/local-inputs/1", "shape": "scope", "release_fingerprint": fp,
+            "source_headers": headers,
             "scope_hash": scope_hash, "manifest": manifest, "membership_mask": mask,
             "query_records": [], "source_catalog": [], "next_after_id": None,
             "row_filter_columns": membership.row_filter_columns(library) if membership is not None and library in membership.libraries else {}}

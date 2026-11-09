@@ -68,6 +68,10 @@ Rerunning refreshes the managed output folder after completion. Choose another `
 
 ## Site downloads and this package
 
+The IL10, HEPACAM and IGHG2 History shortcuts open ordinary comparisons. They use the same CSV, Figure bundle and Current Comparison exporters as other targets. Current Comparison contains runnable code and inputs; run it to produce the result tables. Figure bundle is a separate download of the current drawings. Saved worked-example ZIPs contain the figures and tables captured for those examples, not an alternative pipeline format.
+
+To reproduce a released library summary, use its exact target and parent FASTAs and threshold. A History selection uses the current library scope: the broader Human library includes records outside the reviewed Swiss-Prot release, and an Exposures scope can be filtered to the 120 viral proteomes. The Current Comparison package retains the actual parent population, including records with no matches.
+
 <table width="100%">
 <thead><tr>
 <th align="left" width="360">Download</th>

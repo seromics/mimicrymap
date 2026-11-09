@@ -12,6 +12,9 @@
  function metadata(record){
   const out=Object.fromEntries(fields.filter(k=>record[k]!==undefined&&record[k]!==null).map(k=>[k,clone(record[k])]));
   out.raw_header=record.raw_header||record.header||record.seqid||record.identity?.fullHeader||'';
+  const sourceIdentity=typeof module==='object'&&module.exports?require(require('node:fs').existsSync(require('node:path').join(__dirname,'mimicryone-identity.js'))?'./mimicryone-identity.js':'../mimicryone-identity.js'):root.MimicryOneIdentity;
+  const publicHeader=sourceIdentity.fastaHeader(record);
+  if(publicHeader)out.source_fasta_header=publicHeader;
   if(out.seqid===out.raw_header)delete out.seqid;
   if(record.identity)out.identity=Object.fromEntries(['gene','proteinName','accession','organism','taxid','assayId','primaryLine'].filter(k=>record.identity[k]!==undefined).map(k=>[k,record.identity[k]]));
   return out;
@@ -41,8 +44,8 @@
    protein_name:i.proteinName,library_id:record.library_id||record.library||record.library_key||'analysis',organism:i.organism,assay_id:i.assayId,identity:i};
  }
  function header(record,index,identity){
-  const raw=String(record.raw_header||record.header||record.seqid||'').replace(/^>+/,'').replace(/[\r\n]+/g,' ').trim();
-  if(raw&&!internal.test(raw))return raw;
+  const raw=identity.fastaHeader(record);
+  if(raw)return raw;
   const resolved=identity.resolve(record),clean=value=>identity.publicText(value||'').replace(/[\r\n]+/g,' ').trim();
   const accession=clean(resolved.assayId)||clean(resolved.accession)||clean(record.display_accession)||clean(record.protein_id)||'record_'+(index+1);
   const name=clean(resolved.proteinName)||clean(resolved.gene)||clean(resolved.primaryLine);
@@ -106,6 +109,7 @@
    'See [Table Guide](TABLES.md) for local outputs and [Summary Download Guide](SUMMARY-DOWNLOADS.md) for the site CSV/FASTA populations. The local summary outputs include 7/9, 8/9 and 9/9 column groups; detailed tables use the threshold below.','',
    '- Target: '+targetName,'- Parent input records: '+records.length.toLocaleString()+' (including records without matches)','- Core identity threshold: '+snapshot.floor+'/9',
    '- Selected target start: '+(settings.selected_target_start??'not selected'),'',
+   'Public FASTA headers retain source labels. Reference records use the accession, source gene and full source description from the corresponding reference FASTA. Internal join identifiers, when needed, stay in selection.json. The actual comparison population is the parent FASTA supplied here; a broader library or a different scope can produce different results.','',
    'Compact selection metadata preserves record names, grouping, and coordinate mappings automatically. Without it, or after replacing the inputs, the pipeline runs a user-supplied FASTA comparison.',''].join('\n');
   const files={'inputs/antigen-target.fasta':targetFasta,'inputs/mimicry-parents.fasta':parentFasta,'settings.json':JSON.stringify(settings,null,2)+'\n','docs/COMPARISON.md':guide};
   if(extra.length){files['inputs/mapped-records.fasta']=fasta(extra,extraHeaders);selection.input_signatures.references=await signature(extraParsed);}

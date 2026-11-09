@@ -931,7 +931,7 @@ window.MimicryLite = true;
     var store = state.filterState[side];
     if (!store[key]) {
       store[key] = isV4FilterOptions(options)
-        ? normalizeV4FilterState(options, key === "canonical_exposure" ? { source_collections: ["viral_nonhuman"] } : {}, key)
+        ? normalizeV4FilterState(options, key === "canonical_exposure" ? { source_collections: ["viral_nonhuman"], exclude_vertebrates: true } : {}, key)
         : {
           sublibraries: allOptionValues(options, "sublibraries"),
           legacy_sources: allOptionValues(options, ["legacy_sources", "legacy_source_libraries"]),
@@ -2012,6 +2012,9 @@ window.MimicryLite = true;
     if (queryContext.organism) protein.organism = String(queryContext.organism);
     if (queryContext.parent_class || queryContext.class) protein.parent_class = String(queryContext.parent_class || queryContext.class);
     if (queryContext.source_header) protein.source_header = String(queryContext.source_header);
+    protein.source_fasta_header = window.MimicryOneIdentity.fastaHeader(
+      Object.assign({}, queryContext, {library_id: plan.sourceLibrary})
+    ) || protein.source_fasta_header;
     if (queryContext.source_token) protein.source_token = String(queryContext.source_token);
     if (queryContext.projection_library) protein.projection_library = String(queryContext.projection_library);
     if (queryContext.native_track_accession) protein.native_track_accession = String(queryContext.native_track_accession);
@@ -2076,7 +2079,7 @@ window.MimicryLite = true;
     var cache = (window.MimicryLite || window.seromapDesktop) && window.MimicryLiteResultCache;
     if (!cache) return window.MimicryOne.runLocalLibraryScan(options);
     return cache.run({
-      version: 1, query: query, parent: parentSet, filters: options.filters,
+      version: 2, query: query, parent: parentSet, filters: options.filters,
       floor: options.floor, release: options.release,
       policy: state.filterPolicyFingerprint, component: options.queryComponent,
       queryRow: options.queryRow || null, queryFasta: options.queryFasta || null,
@@ -2441,11 +2444,15 @@ window.MimicryLite = true;
       select.value=supported;
       if(settings.resetParentScope&&!pair)delete state.filterState.target[supported.replace(/^library:/,'')];
       if(settings.viralReferenceOnly){
-        state.filterState.target.canonical_exposure=normalizeV4FilterState(filterOptions('canonical_exposure'),{source_collections:['viral_nonhuman']},'canonical_exposure');
+        state.filterState.target.canonical_exposure=normalizeV4FilterState(filterOptions('canonical_exposure'),{source_collections:['viral_nonhuman'],exclude_vertebrates:true},'canonical_exposure');
       }
       if(pair){
         // Select the existing native catalog record through the ordinary single-parent scope.
         delete state.filterState.target[pair.library];
+        // A linked exact pair defines its own scope. In particular, the normal
+        // viral-only exposure default must not exclude a linked nonviral record.
+        const options=filterOptions(pair.library);
+        if(isV4FilterOptions(options))state.filterState.target[pair.library]=normalizeV4FilterState(options,{},pair.library);
         const value=activeFilter('target',pair.library);
         if(!value)throw new Error('Single-record scope is unavailable for this library.');
         applyPinnedScope('target',pair.library,record.library);
@@ -4392,7 +4399,7 @@ window.MimicryLite = true;
     if(workspaceSnapshot&&workspaceSnapshot.defaultParent!=='builtin-viral120'){
       var workspaceChoice=workspaceDefaultParentValue();
       if(['builtin-exposure','builtin-nonvertebrate'].includes(workspaceSnapshot.defaultParent)){
-        for(var side of ['target','custom'])state.filterState[side].canonical_exposure=normalizeV4FilterState(filterOptions('canonical_exposure'),{source_collections:[],exclude_vertebrates:workspaceSnapshot.defaultParent==='builtin-nonvertebrate'},'canonical_exposure');
+        for(var side of ['target','custom'])state.filterState[side].canonical_exposure=normalizeV4FilterState(filterOptions('canonical_exposure'),{source_collections:[],exclude_vertebrates:true},'canonical_exposure');
       }
       for(var selectId of ['entryTargetLibrary','entryCustomTarget']){var workspaceSelect=byId(selectId);if(workspaceSelect&&[...workspaceSelect.options].some(o=>o.value===workspaceChoice)){workspaceSelect.value=workspaceChoice;workspaceSelect.dispatchEvent(new Event('change'));}}
     }

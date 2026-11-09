@@ -3,9 +3,14 @@
 For a tour of the current atlas interface and its relationship to individual
 sequence comparisons, see [Using MimicryMap](USAGE.md).
 
-The current dataset archives are staged locally for a future Zenodo deposit.
-`data/atlas-manifest.json` records filenames, sizes and SHA-256 values. Its DOI
-and URLs are deliberately unset: the files have not been published by this task.
+The current dataset is uploaded to [Zenodo draft 24046306](https://zenodo.org/uploads/24046306)
+and remains unpublished. `data/atlas-manifest.json` records the consolidated
+filenames, sizes, saved checksums and planned public file links. These links are
+not public downloads until publication; the DOI remains unset here.
+The draft has 47 files totaling 41.26 GB: 16 CSV/FASTA ZIPs, 16 SQLite companions,
+the focused atlas data ZIP, the 13,516-state figure ZIP, three structure/annotation
+ZIPs, six FASTAs, figure-index.csv, README, format/method definitions and manifest.
+The dataset license is CC BY 4.0, retaining source attribution and applicable terms.
 
 | Product | Purpose |
 | --- | --- |
@@ -23,8 +28,7 @@ the supplied assays or the installed reference collections.
 
 The full Pan-Viral Atlas at 5/9 through 9/9 is a separate publication product
 from the general-use 7/9–9/9 coverage summaries and mapping indexes. The current
-archive manifest inventories the latter downloads. The separate publication
-handoff inventories the complete atlas figure tree and its underlying 5/9–9/9 data.
+consolidated manifest inventories both as separate downloads within the same record.
 
 The atlas landscape uses 20,333 canonical human proteins of at least 50 amino
 acids from UniProtKB/Swiss-Prot 2026_01. Its coverage and reach figures retain
@@ -61,9 +65,9 @@ states, the complete catalogue contains 13,516 states. The retained completion
 receipt records 4,444 of 4,444 additional arrangements completed. See
 [Publication staging](PUBLICATION.md) for the package layout and progress location.
 
-The staging manifest records the currently completed packages and their measured
-sizes; it is not a decision that every archive belongs in the first MimicryMap
-paper deposit. Range-enabled bidirectional summary bundles contain one comprehensive
+The manifest records the approved paper deposit, excluding application installers,
+studies and redundant non-vertebrate subset downloads. Range-enabled bidirectional
+summary bundles contain one comprehensive
 CSV per direction, with pair-specific range columns beside the corresponding
 coverage lists. Self-comparisons have one direction. ZIP payloads sit at the archive
 root; their install catalogue supplies application destinations. Record-match
@@ -85,5 +89,5 @@ must compare the same sequence populations, record units, identity thresholds,
 coverage rules and annotation versions before equating the scientific outputs.
 
 Keep separate citations for the method/code version, atlas dataset version,
-and any input databases. Final authors, paper reference, software/data license
-choices and DOI metadata remain to be supplied before a public release.
+and input databases. Final authors, preprint reference, software license and
+published DOI metadata remain to be supplied before a public release.

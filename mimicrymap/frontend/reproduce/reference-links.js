@@ -6,7 +6,7 @@
   if(!record?.source)return null;
   if(record.library==='human_swissprot')return '/protein/'+segment(record.source)+'?tab=browse';
   if(['atlas_120_viruses','canonical_exposure'].includes(record.library)&&record.organism)
-   return '/exposure/'+segment(record.organism)+'/protein/'+segment('@'+record.library+':'+record.source)+'?tab=browse';
+   return '/exposure/'+segment(String(record.organism).replaceAll(' ','_'))+'/protein/'+segment('@'+record.library+':'+record.source)+'?tab=browse';
   return null;
  }
  function comparison(target,parent,floor=7){

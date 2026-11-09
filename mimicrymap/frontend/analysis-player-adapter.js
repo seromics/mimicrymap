@@ -76,6 +76,7 @@
       header: rawHeader,
       seqid: seqid,
       raw_header: rawHeader,
+      source_fasta_header: window.MimicryOneIdentity.fastaHeader(record),
       library_id: text(record.library_id, text(record.library, record.library_key || "analysis")),
       organism: displayIdentity.organism,
       assay_id: identity.assayId,
@@ -289,6 +290,7 @@
       header: queryRawHeader,
       seqid: querySeqid,
       raw_header: queryRawHeader,
+      source_fasta_header: window.MimicryOneIdentity.fastaHeader(queryRecord),
       library_id: text(queryRecord.library, "__custom_query__"),
       organism: queryDisplay.organism,
       assay_id: queryDisplay.identity.assayId,
@@ -324,6 +326,9 @@
       query.parent_class = text(queryContext.parent_class, queryContext.class);
       query.sequence_sha256 = text(queryContext.sequence_sha256);
       query.source_header = text(queryContext.source_header, queryRawHeader);
+      query.source_fasta_header = window.MimicryOneIdentity.fastaHeader(Object.assign({}, queryContext, {
+        library_id: queryContext.projection_library || query.library_id,
+      })) || query.source_fasta_header;
       query.companion_header = text(queryContext.companion_header);
       if (queryContext.projection_library) query.projection_library = text(queryContext.projection_library);
       if (queryContext.native_track_accession) {

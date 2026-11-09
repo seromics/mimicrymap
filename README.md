@@ -11,8 +11,18 @@ MimicryMap maps shared amino-acid sequence regions between proteins, peptides an
 The method is library agnostic. Human proteins and 120 viral proteomes form the worked atlas; microbiome, food, allergen, assay and other custom sequences can be compared in the same way. Sequence-defined sets can also be combined with recorded antibody hits for **Reactivity Enrichment**. Sequence resemblance identifies candidates for investigation; it does not by itself demonstrate shared antibody binding. Matching uses linear sequences; available structure and residue annotations provide context without changing the matching rule.
 
 **Private release staging.** This continues the existing MimicryMap repository and
-its illustrated methods. Code, atlas and application license choices are pending;
-this is not a public release. Source data retain their own terms and attribution.
+its illustrated methods. The software license and final citation metadata remain
+pending. The consolidated dataset draft uses CC BY 4.0, with original source
+terms and attribution retained. This is not a public release.
+
+| Release Component | Status |
+| --- | --- |
+| Preprint | Forthcoming: link and final citation will be added after submission |
+| Data, Atlas Figures and Structures | [Consolidated Zenodo draft 24046306](https://zenodo.org/uploads/24046306), uploaded but unpublished; [file manifest](data/atlas-manifest.json) |
+| Selected Paper Figures | [November 8 PNG/SVG exports](figures/paper/README.md), with larger paper labels |
+| Software | Current research source in this private repository; public version tag, license and citation pending |
+
+See [Publication staging](docs/PUBLICATION.md) for the release boundary and remaining decisions.
 
 [Interface guide](docs/USAGE.md) · [How it works](#how-mimicry-results-are-calculated) · [Worked examples](#how-to-use-mimicry-results) · [Build libraries](docs/BUILD.md) · [Atlas and data](docs/ATLAS.md)
 
@@ -92,6 +102,8 @@ The Python and R launchers set up Node.js locally if needed. Initial setup requi
 `min_identity` is an integer from 5 to 9. `selected_target_start` is a 1-based start, or `null` to omit the current-window table. Paths are relative to settings.json. Targets run one at a time; unlike the browser, the local pipeline processes every supplied target.
 
 Current Comparison downloads retain the selected record labels, coordinate mappings and available annotations. Keep the supplied input files unchanged to reuse that information. If you change FASTA headers, sequences or record order, or add records, the package reads the new inputs using their FASTA headers. Missing gene, accession and organism information stays blank. See the [Input Guide](inputs/README.md) for supported headers and metadata details.
+
+The IL10, HEPACAM and IGHG2 History shortcuts use the same exporters and runnable package as any other selected target. Saved worked-example ZIPs contain historical figures and tables. Public reference FASTA headers and Summary CSV headers match the corresponding released sequence records; storage hashes remain only in supporting metadata where needed for joins. To reproduce a released comparison, use its exact FASTAs and threshold: the interface's broader Human library and filtered Exposures scopes can contain different populations.
 
 ## Results
 

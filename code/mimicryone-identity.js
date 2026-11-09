@@ -56,6 +56,36 @@
     return first(record || {}, ["raw_header", "header", "seqid", "source_header", "short_id"]);
   }
 
+  // Keep storage keys for joins. Public FASTAs use the retained source header;
+  // canonical catalogue records use the same accession/gene/description label
+  // as the reference FASTA downloads, without display-name shortening.
+  function fastaHeader(record) {
+    record = record || {};
+    var internal = /\b(?:HUM|EXP)(?:_[a-f0-9_]{16,}|\d{6,9})\b|\b(?:M1E|P9P)\d{9}\b/i;
+    var native = record.native || record;
+    for (var candidate of [record.source_fasta_header, native.source_fasta_header,
+      record.raw_header, record.header, native.raw_header, native.full_source_header,
+      record.full_source_header, record.original_header, record.source_header,
+      record.companion_header, record.identity && record.identity.fullHeader]) {
+      var header = exact(candidate).replace(/^>+/, '').replace(/[\r\n]+/g, ' ').trim();
+      if (header && !internal.test(header)) return header;
+    }
+    var library = record.library_id || record.library || native.library || native.library_key || '';
+    if (!/^(?:canonical_human|canonical_exposure|human_swissprot|atlas_120_viruses|builtin-human|builtin-viral120|builtin-exposure)$/.test(library)) return '';
+    var accession = first(native, ['source_accession','accession','display_accession']) || first(record, ['source_accession','accession','display_accession']);
+    var gene = first(native, ['primary_gene','gene_symbol','gene']);
+    if (!record.native && record.identity && !record.identity.gene && gene === record.identity.primaryLine) gene = '';
+    // Human input packages retain the full source name in description; their
+    // protein_name is normalized for compact labels. Exposure descriptions may
+    // instead hold taxonomy, so retain the source protein_name on that route.
+    var human = /^(?:canonical_human|human_swissprot|builtin-human)$/.test(library);
+    var description = first(native, ['protein_name','source_description','description']) || first(record, ['protein_name','source_description']);
+    var detail = first(native, ['source_description','description']);
+    if (human && detail && (!description || detail.startsWith(description))) description = detail;
+    if (!accession || internal.test(accession)) return '';
+    return [...new Set([accession,gene,description].filter(Boolean))].join(' | ');
+  }
+
   function parseHeader(record) {
     record = record || {};
     var fullHeader = headerValue(record);
@@ -368,7 +398,7 @@
       assayId: assayId,
       libraryId: libraryId,
       libraryLabel: libraryLabel,
-      fullHeader: parsed.fullHeader,
+      fullHeader: fastaHeader(record) || parsed.fullHeader,
       coordinates: coordinates,
       variant: variant,
       significance: significance,
@@ -389,7 +419,7 @@
       strain: identity.strain,
       assay_platform_id: identity.assayId,
       library: identity.libraryId,
-      full_fasta_header: identity.fullHeader,
+      full_fasta_header: fastaHeader(record),
       coordinates: identity.coordinates,
       variant_hgvs: identity.variant,
       variant_significance: identity.significance,
@@ -420,6 +450,7 @@
     version: "mimicryone/identity-resolver/4",
     validateRecord: validateRecord,
     recordedSource: recordedSource,
+    fastaHeader: fastaHeader,
     resolve: resolve,
     parseHeader: parseHeader,
     publicText: publicText,

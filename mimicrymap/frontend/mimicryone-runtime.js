@@ -1403,7 +1403,7 @@
         !page.release_fingerprint || manifest.library !== options.library) return null;
     const scope = {release:page.release_fingerprint, filterColumns:page.row_filter_columns || {},
       effectiveFilters:manifest.filters || {}, populationRecords:manifest.population_records,
-      membershipMask:page.membership_mask, manifest:manifest, scopeHash:page.scope_hash, inputPackage:page.input_package};
+      membershipMask:page.membership_mask, sourceHeaders:page.source_headers || {}, manifest:manifest, scopeHash:page.scope_hash, inputPackage:page.input_package};
     window.MimicryLocalInputRecords.scopeMask(scope, options.library);
     return scope;
   }

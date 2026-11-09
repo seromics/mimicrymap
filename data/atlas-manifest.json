@@ -1,1402 +1,1020 @@
 {
-  "schema": "mimicrymap.atlas-staging/1",
-  "version": "2026.10.20.1",
-  "status": "local-staging",
-  "doi": null,
-  "note": "Download URLs and final licenses will be assigned before publication. Payloads remain outside Git.",
-  "archives": [
-    {
-      "file": "source-human-swissprot.zip",
-      "title": "Human proteins",
-      "bytes": 81557293,
-      "uncompressedBytes": 230708343,
-      "sha256": "aadb62428078eb4d22a4fe23116545c88d3e896420ad3f6ee03e570a80cc9458",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-canonical-exposure-human-swissprot.zip",
-      "title": "Canonical exposures ↔ Human proteins",
-      "bytes": 64739213,
-      "uncompressedBytes": 136589317,
-      "sha256": "d0d49ebd1d81c0670e6996fa57b6fb979cad0fad48053ec5ee1d48aa53370527",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-atlas-120-viruses-human-swissprot.zip",
-      "title": "Curated viral proteomes (120) ↔ Human proteins",
-      "bytes": 21423523,
-      "uncompressedBytes": 39664646,
-      "sha256": "9dd4cc514537c56a5ff2c2b868cfe8d044a7fd5032d49d0e4b192a63be6a0536",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-canonical-exposure-no-vertebrates-human-swissprot.zip",
-      "title": "Non-vertebrate exposures ↔ Human proteins",
-      "bytes": 55507039,
-      "uncompressedBytes": 114516385,
-      "sha256": "b7af1285fe2678a10948cf674b9e08ac99edda72ba54b10376d39417156d62d2",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-huprot4.zip",
-      "title": "HuProt",
-      "bytes": 60866011,
-      "uncompressedBytes": 185398526,
-      "sha256": "9e614b025e1a469a2ca8b22ccc339342706b9a1a5523997f7fa44a5be9d0d894",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-huprot4-huscan.zip",
-      "title": "HuProt ↔ HuScan",
-      "bytes": 2102545883,
-      "uncompressedBytes": 9470508263,
-      "sha256": "381cd00de131906d36338a5287676858602f349d34e57a41f6afbf02716eda11",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-huprot4-virscan-exposome.zip",
-      "title": "HuProt ↔ VirScan / Exposome",
-      "bytes": 1730027187,
-      "uncompressedBytes": 6146823146,
-      "sha256": "143454b6c0edbb3f0331e61e4b62f4f639734e1f3670d8657a55f9a89cb76de6",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-huscan-virscan-exposome.zip",
-      "title": "HuScan ↔ VirScan / Exposome",
-      "bytes": 4553418320,
-      "uncompressedBytes": 23713785227,
-      "sha256": "1ec013db4bfcc0ded1aa884a60e092753c23f2dc8fba1dd5d0845fcb70aad505",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-atlas-120-viruses-huprot4.zip",
-      "title": "Curated viral proteomes (120) ↔ HuProt 4.0",
-      "bytes": 16039949,
-      "uncompressedBytes": 31558564,
-      "sha256": "eb0e58a914543c47450e5d6d50f665fc9316a6091a972cf32a19602066f6bb71",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-atlas-120-viruses-huscan.zip",
-      "title": "Curated viral proteomes (120) ↔ HuScan",
-      "bytes": 126531632,
-      "uncompressedBytes": 589840447,
-      "sha256": "5d9c89fcfa7690be0c92fd67ad6cb005e7d8672f8250139573ccb3e78bf13760",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-atlas-120-viruses-virscan-exposome.zip",
-      "title": "Curated viral proteomes (120) ↔ VirScan / Exposome",
-      "bytes": 272126583,
-      "uncompressedBytes": 1025495732,
-      "sha256": "d72c3e05c0e51d68c33277414400c6fd5ddc6681e5370f5ff00f9773a6eed649",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-canonical-exposure-huprot4.zip",
-      "title": "Canonical exposures ↔ HuProt 4.0",
-      "bytes": 56104445,
-      "uncompressedBytes": 123219824,
-      "sha256": "795d0b2c3eed4b692cda69ce9eca8727869b36a658725c4a190a9e9ed01652c9",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-canonical-exposure-huscan.zip",
-      "title": "Canonical exposures ↔ HuScan",
-      "bytes": 1582818593,
-      "uncompressedBytes": 6577813496,
-      "sha256": "b6db0a62d9866303da814837dfafca2bf084c3a7567fae4a627bc98c4ed6ce93",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-canonical-exposure-virscan-exposome.zip",
-      "title": "Canonical exposures ↔ VirScan / Exposome",
-      "bytes": 2586623267,
-      "uncompressedBytes": 9304255366,
-      "sha256": "e5bb66e0a3fd246647ed15fe614b1f49aa56f52a127a18fadaf55e5afb7c8d82",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "human_swissprot--huprot4-summaries.zip",
-      "title": "HuProt 4.0 ↔ Human proteins",
-      "bytes": 138833092,
-      "uncompressedBytes": 409279024,
-      "sha256": "37e810118dad31c69f5bcc1c2be29d7f6c0c0103a8cf638820b127870b4e9310",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-huscan-human-swissprot.zip",
-      "title": "HuScan ↔ Human proteins",
-      "bytes": 2523154306,
-      "uncompressedBytes": 10724672720,
-      "sha256": "ab196eefa3752e221e4f553812173a0e16f5a2e47834140ed544c505379d8cbd",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "source-virscan-human-swissprot.zip",
-      "title": "VirScan / Exposome ↔ Human proteins",
-      "bytes": 2061864421,
-      "uncompressedBytes": 7106950213,
-      "sha256": "c9778a33d5bfa3f767f413d01c5321746ce557f21193b8227712c5b8e9c10d5a",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "reference-fastas.zip",
-      "title": "Exact reference FASTAs",
-      "bytes": 105726884,
-      "uncompressedBytes": 489647309,
-      "sha256": "7ec5b5c5603fc258f1baee5ce88ac5770615d1871da8eeb4842bd78a91c46f2e",
-      "url": null,
-      "kind": "sequences-and-annotations"
-    },
-    {
-      "file": "source-viral-species.zip",
-      "title": "120 viral proteomes · individual source tables",
-      "bytes": 1019398200,
-      "uncompressedBytes": 1954396245,
-      "sha256": "bdfac94b9607c906514d01114d636c3c7f67661302ec3b86d56b93aa4bd93d43",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "canonical-iedb-evidence-2026.10.12.2.zip",
-      "bytes": 11960339,
-      "uncompressedBytes": 74537992,
-      "sha256": "5a42f15284f5a9cb168fc7c316911e291a339f8863ec053457166455a3144da0",
-      "url": null,
-      "kind": "protein-annotations"
-    },
-    {
-      "file": "protein-literature-details-2026.10.12.1.zip",
-      "bytes": 6289274,
-      "uncompressedBytes": 24493924,
-      "sha256": "6e8724f7ce7a77c43240ca29dc94a362d7a024d663aa3f3b588777b5dcda664b",
-      "url": null,
-      "kind": "protein-annotations"
-    },
-    {
-      "file": "atlas_120_viruses--human_current-mapping-index.zip",
-      "title": "Curated viral proteomes (120) ↔ HuScan · mapping index",
-      "bytes": 126920816,
-      "uncompressedBytes": 780228840,
-      "sha256": "d0130d1df744e844a3c2f2a3ae193a04236e704a6af76c5d806ec58bb5183f9b",
-      "url": null,
-      "kind": "mapping-index"
-    },
-    {
-      "file": "atlas_120_viruses--human_swissprot-mapping-index.zip",
-      "title": "Curated viral proteomes (120) ↔ Human proteins · mapping index",
-      "bytes": 13488441,
-      "uncompressedBytes": 21408059,
-      "sha256": "c7c9d906bcd86cf2f3a10c4342484ef9552324a8ece3669075af52b25d4b3da8",
-      "url": null,
-      "kind": "mapping-index"
-    },
-    {
-      "file": "atlas_120_viruses--huprot4-mapping-index.zip",
-      "title": "Curated viral proteomes (120) ↔ HuProt 4.0 · mapping index",
-      "bytes": 5764284,
-      "uncompressedBytes": 22046895,
-      "sha256": "b47f3761de804ca59df0879803ad6013a882c3e2775ddc7bddf0f44afee82f0a",
-      "url": null,
-      "kind": "mapping-index"
-    },
-    {
-      "file": "atlas_120_viruses--virscan_exposome_current-mapping-index.zip",
-      "title": "VirScan / Exposome ↔ Curated viral proteomes (120) · mapping index",
-      "bytes": 248463365,
-      "uncompressedBytes": 1573423860,
-      "sha256": "2372c1a04af98557679e58e6ef7b1270d96fc33781274aec74344220e7c04c1c",
-      "url": null,
-      "kind": "mapping-index"
-    },
-    {
-      "file": "canonical_exposure--human_current-mapping-index.zip",
-      "title": "Canonical exposures ↔ HuScan · mapping index",
-      "bytes": 639132990,
-      "uncompressedBytes": 3541384217,
-      "sha256": "c3547d134a3748b3cf41b40f68fd35921577a0544a8007c07aa6edadce51d1cb",
-      "url": null,
-      "kind": "mapping-index"
-    },
-    {
-      "file": "canonical_exposure--human_swissprot-mapping-index.zip",
-      "title": "Canonical exposures ↔ Human proteins · mapping index",
-      "bytes": 24522848,
-      "uncompressedBytes": 68574316,
-      "sha256": "1d9c24f35539826978762dbfd299692f3ab48e05a6629365c5ae39209323f0c5",
-      "url": null,
-      "kind": "mapping-index"
-    },
-    {
-      "file": "canonical_exposure--huprot4-mapping-index.zip",
-      "title": "Canonical exposures ↔ HuProt 4.0 · mapping index",
-      "bytes": 22992772,
-      "uncompressedBytes": 65866712,
-      "sha256": "4f610b064fb5e64b33e416cebaaa94e2d2f1cb7012a1ca49eb1b125ec6eff870",
-      "url": null,
-      "kind": "mapping-index"
-    },
-    {
-      "file": "canonical_exposure--virscan_exposome_current-mapping-index.zip",
-      "title": "Canonical exposures ↔ VirScan / Exposome · mapping index",
-      "bytes": 910456127,
-      "uncompressedBytes": 4672790336,
-      "sha256": "1262672b77053df53abe48aa4b1443b825a9d5ade9b4ee35deb751d667044d24",
-      "url": null,
-      "kind": "mapping-index"
-    },
-    {
-      "file": "canonical_exposure_no_vertebrates--human_swissprot-mapping-index.zip",
-      "title": "Non-vertebrate exposures ↔ Human proteins · mapping index",
-      "bytes": 20433178,
-      "uncompressedBytes": 59283219,
-      "sha256": "9761db00cbf322b0ba9340ca579399c5e3e6074304ea9ecf1791ea594f840c97",
-      "url": null,
-      "kind": "mapping-index"
-    },
-    {
-      "file": "human_current--human_swissprot-mapping-index.zip",
-      "title": "HuScan ↔ Human proteins · mapping index",
-      "bytes": 1409204912,
-      "uncompressedBytes": 5181955365,
-      "sha256": "a5f2a12518637bd5554839fed252655c57c5472ef6ba9710d7fc46e76a29d61a",
-      "url": null,
-      "kind": "mapping-index"
-    },
-    {
-      "file": "human_swissprot--human_swissprot-mapping-index.zip",
-      "title": "Human proteins ↔ Human proteins · mapping index",
-      "bytes": 64618797,
-      "uncompressedBytes": 158431276,
-      "sha256": "403d34ee992f9db92ab45f2f2671b0c4bcf2ec5c8c3640f38b894cf213b2718c",
-      "url": null,
-      "kind": "mapping-index"
-    },
-    {
-      "file": "human_swissprot--huprot4-mapping-index.zip",
-      "title": "HuProt 4.0 ↔ Human proteins · mapping index",
-      "bytes": 53779380,
-      "uncompressedBytes": 142063670,
-      "sha256": "429f0e8aa59c7702a33267bbbb6ce820bf6939a1c50252e734e47a52c80a980a",
-      "url": null,
-      "kind": "mapping-index"
-    },
-    {
-      "file": "human_swissprot--virscan_exposome_current-mapping-index.zip",
-      "title": "VirScan / Exposome ↔ Human proteins · mapping index",
-      "bytes": 975547728,
-      "uncompressedBytes": 3862092420,
-      "sha256": "3fefc8055f8740d19f1b9a78c72c6a7df0691eab2a22b7d6fd55833e1fa32a9f",
-      "url": null,
-      "kind": "mapping-index"
-    },
-    {
-      "file": "selected_adeno_associated_virus_2_summary.zip",
-      "title": "Adeno-associated virus 2 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16392251,
-      "uncompressedBytes": 30707172,
-      "sha256": "922b50ae8c3016c3025276994fcf8d0e2b5a14d359c6e5211d27b7fe109f9795",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_bk_polyomavirus_summary.zip",
-      "title": "BK polyomavirus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16388818,
-      "uncompressedBytes": 30485708,
-      "sha256": "fe4640d5ca8dc637f0995e512c2f08c6d3e843fd540655f859ce6982ab4d44e8",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_chikungunya_virus_summary.zip",
-      "title": "Chikungunya virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16411483,
-      "uncompressedBytes": 30687407,
-      "sha256": "2e60242bb8bff2269fe1fa145a1a5a06724637a585b5a45f8df7c7727478f6b2",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_coxsackievirus_a11_summary.zip",
-      "title": "Coxsackievirus A11 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16373205,
-      "uncompressedBytes": 29868291,
-      "sha256": "75cff0a4f6e84146b1ff951fac33ddbfc19c4fc15a37f965673269a3d1070d41",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_coxsackievirus_b4_summary.zip",
-      "title": "Coxsackievirus B4 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16396349,
-      "uncompressedBytes": 30685843,
-      "sha256": "393cc48068b2f4b5dd61ac2997f76ffde9fcc0fc81235df7bfe47f688bc821d8",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_dengue_virus_type_1_summary.zip",
-      "title": "Dengue virus type 1 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16402996,
-      "uncompressedBytes": 30678646,
-      "sha256": "0a01dded5ee215491876d4f81fb4f54140e2bb1c1bcd4b4544ce13621030801b",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_echovirus_12_summary.zip",
-      "title": "Echovirus 12 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16378812,
-      "uncompressedBytes": 30094083,
-      "sha256": "2c9cdb1c7683d1762126f237998e2beb37792094ad6d4df988514a86982e9892",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_epstein_barr_virus_summary.zip",
-      "title": "Epstein-Barr virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16949433,
-      "uncompressedBytes": 31836161,
-      "sha256": "92e23d30c3767504eb2ca1a207cb56a7e4b3bde23921dd26e473951ce6be732a",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_hantaan_virus_summary.zip",
-      "title": "Hantaan virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16407020,
-      "uncompressedBytes": 30779105,
-      "sha256": "36453ac7c749a797133edd9636f755c4fdc906adbc8023e283adbfe55284f11e",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_hepatitis_b_virus_genotype_c_subtype_ayr_summary.zip",
-      "title": "Hepatitis B virus genotype C subtype ayr ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16407617,
-      "uncompressedBytes": 31165142,
-      "sha256": "3f28172c86e8666e4aeac6325db030917e7a2a1f70cef5293d68801a2504ef61",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_hepatitis_c_virus_genotype_1a_summary.zip",
-      "title": "Hepatitis C virus genotype 1a ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16416404,
-      "uncompressedBytes": 30534000,
-      "sha256": "457785c2495ead70f943ca81edb4f3be94149626664bc55a5b71d3ad0c80f60c",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_hepatitis_c_virus_genotype_1b_summary.zip",
-      "title": "Hepatitis C virus genotype 1b ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16415435,
-      "uncompressedBytes": 30632802,
-      "sha256": "3f75dc53bfd3907db57b1c96b8f65a7bf56d239970655bf34c29b0ef54e91ecd",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_hepatitis_delta_virus_genotype_i_summary.zip",
-      "title": "Hepatitis delta virus genotype I ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16378941,
-      "uncompressedBytes": 30570886,
-      "sha256": "72e9528d5eb860cc94e716ca095d348609fea22d24f78dc494f7cd84ab67b17f",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_hepatitis_e_virus_genotype_1_summary.zip",
-      "title": "Hepatitis E virus genotype 1 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16420093,
-      "uncompressedBytes": 30914806,
-      "sha256": "6cbbfaba37dd5eef7ba39a9dd0ef99a425ddde1c510c8c1aea2743a041bdb7e8",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_adenovirus_21_summary.zip",
-      "title": "Human adenovirus 21 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16517167,
-      "uncompressedBytes": 30119919,
-      "sha256": "95e6960557502b83e92cd07480969e3cd99d558d4b905976e4acfbc49d752f9a",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_adenovirus_52_summary.zip",
-      "title": "human adenovirus 52 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16503727,
-      "uncompressedBytes": 30117585,
-      "sha256": "302ac1d46b08b74aac813c640c1d51025ac9a4145e78e1e371ab746a18f7e858",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_adenovirus_a_serotype_18_summary.zip",
-      "title": "Human adenovirus A serotype 18 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16510298,
-      "uncompressedBytes": 30944077,
-      "sha256": "ade73ee372b95671c01ee762285d61194991dda7d71767a6a1e23daacc2351f3",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_adenovirus_c_serotype_2_summary.zip",
-      "title": "Human adenovirus C serotype 2 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16585622,
-      "uncompressedBytes": 31024354,
-      "sha256": "695e6446485371f01dceccd2337f854e440fff75d5617f853f2d50114481fcf4",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_adenovirus_c_serotype_5_summary.zip",
-      "title": "Human adenovirus C serotype 5 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16396243,
-      "uncompressedBytes": 30718485,
-      "sha256": "0c9cae0cd58845532dd75a083ccf55867214aa78059b293b808aabdb14c5d852",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_adenovirus_d_serotype_9_summary.zip",
-      "title": "Human adenovirus D serotype 9 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16557324,
-      "uncompressedBytes": 30986995,
-      "sha256": "95aca355c428ff5c3be604e12aa0c24d8494c8619032f487468be3bbb16772ec",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_adenovirus_f_serotype_40_summary.zip",
-      "title": "Human adenovirus F serotype 40 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16536259,
-      "uncompressedBytes": 30994073,
-      "sha256": "c0870799bacc55579b41666a6268051679ebd7ec71db2c6e4c0c6d6e0c2e1c69",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_astrovirus_1_summary.zip",
-      "title": "Human astrovirus-1 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16382517,
-      "uncompressedBytes": 30082639,
-      "sha256": "70e54715acb1cf5e05db277637081afab2cdbd80d1c2cf9e9176b2ce1c779d62",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_coronavirus_229e_summary.zip",
-      "title": "Human coronavirus 229E ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16433570,
-      "uncompressedBytes": 30275771,
-      "sha256": "0f8b829d5bc393a1d1436d1c5f083747bf561654a200d3f14af8513dfed4ed62",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_coronavirus_hku1_summary.zip",
-      "title": "Human coronavirus HKU1 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16436963,
-      "uncompressedBytes": 30566428,
-      "sha256": "6e97fa645a03ea99b216c7af7550a9aa106e85c42f22ef28934b163432b318de",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_coronavirus_nl63_summary.zip",
-      "title": "Human coronavirus NL63 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16432273,
-      "uncompressedBytes": 30291680,
-      "sha256": "6fc7d20528dc3c71980eabf729f1163a306b337cdf1e78a594628b2d33079ea5",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_coronavirus_oc43_summary.zip",
-      "title": "Human coronavirus OC43 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16441010,
-      "uncompressedBytes": 30283766,
-      "sha256": "3b003655a8a1320c15ef0d0bda7408864366a433ece1a8f7944a6f7821a69702",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_cytomegalovirus_summary.zip",
-      "title": "Human cytomegalovirus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 17064040,
-      "uncompressedBytes": 32109310,
-      "sha256": "7ace06674de48650d60acc70aaf0bc01e023cdaa83bba7c53d752011cd705b22",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_enterovirus_71_summary.zip",
-      "title": "Human enterovirus 71 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16397323,
-      "uncompressedBytes": 30690290,
-      "sha256": "6a493a511c7e44e2e0788b81c1d827883f8854eb065dc743a4e64005e94c140f",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_enterovirus_d68_summary.zip",
-      "title": "Human enterovirus D68 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16381425,
-      "uncompressedBytes": 30235089,
-      "sha256": "3dbeb48b0e743e575f935586b221b0c0e35e25bdbdb4ecedaba501ac36676d1c",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_hepatitis_a_virus_genotype_ib_summary.zip",
-      "title": "Human hepatitis A virus genotype IB ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16420758,
-      "uncompressedBytes": 31970855,
-      "sha256": "2d88f71f487a340e6fb26153e52825d9424be5411d5d2b2ed389604e4e8ea099",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_herpesvirus_1_summary.zip",
-      "title": "Human herpesvirus 1 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16834878,
-      "uncompressedBytes": 31661431,
-      "sha256": "9a6e3deba6baf6e71e26bf923cb670de2c122559ea2a46e747723de1de622e21",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_herpesvirus_2_summary.zip",
-      "title": "Human herpesvirus 2 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16839714,
-      "uncompressedBytes": 31707907,
-      "sha256": "c3de1759035faabf658d55f40103b61fa4651d74416c392c7cdbb8f0678571c0",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_herpesvirus_6a_summary.zip",
-      "title": "Human herpesvirus 6A ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16738890,
-      "uncompressedBytes": 31863179,
-      "sha256": "03cf4343637d53ce8f6aaa3472c26b5ead1f9b3df1a74a6d1e22470693455496",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_herpesvirus_6b_summary.zip",
-      "title": "Human herpesvirus 6B ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16741962,
-      "uncompressedBytes": 31716007,
-      "sha256": "bd474ea80b946729c6515375152492448cebe855a5320af4ed52c1e77d0ae7c2",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_herpesvirus_7_summary.zip",
-      "title": "Human herpesvirus 7 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16654034,
-      "uncompressedBytes": 31319022,
-      "sha256": "73f234aed04e1dad96d0c4a2b0800197a4ecc744d34e70e8feb809f1e2759c36",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_herpesvirus_8_type_p_summary.zip",
-      "title": "Human herpesvirus 8 type P ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16741632,
-      "uncompressedBytes": 31909031,
-      "sha256": "b1f947976b226c0268de5127b0cbf7db90d74c3bda4731313a0d7c7ae51ef5e3",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_immunodeficiency_virus_type_1_group_m_subtype_b_summary.zip",
-      "title": "Human immunodeficiency virus type 1 group M subtype B ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16416830,
-      "uncompressedBytes": 31084989,
-      "sha256": "953e164a624094649db0f020b125f8d11fdd5defb16e6497321f4d98769f52ba",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_immunodeficiency_virus_type_2_subtype_a_summary.zip",
-      "title": "Human immunodeficiency virus type 2 subtype A ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16431345,
-      "uncompressedBytes": 30940658,
-      "sha256": "e74a8c11ccd56c94eb3a725a5a8c62c729188e179db50633bd040735f6c06943",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_mastadenovirus_e_summary.zip",
-      "title": "Human mastadenovirus E ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16523649,
-      "uncompressedBytes": 30209249,
-      "sha256": "ee90ab1f9f67b7a55baf33fd18153288cf538c6113af1703179d233832066b5a",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_metapneumovirus_summary.zip",
-      "title": "Human metapneumovirus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16413855,
-      "uncompressedBytes": 30493494,
-      "sha256": "d3edd29340d802d3248b6cce88b7fbbc1d12425ba90d3db43c2631a354815f3e",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_11_summary.zip",
-      "title": "Human papillomavirus 11 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16400934,
-      "uncompressedBytes": 30029585,
-      "sha256": "b2d983116ff834b9a5e6fff3cfc8f38f04054b089d398d0085431965a506b276",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_20_summary.zip",
-      "title": "Human papillomavirus 20 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16433744,
-      "uncompressedBytes": 30088931,
-      "sha256": "5b6830185f72905fb566e47f094e65c35ae1dc8c6b393c6faf25ae2c710cd51c",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_31_summary.zip",
-      "title": "Human papillomavirus 31 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16383253,
-      "uncompressedBytes": 29988362,
-      "sha256": "b675788a766a23bf4c45b53c44f0c36bbdc60fcaaca253e55387256e8bc0b031",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_33_summary.zip",
-      "title": "Human papillomavirus 33 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16385676,
-      "uncompressedBytes": 30004061,
-      "sha256": "126a0e0fcbc3e7d5c725726f52cf4361310c8e544e452aacad2bd10da4fc4296",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_35_summary.zip",
-      "title": "Human papillomavirus 35 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16377559,
-      "uncompressedBytes": 29975675,
-      "sha256": "d23b4c1d37815bd473ee58ac115fcc2c2cda7006aa348adb896a36c10dfc94aa",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_38_summary.zip",
-      "title": "Human papillomavirus 38 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16393361,
-      "uncompressedBytes": 29995523,
-      "sha256": "5cd917b9aa3f80b6b35c4c5190a05b89bff0ab3c161508df78748b1e06734c78",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_39_summary.zip",
-      "title": "Human papillomavirus 39 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16385510,
-      "uncompressedBytes": 29988177,
-      "sha256": "fb559131115ee479997fe0291dcbcf88dd4382f28a3f4e31dd1ecfdea336de61",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_45_summary.zip",
-      "title": "Human papillomavirus 45 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16379650,
-      "uncompressedBytes": 29976921,
-      "sha256": "d10c4b18bac3e788d7046c02636f82560831589b615cba488c6e292211938c86",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_5_summary.zip",
-      "title": "Human papillomavirus 5 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16440715,
-      "uncompressedBytes": 30105909,
-      "sha256": "40f86d4dbe3987686184ebe39b30f503ba8d34e54f7873c4f3bf46a8d5d1e5be",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_51_summary.zip",
-      "title": "Human papillomavirus 51 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16399883,
-      "uncompressedBytes": 30018304,
-      "sha256": "5614f30d4137c5c243679ccd74faaba13b4ece0917c7212111261b8c61cf6629",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_52_summary.zip",
-      "title": "Human papillomavirus 52 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16380125,
-      "uncompressedBytes": 29978202,
-      "sha256": "b2bab2ecfce0e0c10083c6f1195ae2a57b06124e1bbe451793781e972ef95272",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_56_summary.zip",
-      "title": "Human papillomavirus 56 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16371737,
-      "uncompressedBytes": 29973461,
-      "sha256": "b4e0377728606e6d71a4228ce8cbe3295bd27eb67d9d03595bf099699c9f00bf",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_58_summary.zip",
-      "title": "Human papillomavirus 58 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16384806,
-      "uncompressedBytes": 29997914,
-      "sha256": "807f97f2c65116e4107ec12ebf3e964e6c5f28e8f050cbf941124e8dbd5f7226",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_59_summary.zip",
-      "title": "Human papillomavirus 59 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16380148,
-      "uncompressedBytes": 29981495,
-      "sha256": "db91274f86ce54bfd1cb7b5d49b986c4b16f906df28a0138faa0ec8afb6d1665",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_7_summary.zip",
-      "title": "Human papillomavirus 7 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16381459,
-      "uncompressedBytes": 29958632,
-      "sha256": "85f4cb312b32ddabe348d0ecdf6aa6a11fad8ace14bfaa36a0dff65cd9d4a94b",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_type_1_summary.zip",
-      "title": "Human papillomavirus type 1 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16408530,
-      "uncompressedBytes": 30709668,
-      "sha256": "73e4b3f758acbe050889fd5a59023c36fb31d99f78679be61440a22877c05f69",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_type_10_summary.zip",
-      "title": "Human papillomavirus type 10 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16385716,
-      "uncompressedBytes": 30107763,
-      "sha256": "d26203310e394e380882e68740ad7ea521db71752106daac07627e1e16078222",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_type_16_summary.zip",
-      "title": "Human papillomavirus type 16 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16389174,
-      "uncompressedBytes": 30116722,
-      "sha256": "299a73a7e9caa319fef998231c6ab7ab78bf50af9a32bda251f6b0ffcbf32062",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_type_18_summary.zip",
-      "title": "Human papillomavirus type 18 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16389023,
-      "uncompressedBytes": 30113651,
-      "sha256": "4ab84629c89eda1023c88f9269c3f91559e07d45cdee67b65ef6851619efad53",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_type_2a_summary.zip",
-      "title": "Human papillomavirus type 2a ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16389583,
-      "uncompressedBytes": 30090638,
-      "sha256": "d603c119945085af1b8ffd0eedfce87f8ae3a10b1b278bc58e72029ae4be5fa3",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_type_68a_summary.zip",
-      "title": "Human papillomavirus type 68a ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16389074,
-      "uncompressedBytes": 30131036,
-      "sha256": "fb0b53e5b9b2d6b73b94871f951844f06d7d4dc16767383d15c2f95454b9a572",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_type_6b_summary.zip",
-      "title": "Human papillomavirus type 6b ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16393398,
-      "uncompressedBytes": 30111586,
-      "sha256": "172b648c2be96a5f0c78760779a568c2889377101ee01b3491c110a19476a006",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_papillomavirus_type_8_summary.zip",
-      "title": "Human papillomavirus type 8 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16425725,
-      "uncompressedBytes": 30150235,
-      "sha256": "69c5c9a1e416ba6129a661e5b1ffe21a9443c0b45227b2e3381a302843ca87a6",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_parainfluenza_2_virus_summary.zip",
-      "title": "Human parainfluenza 2 virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16412606,
-      "uncompressedBytes": 30611943,
-      "sha256": "d4fac2e84c46758b98d77a1f361bee9c4545394fd8a3f078e5d81b4cc3ec51c0",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_parainfluenza_virus_1_strain_washington_1964_summary.zip",
-      "title": "Human parainfluenza virus 1 strain Washington/1964 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16418591,
-      "uncompressedBytes": 30575273,
-      "sha256": "c9f089fea665cca0d4b1b3b815417ccb4bc0503bab6e1969ff34f3b927db9434",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_parainfluenza_virus_4b_summary.zip",
-      "title": "Human parainfluenza virus 4b ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16396617,
-      "uncompressedBytes": 30098625,
-      "sha256": "c8b41571b044b53fe0c8311866f3e3dff3a57b007336b0f9bd453a4eb102b608",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_parechovirus_2_summary.zip",
-      "title": "Human parechovirus 2 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16397964,
-      "uncompressedBytes": 30827377,
-      "sha256": "405484333d673d2f79afe23c2a0cbe8e1fb273601dcf03dad4353b09f4ad89d3",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_parvovirus_b19_summary.zip",
-      "title": "Human parvovirus B19 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16393959,
-      "uncompressedBytes": 30396214,
-      "sha256": "19ce2148d55de23f563e18b6484b41777a0978d4acc0a7a0684eedd682b23cc4",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_pegivirus_1_summary.zip",
-      "title": "Human pegivirus 1 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16407234,
-      "uncompressedBytes": 30521373,
-      "sha256": "f31d48a9d9cd6f99665410318108e505b3c5e97b3ceed17144147820433c230c",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_pegivirus_genotype_2_summary.zip",
-      "title": "Human pegivirus genotype 2 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16394193,
-      "uncompressedBytes": 30091441,
-      "sha256": "fb1b782c4221476cced00d6a9efcc8bd5aa0f97d7ffa9444110f96ed2933861b",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_polyomavirus_6_summary.zip",
-      "title": "Human polyomavirus 6 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16370875,
-      "uncompressedBytes": 29926526,
-      "sha256": "2eb601e68939786364e7675589dbb072453b13a0234b2ebacbee5ff1bbcac911",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_polyomavirus_7_summary.zip",
-      "title": "Human polyomavirus 7 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16374952,
-      "uncompressedBytes": 29931297,
-      "sha256": "51853ae588b8467f02675aaab5fb11ad94d2fa35075751625b413993d9839f66",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_respiratory_syncytial_virus_a_summary.zip",
-      "title": "Human respiratory syncytial virus A ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16406073,
-      "uncompressedBytes": 30486966,
-      "sha256": "2be33b452b3f6957d3ddf8e4f7699ffa8d3102afe1a75051d58b915226e25305",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_respiratory_syncytial_virus_b_summary.zip",
-      "title": "Human respiratory syncytial virus B ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16409698,
-      "uncompressedBytes": 30492444,
-      "sha256": "23c32bbd1ac8c81f4bf2aff8781c8252162304715d9c42553e6362bc5fc3145e",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_respirovirus_3_summary.zip",
-      "title": "Human respirovirus 3 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16393761,
-      "uncompressedBytes": 29933365,
-      "sha256": "7297f3d59fdf3db7200b52f553a0cd236c21a5ec986f8834071910f878ad9200",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_rhinovirus_14_summary.zip",
-      "title": "Human rhinovirus 14 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16376948,
-      "uncompressedBytes": 30072142,
-      "sha256": "75aa19afbed81e2661ad19914d2a02ba3a1f2026788c8ad58d0f2936b5eed0ea",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_rhinovirus_16_summary.zip",
-      "title": "Human rhinovirus 16 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16375451,
-      "uncompressedBytes": 30070389,
-      "sha256": "793e523dff5bd2bc60e1abab5b21adde375d3b19148b4e66211ed35a78abb0aa",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_rhinovirus_1a_summary.zip",
-      "title": "Human rhinovirus 1A ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16376066,
-      "uncompressedBytes": 30070999,
-      "sha256": "896454775d020eb4cf02e0a79ba80dbc9a5c615e996bbf659a4bc3aa159f6b58",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_rhinovirus_3_summary.zip",
-      "title": "Human rhinovirus 3 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16376755,
-      "uncompressedBytes": 30032298,
-      "sha256": "c00700203fbefabe31d31aacafbe166b6dfa5c7411868b2515eaefa9ad8e2ae0",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_rhinovirus_a_serotype_89_summary.zip",
-      "title": "Human rhinovirus A serotype 89 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16396425,
-      "uncompressedBytes": 30747569,
-      "sha256": "8ada53a179efbe74069c2d67de391729bdc66614019e6193fc651bd7872dcf37",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_t_cell_leukemia_virus_1_summary.zip",
-      "title": "Human T-cell leukemia virus 1 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16447679,
-      "uncompressedBytes": 31065609,
-      "sha256": "4b1177a4db91b0da9f8c59e610f600a63e10e8a96850c22ceb235d97f2585609",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_human_t_cell_leukemia_virus_2_summary.zip",
-      "title": "Human T-cell leukemia virus 2 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16411817,
-      "uncompressedBytes": 30321759,
-      "sha256": "78dbc151243b008b8f9303e8d3f798c2ac33f5b7bd22d6c1b7deceed0155d647",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_influenza_a_virus_summary.zip",
-      "title": "Influenza A virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16411964,
-      "uncompressedBytes": 30611554,
-      "sha256": "e057e37a89dda20f073f63afe86838b7d1c18e74e338fd0473d675cde027e648",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_influenza_b_virus_summary.zip",
-      "title": "Influenza B virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16404789,
-      "uncompressedBytes": 30302599,
-      "sha256": "0678b33555183a14cfe10c6ac5cc2822e231748a6d285588301fbb089dbc2877",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_influenza_c_virus_summary.zip",
-      "title": "Influenza C virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16404695,
-      "uncompressedBytes": 30439329,
-      "sha256": "f53150d05b8e1b26cd073d9047542976d03689b7a2d002dd3ea76d675d30df02",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_japanese_encephalitis_virus_summary.zip",
-      "title": "Japanese encephalitis virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16404760,
-      "uncompressedBytes": 30583037,
-      "sha256": "b34ac66d1a0b0fb386e5da71abf5c19128abfad5639ee2dc80b9d8d35fe763c4",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_jc_polyomavirus_summary.zip",
-      "title": "JC polyomavirus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16378300,
-      "uncompressedBytes": 30095420,
-      "sha256": "db47e7cd42dc186258900c61cf058468d560af57dccd7ae96a536e8dceb1ddd8",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_ki_polyomavirus_summary.zip",
-      "title": "KI polyomavirus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16388110,
-      "uncompressedBytes": 30459214,
-      "sha256": "6c78b81e378f57061a87296418f8858473f52122394ac2937d3ef638442df032",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_lake_victoria_marburgvirus_summary.zip",
-      "title": "Lake Victoria marburgvirus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16446643,
-      "uncompressedBytes": 31478618,
-      "sha256": "5e142ad16d11cc8ed0553ee80794c93ae04d126f86237c3568c19d0b410643e0",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_lassa_virus_summary.zip",
-      "title": "Lassa virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16408692,
-      "uncompressedBytes": 30703627,
-      "sha256": "4b9e42b86b2af7f2a1dd208fe04d88bdd298ff3162420fab73f39770b2440732",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_lordsdale_virus_summary.zip",
-      "title": "Lordsdale virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16429826,
-      "uncompressedBytes": 31780072,
-      "sha256": "2d2c08744ea87285a8270a3826efe90188b77a3755c9e614565868faff855598",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_lymphocytic_choriomeningitis_virus_summary.zip",
-      "title": "Lymphocytic choriomeningitis virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16409199,
-      "uncompressedBytes": 30750873,
-      "sha256": "21279ce2147853331acd02c45b28e7ab9ffc9ad73b2fb41f9255e51073022ae5",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_measles_virus_summary.zip",
-      "title": "Measles virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16434753,
-      "uncompressedBytes": 31271075,
-      "sha256": "8d5946fcc9a33621c06b6cb6684ba0a609a13d6b4e939224347d0f192cc4dad4",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_merkel_cell_polyomavirus_summary.zip",
-      "title": "Merkel cell polyomavirus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16382431,
-      "uncompressedBytes": 30018810,
-      "sha256": "5f78087f0e879665237d708b3ad472658f3b7fe698541602968950d77a8d812c",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_molluscum_contagiosum_virus_subtype_1_summary.zip",
-      "title": "Molluscum contagiosum virus subtype 1 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16971552,
-      "uncompressedBytes": 31604361,
-      "sha256": "140b37a398179b9b74e836b5258d15fc9b6d4ec67f70d1f3c246e39dfa9ced5e",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_mumps_virus_genotype_b_summary.zip",
-      "title": "Mumps virus genotype B ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16421382,
-      "uncompressedBytes": 30650029,
-      "sha256": "9c9463d59da8b550f115041f31fead42cae92939707842538d020c6af66f192d",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_norovirus_summary.zip",
-      "title": "Norovirus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16417419,
-      "uncompressedBytes": 31106450,
-      "sha256": "b276fc97e05b1509aebd74e413031d33f455ef91fa863d5c67f18a35e21462f8",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_poliovirus_type_1_summary.zip",
-      "title": "Poliovirus type 1 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16383497,
-      "uncompressedBytes": 30199107,
-      "sha256": "9e1211841f44f7bcc1c3c54c6148f0efbdf0b962d241a885da7015ab39b19aaa",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_poliovirus_type_2_summary.zip",
-      "title": "Poliovirus type 2 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16382440,
-      "uncompressedBytes": 30195404,
-      "sha256": "cd3df3b2534a5b4875d02e88982fee2062325942904656ac07979afba012baf8",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_poliovirus_type_3_summary.zip",
-      "title": "Poliovirus type 3 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16393634,
-      "uncompressedBytes": 30685111,
-      "sha256": "c87c3190b119511cf116c2ce0991dab82c6466413b92580e8c10b6237cb4befe",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_primate_bocaparvovirus_1_summary.zip",
-      "title": "Primate bocaparvovirus 1 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16411602,
-      "uncompressedBytes": 31384363,
-      "sha256": "593f3b70607bd1bebe816b6edf56ad17044d0867083b17497638093ee2a07b6a",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_rabies_virus_summary.zip",
-      "title": "Rabies virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16406477,
-      "uncompressedBytes": 30538042,
-      "sha256": "6880d328f07ae05a845a652ee48113cb4561c38562ec21b9d5ae14be52281861",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_rhinovirus_a31_summary.zip",
-      "title": "rhinovirus A31 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16365385,
-      "uncompressedBytes": 29804599,
-      "sha256": "9bcc976327b9524caf3bec98909d2e5ba8c14096f0c608f87ce5159dd7693425",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_rhinovirus_c3_summary.zip",
-      "title": "rhinovirus C3 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16365669,
-      "uncompressedBytes": 29805219,
-      "sha256": "e51d7426a69ce17e18e411c1f158ad9b443900e47f2374092bd180debdb70da4",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_rotavirus_a_summary.zip",
-      "title": "Rotavirus A ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16454443,
-      "uncompressedBytes": 32129863,
-      "sha256": "8c1405eee0a85d56e2a51d1656966c2541960ee141333362da3ab51161acffcd",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_rubella_virus_summary.zip",
-      "title": "Rubella virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16413093,
-      "uncompressedBytes": 30293573,
-      "sha256": "883d2d0b6f85d65b3ca4692f2c0786a2070e99e7a5ba03543a4864bab3b9332b",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_sapporo_virus_summary.zip",
-      "title": "Sapporo virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16409027,
-      "uncompressedBytes": 31119302,
-      "sha256": "848b39511a0e35ab395266e0fdc61216fcf36ba90bcd16aa9266984f990dfed2",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_severe_acute_respiratory_syndrome_coronavirus_2_summary.zip",
-      "title": "Severe acute respiratory syndrome coronavirus 2 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16487766,
-      "uncompressedBytes": 31166410,
-      "sha256": "31df236536a266a871f78a6ea313a381b08a32e81c75247c5fd7372f0040d099",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_simian_virus_40_summary.zip",
-      "title": "Simian virus 40 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16378200,
-      "uncompressedBytes": 29999011,
-      "sha256": "22936675473513b2032c4403f647e274bebacc8ce99a0e9d7f7face2dc0056fa",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_torque_teno_virus_summary.zip",
-      "title": "Torque teno virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16409166,
-      "uncompressedBytes": 30703735,
-      "sha256": "b32eac08e27157dff7a4ad5922e55535e02fd17073fc0e5f8121d99f15647c6a",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_torque_teno_virus_2_summary.zip",
-      "title": "Torque teno virus 2 ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16371844,
-      "uncompressedBytes": 29908198,
-      "sha256": "758475b6d8cffe4703ea356a6ce2480fc7bea9a98381b05fb4d21b9ac4491b39",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_trichodysplasia_spinulosa_associated_polyomavirus_summary.zip",
-      "title": "Trichodysplasia spinulosa-associated polyomavirus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16393473,
-      "uncompressedBytes": 30526563,
-      "sha256": "0c7f153e937aba2f5c99af893dbf0d32ab0e350c539ed5c727370b23a3fb951b",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_vaccinia_virus_summary.zip",
-      "title": "Vaccinia virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16824565,
-      "uncompressedBytes": 31789660,
-      "sha256": "867bcba25b942f5c4ac2a426d1cc905bea7f7492cc6104d27fec1038dbfdd150",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_varicella_zoster_virus_summary.zip",
-      "title": "Varicella-zoster virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16651349,
-      "uncompressedBytes": 31260700,
-      "sha256": "04933001cbd60f8c886be2c1fab1fe68516f608832b295f6ebdb3d3ae2f28bd4",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_variola_virus_summary.zip",
-      "title": "Variola virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16782876,
-      "uncompressedBytes": 31597873,
-      "sha256": "dcdf8c3ea0d1d8023d4abad2a3ff143b4fd02e979839c9dca3f2dabfff2fa7d1",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_west_nile_virus_summary.zip",
-      "title": "West Nile virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16385722,
-      "uncompressedBytes": 29943735,
-      "sha256": "ca285f128831a0b2d30a5631463a6d0a1835c37b517b7a5d09d0a78309c36070",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_wu_polyomavirus_summary.zip",
-      "title": "WU polyomavirus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16374429,
-      "uncompressedBytes": 29989262,
-      "sha256": "077bc07e37ec4c6eccea556dad98ffc7368f6dfd43b5b90821b9bb08eb6159eb",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_yellow_fever_virus_summary.zip",
-      "title": "Yellow fever virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16401642,
-      "uncompressedBytes": 30436530,
-      "sha256": "f73cf01795bdd3df7a12448b27d99d5f0b456dcb603eba5895eba2976c957087",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_zaire_ebolavirus_summary.zip",
-      "title": "Zaire ebolavirus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16425874,
-      "uncompressedBytes": 30861081,
-      "sha256": "1dc6fce461523e314aa6776338334fb21d36145fbada02801383067a527f3e8f",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "selected_zika_virus_summary.zip",
-      "title": "Zika virus ↔ Canonical Human Proteins · Summary CSVs",
-      "bytes": 16383397,
-      "uncompressedBytes": 29864192,
-      "sha256": "eba7d8ddd10b89f4e7fefdeefb0885cf0a295af4a398c89bb6c6c65c5d63204d",
-      "url": null,
-      "kind": "coverage-summaries"
-    },
-    {
-      "file": "UniProt-Taxonomy.zip",
-      "title": "UniProt Taxonomy",
-      "bytes": 117506706,
-      "uncompressedBytes": 359214093,
-      "sha256": "6a2629bb708777d22384678dbc3e7f50cb56af6e83a1a77e213ee4f5ec5674f4",
-      "url": null,
-      "kind": "taxonomy"
+  "schema": "mimicrymap.release-downloads/1",
+  "zenodo_record_id": 24046306,
+  "title": "MimicryMap: sequence comparisons, Pan-Viral Atlas and structure annotations",
+  "license": {
+    "id": "cc-by-4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "files": [
+    {
+      "filename": "atlas_120_viruses--human_current-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 126925560,
+      "md5": "ed5d7656dc7e7104158f8dd98f7546d3",
+      "download_url": "https://zenodo.org/records/24046306/files/atlas_120_viruses--human_current-sqlite.zip?download=1"
+    },
+    {
+      "filename": "atlas_120_viruses--human_swissprot-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 13493207,
+      "md5": "8f171ebdf337042a93c60e295d2aecc1",
+      "download_url": "https://zenodo.org/records/24046306/files/atlas_120_viruses--human_swissprot-sqlite.zip?download=1"
+    },
+    {
+      "filename": "atlas_120_viruses--huprot4-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 5769048,
+      "md5": "0cff5cb11544d63cc489c316ae061975",
+      "download_url": "https://zenodo.org/records/24046306/files/atlas_120_viruses--huprot4-sqlite.zip?download=1"
+    },
+    {
+      "filename": "atlas_120_viruses--virscan_exposome_current-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 248467891,
+      "md5": "479eaff6eb6238c7ef2dfbac2ff0d2e3",
+      "download_url": "https://zenodo.org/records/24046306/files/atlas_120_viruses--virscan_exposome_current-sqlite.zip?download=1"
+    },
+    {
+      "filename": "atlas_120_viruses.fasta",
+      "role": "input_sequences",
+      "bytes": 1148192,
+      "md5": "f9d127f6fd56289bee9998e7d2ab77ef",
+      "download_url": "https://zenodo.org/records/24046306/files/atlas_120_viruses.fasta?download=1"
+    },
+    {
+      "filename": "canonical_exposure--human_current-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 639013417,
+      "md5": "6e33281076fae620fc7f89f8a624b980",
+      "download_url": "https://zenodo.org/records/24046306/files/canonical_exposure--human_current-sqlite.zip?download=1"
+    },
+    {
+      "filename": "canonical_exposure--human_swissprot-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 24403277,
+      "md5": "34a04c829275b7cca1a129cb88f6eea3",
+      "download_url": "https://zenodo.org/records/24046306/files/canonical_exposure--human_swissprot-sqlite.zip?download=1"
+    },
+    {
+      "filename": "canonical_exposure--huprot4-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 22873218,
+      "md5": "555281c70561df6ab6e3e31de8d047dc",
+      "download_url": "https://zenodo.org/records/24046306/files/canonical_exposure--huprot4-sqlite.zip?download=1"
+    },
+    {
+      "filename": "canonical_exposure--virscan_exposome_current-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 910336311,
+      "md5": "c60a364da304d3185e36ac781f9502d2",
+      "download_url": "https://zenodo.org/records/24046306/files/canonical_exposure--virscan_exposome_current-sqlite.zip?download=1"
+    },
+    {
+      "filename": "canonical_exposure.fasta",
+      "role": "input_sequences",
+      "bytes": 15556436,
+      "md5": "b641a1b0b8f52e90c9744ab9fcfb240a",
+      "download_url": "https://zenodo.org/records/24046306/files/canonical_exposure.fasta?download=1"
+    },
+    {
+      "filename": "human_current--human_swissprot-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 1409209372,
+      "md5": "7a38a395fad5e4ea7fe8723f260ec8ad",
+      "download_url": "https://zenodo.org/records/24046306/files/human_current--human_swissprot-sqlite.zip?download=1"
+    },
+    {
+      "filename": "human_current--huprot4-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 1137345673,
+      "md5": "c4c39151bc2df1e9405006798f502dc2",
+      "download_url": "https://zenodo.org/records/24046306/files/human_current--huprot4-sqlite.zip?download=1"
+    },
+    {
+      "filename": "human_current--virscan_exposome_current-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 1345543886,
+      "md5": "219ed02aeb628d93a514687c86c0b5f6",
+      "download_url": "https://zenodo.org/records/24046306/files/human_current--virscan_exposome_current-sqlite.zip?download=1"
+    },
+    {
+      "filename": "human_swissprot--human_swissprot-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 64623717,
+      "md5": "ad42eb9ba26d5402cdfd4133ecd5e1bf",
+      "download_url": "https://zenodo.org/records/24046306/files/human_swissprot--human_swissprot-sqlite.zip?download=1"
+    },
+    {
+      "filename": "human_swissprot--huprot4-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 53784200,
+      "md5": "e7dd0f603886a9994fab4b1b3c2506e2",
+      "download_url": "https://zenodo.org/records/24046306/files/human_swissprot--huprot4-sqlite.zip?download=1"
+    },
+    {
+      "filename": "human_swissprot--huprot4-summaries.zip",
+      "role": "comparisons",
+      "bytes": 138833008,
+      "md5": "462c7af268d63bc84da4a93ec94da1d4",
+      "download_url": "https://zenodo.org/records/24046306/files/human_swissprot--huprot4-summaries.zip?download=1"
+    },
+    {
+      "filename": "human_swissprot--virscan_exposome_current-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 975552279,
+      "md5": "40852b8738e94beec681b22faa624bdf",
+      "download_url": "https://zenodo.org/records/24046306/files/human_swissprot--virscan_exposome_current-sqlite.zip?download=1"
+    },
+    {
+      "filename": "human_swissprot.fasta",
+      "role": "input_sequences",
+      "bytes": 14084247,
+      "md5": "e520067b55739ce7056633728ccf9b0f",
+      "download_url": "https://zenodo.org/records/24046306/files/human_swissprot.fasta?download=1"
+    },
+    {
+      "filename": "huprot4--huprot4-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 53071437,
+      "md5": "617cd41b3d63860ca2d7091c307f7c6d",
+      "download_url": "https://zenodo.org/records/24046306/files/huprot4--huprot4-sqlite.zip?download=1"
+    },
+    {
+      "filename": "huprot4--virscan_exposome_current-sqlite.zip",
+      "role": "comparisons",
+      "bytes": 721276356,
+      "md5": "5674ed18245cc679c93c040e697d4f76",
+      "download_url": "https://zenodo.org/records/24046306/files/huprot4--virscan_exposome_current-sqlite.zip?download=1"
+    },
+    {
+      "filename": "huprot4.fasta",
+      "role": "input_sequences",
+      "bytes": 11240033,
+      "md5": "db36ec544977a525b30254add7d2b3fb",
+      "download_url": "https://zenodo.org/records/24046306/files/huprot4.fasta?download=1"
+    },
+    {
+      "filename": "huscan.fasta",
+      "role": "input_sequences",
+      "bytes": 76180725,
+      "md5": "6d518b101d164e84f418416c214eb946",
+      "download_url": "https://zenodo.org/records/24046306/files/huscan.fasta?download=1"
+    },
+    {
+      "filename": "source-atlas-120-viruses-human-swissprot.zip",
+      "role": "comparisons",
+      "bytes": 21423439,
+      "md5": "20a233f29ed774828ad078c63d213518",
+      "download_url": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-human-swissprot.zip?download=1"
+    },
+    {
+      "filename": "source-atlas-120-viruses-huprot4.zip",
+      "role": "comparisons",
+      "bytes": 16039865,
+      "md5": "19f98d41a89337f5fffac7509ae31fc5",
+      "download_url": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-huprot4.zip?download=1"
+    },
+    {
+      "filename": "source-atlas-120-viruses-huscan.zip",
+      "role": "comparisons",
+      "bytes": 126531548,
+      "md5": "d4b716058e363feedf178432d1fdcaaf",
+      "download_url": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-huscan.zip?download=1"
+    },
+    {
+      "filename": "source-atlas-120-viruses-virscan-exposome.zip",
+      "role": "comparisons",
+      "bytes": 272126499,
+      "md5": "a9677cce3b717e3422c0ca40dd6fe8e2",
+      "download_url": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-virscan-exposome.zip?download=1"
+    },
+    {
+      "filename": "source-canonical-exposure-human-swissprot.zip",
+      "role": "comparisons",
+      "bytes": 64739129,
+      "md5": "48d40fc7ff44c8c35a4a133e33e63d69",
+      "download_url": "https://zenodo.org/records/24046306/files/source-canonical-exposure-human-swissprot.zip?download=1"
+    },
+    {
+      "filename": "source-canonical-exposure-huprot4.zip",
+      "role": "comparisons",
+      "bytes": 56104361,
+      "md5": "2801792df4b1396977f8560eb9466f85",
+      "download_url": "https://zenodo.org/records/24046306/files/source-canonical-exposure-huprot4.zip?download=1"
+    },
+    {
+      "filename": "source-canonical-exposure-huscan.zip",
+      "role": "comparisons",
+      "bytes": 1582818469,
+      "md5": "1ed956cbee08358cdc36eaf7d8184856",
+      "download_url": "https://zenodo.org/records/24046306/files/source-canonical-exposure-huscan.zip?download=1"
+    },
+    {
+      "filename": "source-canonical-exposure-virscan-exposome.zip",
+      "role": "comparisons",
+      "bytes": 2586623079,
+      "md5": "89d269bcf8a97e6d92b64ae884d5ae8e",
+      "download_url": "https://zenodo.org/records/24046306/files/source-canonical-exposure-virscan-exposome.zip?download=1"
+    },
+    {
+      "filename": "source-human-swissprot.zip",
+      "role": "comparisons",
+      "bytes": 81557209,
+      "md5": "793652fae8a684211cad213ca2dae81b",
+      "download_url": "https://zenodo.org/records/24046306/files/source-human-swissprot.zip?download=1"
+    },
+    {
+      "filename": "source-huprot4-huscan.zip",
+      "role": "comparisons",
+      "bytes": 2102545771,
+      "md5": "1d04e9158c0562e943b4aa599cc40a04",
+      "download_url": "https://zenodo.org/records/24046306/files/source-huprot4-huscan.zip?download=1"
+    },
+    {
+      "filename": "source-huprot4-virscan-exposome.zip",
+      "role": "comparisons",
+      "bytes": 1730027063,
+      "md5": "5c99e8d70eb4413e020cb475a9c6bda6",
+      "download_url": "https://zenodo.org/records/24046306/files/source-huprot4-virscan-exposome.zip?download=1"
+    },
+    {
+      "filename": "source-huprot4.zip",
+      "role": "comparisons",
+      "bytes": 60865927,
+      "md5": "eb86007936b59d726f24d0e7b0b75cc2",
+      "download_url": "https://zenodo.org/records/24046306/files/source-huprot4.zip?download=1"
+    },
+    {
+      "filename": "source-huscan-human-swissprot.zip",
+      "role": "comparisons",
+      "bytes": 2523154082,
+      "md5": "d2118bee1eb603ca583e18c81386faeb",
+      "download_url": "https://zenodo.org/records/24046306/files/source-huscan-human-swissprot.zip?download=1"
+    },
+    {
+      "filename": "source-huscan-virscan-exposome.zip",
+      "role": "comparisons",
+      "bytes": 4553418176,
+      "md5": "03490c356d51da72bd60cf3361fe7841",
+      "download_url": "https://zenodo.org/records/24046306/files/source-huscan-virscan-exposome.zip?download=1"
+    },
+    {
+      "filename": "source-virscan-human-swissprot.zip",
+      "role": "comparisons",
+      "bytes": 2061864309,
+      "md5": "13cc30c27a4763a05ac6218523c300f2",
+      "download_url": "https://zenodo.org/records/24046306/files/source-virscan-human-swissprot.zip?download=1"
+    },
+    {
+      "filename": "virscan_exposome.fasta",
+      "role": "input_sequences",
+      "bytes": 98097482,
+      "md5": "af5bae008211c8ca5a6601cd0e3e8dc5",
+      "download_url": "https://zenodo.org/records/24046306/files/virscan_exposome.fasta?download=1"
+    },
+    {
+      "filename": "MimicryMap-Pan-Viral-Atlas-5of9-to-9of9-Data.zip",
+      "role": "atlas_numerical_data",
+      "bytes": 1264256382,
+      "md5": "3a07da81f7459c68cdd883852d3f2284",
+      "download_url": "https://zenodo.org/records/24046306/files/MimicryMap-Pan-Viral-Atlas-5of9-to-9of9-Data.zip?download=1"
+    },
+    {
+      "filename": "MimicryMap-Pan-Viral-Atlas-13516-States.zip",
+      "role": "atlas_figures",
+      "bytes": 8526292579,
+      "md5": "47aadbdc431432a7a111d51a6b4d5027",
+      "download_url": "https://zenodo.org/records/24046306/files/MimicryMap-Pan-Viral-Atlas-13516-States.zip?download=1"
+    },
+    {
+      "filename": "figure-index.csv",
+      "role": "figure_index",
+      "bytes": 8472409,
+      "md5": "d51160029fee921c74ae53f289f3c1f4",
+      "download_url": "https://zenodo.org/records/24046306/files/figure-index.csv?download=1"
+    },
+    {
+      "filename": "README.txt",
+      "role": "documentation",
+      "bytes": 3439,
+      "md5": "a6ba7cf6526b80fc3445dae15b2e1cfa",
+      "download_url": "https://zenodo.org/records/24046306/files/README.txt?download=1"
+    },
+    {
+      "filename": "FORMATS.txt",
+      "role": "documentation",
+      "bytes": 25691,
+      "md5": "c10c715ab2e11532c9504bb9e4dd5624",
+      "download_url": "https://zenodo.org/records/24046306/files/FORMATS.txt?download=1"
+    },
+    {
+      "filename": "manifest.json",
+      "role": "manifest",
+      "download_url": "https://zenodo.org/records/24046306/files/manifest.json?download=1",
+      "bytes": 44401
+    },
+    {
+      "filename": "MimicryMap-Human-Structures-and-Reference-Tracks.zip",
+      "role": "structures_and_annotations",
+      "bytes": 3182598668,
+      "md5": "ae8a469f97a28ab46ca3f5e14da45290",
+      "download_url": "https://zenodo.org/records/24046306/files/MimicryMap-Human-Structures-and-Reference-Tracks.zip?download=1"
+    },
+    {
+      "filename": "MimicryMap-Human-Dimer-Structures.zip",
+      "role": "structures_and_annotations",
+      "bytes": 187018552,
+      "md5": "9819970f07c6b2d09b66dba05ddf4527",
+      "download_url": "https://zenodo.org/records/24046306/files/MimicryMap-Human-Dimer-Structures.zip?download=1"
+    },
+    {
+      "filename": "MimicryMap-Nonhuman-Structures-and-Annotations.zip",
+      "role": "structures_and_annotations",
+      "bytes": 2143418813,
+      "md5": "82d43fea93db50a2b9e4a228093fef36",
+      "download_url": "https://zenodo.org/records/24046306/files/MimicryMap-Nonhuman-Structures-and-Annotations.zip?download=1"
     }
-  ]
+  ],
+  "file_count": 47,
+  "inventory_note": "The manifest lists its byte size but omits its own digest. Public download links activate when the record is published.",
+  "components": {
+    "comparisons": {
+      "schema": "mimicrymap.comparison-downloads/2",
+      "identity_thresholds": [
+        7,
+        8,
+        9
+      ],
+      "window_length": 9,
+      "pair_reporting_floor": "At least 10% coverage of either sequence at the corresponding identity threshold",
+      "bundles": [
+        {
+          "section": "Reference ↔ Reference",
+          "target": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
+          "target_sequences": 20431,
+          "parent": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
+          "parent_sequences": 20431,
+          "upload_filename": "source-human-swissprot.zip",
+          "bytes": 81557209,
+          "csv_files": [
+            "human_swissprot_vs_human_swissprot_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "human_swissprot.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-human-swissprot.zip?download=1",
+          "comparison_key": "human_swissprot--human_swissprot",
+          "sqlite": {
+            "upload_filename": "human_swissprot--human_swissprot-sqlite.zip",
+            "bytes": 64623717,
+            "database_bytes": 169992192,
+            "cutoff_coverage_policy": "exact-residue-union",
+            "download_url_template": "https://zenodo.org/records/24046306/files/human_swissprot--human_swissprot-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Reference ↔ Reference",
+          "target": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
+          "target_sequences": 20431,
+          "parent": "120 viral proteomes:\nmanually curated UniProt proteins/polyproteins",
+          "parent_sequences": 2222,
+          "upload_filename": "source-atlas-120-viruses-human-swissprot.zip",
+          "bytes": 21423439,
+          "csv_files": [
+            "atlas_120_viruses_vs_human_swissprot_comprehensive.csv",
+            "human_swissprot_vs_atlas_120_viruses_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "atlas_120_viruses.fasta",
+            "human_swissprot.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-human-swissprot.zip?download=1",
+          "comparison_key": "atlas_120_viruses--human_swissprot",
+          "sqlite": {
+            "upload_filename": "atlas_120_viruses--human_swissprot-sqlite.zip",
+            "bytes": 13493207,
+            "database_bytes": 49098752,
+            "cutoff_coverage_policy": "exact-residue-union",
+            "download_url_template": "https://zenodo.org/records/24046306/files/atlas_120_viruses--human_swissprot-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Reference ↔ Reference",
+          "target": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
+          "target_sequences": 20431,
+          "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, other curated exposures",
+          "parent_sequences": 24867,
+          "upload_filename": "source-canonical-exposure-human-swissprot.zip",
+          "bytes": 64739129,
+          "csv_files": [
+            "canonical_exposure_vs_human_swissprot_comprehensive.csv",
+            "human_swissprot_vs_canonical_exposure_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "canonical_exposure.fasta",
+            "human_swissprot.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-canonical-exposure-human-swissprot.zip?download=1",
+          "comparison_key": "canonical_exposure--human_swissprot",
+          "sqlite": {
+            "upload_filename": "canonical_exposure--human_swissprot-sqlite.zip",
+            "bytes": 24403277,
+            "database_bytes": 78843904,
+            "cutoff_coverage_policy": "exact-residue-union",
+            "download_url_template": "https://zenodo.org/records/24046306/files/canonical_exposure--human_swissprot-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Assay ↔ Reference",
+          "target": "HuProt 4.0:\n Protein microarray (CDI Labs)",
+          "target_sequences": 21197,
+          "parent": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
+          "parent_sequences": 20431,
+          "upload_filename": "human_swissprot--huprot4-summaries.zip",
+          "bytes": 138833008,
+          "csv_files": [
+            "huprot4_vs_human_swissprot.csv",
+            "human_swissprot_vs_huprot4.csv"
+          ],
+          "fasta_files": [
+            "huprot4.fasta",
+            "human_swissprot.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/human_swissprot--huprot4-summaries.zip?download=1",
+          "comparison_key": "human_swissprot--huprot4",
+          "sqlite": {
+            "upload_filename": "human_swissprot--huprot4-sqlite.zip",
+            "bytes": 53784200,
+            "database_bytes": 146935808,
+            "cutoff_coverage_policy": "exact-residue-union",
+            "download_url_template": "https://zenodo.org/records/24046306/files/human_swissprot--huprot4-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Assay ↔ Reference",
+          "target": "HuScan:\n T7 PhIP-Seq library (CDI Labs)",
+          "target_sequences": 731724,
+          "parent": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
+          "parent_sequences": 20431,
+          "upload_filename": "source-huscan-human-swissprot.zip",
+          "bytes": 2523154082,
+          "csv_files": [
+            "huscan_vs_human_swissprot_comprehensive.csv",
+            "human_swissprot_vs_human_current_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "huscan.fasta",
+            "human_swissprot.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-huscan-human-swissprot.zip?download=1",
+          "comparison_key": "human_current--human_swissprot",
+          "sqlite": {
+            "upload_filename": "human_current--human_swissprot-sqlite.zip",
+            "bytes": 1409209372,
+            "database_bytes": 5181947904,
+            "cutoff_coverage_policy": "exact-residue-union",
+            "download_url_template": "https://zenodo.org/records/24046306/files/human_current--human_swissprot-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Assay ↔ Reference",
+          "target": "VirScan / Exposome:\nT7 PhIP-Seq library (CDI Labs)",
+          "target_sequences": 680704,
+          "parent": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
+          "parent_sequences": 20431,
+          "upload_filename": "source-virscan-human-swissprot.zip",
+          "bytes": 2061864309,
+          "csv_files": [
+            "human_swissprot_vs_virscan_exposome_current_comprehensive.csv",
+            "virscan_exposome_vs_human_swissprot_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "virscan_exposome.fasta",
+            "human_swissprot.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-virscan-human-swissprot.zip?download=1",
+          "comparison_key": "human_swissprot--virscan_exposome_current",
+          "sqlite": {
+            "upload_filename": "human_swissprot--virscan_exposome_current-sqlite.zip",
+            "bytes": 975552279,
+            "database_bytes": 3862085632,
+            "cutoff_coverage_policy": "exact-residue-union",
+            "download_url_template": "https://zenodo.org/records/24046306/files/human_swissprot--virscan_exposome_current-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Assay ↔ Reference",
+          "target": "HuProt 4.0:\n Protein microarray (CDI Labs)",
+          "target_sequences": 21197,
+          "parent": "120 viral proteomes:\nmanually curated UniProt proteins/polyproteins",
+          "parent_sequences": 2222,
+          "upload_filename": "source-atlas-120-viruses-huprot4.zip",
+          "bytes": 16039865,
+          "csv_files": [
+            "huprot4_vs_atlas_120_viruses_comprehensive.csv",
+            "atlas_120_viruses_vs_huprot4_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "huprot4.fasta",
+            "atlas_120_viruses.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-huprot4.zip?download=1",
+          "comparison_key": "atlas_120_viruses--huprot4",
+          "sqlite": {
+            "upload_filename": "atlas_120_viruses--huprot4-sqlite.zip",
+            "bytes": 5769048,
+            "database_bytes": 25817088,
+            "cutoff_coverage_policy": "csv-pair-percent",
+            "download_url_template": "https://zenodo.org/records/24046306/files/atlas_120_viruses--huprot4-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Assay ↔ Reference",
+          "target": "HuScan:\n T7 PhIP-Seq library (CDI Labs)",
+          "target_sequences": 731724,
+          "parent": "120 viral proteomes:\nmanually curated UniProt proteins/polyproteins",
+          "parent_sequences": 2222,
+          "upload_filename": "source-atlas-120-viruses-huscan.zip",
+          "bytes": 126531548,
+          "csv_files": [
+            "huscan_vs_atlas_120_viruses_comprehensive.csv",
+            "atlas_120_viruses_vs_huscan_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "huscan.fasta",
+            "atlas_120_viruses.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-huscan.zip?download=1",
+          "comparison_key": "atlas_120_viruses--human_current",
+          "sqlite": {
+            "upload_filename": "atlas_120_viruses--human_current-sqlite.zip",
+            "bytes": 126925560,
+            "database_bytes": 799748096,
+            "cutoff_coverage_policy": "csv-pair-percent",
+            "download_url_template": "https://zenodo.org/records/24046306/files/atlas_120_viruses--human_current-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Assay ↔ Reference",
+          "target": "VirScan / Exposome:\nT7 PhIP-Seq library (CDI Labs)",
+          "target_sequences": 680704,
+          "parent": "120 viral proteomes:\nmanually curated UniProt proteins/polyproteins",
+          "parent_sequences": 2222,
+          "upload_filename": "source-atlas-120-viruses-virscan-exposome.zip",
+          "bytes": 272126499,
+          "csv_files": [
+            "atlas_120_viruses_vs_virscan_exposome_comprehensive.csv",
+            "virscan_exposome_vs_atlas_120_viruses_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "virscan_exposome.fasta",
+            "atlas_120_viruses.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-virscan-exposome.zip?download=1",
+          "comparison_key": "atlas_120_viruses--virscan_exposome_current",
+          "sqlite": {
+            "upload_filename": "atlas_120_viruses--virscan_exposome_current-sqlite.zip",
+            "bytes": 248467891,
+            "database_bytes": 1573416960,
+            "cutoff_coverage_policy": "csv-pair-percent",
+            "download_url_template": "https://zenodo.org/records/24046306/files/atlas_120_viruses--virscan_exposome_current-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Assay ↔ Reference",
+          "target": "HuProt 4.0:\n Protein microarray (CDI Labs)",
+          "target_sequences": 21197,
+          "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, other curated exposures",
+          "parent_sequences": 24867,
+          "upload_filename": "source-canonical-exposure-huprot4.zip",
+          "bytes": 56104361,
+          "csv_files": [
+            "huprot4_vs_canonical_exposure_comprehensive.csv",
+            "canonical_exposure_vs_huprot4_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "huprot4.fasta",
+            "canonical_exposure.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-canonical-exposure-huprot4.zip?download=1",
+          "comparison_key": "canonical_exposure--huprot4",
+          "sqlite": {
+            "upload_filename": "canonical_exposure--huprot4-sqlite.zip",
+            "bytes": 22873218,
+            "database_bytes": 75345920,
+            "cutoff_coverage_policy": "csv-pair-percent",
+            "download_url_template": "https://zenodo.org/records/24046306/files/canonical_exposure--huprot4-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Assay ↔ Reference",
+          "target": "HuScan:\n T7 PhIP-Seq library (CDI Labs)",
+          "target_sequences": 731724,
+          "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, other curated exposures",
+          "parent_sequences": 24867,
+          "upload_filename": "source-canonical-exposure-huscan.zip",
+          "bytes": 1582818469,
+          "csv_files": [
+            "huscan_vs_canonical_exposure_comprehensive.csv",
+            "canonical_exposure_vs_huscan_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "huscan.fasta",
+            "canonical_exposure.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-canonical-exposure-huscan.zip?download=1",
+          "comparison_key": "canonical_exposure--human_current",
+          "sqlite": {
+            "upload_filename": "canonical_exposure--human_current-sqlite.zip",
+            "bytes": 639013417,
+            "database_bytes": 3580841984,
+            "cutoff_coverage_policy": "csv-pair-percent",
+            "download_url_template": "https://zenodo.org/records/24046306/files/canonical_exposure--human_current-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Assay ↔ Reference",
+          "target": "VirScan / Exposome:\nT7 PhIP-Seq library (CDI Labs)",
+          "target_sequences": 680704,
+          "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, other curated exposures",
+          "parent_sequences": 24867,
+          "upload_filename": "source-canonical-exposure-virscan-exposome.zip",
+          "bytes": 2586623079,
+          "csv_files": [
+            "canonical_exposure_vs_virscan_exposome_comprehensive.csv",
+            "virscan_exposome_vs_canonical_exposure_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "virscan_exposome.fasta",
+            "canonical_exposure.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-canonical-exposure-virscan-exposome.zip?download=1",
+          "comparison_key": "canonical_exposure--virscan_exposome_current",
+          "sqlite": {
+            "upload_filename": "canonical_exposure--virscan_exposome_current-sqlite.zip",
+            "bytes": 910336311,
+            "database_bytes": 4672299008,
+            "cutoff_coverage_policy": "csv-pair-percent",
+            "download_url_template": "https://zenodo.org/records/24046306/files/canonical_exposure--virscan_exposome_current-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Within and across assays",
+          "target": "HuProt 4.0:\n Protein microarray (CDI Labs)",
+          "target_sequences": 21197,
+          "parent": "HuProt 4.0:\n Protein microarray (CDI Labs)",
+          "parent_sequences": 21197,
+          "upload_filename": "source-huprot4.zip",
+          "bytes": 60865927,
+          "csv_files": [
+            "huprot4_vs_huprot4_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "huprot4.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-huprot4.zip?download=1",
+          "comparison_key": "huprot4--huprot4",
+          "sqlite": {
+            "upload_filename": "huprot4--huprot4-sqlite.zip",
+            "bytes": 53071437,
+            "database_bytes": 143745024,
+            "cutoff_coverage_policy": "csv-pair-percent",
+            "download_url_template": "https://zenodo.org/records/24046306/files/huprot4--huprot4-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Within and across assays",
+          "target": "HuProt 4.0:\n Protein microarray (CDI Labs)",
+          "target_sequences": 21197,
+          "parent": "HuScan:\n T7 PhIP-Seq library (CDI Labs)",
+          "parent_sequences": 731724,
+          "upload_filename": "source-huprot4-huscan.zip",
+          "bytes": 2102545771,
+          "csv_files": [
+            "huscan_vs_huprot4_comprehensive.csv",
+            "huprot4_vs_huscan_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "huscan.fasta",
+            "huprot4.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-huprot4-huscan.zip?download=1",
+          "comparison_key": "human_current--huprot4",
+          "sqlite": {
+            "upload_filename": "human_current--huprot4-sqlite.zip",
+            "bytes": 1137345673,
+            "database_bytes": 4368826368,
+            "cutoff_coverage_policy": "csv-pair-percent",
+            "download_url_template": "https://zenodo.org/records/24046306/files/human_current--huprot4-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Within and across assays",
+          "target": "HuProt 4.0:\n Protein microarray (CDI Labs)",
+          "target_sequences": 21197,
+          "parent": "VirScan / Exposome:\nT7 PhIP-Seq library (CDI Labs)",
+          "parent_sequences": 680704,
+          "upload_filename": "source-huprot4-virscan-exposome.zip",
+          "bytes": 1730027063,
+          "csv_files": [
+            "huprot4_vs_virscan_exposome_comprehensive.csv",
+            "virscan_exposome_vs_huprot4_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "virscan_exposome.fasta",
+            "huprot4.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-huprot4-virscan-exposome.zip?download=1",
+          "comparison_key": "huprot4--virscan_exposome_current",
+          "sqlite": {
+            "upload_filename": "huprot4--virscan_exposome_current-sqlite.zip",
+            "bytes": 721276356,
+            "database_bytes": 4710400000,
+            "cutoff_coverage_policy": "csv-pair-percent",
+            "download_url_template": "https://zenodo.org/records/24046306/files/huprot4--virscan_exposome_current-sqlite.zip?download=1"
+          }
+        },
+        {
+          "section": "Within and across assays",
+          "target": "HuScan:\n T7 PhIP-Seq library (CDI Labs)",
+          "target_sequences": 731724,
+          "parent": "VirScan / Exposome:\nT7 PhIP-Seq library (CDI Labs)",
+          "parent_sequences": 680704,
+          "upload_filename": "source-huscan-virscan-exposome.zip",
+          "bytes": 4553418176,
+          "csv_files": [
+            "huscan_vs_virscan_exposome_comprehensive.csv",
+            "virscan_exposome_vs_huscan_comprehensive.csv"
+          ],
+          "fasta_files": [
+            "virscan_exposome.fasta",
+            "huscan.fasta"
+          ],
+          "download_url_template": "https://zenodo.org/records/24046306/files/source-huscan-virscan-exposome.zip?download=1",
+          "comparison_key": "human_current--virscan_exposome_current",
+          "sqlite": {
+            "upload_filename": "human_current--virscan_exposome_current-sqlite.zip",
+            "bytes": 1345543886,
+            "database_bytes": 10822746112,
+            "cutoff_coverage_policy": "csv-pair-percent",
+            "download_url_template": "https://zenodo.org/records/24046306/files/human_current--virscan_exposome_current-sqlite.zip?download=1"
+          }
+        }
+      ],
+      "bundle_count": 16,
+      "directional_csv_count": 30,
+      "total_bytes": 17978671934,
+      "sqlite_companions": 16,
+      "nonvertebrate_subset_included": false,
+      "sequences": [
+        {
+          "label": "Human canonical",
+          "library_key": "human_swissprot",
+          "records": 20431,
+          "upload_filename": "human_swissprot.fasta",
+          "bytes": 14084247,
+          "zip_crc32": "d1e5706a",
+          "source_csv_fasta_package": "source-human-swissprot.zip",
+          "download_url_template": "https://zenodo.org/records/24046306/files/human_swissprot.fasta?download=1"
+        },
+        {
+          "label": "120 viral proteomes",
+          "library_key": "atlas_120_viruses",
+          "records": 2222,
+          "upload_filename": "atlas_120_viruses.fasta",
+          "bytes": 1148192,
+          "zip_crc32": "e34c491e",
+          "source_csv_fasta_package": "source-atlas-120-viruses-human-swissprot.zip",
+          "download_url_template": "https://zenodo.org/records/24046306/files/atlas_120_viruses.fasta?download=1"
+        },
+        {
+          "label": "Canonical exposures",
+          "library_key": "canonical_exposure",
+          "records": 24867,
+          "upload_filename": "canonical_exposure.fasta",
+          "bytes": 15556436,
+          "zip_crc32": "cbc7de83",
+          "source_csv_fasta_package": "source-canonical-exposure-human-swissprot.zip",
+          "download_url_template": "https://zenodo.org/records/24046306/files/canonical_exposure.fasta?download=1"
+        },
+        {
+          "label": "HuProt 4.0",
+          "library_key": "huprot4",
+          "records": 21197,
+          "upload_filename": "huprot4.fasta",
+          "bytes": 11240033,
+          "zip_crc32": "e9fd990b",
+          "source_csv_fasta_package": "human_swissprot--huprot4-summaries.zip",
+          "download_url_template": "https://zenodo.org/records/24046306/files/huprot4.fasta?download=1"
+        },
+        {
+          "label": "HuScan",
+          "library_key": "human_current",
+          "records": 731724,
+          "upload_filename": "huscan.fasta",
+          "bytes": 76180725,
+          "zip_crc32": "3d7171d2",
+          "source_csv_fasta_package": "source-huscan-human-swissprot.zip",
+          "download_url_template": "https://zenodo.org/records/24046306/files/huscan.fasta?download=1"
+        },
+        {
+          "label": "VirScan / Exposome",
+          "library_key": "virscan_exposome_current",
+          "records": 680704,
+          "upload_filename": "virscan_exposome.fasta",
+          "bytes": 98097482,
+          "zip_crc32": "ec36f45e",
+          "source_csv_fasta_package": "source-virscan-human-swissprot.zip",
+          "download_url_template": "https://zenodo.org/records/24046306/files/virscan_exposome.fasta?download=1"
+        }
+      ],
+      "csv_zip_bytes": 17978671934,
+      "sqlite_zip_bytes": 7751688849,
+      "all_zip_bytes": 25730360783,
+      "sequence_file_bytes": 216307115,
+      "staging_status": "formats_aligned",
+      "missing_sqlite_comparisons": []
+    },
+    "atlas_numerical_data": {
+      "schema": "mimicrymap.atlas-upload/1",
+      "archive": "MimicryMap-Pan-Viral-Atlas-5of9-to-9of9-Data.zip",
+      "archive_bytes": 1264256382,
+      "uncompressed_bytes": 25538619417,
+      "archive_members": 2721,
+      "archive_root": "MimicryMap-Pan-Viral-Atlas-Data",
+      "proteomes": 120,
+      "viral_records": 2222,
+      "identity_floors": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "reader_included": true,
+      "methods": "FORMATS.txt",
+      "numerical_sources_unchanged": true,
+      "full_preservation_untouched": true,
+      "archive_inventory": "MimicryMap-Pan-Viral-Atlas-Data/manifest.json",
+      "download_url": "https://zenodo.org/records/24046306/files/MimicryMap-Pan-Viral-Atlas-5of9-to-9of9-Data.zip?download=1"
+    },
+    "atlas_figures": {
+      "schema": "mimicrymap.pan-viral-figures/1",
+      "archive": "MimicryMap-Pan-Viral-Atlas-13516-States.zip",
+      "bytes": 8526292579,
+      "download_url_template": "https://zenodo.org/records/24046306/files/MimicryMap-Pan-Viral-Atlas-13516-States.zip?download=1",
+      "figure_states": 13516,
+      "original_capture_states": 9066,
+      "additional_parent_arrangements": 4444,
+      "global_pair_rankings": 6,
+      "archive_files": 47059,
+      "file_type_counts": {
+        ".txt": 13517,
+        ".csv": 3193,
+        ".html": 122,
+        ".log": 1,
+        ".json": 247,
+        ".jsonl": 1,
+        ".png": 13516,
+        ".svg": 13516,
+        ".fasta": 124,
+        ".gz": 2822
+      },
+      "atlas_population": {
+        "viral_proteomes": 120,
+        "viral_records": 2222,
+        "viral_residues": 978839,
+        "eligible_human_records": 20333,
+        "minimum_human_length": 50,
+        "eligible_human_residues": 11412569,
+        "identity_floors": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "pair_coverage_cutoff": null
+      },
+      "global_pair_ranking_population": {
+        "human_records": 20431,
+        "viral_records": 2222,
+        "identity_floors": [
+          7,
+          8,
+          9
+        ],
+        "pair_coverage_cutoff": "At least 10% of either sequence"
+      },
+      "release": "mimicryone_canonical_20260907_r1",
+      "release_fingerprint": "2c969a9a9ad59f353514eb8dbaab8e39b19d1a8161c59cd85e068bae753cbccc",
+      "provenance_note": "Original capture completed 9066 states but failed its final source-change guard. Original receipts are retained. Later additions reuse saved results.",
+      "packaging_changes": {
+        "svg_nonrendered_metadata_only": 4450,
+        "readme_updated": true,
+        "all_other_entries_unchanged_by_zip_crc_and_size": true,
+        "new_calculations": false,
+        "new_figures": false
+      },
+      "methods": "FORMATS.txt",
+      "reader": "Offline browser catalogue inside the ZIP: Pan-Viral-Atlas/index.html",
+      "download_url": "https://zenodo.org/records/24046306/files/MimicryMap-Pan-Viral-Atlas-13516-States.zip?download=1",
+      "figure_index_url": "https://zenodo.org/records/24046306/files/figure-index.csv?download=1"
+    },
+    "structure_annotations": {
+      "archives": [
+        {
+          "filename": "MimicryMap-Human-Structures-and-Reference-Tracks.zip",
+          "bytes": 3182598668,
+          "md5": "ae8a469f97a28ab46ca3f5e14da45290",
+          "title": "Human monomer structures and saved reference residue tracks",
+          "role": "structures_and_annotations",
+          "source_payload_bytes": 3347898368,
+          "asset_packs": {
+            "structures-monomer": {
+              "metadata": {
+                "format": "seromap.assets/1",
+                "namespace": "structures-monomer",
+                "role": "index",
+                "roots": "[\"mimicrymap/reference/alphafold/human_swissprot\", \"structures/alphafold_monomer\"]",
+                "source_inventory_sha256": "9510bbe7f61e9bc26ad8d2e1d0dc5f31c1b90d3694caf6232f12230fecd235e5",
+                "source_version": "2026.09.2"
+              },
+              "asset_paths": 40609,
+              "distinct_content_hashes": 40609
+            },
+            "protein-annotations": {
+              "metadata": {
+                "format": "seromap.assets/1",
+                "namespace": "protein-annotations",
+                "role": "index",
+                "roots": "[\"mimicrymap/bake/out_v2_complete/assets/proteins_catalogue\"]",
+                "source_inventory_sha256": "c464361c599a274a50db6909da9a0c4bb6bb151c0b2ae57ab01191029a3be9fc",
+                "source_version": "2026.09.2"
+              },
+              "asset_paths": 24024,
+              "distinct_content_hashes": 24017
+            }
+          }
+        },
+        {
+          "filename": "MimicryMap-Human-Dimer-Structures.zip",
+          "bytes": 187018552,
+          "md5": "9819970f07c6b2d09b66dba05ddf4527",
+          "title": "Human dimer structures",
+          "role": "structures_and_annotations",
+          "source_payload_bytes": 193163240,
+          "asset_packs": {
+            "structures-dimer": {
+              "metadata": {
+                "format": "seromap.assets/1",
+                "namespace": "structures-dimer",
+                "role": "index",
+                "roots": "[\"mimicrymap/bake/out_v2_complete/structures_dimer\", \"structures/dimer\"]",
+                "source_inventory_sha256": "b87109dd69850b0f856e18697636853150680ae6cd717485792f33272f6f6d06",
+                "source_version": "2026.09.2"
+              },
+              "asset_paths": 3239,
+              "distinct_content_hashes": 1623
+            }
+          }
+        },
+        {
+          "filename": "MimicryMap-Nonhuman-Structures-and-Annotations.zip",
+          "bytes": 2143418813,
+          "md5": "82d43fea93db50a2b9e4a228093fef36",
+          "title": "Non-human structures and annotations",
+          "role": "structures_and_annotations",
+          "source_payload_bytes": 2436448256,
+          "asset_packs": {
+            "exposure-annotations": {
+              "metadata": {
+                "format": "seromap.assets/1",
+                "namespace": "exposure-annotations",
+                "role": "index",
+                "roots": "[\"mimicrymap/reference/exposure-assets/annotations\", \"mimicrymap/reference/exposure-assets/models\"]",
+                "source_inventory_sha256": "fcfedadad1adedf8004a9d81ae4eae3fe1df33588f9ad96ec53fa4b6fcf800db",
+                "source_version": "2026-10-16"
+              },
+              "asset_paths": 51315,
+              "distinct_content_hashes": 51315
+            }
+          }
+        }
+      ],
+      "reader_included": true,
+      "new_scientific_calculations": false,
+      "methods": "FORMATS.txt",
+      "nonhuman_variant_tracks_included": false,
+      "note": "Human reference tracks include HumSaVaR variants. Non-human tracks preserve the existing topology/processing and structural annotations, excluding variant and mutagenesis features."
+    }
+  },
+  "scientific_archives_unchanged": true,
+  "total_bytes": 41258798832,
+  "status": "unpublished-draft",
+  "doi": null,
+  "public_links_active": false,
+  "draft_url": "https://zenodo.org/uploads/24046306",
+  "note": "The consolidated draft is uploaded but unpublished. File URLs are planned public links and become usable after publication. Payloads remain outside Git; the software license is separate from this dataset license."
 }

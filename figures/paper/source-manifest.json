@@ -1,0 +1,83 @@
+[
+  {
+    "figure": "Figure-2A_Human-protein-reach",
+    "source_sha256": "14cfdac0f0ed3ab38e21bfbb030bb8e07ed10d7b1127fd504a04407e34f32904",
+    "svg": "Figure-2A_Human-protein-reach.svg",
+    "data_recomputed": false,
+    "scientific_marks_preserved": true,
+    "source_capture": "paper-package-2026-11-06/editable/assets/landscape-reach.svg",
+    "png": "Figure-2A_Human-protein-reach.png"
+  },
+  {
+    "figure": "Figure-2B_Human-residue-coverage",
+    "source_sha256": "86854f05431a00407ccc5ed89299a344dcc138a58f62ab69df065da37e227687",
+    "svg": "Figure-2B_Human-residue-coverage.svg",
+    "data_recomputed": false,
+    "scientific_marks_preserved": true,
+    "source_capture": "paper-package-2026-11-06/editable/assets/landscape-coverage.svg",
+    "png": "Figure-2B_Human-residue-coverage.png"
+  },
+  {
+    "figure": "Figure-3_EBV-genome-position",
+    "source_sha256": "1b8604276b3f0088b686d5350f6e0a6cdbb44acc2f8e9a186186098c4992f466",
+    "svg": "Figure-3_EBV-genome-position.svg",
+    "data_recomputed": false,
+    "scientific_marks_preserved": true,
+    "source_capture": "paper-package-2026-11-06/editable/assets/ebv-atlas.svg",
+    "png": "Figure-3_EBV-genome-position.png"
+  },
+  {
+    "figure": "Figure-4_EBNA1-subcellular-location",
+    "source_sha256": "af81417fb02f9e0d8040e719ff6955ee4269da03df62575182a44950d326a4d4",
+    "svg": "Figure-4_EBNA1-subcellular-location.svg",
+    "data_recomputed": false,
+    "scientific_marks_preserved": true,
+    "source_capture": "paper-package-2026-11-06/editable/assets/ebna1-atlas.svg",
+    "png": "Figure-4_EBNA1-subcellular-location.png"
+  },
+  {
+    "figure": "Figure-S1A_HEPACAM-5of9",
+    "source_sha256": "6169a14971b3142f2390e9381ff0d16dcfc403a2b7af4ac47a353c5e608990b1",
+    "svg": "Figure-S1A_HEPACAM-5of9.svg",
+    "data_recomputed": false,
+    "scientific_marks_preserved": true,
+    "source_capture": "paper-package-2026-11-06/editable/assets/hepacam-5.svg",
+    "png": "Figure-S1A_HEPACAM-5of9.png"
+  },
+  {
+    "figure": "Figure-S1B_HEPACAM-7of9",
+    "source_sha256": "22c5ff3d4314411dce01eeeee27ed20dd20ae4b718264b75c55ec8fbfb7c1c8e",
+    "svg": "Figure-S1B_HEPACAM-7of9.svg",
+    "data_recomputed": false,
+    "scientific_marks_preserved": true,
+    "source_capture": "paper-package-2026-11-06/editable/assets/hepacam-7.svg",
+    "png": "Figure-S1B_HEPACAM-7of9.png"
+  },
+  {
+    "figure": "Figure-S1C_IL10-5of9",
+    "source_sha256": "8e2d2c4f22247f3661e049fbca61ca0148a2cb76e4f09ded9035f7f513e0c4b0",
+    "svg": "Figure-S1C_IL10-5of9.svg",
+    "data_recomputed": false,
+    "scientific_marks_preserved": true,
+    "source_capture": "paper-package-2026-10-21/source-data/examples/20260909/il10-coverage-5.svg",
+    "png": "Figure-S1C_IL10-5of9.png"
+  },
+  {
+    "figure": "Figure-S1D_IL10-7of9",
+    "source_sha256": "ca3059f304fc8f183d07673950cfbd46179318cdbdc2d371d4ae8de8ce2ad11a",
+    "svg": "Figure-S1D_IL10-7of9.svg",
+    "data_recomputed": false,
+    "scientific_marks_preserved": true,
+    "source_capture": "paper-package-2026-10-21/source-data/examples/20260909/il10-coverage-7.svg",
+    "png": "Figure-S1D_IL10-7of9.png"
+  },
+  {
+    "figure": "Figure-S7C_IGHG2-8of9",
+    "source_sha256": "f78627b690972bdeaf2dde79887dd45440c9ec0a32201f4b7cd6da953688a051",
+    "svg": "Figure-S7C_IGHG2-8of9.svg",
+    "data_recomputed": false,
+    "scientific_marks_preserved": true,
+    "source_capture": "paper-package-2026-10-21/source-data/examples/20260909/ighg2-coverage-8.svg",
+    "png": "Figure-S7C_IGHG2-8of9.png"
+  }
+]

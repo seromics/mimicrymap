@@ -54,6 +54,18 @@ def _organism(value: object) -> str:
     return "Homo sapiens" if normalize_alias(result) == "HOMO SAPIENS" else result
 
 
+def reference_fasta_header(library: str, annotation: Mapping[str, Any]) -> str:
+    """Reference download label, before aliases and compact display names."""
+    if library not in {"canonical_human", "canonical_exposure"}:
+        return ""
+    accession = _text(annotation.get("accession"))
+    if not accession:
+        return ""
+    return " | ".join(dict.fromkeys(part for part in (
+        accession, _text(annotation.get("gene")), _text(annotation.get("protein_name"))
+    ) if part))
+
+
 def parse_assay_header(
     library: object, raw_header: object, *, seqid: object = "", short_id: object = ""
 ) -> dict[str, Any]:
@@ -165,6 +177,19 @@ class AnnotationDisplaySidecar:
                 (key, row_number),
             ).fetchone()
         return dict(row) if row is not None else None
+
+    @lru_cache(maxsize=2)
+    def source_headers(self, library: str) -> dict[str, str]:
+        # Older baked input packages contain display-normalized annotations.
+        # Read the small original header table once; leave those packages intact.
+        if library not in {"canonical_human", "canonical_exposure"} or not {"accession", "gene"}.issubset(self.annotation_columns):
+            return {}
+        with metadata_connection(self.database) as connection:
+            rows = connection.execute("""SELECT aa.source_row,t.accession,t.gene,t.protein_name
+                FROM antigen_annotation aa JOIN annotation_text t USING(annotation_id)
+                WHERE aa.library_key=?""", (library,))
+            return {str(row["source_row"]): header for row in rows
+                    if (header := reference_fasta_header(library, dict(row)))}
 
     def search_source_rows(
         self, query: object, libraries: list[str] | tuple[str, ...], *, limit: int
@@ -335,6 +360,9 @@ class AnnotationHydrator:
         organism = _organism(_first(payload, "organism") or parsed["organism"])
         annotation = self.annotation_sidecar.lookup(library, payload.get("source_row")) if self.annotation_sidecar else None
         if annotation:
+            source_header = reference_fasta_header(library, annotation)
+            if source_header:
+                payload["source_fasta_header"] = source_header
             if "accession" in annotation:
                 accession = _text(annotation.get("accession")) or accession
             if "gene" in annotation:

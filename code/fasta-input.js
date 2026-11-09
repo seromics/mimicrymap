@@ -111,6 +111,7 @@
         header: query.header,
         seqid: query.seqid || query.header,
         raw_header: query.raw_header || query.header,
+        source_fasta_header: identity.fastaHeader(query),
         library_id: "__custom_query__",
         organism: query.organism || "",
         length: query.length,

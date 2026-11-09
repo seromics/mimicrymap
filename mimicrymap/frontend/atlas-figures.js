@@ -1620,7 +1620,7 @@ Length`/*@endcopy*/), w: 104, f: function (r) { return nf(r.len); } }]
       "text/csv;charset=utf-8");
   }
   function svgString(svg, C) {
-    var c = svg.cloneNode(true);
+    var c = window.MimicryPlotPalette.cloneSVG(svg);
     c.setAttribute("xmlns", SVG);
     c.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
     var vb = (c.getAttribute("viewBox") || "0 0 720 460").split(/\s+/);
@@ -1637,7 +1637,7 @@ Length`/*@endcopy*/), w: 104, f: function (r) { return nf(r.len); } }]
 
   function exportSvg(svg, name, C, caption) {
     if (typeof window.SeroMapFigureExport === "function") {
-      var node = svg.cloneNode(true);
+      var node = window.MimicryPlotPalette.cloneSVG(svg);
       return window.SeroMapFigureExport("svg", node, safeName(name)).then(function () {
         if (caption) save(safeName(name) + "-legend.txt", caption, "text/plain;charset=utf-8");
       });
@@ -1646,7 +1646,7 @@ Length`/*@endcopy*/), w: 104, f: function (r) { return nf(r.len); } }]
   }
   function exportPng(svg, name, C, caption) {
     if (typeof window.SeroMapFigureExport === "function") {
-      return window.SeroMapFigureExport("png", svg.cloneNode(true), safeName(name)).then(function () {
+      return window.SeroMapFigureExport("png", window.MimicryPlotPalette.cloneSVG(svg), safeName(name)).then(function () {
         if(caption)save(safeName(name)+"-legend.txt",caption,"text/plain;charset=utf-8");
       });
     }

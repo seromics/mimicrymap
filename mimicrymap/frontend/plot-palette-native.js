@@ -51,11 +51,33 @@
   }
   const metadata=document.createElementNS('http://www.w3.org/2000/svg','metadata');metadata.textContent=JSON.stringify({plotPalette:snapshot(selected)});svg.append(metadata);return svg;
  }
+ // Standalone atlas downloads must carry the same fonts as the player and app.
+ let embeddedFonts;
+ function fontCSS(){
+  if(!embeddedFonts)embeddedFonts=Promise.all([['Inter','inter-latin.woff2','300 700'],['JetBrains Mono','jetbrains-mono-latin.woff2','400 600']].map(async([family,file,weight])=>{
+   const response=await fetch(new URL('fonts/'+file,assetBase));
+   if(!response.ok)throw Error('Cannot load the figure font '+family+'. Please retry.');
+   const bytes=new Uint8Array(await response.arrayBuffer());let binary='';
+   for(let i=0;i<bytes.length;i+=16384)binary+=String.fromCharCode(...bytes.subarray(i,i+16384));
+   return `@font-face{font-family:'${family}';font-style:normal;font-weight:${weight};src:url(data:font/woff2;base64,${btoa(binary)}) format('woff2')}`;
+  })).then(parts=>parts.join('')).catch(error=>{embeddedFonts=null;throw error});
+  return embeddedFonts;
+ }
+ function cloneSVG(source){
+  const copy=source.cloneNode(true),live=[source,...source.querySelectorAll('*')],copies=[copy,...copy.querySelectorAll('*')];
+  live.forEach((node,i)=>{
+   if(!node.isConnected||!['svg','text','tspan','textPath'].includes(node.localName))return;
+   const style=node.ownerDocument.defaultView.getComputedStyle(node);
+   for(const key of ['font-family','font-size','font-weight','font-style','font-stretch','font-variant','font-kerning','letter-spacing','word-spacing'])copies[i].style.setProperty(key,style.getPropertyValue(key));
+  });
+  return copy;
+ }
  async function downloadFigure(source,filename,kind,caption){
-  const variants=registry.exportVariants(),files={};
+  const variants=registry.exportVariants(),files={},frozen=typeof source==='function'?source:cloneSVG(source),fonts=await fontCSS();
   for(const variant of variants){
-   const svg=typeof source==='function'?await source(variant):source.cloneNode(true);
+   const svg=typeof frozen==='function'?cloneSVG(await frozen(variant)):frozen.cloneNode(true);
    freezeSVG(svg,variant);svg.setAttribute('xmlns','http://www.w3.org/2000/svg');
+   const style=document.createElementNS('http://www.w3.org/2000/svg','style');style.setAttribute('data-export-fonts','embedded');style.textContent=fonts;svg.prepend(style);
    const v=svg.viewBox.baseVal;svg.setAttribute('width',v.width);svg.setAttribute('height',v.height);
    let blob=new Blob([new XMLSerializer().serializeToString(svg)],{type:'image/svg+xml;charset=utf-8'});
    if(kind==='png'){
@@ -77,7 +99,7 @@
   const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),60000);
  }
  window.MimicryPlotPalette={registry,raw,ramp:(name,t)=>registry.ramp(name,t,exportOptions||{}),alpha:(key,a)=>registry.alpha(key,a,exportOptions||{}),beginExport,capture,snapshot,
-  variables,freezeSVG,downloadFigure,object:roles=>new Proxy({}, {get:(_,key)=>roles[key]?raw(roles[key]):undefined})};
+  variables,freezeSVG,cloneSVG,downloadFigure,object:roles=>new Proxy({}, {get:(_,key)=>roles[key]?raw(roles[key]):undefined})};
  apply();
  window.addEventListener('seromap:plot-palette',()=>{apply();repaint();});
  window.addEventListener('seromap:theme',apply);

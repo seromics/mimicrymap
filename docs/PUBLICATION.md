@@ -1,104 +1,65 @@
-# Manuscript and publication staging
+# Manuscript and Publication Staging
 
-The paper presents a general comparison method for arbitrary target and parent
-protein libraries. Human and viral references are worked examples, not a
-restriction on the code. Microbiome, food, allergen and custom assay sequences
-use the same comparison rule. Experimental analyses are limited to Reactivity
-Enrichment; the broader SeroMap application is outside this manuscript.
+MimicryMap is the research software and sequence-comparison dataset accompanying
+the methods paper. The broader SeroMap application, study installation packages
+and deployment license are separate. The paper draft is sequence/method focused;
+patient-enrichment examples remain on the site and are not required paper figures.
 
-## Figure sequence
+## Current Components
 
-| Figure | Purpose |
-| --- | --- |
-| 1 | Define nine-residue identity, independent coverage denominators and reusable outputs |
-| 2 | Relate reference search-space size to human protein reach and residue coverage |
-| 3 | Walk through the EBV atlas at all five identity thresholds |
-| 4 | Contrast a local HEPACAM match with extensive IL10 homology |
-| 5 | Connect aligned sites to summary tables, mapping indexes and positional outputs |
-| 6 | Apply sequence-defined sets to recorded antibody hits and cohort enrichment |
-| Extended 1 | Compare human IGHG2 with a human reference library |
-| Extended 2 | Compare explicit paired sequence fragments with a shared reference library |
+| Component | Location | Status |
+| --- | --- | --- |
+| CPU/GPU research code and scientific exporters | This repository | Current shared source; CPU and GPU support 5/9 through 9/9 |
+| Illustrated methods and worked examples | README, docs/calculation and examples | Included; historical example ZIPs are identified as saved outputs |
+| Selected paper plots | figures/paper | Nine current PNG/SVG pairs exported November 8 with larger typography; no new calculations |
+| Preprint | Forthcoming | Author-written text, final figure arrangement and citation pending |
+| Comparisons, atlas and structures | [Zenodo draft 24046306](https://zenodo.org/uploads/24046306) | Uploaded together; unpublished; CC BY 4.0 |
+| Dataset inventory | [atlas-manifest.json](../data/atlas-manifest.json) | Current 47-file consolidated inventory and planned public links |
 
-The editable Word skeleton includes the figure walkthrough, complete methods,
-legends, references and author-completion notes. SVG masters and original
-components accompany it. No new experimental results are inferred from figure
-labels, and full-precision data are not invented when only an SVG was retained.
+The dataset comprises 16 CSV/FASTA comparison ZIPs, 16 SQLite companions,
+one focused atlas numerical-data ZIP, one 13,516-state figure ZIP and three
+structure/annotation ZIPs. Six input FASTAs, figure-index.csv, README, format and
+method definitions, and the manifest complete the 47 files: 41,258,798,832 bytes.
+Large payloads remain outside Git. These are separate downloads in one dataset
+record; the earlier atlas-only draft records are superseded unpublished backups.
 
-The main Word draft now has 26 pages. Its five dedicated How It Works pages
-reuse the original diagrams for record selection, overlapping windows, core
-identity, sequence context and independent coverage unions. Each has a brief
-summary and a technical legend. Their SVG masters and source manifest are in
-`Paper-Figures/How-It-Works/`; Word uses matching high-resolution browser previews.
+The numerical atlas retains maximum identity per human window and viral protein,
+not every matching viral position. Its human coverage and qualifying windows are
+preserved. General research builds can retain full positions when requested.
+The atlas uses 20,333 canonical human proteins of at least 50 residues; the
+comparison downloads use all 20,431 canonical human records. The atlas has no
+10%-coverage pair filter. Listed comparison pairs require at least 10% coverage
+of either sequence at each identity threshold. See [Atlas provenance](ATLAS.md).
 
-## Products kept separate
+## Figures and Editorial Files
 
-1. Tagged method and software source.
-2. Full Pan-Viral Atlas at 5/9–9/9, with its offline figure browser, saved results,
-   reference FASTAs, shared CSVs and captured legends.
-3. General-use 7/9–9/9 summary tables and their exact reference inputs.
-4. Reusable SQLite mapping indexes, separate from full positional outputs.
-5. Selected paper figures and permitted experimental source data.
+The full atlas archive contains the historical 9,066 states, 4,444 additional
+parent arrangements and six global pair rankings, totaling 13,516. The historical
+capture completed its figure states but failed its final source-change guard;
+that limitation remains recorded in the data methods. Figure states are alternate
+presentations, not independent experiments.
 
-The current reference staging manifest inventories 155 existing archives:
-137 summary/reference packages, 13 mapping indexes and five auxiliary
-reference/annotation packages. This is an inventory, not a decision to include
-every app annotation archive in the paper. The full 5/9 atlas is an additional
-product; it is not contained in that reference-download manifest.
+The selected paper exports are presentation variants of retained native figures.
+They do not replace or modify the full atlas archive. Their inventory retains
+source hashes and identifies the original captures. Panel letters remain editable
+in Word. Figure 4 is arranged by subcellular location; its caption must not call
+that arrangement genomic position.
 
-The historical atlas figure profile has 20 proteome-level states per virus,
-one coverage view per viral protein, and two individual-parent scatter
-highlights per viral protein: 2,400 + 2,222 + 4,444 = 9,066 states. Scatter
-figures show 5/9 and 7/9; their data retain all five thresholds. Figure states
-are alternate presentations, not independent experiments.
+The editable Figure 1 PowerPoint and the author-edited Word manuscript remain in
+the separate editorial workspace. They are not silently replaced by the README
+method-overview illustration. The local `outputs/paper-figures-2026-11-08/` holds
+the selected export sources and `outputs/paper-package-2026-11-06/` the earlier
+editable components. These outputs are not part of a source clone.
 
-## Extended atlas and EBV supplement
+## Before Public Release
 
-`Supplementary-EBV-EBNA1/` in the local paper package contains an editable
-40-page Word figure bank, 36 supplementary plates and 66 SVG assets. The
-walkthrough covers collection comparisons, all standard EBV views, EBNA1
-coverage and target rankings, and retained HEPACAM site/sequence exports.
-Full target and literal-pair tables accompany the figure examples.
+- Select the software license and confirm the copyright holder and third-party notices.
+- Supply final authors and citation metadata, then add CITATION.cff and the preprint link.
+- Finalize the human-edited manuscript and Figure 1; review figure captions against the selected files.
+- Tag the tested code version and publish the approved Zenodo draft when authorized.
+- Replace draft links with the published dataset DOI/download links and connect the website.
 
-The historical 9,066 states are not every current view. The supplement adds
-31 current native examples: 20 standard EBV states, three EBNA1 arrangements,
-two EBNA1 highlights, and six global literal-pair rankings at 7/9–9/9 by
-human or viral coverage. It also includes 27 retained sequence export
-variants and eight summaries derived from saved data. No sequence matches
-or antibody calls were recalculated.
-
-The historical per-parent exports used only subcellular-location arrangement.
-Genome-position and protein-length arrangements add a defined set of 4,444
-states across 2,222 parents. All 4,444 were completed on 22 October 2026 using
-the retained coverage payloads and native figure renderer. The completion receipt
-is under `Pan-Viral-Atlas/figures/additional-parent-arrangements/` in the local
-package. The main index includes these views and six global pair-ranking states:
-13,516 figure states in total.
-Pagination, themes and arbitrary highlights are not separate scientific variants.
-
-The native human-target atlas table retains the viral partner selected at
-7/9 when another ranking floor is displayed. The literal-pair table instead
-lists eligible pairs at each threshold, with a 10% either-endpoint coverage
-floor and a 20,431-record human reference including short proteins. These
-are distinct from the 20,333-protein atlas population and must remain
-explicit in legends. The new EBNA1 rankings use complete saved covered-
-residue arrays without a 10% pair-list floor.
-
-## Local package
-
-The 21 October 2026 package is in `outputs/paper-package-2026-10-21/` outside
-Git. `index.html` links the Word document, SVG bundle, full atlas and archive
-catalogue. The atlas is copied there independently of the legacy MimicryOne
-directory. Existing standard reference ZIPs remain in the established
-publication-staging directory; the local catalogue records their exact paths.
-
-The current handoff is `outputs/publication-handoff-2026-11-03/`. Its index
-separates the manuscript and figures, the complete offline atlas, current CPU/GPU
-source, reusable mapping data, and application-only reference packages. The source
-snapshot records its base commit and uncommitted changes; it is not a published
-tag. Existing data archives are referenced in place rather than duplicated.
-
-Before public release, supply cohort provenance and actual upstream assay
-methods, complete the experimental source-data exports, authorize the
-paired-fragment accessory, and select software/data/figure licenses and DOI
-metadata. Third-party terms remain applicable. The repository remains private;
-local staging does not publish the paper or create a Zenodo deposit.
+The repository remains private. No DOI, public software release or software
+license grant is implied by this staging. CC BY 4.0 applies to the dataset record;
+original source terms and attribution remain applicable. SeroMap deployment and
+application licensing remain a separate release decision.

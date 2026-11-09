@@ -53,7 +53,9 @@ Assay-ID columns appear when source assay identifiers are available. Assay Contr
 
 ## Explicit record identity
 
-Export schema `mimicryone/export/21` retains separate **Gene**, **Accession**, and **Protein Description** columns for both Antigen Target and Mimicry Parent in complete events, the selected window, and parent summaries. These columns sit beside each record's compact label. Gene values are retained source metadata; a missing annotation stays empty. Native assay IDs and mapping contributions keep their existing columns.
+Export schema `mimicryone/export/23` retains separate **Gene**, **Accession**, and **Protein Description** columns for both Antigen Target and Mimicry Parent in complete events, the selected window, and parent summaries. These columns sit beside each record's compact label. Gene values are retained source metadata; a missing annotation stays empty. Native assay IDs and mapping contributions keep their existing columns.
+
+**Antigen Target FASTA Header** in Summary CSV uses the same public header as the target FASTA in Current Comparison. Reference records use the full accession, source gene when present, and source protein description, matching the corresponding released FASTA record. Supplied and assay FASTA headers are retained literally. Generated storage identifiers are not public sequence labels; they may remain in the selection sidecar to preserve joins and coordinate mappings during reproduction.
 
 For new FASTA inputs, these fields describe only supplied or recognized header metadata. Unknown fields stay blank; a generic FASTA identifier remains the compact record label rather than an inferred gene or accession. Metadata is per record, including in multiple-target runs. See the [Input Guide](../inputs/README.md) for supported headers and sidecar invalidation.
 

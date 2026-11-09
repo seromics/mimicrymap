@@ -1,4 +1,4 @@
-/* Keep outbound navigation in a new tab while preserving page anchors and downloads.
+/* Keep external navigation in a new tab while preserving same-site history and downloads.
    Prepare dynamic links at interaction time; no observer scans the animated player. */
 (function pageLinks() {
   "use strict";
@@ -11,9 +11,7 @@
     if (!href || href.startsWith("#") || link.hasAttribute("download")) return false;
     try {
       const url = new URL(href, document.baseURI);
-      return (url.protocol === "http:" || url.protocol === "https:") &&
-        (url.origin !== location.origin || url.pathname !== location.pathname ||
-         url.search !== location.search);
+      return (url.protocol === "http:" || url.protocol === "https:") && url.origin !== location.origin;
     } catch (_) {
       return false;
     }

@@ -2,6 +2,7 @@
 (function(){
  'use strict';
  const core=window.MimicryExportCore, encoder=new TextEncoder();
+ const assetBase=new URL('.',document.currentScript.src);
  const json=value=>JSON.stringify(value,null,2)+'\n';
  function crc32(bytes){let c=0xffffffff;for(const b of bytes){c^=b;for(let i=0;i<8;i++)c=(c>>>1)^((c&1)?0xedb88320:0);}return(c^0xffffffff)>>>0;}
  async function zip(files,compress=false){
@@ -102,7 +103,15 @@
   const files={};
   for(const spec of Object.values(layout.files))if(spec.source){
    if(signal.aborted)throw new DOMException('Canceled','AbortError');
-   files[spec.path]=spec.source==='/reproduce/pipeline-layout.json'?layoutText:new Uint8Array(await(await get(spec.source,signal)).arrayBuffer());
+   if(spec.source==='/reproduce/pipeline-layout.json'){files[spec.path]=layoutText;continue;}
+   const sourceUrl=new URL(spec.source.replace(/^\//,''),assetBase);
+   sourceUrl.searchParams.set('export_source','1');
+   const response=await get(sourceUrl.href,signal),bytes=new Uint8Array(await response.arrayBuffer());
+   // SPA fallbacks can return 200 with HTML for a missing asset. Never ship that
+   // response as code, documentation, an illustration or a configuration file.
+   if(/text\/html/i.test(response.headers.get('content-type')||'') || /^\s*(?:<!doctype\s+html|<html\b)/i.test(new TextDecoder().decode(bytes.slice(0,512))))
+    throw Error('Export source is unavailable: '+spec.path);
+   files[spec.path]=bytes;
   }
   Object.assign(files,await window.MimicryPipelineSelection.prepare(snapshot,population,window.MimicryOneIdentity));
   if(annotations)files['inputs/residue-annotations.json']=json(annotations);

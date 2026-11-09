@@ -25,11 +25,12 @@ reference installation, large atlas datasets, private studies or a CUDA
 environment. Curated browsing needs the reference assets and host services;
 the standalone FASTA runners do not require an installed study.
 
-The manuscript, extended EBV/EBNA1 supplement, SVG masters and full atlas
-companion are staged separately; [Publication staging](PUBLICATION.md) records
-their contents and the remaining image exports. They are not a Zenodo deposit.
+The selected paper PNG/SVG exports are in [figures/paper](../figures/paper/README.md).
+The full atlas, comparisons and structure supplements are uploaded together to
+the [unpublished Zenodo draft](https://zenodo.org/uploads/24046306).
+[Publication staging](PUBLICATION.md) records the current components.
 
-The repository remains private. Software, figure and dataset licenses, final
-authorship/citation metadata and deposit identifiers still need author decisions
-before public release. Existing source attribution and third-party terms remain
-applicable; no license or DOI is assigned by this draft.
+The repository remains private. The dataset draft uses CC BY 4.0; the software
+license remains undecided. Final authorship/citation metadata, preprint link,
+dataset publication and software version tag remain to be completed. Existing
+source attribution and third-party terms remain applicable.

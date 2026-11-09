@@ -23,7 +23,7 @@
     for (const key of ['antigen_id','library','seqid','short_id','raw_header','length',
       'display_accession','accession','source_accession','display_gene','primary_gene',
       'gene','display_name','protein_name','description','organism','entity_level',
-      'record_identity','source_header','companion_header','coordinates','variant_hgvs',
+      'record_identity','source_header','source_fasta_header','full_source_header','source_description','companion_header','coordinates','variant_hgvs',
       'variant_significance','provenance','strain']) {
       if (record[key] !== undefined) native[key] = record[key];
     }
@@ -41,6 +41,7 @@
       seqid: exactHeader,
       raw_header: exactHeader,
       short_id: record.short_id,
+      source_fasta_header: root.MimicryOneIdentity.fastaHeader(record),
       library_id: libraryId,
       organism: identity.organism,
       assay_id: identity.assayId,
@@ -114,7 +115,7 @@
  function pack(record) {
   const compact = {};
   for (const key of ['protein_id','antigen_id','raw_header','short_id','library_id','length',
-   'sequence','sequence_status','window_count','name','identity','native']) compact[key] = record[key];
+   'sequence','sequence_status','window_count','name','identity','native','source_fasta_header']) compact[key] = record[key];
   return compact;
  }
  function unpack(record) {
@@ -126,6 +127,7 @@
    source_accession:identity.accession || undefined, gene:identity.gene || identity.primaryLine,
    protein_name:identity.proteinName, name:record.name,
    header:record.raw_header, seqid:record.raw_header, raw_header:record.raw_header,
+   source_fasta_header:record.source_fasta_header || root.MimicryOneIdentity.fastaHeader({...record,library_id:record.library_id}),
    short_id:record.short_id, library_id:record.library_id, organism:identity.organism,
    assay_id:identity.assayId, coordinates:identity.coordinates, variant_hgvs:identity.variant,
    variant_significance:identity.significance, collection:identity.collection,

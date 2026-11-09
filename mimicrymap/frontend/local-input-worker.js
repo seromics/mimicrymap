@@ -44,6 +44,7 @@ self.onmessage=async function(event){
    const annotation=payload.annotations[row[annotationAt]];
    if(!annotation)throw Error('Input package references a missing annotation');
    Object.assign(record,annotation);
+   if(scope.sourceHeaders?.[record.source_row])record.source_fasta_header=scope.sourceHeaders[record.source_row];
    if(!selected && !model.matches(record,options.filters,scope.filterColumns))continue;
    admitted++;
    const resolved=model.row(record);

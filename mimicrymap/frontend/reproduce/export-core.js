@@ -1,7 +1,7 @@
 /* Shared browser/Node export contract. No sequence search or statistical inference. */
 (function(root){
  'use strict';
- const version='mimicryone/export/22';
+ const version='mimicryone/export/23';
  const plotRegistry=root.SeroMapPlotPalette||(typeof require==='function'?(()=>{try{return require('./plot-palette.cjs');}catch(error){if(error.code!=='MODULE_NOT_FOUND')throw error;return require('../../../atlas/viewer/shared/plotPalette.cjs');}})():null);
  const ranking=typeof module==='object'&&module.exports?require('./ranking.js'):root.MimicryRanking;
  const contextScore=typeof module==='object'&&module.exports?require('./context-score.js'):root.MimicryContextScore;
@@ -27,7 +27,7 @@
   record=sourceIdentity?.recordedSource(record)||record;
   const i=sourceIdentity?.resolve(record)||record.identity||{};
   const fields={id:record.protein_id,record_id:record.antigen_id,seqid:record.seqid,
-   full_header:record.raw_header||record.header||i.fullHeader||'',gene:i.gene||record.primary_gene||record.gene_symbol||record.gene||String(record.raw_header||record.header||record.source_header||'').match(/(?:^|\s)GN=([^\s]+)/)?.[1]||'',
+   full_header:sourceIdentity.fastaHeader(record),gene:i.gene||record.primary_gene||record.gene_symbol||record.gene||String(record.raw_header||record.header||record.source_header||'').match(/(?:^|\s)GN=([^\s]+)/)?.[1]||'',
    protein_name:i.proteinName||record.protein_name||record.name,accession:i.accession||record.source_accession||record.display_accession||record.accession,
    organism:i.organism||record.organism,library:record.library_id,assay_id:i.assayId||record.assay_id,
    strain:i.strain||record.strain,coordinates:i.coordinates||record.coordinates,

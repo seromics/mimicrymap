@@ -5,7 +5,7 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const {DatabaseSync}=require('node:sqlite');
 const unified=require('./unified-mapping.cjs');
 const pkg=require('./summary-package.cjs'),coverage=require('./residue-coverage.js'),regions=require('./pair-regions.cjs');
-const identity=require('../mimicryone-identity.js');
+const identity=require(require('node:fs').existsSync(require('node:path').join(__dirname,'mimicryone-identity.js'))?'./mimicryone-identity.js':'../mimicryone-identity.js');
 const digest=s=>crypto.createHash('sha256').update(s).digest('hex');
 async function checkFasta(file,records){
  const parser=require('./fasta-input.js'),lines=require('node:readline').createInterface({input:fs.createReadStream(file),crlfDelay:Infinity}),ordered=records.values();let header='',sequence='',count=0;
@@ -51,7 +51,7 @@ async function annotationDatabase(source,directory,manifest,side,records){
   }finally{fs.closeSync(file);}}
  }finally{db.close();}
 }
-async function build({source,directory,linkInputs=false,prepareIndexes=true},report=()=>{}){
+async function build({source,directory,linkInputs=false,prepareIndexes=true,writePairCoverage=true},report=()=>{}){
  source=path.resolve(source);if(fs.statSync(source).isFile())source=path.dirname(source);
  directory=path.resolve(directory);if(fs.existsSync(directory))throw Error('Index output already exists; choose a new directory');
  report({phase:'Reading mapping records',done:0,total:0});
@@ -73,9 +73,9 @@ async function build({source,directory,linkInputs=false,prepareIndexes=true},rep
    writer.record(r,m[side?'parent':'target'].name);
   }
   const keys=pkg.jsonLines(pkg.safeFile(source,m.keysFile))[Symbol.asyncIterator](),seen=new Set();let header,columns;
-  const pairCsv=fs.openSync(path.join(directory,'pair_coverage.csv'),'wx');
+  const pairCsv=writePairCoverage?fs.openSync(path.join(directory,'pair_coverage.csv'),'wx'):null;
   try{
-   fs.writeSync(pairCsv,pkg.csvLine(['Target record','Target ID','Parent record','Parent ID','Organism','Reference set','Core identity ≥','Target coverage (%)','Target regions (>=10% either)','Parent coverage (%)','Parent regions (>=10% either)','Window pairs','Target FASTA Header','Parent FASTA Header']));let buffer='';
+   if(pairCsv!==null)fs.writeSync(pairCsv,pkg.csvLine(['Target record','Target ID','Parent record','Parent ID','Organism','Reference set','Core identity ≥','Target coverage (%)','Target regions (>=10% either)','Parent coverage (%)','Parent regions (>=10% either)','Window pairs','Target FASTA Header','Parent FASTA Header']));let buffer='';
    for await(const row of pkg.csvRows(pkg.safeFile(source,m.csv))){
     if(!header){
      header=row;columns=m.floors.map(f=>({f,u:header.indexOf('Unmatched Target Regions at '+f+'/9 (Whole Comparison Library)'),p:header.indexOf('Mimicry Parents at '+f+'/9 with Coverage (%) Parent|Target (>=10% either)'),r:header.indexOf('Mimicry Parent Regions at '+f+'/9 Parent|Target (>=10% either)')}));
@@ -105,15 +105,17 @@ async function build({source,directory,linkInputs=false,prepareIndexes=true},rep
       const protein=parent.metadata.protein_id||parent.source,organism=parent.metadata.reference_set||parent.metadata.organism||m.parent.name;
       const policy=typeof m.membershipCoverage==='object'?m.membershipCoverage[f]:m.membershipCoverage;
       writer.pair({a:target.id,b:parent.id,identity:f,ac:tc,bc:pc,stats_ac:policy==='csv-pair-percent'?Number(display[1]):tc,stats_bc:policy==='csv-pair-percent'?Number(display[0]):pc,windows:count,targetRanges:tr,parentRanges:pr});pairCount++;
-      buffer+=pkg.csvLine([target.id,target.source,parent.id,protein,parent.metadata.organism||'',organism,f,tc,regions.text(tr),pc,regions.text(pr),count,target.metadata.raw_header||target.metadata.header||'',parent.metadata.raw_header||parent.metadata.header||'']);
-      if(buffer.length>1048576){fs.writeSync(pairCsv,buffer);buffer='';}
+      if(pairCsv!==null){
+       buffer+=pkg.csvLine([target.id,target.source,parent.id,protein,parent.metadata.organism||'',organism,f,tc,regions.text(tr),pc,regions.text(pr),count,target.metadata.raw_header||target.metadata.header||'',parent.metadata.raw_header||parent.metadata.header||'']);
+       if(buffer.length>1048576){fs.writeSync(pairCsv,buffer);buffer='';}
+      }
      }
     }
     rowCount++;if(rowCount%1000===0){db.exec('COMMIT;BEGIN;');report({phase:'Indexing summary CSV',done:rowCount,total:m.rows});}
    }
    if(buffer)fs.writeSync(pairCsv,buffer);
    if(!(await keys.next()).done||rowCount!==m.rows||m.complete&&seen.size!==records[0].size)throw Error('Incomplete target population');
-  }finally{fs.closeSync(pairCsv);}
+  }finally{if(pairCsv!==null)fs.closeSync(pairCsv);}
   db.exec('COMMIT;');writer.finish({floors:m.floors,prepareIndexes},report);
  }finally{db.close();}
  const copy=(from,to)=>{if(linkInputs){try{fs.linkSync(from,to);return;}catch(error){if(error.code==='EEXIST')return;}}fs.copyFileSync(from,to);};

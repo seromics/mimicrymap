@@ -2,7 +2,7 @@
 // Shared sink for native matches, portable matches and existing developer data.
 // Callers supply exact pair unions; CSV display rounding never enters this path.
 const unified=require('./unified-mapping.cjs'),coverage=require('./residue-coverage.js'),regions=require('./pair-regions.cjs');
-const identity=require('../mimicryone-identity.js');
+const identity=require(require('node:fs').existsSync(require('node:path').join(__dirname,'mimicryone-identity.js'))?'./mimicryone-identity.js':'../mimicryone-identity.js');
 // One bit per residue retains all-match unions without saving subthreshold pairs.
 // Buffers are allocated once per side/floor, not once per matching pair.
 function unionCollector(db){
