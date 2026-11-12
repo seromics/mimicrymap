@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MimicryMap: Optional Tracks and Structure</title><link rel="stylesheet" href="example.css"></head>
+<body><main><h1>MimicryMap: Optional Tracks and Structure</h1>
+<p>The same IL10 comparison with its supplied AlphaFold model and per-residue pLDDT confidence. These annotations do not change matching or coverage. <a href="index.html">FASTA example</a></p>
+<div class="actions"><button id="load">Load Example</button><label><input id="confidence" type="checkbox" checked> pLDDT Track</label><label>Theme <select id="theme"><option>dark</option><option>light</option></select></label></div>
+<p id="status" role="status"></p><div id="viewer"></div>
+<p class="foot">Model: AlphaFold DB AF-P22301-F1-model_v6, CC BY 4.0. Confidence values are the model’s Cα B-factor field. <a href="PROVENANCE.md">Sources and coordinates</a></p>
+</main><script type="module">
+import {createViewer} from '../mimicrymap.mjs';
+const viewer=createViewer(document.querySelector('#viewer'));window.demoViewer=viewer;
+const status=document.querySelector('#status'),button=document.querySelector('#load');
+button.onclick=async()=>{button.disabled=true;status.textContent='Loading Example…';try{
+ const [targetFasta,parentFasta,assets]=await Promise.all(['target.fasta','parents.fasta','il10-assets.json'].map(async name=>{const r=await fetch(name);if(!r.ok)throw Error('Cannot load '+name);return name.endsWith('.json')?r.json():r.text();}));
+ await viewer.compare({targetFasta,parentFasta,minimumIdentity:7,assets});await viewer.selectWindow(111);await viewer.setTracks(document.querySelector('#confidence').checked?['plddt']:[]);status.textContent='';
+}catch(error){status.textContent=error.message;}finally{button.disabled=false;}};
+document.querySelector('#confidence').onchange=event=>viewer.setTracks(event.target.checked?['plddt']:[]).catch(error=>status.textContent=error.message);
+document.querySelector('#theme').onchange=event=>viewer.setTheme(event.target.value);
+</script></body></html>

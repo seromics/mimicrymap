@@ -1,0 +1,11 @@
+html,body{height:auto;background:var(--mm-bg)}
+.hero{padding:8px;min-height:0;overflow:visible}
+.wrap{max-width:none}
+.hero-head,.entry,.atlas-select,.blob,.vig,.site-header,.site-banner,.brand-bar,.corpus,.mobile-figure-hint,#playerHistory,#resultExtent{display:none!important}
+.stage{margin:0;min-height:240px}
+.controls{margin-top:0}
+.repro{margin:10px 0;flex-wrap:wrap}
+html:not([data-embed-ready="true"]) .stage,html:not([data-embed-ready="true"]) .controls,html:not([data-embed-ready="true"]) .repro{visibility:hidden}
+html[data-embed-busy="true"] .stage,html[data-embed-busy="true"] .controls,html[data-embed-busy="true"] .repro{opacity:.55}
+#embedStatus{font:13px Inter,Arial,sans-serif;padding:8px;position:absolute;inset:8px auto auto 8px;z-index:10;background:var(--mm-surface);border-radius:4px;max-width:90%}
+#embedStatus[hidden]{display:none}

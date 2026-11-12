@@ -2,6 +2,7 @@
   "name": "mimicrymap-research",
   "version": "0.1.0-rc.1",
   "private": true,
+  "license": "MIT",
   "description": "MimicryMap applet, sequence coverage summaries and optional GPU research builder",
   "engines": {"node": ">=24"},
   "scripts": {
@@ -9,6 +10,11 @@
     "build:example": "node build.cjs --targets inputs/antigen-target.fasta --parents inputs/mimicry-parents.fasta --out outputs/example-index",
     "check:source": "node tools/sync-upstream.cjs --check",
     "test": "node --test test/research.test.cjs",
-    "package": "python tools/package-research.py"
-  }
+    "package": "python tools/package-research.py",
+    "viewer:build": "node mimicrymap/tools/build-viewer.cjs dist/viewer",
+    "viewer": "npm run viewer:build && node mimicrymap/tools/serve-viewer.cjs dist/viewer",
+    "test:viewer": "node mimicrymap/tools/verify-viewer.cjs",
+    "package:viewer": "npm run viewer:build && python tools/package-viewer.py"
+  },
+  "devDependencies": {"playwright": "1.63.0"}
 }

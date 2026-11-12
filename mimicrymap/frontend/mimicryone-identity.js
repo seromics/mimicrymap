@@ -124,11 +124,16 @@
     if (readable && !/^(?:(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})(?:-\d+)?|[A-Z]{2,4}_[0-9]+(?:\.[0-9]+)?)$/.test(readable[2])) readable = null;
     var accessionToken = /^(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})(?:-\d+)?$/.test(token);
     var refseqToken = /^(?:[A-Z]{2,4}_)[0-9]+(?:\.[0-9]+)?$/.test(token);
+    // Round-trip the accession-first headers written by fastaHeader(), while
+    // preserving the original header verbatim and leaving taxonomy unknown.
+    var publicFields = customInput && accessionToken ? header.split(/\s+\|\s+/) : [];
+    var publicGene = publicFields.length === 3 && /^[A-Za-z0-9_.\/-]+$/.test(publicFields[1]) ? publicFields[1] : '';
+    var publicDescription = publicFields.length === 2 ? publicFields[1] : publicGene ? publicFields[2] : '';
     return {
-      description: readable ? clean(readable[3]) : fasta || tagged || customInput ? humanize(description.split(/\s(?:OS|OX|GN|PE|SV)=/)[0]) : "",
+      description: publicDescription || (readable ? clean(readable[3]) : fasta || tagged || customInput ? humanize(description.split(/\s(?:OS|OX|GN|PE|SV)=/)[0]) : ""),
       organism: readable ? clean(readable[4]) : tag("OS"),
       taxid: tag("OX"),
-      gene: readable ? clean(readable[1]) : tag("GN"),
+      gene: publicGene || (readable ? clean(readable[1]) : tag("GN")),
       fullHeader: fullHeader,
       header: header,
       token: token,

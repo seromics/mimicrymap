@@ -4,10 +4,16 @@
   "commit": "14352f385001d097fa7f2a5534e25be9baf84547",
   "files": [
     {
+      "path": "mimicrymap/LICENSE",
+      "source": "mimicrymap/LICENSE",
+      "bytes": 1080,
+      "sha256": "3d755ba2cdcca3849b4f0d6f326f540e1179e343d05176d079ab330bcaf941f6"
+    },
+    {
       "path": "mimicrymap/SOURCE-NOTICE.md",
       "source": "mimicrymap/SOURCE-NOTICE.md",
-      "bytes": 1112,
-      "sha256": "f4c8be1a33619923960c71be6af22504ab16132007e28e9422b4373377b9585f"
+      "bytes": 1299,
+      "sha256": "ddf5129a6f00a780a10749a511e44b65900a730c38b59398d6516a6c56760661"
     },
     {
       "path": "mimicrymap/docs/contracts/export-fields.json",
@@ -400,6 +406,96 @@
       "sha256": "681c87d5ad3817901b76abc6a43767eaf11a8636204360a3872ba696af8d7490"
     },
     {
+      "path": "mimicrymap/frontend/embed/README.md",
+      "source": "mimicrymap/frontend/embed/README.md",
+      "bytes": 4840,
+      "sha256": "0b2d1423821c12d3a4e6bd5dc2bc57241d378efeae678cced971a61feac62aa9"
+    },
+    {
+      "path": "mimicrymap/frontend/embed/bootstrap.js",
+      "source": "mimicrymap/frontend/embed/bootstrap.js",
+      "bytes": 812,
+      "sha256": "ca51dc29274d7f5245dd5fa358514591c41ded9ddcf194bf1bb748c17dfe049d"
+    },
+    {
+      "path": "mimicrymap/frontend/embed/bridge.js",
+      "source": "mimicrymap/frontend/embed/bridge.js",
+      "bytes": 6136,
+      "sha256": "02c335059231d2eb3bf0fed4bd846b91060e910feba58ea62ca0cd8a6b1685da"
+    },
+    {
+      "path": "mimicrymap/frontend/embed/examples/PROVENANCE.md",
+      "source": "mimicrymap/frontend/embed/examples/PROVENANCE.md",
+      "bytes": 1141,
+      "sha256": "b93f2ad2409574e104b05ca5528883f2d27d330e32d544414a2ee6fb82a9848c"
+    },
+    {
+      "path": "mimicrymap/frontend/embed/examples/REFERENCE-LIBRARIES.md",
+      "source": "mimicrymap/frontend/embed/examples/REFERENCE-LIBRARIES.md",
+      "bytes": 3622,
+      "sha256": "bcdf4a9dca39afdf9bcaf5c5af5f4436b7d56cf7032cf9b0f1fc5c422c539567"
+    },
+    {
+      "path": "mimicrymap/frontend/embed/examples/annotations.html",
+      "source": "mimicrymap/frontend/embed/examples/annotations.html",
+      "bytes": 2109,
+      "sha256": "3ebe9f1ac4168589ffc785de5a3ccd0525809b92a595f7fc989fa73051c13a03"
+    },
+    {
+      "path": "mimicrymap/frontend/embed/examples/example.css",
+      "source": "mimicrymap/frontend/embed/examples/example.css",
+      "bytes": 1024,
+      "sha256": "627ecf35458636811be9b966d36cfb9780b7afb103873c5140479a5e44aeff46"
+    },
+    {
+      "path": "mimicrymap/frontend/embed/examples/example.mjs",
+      "source": "mimicrymap/frontend/embed/examples/example.mjs",
+      "bytes": 4294,
+      "sha256": "2575f2680b585691a918a79d686be2fe89d1c96575ec6da07e57f92ad8b5493a"
+    },
+    {
+      "path": "mimicrymap/frontend/embed/examples/il10-assets.json",
+      "source": "mimicrymap/frontend/embed/examples/il10-assets.json",
+      "bytes": 128693,
+      "sha256": "4366e7d3dff5e756c592c7d401be45bd7882f8ab470029994c0650dcffa996ed"
+    },
+    {
+      "path": "mimicrymap/frontend/embed/examples/index.html",
+      "source": "mimicrymap/frontend/embed/examples/index.html",
+      "bytes": 2365,
+      "sha256": "11e4e9ca6e51026efd869dc0bd0e5551f88ea4086aa72d9f3eb68326bc9123f8"
+    },
+    {
+      "path": "mimicrymap/frontend/embed/examples/parents.fasta",
+      "source": "mimicrymap/frontend/embed/examples/parents.fasta",
+      "bytes": 254,
+      "sha256": "0e8b707e56c7201a7ae350ae972d4719af6e0f9be7162667d2a50bebc79bc99d"
+    },
+    {
+      "path": "mimicrymap/frontend/embed/examples/references.json",
+      "source": "mimicrymap/frontend/embed/examples/references.json",
+      "bytes": 516,
+      "sha256": "c9ead3826c6f2053aa6870b2c4b6ee2311d1e0639442f3f4223663cda414411d"
+    },
+    {
+      "path": "mimicrymap/frontend/embed/examples/target.fasta",
+      "source": "mimicrymap/frontend/embed/examples/target.fasta",
+      "bytes": 267,
+      "sha256": "81c13f2c6691fed515ef45add58659a5f6c83c64df513aa38b4f205675f5c0f0"
+    },
+    {
+      "path": "mimicrymap/frontend/embed/mimicrymap.mjs",
+      "source": "mimicrymap/frontend/embed/mimicrymap.mjs",
+      "bytes": 2834,
+      "sha256": "570858b0c9ccd0289f6c9cfd0e2e9072cde325248f131087d7f352ebd45c852c"
+    },
+    {
+      "path": "mimicrymap/frontend/embed/viewer.css",
+      "source": "mimicrymap/frontend/embed/viewer.css",
+      "bytes": 857,
+      "sha256": "5c37dc8a2434050bb3b5a3fedae7f86741761adac16a6b619c227badfdb5f04b"
+    },
+    {
       "path": "mimicrymap/frontend/examples/use-results/20261018/reactivity-enrichment-huprot-ebv.svg",
       "source": "mimicrymap/frontend/examples/use-results/20261018/reactivity-enrichment-huprot-ebv.svg",
       "bytes": 633385,
@@ -492,8 +588,8 @@
     {
       "path": "mimicrymap/frontend/index.html",
       "source": "mimicrymap/frontend/index.html",
-      "bytes": 1104343,
-      "sha256": "68b910eb37063af0aa1650510dcab5328e90aef5ee4ee314087f36af08a88397"
+      "bytes": 1104505,
+      "sha256": "f45d5b4eb7c6f9be6c86d555526ff3878fda357759d5cbef22ebb67c25082fc8"
     },
     {
       "path": "mimicrymap/frontend/input-package-transport.js",
@@ -570,8 +666,8 @@
     {
       "path": "mimicrymap/frontend/mimicryone-identity.js",
       "source": "mimicrymap/frontend/mimicryone-identity.js",
-      "bytes": 24651,
-      "sha256": "bc10f2d800a4f5ae3745d807a54b7fbdc7cebc9ba53d3cad9497f9dd78c0d385"
+      "bytes": 25163,
+      "sha256": "fd18ecc2c18cc2d4d127bfe91459ace5357cca0883e66764fb806157220c7ac2"
     },
     {
       "path": "mimicrymap/frontend/mimicryone-mobile.css",
@@ -582,8 +678,8 @@
     {
       "path": "mimicrymap/frontend/mimicryone-runtime.js",
       "source": "mimicrymap/frontend/mimicryone-runtime.js",
-      "bytes": 185353,
-      "sha256": "4372601b0c9a7ee834dad8627b5be5fdc0dc05fc907443fdeb9266f8aad0c40f"
+      "bytes": 186332,
+      "sha256": "5b99a879664829fd1d746b516dc87081ea3ff6da665e9c03845094a07d3fe88d"
     },
     {
       "path": "mimicrymap/frontend/mimicryone-theme.css",
@@ -618,8 +714,8 @@
     {
       "path": "mimicrymap/frontend/modification-track.js",
       "source": "mimicrymap/frontend/modification-track.js",
-      "bytes": 6085,
-      "sha256": "844f6ac9b603e24c07b74e67b098ca85af76d433c93e373149ba51d9d79e026e"
+      "bytes": 6230,
+      "sha256": "e43438c9077b98504f37a46a1b96eea6d5272b5d6433d0ca92ee3fba5cfaa8b8"
     },
     {
       "path": "mimicrymap/frontend/page-links.js",
@@ -726,8 +822,8 @@
     {
       "path": "mimicrymap/frontend/publication-exports.js",
       "source": "mimicrymap/frontend/publication-exports.js",
-      "bytes": 29131,
-      "sha256": "784925caf95e1a5f93b503dd398e43e0c79ca8a7ee552eafe92be5b6f1862b94"
+      "bytes": 29363,
+      "sha256": "c783b977de34974de4595a5508b483ab3c79cfab582b9aea266ec341fb877b47"
     },
     {
       "path": "mimicrymap/frontend/recorded_source.py",
@@ -1234,6 +1330,12 @@
       "sha256": "467f24df15cb6feb828fa88355474354140b504f04b7d2e7f98ad85a92d28a9e"
     },
     {
+      "path": "mimicrymap/frontend/viewer-assets.js",
+      "source": "mimicrymap/frontend/viewer-assets.js",
+      "bytes": 3404,
+      "sha256": "71d55b667b3bb99bab9ef08af6163f6e6ca1ef8fc1a27c069d7757c355703638"
+    },
+    {
       "path": "mimicrymap/frontend/viewer.html",
       "source": "mimicrymap/frontend/viewer.html",
       "bytes": 242,
@@ -1256,6 +1358,12 @@
       "source": "mimicrymap/frontend/workspace-reference.test.mjs",
       "bytes": 1782,
       "sha256": "746156702071f5022be678ab77101bb8e76a2516d9fda9bc8e5b652972debf93"
+    },
+    {
+      "path": "mimicrymap/tools/build-viewer.cjs",
+      "source": "mimicrymap/tools/build-viewer.cjs",
+      "bytes": 3454,
+      "sha256": "501ddb4a9f415d998a585bcf0a28b5f60620614d94db8ccb2cfc659d4b42f7e6"
     },
     {
       "path": "mimicrymap/tools/build_method_walkthrough.py",
@@ -1324,6 +1432,12 @@
       "sha256": "b2b10f857aaf4378d25d4aa355b4314b6d6da1d010421f454d04323bc583a4ff"
     },
     {
+      "path": "mimicrymap/tools/serve-viewer.cjs",
+      "source": "mimicrymap/tools/serve-viewer.cjs",
+      "bytes": 1532,
+      "sha256": "edf5b1f39a940c4bb807002a29dda9d5823b1cb7d17fe25ddcaba4eb10b69a47"
+    },
+    {
       "path": "mimicrymap/tools/serve_lite.py",
       "source": "mimicrymap/tools/serve_lite.py",
       "bytes": 2158,
@@ -1334,6 +1448,12 @@
       "source": "mimicrymap/tools/stage_selected_virus_summaries.py",
       "bytes": 5970,
       "sha256": "62368d3bb5d8ea0d68b9a5c951a9b219215b9a9ec5f32f9768e02f257833ae07"
+    },
+    {
+      "path": "mimicrymap/tools/verify-viewer.cjs",
+      "source": "mimicrymap/tools/verify-viewer.cjs",
+      "bytes": 7586,
+      "sha256": "654bc4e3b332dcf95e337935474324541682ad1bf7a39ba889c67696ea5ba933"
     },
     {
       "path": "mimicrymap/workspace/annotation-source.cjs",
@@ -1638,8 +1758,8 @@
     {
       "path": "code/mimicryone-identity.js",
       "source": "mimicrymap/frontend/mimicryone-identity.js",
-      "bytes": 24651,
-      "sha256": "bc10f2d800a4f5ae3745d807a54b7fbdc7cebc9ba53d3cad9497f9dd78c0d385"
+      "bytes": 25163,
+      "sha256": "fd18ecc2c18cc2d4d127bfe91459ace5357cca0883e66764fb806157220c7ac2"
     },
     {
       "path": "code/plot-palette.cjs",

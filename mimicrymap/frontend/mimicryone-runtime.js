@@ -552,6 +552,7 @@
   }
 
   function openRuntimeResult(result, sequenceRows, preferredView) {
+    if (result.viewer_assets) result.viewer_assets = window.MimicryViewerAssets.validate(result.viewer_assets, result.protein.sequence);
     // Native workers and saved JSON carry the complete catalogue, not its
     // derived Map. Restore it once before any viewer hook or match conversion.
     if (typeof result.source_catalog_by_index?.get !== "function") {
@@ -608,6 +609,7 @@
       !!(result.inputs && typeof result.inputs.original_query_fasta === "string");
     viewTarget.bundled = false;
     viewTarget.result = result;
+    viewTarget.suppliedAssets = result.viewer_assets || null;
     viewTarget.stats = {};
     viewTarget.allRank = result.ranked_matches;
     viewTarget.completeMotifEvents = completeMotifEventData(result, matches);
@@ -2311,7 +2313,8 @@
       fileId: String(target.displayAccession || target.source_accession || target.acc || result.protein.protein_id),
       viewState: viewState,
       annotationOwner: target.acc,
-      annotationCustom: !!target.custom,
+      annotationCustom: !!target.custom && !target.suppliedAssets,
+      annotationProvenance: target.suppliedAssets?.provenance || null,
       annotationDimer: !!DIMERCTX,
       annotationData: annCache[target.acc] === undefined ? undefined : JSON.parse(JSON.stringify(annCache[target.acc])),
     });
@@ -2379,7 +2382,7 @@
     return {schema:'mimicryone/residue-annotations/1',sequence:snapshot.result.protein.sequence,
       accession:window.MimicryOneIdentity.publicText(snapshot.fileId),
       surface_context:snapshot.annotationDimer&&retained.surface_dimer&&retained.rsasa_dimer?'dimer':'monomer',
-      provenance:{kind:'stored app reference metadata; not computed from FASTA',captured_utc:new Date().toISOString(),release:snapshot.result.inputs?.analysis_scan?.release_fingerprint||null,
+      provenance:snapshot.annotationProvenance || {kind:'stored app reference metadata; not computed from FASTA',captured_utc:new Date().toISOString(),release:snapshot.result.inputs?.analysis_scan?.release_fingerprint||null,
         variants:'UniProt/HumSAVAR and retained mapped variants',topology:'UniProt',surface_rsasa:'FreeSASA',plddt:'AlphaFold',cleavage:'pepsickle'},
       annotations:Object.keys(retained).length?retained:null};
   }
@@ -2841,6 +2844,7 @@
 
   async function initialize() {
     wireExports();
+    if (window.MimicryMapViewer?.options.standalone) return;
     if (window.MimicryMapViewer?.options.trackOnly) return;
     wireCustomUi();
     /* Wire search before index loading; failures must not substitute bundled results. */
@@ -2993,6 +2997,14 @@
   }
   loadStructure = function coordinateSafeStructure(owner) {
     if (!T || T.acc !== owner) return;
+    if (T.suppliedAssets || window.MimicryMapViewer?.options.standalone) {
+      beginStructureOwner(owner);
+      S3 = T.suppliedAssets?.pdb ? parsePDB(T.suppliedAssets.pdb) : null;
+      S3ASM = 'monomer';
+      S3cache[owner] = {m:S3, d:null, hasD:false};
+      applyStructure(owner);
+      return;
+    }
     if (exposureTarget(T)) {
       const target=T;
       if(S3OWNER!==owner){beginStructureOwner(owner);S3=null;showStructure(false);}
@@ -3085,6 +3097,13 @@
 
   const originalLoadAnnots = loadAnnots;
   loadAnnots = function staticAnnotations(accession, done) {
+    if (T?.acc === accession && (T.suppliedAssets || window.MimicryMapViewer?.options.standalone)) {
+      ANN = T.suppliedAssets?.annotations || null;
+      annCache[accession] = ANN;
+      indexAnnotationVariants();
+      if (done) done();
+      return;
+    }
     if(T?.acc===accession && exposureTarget(T)){
       const target=T;
       ANN=null;indexAnnotationVariants();

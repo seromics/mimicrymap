@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MimicryMap: FASTA Viewer</title><link rel="stylesheet" href="example.css"></head>
+<body><main>
+<h1>MimicryMap: FASTA Viewer</h1>
+<p>Compare your target and parent sequences locally. <a href="annotations.html">Annotations and structure example</a></p>
+<div class="actions"><label>Inputs <select id="inputPreset"><option value="demo">Small IL10 Example</option><option value="custom">Your FASTAs</option><option value="references">Human Canonical + 120 Viral Proteomes</option></select></label><button id="loadPreset" type="button">Load Example</button><a href="REFERENCE-LIBRARIES.md">Reference Downloads and Optional Assets</a></div>
+<p id="referenceStatus" class="foot"></p>
+<form id="inputs"><div class="inputs">
+<label>Antigen Targets <input id="targetFile" type="file" accept=".fasta,.fa,.faa,.txt"><textarea id="targetFasta" aria-label="Target FASTA" spellcheck="false"></textarea></label>
+<label>Mimicry Parents <input id="parentFile" type="file" accept=".fasta,.fa,.faa,.txt"><textarea id="parentFasta" aria-label="Parent FASTA" spellcheck="false"></textarea></label>
+</div><div class="actions"><label>Find Target <input id="targetSearch" type="search" placeholder="Accession or name"></label><label>Target <select id="targetIndex"></select></label><span id="targetCount" class="foot"></span><label>Identity ≥ <select id="floor"><option value="5">5/9</option><option value="6">6/9</option><option value="7" selected>7/9</option><option value="8">8/9</option><option value="9">9/9</option></select></label><button id="compare" type="submit">Compare Sequences</button><button id="cancel" type="button" disabled>Cancel</button><label>Theme <select id="theme"><option>dark</option><option>light</option></select></label><button id="save" type="button" disabled>Save Result</button><label>Open Result <input id="resultFile" type="file" accept=".json"></label></div></form>
+<p id="status" role="status"></p><div id="viewer"></div>
+<p class="foot">The supplied example compares human IL10 with the EBV IL10 homolog. Input sequences remain in this browser. Large libraries can use the CPU/GPU research builder. <a href="PROVENANCE.md">Example sources</a></p>
+</main><script type="module" src="example.mjs"></script></body></html>

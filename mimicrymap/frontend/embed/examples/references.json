@@ -1,0 +1,17 @@
+{
+  "label": "Human Canonical + 120 Viral Proteomes",
+  "published": false,
+  "record": "https://zenodo.org/records/24046306",
+  "target": {
+    "filename": "human_swissprot.fasta",
+    "records": 20431,
+    "bytes": 14084247,
+    "url": "https://zenodo.org/records/24046306/files/human_swissprot.fasta?download=1"
+  },
+  "parent": {
+    "filename": "atlas_120_viruses.fasta",
+    "records": 2222,
+    "bytes": 1148192,
+    "url": "https://zenodo.org/records/24046306/files/atlas_120_viruses.fasta?download=1"
+  }
+}

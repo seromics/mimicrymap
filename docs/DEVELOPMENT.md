@@ -45,7 +45,12 @@ Applet sources here preserve the current desktop implementation; the website's
 host adapters need a reviewed promotion before declaring both deployed hosts
 identical. `frontend/serve.py` is the retained reference-host server, not a
 data-free demonstration server: its curated catalog, source packs and baked
-examples are external inputs. The research builders run without those assets.
+examples are external inputs. `npm run viewer` instead serves the standalone
+static viewer without those assets. Its generated iframe reuses the native
+index, runtime, worker, palette and exporters, with catalogue/bootstrap adapters
+omitted. `mimicrymap/frontend/embed/` owns the host API and examples;
+`mimicrymap/tools/build-viewer.cjs` assembles the distribution. Native source
+changes continue to be promoted from the owning checkout.
 
 The scientific contract is shared matching semantics, record identities,
 coverage, thresholds, metadata and output fields. Browser selected-scope tables,
@@ -85,7 +90,14 @@ already linked from the README. The source and figures stay in the repository.
 No atlas payloads, studies, caches, local paths, credentials or CUDA environment
 are included. Review the archive inventory before attaching a private draft.
 
-Before public release, resolve the software license, author/citation metadata,
+Before public release, resolve author/citation metadata,
 preprint link and final dataset DOI. The consolidated dataset draft is CC BY 4.0.
 Preserve third-party notices and input terms. Do
-not imply a DOI exists or choose an open-source license on the author's behalf.
+not imply publication. The author has selected MIT for original MimicryMap
+software; this does not change the SeroMap application's license.
+
+`npm run test:viewer` checks a fresh static build at a nested URL, exact CPU/window
+agreement, all six native exports, two independent instances, saved results,
+cancellation and supplied assets. It requires Playwright as a development
+dependency. On Windows it uses installed Edge; elsewhere run
+`npx playwright install chromium`. `MIMICRY_BROWSER_CHANNEL` overrides that choice.

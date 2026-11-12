@@ -61,6 +61,9 @@
     var releaseStartup=window.MimicryStartup ? window.MimicryStartup.hold("assets") : function(){};
     originalLoad(accession, function () {
       var owner = T, base = Object.assign({}, ANN || {}), alias = owner && (owner.nativeTrackAccession || accession);
+      if (owner?.suppliedAssets || window.MimicryMapViewer?.options.standalone) {
+        if (done) done(); releaseStartup(); return;
+      }
       delete base.modifications;
       if (!owner || !alias) { if (done) done(); releaseStartup(); return; }
       if (!cache.has(alias)) cache.set(alias, fetch('/data/assets/modifications/'+encodeURIComponent(alias)+'.json', {signal:releaseStartup.signal})

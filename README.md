@@ -11,16 +11,16 @@ MimicryMap maps shared amino-acid sequence regions between proteins, peptides an
 The method is library agnostic. Human proteins and 120 viral proteomes form the worked atlas; microbiome, food, allergen, assay and other custom sequences can be compared in the same way. Sequence-defined sets can also be combined with recorded antibody hits for **Reactivity Enrichment**. Sequence resemblance identifies candidates for investigation; it does not by itself demonstrate shared antibody binding. Matching uses linear sequences; available structure and residue annotations provide context without changing the matching rule.
 
 **Private release staging.** This continues the existing MimicryMap repository and
-its illustrated methods. The software license and final citation metadata remain
-pending. The consolidated dataset draft uses CC BY 4.0, with original source
+its illustrated methods. Original software is [MIT licensed](LICENSE); final
+citation metadata remains pending. The consolidated dataset draft uses CC BY 4.0, with original source
 terms and attribution retained. This is not a public release.
 
 | Release Component | Status |
 | --- | --- |
 | Preprint | Forthcoming: link and final citation will be added after submission |
 | Data, Atlas Figures and Structures | [Consolidated Zenodo draft 24046306](https://zenodo.org/uploads/24046306), uploaded but unpublished; [file manifest](data/atlas-manifest.json) |
-| Selected Paper Figures | [November 8 PNG/SVG exports](figures/paper/README.md), with larger paper labels |
-| Software | Current research source in this private repository; public version tag, license and citation pending |
+| Selected Paper Figures | [Optional November 8 PNG/SVG variants](figures/paper/README.md); the author's current manuscript retains the original label sizes |
+| Software | MIT licensed research source and embeddable viewer in this private repository; public version tag and citation pending |
 
 See [Publication staging](docs/PUBLICATION.md) for the release boundary and remaining decisions.
 
@@ -41,6 +41,30 @@ The current interface has five pages:
 Use **Your Custom Analysis** for one target in the browser. Desktop Workspace adds sequence-library installation, annotation management and saved library comparisons. Neither a FASTA import nor a sequence comparison requires an antibody study. The [interface guide](docs/USAGE.md) connects these routes to their outputs.
 
 ## Choose a route
+
+### Embed the Viewer or Run the Standalone FASTA Demo
+
+```sh
+npm run viewer
+```
+
+Open `http://127.0.0.1:5408/examples/index.html`. The standalone viewer compares
+supplied FASTAs in the browser without a database or backend API. The second
+example adds IL10's supplied AlphaFold structure and pLDDT track. Both use the
+same native viewer, matching worker, figure renderer and exporters as the app/site.
+The optional standard reference preset is Human Canonical + 120 Viral Proteomes:
+15.23 MB of FASTAs, loaded separately with no automatic scan. Local files work
+now; the Zenodo download action remains disabled until publication. Full mapping
+and structure collections remain optional. See [Reference options and sizes](mimicrymap/frontend/embed/examples/REFERENCE-LIBRARIES.md).
+
+`npm run viewer:build` creates the static distribution in `dist/viewer`.
+Embed it using `createViewer(element)` from `mimicrymap.mjs`; no React or other
+framework is required. See [Viewer API and examples](mimicrymap/frontend/embed/README.md)
+for instance isolation, saved results, optional assets and supported exports.
+`npm run package:viewer` produces the standalone static ZIP without the full
+reference collections.
+
+### Research Computation
 
 | Route | Use | Output |
 | --- | --- | --- |

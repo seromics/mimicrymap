@@ -7,6 +7,7 @@
 <script src="/site-navigation.js"></script>
 <script src="/site-theme.js"></script>
 <script src="/viewer-api.js"></script>
+<script src="/viewer-assets.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <!--@copy player.mimicryone-molecular-mimicry-atlas.b16a457--><title>MimicryMap | Molecular Mimicry Atlas</title><!--@endcopy-->
@@ -1067,7 +1068,7 @@ function trackHasData(key){
      hold does not make that record's variants, modifications, topology, structure or surface a
      description of what was uploaded - the match can be partial, or the same sequence under a
      different identity - so the lanes are withheld rather than borrowed. */
-  if (T && T.custom) return false;
+  if (T && T.custom && !T.suppliedAssets) return false;
   if (!ANN) return false;
   /* Either context can carry the lane, so the lane is offered when either does. */
   if (key==="surface") return !!surfaceMask(ANN) || numericTrackHasData("rsasa");
@@ -1758,7 +1759,7 @@ function select(i, deferInitialAssets){
   var titleMeta=document.getElementById("ftitleCounts");
   var targetIdentity=proteinIdentity(T,resultIdentityOptions(false));
   titleIdentity.textContent=(/*@copy index.html.antigen-target.500f78f*/`Antigen Target · ${targetIdentity.primaryLine}`/*@endcopy*/);
-  titleMeta.textContent=[T.len+" AA",N+" Window"+(N===1?"":"s")].join(" · ")+(T.custom?" · Custom Sequence (No Reference Structure)":"");
+  titleMeta.textContent=[T.len+" AA",N+" Window"+(N===1?"":"s")].join(" · ")+(T.custom ? (T.suppliedAssets ? " · Supplied Sequence" : " · Custom Sequence (No Reference Structure)") : "");
   titleNode.dataset.tooltip=(/*@copy index.html.length-aa-windows.395c709*/`${targetIdentity.tooltip}
 Length: ${T.len} AA
 Windows: ${N}`/*@endcopy*/);
@@ -2856,6 +2857,7 @@ var S3SPACE=false;
 // An assay peptide may share an accession without sharing reference coordinates.
 // Optional exposure models carry explicit chain-to-reference residue mappings.
 function targetHasReferenceStructure(target){
+  if(target?.suppliedAssets?.pdb)return true;
   if(!target || target.custom || !target.result || !target.result.protein)return false;
   return !!((target.result.protein.library_id==="canonical_human" && target.structureAccession) ||
     (["canonical_exposure","canonical_exposure_no_vertebrates","atlas_120_viruses"].indexOf(target.result.protein.library_id)>=0 &&

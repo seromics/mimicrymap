@@ -11,7 +11,7 @@ patient-enrichment examples remain on the site and are not required paper figure
 | --- | --- | --- |
 | CPU/GPU research code and scientific exporters | This repository | Current shared source; CPU and GPU support 5/9 through 9/9 |
 | Illustrated methods and worked examples | README, docs/calculation and examples | Included; historical example ZIPs are identified as saved outputs |
-| Selected paper plots | figures/paper | Nine current PNG/SVG pairs exported November 8 with larger typography; no new calculations |
+| Optional larger-label paper plots | figures/paper | Nine PNG/SVG pairs exported November 8; retained as alternatives, not the author's current figure selection |
 | Preprint | Forthcoming | Author-written text, final figure arrangement and citation pending |
 | Comparisons, atlas and structures | [Zenodo draft 24046306](https://zenodo.org/uploads/24046306) | Uploaded together; unpublished; CC BY 4.0 |
 | Dataset inventory | [atlas-manifest.json](../data/atlas-manifest.json) | Current 47-file consolidated inventory and planned public links |
@@ -45,6 +45,10 @@ source hashes and identifies the original captures. Panel letters remain editabl
 in Word. Figure 4 is arranged by subcellular location; its caption must not call
 that arrangement genomic position.
 
+The author's current November 7 manuscript and FIGURES Word files use the original
+label sizes. Preserve that selection; do not substitute the November 8 larger-label
+variants when preparing the public paper figures.
+
 The editable Figure 1 PowerPoint and the author-edited Word manuscript remain in
 the separate editorial workspace. They are not silently replaced by the README
 method-overview illustration. The local `outputs/paper-figures-2026-11-08/` holds
@@ -53,13 +57,34 @@ editable components. These outputs are not part of a source clone.
 
 ## Before Public Release
 
-- Select the software license and confirm the copyright holder and third-party notices.
+- Original MimicryMap software uses MIT; retain third-party and data notices alongside it.
 - Supply final authors and citation metadata, then add CITATION.cff and the preprint link.
 - Finalize the human-edited manuscript and Figure 1; review figure captions against the selected files.
 - Tag the tested code version and publish the approved Zenodo draft when authorized.
 - Replace draft links with the published dataset DOI/download links and connect the website.
 
-The repository remains private. No DOI, public software release or software
-license grant is implied by this staging. CC BY 4.0 applies to the dataset record;
+The repository remains private. MIT is now explicitly granted for original
+MimicryMap software. No public software release or dataset publication is implied
+by this staging. CC BY 4.0 applies to the dataset record;
 original source terms and attribution remain applicable. SeroMap deployment and
 application licensing remain a separate release decision.
+
+## Release Order and Shared Links
+
+The consolidated data upload is complete and remains unpublished. No further bulk
+scientific payload is currently required. Final authors, version metadata, software
+notices and the selected paper figures still need release review. A tagged software
+archive or a final selected-paper-figures archive may be added only if chosen for
+the release; they are not missing comparison or atlas data.
+
+Publish the approved dataset only on explicit authorization, then use its final
+DOI in the preprint's data availability text before public submission. The website,
+this repository and the later public SeroMap app must use that same DOI and the
+public file URLs represented in the release manifest. Do not ship draft API links.
+Add the actual preprint link when available rather than inventing a citation.
+
+The current local canonical website is the deployment source. Prepare its fresh
+indexable pages, production runtime and reference-data selection separately from
+the old live site's configuration. Advance storage/image staging may precede the
+release, but Fly production cutover goes last with the preprint. The public desktop
+application and its installation/licensing material remain a later release.

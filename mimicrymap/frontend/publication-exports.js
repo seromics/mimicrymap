@@ -24,7 +24,7 @@
   const end=new Uint8Array(22),view=new DataView(end.buffer);view.setUint32(0,0x06054b50,true);view.setUint16(8,central.length,true);view.setUint16(10,central.length,true);view.setUint32(12,centralSize,true);view.setUint32(16,offset,true);
   return new Blob([...chunks,...central,end],{type:'application/zip'});
  }
- function save(name,content,type){const blob=content instanceof Blob?content:new Blob([content],{type});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=String(name).replace(/virscan_exposome_current/g,'virscan_exposome').replace(/human_current/g,'huscan').replace(/_+/g,'_');document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}
+ function save(name,content,type){const blob=content instanceof Blob?content:new Blob([content],{type});const filename=String(name).replace(/virscan_exposome_current/g,'virscan_exposome').replace(/human_current/g,'huscan').replace(/_+/g,'_');if(window.MimicryMapViewer?.hooks.download){window.MimicryMapViewer.hooks.download({filename,blob});return;}const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}
  async function get(url,signal){const r=await fetch(url,{signal});if(!r.ok)throw Error((/*@copy publication-exports.export-input-unavailable-http.2c0918c*/`Export input unavailable (HTTP ${r.status}).`/*@endcopy*/));return r;}
  async function inputs(snapshot,api,signal,progress){
   const result=snapshot.result, analysis=result.inputs?.analysis_scan;
@@ -266,7 +266,7 @@
     if(current.signal.aborted)return;
     save(stem+'.figures.zip',archive);
     status('');
-   }catch(error){if(!current.signal.aborted&&error.name!=='AbortError'){console.error('Export stopped:',error);window.alert(`Export stopped: ${error.message}`);}}
+   }catch(error){if(window.MimicryMapViewer?.hooks.exportError)window.MimicryMapViewer.hooks.exportError(error);else if(!current.signal.aborted&&error.name!=='AbortError'){console.error('Export stopped:',error);window.alert(`Export stopped: ${error.message}`);}}
    finally{status(false);clicked.removeAttribute('aria-busy');controller=null;controls.forEach(e=>e.disabled=false);document.getElementById('exportCancel').hidden=true;}
   });
   document.getElementById('exportCancel').addEventListener('click',()=>{controller?.abort();});

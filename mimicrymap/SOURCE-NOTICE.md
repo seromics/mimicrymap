@@ -12,7 +12,9 @@ SHA-256 checksums of five existing PDB models for IL10, HEPACAM and IGHG2. These
 small examples ship as lossless gzip files; decompression preserves the source
 bytes. The existing model attribution, provenance and distribution terms apply.
 
-Source attribution and distribution constraints remain in the repository's
-`SOURCE_LICENSE_LEDGER.md`, `LICENSE_AND_GOVERNANCE.md`, provenance records,
-font notices, and the native Sources page. Extraction grants no new rights.
-The engineering and promotion workflow is maintained in `wiki/index.md`.
+Original MimicryMap software in this directory is licensed under the MIT license
+in LICENSE. This grant covers the shared MimicryMap viewer, exporters and engines;
+it does not relicense the surrounding SeroMap application. Third-party source,
+fonts, reference sequences, annotations and models retain their original terms.
+The font notices and native Sources page record attribution. Example model
+provenance is retained in demo-structures/manifest.json and embed/examples/PROVENANCE.md.
