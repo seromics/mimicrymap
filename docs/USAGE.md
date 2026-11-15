@@ -8,6 +8,11 @@ These roles define coordinates and coverage denominators, not biological origin.
 The human–viral atlas is a worked application. Custom proteins, assay peptides,
 microbiome sequences, food proteins and other FASTA libraries use the same rule.
 
+To start the browser viewer locally with the supplied example or your own FASTAs,
+see [Run the Web Viewer](VIEWER.md). Its optional structure example, reference
+preset and embedding instructions are in the same guide. The hosted site adds
+the catalogue search and saved atlas pages described below.
+
 ## Explore one target
 
 1. **Choose the comparison.** On the MimicryMap page, select a target and parent

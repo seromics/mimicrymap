@@ -1,107 +1,70 @@
 # MimicryMap
 
-![MimicryMap in five steps](docs/calculation/method-overview-wide.svg)
-
-[Method overview and worked example](docs/HOW-IT-WORKS.md)
-
 **Map antigen-specific sequence resemblance within and across proteomes.**
 
 MimicryMap maps shared amino-acid sequence regions between proteins, peptides and whole libraries. Choose a target and a comparison library, inspect matching nine-residue cores, and measure how much of each sequence those matches cover. The same method supports an interactive sequence explorer, whole-library coverage summaries, reusable mapping databases and local FASTA analyses.
 
 The method is library agnostic. Human proteins and 120 viral proteomes form the worked atlas; microbiome, food, allergen, assay and other custom sequences can be compared in the same way. Sequence-defined sets can also be combined with recorded antibody hits for **Reactivity Enrichment**. Sequence resemblance identifies candidates for investigation; it does not by itself demonstrate shared antibody binding. Matching uses linear sequences; available structure and residue annotations provide context without changing the matching rule.
 
-**Private release staging.** This continues the existing MimicryMap repository and
-its illustrated methods. Original software is [MIT licensed](LICENSE); final
-citation metadata remains pending. The consolidated dataset draft uses CC BY 4.0, with original source
-terms and attribution retained. This is not a public release.
+[![MimicryMap sequence viewer with an IL10 sequence map, structure, aligned core and coverage table](docs/images/viewer-wide.jpg)](docs/VIEWER.md)
 
-| Release Component | Status |
-| --- | --- |
-| Preprint | Forthcoming: link and final citation will be added after submission |
-| Data, Atlas Figures and Structures | [Consolidated Zenodo draft 24046306](https://zenodo.org/uploads/24046306), uploaded but unpublished; [file manifest](data/atlas-manifest.json) |
-| Selected Paper Figures | [Optional November 8 PNG/SVG variants](figures/paper/README.md); the author's current manuscript retains the original label sizes |
-| Software | MIT licensed research source and embeddable viewer in this private repository; public version tag and citation pending |
+*The viewer comparing human IL10 with its EBV homolog, with the optional AlphaFold structure and pLDDT track. The sequence map, aligned core, coverage table and exports stay together in one view.*
 
-See [Publication staging](docs/PUBLICATION.md) for the release boundary and remaining decisions.
+[Run the Web Viewer](docs/VIEWER.md) · [Interface Guide](docs/USAGE.md) · [How It Works](#how-mimicry-results-are-calculated) · [Worked Examples](#how-to-use-mimicry-results) · [Atlas and Data](docs/ATLAS.md) · [Release Status](#release-status-and-license)
 
-[Interface guide](docs/USAGE.md) · [How it works](#how-mimicry-results-are-calculated) · [Worked examples](#how-to-use-mimicry-results) · [Build libraries](docs/BUILD.md) · [Atlas and data](docs/ATLAS.md)
+## Explore, Inspect, Reuse
 
-## Explore, inspect, reuse
+Start with a target and parent FASTA, inspect matching regions, then export the
+figures, tables or inputs needed for the next step. The browser viewer, detailed
+CPU comparison and CPU/GPU library builder use the same matching definitions.
 
-The current interface has five pages:
+| Task | Route | Outputs |
+| --- | --- | --- |
+| Inspect one target interactively | [Web viewer](docs/VIEWER.md), with the supplied example or your FASTAs | Sequence maps, aligned cores and context, target/parent coverage, CSVs and figure exports |
+| Run detailed comparisons locally | [CPU pipeline](#run-a-detailed-comparison-cpu), from Python, R or Node.js | Per-target window matches and a combined coverage summary |
+| Compare two complete libraries | [CPU/GPU library builder](docs/BUILD.md) | Reusable mapping databases and CSV + FASTA packages; full positions optional |
+| Explore completed human–viral comparisons | [Pan-Viral Atlas and data](docs/ATLAS.md) | Saved figures, coverage tables, exact input FASTAs and reference mappings |
 
-| Page | What to do there |
-| --- | --- |
-| **MimicryMap** | Choose a target and parent library, step through core matches, inspect sequence maps and available structures, compare target/parent coverage, or run a custom FASTA comparison |
-| **Pan-Viral Atlas** | Move from the 120-proteome overview to one virus and individual viral proteins; inspect human reach, residue coverage and ranked target–parent pairs |
-| **How It Works** | Follow five illustrated steps from overlapping nine-residue windows to independent coverage unions on each sequence |
-| **How to Use** | Work through HEPACAM–EBNA1 epitope matching, Reactivity Enrichment, IL10 homology and unmatched IGHG2 regions |
-| **Data & Licenses** | Choose coverage CSVs and exact reference FASTAs, or installable mapping indexes; review source attribution |
-
-Use **Your Custom Analysis** for one target in the browser. Desktop Workspace adds sequence-library installation, annotation management and saved library comparisons. Neither a FASTA import nor a sequence comparison requires an antibody study. The [interface guide](docs/USAGE.md) connects these routes to their outputs.
-
-## Choose a route
-
-### Embed the Viewer or Run the Standalone FASTA Demo
+To launch the viewer locally with Node.js 24 or later:
 
 ```sh
 npm run viewer
 ```
 
-Open `http://127.0.0.1:5408/examples/index.html`. The standalone viewer compares
-supplied FASTAs in the browser without a database or backend API. The second
-example adds IL10's supplied AlphaFold structure and pLDDT track. Both use the
-same native viewer, matching worker, figure renderer and exporters as the app/site.
-The optional standard reference preset is Human Canonical + 120 Viral Proteomes:
-15.23 MB of FASTAs, loaded separately with no automatic scan. Local files work
-now; the Zenodo download action remains disabled until publication. Full mapping
-and structure collections remain optional. See [Reference options and sizes](mimicrymap/frontend/embed/examples/REFERENCE-LIBRARIES.md).
+Open **http://127.0.0.1:5408/examples/index.html** and click **Compare Sequences**
+for the small IL10 example, or supply your own FASTAs. No database or antibody
+study is required. [Run the Web Viewer](docs/VIEWER.md) covers the optional
+structure example, Human Canonical + 120 Viral Proteomes preset, static hosting,
+embedding and transferable viewer ZIP.
 
-`npm run viewer:build` creates the static distribution in `dist/viewer`.
-Embed it using `createViewer(element)` from `mimicrymap.mjs`; no React or other
-framework is required. See [Viewer API and examples](mimicrymap/frontend/embed/README.md)
-for instance isolation, saved results, optional assets and supported exports.
-`npm run package:viewer` produces the standalone static ZIP without the full
-reference collections.
+The hosted site adds catalogue search, the saved Pan-Viral Atlas, illustrated
+methods and data downloads. Desktop Workspace adds library installation,
+annotations and saved comparisons. Those routes use separately installed
+reference assets; they are not required for a standalone FASTA comparison.
+The [interface guide](docs/USAGE.md) connects each route to its outputs.
 
-### Research Computation
+## Build Reusable Libraries
 
-| Route | Use | Output |
-| --- | --- | --- |
-| Interactive explorer | Explore one target against a reference library or custom FASTA | Sequence maps, aligned cores/context, coverage plots, CSVs and figure exports |
-| Saved summaries and atlas | Inspect completed comparisons without a new sequence scan | Coverage/range tables, reference inputs, atlas figures and reusable mappings |
-| Detailed CPU pipeline | Reproduce a selected comparison or inspect every matching window for supplied targets | Per-target match tables and a combined coverage summary |
-| Library builder, CPU or NVIDIA GPU | Build reusable mappings across two complete FASTAs | Separate CSV + FASTA and mapping database ZIPs; full positions optional |
-
-The library builder uses the same engine and writers as SeroMap Workspace.
-It needs Node.js 24+, without Electron or an installed study:
+The library builder needs Node.js 24 or later and uses the same engine and writers
+as SeroMap Workspace, without Electron or an installed study:
 
 ```sh
 node build.cjs --targets inputs/antigen-target.fasta --parents inputs/mimicry-parents.fasta --out outputs/example-index
 ```
 
 For NVIDIA acceleration, add `--engine gpu --python /path/to/CUDA/python`.
-CPU and GPU support 5/9–9/9. The default floor is 7/9; add `--floor 5`
-or `--floor 6` for lower-threshold research builds. SeroMap's library-build
-interface offers 7/9–9/9 using the same engine.
-Add `--retain-positions` only when complete saved sequence lookups are needed.
-See [Build libraries](docs/BUILD.md) for installation, metadata and reproduction.
-
-The atlas is distributed separately: [Atlas files and provenance](docs/ATLAS.md).
-The browser source is retained in `mimicrymap/frontend/`; curated search, structures
-and atlas browsing need the separately installed reference assets and host services.
-The current web staging and desktop remain their running hosts. See
-[Source alignment](docs/DEVELOPMENT.md) and [Scientific method modules](docs/METHOD-MODULES.md).
-This source checkout is not a complete offline atlas installation: the large
-reference data and saved atlas payloads are distributed separately.
-
-**Run the supplied FASTAs, or replace them to start a new comparison.** This is the same pipeline package for example inputs and a selected site comparison. Both use MimicryMap's comparison worker and CSV calculations.
-
-The package includes an editable HEPACAM–EBNA1 example. Run it as supplied, or replace the FASTA files and settings with your own comparison; see [Example](docs/EXAMPLE.md).
+CPU and GPU support 5/9–9/9; the default floor is 7/9. Add `--floor 5` or
+`--floor 6` for lower-threshold research builds, and `--retain-positions` when
+complete saved window-pair lookups are needed. SeroMap's bulk-build interface
+offers 7/9–9/9 using the same engine. See [Build Libraries](docs/BUILD.md) for
+installation, outputs and reproduction.
 
 ## Run a detailed comparison (CPU)
 
-Extract the whole ZIP. In the extracted folder:
+Use this checkout, a pipeline ZIP, or **Current Comparison** exported from the
+viewer. The supplied pipeline example is HEPACAM–EBNA1; a Current Comparison
+contains the selected viewer inputs. Extract the whole ZIP when using a download,
+then run from the package folder:
 
 - **Python:** run `python run.py`, or open run.py in your Python editor and run it.
 - **R or RStudio:** set the working directory to the package, then run `source("run.R")`.
@@ -172,10 +135,6 @@ The packaged [Summary Download Guide](docs/SUMMARY-DOWNLOADS.md) explains the re
 
 [Download the HuProt HEPACAM figures and tables (21.5 MB)](https://github.com/seromics/mimicrymap/raw/refs/heads/main/examples/hepacam-huprot-viral-example.zip). This separate example compares HuProt HEPACAM (JHU19101; Q14CZ8) with 120 whole viral proteomes at 5/9 and 7/9, with an EBV-only 5/9 comparison at HEPACAM 376–384. It contains the saved results and figures; use the runnable package above for a new comparison.
 
-## Sources and licenses
-
-Input records retain their original source attribution and licenses. See the originating data source for its terms of use.
-
 ## Reading coverage results
 
 Target coverage is the percentage of target residues covered by qualifying nine-residue windows. Parent coverage uses the parent protein's full length. Overlapping windows cover a residue only once, and every position within a qualifying window contributes to coverage, including mismatches.
@@ -188,6 +147,10 @@ See the [Table Guide](docs/TABLES.md) for field definitions, coordinates and CSV
 
 <!-- calculation-walkthrough:start -->
 ## How Mimicry Results Are Calculated
+
+![MimicryMap in five steps](docs/calculation/method-overview-wide.svg)
+
+[Method overview and worked example](docs/HOW-IT-WORKS.md)
 
 MimicryMap compares overlapping nine-residue windows, then maps the qualifying matches back to the full records. The example below follows HEPACAM (GlialCAM) and EBNA1.
 
@@ -408,3 +371,24 @@ The paired coverage column gives each listed parent's X- and Y-axis values. Its 
 - **Coverage dots:** IgG1, IgG3 and IgG4 have the greatest coverage overlap with IgG2, highlighting how little of its sequence is distinctive at this threshold. The CSV’s paired target and parent coverage values provide each listed parent’s X- and Y-axis coordinates.
 
 <!-- interpretation-walkthroughs:end -->
+
+## Release Status and License
+
+**Private release staging.** This continues the existing MimicryMap repository and
+its illustrated methods. Original software is [MIT licensed](LICENSE); final
+citation metadata remains pending. The consolidated dataset draft uses CC BY 4.0, with original source
+terms and attribution retained. This is not a public release.
+
+| Release Component | Status |
+| --- | --- |
+| Preprint | Forthcoming: link and final citation will be added after submission |
+| Data, Atlas Figures and Structures | [Consolidated Zenodo draft 24046306](https://zenodo.org/uploads/24046306), uploaded but unpublished; [file manifest](data/atlas-manifest.json) |
+| Selected Paper Figures | [Optional November 8 PNG/SVG variants](figures/paper/README.md); the author's current manuscript retains the original label sizes |
+| Software | MIT licensed research source and embeddable viewer in this private repository; public version tag and citation pending |
+
+See [Publication staging](docs/PUBLICATION.md) for the release boundary and remaining decisions.
+
+Input records, structures and bundled third-party assets retain their original
+source attribution and terms. MIT applies to the original MimicryMap software.
+See [Source Alignment](docs/DEVELOPMENT.md) for shared-code ownership and the
+[dataset manifest](data/atlas-manifest.json) for separately distributed assets.
