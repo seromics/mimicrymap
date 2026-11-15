@@ -2,7 +2,9 @@
 
 **Map antigen-specific sequence resemblance within and across proteomes.**
 
-MimicryMap maps shared amino-acid sequence regions between proteins, peptides and whole libraries. Choose a target and a comparison library, inspect matching nine-residue cores, and measure how much of each sequence those matches cover. The same method supports an interactive sequence explorer, whole-library coverage summaries, reusable mapping databases and local FASTA analyses.
+MimicryMap was created to comprehensively map linear molecular mimicry events between common exposures and the human proteome, with a method generalizable to mapping similarity within and across literal biological datasets from multiplex seromics platforms. It is available as an interactive web viewer, a CPU-only pipeline and an NVIDIA GPU-accelerated pipeline for proteome-scale mapping.
+
+The method searches all complete overlapping nine-residue windows from a given protein sequence (**antigen target**) against a candidate molecular mimic sequence (**mimicry parent**), at a chosen threshold of exact matching residues (**minimum identity**). The viewer shows the matching cores, their surrounding sequence context, and the union of residue positions they cover on each sequence (**target coverage** and **parent coverage**).
 
 The method is library agnostic. Human proteins and 120 viral proteomes form the worked atlas; microbiome, food, allergen, assay and other custom sequences can be compared in the same way. Sequence-defined sets can also be combined with recorded antibody hits for **Reactivity Enrichment**. Sequence resemblance identifies candidates for investigation; it does not by itself demonstrate shared antibody binding. Matching uses linear sequences; available structure and residue annotations provide context without changing the matching rule.
 
