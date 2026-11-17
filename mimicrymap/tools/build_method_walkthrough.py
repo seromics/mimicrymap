@@ -103,8 +103,6 @@ def printable_icon(markup):
 # Preserve the five icons, headings and descriptions of the authored summary.
 wide = canvas(1800, 239, 'MimicryMap in five steps')
 for i, (title, markup, description) in enumerate(items):
-    if title == 'Map Context':
-        description = 'Locate each qualifying pair in the original records and extend computation.'
     center = 180 + i * 360
     text(wide, center, 30, f'{i + 1}  {html.unescape(title)}', 20, 700, anchor='middle')
     icon = printable_icon(markup)

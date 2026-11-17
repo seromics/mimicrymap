@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.source-snapshot/1",
   "repository": "https://github.com/seromics/seromap_electron",
-  "commit": "14352f385001d097fa7f2a5534e25be9baf84547",
+  "commit": "7819bdd02a68131830607345d29099c201945107",
   "files": [
     {
       "path": "mimicrymap/LICENSE",
@@ -90,14 +90,14 @@
     {
       "path": "mimicrymap/docs/public/method-copy.json",
       "source": "mimicrymap/docs/public/method-copy.json",
-      "bytes": 11184,
-      "sha256": "2163ddfb0456195b625fba64573834fbf685b9003cf4d47a2f7c84bcb0baf9f2"
+      "bytes": 9941,
+      "sha256": "bd59a6ac87bec1c20e02bdc1b675c13cb9ff2249b28c6b5febdc705619ad71e7"
     },
     {
       "path": "mimicrymap/docs/public/methods.html",
       "source": "mimicrymap/docs/public/methods.html",
-      "bytes": 9345,
-      "sha256": "1ce9778dfdce88e4686e2489f402c189c9442dab8079f82a05297630c2a4b3b4"
+      "bytes": 9324,
+      "sha256": "cf9d5e5128248cf1323d5cf8a9d73a31a328dc50420ed2c7ad8cd3dca0bf1207"
     },
     {
       "path": "mimicrymap/docs/public/navigation.html",
@@ -264,8 +264,8 @@
     {
       "path": "mimicrymap/frontend/calculations.html",
       "source": "mimicrymap/frontend/calculations.html",
-      "bytes": 37530,
-      "sha256": "db5453d79ebb7655820f8c9c86d1fda342b8bcc46b81cfffdbf288903900a8e1"
+      "bytes": 36146,
+      "sha256": "4f5f248c869bf5931f9aa7ac1ac2941b6b9e36ba5e4437ad332aaba357527900"
     },
     {
       "path": "mimicrymap/frontend/canonical_aliases.py",
@@ -888,8 +888,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/docs/HOW-IT-WORKS.md",
       "source": "mimicrymap/frontend/reproduce/docs/HOW-IT-WORKS.md",
-      "bytes": 1155,
-      "sha256": "39fcfdafdbabc0d99a60e47b288831c37b450b9dd5ce2b177a167a34cda1a735"
+      "bytes": 1277,
+      "sha256": "b79acb982812222e2af0a59035a4d233da32c73b28b2b6b0521697f9802102cc"
     },
     {
       "path": "mimicrymap/frontend/reproduce/docs/RUNNING.md",
@@ -912,8 +912,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/docs/calculation/method-overview-wide.svg",
       "source": "mimicrymap/frontend/reproduce/docs/calculation/method-overview-wide.svg",
-      "bytes": 13665,
-      "sha256": "c194cb2627563e6d693eb9ef6188a9c65cd73826df39d990e7e6da80aead0a06"
+      "bytes": 13672,
+      "sha256": "fb840ecf8437376bd0bc49e8c90b49adaafca2ba8e0ddf5b2dcefa766670c405"
     },
     {
       "path": "mimicrymap/frontend/reproduce/docs/calculation/step-1.png",
@@ -1368,8 +1368,8 @@
     {
       "path": "mimicrymap/tools/build_method_walkthrough.py",
       "source": "mimicrymap/tools/build_method_walkthrough.py",
-      "bytes": 5591,
-      "sha256": "491d29229768c3c344a74a058690db78c733c4f3e856a54b4e61c2a2cf71ad38"
+      "bytes": 5458,
+      "sha256": "fe70fb2129dcea7508873395089a6a722666ab8eb11bb377fe7915d781fffa57"
     },
     {
       "path": "mimicrymap/tools/build_pan_viral_pairs.py",
@@ -1794,14 +1794,14 @@
     {
       "path": "docs/HOW-IT-WORKS.md",
       "source": "mimicrymap/frontend/reproduce/docs/HOW-IT-WORKS.md",
-      "bytes": 1155,
-      "sha256": "39fcfdafdbabc0d99a60e47b288831c37b450b9dd5ce2b177a167a34cda1a735"
+      "bytes": 1277,
+      "sha256": "b79acb982812222e2af0a59035a4d233da32c73b28b2b6b0521697f9802102cc"
     },
     {
       "path": "docs/calculation/method-overview-wide.svg",
       "source": "mimicrymap/frontend/reproduce/docs/calculation/method-overview-wide.svg",
-      "bytes": 13665,
-      "sha256": "c194cb2627563e6d693eb9ef6188a9c65cd73826df39d990e7e6da80aead0a06"
+      "bytes": 13672,
+      "sha256": "fb840ecf8437376bd0bc49e8c90b49adaafca2ba8e0ddf5b2dcefa766670c405"
     }
   ]
 }

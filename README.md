@@ -164,13 +164,13 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 
 <p>To start, select a sequence you care about or one recognized by an experimentally identified antibody. This sequence is the <strong>antigen target</strong>. Next, you select a pool of sequences to look for molecular mimicry from; these are its potential <strong>mimicry parents</strong>. A minimum identity threshold setting defines how broad the search is.</p>
 
-<p>In our example, scientists have discovered a monoclonal antibody which bound the human protein HEPACAM (GlialCAM; Q14CZ8). They suspected this antibody might have origins in a natural immune response to a virus with sequence similarity to it. HEPACAM is thus the <strong>antigen target</strong> and 'possible culprit virus proteomes' are the <strong>mimicry parents</strong>. They wish for this search to be very broad and have selected an identity threshold of 5/9.</p>
+<p>Here, HEPACAM (GlialCAM; Q14CZ8) is the antigen target. All proteins from a set of 120 curated viral proteomes supply the mimicry parents. We search at a minimum identity of ≥5/9 and follow the HEPACAM-EBNA1 example through scoring and pairwise coverage.</p>
 
 ### 2. Extract Window Pairs
 
 ![Extract Window Pairs](docs/calculation/step-2.png)
 
-<p>The algorithm begins by deconstructing both the antigen target and mimicry parent sequences into all-possible overlapping 9-mer windows. Each 9-mer must be complete, so a sequence of at least 9 residues has its length minus 8 windows. A protein of 9 amino acids thus has one window, a protein of 10 amino acids two, and so on. In our example, HEPACAM is 416 amino acids long and thus has 408 positional 9-mer core windows. Shown is one piece of this process occurring from positions 367 to 393.</p>
+<p>Each sequence contributes all overlapping nine-residue window cores. This begins with the first amino acid and ends with final complete core of nine: max(0, sequence length − 8). HEPACAM contains 416 residues and therefore 408 positional window cores; the figure shows extraction across residues 367–393. Repeated sequences retain their distinct positions.</p>
 
 ```math
 \begin{aligned}\mathbf{Windows\ per\ record} &= \max(0,\ \text{record length}-8) \\[8pt] \mathbf{HEPACAM:}\quad 416-8 &= 408\ \text{windows}\end{aligned}
@@ -178,7 +178,7 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 
 <p>An identical process is done across the entire mimicry parent library. Across the 120 included viral proteomes, there are 2,222 proteins and polyproteins, with 961,063 possible mimicry windows.</p>
 
-<p>Each target window is paired with every parent window, giving the total search space for this experiment:</p>
+<p>The possible search space contains every target-parent window pairing. MimicryMap uses indexes to identify candidates, then verifies their identity.</p>
 
 ```math
 \begin{aligned}\mathbf{Possible\ Window\ Pairs} &= 408\times 961{,}063 \\[8pt] &= 392{,}113{,}704\approx 3.92\times 10^8\ \text{possible pairs}\end{aligned}
@@ -190,9 +190,9 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 
 ![Apply Core Threshold](docs/calculation/step-3.png)
 
-<p>Within each of the window pairs the target positions are aligned with the parent positions and checked for identical amino acids. At a minimum identity of 5/9, any five or more positions must match and up to four may differ. All-possible 9-mer pairings between the antigen target and mimicry parents are compared; this is often many millions of comparisons.</p>
+<p>Candidate windows are aligned without gaps and checked for identical amino acids. At a minimum core identity of ≥5/9, five or more corresponding positions must match. Only the 20 canonical amino acids contribute identity; other symbols retain their coordinates but count as mismatches.</p>
 
-<p>The illustrated patterns show this process. Five positions require exact matches; each wildcard (*) leaves a position unrestricted. Pairs with motifs like this pass and are called as mimicry events at the 5/9 threshold. At this threshold individual target sites often have multiple matches in the parent library. Non-matching pairs are discarded.</p>
+<p>The illustrated masks show five required matches; each wildcard (*) leaves a position unrestricted, so additional matches also qualify. X marks an observed difference.</p>
 
 <p>For the selected HEPACAM–EBNA1 pair, XSPPRXPXX shows five identical positions and four differences. This pair qualifies at 5/9 but is just one of many possible ways mimicry may occur at this site.</p>
 
@@ -200,9 +200,9 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 
 ![Map Context](docs/calculation/step-4.png)
 
-<p>Each qualifying core pair is located in the original records and extended by up to nine residues on either side. The aligned context contains up to 27 residues and allows for observation and ranking of higher-quality matches; any additional matches here are counted towards the total context identity. The aligned contexts are scored using BLOSUM62, which assigns a similarity score to each aligned amino-acid pair.</p>
+<p>Each qualifying core pair is extended by up to nine available residues on either side, giving an aligned context of up to 27 residues. Context total residue identity and a summed BLOSUM62 score are available to rank qualifying core pairs.</p>
 
-<p>Our example of HEPACAM and EBNA1 is not unusual. Matches of this quality occur within most target parent pairings. The extended context adds one additional match for a total context identity of 6/27 and produces a poor BLOSUM62 score of 12 across the aligned 27mers.</p>
+<p>For the selected HEPACAM-EBNA1 5/9 core pair, the flanks add only one identical position, giving 6/27 context identity and a BLOSUM62 score of 12. If the full 27 residue context is not available due to being near the start or end of the full protein sequence, missing positions contribute neither identity nor BLOSUM62 score.</p>
 
 ### 5. Inspect and Summarize Results
 
@@ -214,9 +214,9 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 \begin{aligned}\mathbf{Target\ Coverage} &= 100\times\frac{\text{covered target residues}}{\text{target length}} \\[12pt] \mathbf{Parent\ Coverage} &= 100\times\frac{\text{covered parent residues}}{\text{parent length}}\end{aligned}
 ```
 
-<p>For the case of HEPACAM and EBNA1, several additional matching sites at 5/9 identity increase the total target and parent coverage to 13.2% and 10.1%, respectively. All matching 9-mers and coverage scores are shown in the accompanying figure. Each is another qualifying molecular mimicry event, alongside XSPPRXPXX.</p>
+<p>For HEPACAM versus EBNA1 alone, 21 qualifying window pairs at ≥5/9 merge into 9 + 16 + 30 = 55 covered target residues and 14 + 17 + 25 + 9 = 65 covered parent residues. Target coverage is 100 × 55/416 = 13.2%; parent coverage is 100 × 65/641 = 10.1%. These summarize all observed coordinate matches.</p>
 
-<p>Across the rest of Epstein-Barr virus, there are numerous other matches to HEPACAM at 5/9 identity. Not only do many proteins mimic HEPACAM more often than EBNA1 at 5/9, at the specific HEPACAM 376–384 9-mer core alone there are 27 pairs of 5/9 identity between it and the EBV proteome. There are even more matches occurring across the full viral proteome search space, including two strong matches at 7/9 identity occurring in non-EBV proteins.</p>
+<p>At HEPACAM residues 376-384, the EBV library yields 27 qualifying window pairs across 14 protein records at ≥5/9. Across all 120 viral proteomes, this becomes 293 pairs across 214 records, including two non-EBV pairs at ≥7/9.</p>
 
 <p><strong>Saved window pairs at HEPACAM 376–384</strong></p>
 
@@ -226,9 +226,9 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 
 <a id="proteomeReactivity"></a>
 
-These numerous matches illustrate why experimental evidence is essential for identifying biologically relevant mimicry. For broader comparisons, the same coverage calculations scale from individual record pairs to entire libraries. The [summary download guide](docs/SUMMARY-DOWNLOADS.md) provides premade summary CSVs for mappings within and between canonical human and exposure proteomes, curated viral proteomes and assay libraries. These portable files retain identifiers, sequences, coverage values and matched residue ranges at 7/9, 8/9 and 9/9.
+These numerous matches illustrate why experimental evidence is essential for identifying biologically relevant mimicry. Across a library, reach counts distinct eligible target records with at least one qualifying match; pooled target coverage unions covered residues across the selected parents. Downloadable pair summaries retain matches at 7/9–9/9 with ≥10% coverage of either sequence. The [summary download guide](docs/SUMMARY-DOWNLOADS.md) provides premade summary CSVs for mappings within and between canonical human and exposure proteomes, curated viral proteomes and assay libraries. These portable files retain identifiers, sequences, coverage values and matched residue ranges at 7/9, 8/9 and 9/9.
 
-The summaries offer a quick way to explore broader patterns of sequence mimicry, but their 7/9 minimum excludes the illustrated 5/9 HEPACAM–EBNA1 match. Focused searches at lower identity thresholds therefore remain valuable for investigating individual targets alongside experimental evidence.
+The summaries offer a quick way to explore broader patterns of sequence mimicry, but their 7/9 minimum excludes the illustrated 5/9 HEPACAM–EBNA1 match. Focused searches at lower identity thresholds therefore remain valuable for investigating individual targets alongside experimental evidence. The Pan-Viral Atlas uses a separate, unfiltered comparison at 5/9–9/9. Its reduced archive records the maximum identity per human window and viral protein, preserving human-side coverage and reach but not viral coordinates to reduce total size of the archive.
 
 <!-- calculation-walkthrough:end -->
 
