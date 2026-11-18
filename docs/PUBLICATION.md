@@ -11,7 +11,8 @@ patient-enrichment examples remain on the site and are not required paper figure
 | --- | --- | --- |
 | CPU/GPU research code and scientific exporters | This repository | Current shared source; CPU and GPU support 5/9 through 9/9 |
 | Illustrated methods and worked examples | README, docs/calculation and examples | Included; historical example ZIPs are identified as saved outputs |
-| Optional larger-label paper plots | figures/paper | Nine PNG/SVG pairs exported November 8; retained as alternatives, not the author's current figure selection |
+| Selected paper exports | [figures/paper/current](../figures/paper/current/README.md) | EBV/EBNA1 localization captures and four 50-row pan-viral PNG/SVG rankings; original label sizes |
+| Earlier larger-label alternatives | figures/paper | Nine PNG/SVG pairs exported November 8; not the current manuscript selection |
 | Preprint | Forthcoming | Author-written text, final figure arrangement and citation pending |
 | Comparisons, atlas and structures | [Zenodo draft 24046306](https://zenodo.org/uploads/24046306) | Uploaded together; unpublished; CC BY 4.0 |
 | Dataset inventory | [atlas-manifest.json](../data/atlas-manifest.json) | Current 47-file consolidated inventory and planned public links |
@@ -45,9 +46,11 @@ source hashes and identifies the original captures. Panel letters remain editabl
 in Word. Figure 4 is arranged by subcellular location; its caption must not call
 that arrangement genomic position.
 
-The author's current November 7 manuscript and FIGURES Word files use the original
-label sizes. Preserve that selection; do not substitute the November 8 larger-label
-variants when preparing the public paper figures.
+The November 18 manuscript figure selection uses the original label sizes and
+subcellular localization for both pooled EBV and EBNA1. Supplementary Figure S4
+shows 50 pan-viral pairs per panel, ranked by target or parent coverage at ≥7/9
+and 9/9. Genomic-position Manhattan plots remain website/archive views. Preserve
+that selection; do not substitute the November 8 larger-label alternatives.
 
 The editable Figure 1 PowerPoint and the author-edited Word manuscript remain in
 the separate editorial workspace. They are not silently replaced by the README

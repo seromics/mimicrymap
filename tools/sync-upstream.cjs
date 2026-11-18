@@ -25,6 +25,8 @@ if (args[0] === '--check') {
   if(!/^\/document-data\/pan_viral_pairs_[a-f0-9]+\.json\.gz$/.test(pairView.url))throw Error('Unexpected pan-viral page data path');
   const pairPayload='mimicrymap/frontend'+pairView.url;if(!tracked.includes(pairPayload))tracked.push(pairPayload);
   const files = tracked.filter(f => !/(^|\/)test[^/]*\.(?:js|mjs|cjs|py)$/.test(f) && !/\.zip$/.test(f) && !f.endsWith('/source-origin.json'));
+  const localization='mimicrymap/frontend/reference/atlas-human-localization.json';
+  if(!files.includes(localization))files.push(localization);
   // Include newly imported shared helpers before the next source commit.
   const included = new Set(files);
   for (const file of files) {

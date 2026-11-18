@@ -12,7 +12,7 @@ The method is library agnostic. Human proteins and 120 viral proteomes form the 
 
 *The viewer comparing human IL10 with its EBV homolog, with the optional AlphaFold structure and pLDDT track. The sequence map, aligned core, coverage table and exports stay together in one view.*
 
-[Run the Web Viewer](docs/VIEWER.md) · [Interface Guide](docs/USAGE.md) · [How It Works](#how-mimicry-results-are-calculated) · [Worked Examples](#how-to-use-mimicry-results) · [Atlas and Data](docs/ATLAS.md) · [Release Status](#release-status-and-license)
+[Run the Web Viewer](docs/VIEWER.md) · [Interface Guide](docs/USAGE.md) · [How It Works](#how-mimicry-results-are-calculated) · [Worked Examples](#how-to-use-mimicry-results) · [Atlas and Data](docs/ATLAS.md) · [Citation and License](#citation-and-license)
 
 ## Explore, Inspect, Reuse
 

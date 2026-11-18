@@ -174,8 +174,8 @@
     {
       "path": "mimicrymap/frontend/analysis-entry.js",
       "source": "mimicrymap/frontend/analysis-entry.js",
-      "bytes": 240014,
-      "sha256": "63baef1d872dcf824ca0d6eecc0e4ca7681637e0922d6038c69d61f9f70c896a"
+      "bytes": 240240,
+      "sha256": "d02577b9197aa7a310a20fbbe06ff155cd75ef50bce3872d22c852b587ad5d42"
     },
     {
       "path": "mimicrymap/frontend/analysis-player-adapter.js",
@@ -1634,6 +1634,12 @@
       "source": "mimicrymap/workspace/worker.cjs",
       "bytes": 1765,
       "sha256": "05dba54cecbadc44036a97df5305e8b2710e9533d54fff96275cea6f722ee389"
+    },
+    {
+      "path": "mimicrymap/frontend/reference/atlas-human-localization.json",
+      "source": "mimicrymap/frontend/reference/atlas-human-localization.json",
+      "bytes": 393733,
+      "sha256": "f63d7727991dedd3667591b8dcd99f5c6f92f6fa8dba3099733d84f24a5bccb8"
     },
     {
       "path": "code/export-core.js",

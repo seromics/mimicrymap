@@ -1,9 +1,16 @@
-# Selected Paper Figures
+# Paper Figures
 
-November 8, 2026 presentation exports from retained MimicryMap figures. These
-are the current larger-label versions prepared for the manuscript, not new
-sequence calculations. All scientific marks are preserved. The source inventory
-records the original capture identifiers and hashes.
+The [current figure selection](current/README.md) contains the EBV and EBNA1
+subcellular-location captures and four 50-row pan-viral rankings, using the
+original label sizes. The paper uses localization plots; genomic-position
+Manhattan views remain available in the interactive atlas.
+
+## Earlier Presentation Alternatives
+
+The November 8, 2026 exports below use larger labels. They are retained as
+alternatives and are not the current manuscript selection. No new sequence
+calculations were performed for these exports. The source inventory records
+the original capture identifiers and hashes.
 
 | Panel | Vector | Raster |
 | --- | --- | --- |

@@ -4390,7 +4390,11 @@ window.MimicryLite = true;
       return;
     }
     installPlayerFloorBridge();
-    try { await waitFor(function ready() { return byId("catalogCancel") && byId("customFloor") && byId("mimicmode"); }, 15000); } catch (_error) {}
+    // The standalone player deliberately skips the legacy catalogue runtime;
+    // its cancel marker is never installed. Only that runtime needs this wait.
+    if (!window.MimicryMapViewer?.options.standalone) {
+      try { await waitFor(function ready() { return byId("catalogCancel") && byId("customFloor") && byId("mimicmode"); }, 15000); } catch (_error) {}
+    }
     if (state.explorerMeta) {
       installExploreControls();
       installKnownTargetRouting();
