@@ -4,7 +4,7 @@ Generated review view. Edit **interface-copy.json**; shared term labels and defi
 
 See [Glossary](GLOSSARY.md). Machine-facing export fields are separate in [the export contract](../contracts/export-fields.json) and are not editorial wording.
 
-Public wording is draft. Locations and placeholder expressions are internal notes and are not shipped as UI text.
+Interface text catalogue. Locations and placeholder expressions identify the shared consumers of each entry.
 
 ## Surface index
 

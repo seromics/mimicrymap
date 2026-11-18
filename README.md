@@ -352,4 +352,4 @@ Cite the software as **Tyler W. Hulett. MimicryMap. Version 0.1.0-rc.1.**
 Original MimicryMap software is [MIT licensed](LICENSE). The sequence comparisons,
 pan-viral atlas and structure annotations use **CC BY 4.0**, with original source
 attribution and terms retained; see the [dataset inventory](data/atlas-manifest.json)
-and [source notices](NOTICE.md). Download the [published dataset](https://doi.org/10.5281/zenodo.24046306): **Hulett, T. W. (2026). MimicryMap: sequence comparisons, pan-viral atlas, and annotations (1.0). Zenodo.** The preprint link will be added when available.
+and [source notices](NOTICE.md). Download the [published dataset](https://doi.org/10.5281/zenodo.24046306): **Hulett, T. W. (2026). MimicryMap: sequence comparisons, pan-viral atlas, and annotations (1.0). Zenodo.**

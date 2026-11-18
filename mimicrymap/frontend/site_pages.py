@@ -50,6 +50,7 @@ def paginate(rendered,section_span,check=False):
         if slug=='pan-viral':
             catalog=json.loads((ROOT/'frontend/summary-downloads.json').read_text(encoding='utf-8'))
             sequences={r['key']:{**r,'url':published_url(ROOT,r['url'],cors=True)} for r in catalog['sequences']}
+            sequences={key:row for key,row in sequences.items() if row['url'].startswith('https://zenodo.org/')}
             pair_summary=catalog['comprehensive_summaries']['rows']['human_swissprot_vs_atlas_120_viruses']['csv']
             pair_manifest_path=ROOT/'frontend/atlas-pairs-manifest.json'
             pair_manifest=json.loads(pair_manifest_path.read_text(encoding='utf-8')) if pair_manifest_path.exists() else {}

@@ -42,8 +42,8 @@
     {
       "path": "mimicrymap/docs/public/INTERFACE_TEXT.md",
       "source": "mimicrymap/docs/public/INTERFACE_TEXT.md",
-      "bytes": 162806,
-      "sha256": "c2ba061d5e5a552274538ca5ccbed79f54720d1d250da193b7cac48ad6fadf8f"
+      "bytes": 162801,
+      "sha256": "e5095b0700e0c238dd75a9278ffcf3b888648db91fc3591438cb3c2b8a98d31b"
     },
     {
       "path": "mimicrymap/docs/public/README.md",
@@ -54,8 +54,8 @@
     {
       "path": "mimicrymap/docs/public/downloads.html",
       "source": "mimicrymap/docs/public/downloads.html",
-      "bytes": 1811,
-      "sha256": "f869bc42e94986cbdf10cfd1b3a50db81702130b83afd04e233fd56826b03b05"
+      "bytes": 1924,
+      "sha256": "b49151ae4c2a98fdd4a982a2ff030d3edbeb565ed1a255a90240c2e3a8b60403"
     },
     {
       "path": "mimicrymap/docs/public/figure-legends.json",
@@ -120,8 +120,8 @@
     {
       "path": "mimicrymap/docs/public/sources.html",
       "source": "mimicrymap/docs/public/sources.html",
-      "bytes": 2393,
-      "sha256": "6b3941313758115d5b64fe32377b0ce7e34b6040520a83848b21960f253901d8"
+      "bytes": 2403,
+      "sha256": "b895e56f1b7f6a4a65d3f8618f9a34c106ff38a45aa43fa9427a86207e7bac0c"
     },
     {
       "path": "mimicrymap/docs/public/summary-download-guide.md",
@@ -732,8 +732,8 @@
     {
       "path": "mimicrymap/frontend/pan-viral.html",
       "source": "mimicrymap/frontend/pan-viral.html",
-      "bytes": 36560,
-      "sha256": "429621c5e80748b66786aabc9f66d492067910574523d2cced1e15b55424ca4b"
+      "bytes": 36059,
+      "sha256": "7098e48a3b59f2928a7224abd7f2499f835607c311743e462234dd1da86f910f"
     },
     {
       "path": "mimicrymap/frontend/pinned_subset_membership.py",
@@ -804,8 +804,8 @@
     {
       "path": "mimicrymap/frontend/public_copy.py",
       "source": "mimicrymap/frontend/public_copy.py",
-      "bytes": 8530,
-      "sha256": "bc4d8baa5a4c9acac3bee30fbb58010688e10bd903f2a7ecd276fc890cd28ed5"
+      "bytes": 8525,
+      "sha256": "3feedcb3fe59a0a4a59a34d05d75203654ebf93c166c3b99b54872e1904124ff"
     },
     {
       "path": "mimicrymap/frontend/public_downloads.py",
@@ -1266,8 +1266,8 @@
     {
       "path": "mimicrymap/frontend/site_pages.py",
       "source": "mimicrymap/frontend/site_pages.py",
-      "bytes": 7849,
-      "sha256": "d0ff8daa53fe6357abfee9f24d46949a8382816a7bb28467b099b09f791cb056"
+      "bytes": 7962,
+      "sha256": "a01957408973ef11e3fe60dbd1d9517382ebfb422c628b6b1551de8330b91b98"
     },
     {
       "path": "mimicrymap/frontend/source-licenses.js",
@@ -1278,8 +1278,8 @@
     {
       "path": "mimicrymap/frontend/sources.html",
       "source": "mimicrymap/frontend/sources.html",
-      "bytes": 37068,
-      "sha256": "211a6d17f710980eedbd2b08b0735db7025259d3c80a48fd7438bee9b0ac4b6d"
+      "bytes": 37191,
+      "sha256": "733867d474e154497dee7cf18dcd9f172991e3740aa70079de3197540af0c3dd"
     },
     {
       "path": "mimicrymap/frontend/startup-shell.css",

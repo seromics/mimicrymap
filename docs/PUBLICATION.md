@@ -34,4 +34,3 @@ and retain attribution to the original sequence and annotation databases.
 Original MimicryMap software is MIT licensed, copyright (c) 2026 Tyler Hulett.
 The compiled dataset uses CC BY 4.0; original source attribution and applicable
 terms remain in its documentation. The dataset is published as [version 1.0](https://doi.org/10.5281/zenodo.24046306).
-The software citation file will identify the preprint when available.

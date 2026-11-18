@@ -99,7 +99,7 @@ def write_review(catalogue, check=False):
     lines = ['# Interface Text Catalogue', '',
              'Generated review view. Edit **interface-copy.json**; shared term labels and definitions belong to **terminology.json**. From the checkout root, run `python mimicrymap/frontend/public_sections.py`.', '',
              'See [Glossary](GLOSSARY.md). Machine-facing export fields are separate in [the export contract](../contracts/export-fields.json) and are not editorial wording.', '',
-             'Public wording is draft. Locations and placeholder expressions are internal notes and are not shipped as UI text.', '']
+             'Interface text catalogue. Locations and placeholder expressions identify the shared consumers of each entry.', '']
     lines += ['## Surface index', '']
     for filename in sorted({row['file'] for row in catalogue['entries']}):
         count=sum(row['file']==filename for row in catalogue['entries'])
