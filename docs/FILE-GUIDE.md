@@ -8,7 +8,7 @@
 | `docs/USAGE.md` | Current explorer pages, desktop library routes and download choices |
 | `docs/BUILD.md` | Whole-library CPU/GPU builds, metadata and output formats |
 | `docs/ATLAS.md` | Separate atlas, summary and mapping datasets and their populations |
-| `docs/PUBLICATION.md` | Manuscript figure sequence and local publication staging |
+| `docs/PUBLICATION.md` | Publication components and selected manuscript figures |
 | `mimicrymap/frontend/` | Explorer, atlas and authored method-page source; reference assets and host services are separate |
 | `mimicrymap/workspace/` | Shared sequence-library and comparison engine |
 | `build.cjs` | Standalone library-builder entry point |

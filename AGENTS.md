@@ -19,6 +19,9 @@ downstream use, not an included patient-analysis workflow. Keep website examples
 separate from the research README. Preserve website URLs, source provenance and
 machine-readable format identifiers when removing application promotion.
 
+Keep build guards, staging instructions and release checklists in contributor
+notes or technical provenance, not reader-facing guides, captions or descriptions.
+
 Keep FASTAs, private studies, databases, caches, CUDA environments and large
 archives outside Git. Use disposable test directories, remove generated QA
 output after use, and retain test source and small fixtures. Never test writes

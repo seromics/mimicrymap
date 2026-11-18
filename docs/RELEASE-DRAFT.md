@@ -1,4 +1,4 @@
-# MimicryMap research release draft
+# MimicryMap Overview
 
 MimicryMap maps local amino-acid sequence resemblance and whole-record coverage
 between proteins, peptides and libraries. Use it interactively for a target of
@@ -28,7 +28,7 @@ the standalone FASTA runners do not require an installed study.
 The selected paper PNG/SVG exports are in [figures/paper](../figures/paper/README.md).
 The full atlas, comparisons and structure supplements are uploaded together to
 the [unpublished Zenodo draft](https://zenodo.org/uploads/24046306).
-[Publication staging](PUBLICATION.md) records the current components.
+[Publication Components](PUBLICATION.md) connects the software, data and selected figures.
 
 Original MimicryMap software is [MIT licensed](../LICENSE), copyright (c) 2026
 Tyler W. Hulett. [CITATION.cff](../CITATION.cff) supplies the software citation.
