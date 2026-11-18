@@ -1,5 +1,7 @@
 # Using the MimicryMap mimicry coverage summaries
 
+[Published Dataset and Supplemental Downloads](https://doi.org/10.5281/zenodo.24046306) · Version 1.0 · CC BY 4.0.
+
 ## Canonical reference downloads
 
 The first population in Target → comparison supplies the rows. Reversing the direction changes the target sequence and coverage denominator. **Canonical Human Proteins** contains all 20,431 reviewed human UniProtKB/Swiss-Prot records, including short proteins. The reference comparisons cover human self-comparison and both directions versus Canonical Exposures and Curated Viral Proteomes (120). Plot eligibility affects figures only. Hormone-only supplements remain available in the interface, with no separate standard export variant.

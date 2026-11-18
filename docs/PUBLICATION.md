@@ -8,7 +8,7 @@ the downloadable datasets include readers for independent use.
 | --- | --- |
 | Viewer, CPU pipeline and optional NVIDIA GPU builder | [Software and usage](../README.md) |
 | Matching definitions and worked example | [How It Works](HOW-IT-WORKS.md) |
-| Comparison summaries, atlas data, figures and structures | [Zenodo dataset record](https://zenodo.org/uploads/24046306) |
+| Comparison summaries, atlas data, figures and structures | [Zenodo dataset record](https://doi.org/10.5281/zenodo.24046306) |
 | Dataset inventory and checksums | [Release manifest](../data/atlas-manifest.json) |
 | Selected paper figures | [Current PNG/SVG exports](../figures/paper/current/README.md) |
 | Software authorship and citation | [CITATION.cff](../CITATION.cff) |
@@ -33,5 +33,5 @@ The software and dataset are separate citable resources. Cite the version used
 and retain attribution to the original sequence and annotation databases.
 Original MimicryMap software is MIT licensed, copyright (c) 2026 Tyler Hulett.
 The compiled dataset uses CC BY 4.0; original source attribution and applicable
-terms remain in its documentation. The dataset record is not yet public.
+terms remain in its documentation. The dataset is published as [version 1.0](https://doi.org/10.5281/zenodo.24046306).
 The software citation file will identify the preprint when available.

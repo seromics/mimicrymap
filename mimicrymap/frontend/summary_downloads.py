@@ -84,6 +84,20 @@ def render(source):
  if '<!-- summary-' not in source and '<!-- public-downloads -->' not in source:return source
  source=source.replace('<!-- public-downloads -->',(ROOT/'docs/public/downloads.html').read_text(encoding='utf-8'))
  m=json.loads((ROOT/'frontend/summary-downloads.json').read_text(encoding='utf-8'));rows={r['key']:r for r in m['summaries']+m.get('assay_summaries',[])}
+ published_path=ROOT/'docs/public/zenodo-downloads.json'
+ published=json.loads(published_path.read_text(encoding='utf-8')) if published_path.exists() else {}
+ published=published if published.get('published') else {}
+ public_pairs={p['comparison_key']:p for p in published.get('comparisons',[])}
+ def public_archive(item):
+  if not item:return item
+  filename=item['url'].split('?')[0].rsplit('/',1)[-1].replace('-mapping-index.zip','-sqlite.zip')
+  aliases={'source-huprot-human-swissprot.zip':'human_swissprot--huprot4-summaries.zip'}
+  file=published.get('files',{}).get(aliases.get(filename,filename))
+  return {**file,'identity':'7/9–9/9'} if file else item
+ def pair_archives(key):
+  pair=public_pairs[key]
+  return {kind:{**published['files'][pair[field].split('?')[0].rsplit('/',1)[-1]],'identity':'7/9–9/9','bidirectional':True}
+          for kind,field in [('summary','csv_fasta'),('mapping','sqlite')]}
  labels=LIBRARY_LABELS
  def row_label(row):return labels[row['target']]+' → '+labels[row['comparison']]
  # Newly staged assay-to-human products use the existing table and file controls.
@@ -95,9 +109,10 @@ def render(source):
   human_rows.append(f'<tr><th scope="row"><span class="download-row-title"><!-- summary-label:{key} --></span><span class="download-row-description">{description} Summaries describe sequence coverage at 7/9–9/9.</span></th><td><span class="download-mobile-label" aria-hidden="true">Target rows: </span><!-- summary-count:{key} --></td><td class="summary-file-cell"><span class="download-mobile-label" aria-hidden="true">Downloads</span><div class="download-actions"><!-- summary-links:{key} --></div></td><td class="summary-file-cell"><span class="download-mobile-label" aria-hidden="true">Target FASTA</span><!-- summary-target-fasta:{key} --></td><td class="summary-file-cell"><span class="download-mobile-label" aria-hidden="true">Comparison FASTA</span><!-- summary-comparison-fasta:{key} --></td></tr>')
  source=source.replace('<!-- assay-human-downloads -->','\n'.join(human_rows))
  def link(item,label,title):
+  item=public_archive(item)
   if item.get('ready') is False:return f'<span class="download-link" aria-disabled="true" title="Preparing download" aria-label="{escape(title)}, preparing">{label}<span>Preparing</span></span>'
   url=public_url(item["url"])
-  return f'<a class="download-link" href="{escape(url)}" download="{escape(Path(url).name)}" aria-label="{escape(title)}">{label}<span>{size(item["bytes"])}</span></a>'
+  return f'<a class="download-link" href="{escape(url)}" download="{escape(url.split("?")[0].rsplit("/",1)[-1])}" aria-label="{escape(title)}">{label}<span>{size(item["bytes"])}</span></a>'
  def links(row):
   item=m.get('comprehensive_summaries',{}).get('rows',{}).get(row['key'])
   if not current_summary(item,row):raise ValueError('Current comprehensive summary missing or stale: '+row['key'])
@@ -116,7 +131,7 @@ def render(source):
  sections=[
   ('canonical','Canonical ↔ Canonical Maps',[
    ('human_swissprot','atlas_120_viruses'),('human_swissprot','canonical_exposure'),
-   ('human_swissprot','canonical_exposure_no_vertebrates'),('human_swissprot','human_swissprot')]),
+   *([] if published else [('human_swissprot','canonical_exposure_no_vertebrates')]),('human_swissprot','human_swissprot')]),
   ('human','Assays ↔ Canonical Human Proteins',[(a,'human_swissprot') for a in ('huprot4','human_current','virscan_exposome_current')]),
   ('viral','Assays ↔ Curated Viral Proteomes (120)',[(a,'atlas_120_viruses') for a in ('huprot4','human_current','virscan_exposome_current')]),
   ('exposure','Assays ↔ Canonical Exposures',[(a,'canonical_exposure') for a in ('huprot4','human_current','virscan_exposome_current')]),
@@ -145,6 +160,7 @@ def render(source):
    title=labels[a]+(' ↔ '+labels[b] if a!=b else ' · within library')
    count=' · '.join(f"{counts[k]:,}" for k in dict.fromkeys([a,b]))
    products=built['archives'] if built else m.get('comprehensive_summaries',{}).get('rows',{}).get(directions[0]['key'],{}).get('archives',{})
+   if published:products=pair_archives(key)
    index=products.get('mapping') or products.get('index')
    for kind,item in [('summary',products.get('summary')),('mapping',index)]:available[kind]|=bool(item)
    description=('One summary' if a==b else 'Summaries in both directions' if len(directions)>1 else 'Summary: '+row_label(directions[0]))
@@ -156,14 +172,31 @@ def render(source):
   columns='<colgroup><col class="download-library-col"><col class="download-records-col"><col class="download-product-col"><col class="download-product-col"></colgroup>'
   table='<div class="download-table-scroll" tabindex="0" role="region" aria-label="'+escape(heading)+' downloads"><table class="download-table summary-download-table">'+columns+'<thead><tr><th scope="col">Libraries</th><th scope="col">Records</th>'+product_headers+'</tr></thead><tbody>'+''.join(body)+'</tbody></table></div>'
   paired.append('<div class="download-comparison-group"><h3>'+escape(heading)+'</h3>'+table+'</div>')
- if seen!=set(groups):raise ValueError('Unclassified download comparisons: '+str(set(groups)-seen))
+ expected_groups=set(public_pairs) if published else set(groups)
+ if seen!=expected_groups:raise ValueError('Unclassified download comparisons: '+str(expected_groups-seen))
  source=source.replace('<!-- paired-downloads -->','\n'.join(paired))
+ supplemental=''
+ if published:
+  products=[('Pan-Viral Atlas Numerical Data','MimicryMap-Pan-Viral-Atlas-5of9-to-9of9-Data.zip'),
+   ('Pan-Viral Atlas Figures','MimicryMap-Pan-Viral-Atlas-13516-States.zip'),
+   ('Figure Index','figure-index.csv'),
+   ('Human Structures and Reference Tracks','MimicryMap-Human-Structures-and-Reference-Tracks.zip'),
+   ('Human Dimer Structures','MimicryMap-Human-Dimer-Structures.zip'),
+   ('Non-Human Structures and Annotations','MimicryMap-Nonhuman-Structures-and-Annotations.zip'),
+   ('Human Canonical FASTA','human_swissprot.fasta'),('120 Viral Proteomes FASTA','atlas_120_viruses.fasta'),
+   ('Canonical Exposures FASTA','canonical_exposure.fasta'),('HuProt 4.0 FASTA','huprot4.fasta'),
+   ('HuScan FASTA','huscan.fasta'),('VirScan / Exposome FASTA','virscan_exposome.fasta')]
+  body=''.join('<tr><th scope="row">'+title+'</th><td class="summary-file-cell">'+link(published['files'][filename],filename.rsplit('.',1)[-1].upper(),title)+'</td></tr>' for title,filename in products)
+  supplemental='<div class="download-comparison-group"><h3>Supplemental Downloads</h3><div class="download-table-scroll"><table class="download-table summary-download-table"><thead><tr><th scope="col">Collection</th><th scope="col">Download</th></tr></thead><tbody>'+body+'</tbody></table></div></div>'
+  supplemental+='<p class="download-format-note">'+ ' · '.join(link(published['files'][filename],label,label) for filename,label in [('README.txt','README'),('FORMATS.txt','Methods and Formats'),('manifest.json','Manifest')])+'</p>'
+ source=source.replace('<!-- supplemental-downloads -->',supplemental)
  def example_archive_row(key):
   if key not in rows:raise ValueError('Unpublished summary requested: '+key)
   row=rows[key];a,b=row['target'],row['comparison']
   item=m.get('comprehensive_summaries',{}).get('rows',{}).get(key)
   if not current_summary(item,row):raise ValueError('Current comprehensive summary missing or stale: '+key)
-  archive=item.get('archives',{}).get('summary')
+  pair_key='--'.join(sorted([a,b]))
+  archive=pair_archives(pair_key)['summary'] if pair_key in public_pairs else item.get('archives',{}).get('summary')
   if not archive or (a!=b and not archive.get('bidirectional')):raise ValueError('Complete summary archive missing: '+key)
   title=labels[a]+(' ↔ '+labels[b] if a!=b else ' · within library')
   description='Summaries in both directions' if a!=b else 'One summary'

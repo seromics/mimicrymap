@@ -12,8 +12,7 @@ Opening the HTML through `file://` is not supported: workers and modules require
 
 The small IL10 comparison is immediately usable. The optional standard reference
 preset is Human Canonical + 120 Viral Proteomes (15.23 MB of FASTAs). Its Zenodo
-download is disabled until publication; local copies already work through the
-file selectors. Large mapping and structure collections stay separate. See
+downloads come from the [published Zenodo dataset](https://doi.org/10.5281/zenodo.24046306); local copies also work through the file selectors. Large mapping and structure collections stay separate. See
 [Reference options and sizes](examples/REFERENCE-LIBRARIES.md).
 
 ```js

@@ -27,9 +27,9 @@ the standalone FASTA runners do not require an installed study.
 
 The selected paper PNG/SVG exports are in [figures/paper](../figures/paper/README.md).
 The full atlas, comparisons and structure supplements are uploaded together to
-the [unpublished Zenodo draft](https://zenodo.org/uploads/24046306).
+the [published Zenodo dataset](https://doi.org/10.5281/zenodo.24046306).
 [Publication Components](PUBLICATION.md) connects the software, data and selected figures.
 
 Original MimicryMap software is [MIT licensed](../LICENSE), copyright (c) 2026
-Tyler W. Hulett. [CITATION.cff](../CITATION.cff) supplies the software citation.
+Tyler Hulett. [CITATION.cff](../CITATION.cff) supplies the software citation.
 The dataset uses CC BY 4.0; original source attribution and third-party terms remain applicable.

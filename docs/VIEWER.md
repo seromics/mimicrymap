@@ -41,8 +41,7 @@ a time. Use the [CPU/GPU library builder](BUILD.md) for whole-library computatio
 Start with the small example or your own FASTAs. The optional standard reference
 preset is **Human Canonical + 120 Viral Proteomes**: 15.23 MB of input FASTAs,
 loaded separately. Loading a library does not automatically run a comparison.
-The preset's Zenodo download button remains disabled until the data is published;
-local copies can already be loaded with the file selectors.
+Click **Download FASTAs** to load them from the [published Zenodo dataset](https://doi.org/10.5281/zenodo.24046306), or open local copies with the file selectors.
 
 Open **http://127.0.0.1:5408/examples/annotations.html** for the supplied IL10
 structure and pLDDT example. Tracks and structures are optional context; they do

@@ -1,0 +1,277 @@
+{
+  "record": "https://zenodo.org/records/24046306",
+  "doi": "https://doi.org/10.5281/zenodo.24046306",
+  "published": true,
+  "files": {
+    "FORMATS.txt": {
+      "url": "https://zenodo.org/records/24046306/files/FORMATS.txt?download=1",
+      "bytes": 27308
+    },
+    "MimicryMap-Human-Dimer-Structures.zip": {
+      "url": "https://zenodo.org/records/24046306/files/MimicryMap-Human-Dimer-Structures.zip?download=1",
+      "bytes": 187018552
+    },
+    "MimicryMap-Human-Structures-and-Reference-Tracks.zip": {
+      "url": "https://zenodo.org/records/24046306/files/MimicryMap-Human-Structures-and-Reference-Tracks.zip?download=1",
+      "bytes": 3182598668
+    },
+    "MimicryMap-Nonhuman-Structures-and-Annotations.zip": {
+      "url": "https://zenodo.org/records/24046306/files/MimicryMap-Nonhuman-Structures-and-Annotations.zip?download=1",
+      "bytes": 2143418813
+    },
+    "MimicryMap-Pan-Viral-Atlas-13516-States.zip": {
+      "url": "https://zenodo.org/records/24046306/files/MimicryMap-Pan-Viral-Atlas-13516-States.zip?download=1",
+      "bytes": 8526292579
+    },
+    "MimicryMap-Pan-Viral-Atlas-5of9-to-9of9-Data.zip": {
+      "url": "https://zenodo.org/records/24046306/files/MimicryMap-Pan-Viral-Atlas-5of9-to-9of9-Data.zip?download=1",
+      "bytes": 1264256382
+    },
+    "README.txt": {
+      "url": "https://zenodo.org/records/24046306/files/README.txt?download=1",
+      "bytes": 3938
+    },
+    "atlas_120_viruses--human_current-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/atlas_120_viruses--human_current-sqlite.zip?download=1",
+      "bytes": 126925560
+    },
+    "atlas_120_viruses--human_swissprot-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/atlas_120_viruses--human_swissprot-sqlite.zip?download=1",
+      "bytes": 13493207
+    },
+    "atlas_120_viruses--huprot4-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/atlas_120_viruses--huprot4-sqlite.zip?download=1",
+      "bytes": 5769048
+    },
+    "atlas_120_viruses--virscan_exposome_current-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/atlas_120_viruses--virscan_exposome_current-sqlite.zip?download=1",
+      "bytes": 248467891
+    },
+    "atlas_120_viruses.fasta": {
+      "url": "https://zenodo.org/records/24046306/files/atlas_120_viruses.fasta?download=1",
+      "bytes": 1148192
+    },
+    "canonical_exposure--human_current-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/canonical_exposure--human_current-sqlite.zip?download=1",
+      "bytes": 639013417
+    },
+    "canonical_exposure--human_swissprot-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/canonical_exposure--human_swissprot-sqlite.zip?download=1",
+      "bytes": 24403277
+    },
+    "canonical_exposure--huprot4-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/canonical_exposure--huprot4-sqlite.zip?download=1",
+      "bytes": 22873218
+    },
+    "canonical_exposure--virscan_exposome_current-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/canonical_exposure--virscan_exposome_current-sqlite.zip?download=1",
+      "bytes": 910336311
+    },
+    "canonical_exposure.fasta": {
+      "url": "https://zenodo.org/records/24046306/files/canonical_exposure.fasta?download=1",
+      "bytes": 15556436
+    },
+    "figure-index.csv": {
+      "url": "https://zenodo.org/records/24046306/files/figure-index.csv?download=1",
+      "bytes": 8472409
+    },
+    "human_current--human_swissprot-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/human_current--human_swissprot-sqlite.zip?download=1",
+      "bytes": 1409209372
+    },
+    "human_current--huprot4-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/human_current--huprot4-sqlite.zip?download=1",
+      "bytes": 1137345673
+    },
+    "human_current--virscan_exposome_current-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/human_current--virscan_exposome_current-sqlite.zip?download=1",
+      "bytes": 1345543886
+    },
+    "human_swissprot--human_swissprot-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/human_swissprot--human_swissprot-sqlite.zip?download=1",
+      "bytes": 64623717
+    },
+    "human_swissprot--huprot4-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/human_swissprot--huprot4-sqlite.zip?download=1",
+      "bytes": 53784200
+    },
+    "human_swissprot--huprot4-summaries.zip": {
+      "url": "https://zenodo.org/records/24046306/files/human_swissprot--huprot4-summaries.zip?download=1",
+      "bytes": 138833008
+    },
+    "human_swissprot--virscan_exposome_current-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/human_swissprot--virscan_exposome_current-sqlite.zip?download=1",
+      "bytes": 975552279
+    },
+    "human_swissprot.fasta": {
+      "url": "https://zenodo.org/records/24046306/files/human_swissprot.fasta?download=1",
+      "bytes": 14084247
+    },
+    "huprot4--huprot4-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/huprot4--huprot4-sqlite.zip?download=1",
+      "bytes": 53071437
+    },
+    "huprot4--virscan_exposome_current-sqlite.zip": {
+      "url": "https://zenodo.org/records/24046306/files/huprot4--virscan_exposome_current-sqlite.zip?download=1",
+      "bytes": 721276356
+    },
+    "huprot4.fasta": {
+      "url": "https://zenodo.org/records/24046306/files/huprot4.fasta?download=1",
+      "bytes": 11240033
+    },
+    "huscan.fasta": {
+      "url": "https://zenodo.org/records/24046306/files/huscan.fasta?download=1",
+      "bytes": 76180725
+    },
+    "manifest.json": {
+      "url": "https://zenodo.org/records/24046306/files/manifest.json?download=1",
+      "bytes": 44621
+    },
+    "source-atlas-120-viruses-human-swissprot.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-human-swissprot.zip?download=1",
+      "bytes": 21423439
+    },
+    "source-atlas-120-viruses-huprot4.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-huprot4.zip?download=1",
+      "bytes": 16039865
+    },
+    "source-atlas-120-viruses-huscan.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-huscan.zip?download=1",
+      "bytes": 126531548
+    },
+    "source-atlas-120-viruses-virscan-exposome.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-virscan-exposome.zip?download=1",
+      "bytes": 272126499
+    },
+    "source-canonical-exposure-human-swissprot.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-canonical-exposure-human-swissprot.zip?download=1",
+      "bytes": 64739129
+    },
+    "source-canonical-exposure-huprot4.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-canonical-exposure-huprot4.zip?download=1",
+      "bytes": 56104361
+    },
+    "source-canonical-exposure-huscan.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-canonical-exposure-huscan.zip?download=1",
+      "bytes": 1582818469
+    },
+    "source-canonical-exposure-virscan-exposome.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-canonical-exposure-virscan-exposome.zip?download=1",
+      "bytes": 2586623079
+    },
+    "source-human-swissprot.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-human-swissprot.zip?download=1",
+      "bytes": 81557209
+    },
+    "source-huprot4-huscan.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-huprot4-huscan.zip?download=1",
+      "bytes": 2102545771
+    },
+    "source-huprot4-virscan-exposome.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-huprot4-virscan-exposome.zip?download=1",
+      "bytes": 1730027063
+    },
+    "source-huprot4.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-huprot4.zip?download=1",
+      "bytes": 60865927
+    },
+    "source-huscan-human-swissprot.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-huscan-human-swissprot.zip?download=1",
+      "bytes": 2523154082
+    },
+    "source-huscan-virscan-exposome.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-huscan-virscan-exposome.zip?download=1",
+      "bytes": 4553418176
+    },
+    "source-virscan-human-swissprot.zip": {
+      "url": "https://zenodo.org/records/24046306/files/source-virscan-human-swissprot.zip?download=1",
+      "bytes": 2061864309
+    },
+    "virscan_exposome.fasta": {
+      "url": "https://zenodo.org/records/24046306/files/virscan_exposome.fasta?download=1",
+      "bytes": 98097482
+    }
+  },
+  "comparisons": [
+    {
+      "comparison_key": "human_swissprot--human_swissprot",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-human-swissprot.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/human_swissprot--human_swissprot-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "atlas_120_viruses--human_swissprot",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-human-swissprot.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/atlas_120_viruses--human_swissprot-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "canonical_exposure--human_swissprot",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-canonical-exposure-human-swissprot.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/canonical_exposure--human_swissprot-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "human_swissprot--huprot4",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/human_swissprot--huprot4-summaries.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/human_swissprot--huprot4-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "human_current--human_swissprot",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-huscan-human-swissprot.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/human_current--human_swissprot-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "human_swissprot--virscan_exposome_current",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-virscan-human-swissprot.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/human_swissprot--virscan_exposome_current-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "atlas_120_viruses--huprot4",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-huprot4.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/atlas_120_viruses--huprot4-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "atlas_120_viruses--human_current",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-huscan.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/atlas_120_viruses--human_current-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "atlas_120_viruses--virscan_exposome_current",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-atlas-120-viruses-virscan-exposome.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/atlas_120_viruses--virscan_exposome_current-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "canonical_exposure--huprot4",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-canonical-exposure-huprot4.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/canonical_exposure--huprot4-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "canonical_exposure--human_current",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-canonical-exposure-huscan.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/canonical_exposure--human_current-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "canonical_exposure--virscan_exposome_current",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-canonical-exposure-virscan-exposome.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/canonical_exposure--virscan_exposome_current-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "huprot4--huprot4",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-huprot4.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/huprot4--huprot4-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "human_current--huprot4",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-huprot4-huscan.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/human_current--huprot4-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "huprot4--virscan_exposome_current",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-huprot4-virscan-exposome.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/huprot4--virscan_exposome_current-sqlite.zip?download=1"
+    },
+    {
+      "comparison_key": "human_current--virscan_exposome_current",
+      "csv_fasta": "https://zenodo.org/records/24046306/files/source-huscan-virscan-exposome.zip?download=1",
+      "sqlite": "https://zenodo.org/records/24046306/files/human_current--virscan_exposome_current-sqlite.zip?download=1"
+    }
+  ]
+}

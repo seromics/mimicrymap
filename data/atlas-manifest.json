@@ -337,7 +337,7 @@
     }
   ],
   "file_count": 47,
-  "inventory_note": "The manifest lists its byte size but omits its own digest. Public download links activate when the record is published.",
+  "inventory_note": "The manifest omits its own digest. Public download links refer to the published dataset.",
   "components": {
     "comparisons": {
       "schema": "mimicrymap.comparison-downloads/2",
@@ -1020,8 +1020,8 @@
   "copyright": "MimicryMap © 2026 Tyler Hulett.",
   "version": "1.0",
   "doi": "10.5281/zenodo.24046306",
-  "status": "unpublished-draft",
-  "public_links_active": false,
-  "draft_url": "https://zenodo.org/uploads/24046306",
-  "note": "The consolidated draft is uploaded but unpublished. File URLs are planned public links and become usable after publication. Payloads remain outside Git; the software license is separate from this dataset license."
+  "status": "published",
+  "public_links_active": true,
+  "note": "Published dataset files are downloaded separately. The software license is separate from the dataset license.",
+  "record_url": "https://zenodo.org/records/24046306"
 }

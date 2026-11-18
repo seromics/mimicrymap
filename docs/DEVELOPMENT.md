@@ -15,7 +15,7 @@ into the clean research release.
 | `code/` | Generated portable view of the same browser/CPU calculation files |
 | `build.cjs`, `tools/build-worker.cjs` | Standalone research host for the bulk engine |
 | `README.md`, `docs/` | Existing illustrated research instructions plus the new build/release guides |
-| `data/atlas-manifest.json` | Consolidated unpublished Zenodo inventory and planned links; no payloads in Git |
+| `data/atlas-manifest.json` | Published Zenodo inventory and download links; no payloads in Git |
 
 `source-manifest.json` pins each promoted file to its source commit and SHA-256.
 It includes the shared plot palette dependency so the research package does not
@@ -91,9 +91,9 @@ No atlas payloads, studies, caches, local paths, credentials or CUDA environment
 are included. Review the archive inventory before attaching a private draft.
 
 Software authorship and citation metadata are in CITATION.cff. Before public
-release, connect the preprint link and final dataset DOI. The consolidated dataset draft is CC BY 4.0.
+release, connect the preprint link; the dataset DOI is published. The published dataset is CC BY 4.0.
 Preserve third-party notices and input terms. Do
-not imply publication. The author has selected MIT for original MimicryMap
+not imply software or preprint publication. The author has selected MIT for original MimicryMap
 software; surrounding host applications are licensed separately.
 
 `npm run test:viewer` checks a fresh static build at a nested URL, exact CPU/window

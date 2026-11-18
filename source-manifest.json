@@ -54,8 +54,8 @@
     {
       "path": "mimicrymap/docs/public/downloads.html",
       "source": "mimicrymap/docs/public/downloads.html",
-      "bytes": 1443,
-      "sha256": "5945ba191f7e3ce3608ea68de4895e3fd0d34f0c8786d94b7b06af852be0eb11"
+      "bytes": 1769,
+      "sha256": "91237343992b9de2c057047e4225d242cfd764246cc95a0af78a96b935c789af"
     },
     {
       "path": "mimicrymap/docs/public/figure-legends.json",
@@ -126,8 +126,8 @@
     {
       "path": "mimicrymap/docs/public/summary-download-guide.md",
       "source": "mimicrymap/docs/public/summary-download-guide.md",
-      "bytes": 21781,
-      "sha256": "a6bebf44779e4e13e1734af789e36a46a044a488fad231ef37f88704cd3aed3e"
+      "bytes": 21899,
+      "sha256": "835d7daaaf1ffbbce82f123929311e65f2ec66601a5a9cbeeaebe1b16357a9b6"
     },
     {
       "path": "mimicrymap/docs/public/target-summary.html",
@@ -146,6 +146,12 @@
       "source": "mimicrymap/docs/public/use-results.html",
       "bytes": 28353,
       "sha256": "244fd54d30157ef4c8c501b0370a64cd4ac4870a4fd1e86171b38e8aa64ec2cc"
+    },
+    {
+      "path": "mimicrymap/docs/public/zenodo-downloads.json",
+      "source": "mimicrymap/docs/public/zenodo-downloads.json",
+      "bytes": 13496,
+      "sha256": "b24ef7e848ffa0e2c4d6d5149c7423f0561b551babddace2ce2da79c2e29e8f1"
     },
     {
       "path": "mimicrymap/export-assets-origin.json",
@@ -408,8 +414,8 @@
     {
       "path": "mimicrymap/frontend/embed/README.md",
       "source": "mimicrymap/frontend/embed/README.md",
-      "bytes": 5148,
-      "sha256": "925429c27db302e020778487699d09779d0c931e8838c402e2d76f752495533a"
+      "bytes": 5198,
+      "sha256": "9ce8fe13f79ab09168dd40cb3aa65a92851eb97da7511cbbfeb20532223004e3"
     },
     {
       "path": "mimicrymap/frontend/embed/bootstrap.js",
@@ -432,8 +438,8 @@
     {
       "path": "mimicrymap/frontend/embed/examples/REFERENCE-LIBRARIES.md",
       "source": "mimicrymap/frontend/embed/examples/REFERENCE-LIBRARIES.md",
-      "bytes": 3622,
-      "sha256": "bcdf4a9dca39afdf9bcaf5c5af5f4436b7d56cf7032cf9b0f1fc5c422c539567"
+      "bytes": 4056,
+      "sha256": "0b166238224d8060eeebf9de9369ebe31a661dda9ce32049c95f7088142eb242"
     },
     {
       "path": "mimicrymap/frontend/embed/examples/annotations.html",
@@ -474,8 +480,8 @@
     {
       "path": "mimicrymap/frontend/embed/examples/references.json",
       "source": "mimicrymap/frontend/embed/examples/references.json",
-      "bytes": 516,
-      "sha256": "c9ead3826c6f2053aa6870b2c4b6ee2311d1e0639442f3f4223663cda414411d"
+      "bytes": 569,
+      "sha256": "c8bab9db55c9a5c137f48beaca78820f3b40f3b6a4805a11ed132f0cb6ea4257"
     },
     {
       "path": "mimicrymap/frontend/embed/examples/target.fasta",
@@ -900,8 +906,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 21781,
-      "sha256": "a6bebf44779e4e13e1734af789e36a46a044a488fad231ef37f88704cd3aed3e"
+      "bytes": 21899,
+      "sha256": "835d7daaaf1ffbbce82f123929311e65f2ec66601a5a9cbeeaebe1b16357a9b6"
     },
     {
       "path": "mimicrymap/frontend/reproduce/docs/TABLES.md",
@@ -1272,8 +1278,8 @@
     {
       "path": "mimicrymap/frontend/sources.html",
       "source": "mimicrymap/frontend/sources.html",
-      "bytes": 35841,
-      "sha256": "85f189c121139e3cf841190047ace7dd5217aecafe99cd2964063e7cb4bdc05a"
+      "bytes": 37026,
+      "sha256": "b247edc14281f38e36722eb4db81a4844b3e3529838ca8b8265a121da1cad1a5"
     },
     {
       "path": "mimicrymap/frontend/startup-shell.css",
@@ -1314,14 +1320,14 @@
     {
       "path": "mimicrymap/frontend/summary_downloads.py",
       "source": "mimicrymap/frontend/summary_downloads.py",
-      "bytes": 17690,
-      "sha256": "16cc1724a4cb1466220ae85a6dbd773272059f7a2d9e4249b732c0d9ba462b3b"
+      "bytes": 20565,
+      "sha256": "373a8efb5f86a86f4e7bbb09b318e3cb555b932779d5d17020e64694821e8086"
     },
     {
       "path": "mimicrymap/frontend/use-results.html",
       "source": "mimicrymap/frontend/use-results.html",
-      "bytes": 1489771,
-      "sha256": "91595c462b75f4ccdc20d6d7846a80085fc3b8ee06a6784d44d8627beab1dee8"
+      "bytes": 1489184,
+      "sha256": "2a02e30e99b350fe00022397568f8624e6670cabcf9f7d69190a1e65e93a38a5"
     },
     {
       "path": "mimicrymap/frontend/viewer-api.js",
@@ -1452,8 +1458,8 @@
     {
       "path": "mimicrymap/tools/verify-viewer.cjs",
       "source": "mimicrymap/tools/verify-viewer.cjs",
-      "bytes": 7586,
-      "sha256": "654bc4e3b332dcf95e337935474324541682ad1bf7a39ba889c67696ea5ba933"
+      "bytes": 7943,
+      "sha256": "7327ed4b41ac92070f4878581009850e72554e43b8d7e97147771ebdb438a6a3"
     },
     {
       "path": "mimicrymap/workspace/annotation-source.cjs",
@@ -1794,8 +1800,8 @@
     {
       "path": "docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 21781,
-      "sha256": "a6bebf44779e4e13e1734af789e36a46a044a488fad231ef37f88704cd3aed3e"
+      "bytes": 21899,
+      "sha256": "835d7daaaf1ffbbce82f123929311e65f2ec66601a5a9cbeeaebe1b16357a9b6"
     },
     {
       "path": "docs/HOW-IT-WORKS.md",

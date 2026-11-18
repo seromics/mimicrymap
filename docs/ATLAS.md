@@ -2,7 +2,7 @@
 
 The pan-viral atlas applies MimicryMap to canonical human proteins and 120 viral
 proteomes. Explore the figures through the website or download the data and
-offline catalogue from the [Zenodo dataset record](https://zenodo.org/uploads/24046306).
+offline catalogue from the [Zenodo dataset record](https://doi.org/10.5281/zenodo.24046306).
 See [Using MimicryMap](USAGE.md) for the viewer and [Build Libraries](BUILD.md)
 for comparisons using your own FASTAs.
 
@@ -24,7 +24,7 @@ attribution and applicable terms retained.
 
 [data/atlas-manifest.json](../data/atlas-manifest.json) lists filenames, sizes,
 checksums and download locations. Large datasets are downloaded separately
-from the software. The dataset record is not yet public.
+from the software. The dataset is published as [version 1.0](https://doi.org/10.5281/zenodo.24046306).
 
 ## Populations and Coverage
 
