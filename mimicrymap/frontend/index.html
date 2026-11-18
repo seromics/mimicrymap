@@ -592,7 +592,7 @@ canvas{display:block;position:sticky;left:0;top:0;z-index:2;touch-action:pan-y}
         <span class="lgrp" data-tooltip="The outlined nine-residue comparison window." data-copy-data-tooltip="player.the-nine-residue-comparison-window.5439c61"><span class="swx" aria-hidden="true"></span><!--@copy player.mer-core.c6b3628-->9-mer core<!--@endcopy--></span>
         <span class="lgrp" data-tooltip="The nine-residue comparison window plus up to nine flanking residues on each side. Dots indicate positions beyond the sequence boundary." data-copy-data-tooltip="player.the-nine-residue-comparison-window.00e5fa4"><span class="swy"></span><!--@copy player.mer-context.28ed164-->27-mer context<!--@endcopy--></span>
         <span class="lgrp" id="variantlegend" data-track-legend="variants" hidden
-          data-tooltip="UniProt HumSAVAR missense variants: (likely) pathogenic, uncertain significance, or (likely) benign." data-copy-data-tooltip="player.humsavar-clinical-missense-classifications-shown.8a76b8d">
+          data-tooltip="UniProt HumSaVar missense variants: (likely) pathogenic, uncertain significance, or (likely) benign." data-copy-data-tooltip="player.humsavar-clinical-missense-classifications-shown.8a76b8d">
           <b><!--@copy player.variants.61cad6c-->Variants<!--@endcopy--></b>
           <span class="legend-dot" style="background:var(--c-mimicry-pathogenic)"></span><!--@copy player.pathogenic.646a97d-->Pathogenic
           <!--@endcopy--><span class="legend-dot" style="background:var(--c-seq-uncertain)"></span><!--@copy player.uncertain.3cfe018-->Uncertain
@@ -659,7 +659,7 @@ canvas{display:block;position:sticky;left:0;top:0;z-index:2;touch-action:pan-y}
       <div class="pane" id="customAnalysis">
         <h2><!--@copy player.your-custom-analysis.8702e18-->Your Custom Analysis<!--@endcopy--></h2>
         <p class="ph custom-analysis-guidance" id="customAnalysisGuidance"><!--@copy player.compare-your-antigen-target-sequences.722761a-->Compare one antigen target with a reference library or your own parent FASTA. The analysis runs in this browser.<!--@endcopy--></p>
-        <p class="custom-local-downloads" id="customLocalDownloads"><!--@copy player.custom-local-downloads--><span>Multiple targets or larger runs:</span> <a href="/reproduce/mimicrymap-pipeline.zip" download data-tooltip="Local pipeline with HEPACAM and EBNA1 staged in two editable FASTA files. Run the example, or replace the inputs and settings.">Pipeline ZIP</a> <span aria-hidden="true">·</span> <a href="https://github.com/seromics/mimicrymap" target="_blank" rel="noopener">GitHub</a><!--@endcopy--></p>
+        <p class="custom-local-downloads" id="customLocalDownloads"><!--@copy player.custom-local-downloads--><span>Multiple targets or larger runs:</span> <a href="/reproduce/mimicrymap-pipeline.zip" download data-tooltip="Local pipeline with HEPACAM and EBNA1 in two editable FASTA files. Run the example, or replace the inputs and settings.">Pipeline ZIP</a> <span aria-hidden="true">·</span> <a href="https://github.com/seromics/mimicrymap" target="_blank" rel="noopener">GitHub</a><!--@endcopy--></p>
         <div class="custom-analysis-grid">
           <section class="custom-analysis-side custom-query-side entry-explore-step" aria-labelledby="customQueryTitle">
             <div class="custom-side-head">
@@ -687,7 +687,7 @@ MHSSALLCCLVLLTGVRASPGQGTQSENSCTHFPGNLPNMLRDLRDAFS..." data-copy-aria-label="play
             <div class="custom-side-head">
               <h3 id="customComparisonTitle" class="entry-step-heading"><span class="entry-step-number" aria-hidden="true">2</span><span class="entry-step-label"><!--@copy player.choose-mimicry-parent-library.b0af3b2-->Choose Mimicry Parent:<!--@endcopy--></span></h3>
               <div id="customExecutionHost">
-                <div class="seg wide" id="mimicmode" role="group" aria-label="Legacy Mimicry Parent collection" hidden data-copy-aria-label="player.legacy-mimicry-parent-collection.721c2a4">
+                <div class="seg wide" id="mimicmode" role="group" aria-label="Mimicry Parent Collection" hidden data-copy-aria-label="player.legacy-mimicry-parent-collection.721c2a4">
                   <button type="button" data-m="all" aria-pressed="false"><!--@copy player.non-human.20151f0-->Non-human<!--@endcopy--></button>
                   <button type="button" data-m="one"><!--@copy player.one-source.d5c626a-->One source<!--@endcopy--></button>
                   <button type="button" data-m="human"><!--@copy player.human.de7554d-->Human<!--@endcopy--></button>
@@ -1012,7 +1012,7 @@ function cleavageColor(v){return v==null||v<0?ANNC.nodata:PLOT.ramp('cleavage',v
 var TRACKS=[
   {key:"mimicry",      label:(/*@copy index.html.mimicry.70199e2*/`Mimicry`/*@endcopy*/),      on:true},
   {key:"variants",     label:(/*@copy index.html.variants.6a0a126*/`Variants`/*@endcopy*/),     on:true,
-    title:(/*@copy index.html.uniprot-humsavar-missense-variant-classifications.1b7b311*/`UniProt HumSAVAR missense variants, colored by clinical significance: (likely) pathogenic, uncertain significance, or (likely) benign.`/*@endcopy*/)},
+    title:(/*@copy index.html.uniprot-humsavar-missense-variant-classifications.1b7b311*/`UniProt HumSaVar missense variants, colored by clinical significance: (likely) pathogenic, uncertain significance, or (likely) benign.`/*@endcopy*/)},
   {key:"surface",      label:(/*@copy index.html.surface.6a80a12*/`Surface`/*@endcopy*/),      on:false,
     title:(/*@copy index.html.solvent-exposure-estimated-from-the.b577526*/`Exposed residues have rSASA ≥0.25 in the selected monomer or dimer model.`/*@endcopy*/)},
   {key:"topology",     label:(/*@copy index.html.topology.f3dfff3*/`Topology`/*@endcopy*/),     on:false,

@@ -4,7 +4,7 @@ from html import escape
 import json,re
 from public_downloads import public_url
 ROOT=Path(__file__).resolve().parents[1]
-PRODUCT_LABELS={'summary':'General-Use Summaries (.csv)','mapping':'SeroMap Index (.sqlite)'}
+PRODUCT_LABELS={'summary':'General-Use Summaries (.csv)','mapping':'Mapping Database (.sqlite)'}
 LIBRARY_LABELS={'human_swissprot':'Canonical Human Proteins','atlas_120_viruses':'Curated Viral Proteomes (120)',
  'canonical_exposure':'Canonical Exposures','canonical_exposure_no_vertebrates':'Non-Vertebrate Exposures',
  'huprot4':'HuProt 4.0','human_current':'HuScan','virscan_exposome_current':'VirScan / Exposome'}
@@ -30,6 +30,13 @@ def sync_guide(check=False):
  return current
 
 def size(n):return f'{n/1e9:.1f} GB' if n>=1e9 else f'{n/1e6:.1f} MB' if n>=1e6 else f'{n/1e3:.0f} KB'
+
+def current_summary(item,row):
+ """A row may name the original input CSV or the derived comprehensive CSV."""
+ if not item:return False
+ digest=row.get('csv',{}).get('sha256')
+ return bool(digest and digest in {item.get('source_sha256'),item.get('csv',{}).get('sha256')}
+             and item.get('rows')==row.get('rows'))
 def stage_archives(publication):
  """Bind archive receipts to rows without copying or recompressing data."""
  import os
@@ -93,7 +100,7 @@ def render(source):
   return f'<a class="download-link" href="{escape(url)}" download="{escape(Path(url).name)}" aria-label="{escape(title)}">{label}<span>{size(item["bytes"])}</span></a>'
  def links(row):
   item=m.get('comprehensive_summaries',{}).get('rows',{}).get(row['key'])
-  if not item or item['source_sha256']!=row['csv']['sha256']:raise ValueError('Current comprehensive summary missing or stale: '+row['key'])
+  if not current_summary(item,row):raise ValueError('Current comprehensive summary missing or stale: '+row['key'])
   result=link(item['csv'],'CSV',row_label(row)+' comprehensive summary: target sequence, identifiers, paired parent coverage and per-pair ranges at 7/9, 8/9 and 9/9')
   for kind,label in [('summary','Summary ZIP'),('index','Membership index ZIP')]:
    archive=item.get('archives',{}).get(kind)
@@ -120,7 +127,7 @@ def render(source):
  def product_cell(item,kind,title,description):
   name=PRODUCT_LABELS[kind]
   if not item:return f'<td class="summary-file-cell download-empty" data-product="{kind}"></td>'
-  label='CSV ZIP' if kind=='summary' else 'Index ZIP'
+  label='CSV ZIP' if kind=='summary' else 'SQLite ZIP'
   action=link(item,label,title+' · '+name+' · '+description)
   if item.get('module'):
    action=action.replace('<a ',f'<a data-reference-archive="{kind}" data-reference-module="{escape(item["module"])}" ',1)
@@ -155,7 +162,7 @@ def render(source):
   if key not in rows:raise ValueError('Unpublished summary requested: '+key)
   row=rows[key];a,b=row['target'],row['comparison']
   item=m.get('comprehensive_summaries',{}).get('rows',{}).get(key)
-  if not item or item['source_sha256']!=row['csv']['sha256']:raise ValueError('Current comprehensive summary missing or stale: '+key)
+  if not current_summary(item,row):raise ValueError('Current comprehensive summary missing or stale: '+key)
   archive=item.get('archives',{}).get('summary')
   if not archive or (a!=b and not archive.get('bidirectional')):raise ValueError('Complete summary archive missing: '+key)
   title=labels[a]+(' ↔ '+labels[b] if a!=b else ' · within library')

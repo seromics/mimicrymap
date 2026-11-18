@@ -1529,7 +1529,7 @@
     if (signal && signal.aborted) throw new DOMException("Canceled.", "AbortError");
     const baked = await loadBakedPackage(options, scope, onProgress, signal);
     if (baked) return baked;
-    throw new Error((/*@copy mimicryone-runtime.input-package-unavailable*/`The prepared inputs for this selection are unavailable or incompatible. Please refresh and try again; if this continues, the site needs its input packages updated.`/*@endcopy*/));
+    throw new Error((/*@copy mimicryone-runtime.input-package-unavailable*/`The sequence inputs for this selection are unavailable or incompatible. Refresh and try again, or choose another record.`/*@endcopy*/));
   }
 
   function cachedLocalInputs(options, onProgress, signal) {

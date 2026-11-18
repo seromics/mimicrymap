@@ -2101,7 +2101,7 @@ legend: function () {
 
 legend: function () {
 
-        return (/*@copy atlas-figures.sources-scientific-legend*/`Each row is a ${PROTEOME} protein; each threshold column reports how many eligible human targets it matches at least once. A human target counts once if it has any qualifying match to that viral parent. Rows rank by reach at ≥${floorForKey('sources')}/9; shorter proteins break ties. Ranking is not adjusted for protein length.`/*@endcopy*/);
+        return (/*@copy atlas-figures.sources-scientific-legend*/`Each row represents one protein from ${PROTEOME}; each threshold column reports how many eligible human targets it matches at least once. A human target counts once if it has any qualifying match to that viral parent. Rows rank by reach at ≥${floorForKey('sources')}/9; shorter proteins break ties. Ranking is not adjusted for protein length.`/*@endcopy*/);
       },
 
 
@@ -2131,7 +2131,7 @@ legend: function () {
 
 legend: function () {
         var u=universe();
-        return (/*@copy atlas-figures.targets-scientific-legend*/`Each row pairs a human target with the ${PROTEOME} protein covering the greatest fraction of that target at the retained ≥${bakedRankFloor()}/9 selection threshold. That viral partner stays fixed across all threshold columns. Coverage uses the full human target length. Overlapping cores count once, including mismatching positions; context flanks are excluded. Rows are ranked by coverage at ≥${floorForKey('targets')}/9, with longer human targets first when values tie. ${pairRankingExact(String(floorForKey('targets'))) ? '' : 'The stored candidate set is selected by pooled coverage; the global top pairs are not guaranteed at this threshold. '}${u ? 'The eligible population contains '+nf(u.records)+' human targets.' : ''}`/*@endcopy*/);
+        return (/*@copy atlas-figures.targets-scientific-legend*/`Each row pairs a human target with the ${PROTEOME} protein covering the greatest fraction of that target at the ≥${bakedRankFloor()}/9 threshold used to select the pair. That viral partner stays fixed across all threshold columns. Coverage uses the full human target length. Overlapping cores count once, including mismatching positions; context flanks are excluded. Rows are ranked by coverage at ≥${floorForKey('targets')}/9, with longer human targets first when values tie. ${pairRankingExact(String(floorForKey('targets'))) ? '' : 'The stored candidate set is selected by pooled coverage; the global top pairs are not guaranteed at this threshold. '}${u ? 'The eligible population contains '+nf(u.records)+' human targets.' : ''}`/*@endcopy*/);
       },
 
 

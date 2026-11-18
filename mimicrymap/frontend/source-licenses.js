@@ -2,7 +2,7 @@
 (function(){
  'use strict';
  const rows=[
-  ['UniProt','https://www.uniprot.org/','See installed release','CC BY 4.0','https://www.uniprot.org/help/license/','The UniProt Consortium. Nucleic Acids Research 2023;51:D523–D531.','10.1093/nar/gkac1052','Swiss-Prot and TrEMBL sequences; subcellular location comments, HumSAVAR variants, modifications, topology and Allergome annotations.'],
+  ['UniProt','https://www.uniprot.org/','See installed release','CC BY 4.0','https://www.uniprot.org/help/license/','The UniProt Consortium. Nucleic Acids Research 2023;51:D523–D531.','10.1093/nar/gkac1052','Swiss-Prot and TrEMBL sequences; subcellular location comments, HumSaVar variants, modifications, topology and Allergome annotations.'],
   ['Gene Ontology (GO)','https://geneontology.org/',(/*@copy source-licenses.go-release*/`Retained GO annotations`/*@endcopy*/),'CC BY 4.0','https://www.geneontology.org/docs/go-citation-policy/','Ashburner et al. Nature Genetics 2000;25:25–29 (10.1038/75556). The Gene Ontology Consortium. The Gene Ontology knowledgebase in 2026. Nucleic Acids Research.','10.1093/nar/gkaf1292',(/*@copy source-licenses.go-role*/`Cellular-component annotations manually aligned by gene names and synonyms; used when UniProt provides no classifiable location.`/*@endcopy*/)],
   ['HORDB','http://hordb.cpu-bioinfor.org/','Retained peptide-hormone inputs','CC0 1.0','https://creativecommons.org/publicdomain/zero/1.0/','Zhu et al. HORDB a comprehensive database of peptide hormones. Scientific Data 2022;9:187.','10.1038/s41597-022-01287-5','Peptide hormone sequences and annotations.'],
   ['AlphaFold Protein Structure Database','https://alphafold.ebi.ac.uk/','Monomers: model_v6; retained quaternary models: MODEL_V1','CC BY 4.0','https://alphafold.ebi.ac.uk/assets/License-Disclaimer.pdf','Jumper et al. Nature 2021;596:583–589. Varadi et al. Nucleic Acids Research 2024;52:D368–D375.','10.1038/s41586-021-03819-2','Predicted structures and pLDDT. Database citation: 10.1093/nar/gkad1011.'],
@@ -27,6 +27,6 @@
  const sourceData=window.MimicrySourceData || Promise.all(['/release-provenance.json','/api/analysis/meta'].map(async u=>{const r=await fetch(u,{cache:'no-cache'});if(!r.ok)throw Error();return r.json();}));
  sourceData.then(([provenance,meta])=>{
   if(!meta.component_releases?.some(c=>c.key==='canonical'&&c.release_fingerprint===provenance.release_fingerprint))return;
-  body.rows[0].cells[1].textContent=(/*@copy source-licenses.reviewed-human-sequences-other-sequence.51edf1e*/`Reviewed Human sequences: ${provenance.human.uniprot_release} · ${provenance.human.uniprot_release_date}.`/*@endcopy*/);
+  body.rows[0].cells[1].textContent=(/*@copy source-licenses.reviewed-human-sequences-other-sequence.51edf1e*/`Reviewed human sequences: ${provenance.human.uniprot_release} · ${provenance.human.uniprot_release_date}.`/*@endcopy*/);
  }).catch(()=>{});
 })();

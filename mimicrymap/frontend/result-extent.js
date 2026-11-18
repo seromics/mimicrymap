@@ -345,7 +345,7 @@ ${p.pairs} Window Pair${p.pairs === 1 ? "" : "s"}`/*@endcopy*/)}));
     const length=selected.target_length;
     const coverageNote=coverageCaption();
     const trackMethods={
-      variants: (/*@copy result-extent.variants-method*/`Variant markers show UniProt HumSAVAR missense classifications: (likely) pathogenic, uncertain significance, or (likely) benign.`/*@endcopy*/),
+      variants: (/*@copy result-extent.variants-method*/`Variant markers show UniProt HumSaVar missense classifications: (likely) pathogenic, uncertain significance, or (likely) benign.`/*@endcopy*/),
       modifications: (/*@copy result-extent.modifications-method*/`Modification symbols show annotated modification sites.`/*@endcopy*/),
       surface: (/*@copy result-extent.surface-method*/`The surface track marks exposed residues (rSASA ≥0.25) in the ${view.assembly_context} model.`/*@endcopy*/),
       rsasa: (/*@copy result-extent.rsasa-method*/`rSASA shows relative solvent-accessible surface area calculated with FreeSASA in the ${view.assembly_context} model (color scale 0–1; higher values share the maximum color).`/*@endcopy*/),

@@ -1,6 +1,6 @@
 # Publication Components
 
-MimicryMap comprises the sequence-comparison software, the Pan-Viral Atlas and
+MimicryMap comprises the sequence-comparison software, the pan-viral atlas and
 reusable library comparisons. The website provides interactive exploration;
 the downloadable datasets include readers for independent use.
 

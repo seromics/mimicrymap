@@ -71,6 +71,12 @@ The former long HEPACAM article is consolidated into the five Methods steps. `us
 
 The example captions, links and prose have one editable source in `use-results.html`. `tools/import_use_results_figures.py` refreshes display SVGs from the renamed September 9 exports into `frontend/examples/use-results/20260909`, with a provenance manifest. Saved coverage summaries pass through the current live/export renderer via `tools/render_saved_coverage.cjs`, which checks all point counts and coordinates, excludes internal IDs, and creates transparent 3x PNGs. No comparisons are rerun. Set `MIMICRY_NODE` to the Node executable and `NODE_PATH` to its Playwright dependencies if not available globally. IGHG2 uses unchanged unhighlighted Full, plain structure and table SVGs from its bundle. Original exports are not overwritten. The September 16 HuProt/VirScan HEPACAM example uses `tools/import_hepacam_assay_example.py` and its separately dated archive and display directory. It retains native JHU/CDI identities, saved scores and all point coordinates; exact-scope CSV downloads are unchanged copies. The Word review remains a separate frozen output and should be refreshed only after the site text and layout are approved.
 
+## Reader-facing language
+
+Use **Pan-Viral Atlas** for titles and navigation, and **pan-viral atlas** in running text. Keep shared page names aligned across the standalone viewer and hosted navigation: MimicryMap, Pan-Viral Atlas, How It Works, How to Use, and Data & Licenses. Use **HumSaVar** consistently for the UniProt variant source.
+
+Describe available data, methods, source versions and user actions. Keep capture batches, regeneration history, release checklists and package-maintenance instructions in technical provenance or contributor notes. Error messages should explain the unavailable result and a useful next action. Preserve statistical definitions, source attribution and format identifiers.
+
 ## Link behavior
 
 Links that navigate away from the current page open in a new tab with `target="_blank"` and `rel="noopener noreferrer"`. Keep same-page section links and downloads in their existing flow. `frontend/page-links.js` applies this rule to static links and to dynamically rendered links when activated, without observing the animated page DOM.

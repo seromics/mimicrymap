@@ -73,7 +73,7 @@ results, instance isolation, optional assets and all supported exports.
 `npm run package:viewer` bundles the static viewer and examples into a transferable
 ZIP under `dist/`. Extract it and serve the extracted folder over HTTP; it is the
 same viewer, without the large reference collections. The hosted site's catalogue
-search and saved Pan-Viral Atlas pages additionally need their reference assets
+search and saved pan-viral atlas pages additionally need their reference assets
 and host services; they are not included in this lightweight viewer package.
 
 [Interface Guide](USAGE.md) · [Detailed CPU Comparison](../README.md#run-a-detailed-comparison-cpu) · [Build Libraries](BUILD.md)

@@ -11,7 +11,7 @@ Public wording is draft. Locations and placeholder expressions are internal note
 - `docs/public/navigation.html` — 5 entries
 - `frontend/analysis-entry.js` — 105 entries
 - `frontend/atlas-figures.js` — 123 entries
-- `frontend/index.html` — 221 entries
+- `frontend/index.html` — 220 entries
 - `frontend/method-figure.js` — 4 entries
 - `frontend/mimicryone-runtime.js` — 76 entries
 - `frontend/modification-symbols.js` — 10 entries
@@ -192,7 +192,7 @@ Clear narrowing filters and restore every available group, including unclassifie
 **Used in:** `frontend/analysis-entry.js` · Display textContent
 
 ```text
-Compare one antigen target with a served library or your own parent FASTA. The analysis runs in this browser.
+Compare one antigen target with a reference library or your own parent FASTA. The analysis runs in this browser.
 ```
 
 
@@ -602,7 +602,7 @@ Supply the mimicry parent FASTA to compare against.
 **Used in:** `frontend/analysis-entry.js` · User message
 
 ```text
-The shared protein identity resolver is unavailable.
+Protein identity information is unavailable.
 ```
 
 
@@ -629,7 +629,7 @@ This canonical protein has no valid immutable parent identity.
 **Used in:** `frontend/analysis-entry.js` · User message
 
 ```text
-This canonical protein lacks a frozen mapped-tile count.
+The mapped assay-tile count is unavailable for this canonical protein.
 ```
 
 
@@ -1665,7 +1665,7 @@ UniProt extracellular, transmembrane, and intracellular annotations.
 **Used in:** `frontend/index.html` · Display metadata field
 
 ```text
-UniProt HumSAVAR missense variants, colored by clinical significance: (likely) pathogenic, uncertain significance, or (likely) benign.
+UniProt HumSaVar missense variants, colored by clinical significance: (likely) pathogenic, uncertain significance, or (likely) benign.
 ```
 
 
@@ -1878,7 +1878,7 @@ Color theme
 **Used in:** `frontend/index.html` · Player/controls visible text
 
 ```text
-Compare one antigen target with a served library or your own parent FASTA. The analysis runs in this browser.
+Compare one antigen target with a reference library or your own parent FASTA. The analysis runs in this browser.
 ```
 
 
@@ -2157,7 +2157,7 @@ Human
 **Used in:** `frontend/index.html` · Player data-tooltip
 
 ```text
-UniProt HumSAVAR missense variants: (likely) pathogenic, uncertain significance, or (likely) benign.
+UniProt HumSaVar missense variants: (likely) pathogenic, uncertain significance, or (likely) benign.
 ```
 
 
@@ -2175,7 +2175,7 @@ Intracellular
 **Used in:** `frontend/index.html` · Player aria-label
 
 ```text
-Legacy Mimicry Parent collection
+Mimicry Parent Collection
 ```
 
 
@@ -3415,7 +3415,7 @@ Imported results require schema {{RESULT_SCHEMA}}.
 **Used in:** `frontend/mimicryone-runtime.js` · User message
 
 ```text
-MimicryMap shared protein identity resolver is unavailable.
+MimicryMap protein identity information is unavailable.
 ```
 
 
@@ -3928,7 +3928,7 @@ Unable to allocate PNG canvas
 **Used in:** `frontend/release-provenance.js` · User message
 
 ```text
-Exposure counts do not match the running release
+Exposure record counts could not be verified
 ```
 
 
@@ -3937,7 +3937,7 @@ Exposure counts do not match the running release
 **Used in:** `frontend/release-provenance.js` · Display textContent
 
 ```text
-{{message}}. No source version is asserted for this session.
+{{message}}. Source versions are unavailable; refresh to try again.
 ```
 
 - `{{message}}` ← `error.message` (live renderer value; not authored content)
@@ -3947,7 +3947,7 @@ Exposure counts do not match the running release
 **Used in:** `frontend/release-provenance.js` · User message
 
 ```text
-Source counts do not match the running release
+Source record counts could not be verified
 ```
 
 
@@ -3956,7 +3956,7 @@ Source counts do not match the running release
 **Used in:** `frontend/release-provenance.js` · User message
 
 ```text
-Source information does not match the running release
+Source information could not be verified for the available library
 ```
 
 
@@ -3974,7 +3974,7 @@ Source information unavailable
 **Used in:** `frontend/release-provenance.js` · User message
 
 ```text
-Source membership counts do not match the running release
+Source memberships could not be verified
 ```
 
 
@@ -4704,7 +4704,7 @@ Updating target summary…
 **Used in:** `frontend/source-licenses.js` · Display textContent
 
 ```text
-Reviewed Human sequences: {{uniprot_release}} · {{uniprot_release_date}}.
+Reviewed human sequences: {{uniprot_release}} · {{uniprot_release_date}}.
 ```
 
 - `{{uniprot_release}}` ← `provenance.human.uniprot_release` (live renderer value; not authored content)
@@ -4733,7 +4733,7 @@ One target per browser run. If the pasted text or uploaded file contains multipl
 **Used in:** `frontend/index.html` · Local pipeline download links
 
 ```text
-<span>Multiple targets or larger runs:</span> <a href="/reproduce/mimicrymap-pipeline.zip" download data-tooltip="Local pipeline with HEPACAM and EBNA1 staged in two editable FASTA files. Run the example, or replace the inputs and settings.">Pipeline ZIP</a> <span aria-hidden="true">·</span> <a href="https://github.com/seromics/mimicrymap" target="_blank" rel="noopener">GitHub</a>
+<span>Multiple targets or larger runs:</span> <a href="/reproduce/mimicrymap-pipeline.zip" download data-tooltip="Local pipeline with HEPACAM and EBNA1 in two editable FASTA files. Run the example, or replace the inputs and settings.">Pipeline ZIP</a> <span aria-hidden="true">·</span> <a href="https://github.com/seromics/mimicrymap" target="_blank" rel="noopener">GitHub</a>
 ```
 
 
@@ -5159,7 +5159,7 @@ Residue Coverage
 **Used in:** `frontend/mimicryone-runtime.js` · User message
 
 ```text
-The prepared inputs for this selection are unavailable or incompatible. Please refresh and try again; if this continues, the site needs its input packages updated.
+The sequence inputs for this selection are unavailable or incompatible. Refresh and try again, or choose another record.
 ```
 
 
@@ -5618,15 +5618,6 @@ Mimicry Parent library
 
 ```text
 Tables show up to 10 rows. Use All matches CSV and Overall Mimicry Parents CSV for the complete tables. Core identity uses nine positions; context identity uses a fixed span of 27 positions.
-```
-
-
-## player.startup-loading
-
-**Used in:** `frontend/index.html` · Initial presentation loading status
-
-```text
-Loading...
 ```
 
 
@@ -6295,7 +6286,7 @@ Each dot represents one {{proteome}} protein. {{definition}} Bars show the range
 **Used in:** `frontend/atlas-figures.js` · Scientific figure legend
 
 ```text
-Each row is a {{proteome}} protein; each threshold column reports how many eligible human targets it matches at least once. A human target counts once if it has any qualifying match to that viral parent. Rows rank by reach at ≥{{floor}}/9; shorter proteins break ties. Ranking is not adjusted for protein length.
+Each row represents one protein from {{proteome}}; each threshold column reports how many eligible human targets it matches at least once. A human target counts once if it has any qualifying match to that viral parent. Rows rank by reach at ≥{{floor}}/9; shorter proteins break ties. Ranking is not adjusted for protein length.
 ```
 
 **Edit in:** `docs/public/figure-legends.json`
@@ -6308,7 +6299,7 @@ Each row is a {{proteome}} protein; each threshold column reports how many eligi
 **Used in:** `frontend/atlas-figures.js` · Scientific figure legend
 
 ```text
-Each row pairs a human target with the {{proteome}} protein covering the greatest fraction of that target at the retained ≥{{baked}}/9 selection threshold. That viral partner stays fixed across all threshold columns. Coverage uses the full human target length. Overlapping cores count once, including mismatching positions; context flanks are excluded. Rows are ranked by coverage at ≥{{rank}}/9, with longer human targets first when values tie. {{limit}}{{population}}
+Each row pairs a human target with the {{proteome}} protein covering the greatest fraction of that target at the ≥{{baked}}/9 threshold used to select the pair. That viral partner stays fixed across all threshold columns. Coverage uses the full human target length. Overlapping cores count once, including mismatching positions; context flanks are excluded. Rows are ranked by coverage at ≥{{rank}}/9, with longer human targets first when values tie. {{limit}}{{population}}
 ```
 
 **Edit in:** `docs/public/figure-legends.json`
@@ -6337,7 +6328,7 @@ Sequence map ({{view}}{{mode}})
 **Used in:** `frontend/result-extent.js` · Adaptive scientific figure legend
 
 ```text
-Variant markers show UniProt HumSAVAR missense classifications: (likely) pathogenic, uncertain significance, or (likely) benign.
+Variant markers show UniProt HumSaVar missense classifications: (likely) pathogenic, uncertain significance, or (likely) benign.
 ```
 
 **Edit in:** `docs/public/figure-legends.json`
@@ -6515,7 +6506,7 @@ Select Records and Comparison Scope
 ### panel0.caption
 
 ```text
-<p>To start, select a sequence you care about or one recognized by an experimentally identified antibody. This sequence is the <strong>antigen target</strong>. Next, you select a pool of sequences to look for molecular mimicry from; these are its potential <strong>mimicry parents</strong>. A minimum identity threshold setting defines how broad the search is.</p><p>In our example, scientists have discovered a monoclonal antibody which bound the human protein HEPACAM (GlialCAM; Q14CZ8). They suspected this antibody might have origins in a natural immune response to a virus with sequence similarity to it. HEPACAM is thus the <strong>antigen target</strong> and 'possible culprit virus proteomes' are the <strong>mimicry parents</strong>. They wish for this search to be very broad and have selected an identity threshold of 5/9.</p>
+<p>To start, select a sequence you care about or one recognized by an experimentally identified antibody. This sequence is the <strong>antigen target</strong>. Next, you select a pool of sequences to look for molecular mimicry from; these are its potential <strong>mimicry parents</strong>. A minimum identity threshold setting defines how broad the search is.</p><p>Here, HEPACAM (GlialCAM; Q14CZ8) is the antigen target. All proteins from a set of 120 curated viral proteomes supply the mimicry parents. We search at a minimum identity of ≥5/9 and follow the HEPACAM-EBNA1 example through scoring and pairwise coverage.</p>
 ```
 
 ### choice.target
@@ -6575,7 +6566,7 @@ Inspect and Summarize Results
 ### panel1.caption
 
 ```text
-<p>MimicryMap produces individual sequence matches and summaries that compile those matches for reuse. The full data viewer locates qualifying nine-residue core pairs in the target and parent sequences. At a selected site, matches can be ranked by core identity (e.g., 8/9 outranking 5/9), context identity (e.g., 20/27 outranking 6/27), or BLOSUM62 score. Individual alignments and their coordinates can be inspected and exported.</p><p>To summarize all matching events between two records, MimicryMap calculates target and parent coverage. This combines qualifying nine-residue cores into independent residue unions on each sequence. Overlapping residues count once; the entire qualifying core contributes, including mismatched positions, while context flanks are excluded. These same coverage values appear in the viewer and exported summaries:</p><div class="method-equation"><div><strong>Target Coverage</strong> = 100 × <span class="method-fraction"><span>covered target residues</span><span>target length</span></span></div><div><strong>Parent Coverage</strong> = 100 × <span class="method-fraction"><span>covered parent residues</span><span>parent length</span></span></div></div><p>For the case of HEPACAM and EBNA1, several additional matching sites at 5/9 identity increase the total target and parent coverage to 13.2% and 10.1%, respectively. All matching 9-mers and coverage scores are shown in the accompanying figure. Each is another qualifying molecular mimicry event, alongside <span class="method-inline-mask" aria-label="XSPPRXPXX"><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-match" aria-hidden="true">S</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-match" aria-hidden="true">R</span><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-mismatch" aria-hidden="true">X</span></span>.</p><p>Across the rest of Epstein-Barr virus, there are numerous other matches to HEPACAM at 5/9 identity. Not only do many proteins mimic HEPACAM more often than EBNA1 at 5/9, at the specific HEPACAM 376–384 9-mer core alone there are 27 pairs of 5/9 identity between it and the EBV proteome. There are even more matches occurring across the full viral proteome search space, including two strong matches at 7/9 identity occurring in non-EBV proteins.</p><table class="method-scope-summary"><caption>Saved window pairs at HEPACAM 376–384</caption><thead><tr><th scope="col">Parent Scope</th><th scope="col">Identity ≥</th><th scope="col">Pairs</th></tr></thead><tbody><tr><th scope="row">Curated EBV B95-8 proteome</th><td>5/9</td><td>27</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>5/9</td><td>293</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>7/9</td><td>2</td></tr></tbody></table><p id="proteomeReactivity">These numerous matches illustrate why experimental evidence is essential for identifying biologically relevant mimicry. For broader comparisons, the same coverage calculations scale from individual record pairs to entire libraries. The <a href="sources.html" data-site-nav>Downloads page</a> provides premade summary CSVs for mappings within and between canonical human and exposure proteomes, curated viral proteomes and assay libraries. These portable files retain identifiers, sequences, coverage values and matched residue ranges at 7/9, 8/9 and 9/9. These summaries offer a quick way to explore broader patterns of sequence mimicry, but their 7/9 minimum excludes the illustrated 5/9 HEPACAM–EBNA1 match. Focused searches at lower identity thresholds therefore remain valuable for investigating individual targets.</p><p>These downloadable mapping summaries define antigen sets for <strong>Reactivity Enrichment</strong> in <a href="https://seromap.com/?tab=downloads" data-seromap-entry>SeroMap</a>, which tests whether a sample’s recorded hits are overrepresented among antigens matching a chosen reference proteome. The <a href="use-results.html#useEnrichmentTitle" data-site-nav>worked example</a> demonstrates individual-sample and cohort reactivity enrichment for viral peptides, and explains how the same approach applies to human autoantibody targets, using the sample’s overall assay hit rate as the expected-by-chance baseline. Additionally, the <a href="pan-viral.html" data-site-nav>Pan-Viral Atlas</a> explores the human–viral comparison from these downloads in detail, with figures extending down to 5/9.</p>
+<p>MimicryMap produces individual sequence matches and summaries that compile those matches for reuse. The full data viewer locates qualifying nine-residue core pairs in the target and parent sequences. At a selected site, matches can be ranked by core identity (e.g., 8/9 outranking 5/9), context identity (e.g., 20/27 outranking 6/27), or BLOSUM62 score. Individual alignments and their coordinates can be inspected and exported.</p><p>To summarize all matching events between two records, MimicryMap calculates target and parent coverage. This combines qualifying nine-residue cores into independent residue unions on each sequence. Overlapping residues count once; the entire qualifying core contributes, including mismatched positions, while context flanks are excluded. These same coverage values appear in the viewer and exported summaries:</p><div class="method-equation"><div><strong>Target Coverage</strong> = 100 × <span class="method-fraction"><span>covered target residues</span><span>target length</span></span></div><div><strong>Parent Coverage</strong> = 100 × <span class="method-fraction"><span>covered parent residues</span><span>parent length</span></span></div></div><p>For HEPACAM versus EBNA1 alone, 21 qualifying window pairs at ≥5/9 merge into 9 + 16 + 30 = 55 covered target residues and 14 + 17 + 25 + 9 = 65 covered parent residues. Target coverage is 100 × 55/416 = 13.2%; parent coverage is 100 × 65/641 = 10.1%. These summarize all observed coordinate matches.</p><p>At HEPACAM residues 376-384, the EBV library yields 27 qualifying window pairs across 14 protein records at ≥5/9. Across all 120 viral proteomes, this becomes 293 pairs across 214 records, including two non-EBV pairs at ≥7/9.</p><table class="method-scope-summary"><caption>Saved window pairs at HEPACAM 376–384</caption><thead><tr><th scope="col">Parent Scope</th><th scope="col">Identity ≥</th><th scope="col">Pairs</th></tr></thead><tbody><tr><th scope="row">Curated EBV B95-8 proteome</th><td>5/9</td><td>27</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>5/9</td><td>293</td></tr><tr><th scope="row">Curated Viral Proteomes (120)</th><td>7/9</td><td>2</td></tr></tbody></table><p id="proteomeReactivity">These numerous matches illustrate why experimental evidence is essential for identifying biologically relevant mimicry. Across a library, reach counts distinct eligible target records with at least one qualifying match; pooled target coverage unions covered residues across the selected parents. Downloadable pair summaries retain matches at 7/9–9/9 with ≥10% coverage of either sequence. The <a href="sources.html" data-site-nav>Downloads page</a> provides premade summary CSVs for mappings within and between canonical human and exposure proteomes, curated viral proteomes and assay libraries. These portable files retain identifiers, sequences, coverage values and matched residue ranges at 7/9, 8/9 and 9/9. These summaries offer a quick way to explore broader patterns of sequence mimicry, but their 7/9 minimum excludes the illustrated 5/9 HEPACAM–EBNA1 match. Focused searches at lower identity thresholds therefore remain valuable for investigating individual targets.</p><p>These downloadable mapping summaries define antigen sets for <strong>Reactivity Enrichment</strong> in <a href="https://seromap.com/?tab=downloads" data-seromap-entry>SeroMap</a>, which tests whether a sample’s recorded hits are overrepresented among antigens matching a chosen reference proteome. The <a href="use-results.html#useEnrichmentTitle" data-site-nav>worked example</a> demonstrates individual-sample and cohort reactivity enrichment for viral peptides, and explains how the same approach applies to human autoantibody targets, using the sample’s overall assay hit rate as the expected-by-chance baseline. The <a href="pan-viral.html" data-site-nav>pan-viral atlas</a> uses a separate, unfiltered comparison at 5/9–9/9. Its reduced archive records the maximum identity per human window and viral protein, preserving human-side coverage and reach but not viral coordinates to reduce total size of the archive.</p>
 ```
 
 ### input.scale
@@ -6617,7 +6608,7 @@ Extract Window Pairs
 ### panel2.caption
 
 ```text
-<p>The algorithm begins by deconstructing both the antigen target and mimicry parent sequences into all-possible overlapping 9-mer windows. Each 9-mer must be complete, so the number of total windows per sequence record is its length minus 8 residues. A protein of 9 amino acids thus has one window, a protein of 10 amino acids two, and so on. In our example, HEPACAM is 416 amino acids long and thus has 408 unique 9-mer core windows. Shown is one piece of this process occurring from positions 367 to 393.</p><div class="method-equation"><div><strong>Windows per record</strong> = max(0, record length − 8)</div><div><strong>HEPACAM:</strong> 416 − 8 = 408 windows</div></div><p>An identical process is done across the entire mimicry parent library. Across the 120 included viral proteomes, there are 2,222 proteins and polyproteins, with 961,063 possible mimicry windows.</p><p>Each target window is paired with every parent window, giving the total search space for this experiment:</p><div class="method-equation"><div><strong>Possible Window Pairs</strong> = 408 × 961,063</div><div>= 392,113,704 ≈ 3.92 × 10<sup>8</sup> possible pairs</div></div>
+<p>Each sequence contributes all overlapping nine-residue window cores. This begins with the first amino acid and ends with final complete core of nine: max(0, sequence length − 8). HEPACAM contains 416 residues and therefore 408 positional window cores; the figure shows extraction across residues 367–393. Repeated sequences retain their distinct positions.</p><div class="method-equation"><div><strong>Windows per record</strong> = max(0, record length − 8)</div><div><strong>HEPACAM:</strong> 416 − 8 = 408 windows</div></div><p>An identical process is done across the entire mimicry parent library. Across the 120 included viral proteomes, there are 2,222 proteins and polyproteins, with 961,063 possible mimicry windows.</p><p>The possible search space contains every target-parent window pairing. MimicryMap uses indexes to identify candidates, then verifies their identity.</p><div class="method-equation"><div><strong>Possible Window Pairs</strong> = 408 × 961,063</div><div>= 392,113,704 ≈ 3.92 × 10<sup>8</sup> possible pairs</div></div>
 ```
 
 ### windows.range
@@ -6677,7 +6668,7 @@ Map Context
 ### panel3.caption
 
 ```text
-<p>Each qualifying core pair is located in the original records and extended by up to nine residues on either side. The aligned context contains up to 27 residues and allows for observation and ranking of higher-quality matches; any additional matches here are counted towards the total context identity. The aligned contexts are scored using BLOSUM62, which assigns a similarity score to each aligned amino-acid pair.</p><p>Our example of HEPACAM and EBNA1 is not unusual. Matches of this quality occur within most target parent pairings. The extended context adds one additional match for a total context identity of 6/27 and produces a poor BLOSUM62 score of 12 across the aligned 27mers.</p>
+<p>Each qualifying core pair is extended by up to nine available residues on either side, giving an aligned context of up to 27 residues. Context total residue identity and a summed BLOSUM62 score are available to rank qualifying core pairs.</p><p>For the selected HEPACAM-EBNA1 5/9 core pair, the flanks add only one identical position, giving 6/27 context identity and a BLOSUM62 score of 12. If the full 27 residue context is not available due to being near the start or end of the full protein sequence, missing positions contribute neither identity nor BLOSUM62 score.</p>
 ```
 
 ### panel4.title
@@ -6695,7 +6686,7 @@ Apply Core Threshold
 ### panel4.caption
 
 ```text
-<p>Within each of the window pairs the target positions are aligned with the parent positions and checked for identical amino acids. At a minimum identity of 5/9, any five or more positions must match and up to four may differ. All-possible 9-mer pairings between the antigen target and mimicry parents are compared; this is often many millions of comparisons.</p><p>The illustrated patterns show this process. Five positions require exact matches; each wildcard (*) leaves a position unrestricted. Pairs with motifs like this pass and are called as mimicry events at the 5/9 threshold. At this threshold individual target sites often have multiple matches in the parent library. Non-matching pairs are discarded.</p><p>For the selected HEPACAM–EBNA1 pair, <span class="method-inline-mask" aria-label="XSPPRXPXX"><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-match" aria-hidden="true">S</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-match" aria-hidden="true">R</span><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-mismatch" aria-hidden="true">X</span></span> shows five identical positions and four differences. This pair qualifies at 5/9 but is just one of many possible ways mimicry may occur at this site.</p>
+<p>Candidate windows are aligned without gaps and checked for identical amino acids. At a minimum core identity of ≥5/9, five or more corresponding positions must match. Only the 20 canonical amino acids contribute identity; other symbols retain their coordinates but count as mismatches.</p><p>The illustrated masks show five required matches; each wildcard (*) leaves a position unrestricted, so additional matches also qualify. X marks an observed difference.</p><p>For the selected HEPACAM–EBNA1 pair, <span class="method-inline-mask" aria-label="XSPPRXPXX"><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-match" aria-hidden="true">S</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-match" aria-hidden="true">R</span><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-match" aria-hidden="true">P</span><span class="method-aa-mismatch" aria-hidden="true">X</span><span class="method-aa-mismatch" aria-hidden="true">X</span></span> shows five identical positions and four differences. This pair qualifies at 5/9 but is just one of many possible ways mimicry may occur at this site.</p>
 ```
 
 ### library.title

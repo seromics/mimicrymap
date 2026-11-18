@@ -99,7 +99,7 @@
       "key": "atlas-figures.sources-scientific-legend",
       "file": "frontend/atlas-figures.js",
       "use": "Scientific figure legend",
-      "text": "Each row is a {{proteome}} protein; each threshold column reports how many eligible human targets it matches at least once. A human target counts once if it has any qualifying match to that viral parent. Rows rank by reach at ≥{{floor}}/9; shorter proteins break ties. Ranking is not adjusted for protein length.",
+      "text": "Each row represents one protein from {{proteome}}; each threshold column reports how many eligible human targets it matches at least once. A human target counts once if it has any qualifying match to that viral parent. Rows rank by reach at ≥{{floor}}/9; shorter proteins break ties. Ranking is not adjusted for protein length.",
       "placeholders": {
         "proteome": {
           "expression": "PROTEOME"
@@ -113,7 +113,7 @@
       "key": "atlas-figures.targets-scientific-legend",
       "file": "frontend/atlas-figures.js",
       "use": "Scientific figure legend",
-      "text": "Each row pairs a human target with the {{proteome}} protein covering the greatest fraction of that target at the retained ≥{{baked}}/9 selection threshold. That viral partner stays fixed across all threshold columns. Coverage uses the full human target length. Overlapping cores count once, including mismatching positions; context flanks are excluded. Rows are ranked by coverage at ≥{{rank}}/9, with longer human targets first when values tie. {{limit}}{{population}}",
+      "text": "Each row pairs a human target with the {{proteome}} protein covering the greatest fraction of that target at the ≥{{baked}}/9 threshold used to select the pair. That viral partner stays fixed across all threshold columns. Coverage uses the full human target length. Overlapping cores count once, including mismatching positions; context flanks are excluded. Rows are ranked by coverage at ≥{{rank}}/9, with longer human targets first when values tie. {{limit}}{{population}}",
       "placeholders": {
         "proteome": {
           "expression": "PROTEOME"
@@ -150,7 +150,7 @@
       "key": "result-extent.variants-method",
       "file": "frontend/result-extent.js",
       "use": "Adaptive scientific figure legend",
-      "text": "Variant markers show UniProt HumSAVAR missense classifications: (likely) pathogenic, uncertain significance, or (likely) benign."
+      "text": "Variant markers show UniProt HumSaVar missense classifications: (likely) pathogenic, uncertain significance, or (likely) benign."
     },
     {
       "key": "result-extent.modifications-method",

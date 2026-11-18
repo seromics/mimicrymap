@@ -1304,7 +1304,7 @@ window.MimicryLite = true;
     var nativeEntries = element("optgroup", { label: (/*@copy analysis-entry.assay-tile-libraries.4fc8c12*/`Assay Libraries`/*@endcopy*/) });
     state.libraries.forEach(function add(library, key) {
       if (isCanonicalAnalysisLibrary(key) || !isPublicAssayLibrary(key)) return;
-      var suffix = browserLocal || (library.live_index && library.live_index.available) ? "" : " · live index pending";
+      var suffix = browserLocal || (library.live_index && library.live_index.available) ? "" : " · search unavailable";
       nativeEntries.appendChild(element("option", { value: "library:" + key }, libraryLabel(key) + suffix));
     });
     if (nativeEntries.children.length) select.appendChild(nativeEntries);
@@ -3385,7 +3385,7 @@ window.MimicryLite = true;
           });
         }
         var nested = element("div", { class: "entry-filter-nested" });
-        nested.appendChild(element("strong", {}, "HumSaVar clinical"));
+        nested.appendChild(element("strong", {}, "HumSaVar Clinical Significance"));
         var clinicalLabels = { "LB/B": "Benign", "LP/P": "Pathogenic", "US": "Uncertain" };
         clinicalOptions.forEach(function addClinical(item) {
           var label = element("label", {});

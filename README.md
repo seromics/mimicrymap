@@ -39,7 +39,7 @@ study is required. [Run the Web Viewer](docs/VIEWER.md) covers the optional
 structure example, Human Canonical + 120 Viral Proteomes preset, static hosting,
 embedding and transferable viewer ZIP.
 
-The hosted site adds catalogue search, the saved Pan-Viral Atlas, illustrated
+The hosted site adds catalogue search, the saved pan-viral atlas, illustrated
 methods and data downloads. Curated browsing uses separately supplied reference
 assets; these are not required for a standalone FASTA comparison.
 The [interface guide](docs/USAGE.md) connects each route to its outputs.
@@ -226,7 +226,7 @@ MimicryMap compares overlapping nine-residue windows, then maps the qualifying m
 
 These numerous matches illustrate why experimental evidence is essential for identifying biologically relevant mimicry. Across a library, reach counts distinct eligible target records with at least one qualifying match; pooled target coverage unions covered residues across the selected parents. Downloadable pair summaries retain matches at 7/9–9/9 with ≥10% coverage of either sequence. The [summary download guide](docs/SUMMARY-DOWNLOADS.md) provides premade summary CSVs for mappings within and between canonical human and exposure proteomes, curated viral proteomes and assay libraries. These portable files retain identifiers, sequences, coverage values and matched residue ranges at 7/9, 8/9 and 9/9.
 
-The summaries offer a quick way to explore broader patterns of sequence mimicry, but their 7/9 minimum excludes the illustrated 5/9 HEPACAM–EBNA1 match. Focused searches at lower identity thresholds therefore remain valuable for investigating individual targets alongside experimental evidence. The Pan-Viral Atlas uses a separate, unfiltered comparison at 5/9–9/9. Its reduced archive records the maximum identity per human window and viral protein, preserving human-side coverage and reach but not viral coordinates to reduce total size of the archive.
+The summaries offer a quick way to explore broader patterns of sequence mimicry, but their 7/9 minimum excludes the illustrated 5/9 HEPACAM–EBNA1 match. Focused searches at lower identity thresholds therefore remain valuable for investigating individual targets alongside experimental evidence. The pan-viral atlas uses a separate, unfiltered comparison at 5/9–9/9. Its reduced archive records the maximum identity per human window and viral protein, preserving human-side coverage and reach but not viral coordinates to reduce total size of the archive.
 
 <!-- calculation-walkthrough:end -->
 
@@ -324,7 +324,7 @@ Download human-to-virus results for all 20,431 human UniProtKB/Swiss-Prot record
 
 - **Read the prepared summary:** this CSV contains 7/9, 8/9 and 9/9 results. At 7/9, IL10 has 12 matching parents; only BCRF1 reaches the summary’s 10% coverage floor on either protein.
 
-- **Explore 5/9 for your own target:** preparing and distributing proteome-wide summaries at 5/9 is substantially larger and more computationally demanding, so the general-use downloads start at 7/9. The separate Pan-Viral Atlas retains 5/9–9/9. For your own target, use the browser's Custom Analysis or [run the local pipeline](#run-a-detailed-comparison-cpu).
+- **Explore 5/9 for your own target:** preparing and distributing proteome-wide summaries at 5/9 is substantially larger and more computationally demanding, so the general-use downloads start at 7/9. The separate pan-viral atlas retains 5/9–9/9. For your own target, use the browser's Custom Analysis or [run the local pipeline](#run-a-detailed-comparison-cpu).
 
 ### 4 · Find Uniqueness Within Proteomes
 
@@ -360,7 +360,7 @@ Cite the software as **Tyler W. Hulett. MimicryMap. Version 0.1.0-rc.1.**
 [Citation metadata](CITATION.cff) supports GitHub's citation download.
 
 Original MimicryMap software is [MIT licensed](LICENSE). The sequence comparisons,
-Pan-Viral Atlas and structure annotations use **CC BY 4.0**, with original source
+pan-viral atlas and structure annotations use **CC BY 4.0**, with original source
 attribution and terms retained; see the [dataset inventory](data/atlas-manifest.json)
 and [source notices](NOTICE.md). Dataset downloads will be available through
 Zenodo when the record is published. The preprint link will be added when available.

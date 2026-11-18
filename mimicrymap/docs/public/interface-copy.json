@@ -1451,7 +1451,7 @@
       "key": "index.html.uniprot-humsavar-missense-variant-classifications.1b7b311",
       "file": "frontend/index.html",
       "use": "Display metadata field",
-      "text": "UniProt HumSAVAR missense variants, colored by clinical significance: (likely) pathogenic, uncertain significance, or (likely) benign.",
+      "text": "UniProt HumSaVar missense variants, colored by clinical significance: (likely) pathogenic, uncertain significance, or (likely) benign.",
       "placeholders": {}
     },
     {
@@ -1876,7 +1876,7 @@
       "key": "player.humsavar-clinical-missense-classifications-shown.8a76b8d",
       "file": "frontend/index.html",
       "use": "Player data-tooltip",
-      "text": "UniProt HumSAVAR missense variants: (likely) pathogenic, uncertain significance, or (likely) benign.",
+      "text": "UniProt HumSaVar missense variants: (likely) pathogenic, uncertain significance, or (likely) benign.",
       "placeholders": {},
       "kind": "attribute"
     },
@@ -1892,7 +1892,7 @@
       "key": "player.legacy-mimicry-parent-collection.721c2a4",
       "file": "frontend/index.html",
       "use": "Player aria-label",
-      "text": "Legacy Mimicry Parent collection",
+      "text": "Mimicry Parent Collection",
       "placeholders": {},
       "kind": "attribute"
     },
@@ -3397,14 +3397,14 @@
       "key": "release-provenance.exposure-counts-do-not-match.5feed13",
       "file": "frontend/release-provenance.js",
       "use": "User message",
-      "text": "Exposure counts do not match the running release",
+      "text": "Exposure record counts could not be verified",
       "placeholders": {}
     },
     {
       "key": "release-provenance.no-source-version-is-asserted.b651bcf",
       "file": "frontend/release-provenance.js",
       "use": "Display textContent",
-      "text": "{{message}}. No source version is asserted for this session.",
+      "text": "{{message}}. Source versions are unavailable; refresh to try again.",
       "placeholders": {
         "message": {
           "expression": "error.message"
@@ -3415,14 +3415,14 @@
       "key": "release-provenance.source-counts-do-not-match.7ea6685",
       "file": "frontend/release-provenance.js",
       "use": "User message",
-      "text": "Source counts do not match the running release",
+      "text": "Source record counts could not be verified",
       "placeholders": {}
     },
     {
       "key": "release-provenance.source-information-does-not-match.1146e90",
       "file": "frontend/release-provenance.js",
       "use": "User message",
-      "text": "Source information does not match the running release",
+      "text": "Source information could not be verified for the available library",
       "placeholders": {}
     },
     {
@@ -3436,7 +3436,7 @@
       "key": "release-provenance.source-membership-counts-do-not.f60946d",
       "file": "frontend/release-provenance.js",
       "use": "User message",
-      "text": "Source membership counts do not match the running release",
+      "text": "Source memberships could not be verified",
       "placeholders": {}
     },
     {
@@ -4081,7 +4081,7 @@
       "key": "source-licenses.reviewed-human-sequences-other-sequence.51edf1e",
       "file": "frontend/source-licenses.js",
       "use": "Display textContent",
-      "text": "Reviewed Human sequences: {{uniprot_release}} · {{uniprot_release_date}}.",
+      "text": "Reviewed human sequences: {{uniprot_release}} · {{uniprot_release_date}}.",
       "placeholders": {
         "uniprot_release": {
           "expression": "provenance.human.uniprot_release"
@@ -4110,7 +4110,7 @@
       "key": "player.custom-local-downloads",
       "file": "frontend/index.html",
       "use": "Local pipeline download links",
-      "text": "<span>Multiple targets or larger runs:</span> <a href=\"/reproduce/mimicrymap-pipeline.zip\" download data-tooltip=\"Local pipeline with HEPACAM and EBNA1 staged in two editable FASTA files. Run the example, or replace the inputs and settings.\">Pipeline ZIP</a> <span aria-hidden=\"true\">·</span> <a href=\"https://github.com/seromics/mimicrymap\" target=\"_blank\" rel=\"noopener\">GitHub</a>",
+      "text": "<span>Multiple targets or larger runs:</span> <a href=\"/reproduce/mimicrymap-pipeline.zip\" download data-tooltip=\"Local pipeline with HEPACAM and EBNA1 in two editable FASTA files. Run the example, or replace the inputs and settings.\">Pipeline ZIP</a> <span aria-hidden=\"true\">·</span> <a href=\"https://github.com/seromics/mimicrymap\" target=\"_blank\" rel=\"noopener\">GitHub</a>",
       "placeholders": {},
       "kind": "html"
     },
@@ -4497,7 +4497,7 @@
       "key": "mimicryone-runtime.input-package-unavailable",
       "file": "frontend/mimicryone-runtime.js",
       "use": "User message",
-      "text": "The prepared inputs for this selection are unavailable or incompatible. Please refresh and try again; if this continues, the site needs its input packages updated.",
+      "text": "The sequence inputs for this selection are unavailable or incompatible. Refresh and try again, or choose another record.",
       "placeholders": {}
     },
     {
@@ -4878,13 +4878,6 @@
       "use": "Approved editorial correction",
       "placeholders": {},
       "text": "Tables show up to 10 rows. Use All matches CSV and Overall Mimicry Parents CSV for the complete tables. Core identity uses nine positions; context identity uses a fixed span of 27 positions."
-    },
-    {
-      "key": "player.startup-loading",
-      "file": "frontend/index.html",
-      "use": "Initial presentation loading status",
-      "text": "Loading...",
-      "placeholders": {}
     },
     {
       "key": "player.startup-retry",

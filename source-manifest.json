@@ -42,26 +42,26 @@
     {
       "path": "mimicrymap/docs/public/INTERFACE_TEXT.md",
       "source": "mimicrymap/docs/public/INTERFACE_TEXT.md",
-      "bytes": 164170,
-      "sha256": "243595a489347085849152ed7083fd8e2bb8b4080aa679e23e428c4cc91278fb"
+      "bytes": 162806,
+      "sha256": "c2ba061d5e5a552274538ca5ccbed79f54720d1d250da193b7cac48ad6fadf8f"
     },
     {
       "path": "mimicrymap/docs/public/README.md",
       "source": "mimicrymap/docs/public/README.md",
-      "bytes": 18991,
-      "sha256": "01579cb247496aa985d1388f7a7edba77a3d9fc5bc8681bfb2114b140c12df16"
+      "bytes": 19709,
+      "sha256": "d4418387e29780d22ac289d44b4ec256fafb96edd033206e8f22250a24f440aa"
     },
     {
       "path": "mimicrymap/docs/public/downloads.html",
       "source": "mimicrymap/docs/public/downloads.html",
-      "bytes": 1625,
-      "sha256": "c3d45ad07b141d2de1296476153e9213d62b002003dacfd7320bccb1bc9cf7a9"
+      "bytes": 1443,
+      "sha256": "5945ba191f7e3ce3608ea68de4895e3fd0d34f0c8786d94b7b06af852be0eb11"
     },
     {
       "path": "mimicrymap/docs/public/figure-legends.json",
       "source": "mimicrymap/docs/public/figure-legends.json",
-      "bytes": 15096,
-      "sha256": "ba1416bbf153247ff3e9bcf9ed448ba51c9c54e5c70fd845d05d6682fc70a2d6"
+      "bytes": 15116,
+      "sha256": "40326d29144fcf4a403f0381b0233ff2fba57e3615e067d651c786116ee90ec4"
     },
     {
       "path": "mimicrymap/docs/public/hepacam-assay-example-guide.md",
@@ -84,14 +84,14 @@
     {
       "path": "mimicrymap/docs/public/interface-copy.json",
       "source": "mimicrymap/docs/public/interface-copy.json",
-      "bytes": 178395,
-      "sha256": "a0851d4d31a331aa322943766dbbeee366e83fbf4687eff05590b558671bcbfe"
+      "bytes": 178139,
+      "sha256": "1bc605ad078e3d718a37a7c793423158098c4d1513b15d86aaa58e3c3408270d"
     },
     {
       "path": "mimicrymap/docs/public/method-copy.json",
       "source": "mimicrymap/docs/public/method-copy.json",
       "bytes": 9941,
-      "sha256": "bd59a6ac87bec1c20e02bdc1b675c13cb9ff2249b28c6b5febdc705619ad71e7"
+      "sha256": "3bb238186b69ddf326fffe3f5d8b2376a0470e9bd8acbeea35882ae456006001"
     },
     {
       "path": "mimicrymap/docs/public/methods.html",
@@ -121,13 +121,13 @@
       "path": "mimicrymap/docs/public/sources.html",
       "source": "mimicrymap/docs/public/sources.html",
       "bytes": 2393,
-      "sha256": "41a16ad5c5b8cbcf350c8d8c71962b1e13a759dfcf67b6ad1493dd74dd4964d0"
+      "sha256": "6b3941313758115d5b64fe32377b0ce7e34b6040520a83848b21960f253901d8"
     },
     {
       "path": "mimicrymap/docs/public/summary-download-guide.md",
       "source": "mimicrymap/docs/public/summary-download-guide.md",
-      "bytes": 21753,
-      "sha256": "af50cf9c89c97d14b7f6786b3375e0851cc9f17e7de1954c56fdcc4ae7d43885"
+      "bytes": 21735,
+      "sha256": "4e57da52795a08f2a35eb6e66e4506323a2502ddca15509f3442974a50907679"
     },
     {
       "path": "mimicrymap/docs/public/target-summary.html",
@@ -174,8 +174,8 @@
     {
       "path": "mimicrymap/frontend/analysis-entry.js",
       "source": "mimicrymap/frontend/analysis-entry.js",
-      "bytes": 240240,
-      "sha256": "d02577b9197aa7a310a20fbbe06ff155cd75ef50bce3872d22c852b587ad5d42"
+      "bytes": 240253,
+      "sha256": "70a42461ef6c3879321fde84a962e825d69335b956ffdc507c1f8494ba0e8870"
     },
     {
       "path": "mimicrymap/frontend/analysis-player-adapter.js",
@@ -246,8 +246,8 @@
     {
       "path": "mimicrymap/frontend/atlas-figures.js",
       "source": "mimicrymap/frontend/atlas-figures.js",
-      "bytes": 192671,
-      "sha256": "f92a85c09b341d3a5185cecaa1737f9ba6b528ba668fb64fd2bad2e2b75376d5"
+      "bytes": 192691,
+      "sha256": "06394dd73442eba01bd946031e8f848667d46cb68e4e86c95ad5b1a8d94be67b"
     },
     {
       "path": "mimicrymap/frontend/atlas-pairs-manifest.json",
@@ -265,7 +265,7 @@
       "path": "mimicrymap/frontend/calculations.html",
       "source": "mimicrymap/frontend/calculations.html",
       "bytes": 36146,
-      "sha256": "4f5f248c869bf5931f9aa7ac1ac2941b6b9e36ba5e4437ad332aaba357527900"
+      "sha256": "a7c8089ea97e75da3487378289bd3ea92f533e00d7c021508932a1c30dc52ae8"
     },
     {
       "path": "mimicrymap/frontend/canonical_aliases.py",
@@ -588,8 +588,8 @@
     {
       "path": "mimicrymap/frontend/index.html",
       "source": "mimicrymap/frontend/index.html",
-      "bytes": 1104505,
-      "sha256": "f45d5b4eb7c6f9be6c86d555526ff3878fda357759d5cbef22ebb67c25082fc8"
+      "bytes": 1104491,
+      "sha256": "19bf847ff29ecd07692790a73cd5670c57eda2b4e676d1bef1d1e29a68bf10b3"
     },
     {
       "path": "mimicrymap/frontend/input-package-transport.js",
@@ -678,8 +678,8 @@
     {
       "path": "mimicrymap/frontend/mimicryone-runtime.js",
       "source": "mimicrymap/frontend/mimicryone-runtime.js",
-      "bytes": 186359,
-      "sha256": "24e8c4494dc6d9dcba3ae937b4e32a61d5d2297a03fc437726dce6b3d2ddda74"
+      "bytes": 186316,
+      "sha256": "721d5ab811b1c9bbce81234dfee611fa9ae43c72808625e37340db39855c1353"
     },
     {
       "path": "mimicrymap/frontend/mimicryone-theme.css",
@@ -834,8 +834,8 @@
     {
       "path": "mimicrymap/frontend/release-provenance.js",
       "source": "mimicrymap/frontend/release-provenance.js",
-      "bytes": 2984,
-      "sha256": "c3871f69a4a7e0e9837a4d90124540e0ed1cb6aed646f962e6c30653074e7177"
+      "bytes": 2979,
+      "sha256": "47e0fbca0c386caa69309590539b00aa707da59f87d608b50c703701652edcea"
     },
     {
       "path": "mimicrymap/frontend/release-provenance.json",
@@ -900,8 +900,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 22213,
-      "sha256": "e1782a90df08aa7fadf50a1df986da590bf445d8723e0a3aa31da1c18fc82934"
+      "bytes": 21735,
+      "sha256": "4e57da52795a08f2a35eb6e66e4506323a2502ddca15509f3442974a50907679"
     },
     {
       "path": "mimicrymap/frontend/reproduce/docs/TABLES.md",
@@ -1183,7 +1183,7 @@
       "path": "mimicrymap/frontend/result-extent.js",
       "source": "mimicrymap/frontend/result-extent.js",
       "bytes": 32988,
-      "sha256": "412f003b2b6fb56b7af1d05034f5dbe88a8f420656975fd5322341f7b2d0b19f"
+      "sha256": "6c19bbce9f49c9a56911fbc4beccd2b795e42965dcbbb340b806dff9c4cb5d28"
     },
     {
       "path": "mimicrymap/frontend/runtime_components.py",
@@ -1267,13 +1267,13 @@
       "path": "mimicrymap/frontend/source-licenses.js",
       "source": "mimicrymap/frontend/source-licenses.js",
       "bytes": 5292,
-      "sha256": "d5a9f9e535dafad73e22a6a58f65694953ff142f0d039bbaeb4354c76c22e1c2"
+      "sha256": "9f2a32b0ee924ecaefb88f3a964a6b4456391e4867d5dbc82aca9a773b23c4a6"
     },
     {
       "path": "mimicrymap/frontend/sources.html",
       "source": "mimicrymap/frontend/sources.html",
-      "bytes": 36467,
-      "sha256": "177e9cb33ded661cc208a1fc545144e419c7d404f3e1b9410477c43add643874"
+      "bytes": 35841,
+      "sha256": "85f189c121139e3cf841190047ace7dd5217aecafe99cd2964063e7cb4bdc05a"
     },
     {
       "path": "mimicrymap/frontend/startup-shell.css",
@@ -1314,14 +1314,14 @@
     {
       "path": "mimicrymap/frontend/summary_downloads.py",
       "source": "mimicrymap/frontend/summary_downloads.py",
-      "bytes": 17407,
-      "sha256": "51752b6b3f1cfe8afa4c089d94789b8c6c1b6e8c3726379d6f65dcb825ab22c9"
+      "bytes": 17690,
+      "sha256": "16cc1724a4cb1466220ae85a6dbd773272059f7a2d9e4249b732c0d9ba462b3b"
     },
     {
       "path": "mimicrymap/frontend/use-results.html",
       "source": "mimicrymap/frontend/use-results.html",
-      "bytes": 1489779,
-      "sha256": "18e950eae729b5aff2bf6d1a6a4439c31fb190d694ec1319eb295cabe4fd33a3"
+      "bytes": 1489771,
+      "sha256": "91595c462b75f4ccdc20d6d7846a80085fc3b8ee06a6784d44d8627beab1dee8"
     },
     {
       "path": "mimicrymap/frontend/viewer-api.js",
@@ -1794,8 +1794,8 @@
     {
       "path": "docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 22213,
-      "sha256": "e1782a90df08aa7fadf50a1df986da590bf445d8723e0a3aa31da1c18fc82934"
+      "bytes": 21735,
+      "sha256": "4e57da52795a08f2a35eb6e66e4506323a2502ddca15509f3442974a50907679"
     },
     {
       "path": "docs/HOW-IT-WORKS.md",
