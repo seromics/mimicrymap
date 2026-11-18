@@ -59,7 +59,7 @@ Each target has a folder under `outputs/targets/` containing:
 Each run also produces two separate downloads:
 
 - `summaries.zip`: one summary CSV per direction (one for self-comparisons), original FASTAs and a short README.
-- `mapping-database.zip`: the SQLite mapping database, original FASTAs for installing its libraries, and installation settings. Extract it and choose its folder in SeroMap with **Import Mapping Database**.
+- `mapping-database.zip`: the SQLite mapping database, original FASTAs and package settings. Extract it to inspect or reuse its saved mappings with a compatible SQLite reader.
 
 The database stores record identities, aliases, organism metadata, matching pairs, independent ranges and statistical memberships. CSV exports contain the saved pair results. Installation prepares local query indexes without sequence matching. The prepared database also remains available in `indexes/`.
 
@@ -86,7 +86,7 @@ To reproduce a released library summary, use its exact target and parent FASTAs 
 <tr><td><strong>Summary CSV</strong> in the player</td><td>One target at the selected identity threshold and comparison scope, with available target annotations</td></tr>
 <tr><td><strong>Current Comparison</strong></td><td>This runnable package with the selected target, complete comparison population, settings, and available identity, mapping and annotation metadata</td></tr>
 <tr><td><strong>Plain pipeline ZIP</strong></td><td>The same code and guides with editable example inputs</td></tr>
-<tr><td><strong>Mimicry coverage summaries</strong> on Data &amp; Licenses</td><td>Paired CSV + FASTA ZIPs and separate SeroMap SQLite ZIPs</td></tr>
+<tr><td><strong>Mimicry coverage summaries</strong> on Data &amp; Licenses</td><td>Paired CSV + FASTA ZIPs and separate SQLite mapping ZIPs</td></tr>
 <tr><td><strong>Selected virus / All viruses</strong> on the atlas</td><td>Both human-to-virus and virus-to-human directions for the selected reference proteome or the pooled 120-proteome atlas</td></tr>
 </tbody>
 </table>

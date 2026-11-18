@@ -2,7 +2,7 @@
 
 ![Five-step method overview](calculation/method-overview-wide.svg)
 
-Choose target and parent sequence libraries, compare their overlapping nine-residue windows, retain cores meeting the identity threshold, and inspect their original positions and context. Coverage merges qualifying cores independently on each sequence. The same evidence supports readable alignments, coverage and range tables, and sequence-defined sets for Reactivity Enrichment.
+Choose target and parent sequence libraries, compare their overlapping nine-residue windows, retain cores meeting the identity threshold, and inspect their original positions and context. Coverage merges qualifying cores independently on each sequence. The same evidence supports readable alignments, coverage and range tables, and sequence-defined sets that could support downstream antibody-reactivity analyses.
 
 ## Worked Example
 

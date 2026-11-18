@@ -56,35 +56,11 @@ reaching ≥10% coverage on either sequence. Figure CSVs and summary ZIPs theref
 have different populations and reporting rules; their legends and guides state
 which applies. See [Atlas files and provenance](ATLAS.md).
 
-## Install or build libraries in Desktop Workspace
+## Build Reusable Libraries
 
-Use **Workspace → MimicryMap Libraries → Import Guide** for the installed workflow.
-The workspace separates sequence libraries from saved comparisons:
+The [CPU/GPU builder](BUILD.md) compares complete target and parent FASTAs at 5/9–9/9. Its default mapping database retains record pairs, coverage and ranges. `--retain-positions` additionally saves complete matching positions; lower floors can produce substantially larger outputs. On-demand exploration of one target does not require a full lookup database.
 
-| Task | Route and result |
-| --- | --- |
-| Add your own sequences | **Add a Sequence Library** imports a FASTA with stable record IDs and retains its headers; it does not run all library comparisons |
-| Supply or correct annotations | **Manage → Record Annotations** exports a template and imports labels by record identity |
-| Reuse existing results | **Install Reference Data** or **Import Mapping Database** installs the selected saved product |
-| Compare two libraries | **Run a Library Comparison** chooses target, parent, identity floor and retained output |
-| Map several assays to a reference | **Build a Reference Collection** groups comparisons against one parent library |
-| Change a completed analysis | **Clone & Change Settings** prepares another comparison while retaining the previous result |
-
-**SeroMap Index + CSVs** retains record pairs, coverage and ranges for reference
-membership and exports. **Full Lookup** additionally retains matching positions
-for saved detailed exploration. Both compare the sequences; the output choice
-changes what is retained. A lower floor such as 5/9 can produce substantially
-more matches and much larger full lookups than 7/9. The research CLI supports
-5/9–9/9 on CPU and NVIDIA GPU. SeroMap's bulk-build interface offers 7/9–9/9
-using the same engine. Saved lower-threshold results remain viewable.
-On-demand exploration of a target does
-not require building a full lookup first.
-
-The command-line [builder](BUILD.md) uses the same comparison engine without
-Electron or a study. Original measurements and calls enter only through a
-separate study import. For Reactivity Enrichment, assay record IDs and sequences
-must agree with the mapping library; sequence membership is defined before
-considering which records are antibody hits.
+Sequence-defined assay sets could support a separate antibody-reactivity analysis. Assay identifiers and sequences must agree with the mapping library, and memberships must be defined before examining hit calls.
 
 ## Choose a download
 
@@ -108,12 +84,12 @@ establish uniqueness outside that search. Refer to [Tables](TABLES.md) and the
 ## Worked examples
 
 The [illustrated walkthrough](../README.md#how-to-use-mimicry-results) follows the
-same four examples as the current How to Use page:
+sequence examples and potential downstream application:
 
 1. **Investigate Critical Epitopes:** inspect the HEPACAM–EBNA1 site alongside
    independent antibody evidence.
-2. **Calculate Reactivity Enrichment:** use sequence-defined assay sets to
-   summarize recorded antibody hits within samples and across a cohort.
+2. **Potential Use in Reactivity Enrichment:** sequence-defined assay sets could
+   support a separate analysis of recorded hits against each sample’s measured background.
 3. **Discover Mimicry Across Proteomes:** compare local matches with extensive
    IL10 homology using both coverage denominators.
 4. **Find Uniqueness Within Proteomes:** inspect IGHG2 regions unmatched within

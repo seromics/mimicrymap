@@ -13,5 +13,5 @@ retain their own terms. No CUDA binaries are bundled here.
 The atlas files, source sequences/annotations and software are distinct release
 artifacts. The consolidated Zenodo dataset is CC BY 4.0, with original source
 terms retained. The supplied IL10 sequences and AlphaFold model are attributed
-in the viewer example provenance file. SeroMap application licensing remains
-separate. Do not infer a blanket data license from the MIT software license.
+in the viewer example provenance file. Surrounding host applications are
+licensed separately. Do not infer a blanket data license from the MIT software license.

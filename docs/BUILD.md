@@ -1,11 +1,10 @@
 # Build sequence libraries
 
-The standalone builder calls the same engine as SeroMap Workspace. Inputs are
-amino-acid FASTAs, optionally accompanied by record annotation CSVs. There is no
+The standalone builder compares amino-acid FASTAs, optionally accompanied by
+record annotation CSVs. There is no
 dependency on a study, Electron, old release catalogs or a fixed comparison list.
 
-For the interactive route and Desktop Workspace button names, see
-[Using MimicryMap](USAGE.md). The instructions below are for the standalone CLI.
+For the interactive viewer, see [Using MimicryMap](USAGE.md). The instructions below are for the standalone CLI.
 
 ## CPU
 
@@ -17,8 +16,8 @@ node build.cjs --targets inputs/antigen-target.fasta --parents inputs/mimicry-pa
 
 The default is a unified mapping index at ≥7/9. Every target record is compared with
 the parent library. `--floor 5`, `6`, `7`, `8` or `9` controls the lowest retained
-identity; all higher thresholds are included. CPU uses the existing indexed
-Workspace matcher. `node run.cjs` remains the detailed browser-worker CPU route
+identity; all higher thresholds are included. CPU uses the indexed
+nine-residue matcher. `node run.cjs` remains the detailed browser-worker CPU route
 for Current Comparison exports, including their saved coordinate mappings.
 
 The default mapping database already serves coverage and memberships in both
@@ -33,8 +32,7 @@ the default candidate index. It uses the same CPU/GPU matching engine.
 
 ## Optional NVIDIA acceleration
 
-Use a separate Python 3.11+ environment. The requirement matches the desktop's
-CuPy/CUDA 12 wheel family. An NVIDIA GPU and compatible installed driver are
+Use a separate Python 3.11+ environment with the pinned CuPy/CUDA 12 requirement. An NVIDIA GPU and compatible installed driver are
 required. This command downloads software dependencies; comparison inputs stay local.
 
 Windows PowerShell:
@@ -60,10 +58,6 @@ CPU and GPU support **5/9–9/9**, with 7/9 as the default. For example:
 ```sh
 node build.cjs --targets targets.fasta --parents parents.fasta --floor 5 --engine gpu --python /path/to/CUDA/python --out outputs/research-5of9
 ```
-
-SeroMap's bulk-build interface offers **7/9–9/9**. It uses this same matching
-engine; the research CLI exposes the additional floors. Saved lower-threshold
-results and single-target exploration remain available in SeroMap.
 
 macOS uses CPU. The probe compiles and executes
 a CUDA calculation; device enumeration alone is not treated as success. A GPU
@@ -95,7 +89,7 @@ my_record_1,IL10,P22301,Interleukin-10,Homo sapiens,9606,Human cytokines
 ```
 
 Pass `--target-annotations targets.csv` and/or `--parent-annotations parents.csv`.
-The same parser and field rules as Workspace apply. Unknown or duplicate IDs
+Unknown or duplicate IDs
 reject the input. Blank cells retain parsed defaults. Original headers, sequences
 and assay IDs remain intact. `reference_set` supplies an explicit candidate-set
 label; otherwise the parent organism or library name supplies the grouping.
@@ -136,7 +130,7 @@ These unions do not change listed pairs or statistical memberships.
 The builder also creates two separate downloads:
 
 - `summaries.zip`: one CSV per direction, the original input FASTAs and a short README. A self-comparison has one CSV and one FASTA.
-- `mapping-database.zip`: the SeroMap SQLite database, original input FASTAs and small installation configuration files. Extract it for installation on a new computer.
+- `mapping-database.zip`: the SQLite mapping database, original input FASTAs and package configuration. Extract it to inspect or reuse the saved mappings.
 
 Record identities, aliases, organism metadata, pairs, ranges and statistical
 cutoff values live in SQLite. Neither product requires JSON record/key sidecars.
@@ -145,9 +139,8 @@ The `unified-mapping/1` database stores each record pair and identity threshold
 once. Protein pages use exact coverage and independent ranges; statistical
 memberships use the package's declared cutoff policy. The builder prepares
 SQLite lookup indexes locally. Distribution ZIPs can omit those lookup indexes
-and declare local preparation in `catalog.json`; SeroMap verifies the transport
-file, prepares it in staging and records the installed checksum. No matching is
-repeated during installation.
+and declare local preparation in `catalog.json`. Preparing query indexes does
+not repeat sequence matching or change the saved pairs.
 
 `--retain-positions` adds every qualifying matching position and complete saved
 viewer results. It can substantially increase disk space. Candidate indexes do
@@ -161,13 +154,9 @@ completed comparison. Choose sufficient free space for inputs, search indexes
 and output, not just the final CSV. No whole-atlas time estimate is implied by a
 small example's timing.
 
-## Use in SeroMap
+## Reuse a Mapping Database
 
-Extract `mapping-database.zip`, then choose **Workspace → MimicryMap Libraries → Import Mapping Database…** and select the
-extracted directory. The completed working directory is also accepted. Assign its target FASTA to the matching assay
-platform(s). Candidate collections combine independently built target assays
-against one parent library. A custom reference alone does not establish how an
-assay's antigen IDs map to its sequences.
+Extract `mapping-database.zip` and open its SQLite file with a compatible SQLite reader. The saved identities, coverage and residue ranges support queries in either direction. Keep its FASTAs and configuration with the database. When joining mappings to assay data, use the exact assay record IDs and sequences; a reference sequence alone does not establish that join.
 
 ## Reproduce a completed result
 

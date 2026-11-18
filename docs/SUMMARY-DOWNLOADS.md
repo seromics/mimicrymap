@@ -49,11 +49,11 @@ Per-pair intervals can draw footprints on either sequence. They do not associate
 
 Downloads are grouped by library pair. The **General-Use Summaries (.csv)** ZIP contains one comprehensive CSV for each available direction plus the complete input FASTAs and a short README; self-comparisons have one CSV and one FASTA. Each directional row uses its own target sequence and denominator. Each pair-coverage column is immediately followed by its pair-region column. Available target annotations follow the base columns. The FASTAs preserve the complete sequence populations, including records without qualifying pairs, with their original source identifiers and annotated headers. The README explains their relationship to the CSVs.
 
-The **SeroMap Index (.sqlite)** ZIP contains the unified mapping database and its installation configuration. Each record pair and identity threshold is stored once, with exact coverage and independent matched residue unions on both sequences. Protein pages query it in either direction; reverse queries swap coverage denominators and ranges. Statistical analyses apply identity and coverage thresholds to the same pair records, group assay antigens by reference protein or proteome, and count each antigen once per set. Antibody measurements, Fisher tests and BH results are calculated separately.
+The **Mapping Database (.sqlite)** ZIP contains the unified mapping database and its installation configuration. Each record pair and identity threshold is stored once, with exact coverage and independent matched residue unions on both sequences. Protein pages query it in either direction; reverse queries swap coverage denominators and ranges. Statistical analyses apply identity and coverage thresholds to the same pair records, group assay antigens by reference protein or proteome, and count each antigen once per set. Antibody measurements, Fisher tests and BH results are calculated separately.
 
-SeroMap verifies downloads and prepares local lookup indexes during installation. This preparation does not repeat sequence matching or change memberships. Both directional record identities, aliases, canonical groups, scope metadata and any saved window-pair counts are retained.
+Local lookup indexes can be prepared from the saved database without repeating sequence matching or changing memberships. Both directional record identities, aliases, canonical groups, scope metadata and any saved window-pair counts are retained.
 
-The SQLite database contains the complete record populations, identities, aliases, organism metadata, matching pairs, exact residue ranges and statistical cutoff values. Download CSVs for readable tables; download the SeroMap index for protein-page browsing and Reactivity Enrichment analysis. Both products contain results from the same completed comparison.
+The SQLite database contains the complete record populations, identities, aliases, organism metadata, matching pairs, exact residue ranges and statistical cutoff values. Download CSVs for readable tables; download the mapping database to query saved pair ranges and sequence-defined memberships. Both products contain results from the same completed comparison.
 
 The database declares supported identity thresholds and omits pairs below 10% on both sequences. New builds use exact residue coverage for memberships. Retained products that historically used one-decimal percentages preserve that statistical cutoff policy explicitly. Protein-page ribbons always use exact ranges.
 
@@ -65,8 +65,7 @@ The catalogue identifies each product’s actual columns, thresholds and files. 
 
 The HuProt, HuScan and VirScan/Exposome → Canonical Human Proteins products use the full
 20,431-record 2026_01 parent library and retain 7/9, 8/9 and 9/9 coverage.
-Their installable membership databases support protein-level analysis in Reactivity Enrichment
-in SeroMap; the CSVs retain the target-library summary format. CPU and the optional
+Their membership databases could support downstream protein-level analyses; the CSVs retain the target-library summary format. CPU and the optional
 NVIDIA accelerator feed the same coverage calculations and file writers.
 
 An assay antigen contributes once to each qualifying protein set. Own-protein
@@ -86,7 +85,7 @@ Each CSV preserves complete fields in their original columns, including long seq
 
 MimicryMap first defines antigen sets using sequence-identity and coverage thresholds, before sample hit calls are considered. Core identity counts identical residues within nine-residue cores; coverage is the fraction of the chosen full sequence spanned by qualifying cores. The summaries describe these matches, and the complete membership indexes supply the antigen lists at the selected thresholds. An antigen counts once within a set, even if it matches several proteins from that proteome; it can belong to several sets. Join these memberships to assay measurements and hit calls by the original assay identifiers, retaining measured non-hits and missingness.
 
-SeroMap's **Reactivity Enrichment** analysis and the [Seromics Tools reference workflow](https://github.com/seromics/seromics-tools/blob/main/docs/REFERENCES.md) then compare each sample's recorded set hits with the number expected from its overall hit rate and measured set size, separately per platform. Fold enrichment is observed / expected hits. A one-sided Fisher test assesses excess set hits; Sample BH corrects across eligible reference sets within that sample and platform. BH or fold-enrichment gates define reactive set calls without changing antigen membership. Separate group tests and platform-specific Group BH support cohort comparisons.
+A downstream reactivity-enrichment analysis could compare each sample's recorded set hits with the number expected from its overall hit rate and measured set size, separately per platform. Fold enrichment is observed / expected hits. A one-sided Fisher test could assess excess set hits, with Benjamini–Hochberg correction across eligible reference sets within that sample and platform. Cohort comparisons require separate tests appropriate to the study design and a declared correction family.
 
 The CSVs supply sequence evidence; antibody measurements and enrichment statistics are separate. The separate SQLite database supplies memberships at its supported identity and coverage cutoffs without repeating sequence matching. CSVs are standalone summaries, not database installation inputs. A cutoff below the saved coverage floor requires a new comparison. Reproducing study statistics additionally requires the measured antigens, hit calls and selected statistical settings. Shared sequences remain shared evidence: enrichment does not establish a unique infection source or shared antibody binding.
 
@@ -120,10 +119,7 @@ Current CSVs use UTF-8 with a byte-order mark (BOM), and column headers use ASCI
 
 Each library pair occupies one row within canonical comparisons, assay-to-virus, assay-to-human, assay-to-exposure or cross-assay comparisons. Coverage summaries and the unified mapping index have separate columns. A reversed reference-to-assay CSV changes the sequence reference and denominator, not the orientation of a study's statistical comparison.
 
-Scientific download ZIPs place files directly at the root. CSV ZIPs contain the directional tables, complete input FASTAs and README. SeroMap SQLite ZIPs include `catalog.json`: each file's `source` is its extracted filename, while `path` is its destination inside SeroMap's managed library. Extract the SQLite ZIP into its own folder, then choose that folder in Workspace → Reference Libraries → Install From Folder. Install the standard reference dependencies first; the installer reuses matching verified versions. Source paths and ZIP compression do not change scientific file contents. Compressed and extracted/installed sizes are shown separately. Full positional lookup packages are excluded from this catalogue.
+Scientific download ZIPs place files directly at the root. CSV ZIPs contain the directional tables, complete input FASTAs and README. SQLite ZIPs include `catalog.json`: each file's `source` identifies its extracted filename, while `path` supplies an optional managed-installation destination. Extract the SQLite ZIP into its own folder to query the saved mappings with a compatible reader. Source paths and ZIP compression do not change scientific file contents. Compressed and extracted/installed sizes are shown separately. Full positional lookup packages are excluded from this catalogue.
 
-SeroMap's protein pages offer Sequence matches and Co-reactivity within the same
-figure. The first selects exact assay sequence matches before looking at measured
-reactivity; the second selects by Spearman correlation. Their shared scatter
-shows the same paired observations. Neither sequence similarity nor correlation
-alone establishes that one antibody binds both antigens.
+Sequence matches and correlations between measured responses are distinct evidence.
+Neither alone establishes that one antibody binds both antigens.

@@ -4,7 +4,7 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const codeDir=__dirname,base=path.basename(codeDir)==='code'?path.dirname(codeDir):path.resolve(codeDir,'../../reproducibility');
 const args=process.argv.slice(2);
 if(args.includes('--help')){console.log('Run the FASTAs in inputs/ using settings.json:\n  python run.py\n  Rscript run.R\n  node run.cjs\n\nRun as supplied or replace the two FASTAs and edit settings.json. See README.md.');}
-else if(args[0]==='--from-summary'){throw Error('CSV summaries are standalone tables. Use the separate SeroMap SQLite package for mapping indexes.');}
+else if(args[0]==='--from-summary'){throw Error('CSV summaries are standalone tables. Use the separate SQLite mapping package for mapping indexes.');}
 else{
  const configPath=args[0]||path.join(base,'settings.json');
  const worker=fs.existsSync(path.join(codeDir,'custom-worker.js'))?path.join(codeDir,'custom-worker.js'):path.join(codeDir,'../custom-worker.js');

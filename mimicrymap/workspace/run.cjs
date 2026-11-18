@@ -4,7 +4,7 @@ const fs = require('node:fs'),
   { randomUUID } = require('node:crypto');
 const engine = require('./code/mimicrymap/workspace/engine.cjs');
 (async () => {
-  if(process.argv.includes('--from-summary'))throw Error('Use the separate SeroMap SQLite package. CSV summaries are standalone tables.');
+  if(process.argv.includes('--from-summary'))throw Error('Use the separate SQLite mapping package. CSV summaries are standalone tables.');
   const root = __dirname,
     settings = JSON.parse(fs.readFileSync(path.join(root, 'settings.json'))),
     out = path.join(root, 'reproduced-' + new Date().toISOString().replace(/[:.]/g, '-'));

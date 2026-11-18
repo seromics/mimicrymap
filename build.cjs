@@ -24,7 +24,7 @@ All target records are compared once and written directly to one mapping databas
 summaries.zip contains directional CSVs, original FASTAs and a README.
 mapping-database.zip contains the installable SQLite and its library inputs/settings.
 Output must be a new directory. Inputs are retained; completed output is never overwritten.
-Extract mapping-database.zip and import its folder through SeroMap Workspace → MimicryMap Libraries → Import Mapping Database.
+Extract mapping-database.zip to inspect or reuse its saved mappings with a compatible SQLite reader.
 `;
 const strings = ['targets','parents','out','floor','engine','python','target-annotations','parent-annotations','target-name','parent-name','target-library','parent-library'];
 const booleans = ['help','retain-positions','bidirectional','probe-gpu'];

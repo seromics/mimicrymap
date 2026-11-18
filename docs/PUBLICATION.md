@@ -1,8 +1,8 @@
 # Manuscript and Publication Staging
 
 MimicryMap is the research software and sequence-comparison dataset accompanying
-the methods paper. The broader SeroMap application, study installation packages
-and deployment license are separate. The paper draft is sequence/method focused;
+the methods paper. Study-analysis applications and their installation packages
+are outside this release. The paper draft is sequence/method focused;
 patient-enrichment examples remain on the site and are not required paper figures.
 
 ## Current Components
@@ -11,7 +11,7 @@ patient-enrichment examples remain on the site and are not required paper figure
 | --- | --- | --- |
 | CPU/GPU research code and scientific exporters | This repository | Current shared source; CPU and GPU support 5/9 through 9/9 |
 | Illustrated methods and worked examples | README, docs/calculation and examples | Included; historical example ZIPs are identified as saved outputs |
-| Selected paper exports | [figures/paper/current](../figures/paper/current/README.md) | EBV/EBNA1 localization captures and four 50-row pan-viral PNG/SVG rankings; original label sizes |
+| Selected paper exports | [figures/paper/current](../figures/paper/current/README.md) | EBV/EBNA1 localization captures and two 50-row human-target-ranked pan-viral figures; original label sizes; parent-ranked alternatives retained separately |
 | Earlier larger-label alternatives | figures/paper | Nine PNG/SVG pairs exported November 8; not the current manuscript selection |
 | Preprint | Forthcoming | Author-written text, final figure arrangement and citation pending |
 | Comparisons, atlas and structures | [Zenodo draft 24046306](https://zenodo.org/uploads/24046306) | Uploaded together; unpublished; CC BY 4.0 |
@@ -47,9 +47,10 @@ in Word. Figure 4 is arranged by subcellular location; its caption must not call
 that arrangement genomic position.
 
 The November 18 manuscript figure selection uses the original label sizes and
-subcellular localization for both pooled EBV and EBNA1. Supplementary Figure S4
-shows 50 pan-viral pairs per panel, ranked by target or parent coverage at ≥7/9
-and 9/9. Genomic-position Manhattan plots remain website/archive views. Preserve
+subcellular localization for both pooled EBV and EBNA1. Supplementary Figures S4
+and S5 each show 50 pan-viral pairs ranked by human target coverage at ≥7/9
+and 9/9, respectively. Parent-ranked lists and genomic-position Manhattan plots
+remain website/archive views. Preserve
 that selection; do not substitute the November 8 larger-label alternatives.
 
 The editable Figure 1 PowerPoint and the author-edited Word manuscript remain in
@@ -69,8 +70,7 @@ editable components. These outputs are not part of a source clone.
 The repository remains private. MIT is now explicitly granted for original
 MimicryMap software. No public software release or dataset publication is implied
 by this staging. CC BY 4.0 applies to the dataset record;
-original source terms and attribution remain applicable. SeroMap deployment and
-application licensing remain a separate release decision.
+original source terms and attribution remain applicable.
 
 ## Release Order and Shared Links
 
@@ -82,7 +82,7 @@ the release; they are not missing comparison or atlas data.
 
 Publish the approved dataset only on explicit authorization, then use its final
 DOI in the preprint's data availability text before public submission. The website,
-this repository and the later public SeroMap app must use that same DOI and the
+this repository and derivative packages must use that same DOI and the
 public file URLs represented in the release manifest. Do not ship draft API links.
 Add the actual preprint link when available rather than inventing a citation.
 

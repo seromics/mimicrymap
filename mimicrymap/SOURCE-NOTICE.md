@@ -14,7 +14,7 @@ bytes. The existing model attribution, provenance and distribution terms apply.
 
 Original MimicryMap software in this directory is licensed under the MIT license
 in LICENSE. This grant covers the shared MimicryMap viewer, exporters and engines;
-it does not relicense the surrounding SeroMap application. Third-party source,
+it does not relicense surrounding host applications. Third-party source,
 fonts, reference sequences, annotations and models retain their original terms.
 The font notices and native Sources page record attribution. Example model
 provenance is retained in demo-structures/manifest.json and embed/examples/PROVENANCE.md.

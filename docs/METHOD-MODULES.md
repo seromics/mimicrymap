@@ -1,49 +1,21 @@
-# Scientific methods and reusable figures
+# Sequence Mappings for Downstream Analysis
 
-MimicryMap's sequence comparison defines reusable reference sets. Applying
-those sets to measured antibody reactivity produces the Reactivity Enrichment
-figure: sequence comparison → reference sets → sample measurements → statistics
-and figures. That figure can be a capstone of the MimicryMap paper even though
-SeroMap currently supplies its application interface.
+MimicryMap produces sequence comparisons, coverage and reusable antigen sets. A separate analysis could combine those sets with antibody measurements to test whether a sample's hits concentrate among antigens matching a chosen protein or proteome. The sequence comparison itself does not calculate antibody reactivity or statistical significance.
 
-## Current implementations
+## Define Sets Before Testing Reactivity
 
-| Method | Inputs | Current implementation in `seromap_electron` |
-| --- | --- | --- |
-| Reactivity Enrichment | Assay identities and sequence memberships, measured/hit masks, sample metadata, observation scope and coverage settings | `atlas/viewer/src/components/MimicryReactivity.jsx`, `src/lib/mimicryCounts.js`, `src/lib/mimicryPresentation.js`, `src/lib/sequenceLegend.js`, `server/mimicryReactivity.js`, `server/workspaceMimicryReferences.js` (paths relative to `atlas/viewer/` after the first) |
-| Repertoire | Sample/antigen hit calls with measuredness, metadata and explicit linked-sample design | `atlas/viewer/src/components/RepertoireAtlas.jsx`, `atlas/viewer/shared/repertoireStatistics.js` |
-| Admixture | Hit calls, measuredness, linked-set/person/visit/member metadata and selected anchors | `atlas/viewer/shared/familyAdmixture.js`, `atlas/viewer/shared/admixtureAnchorRoutes.js` and the existing summary renderer |
+Choose the reference population, core-identity floor and coverage rule before inspecting sample hits. Join memberships to measurements using the original assay record IDs. Count each antigen once within a set, even when it matches several proteins from the same proteome. Memberships may overlap across sets. Distinct assay records must not be collapsed by gene name or a shared sequence label.
 
-The repertoire enrichment calculation uses each sample's measured background and total
-hits, not just a list of positive antigens. Fold enrichment is the fraction of
-sample hits in a set divided by the fraction of measured antigens belonging to
-that set. Sets may overlap. Statistical families, eligibility, paired observation
-rules and missingness must accompany the exported measurements. A rounded
-coverage-summary parent list alone is insufficient to reproduce these results.
+For each sample and assay, retain measured antigens with no hit and distinguish them from unmeasured antigens. Let N be the number measured, H the total recorded hits, M the measured members of a set, and h the hits in that set. Expected set hits are H × M / N; fold enrichment is h / (H × M / N). If the expected count is zero, that ratio is undefined.
 
-## Standalone toolkit draft
+## Optional Statistical Analysis
 
-The private [seromics-tools](https://github.com/seromics/seromics-tools) repository
-now provides a headless runner and modules for Reactivity Enrichment, repertoire
-and admixture, alongside the existing study-analysis methods. Its four cohort
-routes accept raw or supplied measurements and manifests, write current `.sero`
-files, and support matrix export/re-import. Individual HuProt GPR processing
-remains a separate route. No Electron interface or application server is needed.
+A one-sided Fisher test could compare hits and measured non-hits inside and outside the set. Its two rows are [h, M − h] and [H − h, N − M − H + h]. Benjamini–Hochberg correction could then be applied across a declared family of eligible reference sets within each sample and assay. A recorded hit and significant set enrichment are different outcomes.
 
-Complete candidate-index products from this CPU/GPU builder feed the toolkit's
-Reactivity Enrichment calculation through the same membership/alias/coverage reader
-used by Workspace. The toolkit's synthetic example demonstrates FASTA → complete
-comparison → measured reactivity → fresh statistics → the existing capstone SVG.
-See its [reference-input guide](https://github.com/seromics/seromics-tools/blob/main/docs/REFERENCES.md).
+Cohort, paired-sample and longitudinal comparisons require separate tests appropriate to their observation units and study design. Their correction families and eligibility rules must be stated independently of the per-sample tests. Display filtering must not redefine a tested family after correction.
 
-Fresh figure adapters and captured Code-bundle replay are documented separately.
-Not every application view has a standalone rendering adapter. Scientific source
-is currently an exact snapshot of SeroMap; the application has not yet switched
-to importing the toolkit as a dependency. That subsequent ownership change can
-happen module by module without duplicating numerical implementations. MimicryMap
-uses MIT; its software citation is supplied in [CITATION.cff](../CITATION.cff).
-Other tools retain their own license and citation terms.
+## Reuse the Saved Evidence
 
-MimicryMap remains responsible for sequence comparisons and atlas products.
-SeroMap remains the integrated study/import/analysis host. Independent scientific
-modules can be cited and used without duplicating either full application.
+Use exact record identities, coverage rules and measured populations when joining these outputs to another analysis. Rounded summary lists cannot supply pairs below the saved reporting floor; a lower cutoff requires a suitable comparison. See [Summary Downloads](SUMMARY-DOWNLOADS.md) and [Build Libraries](BUILD.md).
+
+This describes a potential use of MimicryMap outputs, not an included cohort-analysis workflow or a patient-data result. Sequence membership alone does not establish shared antibody binding or a unique exposure source.

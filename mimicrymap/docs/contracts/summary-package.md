@@ -5,12 +5,12 @@ Public downloads have two separate uses:
 - **General-Use Summaries (.csv):** one CSV per direction (one for a
   self-comparison), the original input FASTAs and a short README. FASTA headers
   and sequences are retained, including records without a qualifying match.
-- **SeroMap Index (.sqlite):** the unified mapping database and its installation
+- **Mapping Database (.sqlite):** the unified mapping database and its installation
   configuration. The database contains complete record identities, aliases,
   organism metadata, pairs, ranges and statistical cutoff values.
 
 CSV ZIPs do not contain record/key JSON sidecars or an installation catalog.
-SeroMap imports the completed mapping database. Fresh FASTA builds produce
+Compatible readers can query the completed mapping database. Fresh FASTA builds produce
 readable summaries and SQLite from the same comparison without repeating
 matching. Annotation updates change record metadata without rebuilding pairs.
 

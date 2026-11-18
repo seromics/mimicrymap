@@ -2,18 +2,20 @@
 
 Native exports selected on November 18, 2026, with the original label sizes.
 The two localization PNGs are the literal captures retained in the revised
-figure document; they were not redrawn. The four ranking figures were exported
+figure document; they were not redrawn. The ranking figures were exported
 from the Pan-Viral Atlas with 50 rows and the light, transparent export palette.
-Panel letters and captions remain editable elements in Word.
+The two human-target rankings are separate supplementary figures; the two
+parent-ranked alternatives remain available for website and archive use.
+Captions remain editable elements in Word.
 
 | Figure | View | PNG | SVG |
 | --- | --- | --- | --- |
 | 3 | Pooled EBV coverage by subcellular location, 5/9–9/9 | [PNG](Figure-3_EBV-subcellular-location.png) | — |
 | 4 | EBNA1 coverage by subcellular location, 5/9–9/9 | [PNG](Figure-4_EBNA1-subcellular-location.png) | — |
-| S4 A | ≥7/9, top 50 by human target coverage | [PNG](pan-viral-7of9-target-top50.png) | [SVG](pan-viral-7of9-target-top50.svg) |
-| S4 B | ≥7/9, top 50 by viral parent coverage | [PNG](pan-viral-7of9-parent-top50.png) | [SVG](pan-viral-7of9-parent-top50.svg) |
-| S4 C | 9/9, top 50 by human target coverage | [PNG](pan-viral-9of9-target-top50.png) | [SVG](pan-viral-9of9-target-top50.svg) |
-| S4 D | 9/9, top 50 by viral parent coverage | [PNG](pan-viral-9of9-parent-top50.png) | [SVG](pan-viral-9of9-parent-top50.svg) |
+| S4 | ≥7/9, top 50 by human target coverage | [PNG](pan-viral-7of9-target-top50.png) | [SVG](pan-viral-7of9-target-top50.svg) |
+| S5 | 9/9, top 50 by human target coverage | [PNG](pan-viral-9of9-target-top50.png) | [SVG](pan-viral-9of9-target-top50.svg) |
+| Website alternative | ≥7/9, top 50 by viral parent coverage | [PNG](pan-viral-7of9-parent-top50.png) | [SVG](pan-viral-7of9-parent-top50.svg) |
+| Website alternative | 9/9, top 50 by viral parent coverage | [PNG](pan-viral-9of9-parent-top50.png) | [SVG](pan-viral-9of9-parent-top50.svg) |
 
 Localization plots use the atlas population of 20,333 human records of at least
 50 residues. Pair rankings use all 20,431 canonical human records and 2,222 viral

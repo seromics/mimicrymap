@@ -12,8 +12,8 @@
     {
       "path": "mimicrymap/SOURCE-NOTICE.md",
       "source": "mimicrymap/SOURCE-NOTICE.md",
-      "bytes": 1299,
-      "sha256": "ddf5129a6f00a780a10749a511e44b65900a730c38b59398d6516a6c56760661"
+      "bytes": 1293,
+      "sha256": "8fa3e4f51843d4d517352488df01140fbe0cb2c9e339ac1f21ce1072c46f9513"
     },
     {
       "path": "mimicrymap/docs/contracts/export-fields.json",
@@ -30,8 +30,8 @@
     {
       "path": "mimicrymap/docs/contracts/summary-package.md",
       "source": "mimicrymap/docs/contracts/summary-package.md",
-      "bytes": 4038,
-      "sha256": "61aaed9b0cfa340de66e33ab41c908201126acfc0b593dbf581d65b886fbf40c"
+      "bytes": 4054,
+      "sha256": "42876b62b23c9bc61aa5b6117beb4a180ad2382e4d2fe6e9e18c2be458559baf"
     },
     {
       "path": "mimicrymap/docs/public/GLOSSARY.md",
@@ -126,8 +126,8 @@
     {
       "path": "mimicrymap/docs/public/summary-download-guide.md",
       "source": "mimicrymap/docs/public/summary-download-guide.md",
-      "bytes": 22330,
-      "sha256": "3ad92862a6e7cf89f8b3f8a63bebfaaaf899042dd0f251a1d47d0ceef4176bcd"
+      "bytes": 21753,
+      "sha256": "af50cf9c89c97d14b7f6786b3375e0851cc9f17e7de1954c56fdcc4ae7d43885"
     },
     {
       "path": "mimicrymap/docs/public/target-summary.html",
@@ -846,8 +846,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/README.md",
       "source": "mimicrymap/frontend/reproduce/README.md",
-      "bytes": 26621,
-      "sha256": "0d85cc0fc4fe8a1cfddbf6721de13c075d41813d2a3cd01626c00a840e665638"
+      "bytes": 26591,
+      "sha256": "7995b23b4f04bb0575fcb0f2333567c3ec8902201ea152aefac66985504f5fe1"
     },
     {
       "path": "mimicrymap/frontend/reproduce/SOURCE-README.md",
@@ -888,8 +888,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/docs/HOW-IT-WORKS.md",
       "source": "mimicrymap/frontend/reproduce/docs/HOW-IT-WORKS.md",
-      "bytes": 1277,
-      "sha256": "b79acb982812222e2af0a59035a4d233da32c73b28b2b6b0521697f9802102cc"
+      "bytes": 1310,
+      "sha256": "79684619fef0da2b76cf0bc042a649189630d8bc11ae5e77c7ce56342f01f017"
     },
     {
       "path": "mimicrymap/frontend/reproduce/docs/RUNNING.md",
@@ -900,8 +900,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 22790,
-      "sha256": "60b6fa07e11cb9a759f6c936b0ac5ffd0da687a38ca2545cd413708d2dbbb714"
+      "bytes": 22213,
+      "sha256": "e1782a90df08aa7fadf50a1df986da590bf445d8723e0a3aa31da1c18fc82934"
     },
     {
       "path": "mimicrymap/frontend/reproduce/docs/TABLES.md",
@@ -990,8 +990,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/mapping-bundles.cjs",
       "source": "mimicrymap/frontend/reproduce/mapping-bundles.cjs",
-      "bytes": 7519,
-      "sha256": "01e5bb6402e346659e8713fb1efa6e3dfbd72ac343ddbd608f829dd5dbade031"
+      "bytes": 7482,
+      "sha256": "9216e911101fe170c15ec44e444d3e21e221184bcc07bd193d806f774986c1c8"
     },
     {
       "path": "mimicrymap/frontend/reproduce/mapping-csv.cjs",
@@ -1033,7 +1033,7 @@
       "path": "mimicrymap/frontend/reproduce/pipeline-runner.cjs",
       "source": "mimicrymap/frontend/reproduce/pipeline-runner.cjs",
       "bytes": 1768,
-      "sha256": "9537e7e89ac9c16191ee4247c5291b73d3fed1586df959acfa27581debba1b5c"
+      "sha256": "1f3450fa854781db1ca4031622755b1ae5462596ad2eed7ee44438bee5c3b111"
     },
     {
       "path": "mimicrymap/frontend/reproduce/pipeline-selection.js",
@@ -1044,8 +1044,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/pipeline.cjs",
       "source": "mimicrymap/frontend/reproduce/pipeline.cjs",
-      "bytes": 19308,
-      "sha256": "6d4c6c9dce2ffa495a920807597f925660d2c0de5518e684733151e39ffb8671"
+      "bytes": 19309,
+      "sha256": "619cdeb773770610f0f2d76fd81167918b5dc77f1330e22a3e5b7d5f58a5ddcc"
     },
     {
       "path": "mimicrymap/frontend/reproduce/projected-events.js",
@@ -1609,7 +1609,7 @@
       "path": "mimicrymap/workspace/run.cjs",
       "source": "mimicrymap/workspace/run.cjs",
       "bytes": 2118,
-      "sha256": "101e54460d53e338cc9d258044eb968b4ab1dc218e1c02910035dfc2480fe1b2"
+      "sha256": "6b0227623ac8a6380eb3ea126fc34af0162a65d822de356962b628fca6d9f7da"
     },
     {
       "path": "mimicrymap/workspace/single-target.cjs",
@@ -1686,14 +1686,14 @@
     {
       "path": "code/pipeline.cjs",
       "source": "mimicrymap/frontend/reproduce/pipeline.cjs",
-      "bytes": 19308,
-      "sha256": "6d4c6c9dce2ffa495a920807597f925660d2c0de5518e684733151e39ffb8671"
+      "bytes": 19309,
+      "sha256": "619cdeb773770610f0f2d76fd81167918b5dc77f1330e22a3e5b7d5f58a5ddcc"
     },
     {
       "path": "code/pipeline-runner.cjs",
       "source": "mimicrymap/frontend/reproduce/pipeline-runner.cjs",
       "bytes": 1768,
-      "sha256": "9537e7e89ac9c16191ee4247c5291b73d3fed1586df959acfa27581debba1b5c"
+      "sha256": "1f3450fa854781db1ca4031622755b1ae5462596ad2eed7ee44438bee5c3b111"
     },
     {
       "path": "code/pipeline-selection.js",
@@ -1746,8 +1746,8 @@
     {
       "path": "code/mapping-bundles.cjs",
       "source": "mimicrymap/frontend/reproduce/mapping-bundles.cjs",
-      "bytes": 7519,
-      "sha256": "01e5bb6402e346659e8713fb1efa6e3dfbd72ac343ddbd608f829dd5dbade031"
+      "bytes": 7482,
+      "sha256": "9216e911101fe170c15ec44e444d3e21e221184bcc07bd193d806f774986c1c8"
     },
     {
       "path": "code/zip-files.cjs",
@@ -1794,14 +1794,14 @@
     {
       "path": "docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 22790,
-      "sha256": "60b6fa07e11cb9a759f6c936b0ac5ffd0da687a38ca2545cd413708d2dbbb714"
+      "bytes": 22213,
+      "sha256": "e1782a90df08aa7fadf50a1df986da590bf445d8723e0a3aa31da1c18fc82934"
     },
     {
       "path": "docs/HOW-IT-WORKS.md",
       "source": "mimicrymap/frontend/reproduce/docs/HOW-IT-WORKS.md",
-      "bytes": 1277,
-      "sha256": "b79acb982812222e2af0a59035a4d233da32c73b28b2b6b0521697f9802102cc"
+      "bytes": 1310,
+      "sha256": "79684619fef0da2b76cf0bc042a649189630d8bc11ae5e77c7ce56342f01f017"
     },
     {
       "path": "docs/calculation/method-overview-wide.svg",

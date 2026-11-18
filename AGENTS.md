@@ -13,6 +13,12 @@ Interface text explains data, actions and results. Comments and contributor
 instructions describe behavior and constraints, without development conversations
 or tool attribution. Preserve authored methods, examples, figures and source terms.
 
+Research-facing documentation describes MimicryMap independently of unreleased
+study-analysis applications. Describe reactivity enrichment as a potential
+downstream use, not an included patient-analysis workflow. Keep website examples
+separate from the research README. Preserve website URLs, source provenance and
+machine-readable format identifiers when removing application promotion.
+
 Keep FASTAs, private studies, databases, caches, CUDA environments and large
 archives outside Git. Use disposable test directories, remove generated QA
 output after use, and retain test source and small fixtures. Never test writes

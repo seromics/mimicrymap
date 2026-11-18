@@ -6,7 +6,7 @@ MimicryMap was created to comprehensively map linear molecular mimicry events be
 
 The method searches all complete overlapping nine-residue windows from a given protein sequence (**antigen target**) against a candidate molecular mimic sequence (**mimicry parent**), at a chosen threshold of exact matching residues (**minimum identity**). The viewer shows the matching cores, their surrounding sequence context, and the union of residue positions they cover on each sequence (**target coverage** and **parent coverage**).
 
-The method is library agnostic. Human proteins and 120 viral proteomes form the worked atlas; microbiome, food, allergen, assay and other custom sequences can be compared in the same way. Sequence-defined sets can also be combined with recorded antibody hits for **Reactivity Enrichment**. Sequence resemblance identifies candidates for investigation; it does not by itself demonstrate shared antibody binding. Matching uses linear sequences; available structure and residue annotations provide context without changing the matching rule.
+The method is library agnostic. Human proteins and 120 viral proteomes form the worked atlas; microbiome, food, allergen, assay and other custom sequences can be compared in the same way. Sequence-defined sets could also support downstream analyses of antibody reactivity. Sequence resemblance identifies candidates for investigation; it does not by itself demonstrate shared antibody binding. Matching uses linear sequences; available structure and residue annotations provide context without changing the matching rule.
 
 [![MimicryMap sequence viewer with an IL10 sequence map, structure, aligned core and coverage table](docs/images/viewer-wide.jpg)](docs/VIEWER.md)
 
@@ -40,15 +40,14 @@ structure example, Human Canonical + 120 Viral Proteomes preset, static hosting,
 embedding and transferable viewer ZIP.
 
 The hosted site adds catalogue search, the saved Pan-Viral Atlas, illustrated
-methods and data downloads. Desktop Workspace adds library installation,
-annotations and saved comparisons. Those routes use separately installed
-reference assets; they are not required for a standalone FASTA comparison.
+methods and data downloads. Curated browsing uses separately supplied reference
+assets; these are not required for a standalone FASTA comparison.
 The [interface guide](docs/USAGE.md) connects each route to its outputs.
 
 ## Build Reusable Libraries
 
-The library builder needs Node.js 24 or later and uses the same engine and writers
-as SeroMap Workspace, without Electron or an installed study:
+The library builder needs Node.js 24 or later. It compares supplied FASTAs
+and writes reusable mappings without an installed study:
 
 ```sh
 node build.cjs --targets inputs/antigen-target.fasta --parents inputs/mimicry-parents.fasta --out outputs/example-index
@@ -57,8 +56,7 @@ node build.cjs --targets inputs/antigen-target.fasta --parents inputs/mimicry-pa
 For NVIDIA acceleration, add `--engine gpu --python /path/to/CUDA/python`.
 CPU and GPU support 5/9–9/9; the default floor is 7/9. Add `--floor 5` or
 `--floor 6` for lower-threshold research builds, and `--retain-positions` when
-complete saved window-pair lookups are needed. SeroMap's bulk-build interface
-offers 7/9–9/9 using the same engine. See [Build Libraries](docs/BUILD.md) for
+complete saved window-pair lookups are needed. See [Build Libraries](docs/BUILD.md) for
 installation, outputs and reproduction.
 
 ## Run a detailed comparison (CPU)
@@ -124,7 +122,7 @@ Rerunning refreshes the managed output folder after completion. Choose another `
 <tr><td><strong>Current Comparison</strong></td><td>This runnable package with the selected target, complete comparison population, settings, and available identity, mapping and annotation metadata</td></tr>
 <tr><td><strong>Plain pipeline ZIP</strong></td><td>The same code and guides with editable example inputs</td></tr>
 <tr><td><strong>Mimicry coverage summaries</strong> on Data &amp; Licenses</td><td>Reference-population and assay-library comparisons, with Target FASTA and Comparison FASTA beside each CSV</td></tr>
-<tr><td><strong>SeroMap Index (.sqlite)</strong> on Data &amp; Licenses</td><td>Installable saved record mappings, coverage and ranges for reference membership and reuse</td></tr>
+<tr><td><strong>Mapping Database (.sqlite)</strong> on Data &amp; Licenses</td><td>Installable saved record mappings, coverage and ranges for reference membership and reuse</td></tr>
 <tr><td><strong>Selected virus / All viruses</strong> on the atlas</td><td>Both human-to-virus and virus-to-human directions for the selected reference proteome or the pooled 120-proteome atlas</td></tr>
 </tbody>
 </table>
@@ -235,7 +233,7 @@ The summaries offer a quick way to explore broader patterns of sequence mimicry,
 <!-- interpretation-walkthroughs:start -->
 ## How to Use Mimicry Results
 
-Investigate epitopes, calculate reactivity enrichment, compare coverage, and find unmatched regions with these worked examples.
+Investigate epitopes, compare coverage, and find unmatched regions with these worked examples, and consider a potential use in antibody-reactivity analysis.
 
 ### 1 · Investigate Critical Epitopes
 
@@ -253,7 +251,7 @@ Here, we compare the HEPACAM sequence from a HuProt protein microarray experimen
 
 Download summaries comparing HuProt array features with the 120 reference viral proteomes, in either direction.
 
-These summaries connect sequence matches to antibody measurements by assay identifier. They define reference sets for testing whether a sample's hits are enriched relative to its measured background; the [Reactivity Enrichment example](#2--calculate-reactivity-enrichment) below shows the calculation.
+These summaries connect sequence matches to antibody measurements by assay identifier. They define reference sets for testing whether a sample's hits are enriched relative to its measured background; the [potential enrichment application](#2--potential-use-in-reactivity-enrichment) below describes the calculation.
 
 [Library-wide summary download guide](docs/SUMMARY-DOWNLOADS.md)
 
@@ -279,33 +277,13 @@ The **EBNA1 P03211** alignment shown below has a 5/9 core and context BLOSUM62 s
 
 - **Keep weaker candidates:** a 7/9 cutoff removes this 5/9 match; excluding all Pro/Arg-rich regions would also discard it.
 
-### 2 · Calculate Reactivity Enrichment
+### 2 · Potential Use in Reactivity Enrichment
 
-MimicryMap applies sequence-identity and coverage thresholds to define antigen sets independently of a sample's reactions. **Reactivity Enrichment**, implemented in SeroMap, then tests whether recorded antibody hits concentrate in each set relative to the sample's overall assay hit rate. The same sequence mappings can be applied to different samples without changing their original measurements or hit calls.
+MimicryMap applies sequence-identity and coverage thresholds to define antigen sets independently of a sample's reactions. These sets could be joined to separately measured antibody hits by the original assay identifiers to ask whether reactivity concentrates among antigens resembling a protein or proteome.
 
-In this VirScan example, a sample has **954 recorded hits among 481,962 measured peptides**. Requiring ≥7/9 core identity and ≥60% coverage of the assay peptide assigns **1,798 measured peptides** to respiratory syncytial virus A (strain A2); **156** are hits.
+For a sample with H hits among N measured antigens, a set containing M measured antigens has an expected H × M / N hits under the overall assay hit rate. If h set members are hits, fold enrichment is h / (H × M / N). Measured non-hits remain in the denominator; unmeasured antigens do not. An antigen counts once per set, even if it matches several proteins within that set.
 
-| Calculation | Working | Result |
-| --- | --- | ---: |
-| Sample hit rate | 954 ÷ 481,962 | ≈0.20% |
-| Expected set hits | 1,798 × (954 ÷ 481,962) | ≈3.6 |
-| Observed set hit rate | 156 ÷ 1,798 | ≈8.7% |
-| Reactivity Enrichment | 156 ÷ (1,798 × 954 ÷ 481,962) | ≈43.8× |
-| Fisher p / Sample BH | One-sided Fisher; BH across 120 viral sets within this sample and assay | 1.35e-200 / 1.62e-198 |
-
-Repeating this calculation separately for each sample produces cohort summaries. **Sample BH** identifies reactive sets within a sample and assay. A one-sided exact sign test assesses consistency above 1× across eligible samples, excluding ties; **Group BH** adjusts eligible set–group tests separately within each assay, before display filtering.
-
-![VirScan Reactivity Enrichment across 35 samples](mimicrymap/frontend/examples/use-results/20261018/reactivity-enrichment-platforms.svg)
-
-> **VirScan → 120 canonical viral proteomes:** Enrichment across 35 samples for ten viral sets at ≥7/9 core identity and ≥60% assay-peptide coverage. Points represent samples; boxes show medians and interquartile ranges, with minimum–maximum whiskers. The dashed line marks 1×. Axes use log(1 + fold), labelled in folds. Reactive counts samples passing Sample BH <0.01 / eligible samples. Group BH uses 120 viral-set tests within VirScan.
-
-HuProt applies the same calculation to human array features matching the reference viral proteomes. Across this cohort, recorded autoantibody hits are enriched among human HuProt proteins containing EBV-matching sequence segments above the selected identity and coverage thresholds.
-
-![HuProt Reactivity Enrichment for the EBV-matching human protein set](mimicrymap/frontend/examples/use-results/20261018/reactivity-enrichment-huprot-ebv.svg)
-
-> **HuProt (IgG) → 120 canonical viral proteomes:** The EBV set contains 441 human array features matching at ≥7/9 core identity and ≥10% assay-sequence coverage. One of 35 samples passes Sample BH <0.01; cohort consistency gives sign p ≈2.5e-4 and Group BH ≈0.030, across 120 viral sets within this assay. Plot conventions match the VirScan figure.
-
-See the [summary download guide](docs/SUMMARY-DOWNLOADS.md) for record identities, coverage and pair-specific ranges. The sequence builder produces mappings; antibody measurements and enrichment statistics are a separate analysis.
+A downstream analysis could use a one-sided Fisher test for excess set hits and Benjamini–Hochberg correction across the eligible sets within each sample and assay. Cohort comparisons would require separate tests appropriate to the study design and a stated correction family. The sequence builder produces mappings, not antibody measurements or enrichment statistics. See [Downstream Analysis](docs/METHOD-MODULES.md) for the counting definitions and [Summary Downloads](docs/SUMMARY-DOWNLOADS.md) for identities and saved coverage limits.
 
 ### 3 · Discover Mimicry Across Proteomes
 

@@ -9,12 +9,12 @@ MimicryMap includes:
 
 - The current explorer and five-page interface: MimicryMap, Pan-Viral Atlas,
   How It Works, How to Use, and Data & Licenses.
-- A five-step illustrated calculation walkthrough and four worked examples:
-  HEPACAM–EBNA1, Reactivity Enrichment, IL10 and IGHG2.
+- A five-step illustrated calculation walkthrough, HEPACAM–EBNA1, IL10 and
+  IGHG2 examples, and a general description of potential reactivity-enrichment use.
 - Portable detailed CPU comparisons with captured inputs and settings.
 - Whole-library builds producing coverage CSVs, pair-specific residue ranges
   and reusable mapping databases; complete matching positions are optional.
-- CPU and optional NVIDIA/CUDA research builds at 5/9–9/9, defaulting to 7/9. SeroMap's bulk-build interface offers 7/9–9/9 through the same engine.
+- CPU and optional NVIDIA/CUDA research builds at 5/9–9/9, defaulting to 7/9.
 - Stable record identities, original FASTA headers and optional annotations.
 - Documentation separating the full 5/9–9/9 atlas from general-use 7/9–9/9
   summaries, mapping indexes and selected manuscript figures.

@@ -16,7 +16,7 @@ The dataset license is CC BY 4.0, retaining source attribution and applicable te
 | --- | --- |
 | Coverage summaries | Library-wide target rows and paired parent coverage, including the Pan-viral Atlas and other retained comparisons |
 | Record-match indexes | Bidirectional protein-page lookups at 7/9–9/9; qualifying record pairs and, in range-enabled packages, merged residue ranges on each sequence |
-| Candidate indexes | Assay-mapped membership databases consumed by SeroMap statistics |
+| Candidate indexes | Sequence-defined assay memberships for downstream analyses |
 | Reference FASTAs and record annotations | Exact sequences and identity/grouping metadata needed for new local builds |
 
 ## Pan-Viral Atlas and static figures
@@ -83,7 +83,7 @@ is retained in the applet's Sources documents and `source-licenses.js`.
 
 The standalone builder writes portable `comparison.sqlite` packages. Historical
 candidate databases have their own assay-specific schemas and
-packaging. Both are consumed by SeroMap through the appropriate adapters;
+packaging. Readers must support the schema declared by each product;
 byte identity between these formats is not claimed. A publication reproduction
 must compare the same sequence populations, record units, identity thresholds,
 coverage rules and annotation versions before equating the scientific outputs.
