@@ -1,12 +1,8 @@
 # Current Paper Figure Exports
 
-Native exports selected on November 18, 2026, with the original label sizes.
-The two localization PNGs are the literal captures retained in the revised
-figure document; they were not redrawn. The ranking figures were exported
-from the Pan-Viral Atlas with 50 rows and the light, transparent export palette.
-The two human-target rankings are separate supplementary figures; the two
-parent-ranked alternatives remain available for website and archive use.
-Captions remain editable elements in Word.
+Manuscript figures showing EBV and EBNA1 coverage by subcellular location,
+and 50-row pan-viral rankings by human target coverage. Parent-ranked
+alternatives are also included. PNG and SVG downloads are listed below.
 
 | Figure | View | PNG | SVG |
 | --- | --- | --- | --- |
@@ -25,11 +21,5 @@ coverage denominator is that sequence's full length. Ties use opposite-end
 coverage, then accessions. Displayed percentages retain native one-decimal
 precision.
 
-The rankings reuse the saved comparison data and native PNG/SVG exporter;
-no sequence matching was rerun. Their SVGs retain export metadata. The literal
-localization captures come from Figures 3 and 4 of
-`261118_MimicryMap Figures localization tracked.docx` in the editorial workspace.
-The manuscript and its tracked revisions are not included in this source package.
-
-These selected exports do not replace the complete figure archive on Zenodo.
-Genomic-position Manhattan views remain in that archive and on the website.
+The SVGs include export metadata. The complete figure archive on Zenodo
+also contains genomic-position views and other layouts available on the website.
