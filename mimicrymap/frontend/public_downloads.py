@@ -4,6 +4,16 @@ import json,os,re,tempfile
 
 PREFIX='/source-downloads/mimicry-summaries/'
 
+def published_url(root,url,cors=False):
+    """Use the released file when this local download has a Zenodo counterpart."""
+    catalog_path=Path(root)/'docs/public/zenodo-downloads.json'
+    if not url.startswith(PREFIX) or not catalog_path.exists():return public_url(url)
+    catalog=json.loads(catalog_path.read_text(encoding='utf-8'))
+    item=catalog.get('files',{}).get(url.rsplit('/',1)[-1]) if catalog.get('published') else None
+    if not item:return public_url(url)
+    if cors:return item['url'].split('?')[0].replace('zenodo.org/records/','zenodo.org/api/records/')+'/content'
+    return item['url']
+
 def public_url(url):
     if not url.startswith(PREFIX):return url
     return re.sub(r'[-_]v\d+(?:\.\d+)*(?=[./_-]|$)','',url,flags=re.I)

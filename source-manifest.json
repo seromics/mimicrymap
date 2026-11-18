@@ -732,8 +732,8 @@
     {
       "path": "mimicrymap/frontend/pan-viral.html",
       "source": "mimicrymap/frontend/pan-viral.html",
-      "bytes": 36457,
-      "sha256": "5ed261bfc0411f87089507ce05ae86b3cad1c576aef7d99adcac581f6a14eabb"
+      "bytes": 36560,
+      "sha256": "429621c5e80748b66786aabc9f66d492067910574523d2cced1e15b55424ca4b"
     },
     {
       "path": "mimicrymap/frontend/pinned_subset_membership.py",
@@ -810,8 +810,8 @@
     {
       "path": "mimicrymap/frontend/public_downloads.py",
       "source": "mimicrymap/frontend/public_downloads.py",
-      "bytes": 2760,
-      "sha256": "57a819971a22f7f5a75920718d6e2a5004ea0d506ec82868d441600a389d0ecc"
+      "bytes": 3372,
+      "sha256": "d2eecf8fcab6b373aefaf1b769f06a8ad508146ebc5ab6a9cc0c9e12aa0c40a2"
     },
     {
       "path": "mimicrymap/frontend/public_result_cache.py",
@@ -1266,8 +1266,8 @@
     {
       "path": "mimicrymap/frontend/site_pages.py",
       "source": "mimicrymap/frontend/site_pages.py",
-      "bytes": 7778,
-      "sha256": "6d2202afd924e7153a376bec818583d79f5adbee6dc292e5ed5e8253e5277003"
+      "bytes": 7849,
+      "sha256": "d0ff8daa53fe6357abfee9f24d46949a8382816a7bb28467b099b09f791cb056"
     },
     {
       "path": "mimicrymap/frontend/source-licenses.js",

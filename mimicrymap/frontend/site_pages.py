@@ -2,7 +2,7 @@
 from pathlib import Path
 from html import escape
 import re,json
-from public_downloads import public_url
+from public_downloads import public_url,published_url
 ROOT=Path(__file__).resolve().parents[1]
 PAGES=[('calculations','scienceRecord','How Mimicry Results Are Calculated',['reproduce/residue-coverage.js','method-figure.js']),
        ('use-results','hepacamWorkedExample','How to Use Mimicry Results',['deferred-illustrations.js']),
@@ -49,7 +49,7 @@ def paginate(rendered,section_span,check=False):
         if slug=='calculations':page+=copy[0]+'\n'
         if slug=='pan-viral':
             catalog=json.loads((ROOT/'frontend/summary-downloads.json').read_text(encoding='utf-8'))
-            sequences={r['key']:r for r in catalog['sequences']}
+            sequences={r['key']:{**r,'url':published_url(ROOT,r['url'],cors=True)} for r in catalog['sequences']}
             pair_summary=catalog['comprehensive_summaries']['rows']['human_swissprot_vs_atlas_120_viruses']['csv']
             pair_manifest_path=ROOT/'frontend/atlas-pairs-manifest.json'
             pair_manifest=json.loads(pair_manifest_path.read_text(encoding='utf-8')) if pair_manifest_path.exists() else {}
@@ -67,7 +67,7 @@ def paginate(rendered,section_span,check=False):
                 compact={'release_fingerprint':selected['release_fingerprint'],'proteomes':{v['slug']:{'url':public_url(v['summary']['url']),'bytes':v['summary']['bytes'],'module':'summary-selected-'+v['slug'].replace('_','-')} for v in selected['proteomes']}}
                 page+='<script>window.MimicrySelectedVirusSummaries='+json.dumps(compact,separators=(',',':')).replace('<','\\u003c')+';</script>\n'
                 archive=catalog['comprehensive_summaries']['rows']['human_swissprot_vs_atlas_120_viruses']['archives']['summary']
-                page=page.replace('id="atlasAllSummaryZip"', 'id="atlasAllSummaryZip" href="'+escape(public_url(archive['url']))+'" data-reference-module="'+escape(archive['module'])+'" title="Both Directions · General-Use Summaries (.csv)"')
+                page=page.replace('id="atlasAllSummaryZip"', 'id="atlasAllSummaryZip" href="'+escape(published_url(ROOT,archive['url']))+'" data-reference-module="'+escape(archive['module'])+'" title="Both Directions · General-Use Summaries (.csv)"')
         page+='\n'.join('<script src="/'+script+'"></script>' for script in scripts)+'\n</body></html>\n'
         outputs[slug+'.html']=page
     home=rendered
