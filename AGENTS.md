@@ -21,6 +21,10 @@ machine-readable format identifiers when removing application promotion.
 
 Keep build guards, staging instructions and release checklists in contributor
 notes or technical provenance, not reader-facing guides, captions or descriptions.
+This includes historical capture batches, regeneration history and counts by
+build phase. Public descriptions should explain the available contents and
+scientifically relevant scope. Apply this rule to Zenodo descriptions and
+GitHub reader guides; retain detailed provenance separately.
 
 Keep FASTAs, private studies, databases, caches, CUDA environments and large
 archives outside Git. Use disposable test directories, remove generated QA

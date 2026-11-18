@@ -52,10 +52,6 @@ ranked matches. Figure-specific legends and CSVs identify the population and
 quantities displayed. Extract the figure ZIP and open `Pan-Viral-Atlas/index.html`
 to browse it locally.
 
-The 13,516 views comprise 9,066 original figure states, 4,444 additional
-parent arrangements and six global pair rankings. Technical capture records
-and source versions are documented in the archive and dataset format guide.
-
 Selected manuscript figures are available in [figures/paper/current](../figures/paper/current/README.md).
 The complete archive also includes the alternative layouts and rankings.
 

@@ -1,16 +1,14 @@
 # Paper Figures
 
 The [current figure selection](current/README.md) contains the EBV and EBNA1
-subcellular-location captures and four 50-row pan-viral rankings, using the
+subcellular-location plots and 50-row pan-viral rankings, using the
 original label sizes. The paper uses localization plots; genomic-position
 Manhattan views remain available in the interactive atlas.
 
-## Earlier Presentation Alternatives
+## Larger-Label Alternatives
 
-The November 8, 2026 exports below use larger labels. They are retained as
-alternatives and are not the current manuscript selection. No new sequence
-calculations were performed for these exports. The source inventory records
-the original capture identifiers and hashes.
+The exports below provide larger-label alternatives to the current figure
+selection.
 
 | Panel | Vector | Raster |
 | --- | --- | --- |
@@ -26,13 +24,11 @@ the original capture identifiers and hashes.
 
 SVG text remains editable and uses Arial/Helvetica. Main PNG panels are 3900
 pixels wide; supplementary panels are 1950 pixels wide, with 600-dpi metadata.
-Panel letters remain in Word. The manuscript numbering is provisional.
+Panel letters and captions are editable in the Word documents.
 
 Figure 4 shows human targets grouped by subcellular location, not genomic
 position. Its five tracks show EBNA1 P03211 coverage at 5/9 through 9/9 on a
-common 0-100% scale. Keep that distinction in the caption.
+common 0-100% scale.
 
-The editable Figure 1 composite, Table S1 and sequence/structure screenshots
-remain in the separate manuscript workspace. These files do not replace them.
 The complete atlas figure collection is a separate ZIP in the consolidated
 [unpublished Zenodo draft](https://zenodo.org/uploads/24046306).
