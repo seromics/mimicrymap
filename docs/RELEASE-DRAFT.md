@@ -1,35 +1,28 @@
-# MimicryMap Overview
+# MimicryMap 0.1.0-rc.1
 
-MimicryMap maps local amino-acid sequence resemblance and whole-record coverage
-between proteins, peptides and libraries. Use it interactively for a target of
-interest, run your own FASTAs, or reuse saved library summaries and mappings.
-The human–viral atlas is a worked example of a library-agnostic method.
+MimicryMap compares overlapping amino-acid windows and maps their positions and
+coverage across proteins, peptides and libraries.
 
-MimicryMap includes:
+- Interactive sequence viewer, with a standalone FASTA example and optional structures and residue tracks.
+- Detailed CPU comparisons and CPU/NVIDIA GPU library builds at 5/9–9/9 identity.
+- Coverage summaries, reusable SQLite mappings and optional complete matching positions.
+- Illustrated methods and worked HEPACAM–EBNA1, IL10 and IGHG2 examples.
 
-- The current explorer and five-page interface: MimicryMap, Pan-Viral Atlas,
-  How It Works, How to Use, and Data & Licenses.
-- A five-step illustrated calculation walkthrough, HEPACAM–EBNA1, IL10 and
-  IGHG2 examples, and a general description of potential reactivity-enrichment use.
-- Portable detailed CPU comparisons with captured inputs and settings.
-- Whole-library builds producing coverage CSVs, pair-specific residue ranges
-  and reusable mapping databases; complete matching positions are optional.
-- CPU and optional NVIDIA/CUDA research builds at 5/9–9/9, defaulting to 7/9.
-- Stable record identities, original FASTA headers and optional annotations.
-- Documentation separating the full 5/9–9/9 atlas from general-use 7/9–9/9
-  summaries, mapping indexes and selected manuscript figures.
+## Downloads
 
-Start with [Using MimicryMap](USAGE.md), the [illustrated README](../README.md),
-or [Build libraries](BUILD.md). The source checkout does not contain the full
-reference installation, large atlas datasets, private studies or a CUDA
-environment. Curated browsing needs the reference assets and host services;
-the standalone FASTA runners do not require an installed study.
+| Package | Contents |
+| --- | --- |
+| `mimicrymap-viewer-0.1.0-rc.1.zip` | Static viewer, FASTA examples, optional annotation example and embedding API. Serve over HTTP. |
+| `mimicrymap-pipeline-0.1.0-rc.1.zip` | Detailed HEPACAM–EBNA1 comparison with Python, R and Node.js launchers. |
+| `mimicrymap-research-0.1.0-rc.1.zip` | Research source, CPU/GPU library builder, viewer source, methods and selected figures. |
 
-The selected paper PNG/SVG exports are in [figures/paper](../figures/paper/README.md).
-The full atlas, comparisons and structure supplements are uploaded together to
-the [published Zenodo dataset](https://doi.org/10.5281/zenodo.24046306).
-[Publication Components](PUBLICATION.md) connects the software, data and selected figures.
+Start with the included README or the [Viewer Guide](https://github.com/seromics/mimicrymap/blob/main/docs/VIEWER.md).
+Large reference collections and CUDA installations are separate.
+The [published Zenodo dataset](https://doi.org/10.5281/zenodo.24046306) provides
+precomputed comparisons, pan-viral atlas data and figures, structures and annotations.
 
-Original MimicryMap software is [MIT licensed](../LICENSE), copyright (c) 2026
-Tyler Hulett. [CITATION.cff](../CITATION.cff) supplies the software citation.
-The dataset uses CC BY 4.0; original source attribution and third-party terms remain applicable.
+Created by Tyler Hulett, PhD. Cite **Tyler W. Hulett. MimicryMap. Version 0.1.0-rc.1.**
+[Citation metadata](https://github.com/seromics/mimicrymap/blob/main/CITATION.cff).
+Original software is [MIT licensed](https://github.com/seromics/mimicrymap/blob/main/LICENSE),
+copyright 2026 Tyler Hulett. The dataset uses CC BY 4.0, with original source
+attribution and applicable terms retained.

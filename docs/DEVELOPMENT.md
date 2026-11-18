@@ -1,28 +1,26 @@
 # Source alignment and release
 
-This repository continues `seromics/mimicrymap`, retaining its illustrated
-methods and worked examples. `seromics/mimicryone` is the historical atlas/build
-repository. Its retained databases and old maintenance wrappers are not copied
-into the clean research release.
+MimicryMap includes a standalone viewer, detailed CPU comparisons and a
+CPU/GPU library builder. Shared scientific code is promoted as a versioned
+snapshot; host adapters supply catalogue browsing and application integration.
 
 ## Ownership
 
 | Path | Role |
 | --- | --- |
-| `mimicrymap/frontend/` | Current desktop-tracked applet, shared scientific exports and retained hosting adapters |
+| `mimicrymap/frontend/` | Shared viewer, scientific exports and hosting adapters |
 | `mimicrymap/workspace/` | Electron-independent FASTA/index/CPU/GPU engine |
-| `mimicrymap/docs/public/` | Existing authored applet copy, methods, terminology and figure legends |
+| `mimicrymap/docs/public/` | Authored viewer copy, methods, terminology and figure legends |
 | `code/` | Generated portable view of the same browser/CPU calculation files |
 | `build.cjs`, `tools/build-worker.cjs` | Standalone research host for the bulk engine |
-| `README.md`, `docs/` | Existing illustrated research instructions plus the new build/release guides |
+| `README.md`, `docs/` | Illustrated methods, examples and build guides |
 | `data/atlas-manifest.json` | Published Zenodo inventory and download links; no payloads in Git |
 
 `source-manifest.json` pins each promoted file to its source commit and SHA-256.
 It includes the shared plot palette dependency so the research package does not
 depend on the owning application checkout. `npm run check:source` detects edits or
 missing files in that snapshot. New scientific changes should be made in the
-owning shared desktop source and deliberately promoted while this staging
-relationship is in use:
+owning shared source and promoted explicitly:
 
 ```sh
 node tools/sync-upstream.cjs /path/to/shared-source-checkout --write --update
@@ -36,21 +34,17 @@ Promotion never edits either source checkout. Do not independently change the
 generated `code/` copy. New host code does not choose different scientific
 definitions by brand, operating system or screen width.
 
-## Website boundary
+## Hosting
 
-The staged website currently mounts a pinned MimicryMap runtime with its own
-website navigation/layout adapters. It is not yet a deployment of this new
-research repository. This commit neither deploys Fly nor replaces that site.
-Applet sources here preserve the current desktop implementation; the website's
-host adapters need a reviewed promotion before declaring both deployed hosts
-identical. `frontend/serve.py` is the retained reference-host server, not a
-data-free demonstration server: its curated catalog, source packs and baked
-examples are external inputs. `npm run viewer` instead serves the standalone
-static viewer without those assets. Its generated iframe reuses the native
-index, runtime, worker, palette and exporters, with catalogue/bootstrap adapters
-omitted. `mimicrymap/frontend/embed/` owns the host API and examples;
-`mimicrymap/tools/build-viewer.cjs` assembles the distribution. Native source
-changes continue to be promoted from the owning checkout.
+The hosted website and standalone viewer share matching, rendering and export
+code. The website adds navigation, catalogue search and saved atlas pages.
+`frontend/serve.py` serves those reference-backed routes and requires separately
+supplied catalogue, source and figure assets.
+
+`npm run viewer` serves the standalone viewer without a database. Its iframe
+reuses the index, runtime, worker, palette and exporters, with catalogue adapters
+omitted. `mimicrymap/frontend/embed/` contains the host API and examples;
+`mimicrymap/tools/build-viewer.cjs` assembles the distribution.
 
 The scientific contract is shared matching semantics, record identities,
 coverage, thresholds, metadata and output fields. Browser selected-scope tables,
@@ -81,20 +75,19 @@ NVIDIA 5/9–9/9 coordinate/CSV/membership checks, set `MIMICRY_GPU_PYTHON` to t
 environment's Python executable. CPU checks run in GitHub Actions on Windows,
 Linux and macOS. Hosted CI does not claim GPU validation.
 
-## Private staging
+## Distribution Packages
 
 `npm run package` creates a research ZIP and SHA-256 file under ignored `dist/`
 from the tracked repository contents and the verified source-promotion manifest,
 including newly promoted modules before a commit, excluding the bulky worked-example ZIPs
 already linked from the README. The source and figures stay in the repository.
 No atlas payloads, studies, caches, local paths, credentials or CUDA environment
-are included. Review the archive inventory before attaching a private draft.
+are included.
 
-Software authorship and citation metadata are in CITATION.cff. Before public
-release, connect the preprint link; the dataset DOI is published. The published dataset is CC BY 4.0.
-Preserve third-party notices and input terms. Do
-not imply software or preprint publication. The author has selected MIT for original MimicryMap
-software; surrounding host applications are licensed separately.
+Software authorship and citation metadata are in CITATION.cff. Original
+MimicryMap software is MIT licensed. The [published dataset](https://doi.org/10.5281/zenodo.24046306)
+is CC BY 4.0, with original source attribution and applicable terms retained.
+Third-party notices are in NOTICE.md.
 
 `npm run test:viewer` checks a fresh static build at a nested URL, exact CPU/window
 agreement, all six native exports, two independent instances, saved results,
