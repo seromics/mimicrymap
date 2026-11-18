@@ -1,4 +1,4 @@
-# Run the Web Viewer
+# Viewer Guide
 
 The viewer lets you move along a target sequence, inspect matching cores and
 their flanking context, compare coverage in both directions, and export the
@@ -18,7 +18,7 @@ With Node.js 24 or later, run this from the repository folder:
 npm run viewer
 ```
 
-Open **http://127.0.0.1:5408/examples/index.html**. The command builds the static
+Open the local address printed in the terminal. The command builds the static
 viewer and starts a local web server. Keep that terminal running while using it;
 press Ctrl+C to stop the server.
 
@@ -43,7 +43,7 @@ preset is **Human Canonical + 120 Viral Proteomes**: 15.23 MB of input FASTAs,
 loaded separately. Loading a library does not automatically run a comparison.
 Click **Download FASTAs** to load them from the [published Zenodo dataset](https://doi.org/10.5281/zenodo.24046306), or open local copies with the file selectors.
 
-Open **http://127.0.0.1:5408/examples/annotations.html** for the supplied IL10
+Choose **Annotations and structure example** in the launcher for the supplied IL10
 structure and pLDDT example. Tracks and structures are optional context; they do
 not change sequence matching or coverage. The full mapping and structure
 collections are separate downloads, not requirements for starting the viewer.

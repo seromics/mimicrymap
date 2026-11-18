@@ -1,8 +1,7 @@
 # MimicryMap development
 
 Read README.md and docs/DEVELOPMENT.md for inputs, methods and build commands.
-Keep the repository private until publication is authorized; license and
-citation terms are recorded separately.
+License and citation terms are recorded in LICENSE, NOTICE.md and CITATION.cff.
 
 Shared sources in mimicrymap/ are promoted from SeroMap Electron through
 tools/sync-upstream.cjs. source-manifest.json records their origin and hashes.
