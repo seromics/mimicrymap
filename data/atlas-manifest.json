@@ -297,8 +297,8 @@
     {
       "filename": "README.txt",
       "role": "documentation",
-      "bytes": 3953,
-      "md5": "6eed56da11945b33404c3a5d3c6a7a43",
+      "bytes": 3938,
+      "md5": "bac7124734dd69df460cf281de07ac15",
       "download_url": "https://zenodo.org/records/24046306/files/README.txt?download=1"
     },
     {
@@ -312,7 +312,7 @@
       "filename": "manifest.json",
       "role": "manifest",
       "download_url": "https://zenodo.org/records/24046306/files/manifest.json?download=1",
-      "bytes": 44636
+      "bytes": 44621
     },
     {
       "filename": "MimicryMap-Human-Structures-and-Reference-Tracks.zip",
@@ -1011,13 +1011,13 @@
     }
   },
   "scientific_archives_unchanged": true,
-  "total_bytes": 41258801198,
+  "total_bytes": 41258801168,
   "creators": [
     {
       "name": "Hulett, Tyler W."
     }
   ],
-  "copyright": "MimicryMap compilation © 2026 Tyler W. Hulett.",
+  "copyright": "MimicryMap © 2026 Tyler Hulett.",
   "version": "1.0",
   "doi": "10.5281/zenodo.24046306",
   "status": "unpublished-draft",

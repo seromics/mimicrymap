@@ -31,7 +31,7 @@ of either sequence. The full atlas has no such pair-coverage filter. See
 
 The software and dataset are separate citable resources. Cite the version used
 and retain attribution to the original sequence and annotation databases.
-Original MimicryMap software is MIT licensed, copyright (c) 2026 Tyler W. Hulett.
+Original MimicryMap software is MIT licensed, copyright (c) 2026 Tyler Hulett.
 The compiled dataset uses CC BY 4.0; original source attribution and applicable
 terms remain in its documentation. The dataset record is not yet public.
 The software citation file will identify the preprint when available.

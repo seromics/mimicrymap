@@ -6,8 +6,8 @@
     {
       "path": "mimicrymap/LICENSE",
       "source": "mimicrymap/LICENSE",
-      "bytes": 1072,
-      "sha256": "82a03da7e36fb585af5d9436ec28d50168c5da200edac25e50dea50ea307b696"
+      "bytes": 1069,
+      "sha256": "50e8e9618fe257f1dec25658a499f325ba93bcc974e031adb93163d395943dba"
     },
     {
       "path": "mimicrymap/SOURCE-NOTICE.md",
@@ -408,8 +408,8 @@
     {
       "path": "mimicrymap/frontend/embed/README.md",
       "source": "mimicrymap/frontend/embed/README.md",
-      "bytes": 5151,
-      "sha256": "76ac74c29309bfa959e32ff05c42bc8759a5e0920c798f2d0027df38a6ee26ed"
+      "bytes": 5148,
+      "sha256": "925429c27db302e020778487699d09779d0c931e8838c402e2d76f752495533a"
     },
     {
       "path": "mimicrymap/frontend/embed/bootstrap.js",
@@ -846,8 +846,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/README.md",
       "source": "mimicrymap/frontend/reproduce/README.md",
-      "bytes": 26591,
-      "sha256": "7995b23b4f04bb0575fcb0f2333567c3ec8902201ea152aefac66985504f5fe1"
+      "bytes": 26588,
+      "sha256": "cd1107e82cb195c8f598bf5a840e4fd302150bf5c76b0926b3c886c68b4ce7ed"
     },
     {
       "path": "mimicrymap/frontend/reproduce/SOURCE-README.md",
