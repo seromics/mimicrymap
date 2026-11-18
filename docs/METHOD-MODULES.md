@@ -40,8 +40,9 @@ Fresh figure adapters and captured Code-bundle replay are documented separately.
 Not every application view has a standalone rendering adapter. Scientific source
 is currently an exact snapshot of SeroMap; the application has not yet switched
 to importing the toolkit as a dependency. That subsequent ownership change can
-happen module by module without duplicating numerical implementations. License
-and citation decisions remain pending for both private drafts.
+happen module by module without duplicating numerical implementations. MimicryMap
+uses MIT; its software citation is supplied in [CITATION.cff](../CITATION.cff).
+Other tools retain their own license and citation terms.
 
 MimicryMap remains responsible for sequence comparisons and atlas products.
 SeroMap remains the integrated study/import/analysis host. Independent scientific

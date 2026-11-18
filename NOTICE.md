@@ -1,8 +1,7 @@
 # Release and source notices
 
 Original MimicryMap software in this repository is licensed under MIT; see
-LICENSE. The repository remains private release staging. No public release,
-website deployment or dataset publication is implied by this license choice.
+LICENSE. Copyright (c) 2026 Tyler W. Hulett.
 
 Retained source attribution and third-party terms continue to apply. Inter's
 license is in `mimicrymap/frontend/fonts/LICENSE-Inter.txt`; JetBrains Mono uses

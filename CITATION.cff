@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Please cite this software when using MimicryMap. Cite input data sources separately."
+type: software
+title: MimicryMap
+authors:
+  - family-names: Hulett
+    given-names: Tyler W.
+    website: "https://www.linkedin.com/in/tyler-hulett-2a716618/"
+version: 0.1.0-rc.1
+license: MIT
+repository-code: "https://github.com/seromics/mimicrymap"
+url: "https://github.com/seromics/mimicrymap"

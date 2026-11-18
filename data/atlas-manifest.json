@@ -297,8 +297,8 @@
     {
       "filename": "README.txt",
       "role": "documentation",
-      "bytes": 3439,
-      "md5": "a6ba7cf6526b80fc3445dae15b2e1cfa",
+      "bytes": 3584,
+      "md5": "1ab00ab04da5d4be95706775336f5382",
       "download_url": "https://zenodo.org/records/24046306/files/README.txt?download=1"
     },
     {
@@ -312,7 +312,7 @@
       "filename": "manifest.json",
       "role": "manifest",
       "download_url": "https://zenodo.org/records/24046306/files/manifest.json?download=1",
-      "bytes": 44401
+      "bytes": 44576
     },
     {
       "filename": "MimicryMap-Human-Structures-and-Reference-Tracks.zip",
@@ -350,7 +350,7 @@
       "pair_reporting_floor": "At least 10% coverage of either sequence at the corresponding identity threshold",
       "bundles": [
         {
-          "section": "Reference ↔ Reference",
+          "section": "Reference â†” Reference",
           "target": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
           "target_sequences": 20431,
           "parent": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
@@ -374,7 +374,7 @@
           }
         },
         {
-          "section": "Reference ↔ Reference",
+          "section": "Reference â†” Reference",
           "target": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
           "target_sequences": 20431,
           "parent": "120 viral proteomes:\nmanually curated UniProt proteins/polyproteins",
@@ -400,7 +400,7 @@
           }
         },
         {
-          "section": "Reference ↔ Reference",
+          "section": "Reference â†” Reference",
           "target": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
           "target_sequences": 20431,
           "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, other curated exposures",
@@ -426,7 +426,7 @@
           }
         },
         {
-          "section": "Assay ↔ Reference",
+          "section": "Assay â†” Reference",
           "target": "HuProt 4.0:\n Protein microarray (CDI Labs)",
           "target_sequences": 21197,
           "parent": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
@@ -452,7 +452,7 @@
           }
         },
         {
-          "section": "Assay ↔ Reference",
+          "section": "Assay â†” Reference",
           "target": "HuScan:\n T7 PhIP-Seq library (CDI Labs)",
           "target_sequences": 731724,
           "parent": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
@@ -478,7 +478,7 @@
           }
         },
         {
-          "section": "Assay ↔ Reference",
+          "section": "Assay â†” Reference",
           "target": "VirScan / Exposome:\nT7 PhIP-Seq library (CDI Labs)",
           "target_sequences": 680704,
           "parent": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
@@ -504,7 +504,7 @@
           }
         },
         {
-          "section": "Assay ↔ Reference",
+          "section": "Assay â†” Reference",
           "target": "HuProt 4.0:\n Protein microarray (CDI Labs)",
           "target_sequences": 21197,
           "parent": "120 viral proteomes:\nmanually curated UniProt proteins/polyproteins",
@@ -530,7 +530,7 @@
           }
         },
         {
-          "section": "Assay ↔ Reference",
+          "section": "Assay â†” Reference",
           "target": "HuScan:\n T7 PhIP-Seq library (CDI Labs)",
           "target_sequences": 731724,
           "parent": "120 viral proteomes:\nmanually curated UniProt proteins/polyproteins",
@@ -556,7 +556,7 @@
           }
         },
         {
-          "section": "Assay ↔ Reference",
+          "section": "Assay â†” Reference",
           "target": "VirScan / Exposome:\nT7 PhIP-Seq library (CDI Labs)",
           "target_sequences": 680704,
           "parent": "120 viral proteomes:\nmanually curated UniProt proteins/polyproteins",
@@ -582,7 +582,7 @@
           }
         },
         {
-          "section": "Assay ↔ Reference",
+          "section": "Assay â†” Reference",
           "target": "HuProt 4.0:\n Protein microarray (CDI Labs)",
           "target_sequences": 21197,
           "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, other curated exposures",
@@ -608,7 +608,7 @@
           }
         },
         {
-          "section": "Assay ↔ Reference",
+          "section": "Assay â†” Reference",
           "target": "HuScan:\n T7 PhIP-Seq library (CDI Labs)",
           "target_sequences": 731724,
           "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, other curated exposures",
@@ -634,7 +634,7 @@
           }
         },
         {
-          "section": "Assay ↔ Reference",
+          "section": "Assay â†” Reference",
           "target": "VirScan / Exposome:\nT7 PhIP-Seq library (CDI Labs)",
           "target_sequences": 680704,
           "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, other curated exposures",
@@ -1011,7 +1011,13 @@
     }
   },
   "scientific_archives_unchanged": true,
-  "total_bytes": 41258798832,
+  "total_bytes": 41258799152,
+  "creators": [
+    {
+      "name": "Hulett, Tyler W."
+    }
+  ],
+  "copyright": "MimicryMap compilation copyright (c) 2026 Tyler W. Hulett; original source terms retained.",
   "status": "unpublished-draft",
   "doi": null,
   "public_links_active": false,

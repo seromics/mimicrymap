@@ -1,5 +1,10 @@
 # MimicryMap Embeddable Viewer
 
+Created by Tyler Hulett, PhD · [GitHub](https://github.com/seromics) · [X](https://x.com/seromics) · [LinkedIn](https://www.linkedin.com/in/tyler-hulett-2a716618/).
+
+Citation: Tyler W. Hulett. *MimicryMap*. https://github.com/seromics/mimicrymap.
+Original software: MIT. Copyright (c) 2026 Tyler W. Hulett.
+
 Serve this directory with any static HTTP server. Open `examples/index.html`
 for a FASTA comparison, or `examples/annotations.html` for optional pLDDT and
 structure. No database, installed reference library or backend API is needed.

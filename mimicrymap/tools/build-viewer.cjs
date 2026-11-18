@@ -25,7 +25,7 @@ function build(destination){
  html=html.replace(/<link[^>]*href="\/(site-pages|mimicryone-mobile)\.css"[^>]*>/g,'');
  html=html.replace(/<script type="module">import \{watchNativeLoading\}[\s\S]*?<\/script>/,'');
  html=html.replace('<head>','<head>\n<script src="bootstrap.js"></script>');
- html=html.replace('<script src="/viewer-api.js"></script>','<script src="/viewer-api.js"></script>\n<script>MimicryMapViewer.configure({embedded:true,standalone:true});</script>');
+ html=html.replace('<script src="/viewer-api.js"></script>','<script src="/viewer-api.js"></script>\n<script>MimicryMapViewer.configure({embedded:true,standalone:true,referenceAssets:false});</script>');
  html=html.replace('</head>','<link rel="stylesheet" href="viewer.css">\n</head>');
  html=html.replace(/<body[^>]*>/,'<body><div id="embedStatus" role="status">Load Target and Parent Sequences</div>');
  html=html.replace('</body>','<script src="bridge.js"></script>\n</body>');

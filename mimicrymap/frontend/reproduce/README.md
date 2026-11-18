@@ -1,5 +1,10 @@
 # MimicryMap Pipeline
 
+Created by Tyler Hulett, PhD · [GitHub](https://github.com/seromics) · [X](https://x.com/seromics) · [LinkedIn](https://www.linkedin.com/in/tyler-hulett-2a716618/).
+
+Citation: Tyler W. Hulett. *MimicryMap*. https://github.com/seromics/mimicrymap.
+Original software: [MIT](https://github.com/seromics/mimicrymap/blob/staging/embedded-viewer-mit/LICENSE). Copyright (c) 2026 Tyler W. Hulett.
+
 ![MimicryMap in five steps](docs/calculation/method-overview-wide.svg)
 
 [Method overview and worked example](docs/HOW-IT-WORKS.md)

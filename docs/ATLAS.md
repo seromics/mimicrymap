@@ -89,5 +89,6 @@ must compare the same sequence populations, record units, identity thresholds,
 coverage rules and annotation versions before equating the scientific outputs.
 
 Keep separate citations for the method/code version, atlas dataset version,
-and input databases. Final authors, preprint reference, software license and
-published DOI metadata remain to be supplied before a public release.
+and input databases. The software citation is supplied in [CITATION.cff](../CITATION.cff);
+original MimicryMap software uses MIT. The preprint and dataset links will be
+added when published.

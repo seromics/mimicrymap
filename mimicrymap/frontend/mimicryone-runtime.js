@@ -2997,7 +2997,7 @@
   }
   loadStructure = function coordinateSafeStructure(owner) {
     if (!T || T.acc !== owner) return;
-    if (T.suppliedAssets || window.MimicryMapViewer?.options.standalone) {
+    if (T.suppliedAssets || window.MimicryMapViewer?.referenceAssetsEnabled === false) {
       beginStructureOwner(owner);
       S3 = T.suppliedAssets?.pdb ? parsePDB(T.suppliedAssets.pdb) : null;
       S3ASM = 'monomer';
@@ -3097,7 +3097,7 @@
 
   const originalLoadAnnots = loadAnnots;
   loadAnnots = function staticAnnotations(accession, done) {
-    if (T?.acc === accession && (T.suppliedAssets || window.MimicryMapViewer?.options.standalone)) {
+    if (T?.acc === accession && (T.suppliedAssets || window.MimicryMapViewer?.referenceAssetsEnabled === false)) {
       ANN = T.suppliedAssets?.annotations || null;
       annCache[accession] = ANN;
       indexAnnotationVariants();

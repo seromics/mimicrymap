@@ -58,7 +58,7 @@ editable components. These outputs are not part of a source clone.
 ## Before Public Release
 
 - Original MimicryMap software uses MIT; retain third-party and data notices alongside it.
-- Supply final authors and citation metadata, then add CITATION.cff and the preprint link.
+- Software author: Tyler W. Hulett; citation metadata is in CITATION.cff. Add the preprint link after submission.
 - Finalize the human-edited manuscript and Figure 1; review figure captions against the selected files.
 - Tag the tested code version and publish the approved Zenodo draft when authorized.
 - Replace draft links with the published dataset DOI/download links and connect the website.

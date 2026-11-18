@@ -9,6 +9,8 @@
  root.MimicryMapViewer={
   version:1,options,hooks,node,
   configure(next){Object.assign(options,next);return this;},
+  // Catalogue bootstrapping and installed reference assets are independent.
+  get referenceAssetsEnabled(){return options.referenceAssets ?? !options.standalone;},
   // Presentation only: repaginate the current result without selecting or computing.
   setPageSize(value){
    const next=Math.max(1,Math.min(50,Math.floor(Number(value))||10)),previous=options.pageSize;

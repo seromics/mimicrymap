@@ -374,23 +374,15 @@ The paired coverage column gives each listed parent's X- and Y-axis values. Its 
 
 <!-- interpretation-walkthroughs:end -->
 
-## Release Status and License
+## Citation and License
 
-**Private release staging.** This continues the existing MimicryMap repository and
-its illustrated methods. Original software is [MIT licensed](LICENSE); final
-citation metadata remains pending. The consolidated dataset draft uses CC BY 4.0, with original source
-terms and attribution retained. This is not a public release.
+Created by Tyler Hulett, PhD · [GitHub](https://github.com/seromics) · [X](https://x.com/seromics) · [LinkedIn](https://www.linkedin.com/in/tyler-hulett-2a716618/).
 
-| Release Component | Status |
-| --- | --- |
-| Preprint | Forthcoming: link and final citation will be added after submission |
-| Data, Atlas Figures and Structures | [Consolidated Zenodo draft 24046306](https://zenodo.org/uploads/24046306), uploaded but unpublished; [file manifest](data/atlas-manifest.json) |
-| Selected Paper Figures | [Optional November 8 PNG/SVG variants](figures/paper/README.md); the author's current manuscript retains the original label sizes |
-| Software | MIT licensed research source and embeddable viewer in this private repository; public version tag and citation pending |
+Cite the software as **Tyler W. Hulett. MimicryMap. Version 0.1.0-rc.1.**
+[Citation metadata](CITATION.cff) supports GitHub's citation download.
 
-See [Publication staging](docs/PUBLICATION.md) for the release boundary and remaining decisions.
-
-Input records, structures and bundled third-party assets retain their original
-source attribution and terms. MIT applies to the original MimicryMap software.
-See [Source Alignment](docs/DEVELOPMENT.md) for shared-code ownership and the
-[dataset manifest](data/atlas-manifest.json) for separately distributed assets.
+Original MimicryMap software is [MIT licensed](LICENSE). The sequence comparisons,
+Pan-Viral Atlas and structure annotations use **CC BY 4.0**, with original source
+attribution and terms retained; see the [dataset inventory](data/atlas-manifest.json)
+and [source notices](NOTICE.md). Dataset downloads will be available through
+Zenodo when the record is published. The preprint link will be added when available.

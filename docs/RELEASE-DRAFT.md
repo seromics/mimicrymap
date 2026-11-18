@@ -5,7 +5,7 @@ between proteins, peptides and libraries. Use it interactively for a target of
 interest, run your own FASTAs, or reuse saved library summaries and mappings.
 The human–viral atlas is a worked example of a library-agnostic method.
 
-This source stage includes:
+MimicryMap includes:
 
 - The current explorer and five-page interface: MimicryMap, Pan-Viral Atlas,
   How It Works, How to Use, and Data & Licenses.
@@ -30,7 +30,6 @@ The full atlas, comparisons and structure supplements are uploaded together to
 the [unpublished Zenodo draft](https://zenodo.org/uploads/24046306).
 [Publication staging](PUBLICATION.md) records the current components.
 
-The repository remains private. The dataset draft uses CC BY 4.0; the software
-license remains undecided. Final authorship/citation metadata, preprint link,
-dataset publication and software version tag remain to be completed. Existing
-source attribution and third-party terms remain applicable.
+Original MimicryMap software is [MIT licensed](../LICENSE), copyright (c) 2026
+Tyler W. Hulett. [CITATION.cff](../CITATION.cff) supplies the software citation.
+The dataset uses CC BY 4.0; original source attribution and third-party terms remain applicable.

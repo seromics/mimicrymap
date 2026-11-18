@@ -90,8 +90,8 @@ already linked from the README. The source and figures stay in the repository.
 No atlas payloads, studies, caches, local paths, credentials or CUDA environment
 are included. Review the archive inventory before attaching a private draft.
 
-Before public release, resolve author/citation metadata,
-preprint link and final dataset DOI. The consolidated dataset draft is CC BY 4.0.
+Software authorship and citation metadata are in CITATION.cff. Before public
+release, connect the preprint link and final dataset DOI. The consolidated dataset draft is CC BY 4.0.
 Preserve third-party notices and input terms. Do
 not imply publication. The author has selected MIT for original MimicryMap
 software; this does not change the SeroMap application's license.

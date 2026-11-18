@@ -61,7 +61,7 @@
     var releaseStartup=window.MimicryStartup ? window.MimicryStartup.hold("assets") : function(){};
     originalLoad(accession, function () {
       var owner = T, base = Object.assign({}, ANN || {}), alias = owner && (owner.nativeTrackAccession || accession);
-      if (owner?.suppliedAssets || window.MimicryMapViewer?.options.standalone) {
+      if (owner?.suppliedAssets || window.MimicryMapViewer?.referenceAssetsEnabled === false) {
         if (done) done(); releaseStartup(); return;
       }
       delete base.modifications;

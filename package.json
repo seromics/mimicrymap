@@ -3,6 +3,7 @@
   "version": "0.1.0-rc.1",
   "private": true,
   "license": "MIT",
+  "author": {"name": "Tyler W. Hulett", "url": "https://github.com/seromics"},
   "description": "MimicryMap applet, sequence coverage summaries and optional GPU research builder",
   "engines": {"node": ">=24"},
   "scripts": {
