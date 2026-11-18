@@ -126,8 +126,8 @@
     {
       "path": "mimicrymap/docs/public/summary-download-guide.md",
       "source": "mimicrymap/docs/public/summary-download-guide.md",
-      "bytes": 21735,
-      "sha256": "4e57da52795a08f2a35eb6e66e4506323a2502ddca15509f3442974a50907679"
+      "bytes": 21781,
+      "sha256": "a6bebf44779e4e13e1734af789e36a46a044a488fad231ef37f88704cd3aed3e"
     },
     {
       "path": "mimicrymap/docs/public/target-summary.html",
@@ -900,8 +900,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 21735,
-      "sha256": "4e57da52795a08f2a35eb6e66e4506323a2502ddca15509f3442974a50907679"
+      "bytes": 21781,
+      "sha256": "a6bebf44779e4e13e1734af789e36a46a044a488fad231ef37f88704cd3aed3e"
     },
     {
       "path": "mimicrymap/frontend/reproduce/docs/TABLES.md",
@@ -1794,8 +1794,8 @@
     {
       "path": "docs/SUMMARY-DOWNLOADS.md",
       "source": "mimicrymap/frontend/reproduce/docs/SUMMARY-DOWNLOADS.md",
-      "bytes": 21735,
-      "sha256": "4e57da52795a08f2a35eb6e66e4506323a2502ddca15509f3442974a50907679"
+      "bytes": 21781,
+      "sha256": "a6bebf44779e4e13e1734af789e36a46a044a488fad231ef37f88704cd3aed3e"
     },
     {
       "path": "docs/HOW-IT-WORKS.md",

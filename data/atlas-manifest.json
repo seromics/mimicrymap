@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.release-downloads/1",
   "zenodo_record_id": 24046306,
-  "title": "MimicryMap: sequence comparisons, Pan-Viral Atlas and structure annotations",
+  "title": "MimicryMap: sequence comparisons, pan-viral atlas, and annotations",
   "license": {
     "id": "cc-by-4.0",
     "url": "https://creativecommons.org/licenses/by/4.0/"
@@ -297,22 +297,22 @@
     {
       "filename": "README.txt",
       "role": "documentation",
-      "bytes": 3584,
-      "md5": "1ab00ab04da5d4be95706775336f5382",
+      "bytes": 3953,
+      "md5": "6eed56da11945b33404c3a5d3c6a7a43",
       "download_url": "https://zenodo.org/records/24046306/files/README.txt?download=1"
     },
     {
       "filename": "FORMATS.txt",
       "role": "documentation",
-      "bytes": 25691,
-      "md5": "c10c715ab2e11532c9504bb9e4dd5624",
+      "bytes": 27308,
+      "md5": "05153fa99ba42e1747ef4bdbedc4edbd",
       "download_url": "https://zenodo.org/records/24046306/files/FORMATS.txt?download=1"
     },
     {
       "filename": "manifest.json",
       "role": "manifest",
       "download_url": "https://zenodo.org/records/24046306/files/manifest.json?download=1",
-      "bytes": 44576
+      "bytes": 44636
     },
     {
       "filename": "MimicryMap-Human-Structures-and-Reference-Tracks.zip",
@@ -350,7 +350,7 @@
       "pair_reporting_floor": "At least 10% coverage of either sequence at the corresponding identity threshold",
       "bundles": [
         {
-          "section": "Reference â†” Reference",
+          "section": "Reference ↔ Reference",
           "target": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
           "target_sequences": 20431,
           "parent": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
@@ -374,7 +374,7 @@
           }
         },
         {
-          "section": "Reference â†” Reference",
+          "section": "Reference ↔ Reference",
           "target": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
           "target_sequences": 20431,
           "parent": "120 viral proteomes:\nmanually curated UniProt proteins/polyproteins",
@@ -400,10 +400,10 @@
           }
         },
         {
-          "section": "Reference â†” Reference",
+          "section": "Reference ↔ Reference",
           "target": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
           "target_sequences": 20431,
-          "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, other curated exposures",
+          "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, retained exposure reference sequences",
           "parent_sequences": 24867,
           "upload_filename": "source-canonical-exposure-human-swissprot.zip",
           "bytes": 64739129,
@@ -426,7 +426,7 @@
           }
         },
         {
-          "section": "Assay â†” Reference",
+          "section": "Assay ↔ Reference",
           "target": "HuProt 4.0:\n Protein microarray (CDI Labs)",
           "target_sequences": 21197,
           "parent": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
@@ -452,7 +452,7 @@
           }
         },
         {
-          "section": "Assay â†” Reference",
+          "section": "Assay ↔ Reference",
           "target": "HuScan:\n T7 PhIP-Seq library (CDI Labs)",
           "target_sequences": 731724,
           "parent": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
@@ -478,7 +478,7 @@
           }
         },
         {
-          "section": "Assay â†” Reference",
+          "section": "Assay ↔ Reference",
           "target": "VirScan / Exposome:\nT7 PhIP-Seq library (CDI Labs)",
           "target_sequences": 680704,
           "parent": "Human canonical:\nUniProtKB/Swiss-Prot (2026_01)",
@@ -504,7 +504,7 @@
           }
         },
         {
-          "section": "Assay â†” Reference",
+          "section": "Assay ↔ Reference",
           "target": "HuProt 4.0:\n Protein microarray (CDI Labs)",
           "target_sequences": 21197,
           "parent": "120 viral proteomes:\nmanually curated UniProt proteins/polyproteins",
@@ -530,7 +530,7 @@
           }
         },
         {
-          "section": "Assay â†” Reference",
+          "section": "Assay ↔ Reference",
           "target": "HuScan:\n T7 PhIP-Seq library (CDI Labs)",
           "target_sequences": 731724,
           "parent": "120 viral proteomes:\nmanually curated UniProt proteins/polyproteins",
@@ -556,7 +556,7 @@
           }
         },
         {
-          "section": "Assay â†” Reference",
+          "section": "Assay ↔ Reference",
           "target": "VirScan / Exposome:\nT7 PhIP-Seq library (CDI Labs)",
           "target_sequences": 680704,
           "parent": "120 viral proteomes:\nmanually curated UniProt proteins/polyproteins",
@@ -582,10 +582,10 @@
           }
         },
         {
-          "section": "Assay â†” Reference",
+          "section": "Assay ↔ Reference",
           "target": "HuProt 4.0:\n Protein microarray (CDI Labs)",
           "target_sequences": 21197,
-          "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, other curated exposures",
+          "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, retained exposure reference sequences",
           "parent_sequences": 24867,
           "upload_filename": "source-canonical-exposure-huprot4.zip",
           "bytes": 56104361,
@@ -608,10 +608,10 @@
           }
         },
         {
-          "section": "Assay â†” Reference",
+          "section": "Assay ↔ Reference",
           "target": "HuScan:\n T7 PhIP-Seq library (CDI Labs)",
           "target_sequences": 731724,
-          "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, other curated exposures",
+          "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, retained exposure reference sequences",
           "parent_sequences": 24867,
           "upload_filename": "source-canonical-exposure-huscan.zip",
           "bytes": 1582818469,
@@ -634,10 +634,10 @@
           }
         },
         {
-          "section": "Assay â†” Reference",
+          "section": "Assay ↔ Reference",
           "target": "VirScan / Exposome:\nT7 PhIP-Seq library (CDI Labs)",
           "target_sequences": 680704,
-          "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, other curated exposures",
+          "parent": "Canonical exposures:\n120 viral proteomes, non-primate IEDB antigens with positive human-assay evidence (2026-09-01), UniProt proteins with Allergome cross-references, retained exposure reference sequences",
           "parent_sequences": 24867,
           "upload_filename": "source-canonical-exposure-virscan-exposome.zip",
           "bytes": 2586623079,
@@ -1011,15 +1011,16 @@
     }
   },
   "scientific_archives_unchanged": true,
-  "total_bytes": 41258799152,
+  "total_bytes": 41258801198,
   "creators": [
     {
       "name": "Hulett, Tyler W."
     }
   ],
-  "copyright": "MimicryMap compilation copyright (c) 2026 Tyler W. Hulett; original source terms retained.",
+  "copyright": "MimicryMap compilation © 2026 Tyler W. Hulett.",
+  "version": "1.0",
+  "doi": "10.5281/zenodo.24046306",
   "status": "unpublished-draft",
-  "doi": null,
   "public_links_active": false,
   "draft_url": "https://zenodo.org/uploads/24046306",
   "note": "The consolidated draft is uploaded but unpublished. File URLs are planned public links and become usable after publication. Payloads remain outside Git; the software license is separate from this dataset license."
