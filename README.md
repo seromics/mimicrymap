@@ -1,7 +1,5 @@
 # MimicryMap
 
-**Map antigen-specific sequence resemblance within and across proteomes.**
-
 MimicryMap was created to comprehensively map linear molecular mimicry events between common exposures and the human proteome, with a method generalizable to mapping similarity within and across literal biological datasets from multiplex seromics platforms. It is available as an interactive web viewer, a CPU-only pipeline and an NVIDIA GPU-accelerated pipeline for proteome-scale mapping.
 
 The method searches all complete overlapping nine-residue windows from a given protein sequence (**antigen target**) against a candidate molecular mimic sequence (**mimicry parent**), at a chosen threshold of exact matching residues (**minimum identity**). The viewer shows the matching cores, their surrounding sequence context, and the union of residue positions they cover on each sequence (**target coverage** and **parent coverage**).
@@ -10,15 +8,12 @@ The method is library agnostic. Human proteins and 120 viral proteomes form the 
 
 [![MimicryMap sequence viewer with an IL10 sequence map, structure, aligned core and coverage table](docs/images/viewer-wide.jpg)](docs/VIEWER.md)
 
-*The viewer comparing human IL10 with its EBV homolog, with the optional AlphaFold structure and pLDDT track. The sequence map, aligned core, coverage table and exports stay together in one view.*
+*The viewer comparing human IL10 with its EBV homolog, with the optional AlphaFold structure and pLDDT track.*
 
 [Viewer Guide](docs/VIEWER.md) · [Interface Guide](docs/USAGE.md) · [How It Works](#how-mimicry-results-are-calculated) · [Worked Examples](#how-to-use-mimicry-results) · [Atlas and Data](docs/ATLAS.md) · [Citation and License](#citation-and-license)
 
-## Explore, Inspect, Reuse
-
-Start with a target and parent FASTA, inspect matching regions, then export the
-figures, tables or inputs needed for the next step. The browser viewer, detailed
-CPU comparison and CPU/GPU library builder use the same matching definitions.
+The browser viewer, detailed CPU comparison and CPU/GPU library builder use the
+same matching definitions.
 
 | Task | Route | Outputs |
 | --- | --- | --- |
@@ -32,7 +27,6 @@ Use the [Viewer Guide](docs/VIEWER.md) for the supplied IL10 example, your own F
 The hosted site adds catalogue search, the saved pan-viral atlas, illustrated
 methods and data downloads. Curated browsing uses separately supplied reference
 assets; these are not required for a standalone FASTA comparison.
-The [interface guide](docs/USAGE.md) connects each route to its outputs.
 
 ## Build Reusable Libraries
 

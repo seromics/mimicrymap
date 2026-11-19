@@ -7,8 +7,7 @@ result. It runs the same viewer and exporters used by the MimicryMap website.
 ![MimicryMap showing human IL10, a matching EBV sequence, coverage and an optional structure](images/viewer-wide.jpg)
 
 The supplied IL10 example with its optional AlphaFold structure and pLDDT track.
-This is a cropped screenshot of the running viewer, using the example's own
-FASTA inputs and annotations. [Example sources and model attribution](../mimicrymap/frontend/embed/examples/PROVENANCE.md).
+[Example sources and model attribution](../mimicrymap/frontend/embed/examples/PROVENANCE.md).
 
 ## Start Locally
 
