@@ -10,7 +10,7 @@ The method is library agnostic. Human proteins and 120 viral proteomes form the 
 
 *The viewer comparing human IL10 with its EBV homolog, with the optional AlphaFold structure and pLDDT track.*
 
-[Viewer Guide](docs/VIEWER.md) · [Interface Guide](docs/USAGE.md) · [How It Works](#how-mimicry-results-are-calculated) · [Worked Examples](#how-to-use-mimicry-results) · [Atlas and Data](docs/ATLAS.md) · [Citation and License](#citation-and-license)
+[Open Viewer](https://seromap.com/mimicrymap/app/index.html) · [Viewer Guide](docs/VIEWER.md) · [Interface Guide](docs/USAGE.md) · [How It Works](#how-mimicry-results-are-calculated) · [Worked Examples](#how-to-use-mimicry-results) · [Atlas and Data](docs/ATLAS.md) · [Citation and License](#citation-and-license)
 
 The browser viewer, detailed CPU comparison and CPU/GPU library builder use the
 same matching definitions.
@@ -24,7 +24,7 @@ same matching definitions.
 
 Use the [Viewer Guide](docs/VIEWER.md) for the supplied IL10 example, your own FASTAs, optional structures, embedding and local installation. No database or antibody study is required. [Download the source](https://github.com/seromics/mimicrymap/archive/refs/heads/main.zip) or [download the published data](https://doi.org/10.5281/zenodo.24046306).
 
-The hosted site adds catalogue search, the saved pan-viral atlas, illustrated
+The [hosted site](https://seromap.com/mimicrymap/app/index.html) adds catalogue search, the saved [pan-viral atlas](https://seromap.com/mimicrymap/app/pan-viral.html), illustrated
 methods and data downloads. Curated browsing uses separately supplied reference
 assets; these are not required for a standalone FASTA comparison.
 

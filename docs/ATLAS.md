@@ -1,7 +1,7 @@
 # Atlas Files and Provenance
 
 The pan-viral atlas applies MimicryMap to canonical human proteins and 120 viral
-proteomes. Explore the figures through the website or download the data and
+proteomes. [Explore the figures online](https://seromap.com/mimicrymap/app/pan-viral.html) or download the data and
 offline catalogue from the [Zenodo dataset record](https://doi.org/10.5281/zenodo.24046306).
 See [Using MimicryMap](USAGE.md) for the viewer and [Build Libraries](BUILD.md)
 for comparisons using your own FASTAs.

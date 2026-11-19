@@ -2,7 +2,8 @@
 
 The viewer lets you move along a target sequence, inspect matching cores and
 their flanking context, compare coverage in both directions, and export the
-result. It runs the same viewer and exporters used by the MimicryMap website.
+result. [Open the hosted viewer](https://seromap.com/mimicrymap/app/index.html),
+or run it locally using the instructions below. Both use the same viewer and exporters.
 
 ![MimicryMap showing human IL10, a matching EBV sequence, coverage and an optional structure](images/viewer-wide.jpg)
 
