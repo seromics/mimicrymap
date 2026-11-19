@@ -297,8 +297,8 @@
     {
       "filename": "README.txt",
       "role": "documentation",
-      "bytes": 3938,
-      "md5": "bac7124734dd69df460cf281de07ac15",
+      "bytes": 3872,
+      "md5": "cb58506a6330f701b9e9111bfd3d3a6f",
       "download_url": "https://zenodo.org/records/24046306/files/README.txt?download=1"
     },
     {
@@ -1011,7 +1011,7 @@
     }
   },
   "scientific_archives_unchanged": true,
-  "total_bytes": 41258801168,
+  "total_bytes": 41258801102,
   "creators": [
     {
       "name": "Hulett, Tyler W."

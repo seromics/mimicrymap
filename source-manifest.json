@@ -151,7 +151,7 @@
       "path": "mimicrymap/docs/public/zenodo-downloads.json",
       "source": "mimicrymap/docs/public/zenodo-downloads.json",
       "bytes": 13496,
-      "sha256": "b24ef7e848ffa0e2c4d6d5149c7423f0561b551babddace2ce2da79c2e29e8f1"
+      "sha256": "94c17b732b961bcd06ec01a63bfe0f5613161a9dd400378db68f8ac04a7a8418"
     },
     {
       "path": "mimicrymap/export-assets-origin.json",
@@ -852,8 +852,8 @@
     {
       "path": "mimicrymap/frontend/reproduce/README.md",
       "source": "mimicrymap/frontend/reproduce/README.md",
-      "bytes": 26565,
-      "sha256": "853ed160de97b546fd509adc213a1ea35d3d086c95dfe91dd16bbbfa3e7be224"
+      "bytes": 26525,
+      "sha256": "5f705c21f11ba9a121f121551da1306a5cec7e1e24cfff6e7c4640caa4191443"
     },
     {
       "path": "mimicrymap/frontend/reproduce/SOURCE-README.md",

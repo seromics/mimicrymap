@@ -346,10 +346,9 @@ The paired coverage column gives each listed parent's X- and Y-axis values. Its 
 
 Created by Tyler Hulett, PhD · [GitHub](https://github.com/seromics) · [X](https://x.com/seromics) · [LinkedIn](https://www.linkedin.com/in/tyler-hulett-2a716618/).
 
-Cite the software as **Tyler W. Hulett. MimicryMap. Version 0.1.0-rc.1.**
-[Citation metadata](CITATION.cff) supports GitHub's citation download.
+[Software citation](CITATION.cff) · [Dataset citation](https://doi.org/10.5281/zenodo.24046306).
 
 Original MimicryMap software is [MIT licensed](LICENSE). The sequence comparisons,
 pan-viral atlas and structure annotations use **CC BY 4.0**, with original source
 attribution and terms retained; see the [dataset inventory](data/atlas-manifest.json)
-and [source notices](NOTICE.md). Download the [published dataset](https://doi.org/10.5281/zenodo.24046306): **Hulett, T. W. (2026). MimicryMap: sequence comparisons, pan-viral atlas, and annotations (1.0). Zenodo.**
+and [source notices](NOTICE.md).

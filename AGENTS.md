@@ -11,6 +11,8 @@ module, then promote it; do not edit generated copies independently.
 Interface text explains data, actions and results. Comments and contributor
 instructions describe behavior and constraints, without development conversations
 or tool attribution. Preserve authored methods, examples, figures and source terms.
+Use one name credit per attribution block. Do not add a separate "Citation author"
+line beside a creator/copyright credit; link to formal citation metadata instead.
 
 Research-facing documentation describes MimicryMap independently of unreleased
 study-analysis applications. Describe reactivity enrichment as a potential
