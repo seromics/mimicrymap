@@ -177,17 +177,7 @@ def render(source):
  source=source.replace('<!-- paired-downloads -->','\n'.join(paired))
  supplemental=''
  if published:
-  products=[('Pan-Viral Atlas Numerical Data','MimicryMap-Pan-Viral-Atlas-5of9-to-9of9-Data.zip'),
-   ('Pan-Viral Atlas Figures','MimicryMap-Pan-Viral-Atlas-13516-States.zip'),
-   ('Figure Index','figure-index.csv'),
-   ('Human Structures and Reference Tracks','MimicryMap-Human-Structures-and-Reference-Tracks.zip'),
-   ('Human Dimer Structures','MimicryMap-Human-Dimer-Structures.zip'),
-   ('Non-Human Structures and Annotations','MimicryMap-Nonhuman-Structures-and-Annotations.zip'),
-   ('Human Canonical FASTA','human_swissprot.fasta'),('120 Viral Proteomes FASTA','atlas_120_viruses.fasta'),
-   ('Canonical Exposures FASTA','canonical_exposure.fasta'),('HuProt 4.0 FASTA','huprot4.fasta'),
-   ('HuScan FASTA','huscan.fasta'),('VirScan / Exposome FASTA','virscan_exposome.fasta')]
-  body=''.join('<tr><th scope="row">'+title+'</th><td class="summary-file-cell">'+link(published['files'][filename],filename.rsplit('.',1)[-1].upper(),title)+'</td></tr>' for title,filename in products)
-  supplemental='<div class="download-comparison-group"><h3>Supplemental Downloads</h3><div class="download-table-scroll"><table class="download-table summary-download-table"><thead><tr><th scope="col">Collection</th><th scope="col">Download</th></tr></thead><tbody>'+body+'</tbody></table></div></div>'
+  supplemental='<p class="download-format-note"><a href="'+escape(published['doi'],quote=True)+'" target="_blank" rel="noopener">Visit Zenodo for supplemental downloads</a>.</p>'
   supplemental+='<p class="download-format-note">'+ ' · '.join(link(published['files'][filename],label,label) for filename,label in [('README.txt','README'),('FORMATS.txt','Methods and Formats'),('manifest.json','Manifest')])+'</p>'
  source=source.replace('<!-- supplemental-downloads -->',supplemental)
  def example_archive_row(key):
