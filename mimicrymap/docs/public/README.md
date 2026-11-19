@@ -2,7 +2,7 @@
 
 These are the single authored sources for the sections below. They are **drafts**, not finalized publication copy. HTML fragments preserve the existing website layout and diagram hooks; no second Markdown narrative is maintained.
 
-Use MimicryMap for the application in all public-facing prose, documentation and figures. Keep existing repository URLs, filesystem paths and machine identifiers unchanged. The current method reports literal sequence matches and descriptive coverage; historical significance or enrichment language must not be carried into current sequence-match claims. Reactivity Enrichment in SeroMap is a separate downstream test of recorded assay hit calls in sequence-defined antigen sets; its worked examples must distinguish recorded-hit statistics from sequence matching alone.
+Use MimicryMap for the application in all public-facing prose, documentation and figures. Keep existing repository URLs, filesystem paths and machine identifiers unchanged. The current method reports literal sequence matches and descriptive coverage; historical significance or enrichment language must not be carried into current sequence-match claims. Reactivity enrichment is a separate downstream test of recorded assay hit calls in sequence-defined antigen sets; its worked examples must distinguish recorded-hit statistics from sequence matching alone.
 
 ## Player, Tooltips and Figure Text
 

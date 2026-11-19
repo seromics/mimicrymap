@@ -21,7 +21,7 @@ Large reference collections and CUDA installations are separate.
 The [published Zenodo dataset](https://doi.org/10.5281/zenodo.24046306) provides
 precomputed comparisons, pan-viral atlas data and figures, structures and annotations.
 
-Created by Tyler Hulett, PhD.
+Created by Tyler Hulett, PhD · [Email](mailto:tyler@seromap.com).
 [Citation metadata](https://github.com/seromics/mimicrymap/blob/main/CITATION.cff).
 Original software is [MIT licensed](https://github.com/seromics/mimicrymap/blob/main/LICENSE).
 The dataset uses CC BY 4.0, with original source

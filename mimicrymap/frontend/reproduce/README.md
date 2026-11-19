@@ -1,6 +1,6 @@
 # MimicryMap Pipeline
 
-Created by Tyler Hulett, PhD · [GitHub](https://github.com/seromics) · [X](https://x.com/seromics) · [LinkedIn](https://www.linkedin.com/in/tyler-hulett-2a716618/).
+Created by Tyler Hulett, PhD · [Email](mailto:tyler@seromap.com) · [GitHub](https://github.com/seromics) · [X](https://x.com/seromics) · [LinkedIn](https://www.linkedin.com/in/tyler-hulett-2a716618/).
 
 [Citation metadata](https://github.com/seromics/mimicrymap/blob/main/CITATION.cff) · [MIT license](https://github.com/seromics/mimicrymap/blob/main/LICENSE).
 

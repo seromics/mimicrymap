@@ -344,7 +344,7 @@ The paired coverage column gives each listed parent's X- and Y-axis values. Its 
 
 ## Citation and License
 
-Created by Tyler Hulett, PhD · [GitHub](https://github.com/seromics) · [X](https://x.com/seromics) · [LinkedIn](https://www.linkedin.com/in/tyler-hulett-2a716618/).
+Created by Tyler Hulett, PhD · [Email](mailto:tyler@seromap.com) · [GitHub](https://github.com/seromics) · [X](https://x.com/seromics) · [LinkedIn](https://www.linkedin.com/in/tyler-hulett-2a716618/).
 
 [Software citation](CITATION.cff) · [Dataset citation](https://doi.org/10.5281/zenodo.24046306).
 

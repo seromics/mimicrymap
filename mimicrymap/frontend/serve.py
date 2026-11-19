@@ -92,6 +92,10 @@ def _verified_asset_path(
 
 
 class MimicryHandler(StaticAssetCacheMixin, SimpleHTTPRequestHandler):
+    def list_directory(self, path):
+        self.send_error(404, "Not found")
+        return None
+
     asset_library = None
     exposure_assets = None
     data_root = DEFAULT_DATA
@@ -223,6 +227,11 @@ class MimicryHandler(StaticAssetCacheMixin, SimpleHTTPRequestHandler):
 
     def translate_path(self, path):
         request_path = unquote(urlparse(path).path)
+        parts = request_path.strip('/').split('/')
+        if any(part.startswith('.') for part in parts) or (
+            len(parts) == 1 and parts[0].lower().endswith('.py')
+        ):
+            return str(FRONTEND / '__invalid__')
         if request_path == "/plot-palette.js":
             return str(FRONTEND.parent.parent / "atlas/viewer/shared/plotPalette.cjs")
         scoped = re.fullmatch(r"/data/scoped-inputs/([0-9a-f]{64})\.json\.gz", request_path)
