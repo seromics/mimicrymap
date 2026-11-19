@@ -22,7 +22,7 @@ same matching definitions.
 | Compare two complete libraries | [CPU/GPU library builder](docs/BUILD.md) | Reusable mapping databases and CSV + FASTA packages; full positions optional |
 | Explore completed human–viral comparisons | [Pan-Viral Atlas and data](docs/ATLAS.md) | Saved figures, coverage tables, exact input FASTAs and reference mappings |
 
-Use the [Viewer Guide](docs/VIEWER.md) for the supplied IL10 example, your own FASTAs, optional structures, embedding and local installation. No database or antibody study is required. [Download the source](https://github.com/seromics/mimicrymap/archive/refs/heads/main.zip) or [download the published data](https://doi.org/10.5281/zenodo.24046306).
+Use the [Viewer Guide](docs/VIEWER.md) for the supplied IL10 example, your own FASTAs, optional structures, embedding and local installation. No database or antibody study is required. [Download v0.1.0](https://github.com/seromics/mimicrymap/releases/tag/v0.1.0) or [download the published data](https://doi.org/10.5281/zenodo.24046306).
 
 The [hosted site](https://seromap.com/mimicrymap/app/index.html) adds catalogue search, the saved [pan-viral atlas](https://seromap.com/mimicrymap/app/pan-viral.html), illustrated
 methods and data downloads. Curated browsing uses separately supplied reference

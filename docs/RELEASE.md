@@ -1,4 +1,4 @@
-# MimicryMap 0.1.0-rc.1
+# MimicryMap 0.1.0
 
 MimicryMap compares overlapping amino-acid windows and maps their positions and
 coverage across proteins, peptides and libraries.
@@ -12,9 +12,11 @@ coverage across proteins, peptides and libraries.
 
 | Package | Contents |
 | --- | --- |
-| `mimicrymap-viewer-0.1.0-rc.1.zip` | Static viewer, FASTA examples, optional annotation example and embedding API. Serve over HTTP. |
-| `mimicrymap-pipeline-0.1.0-rc.1.zip` | Detailed HEPACAM–EBNA1 comparison with Python, R and Node.js launchers. |
-| `mimicrymap-research-0.1.0-rc.1.zip` | Research source, CPU/GPU library builder, viewer source, methods and selected figures. |
+| `mimicrymap-viewer-0.1.0.zip` | Static viewer, FASTA examples, optional annotation example and embedding API. Serve over HTTP. |
+| `mimicrymap-pipeline-0.1.0.zip` | Detailed HEPACAM–EBNA1 comparison with Python, R and Node.js launchers. |
+| `mimicrymap-research-0.1.0.zip` | Research source, CPU/GPU library builder, viewer source, methods and selected figures. |
+
+Use the [hosted viewer](https://seromap.com/mimicrymap/app/index.html) or [browse the pan-viral atlas](https://seromap.com/mimicrymap/app/pan-viral.html) online.
 
 Start with the included README or the [Viewer Guide](https://github.com/seromics/mimicrymap/blob/main/docs/VIEWER.md).
 Large reference collections and CUDA installations are separate.
