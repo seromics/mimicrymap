@@ -5352,6 +5352,109 @@
       "use": "Scope collection label",
       "placeholders": {},
       "term": "additional_trembl"
+    },
+    {
+      "key": "atlas-pairs.range",
+      "file": "frontend/atlas-pairs.js",
+      "use": "Atlas pair panel label",
+      "text": "Rows {{value1}}–{{value2}} of {{value3}} pairs",
+      "placeholders": {
+        "value1": {
+          "expression": "number(first)"
+        },
+        "value2": {
+          "expression": "number(last)"
+        },
+        "value3": {
+          "expression": "number(total)"
+        }
+      }
+    },
+    {
+      "key": "atlas-pairs.pages",
+      "file": "frontend/atlas-pairs.js",
+      "use": "Atlas pair panel label",
+      "text": "of {{value1}}",
+      "placeholders": {
+        "value1": {
+          "expression": "number(pages)"
+        }
+      }
+    },
+    {
+      "key": "atlas-pairs.scope",
+      "file": "frontend/atlas-pairs.js",
+      "use": "Atlas pair panel label",
+      "text": "{{value1}} viral proteomes · {{value2}} human targets ≥{{minimum}} AA",
+      "placeholders": {
+        "value1": {
+          "expression": "number(data.proteomes)"
+        },
+        "value2": {
+          "expression": "number(displayTargetCount(data))"
+        },
+        "minimum": {
+          "expression": "MIN_HUMAN_LENGTH_AA"
+        }
+      }
+    },
+    {
+      "key": "atlas-pairs.empty",
+      "file": "frontend/atlas-pairs.js",
+      "use": "Atlas pair panel label",
+      "text": "No pairs with a human target of at least {{minimum}} residues meet the summary listing floor at this identity.",
+      "placeholders": {
+        "minimum": {
+          "expression": "MIN_HUMAN_LENGTH_AA"
+        }
+      }
+    },
+    {
+      "key": "atlas-pairs.export-subtitle",
+      "file": "frontend/atlas-pairs.js",
+      "use": "Atlas pair panel label",
+      "text": "Minimum identity {{value1}}/9 · {{value2}} · Rows {{value3}}–{{value4}} of {{value5}}",
+      "placeholders": {
+        "value1": {
+          "expression": "floor"
+        },
+        "value2": {
+          "expression": "metricLabel"
+        },
+        "value3": {
+          "expression": "number(view.start+1)"
+        },
+        "value4": {
+          "expression": "number(view.start+view.rows.length)"
+        },
+        "value5": {
+          "expression": "number(state.cache.get(floor+':'+metric).length)"
+        }
+      }
+    },
+    {
+      "key": "atlas-pairs.export-error",
+      "file": "frontend/atlas-pairs.js",
+      "use": "Atlas pair panel label",
+      "text": "The figure could not be exported. Please try again."
+    },
+    {
+      "key": "atlas-pairs.loading",
+      "file": "frontend/atlas-pairs.js",
+      "use": "Atlas pair panel label",
+      "text": "Loading pair coverage…"
+    },
+    {
+      "key": "atlas-pairs.load-error",
+      "file": "frontend/atlas-pairs.js",
+      "use": "Atlas pair panel label",
+      "text": "The pair table could not be loaded. The full summary CSV is still available. "
+    },
+    {
+      "key": "atlas-pairs.retry",
+      "file": "frontend/atlas-pairs.js",
+      "use": "Atlas pair panel label",
+      "text": "Retry"
     }
   ]
 }

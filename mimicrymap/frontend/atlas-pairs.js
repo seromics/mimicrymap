@@ -1,14 +1,19 @@
 /* Presentation of existing published pair coverage only. No sequence matching. */
 (function(root){
  'use strict';
+ const MIN_HUMAN_LENGTH_AA=50;
+ const eligibleTarget=record=>Number.isFinite(record?.[3])&&record[3]>=MIN_HUMAN_LENGTH_AA;
+ const displayTargetCount=data=>data.targets.filter(eligibleTarget).length;
  const lexical=(a,b)=>a<b?-1:a>b?1:0;
  function ranked(data,floor,metric){
   if(![7,8,9].includes(floor)||!['target','parent'].includes(metric))throw Error('Invalid table selection');
   const offset=2+(floor-7)*2,primary=offset+(metric==='target'?1:0),secondary=offset+(metric==='target'?0:1);
-  return data.pairs.filter(p=>p[offset]!==null&&p[offset+1]!==null).slice().sort((a,b)=>b[primary]-a[primary]||b[secondary]-a[secondary]||lexical(data.targets[a[0]][1],data.targets[b[0]][1])||lexical(data.parents[a[1]][1],data.parents[b[1]][1])||a[0]-b[0]||a[1]-b[1]);
+  // Apply the atlas human population before either ranking and pagination.
+  // The underlying summary and its CSV download retain every source record.
+  return data.pairs.filter(p=>eligibleTarget(data.targets[p[0]])&&p[offset]!==null&&p[offset+1]!==null).sort((a,b)=>b[primary]-a[primary]||b[secondary]-a[secondary]||lexical(data.targets[a[0]][1],data.targets[b[0]][1])||lexical(data.parents[a[1]][1],data.parents[b[1]][1])||a[0]-b[0]||a[1]-b[1]);
  }
  function pageSlice(rows,page,size){const pages=Math.max(1,Math.ceil(rows.length/size)),current=Math.max(1,Math.min(pages,page));return {page:current,pages,rows:rows.slice((current-1)*size,current*size),start:(current-1)*size};}
- if(typeof module==='object'&&module.exports){module.exports={ranked,pageSlice};return;}
+ if(typeof module==='object'&&module.exports){module.exports={ranked,pageSlice,displayTargetCount,MIN_HUMAN_LENGTH_AA};return;}
  const host=document.getElementById('atlasPairs');if(!host)return;
  const config=root.MimicryPanViralPairs||{},find=s=>host.querySelector(s),all=s=>[...host.querySelectorAll(s)],number=n=>Number(n).toLocaleString('en-US');
  const state={data:null,floor:7,metric:'target',size:10,page:1,cache:new Map(),view:null,request:0};
@@ -36,11 +41,11 @@
   find('#atlasPairsPageCount').textContent=(/*@copy atlas-pairs.pages*/`of ${number(pages)}`/*@endcopy*/);
   const input=find('#atlasPairsPage');input.value=state.page;input.max=pages;
   find('#atlasPairsPrevious').disabled=state.page===1;find('#atlasPairsNext').disabled=state.page===pages;
-  find('#atlasPairsScope').textContent=(/*@copy atlas-pairs.scope*/`${number(data.proteomes)} viral proteomes · ${number(data.target_records)} human targets`/*@endcopy*/);
+  find('#atlasPairsScope').textContent=(/*@copy atlas-pairs.scope*/`${number(data.proteomes)} viral proteomes · ${number(displayTargetCount(data))} human targets ≥${MIN_HUMAN_LENGTH_AA} AA`/*@endcopy*/);
   scroll.hidden=!rows.length;pagination.hidden=!rows.length;status.hidden=!!rows.length;
-  if(!rows.length)status.textContent=(/*@copy atlas-pairs.empty*/`No pairs meet the summary listing floor at this identity.`/*@endcopy*/);
+  if(!rows.length)status.textContent=(/*@copy atlas-pairs.empty*/`No pairs with a human target of at least ${MIN_HUMAN_LENGTH_AA} residues meet the summary listing floor at this identity.`/*@endcopy*/);
   all('[data-pair-export]').forEach(b=>b.disabled=!rows.length);
-  
+
  }
  all('[data-pair-floor]').forEach(b=>b.addEventListener('click',()=>{state.floor=Number(b.dataset.pairFloor);state.page=1;render();}));
  const rankSelect=find('#atlasPairsRank'),rankItems=[...rankSelect.options].map(o=>({value:o.value,label:o.textContent}));
@@ -58,7 +63,7 @@
   const label=r=>[r[0],r[1]].filter(Boolean).join(' | ');
   const headers=[...find('thead tr').children].map(th=>th.textContent.trim());
   return root.MimicryAtlasTable.render({
-   width:1100,title:heading,heading,unit:`${floor}/9 | Coverage (%) | 0–100`,
+   width:1100,title:heading,heading,unit:`${floor}/9 | Coverage (%) | 0–100 | Human Targets ≥${MIN_HUMAN_LENGTH_AA} AA`,
    gutter:48,gutterTitle:headers[0],rows:view.rows,label:p=>number(view.start+view.rows.indexOf(p)+1),
    cols:[
     {t:headers[1],w:180,f:p=>label(target(p)),tooltip:p=>label(target(p))+' | '+target(p)[2],href:p=>recordHref(target(p),false)},
@@ -76,7 +81,7 @@
    const subtitle=(/*@copy atlas-pairs.export-subtitle*/`Minimum identity ${floor}/9 · ${metricLabel} · Rows ${number(view.start+1)}–${number(view.start+view.rows.length)} of ${number(state.cache.get(floor+':'+metric).length)}`/*@endcopy*/);
    const svg=tableSvg(view,data,floor);
    svg.append(svgNode('desc',{},subtitle+'. '+find('#atlasPairsLegend').textContent));
-   svg.append(svgNode('metadata',{},JSON.stringify({schema:'mimicryone/atlas-pair-figure/1',source_sha256:data.source_sha256,summary_url:config.summary_url,collection:'viruses',identity_min:floor,sort:metric,page:view.page,rows:view.rows})));
+   svg.append(svgNode('metadata',{},JSON.stringify({schema:'mimicryone/atlas-pair-figure/1',source_sha256:data.source_sha256,summary_url:config.summary_url,collection:'viruses',identity_min:floor,min_human_length_aa:MIN_HUMAN_LENGTH_AA,human_target_records:displayTargetCount(data),sort:metric,page:view.page,rows:view.rows})));
    const filename=`pan_viral_pairs_m${floor}_${metric}_page_${view.page}`;
    if(kind==='code'){
     const offset=2+(floor-7)*2,headers=[...find('thead tr').children].map(th=>th.textContent.trim());
@@ -87,7 +92,7 @@
     ]));
     await root.SeroMapCodeExport({filename,csv:{rows,columns:headers},svg:root.MimicryAtlasTable.exportNode(svg),
      reproduction:{id:'mimicry-atlas-pairs',title:originalTitle,legend:find('#atlasPairsLegend').textContent,methods:'This package replays the captured page of published coverage results; it does not compute sequence matches.',
-      settings:{identity:floor,sort:metric,page:view.page,pageSize:state.size,source_sha256:data.source_sha256,summary_url:config.summary_url},
+      settings:{identity:floor,min_human_length_aa:MIN_HUMAN_LENGTH_AA,human_target_records:displayTargetCount(data),sort:metric,page:view.page,pageSize:state.size,source_sha256:data.source_sha256,summary_url:config.summary_url},
       columnDefinitions:headers.map((label,i)=>({key:label,label,
        meaning:[
         'One-based position in the selected published pair ranking.',
@@ -127,6 +132,6 @@
   }finally{if(request===state.request)host.setAttribute('aria-busy','false');}
  }
  root.addEventListener('mimicryone:theme',()=>{if(state.view)find('#atlasPairsPlot').replaceChildren(tableSvg(state.view,state.data,state.floor));});
- 
+
  load();
 })(typeof globalThis!=='undefined'?globalThis:this);

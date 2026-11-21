@@ -11,6 +11,7 @@ Interface text catalogue. Locations and placeholder expressions identify the sha
 - `docs/public/navigation.html` — 5 entries
 - `frontend/analysis-entry.js` — 105 entries
 - `frontend/atlas-figures.js` — 123 entries
+- `frontend/atlas-pairs.js` — 9 entries
 - `frontend/index.html` — 220 entries
 - `frontend/method-figure.js` — 4 entries
 - `frontend/mimicryone-runtime.js` — 76 entries
@@ -6206,6 +6207,100 @@ Additional TrEMBL
 ```
 
 Shared glossary term: `additional_trembl` (edit its label once in terminology.json).
+
+
+## atlas-pairs.range
+
+**Used in:** `frontend/atlas-pairs.js` · Atlas pair panel label
+
+```text
+Rows {{value1}}–{{value2}} of {{value3}} pairs
+```
+
+- `{{value1}}` ← `number(first)` (live renderer value; not authored content)
+- `{{value2}}` ← `number(last)` (live renderer value; not authored content)
+- `{{value3}}` ← `number(total)` (live renderer value; not authored content)
+
+## atlas-pairs.pages
+
+**Used in:** `frontend/atlas-pairs.js` · Atlas pair panel label
+
+```text
+of {{value1}}
+```
+
+- `{{value1}}` ← `number(pages)` (live renderer value; not authored content)
+
+## atlas-pairs.scope
+
+**Used in:** `frontend/atlas-pairs.js` · Atlas pair panel label
+
+```text
+{{value1}} viral proteomes · {{value2}} human targets ≥{{minimum}} AA
+```
+
+- `{{value1}}` ← `number(data.proteomes)` (live renderer value; not authored content)
+- `{{value2}}` ← `number(displayTargetCount(data))` (live renderer value; not authored content)
+- `{{minimum}}` ← `MIN_HUMAN_LENGTH_AA` (live renderer value; not authored content)
+
+## atlas-pairs.empty
+
+**Used in:** `frontend/atlas-pairs.js` · Atlas pair panel label
+
+```text
+No pairs with a human target of at least {{minimum}} residues meet the summary listing floor at this identity.
+```
+
+- `{{minimum}}` ← `MIN_HUMAN_LENGTH_AA` (live renderer value; not authored content)
+
+## atlas-pairs.export-subtitle
+
+**Used in:** `frontend/atlas-pairs.js` · Atlas pair panel label
+
+```text
+Minimum identity {{value1}}/9 · {{value2}} · Rows {{value3}}–{{value4}} of {{value5}}
+```
+
+- `{{value1}}` ← `floor` (live renderer value; not authored content)
+- `{{value2}}` ← `metricLabel` (live renderer value; not authored content)
+- `{{value3}}` ← `number(view.start+1)` (live renderer value; not authored content)
+- `{{value4}}` ← `number(view.start+view.rows.length)` (live renderer value; not authored content)
+- `{{value5}}` ← `number(state.cache.get(floor+':'+metric).length)` (live renderer value; not authored content)
+
+## atlas-pairs.export-error
+
+**Used in:** `frontend/atlas-pairs.js` · Atlas pair panel label
+
+```text
+The figure could not be exported. Please try again.
+```
+
+
+## atlas-pairs.loading
+
+**Used in:** `frontend/atlas-pairs.js` · Atlas pair panel label
+
+```text
+Loading pair coverage…
+```
+
+
+## atlas-pairs.load-error
+
+**Used in:** `frontend/atlas-pairs.js` · Atlas pair panel label
+
+```text
+The pair table could not be loaded. The full summary CSV is still available.
+```
+
+
+## atlas-pairs.retry
+
+**Used in:** `frontend/atlas-pairs.js` · Atlas pair panel label
+
+```text
+Retry
+```
 
 
 ## result-extent.caption-scientific-legend

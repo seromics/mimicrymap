@@ -42,8 +42,8 @@
     {
       "path": "mimicrymap/docs/public/INTERFACE_TEXT.md",
       "source": "mimicrymap/docs/public/INTERFACE_TEXT.md",
-      "bytes": 162737,
-      "sha256": "1a4a4dabd80247eb1842b181d4ece7b49705642bd6010cc22c5aef374a4136f9"
+      "bytes": 165340,
+      "sha256": "33669989ce05fa3d7485634d6dc5e9971db548a9e289417e82f5c35403a91c5e"
     },
     {
       "path": "mimicrymap/docs/public/README.md",
@@ -84,8 +84,8 @@
     {
       "path": "mimicrymap/docs/public/interface-copy.json",
       "source": "mimicrymap/docs/public/interface-copy.json",
-      "bytes": 178139,
-      "sha256": "1bc605ad078e3d718a37a7c793423158098c4d1513b15d86aaa58e3c3408270d"
+      "bytes": 181126,
+      "sha256": "1c36bbcb69d6a98902e030c7cb59b87f23b1b84c4faa34d344e5fef9f193820a"
     },
     {
       "path": "mimicrymap/docs/public/method-copy.json",
@@ -108,8 +108,8 @@
     {
       "path": "mimicrymap/docs/public/pan-viral.html",
       "source": "mimicrymap/docs/public/pan-viral.html",
-      "bytes": 6329,
-      "sha256": "5e95be5203f67cbecf217f27e2078d09d80d53984cc424e3e49572ed2e7de8f7"
+      "bytes": 6384,
+      "sha256": "2883fbe410587c2b16f8158d108bc2c31129ad497eb95b63a5e933d6229f2c5f"
     },
     {
       "path": "mimicrymap/docs/public/release.html",
@@ -264,8 +264,8 @@
     {
       "path": "mimicrymap/frontend/atlas-pairs.js",
       "source": "mimicrymap/frontend/atlas-pairs.js",
-      "bytes": 13958,
-      "sha256": "a7384e8598bf650b1902da2992cab538829edb7b144765f90bbfb5a2aba6fa74"
+      "bytes": 14583,
+      "sha256": "2357806ebfe4d01e6a9f5d68de5863f2cafec79b9f6b242d339ce4a2d77ab218"
     },
     {
       "path": "mimicrymap/frontend/calculations.html",
@@ -732,8 +732,8 @@
     {
       "path": "mimicrymap/frontend/pan-viral.html",
       "source": "mimicrymap/frontend/pan-viral.html",
-      "bytes": 36059,
-      "sha256": "7098e48a3b59f2928a7224abd7f2499f835607c311743e462234dd1da86f910f"
+      "bytes": 36114,
+      "sha256": "4ffc3c145be163fe2db2973807bdd780d3d35e2e0eb3bdea69d67671ac2f3dc7"
     },
     {
       "path": "mimicrymap/frontend/pinned_subset_membership.py",
