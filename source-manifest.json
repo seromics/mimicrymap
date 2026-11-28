@@ -1,7 +1,7 @@
 {
   "schema": "mimicrymap.source-snapshot/1",
   "repository": "https://github.com/seromics/seromap_electron",
-  "commit": "7819bdd02a68131830607345d29099c201945107",
+  "commit": "abe61c1d692038a9d3a8baa693951788f527b990",
   "files": [
     {
       "path": "mimicrymap/LICENSE",
@@ -838,6 +838,12 @@
       "sha256": "d6848547959eb0c0c7ba8a6ff394fc4696a7e8f7e2ece0dd9e33fd6f2c184548"
     },
     {
+      "path": "mimicrymap/frontend/reference/atlas-human-localization.json",
+      "source": "mimicrymap/frontend/reference/atlas-human-localization.json",
+      "bytes": 393733,
+      "sha256": "f63d7727991dedd3667591b8dcd99f5c6f92f6fa8dba3099733d84f24a5bccb8"
+    },
+    {
       "path": "mimicrymap/frontend/release-provenance.js",
       "source": "mimicrymap/frontend/release-provenance.js",
       "bytes": 2979,
@@ -1640,12 +1646,6 @@
       "source": "mimicrymap/workspace/worker.cjs",
       "bytes": 1765,
       "sha256": "05dba54cecbadc44036a97df5305e8b2710e9533d54fff96275cea6f722ee389"
-    },
-    {
-      "path": "mimicrymap/frontend/reference/atlas-human-localization.json",
-      "source": "mimicrymap/frontend/reference/atlas-human-localization.json",
-      "bytes": 393733,
-      "sha256": "f63d7727991dedd3667591b8dcd99f5c6f92f6fa8dba3099733d84f24a5bccb8"
     },
     {
       "path": "code/export-core.js",
